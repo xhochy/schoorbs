@@ -1,0 +1,8 @@
+#summary What you need to use this
+#labels Featured,Phase-Requirements
+
+== Depends on ==
+
+ * [http://www.php.net/ PHP 4.3+]
+ * [http://mysql.com MySQL 4+] or [http://www.postgresql.org/  PostgreSQL 7+]
+
