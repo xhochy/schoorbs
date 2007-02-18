@@ -1,0 +1,11 @@
+#summary How to install Schoorbs
+#labels Phase-Deploy,Featured
+
+= Introduction =
+
+Add our content here.
+
+
+= REST-API =
+
+To use the REST-API you need to have mod_rewrite (or an equivalent) enabled and uncomment the directives in REST/.htaccess.
