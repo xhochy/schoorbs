@@ -11,5 +11,5 @@ Normally an error is sent back, if paramaters are missing or an invalid URL was 
 || *Code* || *Message* ||
 || 1 || not a valid Schoorbs-REST-URL ||
 || 2 || Function does not exist ||
-
+|| 3 || Database failure ... ||
 
