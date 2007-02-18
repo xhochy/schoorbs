@@ -1,4 +1,4 @@
-#summary How to generate an view documentation of the sourcecode
+#summary How to generate and view documentation of the sourcecode
 #labels Phase-Implementation
 
 == Generation ==
