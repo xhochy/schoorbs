@@ -1,10 +1,9 @@
 #summary How to install Schoorbs
 #labels Phase-Deploy,Featured
 
-= Introduction =
+== Update from MRBS 1.2.4 ==
 
-Add our content here.
-
+Just copy your old config.inc.php of MRBS into the new Schoorbs directory and everything should work.
 
 == REST-API ==
 
