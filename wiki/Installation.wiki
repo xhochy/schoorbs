@@ -1,6 +1,14 @@
 #summary How to install Schoorbs
 #labels Phase-Deploy,Featured
 
+== Fresh Install ==
+
+  # Download the latest (stable) Schoorbs release
+  # Unpack it to the directory where the webserver finds it
+  # Rename the config.inc.php-dist to config.inc.php
+  # Edit the config.inc.php, everything should be well described
+  # {{{Editors: please continue....}}}
+
 == Update from MRBS 1.2.4 ==
 
 Just copy your old config.inc.php of MRBS into the new Schoorbs directory and everything should work.
