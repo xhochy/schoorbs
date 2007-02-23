@@ -1,0 +1,102 @@
+#gewaehlt    {color:#0000FF}
+#linksunten  {background-color:#EEEEEE;font-size:8pt}
+#linksmitte  {background-color:#EEEEEE;font-size:24pt}
+#linksoben   {background-color:#0000FF;font-size:1pt}
+#rechtsoben  {background-color:#9999FF;font-size:1pt}
+#rechtsunten {background-color:#FFFFFF;color:#0000FF;font-size:24pt}
+
+.rot         {color:#FF0000;}
+.blau        {color:#0000FF;}
+.tab1        {padding:5px;border-spacing:3px;}
+.tab1 td     {background-color:#DDDDDD;padding:3px;}
+pre          {background-color:#FFFFE0;padding:10px;}
+html {
+	padding: 0px;
+	margin: 0px;
+}
+body {
+  background-color: #FFFFFF;
+  font-size: 12px;
+  font-family: Verdana, Arial, SunSans-Regular, Sans-Serif;
+  color:#564b47;  
+  padding:0px 20px;
+  margin:0px;
+}
+
+#menu_logo {
+	position: absolute;
+	width: 240px;
+	left: 20px;
+	padding:0px;
+	margin:0px
+}
+
+#menu {
+  margin-left: 240px;
+  background-color:#fff;
+  padding-left: 20px;
+  font-size: 14px;
+  font-weight: bold;
+  padding-top: 20px;
+  text-align: center;
+}
+
+#menu_subpanel {
+	position: relative;
+	left: 50px;
+}
+
+#menu_selector {
+	border: solid 1px black;
+	display: inline;
+	padding: 5px;
+}
+
+#menu_searchbox {
+	border: solid 1px black;
+	display: inline;
+	padding: 5px;
+}
+
+a.menu_link {
+	text-decoration: none;
+	color: blue;
+}
+
+a {
+	text-decoration: none;
+	color: blue;
+}
+a:hover {
+	text-decoration: underline;
+	color: red;
+}
+
+a.headerLink {
+	text-decoration: none;;
+	color: black; 
+	font-weight: bold;
+	font-size: 17px;
+}
+
+form {
+	display: inline;
+}
+
+td.banner {
+	vertical-align: middle;
+	color: white;
+	background-color: #7799FF !important;
+	border: dashed black 2px;
+}
+
+img {
+	border: 0px;
+}
+
+img.menu_icon {
+	/*height: 22px;
+	width: 22px;*/
+	position: relative;
+	top: 5px;
+}
