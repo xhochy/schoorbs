@@ -1,0 +1,11 @@
+# Uncomment this to use REST-API calls
+<IfModule mod_rewrite.c>
+	RewriteEngine On
+	RewriteRule [a-z]* [NC]
+	RewriteCond %{REQUEST_FILENAME} !-f
+	RewriteCond %{REQUEST_FILENAME} !-d
+	RewriteRule . ../rest.php [L]
+</IfModule>	
+
+# To expicitly deny REST calls, uncomment the following line
+# Deny from all
