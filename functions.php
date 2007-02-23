@@ -235,26 +235,6 @@ function unslashes($s)
 	else return $s;
 }
 
-# Return a default area; used if no area is already known. This returns the
-# lowest area ID in the database (no guaranty there is an area 1).
-# This could be changed to implement something like per-user defaults.
-function get_default_area()
-{
-	global $tbl_area;
-	$area = sql_query1("SELECT id FROM $tbl_area ORDER BY area_name LIMIT 1");
-	return ($area < 0 ? 0 : $area);
-}
-
-# Return a default room given a valid area; used if no room is already known.
-# This returns the first room in alphbetic order in the database.
-# This could be changed to implement something like per-user defaults.
-function get_default_room($area)
-{
-	global $tbl_room;
-	$room = sql_query1("SELECT id FROM $tbl_room WHERE area_id=$area ORDER BY room_name LIMIT 1");
-	return ($room < 0 ? 0 : $room);
-}
-
 # Get the local day name based on language. Note 2000-01-02 is a Sunday.
 function day_name($daynumber)
 {
