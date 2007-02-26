@@ -11,38 +11,39 @@
  * @package Schoorbs/Auth/Config
  */ 
 
-/* authValidateUser($user, $pass)
- * 
+//TODO: Make passwords md5/sha1 crypted
+
+/**
  * Checks if the specified username/password pair are valid
  * 
- * $user  - The user name
- * $pass  - The password
- * 
- * Returns:
- *   0        - The pair are invalid or do not exist
- *   non-zero - The pair are valid
+ * @param string $user
+ * @param string $pass
+ * @author JFL, jberanek, Uwe L. Korn <uwelk@xhochy.org>
+ * @return int 0 => The pair are invalid or do not exist | non-zero => The pair are valid 
  */
 function authValidateUser($user, $pass)
 {
    global $auth;
 
-   // Check if we do not have a username/password
-   if(!isset($user) || !isset($pass) || strlen($pass)==0)
-   {
-      return 0;
-   }
+	// Check if we do not have a username/password
+	if(!isset($user) || !isset($pass) || strlen($pass)==0)
+	{
+		return 0;
+	}
 
-   if ((isset($auth["user"][$user])
-        && ($auth["user"][$user] == $pass)
-       ) ||
-       (isset($auth["user"][strtolower($user)])
-        && ($auth["user"][strtolower($user)] == $pass)
-       ))
-   {
-      return 1; // User validated
-   }
+	$bOk = 0;
+	if(isset($auth['user'][$user]))
+		if($auth['user'][$user] == $pass) $bOk++;
+		
+	if(isset($auth['user'][strtolower($user)]))
+		if($auth['user'][strtolower($user)] == $pass) $bOk++; 
 
-   return 0;		// User unknown or password invalid
+	if($bOk > 0)//or is $bOK == 1 more secure ?
+	{
+		return 1; // User validated
+	}
+
+	return 0;		// User unknown or password invalid
 }
 
 /* authGetUserLevel($user)
