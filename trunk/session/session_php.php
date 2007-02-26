@@ -99,7 +99,7 @@ function authGet()
     echo "<p>".get_vocab("norights")."</p>\n";
 
     $TargetURL = basename($_SERVER['PHP_SELF']);
-    if (isset($QUERY_STRING)) $TargetURL = $TargetURL . "?" . $_SERVER['QUERY_STRING'];
+    if (isset($_SERVER['QUERY_STRING'])) $TargetURL = $TargetURL . "?" . $_SERVER['QUERY_STRING'];
     printLoginForm($TargetURL);
 
     exit();
