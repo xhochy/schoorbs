@@ -5,7 +5,7 @@
  * To use this authentication scheme, set in config.inc.php:
  * $auth["type"]  = "db";
  * 
- * @author JFL, jberanek
+ * @author JFL, jberanek, Uwe L. Korn <uwelk@xhochy.org>
  * @package Schoorbs/Auth/DB
  */
 
@@ -13,36 +13,31 @@
     in the logon box, if the value $user_list_link is set. */
 $user_list_link = "edit_users.php";
 
-/* authValidateUser($user, $pass)
- * 
+/**
  * Checks if the specified username/password pair are valid
  * 
- * $user  - The user name
- * $pass  - The password
- * 
- * Returns:
- *   0        - The pair are invalid or do not exist
- *   non-zero - The pair are valid
+ * @param string $user
+ * @param string $pass
+ * @author JFL, jberanek, Uwe L. Korn <uwelk@xhochy.org>
+ * @return int 0 => The pair are invalid or do not exist | non-zero => The pair are valid 
  */
-
 function authValidateUser($user, $pass)
 {
    global $tbl_users;
 
-   $user=slashes($user);
-   $user=strtolower($user);
+   $user = strtolower($user);
+   $user = sql_escape_arg($user);
    $pass = md5($pass);
    return sql_query1("select count(*) from $tbl_users where name='$user' and password='$pass';");
 }
 
-/* authGetUserLevel($user)
- * 
+/**
  * Determines the users access level
- * 
- * $user - The user name
  *
- * Returns:
- *   The users access level
+ * @author JFL, jberanek 
+ * @param string $user The user name
+ * @param array $lev1_admin
+ * @return int The user acces level
  */
 function authGetUserLevel($user, $lev1_admin)
 {
@@ -53,8 +48,8 @@ function authGetUserLevel($user, $lev1_admin)
    // Check if the user is can modify
    for($i = 0; isset($lev1_admin[$i]); $i++)
    {
-      if(strcasecmp($user, $lev1_admin[$i]) == 0)
-	 return 2;
+		if(strcasecmp($user, $lev1_admin[$i]) == 0)
+			return 2;
    }
 
    // Everybody else is access level '1'
