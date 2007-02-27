@@ -8,6 +8,13 @@
     <link rel="home" href="index.php" />
     <script type="text/javascript" src="js/old.js"></script>
     <script type="text/javascript" src="js/xbLib.js"></script>
+    <!-- compliance patch for microsoft browsers -->
+    <!--[if lt IE 7]>
+    <script type="text/javascript">
+        IE7_PNG_SUFFIX = ".png";
+    </script>
+    <script src="js/ie7/ie7-standard-p.js" type="text/javascript"></script>
+    <![endif]-->
 </head>
 <body>
 	<div id="menu_logo">
