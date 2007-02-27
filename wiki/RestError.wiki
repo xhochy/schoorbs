@@ -12,6 +12,7 @@ Normally an error is sent back, if paramaters are missing or an invalid URL was 
 || 1 || not a valid Schoorbs-REST-URL ||
 || 2 || Function does not exist ||
 || 3 || Database failure ... ||
+|| 4 || Access denied ||
 
 == Example Error ==
 
@@ -21,7 +22,6 @@ Normally an error is sent back, if paramaters are missing or an invalid URL was 
 	<err code="1" msg="not a valid Schoorbs-REST-URL" />
 </rsp>
 }}}
-
 
 
 
