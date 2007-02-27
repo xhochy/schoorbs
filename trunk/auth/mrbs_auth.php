@@ -10,7 +10,13 @@
 // include the authentification wrappers
 include "auth/auth_{$auth['type']}.php";
 
-if (isset($auth['session'])) include "session/session_{$auth['session']}.php";
+if(isset($bSessionIncluded)) 
+	if(!$bSessionIncluded)
+		if (isset($auth['session'])) 
+			require_once "session/session_{$auth['session']}.php";
+else
+	if (isset($auth['session'])) 
+		require_once "session/session_{$auth['session']}.php";
 
 /* getAuthorised($user, $pass, $level)
  * 
