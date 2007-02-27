@@ -24,9 +24,9 @@ function authGet()
 
 function getAuthPassword()
 {
-    if (isset($_SEVER['PHP_AUTH_PW']))
+    if (isset($_SERVER['PHP_AUTH_PW']))
     {
-        $pw = $_SEVER['PHP_AUTH_PW'];
+        $pw = $_SERVER['PHP_AUTH_PW'];
         if (get_magic_quotes_gpc())
         {
             $pw = stripslashes($pw);
@@ -39,29 +39,27 @@ function getAuthPassword()
     }
 }
 
+/**
+ * return the Username, if pw is valid
+ * 
+ * @return string
+ * @author JFL, jberanek, Uwe L. Korn <uwelk@xhochy.org>
+ */
 function getUserName()
 {
     if (isset($_SERVER['PHP_AUTH_USER']))
     {
         $user = $_SERVER['PHP_AUTH_USER'];
         if (get_magic_quotes_gpc())
-        {
             $user = stripslashes($user);
-        }
-
+        
         if (authValidateUser($user,getAuthPassword()))
-        {
             return $user;
-        }
         else
-        {
             return null;
-        }
     }
     else
-    {
         return null;
-    }
 }
 
 // Print the logon entry on the top banner.
