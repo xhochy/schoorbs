@@ -7,4 +7,4 @@
  * [http://mysql.com MySQL 4+] or [http://www.postgresql.org/  PostgreSQL 7+]
  * [http://phpmailer.sourceforge.net PHPMailer](Included in Schoorbs Package)(LGPL)
  * [http://art.gnome.org/themes/icon/1100 Dropline Neu!-Icons](Included in Schoorbs Package)(GPL)
- * [http://dean.edwards.name/IE7/ IE7(a javascript library which fixes some bugs of IE <7)](LGPL)
+ * [http://dean.edwards.name/IE7/ IE7(a javascript library which fixes some bugs of IE <7)](Included in Schoorbs Package)(LGPL)
