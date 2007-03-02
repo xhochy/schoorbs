@@ -11,5 +11,8 @@ Example: `http://schoorbs-installation/REST/getEntriesOfDay/?day=01&year=2007&mo
 
 *REST-API calls need (at the moment) mod_rewrite or an equivalent to be handled!*
 
+== Functions ==
 
-
+|| Function || Description ||
+|| getEntriesOfDay || Get all entries of a room at a day ||
+|| login || check if your login credentials are ok ||
