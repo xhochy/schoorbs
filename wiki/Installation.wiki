@@ -16,6 +16,3 @@ Just copy your old config.inc.php of MRBS into the new Schoorbs directory and ev
 == REST-API ==
 
 To use the REST-API you need to have mod_rewrite (or an equivalent) enabled and uncomment the directives in REST/.htaccess. Please check, if you really have mod_rewrite installed, else it would just dont work or you would get an 500 Error from your webserver.
-
-
-  # Trest
