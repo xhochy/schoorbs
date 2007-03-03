@@ -8,11 +8,11 @@
 
 ## Includes ##
 
-require_once "config.inc.php";
-require_once "functions.php";
+require_once 'config.inc.php';
+require_once 'functions.php';
 require_once "db/$dbsys.php";
-require_once "auth/mrbs_auth.php";
-require_once "mincals.php";
+require_once 'auth/schoorbs_auth.php';
+require_once 'mincals.php';
 
 ## Var Init ##
 
@@ -245,12 +245,13 @@ else
 		$time_t = date($format, $t);
 		
 		$cols = array();
-		# Loop through the list of rooms we have for this area
-		while (list($key, $room) = each($rooms))
+		// Loop through the list of rooms we have for this area
+		foreach($roms as $key=>$room)
 		{
-			$aLoop = array();//Array used to temporarly store the vars that will be sent to Smarty
+			// Array used to temporarly store the vars that will be sent to Smarty
+			$aLoop = array();
 			
-			if(isset($today[$room][$time_t]["id"]))
+			if(isset($today[$room][$time_t]['id']))
 			{
 				$aLoop['id'] = $today[$room][$time_t]["id"];
 				$color = $today[$room][$time_t]["color"];
@@ -289,7 +290,6 @@ else
 			$aLoop['room'] = $room;
 			$cols[] = $aLoop;
 		}
-      	reset($rooms);
       	
       	$time = array('time' => $time_t, 'cols' => $cols);
 		if($enable_periods)
@@ -300,12 +300,10 @@ else
 	}
 	
 	$smarty->assign('times',$times);
-			
 	$smarty->display('day.tpl');
 	
-    (isset($output)) ? print $output : '';
     show_colour_key();
 }
 
-include "trailer.php";
+require_once 'trailer.php';
 ?>

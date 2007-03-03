@@ -24,10 +24,10 @@
 // $Id: edit_users.php,v 1.9.2.2 2005/05/17 15:00:41 jberanek Exp $
 
 require_once "grab_globals.php";
-include "config.inc.php";
-include "functions.php";
+require_once "config.inc.php";
+require_once "functions.php";
 require_once "db/$dbsys.php";
-require_once "auth/mrbs_auth.php";
+require_once 'auth/schoorbs_auth.php';
 
 /*---------------------------------------------------------------------------*\
 |                     Create the users database if needed                     |
