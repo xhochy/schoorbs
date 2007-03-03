@@ -13,6 +13,9 @@
 
 Just copy your old config.inc.php of MRBS into the new Schoorbs directory and everything should work.
 
+[http://code.google.com/p/schoorbs/wiki/ChangesFromMrbsToSchoorbs Changes from MRBS to Schoorbs]
+
+
 == Update from MRBS 1.2.4 ==
 
 Add the following lines to your old config.inc.php and continue with *Update from MRBS 1.2.5*:
@@ -27,3 +30,4 @@ $ldap_tls = false;
 == REST-API ==
 
 To use the REST-API you need to have mod_rewrite (or an equivalent) enabled and uncomment the directives in REST/.htaccess. Please check, if you really have mod_rewrite installed, else it would just dont work or you would get an 500 Error from your webserver.
+
