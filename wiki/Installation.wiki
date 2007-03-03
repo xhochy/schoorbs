@@ -9,9 +9,20 @@
   # Edit the config.inc.php, everything should be well described
   # {{{Editors: please continue....}}}
 
-== Update from MRBS 1.2.4 ==
+== Update from MRBS 1.2.5 ==
 
 Just copy your old config.inc.php of MRBS into the new Schoorbs directory and everything should work.
+
+== Update from MRBS 1.2.4 ==
+
+Add the following lines to your old config.inc.php and continue with *Update from MRBS 1.2.3*:
+
+{{{
+# If you want to use LDAP v3, change the following to true
+$ldap_v3 = false;
+# If you want to use TLS, change following to true
+$ldap_tls = false;
+}}}
 
 == REST-API ==
 
