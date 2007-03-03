@@ -14,15 +14,7 @@ require_once 'schoorbs-includes/time.functions.php';
 
 ## Var Inits ##
 
-# probably a bad place to put this, but for error reporting purposes
-# $pview must be defined. if it's not then there's errors generated all
-# over the place. so we test to see if it is set, and if not then set
-# it.
-if (!isset($_REQUEST['pview'])) 
-	$pview = 0;
-else
-    $pview = $_REQUEST['pview'];
-
+$pview = input_PView();
 
 ## Functions ##
 
@@ -47,7 +39,7 @@ function cmp3($a, $b)
 function print_header($day, $month, $year, $area)
 {
 	global $mrbs_company, $search_str, $locale_warning, $pview;
-	global $smarty, $unicode_encoding;
+	global $smarty, $unicode_encoding, $vocab, $unicode_encoding;
 
 	# If we dont know the right date then make it up 
 	if($day < 1 || $day > 31)
