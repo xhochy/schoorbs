@@ -22,7 +22,7 @@
 {/if}
 {if $javascript_cursor eq "true"}
 	<script type="text/javascript">
-		InitActiveCell({$show_plus_link}, true, {$times_right_side}, "{$highlight_method}", "{get_vocab text="click_to_reserve"}");
+		InitCellManagement({$times_right_side});
 	</script>
 {/if}
 <table cellspacing="0" border="1" width="100%">
@@ -50,15 +50,14 @@
 			<a href="{$hilite_url}={$times_item.time_t}"  title="{get_vocab text="highlight_line"}">{$times_item.time}</a>
 		</td>
 		{foreach from=$times_item.WeekDays item=WeekDay}
-			<td class="{$WeekDay.color}" style="text-align: center;">
+			<td class="{$WeekDay.color}" style="text-align: center;"
+				{if $javascript_cursor eq "true"}
+					onmouseover="HighlightCell(this);"
+					onmouseout="UnHighlightCell(this);"
+				{/if}>
 				{if $WeekDay.id eq ""}
 					{if $pview neq 1}
-						{if $javascript_cursor eq "true"}
-							<script type="text/javascript">
-								BeginActiveCell();
-							</script>
-						{/if}
-	  					{if $enable_periods eq "true"}
+						{if $enable_periods eq "true"}
 							<a href="edit_entry.php?room={$room}&amp;area={$area}&amp;period={$WeekDay.time_t_stripped}&amp;year={$WeekDay.wyear}&amp;month={$WeekDay.wmonth}&amp;day={$WeekDay.wday}">
 								<img style="border: 0px;" src="gfx/list-add-small.png" width="10" height="10" alt="New Button" />
 							</a>
@@ -66,11 +65,6 @@
 							<a href="edit_entry.php?room={$room}&amp;area={$area}&amp;hour={$WeekDay.hour}&amp;minute={$WeekDay.minute}&amp;year={$WeekDay.wyear}&amp;month={$WeekDay.wmonth}&amp;day={$WeekDay.wday}">
 								<img style="border: 0px;" src="gfx/list-add-small.png" width="10" height="10" alt="New Button" />
 							</a>
-						{/if}
-						{if $javascript_cursor eq "true"}
-							<script type="text/javascript">
-								EndActiveCell();
-							</script>
 						{/if}
 					{else}
 						&nbsp;

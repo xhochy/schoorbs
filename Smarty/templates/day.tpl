@@ -16,7 +16,7 @@
 {/if}
 {if $javascript_cursor eq "true"}
 	<script type="text/javascript">
-		InitActiveCell({$show_plus_link}, true, {$times_right_side}, "{$highlight_method}", "{get_vocab text="click_to_reserve"}");
+		InitCellManagement({$times_right_side});
 	</script>
 {/if}
 <table cellspacing="0" border="1" width="100%">
@@ -37,21 +37,15 @@
 	<tr>
 		<td class="red"><a href="{$hilite_url}={$time.time}" title="{get_vocab text="highlight_line"}">{$time.title}</a></td>
 		{foreach from=$time.cols item=col}
-			<td class="{$col.css_class}" style="text-align: center">
+			<td class="{$col.css_class}" style="text-align: center"
+				{if $javascript_cursor eq "true"}
+					onmouseover="HighlightCell(this);"
+					onmouseout="UnHighlightCell(this);"
+				{/if}>
 			{if $col.id eq ""}
 				{if $pview neq 1}
-					{if $javascript_cursor eq "true"}
-						<script type="text/javascript">
-							BeginActiveCell();
-						</script>
-					{/if}
 					<a href="edit_entry.php?area={$area}&amp;room={$col.room}&amp;year={$year}&amp;month={$month}&amp;day={$day}{$col.period_param}">
 					<img alt="gfx/list-add-small.png" src="gfx/list-add-small.png" style="width: 10px; height: 10px; border: 0px" /></a>
-					{if $javascript_cursor eq "true"}
-						<script type="text/javascript">
-							EndActiveCell();
-						</script>
-					{/if}
 				{else}
 					&nbsp;
 				{/if}
