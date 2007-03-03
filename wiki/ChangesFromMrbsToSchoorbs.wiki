@@ -29,4 +29,4 @@
   * Added Javascript library [http://dean.edwards.name/IE7/ IE7] to support transperant png and some other stuff in Internet Explorer lower than 7.
   * Added a REST interface for interapplication communication.
   * Added some functions for input parsing and checking
-  * 
+  * Highlightning of Tablecells now done with http://www.prototypejs.org/
