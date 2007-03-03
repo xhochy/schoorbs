@@ -8,26 +8,16 @@
 
 ## Includes ##
 
-require_once "config.inc.php";
-require_once "functions.php";
+require_once 'config.inc.php';
+require_once 'functions.php';
 require_once "db/$dbsys.php";
 require_once 'auth/schoorbs_auth.php';
-require_once "mincals.php";
+require_once 'mincals.php';
 
 ## Var Init ##
 
-/** debug_flag **/
-if(isset($_REQUEST['debug_flag']))
-    if(empty($_REQUEST['debug_flag']))
-        $debug_flag = 0;
-    else
-        $debug_flag = $_REQUEST['debug_flag'];
-else
-    $debug_flag = 0;
-
 /** day, month, year **/
 list($day, $month, $year) = input_DayMonthYear();
-
 $day = 1;
 
 /** area **/
@@ -146,7 +136,7 @@ if($pview != 1)
 if ($room <= 0)
 {
     echo "<h1>".get_vocab("no_rooms_for_area")."</h1>";
-    include "trailer.php";
+    require_once 'trailer.php';
     exit;
 }
 
@@ -161,9 +151,6 @@ $ym = date("n",$i);
 $i= mktime(12,0,0,$month+1,1,$year);
 $ty = date("Y",$i);
 $tm = date("n",$i);
-
-if ($debug_flag)
-    echo "<p>DEBUG: month=$month year=$year start=$weekday_start range=$month_start:$month_end\n";
 
 # Used below: localized "all day" text but with non-breaking spaces:
 $all_day = ereg_replace(" ", "&nbsp;", get_vocab("all_day"));
@@ -265,23 +252,6 @@ for ($day_num = 1; $day_num<=$days_in_month; $day_num++) {
 
 	}
 }
-if ($debug_flag)
-{
-    echo "<p>DEBUG: Array of month day data:<p><pre>\n";
-    for ($i = 1; $i <= $days_in_month; $i++)
-    {
-        if (isset($d[$i]["id"]))
-        {
-            $n = count($d[$i]["id"]);
-            echo "Day $i has $n entries:\n";
-            for ($j = 0; $j < $n; $j++)
-                echo "  ID: " . $d[$i]["id"][$j] .
-                    " Data: " . $d[$i]["data"][$j] . "\n";
-        }
-    }
-    echo "</pre>\n";
-}
-
 
 $aDaynames = array();
 # Weekday name header row:
@@ -400,5 +370,5 @@ $smarty->assign('skipdays2', $aSkipdays2);
 $smarty->assign('days',$aDays);
 $smarty->display('month.tpl');
 
-include "trailer.php";
+require_once 'trailer.php';
 ?>
