@@ -15,7 +15,7 @@ Just copy your old config.inc.php of MRBS into the new Schoorbs directory and ev
 
 == Update from MRBS 1.2.4 ==
 
-Add the following lines to your old config.inc.php and continue with *Update from MRBS 1.2.3*:
+Add the following lines to your old config.inc.php and continue with *Update from MRBS 1.2.5*:
 
 {{{
 # If you want to use LDAP v3, change the following to true
