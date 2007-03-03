@@ -17,15 +17,6 @@ require_once 'auth/schoorbs_auth.php';
 
 ## Var Init ##
 
-/** debug_flag **/
-if(isset($_REQUEST['debug_flag']))
-    if(empty($_REQUEST['debug_flag']))
-        $debug_flag = 0;
-    else
-        $debug_flag = $_REQUEST['debug_flag'];
-else
-    $debug_flag = 0;
-
 /** day, month, year **/
 list($day, $month, $year) = input_DayMonthYear();
 
