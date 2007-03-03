@@ -178,14 +178,11 @@ for ($j = 0; $j<=($num_of_days-1) ; $j++) {
 	# Note: weekday here is relative to the $weekstarts configuration variable.
 	# If 0, then weekday=0 means Sunday. If 1, weekday=0 means Monday.
 
-	if ($debug_flag) echo "<br />DEBUG: query=$sql\n";
 	$res = sql_query($sql);
 	if (! $res) echo sql_error();
 	else for ($i = 0; ($row = sql_row($res, $i)); $i++)
 	{
-		if ($debug_flag)
-			echo "<br />DEBUG: result $i, id $row[4], starts $row[0], ends $row[1]\n";
-
+		
 	 	# $d is a map of the screen that will be displayed
  		# It looks like:
  		#     $d[Day][Time][id]
@@ -227,29 +224,6 @@ for ($j = 0; $j<=($num_of_days-1) ; $j++) {
 		}
 	}
 } 
-
-if ($debug_flag) 
-{
-	echo "<p>DEBUG:<pre>\n";
-	echo "\$dst_change = ";
-	print_r( $dst_change );
-	print "\n";
-	print "\$am7 =\n";
-	foreach( $am7 as $am7_val)
-		print "$am7_val - " . date("r", $am7_val) . "\n";
-	print "\$pm7 =\n";
-	foreach( $pm7 as $pm7_val)
-		print "$pm7_val - " . date("r", $pm7_val) . "\n";
-
-	echo "<p>\$d =\n";
-	if (gettype($d) == "array")
-	while (list($w_k, $w_v) = each($d))
-		while (list($t_k, $t_v) = each($w_v))
-			while (list($k_k, $k_v) = each($t_v))
-				echo "d[$w_k][$t_k][$k_k] = '$k_v'\n";
-	else echo "d is not an array!\n";
-	echo "</pre><p>\n";
-}
 
 $aDays = array();
 $dformat = "%a<br />%b %d";

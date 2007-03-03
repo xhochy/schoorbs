@@ -187,68 +187,69 @@ for ($day_num = 1; $day_num<=$days_in_month; $day_num++) {
             # will incorrectly line break after a -.
 
             if(empty( $enable_periods ) ){
-              switch (cmp3($row[0], $midnight[$day_num]) . cmp3($row[1], $midnight_tonight[$day_num] + 1))
-              {
-        	case "> < ":         # Starts after midnight, ends before midnight
-        	case "= < ":         # Starts at midnight, ends before midnight
-                    $d[$day_num]["data"][] = date(hour_min_format(), $row[0]) . "~" . date(hour_min_format(), $row[1]);
-                    break;
-        	case "> = ":         # Starts after midnight, ends at midnight
-                    $d[$day_num]["data"][] = date(hour_min_format(), $row[0]) . "~24:00";
-                    break;
-        	case "> > ":         # Starts after midnight, continues tomorrow
-                    $d[$day_num]["data"][] = date(hour_min_format(), $row[0]) . "~====&gt;";
-                    break;
-        	case "= = ":         # Starts at midnight, ends at midnight
-                    $d[$day_num]["data"][] = $all_day;
-                    break;
-        	case "= > ":         # Starts at midnight, continues tomorrow
-                    $d[$day_num]["data"][] = $all_day . "====&gt;";
-                    break;
-        	case "< < ":         # Starts before today, ends before midnight
-                    $d[$day_num]["data"][] = "&lt;====~" . date(hour_min_format(), $row[1]);
-                    break;
-        	case "< = ":         # Starts before today, ends at midnight
-                    $d[$day_num]["data"][] = "&lt;====" . $all_day;
-                    break;
-        	case "< > ":         # Starts before today, continues tomorrow
-                    $d[$day_num]["data"][] = "&lt;====" . $all_day . "====&gt;";
-                    break;
-              }
-	    }
+		        switch (cmp3($row[0], $midnight[$day_num]) . cmp3($row[1], $midnight_tonight[$day_num] + 1))
+		        {
+		    	case "> < ":         # Starts after midnight, ends before midnight
+		    	case "= < ":         # Starts at midnight, ends before midnight
+		                $d[$day_num]["data"][] = utf8_strftime(hour_min_format(), $row[0]) . "~" . utf8_strftime(hour_min_format(), $row[1]);
+		                break;
+		    	case "> = ":         # Starts after midnight, ends at midnight
+		                $d[$day_num]["data"][] = utf8_strftime(hour_min_format(), $row[0]) . "~24:00";
+		                break;
+		    	case "> > ":         # Starts after midnight, continues tomorrow
+		                $d[$day_num]["data"][] = utf8_strftime(hour_min_format(), $row[0]) . "~====>";
+		                break;
+		    	case "= = ":         # Starts at midnight, ends at midnight
+		                $d[$day_num]["data"][] = $all_day;
+		                break;
+		    	case "= > ":         # Starts at midnight, continues tomorrow
+		                $d[$day_num]["data"][] = $all_day . "====>";
+		                break;
+		    	case "< < ":         # Starts before today, ends before midnight
+		                $d[$day_num]["data"][] = "<====~" . utf8_strftime(hour_min_format(), $row[1]);
+		                break;
+		    	case "< = ":         # Starts before today, ends at midnight
+		                $d[$day_num]["data"][] = "<====" . $all_day;
+		                break;
+		    	case "< > ":         # Starts before today, continues tomorrow
+		                $d[$day_num]["data"][] = "<====" . $all_day . "====>";
+		                break;
+		        }
+	    	}
             else
             {
-              $start_str = ereg_replace(" ", "&nbsp;", period_time_string($row[0]));
-              $end_str   = ereg_replace(" ", "&nbsp;", period_time_string($row[1], -1));
-              switch (cmp3($row[0], $midnight[$day_num]) . cmp3($row[1], $midnight_tonight[$day_num] + 1))
-              {
-        	case "> < ":         # Starts after midnight, ends before midnight
-        	case "= < ":         # Starts at midnight, ends before midnight
-                    $d[$day_num]["data"][] = $start_str . "~" . $end_str;
-                    break;
-        	case "> = ":         # Starts after midnight, ends at midnight
-                    $d[$day_num]["data"][] = $start_str . "~24:00";
-                    break;
-        	case "> > ":         # Starts after midnight, continues tomorrow
-                    $d[$day_num]["data"][] = $start_str . "~====&gt;";
-                    break;
-        	case "= = ":         # Starts at midnight, ends at midnight
-                    $d[$day_num]["data"][] = $all_day;
-                    break;
-        	case "= > ":         # Starts at midnight, continues tomorrow
-                    $d[$day_num]["data"][] = $all_day . "====&gt;";
-                    break;
-        	case "< < ":         # Starts before today, ends before midnight
-                    $d[$day_num]["data"][] = "&lt;====~" . $end_str;
-                    break;
-        	case "< = ":         # Starts before today, ends at midnight
-                    $d[$day_num]["data"][] = "&lt;====" . $all_day;
-                    break;
-        	case "< > ":         # Starts before today, continues tomorrow
-                    $d[$day_num]["data"][] = "&lt;====" . $all_day . "====&gt;";
-                    break;
-              }
+	            $start_str = ereg_replace(" ", "&nbsp;", period_time_string($row[0]));
+	            $end_str   = ereg_replace(" ", "&nbsp;", period_time_string($row[1], -1));
+	            switch (cmp3($row[0], $midnight[$day_num]) . cmp3($row[1], $midnight_tonight[$day_num] + 1))
+	            {
+	        	case "> < ":         # Starts after midnight, ends before midnight
+	        	case "= < ":         # Starts at midnight, ends before midnight
+	                    $d[$day_num]["data"][] = $start_str . "~" . $end_str;
+	                    break;
+	        	case "> = ":         # Starts after midnight, ends at midnight
+	                    $d[$day_num]["data"][] = $start_str . "~24:00";
+	                    break;
+	        	case "> > ":         # Starts after midnight, continues tomorrow
+	                    $d[$day_num]["data"][] = $start_str . "~====>";
+	                    break;
+	        	case "= = ":         # Starts at midnight, ends at midnight
+	                    $d[$day_num]["data"][] = $all_day;
+	                    break;
+	        	case "= > ":         # Starts at midnight, continues tomorrow
+	                    $d[$day_num]["data"][] = $all_day . "====>";
+	                    break;
+	        	case "< < ":         # Starts before today, ends before midnight
+	                    $d[$day_num]["data"][] = "<====~" . $end_str;
+	                    break;
+	        	case "< = ":         # Starts before today, ends at midnight
+	                    $d[$day_num]["data"][] = "<====" . $all_day;
+	                    break;
+	        	case "< > ":         # Starts before today, continues tomorrow
+	                    $d[$day_num]["data"][] = "<====" . $all_day . "====>";
+	                    break;
+	            }
             }
+
 
 	}
 }

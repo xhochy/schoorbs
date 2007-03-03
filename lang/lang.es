@@ -1,5 +1,5 @@
-<?
-# $Id: lang.es,v 1.18.2.1 2006/07/07 20:16:27 jberanek Exp $
+<?php
+# $Id: lang.es,v 1.18.2.2 2007/02/13 12:53:29 jberanek Exp $
 
 # This file contains PHP code that specifies language specific strings
 # The default strings come from lang.en, and anything in a locale
@@ -11,7 +11,7 @@
 # This file is PHP code. Treat it as such.
 
 # The charset to use in "Content-type" header
-$vocab["charset"]            = "iso-8859-1";
+$vocab["charset"]            = "utf-8";
 
 # Used in style.inc
 $vocab["mrbs"]               = "Sistema de Reservas de Salas de Reuni&oacute;n";
@@ -239,7 +239,7 @@ $vocab["NO"]                 = "NO";
 $vocab["delarea"]            = "Debe borrar todas las Salas antes de borrar este Edificio<p>";
 
 # Used in help.php
-$vocab["about_mrbs"]         = "Acerca de MRBS";
+$vocab["about_mrbs"]         = "Acerca de Schoorbs";
 $vocab["database"]           = "Base de Datos: ";
 $vocab["system"]             = "Sistema: ";
 $vocab["please_contact"]     = "Contacte con ";

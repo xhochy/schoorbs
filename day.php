@@ -295,7 +295,7 @@ else
 		if($enable_periods)
 			$time['title'] = $periods[preg_replace( "/^0/", "", $time_t)];
 		else
-			$time['title'] = utf8_date(hour_min_format(),$t);
+			$time['title'] = utf8_strftime(hour_min_format(),$t);
 		$times[] = $time;
 	}
 	
