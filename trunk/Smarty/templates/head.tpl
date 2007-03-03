@@ -6,8 +6,8 @@
     <link rel="stylesheet" type="text/css" href="style/style.css" />
     <link rel="stylesheet" href="style/mrbs.css" type="text/css" />
     <link rel="home" href="index.php" />
-    <script type="text/javascript" src="js/old.js"></script>
-    <script type="text/javascript" src="js/xbLib.js"></script>
+    <script type="text/javascript" src="js/prototype.js"></script>
+    <script type="text/javascript" src="js/schoorbs.js"></script>
     <!-- compliance patch for microsoft browsers -->
     <!--[if lt IE 7]>
     <script type="text/javascript">
@@ -15,6 +15,10 @@
     </script>
     <script src="js/ie7/ie7-standard-p.js" type="text/javascript"></script>
     <![endif]-->
+    
+    <!-- The following 2 javascript-files are deprecated, only included for compability -->
+    <script type="text/javascript" src="js/old.js"></script>
+    <script type="text/javascript" src="js/xbLib.js"></script>
 </head>
 <body>
 	<div id="menu_logo">

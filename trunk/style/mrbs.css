@@ -53,7 +53,9 @@ TD.calendarHeader {border:0px; font-size: 10pt}
 TD.even_row {background-color:#FFFFFF}	/* Even rows in the day view */
 TD.odd_row {background-color:#EEEEEE;}	/* Odd rows in the day view */
 
-td.highlight {background-color:#AABBFF; border-style:solid; border-width:1px; border-color:#0000AA;} /* The highlighted cell under the cursor */
+.highlight {  /* The highlighted cell under the cursor */
+	background-color: #AABBFF !important; 
+}
 .naked { margin: 0px; padding: 0px; border-width:0px} /* Invisible tables used for internal needs */
 
 .sitename

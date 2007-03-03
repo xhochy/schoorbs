@@ -22,7 +22,7 @@
 {/if}
 {if $javascript_cursor eq "true"}
     <script type="text/javascript">
-    	InitActiveCell({$show_plus_link}, false, false, "{$highlight_method}", "{get_vocab text="click_to_reserve"}");
+    	InitCellManagement({$times_right_side});
     </script>
 {/if}
 <table border="1" cellspacing="0" width="100%">
@@ -40,7 +40,11 @@
 		</tr>
 		<tr>
 	{/if}
-	<td style="vertical-align: top; height: 100px;" class="month">
+	<td style="vertical-align: top; height: 100px;" class="month"
+	{if $javascript_cursor eq "true"}
+		onmouseover="HighlightCell(this);"
+		onmouseout="UnHighlightCell(this);"
+	{/if}>
 		<div class="monthday">
 			<a href="day.php?year={$year}&amp;month={$month}&amp;day={$days_item.cday}&amp;area={$area}">
 				{$days_item.cday}
@@ -54,11 +58,6 @@
     	{/if}
  		<br />
  		{if $pview neq 1}
-        	{if $javascript_cursor eq "true"}
-	        	<script type="text/javascript">
-            		BeginActiveCell();
-            	</script>
-            {/if}
         	{if $enable_periods eq "true"}
             	<a href="edit_entry.php?room={$room}&amp;area={$area}&amp;period=0&amp;year={$year}&amp;month={$month}&amp;day={$days_item.cday}">
             	
@@ -67,11 +66,6 @@
             {/if}
             	<img src="gfx/list-add-small.png" style="border: 0px;" alt="neuer Eintrag" />
             </a>
-        	{if $javascript_cursor eq "true"}
-            	<script type="text/javascript">
-            		EndActiveCell();
-            	</script>
-            {/if}
     	{else}
         	&nbsp;
         {/if}

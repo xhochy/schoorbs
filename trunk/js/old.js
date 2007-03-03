@@ -1,4 +1,3 @@
-
 /*   Script inspired by "True Date Selector"
      Created by: Lee Hinder, lee.hinder@ntlworld.com 
           
