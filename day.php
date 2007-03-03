@@ -215,7 +215,7 @@ else
 	for ($i = 0; ($row = sql_row($res, $i)); $i++)
 	{
 	    $rooms[] = $row[2];
-		$aRooms[] = array('title' => $row[0], 'capacity' => $row[1], 'id' => $row[2], 'description' => $row[3]);
+	    $aRooms[] = array('title' => $row[0], 'capacity' => $row[1], 'id' => $row[2], 'description' => $row[3]);
 	}
 	$smarty->assign('room_column_width',$room_column_width);
 	$smarty->assign('rooms',$aRooms);
@@ -275,7 +275,7 @@ else
 			{
 				$hour = date("H",$t);
 				$minute  = date("i",$t);
-
+				
 				if($pview != 1) 
 				{
 					if( $enable_periods ) 
