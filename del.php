@@ -11,7 +11,7 @@ require_once "grab_globals.php";
 require_once "config.inc.php";
 require_once "functions.php";
 require_once "db/$dbsys.php";
-require_once "auth/mrbs_auth.php";
+require_once "auth/schoorbs_auth.php";
 
 #If we dont know the right date then make it up
 list($day, $month, $year) = input_DayMonthYear();
