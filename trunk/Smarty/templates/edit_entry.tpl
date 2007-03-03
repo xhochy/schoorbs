@@ -110,8 +110,8 @@ function OnAllDayClick(allday) // Executed when the user clicks on the all_day c
 		  		:
 		  		<input name="minute" size="2" value="{$start_min}" maxlength="2" />
 		  		{if $twentyfourhour_format neq "true"}
-		  			<input name="ampm" type="radio" value="am"{if $start_hour < 12} checked="checked"{/if} />{php}echo utf8_date("a",mktime(1,0,0,1,1,2000));{/php}
-		   			<input name="ampm" type="radio" value="pm"{if $start_hour >= 12} checked="checked"{/if} />{php}echo utf8_date("a",mktime(13,0,0,1,1,2000));{/php}
+		  			<input name="ampm" type="radio" value="am"{if $start_hour < 12} checked="checked"{/if} />{php}echo utf8_strftime("%p",mktime(1,0,0,1,1,2000));{/php}
+		   			<input name="ampm" type="radio" value="pm"{if $start_hour >= 12} checked="checked"{/if} />{php}echo utf8_strftime("%p",mktime(13,0,0,1,1,2000));{/php}
 				{/if}
 			</td>
 		</tr>

@@ -8,19 +8,24 @@
 
 function date_time_string($t)
 {
-	Global $twentyfourhour_format;
-    
-    if ($twentyfourhour_format)
-		$timeformat = "%H:%M:%S";
-	else
-	{
-    	# This bit's necessary, because it seems %p in strftime format
-        # strings doesn't work
-        $ampm = utf8_date("a",$t);
-        $timeformat = "%I:%M:%S$ampm";
-	}
+	global $twentyfourhour_format;
 	
+	if ($twentyfourhour_format)
+	            $timeformat = "%H:%M:%S";
+	else
+	            $timeformat = "%I:%M:%S%p";
 	return utf8_strftime("%A %d %B %Y ".$timeformat, $t);
+}
+
+function hours_minutes_seconds_format()
+{
+	global $twentyfourhour_format;
+
+    if ($twentyfourhour_format)
+	            $timeformat = "%H:%M:%S";
+	else
+	            $timeformat = "%I:%M:%S%p";
+	return $timeformat;
 }
 
 //TODO: Remove this function
@@ -38,18 +43,7 @@ function describe_span($starts, $ends)
 {
 	global $twentyfourhour_format;
 	$start_date = utf8_strftime('%A %d %B %Y', $starts);
-        if ($twentyfourhour_format)
-	{
-                $timeformat = "%H:%M:%S";
-	}
-	else
-	{
-                # This bit's necessary, because it seems %p in strftime format
-                # strings doesn't work
-                $ampm = utf8_date("a",$starts);
-                $timeformat = "%I:%M:%S$ampm";
-	}
-	$start_time = utf8_strftime($timeformat, $starts);
+    $start_time = utf8_strftime(hours_minutes_seconds_format(), $starts);
 	$duration = $ends - $starts;
 	if ($start_time == "00:00:00" && $duration == 60*60*24)
 		return $start_date . " - " . get_vocab("all_day");
@@ -73,33 +67,13 @@ function describe_period_span($starts, $ends)
 function start_to_end($starts, $ends)
 {
 	global $twentyfourhour_format;
+	
 	$start_date = utf8_strftime('%A %d %B %Y', $starts);
-        if ($twentyfourhour_format)
-	{
-                $timeformat = "%H:%M:%S";
-	}
-	else
-	{
-                # This bit's necessary, because it seems %p in strftime format
-                # strings doesn't work
-                $ampm = utf8_date("a",$starts);
-                $timeformat = "%I:%M:%S$ampm";
-	}
-	$start_time = utf8_strftime($timeformat, $starts);
-
+    $start_time = utf8_strftime(hours_minutes_seconds_format(), $starts);
+    
 	$end_date = utf8_strftime('%A %d %B %Y', $ends);
-        if ($twentyfourhour_format)
-	{
-                $timeformat = "%H:%M:%S";
-	}
-	else
-	{
-                # This bit's necessary, because it seems %p in strftime format
-                # strings doesn't work
-                $ampm = utf8_date("a",$ends);
-                $timeformat = "%I:%M:%S$ampm";
-	}
-	$end_time = utf8_strftime($timeformat, $ends);
+    $end_time = utf8_strftime(hours_minutes_seconds_format(), $ends);
+    
 	return $start_date . " " . $start_time . " - " . $end_date . " " . $end_time;
 }
 

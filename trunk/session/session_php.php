@@ -15,8 +15,16 @@
  */
 function session_php_main()
 {
-	$cookie_path = $_SERVER['PHP_SELF'];
-	$cookie_path = ereg_replace('[^/]*$', '', $cookie_path);
+	global $cookie_path_override;
+	if (isset($cookie_path_override))
+	{
+	    $cookie_path = $cookie_path_override;
+	}
+	else
+	{
+	    $cookie_path = $_SERVER['PHP_SELF'];
+	    $cookie_path = ereg_replace('[^/]*$', '', $cookie_path);
+	}
 	session_set_cookie_params(0, $cookie_path);
 	session_start();
 	

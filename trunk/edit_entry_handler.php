@@ -42,6 +42,8 @@ if ($name == '')
      exit;
 }
 
+# Support locales where ',' is used as the decimal point
+$duration = preg_replace('/,/', '.', $duration);
 
 if( $enable_periods ) {
 	$resolution = 60;
