@@ -15,7 +15,7 @@
  * $auth["admin"][] = "username1";
  * $auth["admin"][] = "username2";
  * 
- * @author JFL, jberanek
+ * @author JFL, jberanek, Uwe L. Korn <uwelk@xhochy.org>
  * @package Schoorbs/Auth/Ext
  */
 
@@ -34,26 +34,25 @@ function version_check($vercheck)
   return false;
 }
 
-/* authValidateUser($user, $pass)
- * 
+/**
  * Checks if the specified username/password pair are valid
  * 
- * $user  - The user name
- * $pass  - The password
- * 
- * Returns:
- *   0        - The pair are invalid or do not exist
- *   non-zero - The pair are valid
+ * @param string $user
+ * @param string $pass
+ * @author JFL, jberanek, Uwe L. Korn <uwelk@xhochy.org>
+ * @return int 0 => The pair are invalid or do not exist | non-zero => The pair are valid 
  */
 function authValidateUser($user, $pass)
 {
-        global $auth;
+    global $auth;
 	
 	// Check if we do not have a username/password
 	if(!isset($user) || !isset($pass))
-	{
 		return 0;
-	}
+	
+	// ATTENTION: Sending passwords by commandline arg is not secrue
+	// try 'ps -A -F' while running the script may show the password 
+	// to any loged in system user
 	
 	// Generate the command line
 	$cmd = $auth["prog"] . ' ' . $auth["params"];
