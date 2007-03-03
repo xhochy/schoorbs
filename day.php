@@ -246,7 +246,7 @@ else
 		
 		$cols = array();
 		// Loop through the list of rooms we have for this area
-		foreach($roms as $key=>$room)
+		foreach($rooms as $key=>$room)
 		{
 			// Array used to temporarly store the vars that will be sent to Smarty
 			$aLoop = array();

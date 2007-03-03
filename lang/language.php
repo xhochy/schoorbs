@@ -1,7 +1,5 @@
 <?php
 
-# $Id: language.inc,v 1.13.2.4 2007/02/13 12:53:32 jberanek Exp $
-
 # A map is needed to convert from the HTTP language specifier to a
 # locale specifier for Windows
 $lang_map_windows = array
@@ -283,7 +281,6 @@ $aix_utf8_converters = array
   'TIS-620'
 );
 
-
 ##############################################################################
 # Language token handling
 
@@ -291,14 +288,14 @@ $aix_utf8_converters = array
 if (MAIL_ADMIN_ON_BOOKINGS or MAIL_AREA_ADMIN_ON_BOOKINGS or
     MAIL_ROOM_ADMIN_ON_BOOKINGS or MAIL_BOOKER)
 {
-    include "lang." . $default_language_tokens;
-    include "lang." . MAIL_ADMIN_LANG;
+    include "lang/lang." . $default_language_tokens;
+    include "lang/lang." . MAIL_ADMIN_LANG;
     $mail_vocab = $vocab;
     unset ($vocab);
 }
 
 # Get a default set of language tokens, you can change this if you like
-include "lang." . $default_language_tokens;
+include "lang/lang." . $default_language_tokens;
 
 # Define the default locale here. For a list of supported
 # locales on your system do "locale -a"
@@ -308,9 +305,9 @@ setlocale(LC_ALL,'C');
 # environment variable.
 
 # First we enumerate the user's language preferences...
-if (isset($HTTP_ACCEPT_LANGUAGE)) // Attempt to use $HTTP_ACCEPT_LANGUAGE only when defined.
+if (isset($_SERVER['HTTP_ACCEPT_LANGUAGE'])) // Attempt to use $HTTP_ACCEPT_LANGUAGE only when defined.
 {
-  $lang_specifiers = explode(',',$HTTP_ACCEPT_LANGUAGE);
+  $lang_specifiers = explode(',',$_SERVER['HTTP_ACCEPT_LANGUAGE']);
   foreach ($lang_specifiers as $specifier)
   {
     if (preg_match('/([a-zA-Z\-]+);q=([0-9\.]+)/', $specifier, $matches))
@@ -341,7 +338,7 @@ if (!$disable_automatic_language_changing)
 
   foreach ($langs as $lang => $qual)
   {
-    $lang_file = "lang." . strtolower($lang);
+    $lang_file = "lang/lang." . strtolower($lang);
 
     if (file_exists($lang_file))
     {
@@ -359,7 +356,7 @@ if (!$disable_automatic_language_changing)
 
     foreach ($langs as $lang)
     {
-      $lang_file = "lang." . strtolower(substr($lang,0,2));
+      $lang_file = "lang/lang." . strtolower(substr($lang,0,2));
 
       if (file_exists($lang_file))
       {
@@ -431,12 +428,12 @@ else
  \"".$locale."\" to a Windows locale specifier";
     }
   }
-  /* All of these Unix OSes work in mostly the same way... */
-  else if (($server_os == "linux") ||
-           ($server_os == "sunos") ||
-           ($server_os == "bsd") ||
-           ($server_os == "aix") ||
-           ($server_os == "macosx"))
+  else if ($server_os == "unix" 
+  	|| $server_os == "linux" 
+  	|| $server_os == "sunos"
+	|| $server_os == "bsd"
+	|| $server_os == "aix" 
+	|| $server_os == "macosx")
   {
     if (strlen($locale) == 2)
     {
@@ -455,18 +452,13 @@ else
     }
     if ($unicode_encoding)
     {
-      if ($server_os == "sunos")
+      if($server_os == "sunos")
+        $locale.= ".UTF-8";
+      elseif ($server_os != "aix") 
       {
-        $locale .= ".UTF-8";
-      }
-      else
-      {
-        // On IBM AIX, do not add ".utf-8" as this yields an invalid
+      	// On IBM AIX, do not add ".utf-8" as this yields an invalid
         // locale name
-        if ($server_os != "aix")
-        {
-          $locale .= ".utf-8";
-        }
+        $locale .= ".utf-8";
       }
     }
     if (setlocale(LC_ALL, $locale) == FALSE)
@@ -480,33 +472,19 @@ else
 function get_server_os()
 {
   if (stristr(PHP_OS,"Darwin"))
-  {
     return "macosx";
-  }
   else if (stristr(PHP_OS, "WIN"))
-  {
     return "windows";
-  }
   else if (stristr(PHP_OS, "Linux"))
-  {
     return "linux";
-  }
-  else if (stristr(PHP_OS, "BSD"))
-  {
-    return "bsd";
-  }
-  else if (stristr(PHP_OS, "SunOS"))
-  {
-    return "sunos";
-  }
-  else if (stristr(PHP_OS, "AIX"))
-  {
-    return "aix";
-  }
+  else if(stristr(PHP_OS, 'BSD'))
+    return 'bsd';
+  else if(stristr(PHP_OS, 'SunOS'))
+    return 'sunos';
+  else if(stristr(PHP_OS, 'AIX'))
+    return 'aix';
   else
-  {
     return "unsupported";
-  }
 }
 
 // Translates a GNU libiconv character encoding name to its corresponding IBM AIX libiconv character
