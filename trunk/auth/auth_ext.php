@@ -22,18 +22,6 @@
 /* ~~JFL 2003/11/12 By default, use the http session mechanism */
 if (!isset($auth['session'])) $auth['session']='http';
 
-function version_check($vercheck)
-{
-  $minver = str_replace(".","", $vercheck);
-  $curver = str_replace(".","", phpversion());
-
-  if($curver >= $minver)
-  {
-    return true;
-  }
-  return false;
-}
-
 /**
  * Checks if the specified username/password pair are valid
  * 
