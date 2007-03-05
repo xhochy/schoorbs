@@ -2,10 +2,13 @@
 /**
  * The main file for authentication issues.
  * 
- * @author jberanek
+ * @author jberanek, JFL, Uwe L. Korn <uwelk@xhochy.org>
  * @package Schoorbs
  * @subpackage Auth
  */
+
+/* ~~JFL 2003/11/12 By default, use the http session mechanism */
+if (!isset($auth['session'])) $auth['session'] = 'http';
 
 // include the authentification wrappers
 require_once "auth/auth_{$auth['type']}.php";
@@ -70,11 +73,10 @@ function getWritable($creator, $user)
     return 0;
 }
 
-/* showAccessDenied()
- * 
+/**
  * Displays an appropate message when access has been denied
  * 
- * Retusns: Nothing
+ * @author Uwe L. Korn <uwelk@xhochy.org>, jberanek
  */
 function showAccessDenied()
 {

@@ -19,9 +19,6 @@
  * @package Schoorbs/Auth/Ext
  */
 
-/* ~~JFL 2003/11/12 By default, use the http session mechanism */
-if (!isset($auth['session'])) $auth['session']='http';
-
 /**
  * Checks if the specified username/password pair are valid
  * 
@@ -58,14 +55,13 @@ function authValidateUser($user, $pass)
 	return 0;
 }
 
-/* authGetUserLevel($user)
- * 
+/**
  * Determines the users access level
  * 
- * $user - The user name
- *
- * Returns:
- *   The users access level
+ * @param string $user
+ * @param array $lev1_admin
+ * @return int The user's access level
+ * @author Uwe L. Korn <uwelk@xhochy.org>, jberanek, JFL 
  */
 function authGetUserLevel($user, $lev1_admin)
 {
