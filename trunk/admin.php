@@ -37,8 +37,7 @@ if(isset($area))
 
 if(!getAuthorised(2))
 {
-	showAccessDenied($day, $month, $year, $area);
-	exit();
+	showAccessDenied();
 }
 
 print_header($day, $month, $year, isset($area) ? $area : "");

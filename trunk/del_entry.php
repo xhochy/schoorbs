@@ -46,5 +46,4 @@ if(getAuthorised(1) && ($info = mrbsGetEntryInfo($id)))
 }
 
 // If you got this far then we got an access denied.
-showAccessDenied($day, $month, $year, $area);
-?>
+showAccessDenied();

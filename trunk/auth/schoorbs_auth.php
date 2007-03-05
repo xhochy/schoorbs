@@ -76,21 +76,20 @@ function getWritable($creator, $user)
  * 
  * Retusns: Nothing
  */
-function showAccessDenied($day, $month, $year, $area)
+function showAccessDenied()
 {
-    global $HTTP_REFERER;
-
-    print_header($day, $month, $year, $area);
+    list($day, $month, $year) = input_DayMonthYear();
+    print_header($day, $month, $year, input_Area());
 ?>
-  <H1><?php echo get_vocab("accessdenied")?></H1>
-  <P>
+  <h1><?php echo get_vocab("accessdenied")?></h1>
+  <p>
    <?php echo get_vocab("norights")?>
-  </P>
-  <P>
-   <A HREF="<?php echo $HTTP_REFERER; ?>"><?php echo get_vocab("returnprev"); ?></A>
-  </P>
- </BODY>
-</HTML>
+  </p>
+  <p>
+   <a href="<?php echo $_SERVER['HTTP_REFERER'] ?>"><?php echo get_vocab("returnprev"); ?></a>
+  </p>
+ </body>
+</html>
 <?php
+	exit();
 }
-?>

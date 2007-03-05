@@ -18,16 +18,9 @@ list($day, $month, $year) = input_DayMonthYear();
 
 $area = input_Area();
 
-if(!getAuthorised(1))
+if(!getAuthorised(1) || !getWritable($create_by, getUserName()))
 {
-    showAccessDenied($day, $month, $year, $area);
-    exit;
-}
-
-if(!getWritable($create_by, getUserName()))
-{
-    showAccessDenied($day, $month, $year, $area);
-    exit;
+    showAccessDenied();
 }
 
 if ($name == '')

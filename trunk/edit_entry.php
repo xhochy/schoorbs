@@ -41,8 +41,7 @@ if(isset($_REQUEST['edit_type']))
 
 if(!getAuthorised(1))
 {
-	showAccessDenied($day, $month, $year, $area);
-	exit;
+	showAccessDenied();
 }
 
 # This page will either add or modify a booking
@@ -193,8 +192,7 @@ $enable_periods ? toPeriodString($start_min, $duration, $dur_units) : toTimeStri
 
 if(!getWritable($create_by, getUserName()))
 {
-	showAccessDenied($day, $month, $year, $area);
-	exit;
+	showAccessDenied();
 }
 
 print_header($day, $month, $year, $area);
