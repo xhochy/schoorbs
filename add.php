@@ -61,8 +61,7 @@ if($type == 'room')
 
 if(!getAuthorised(2))
 {
-	showAccessDenied($day, $month, $year, $area);
-	exit();
+	showAccessDenied();
 }
 
 # This file is for adding new areas/rooms

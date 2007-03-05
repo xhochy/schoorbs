@@ -21,8 +21,7 @@ $room = input_Room();
 
 if(!getAuthorised(2))
 {
-	showAccessDenied($day, $month, $year, $area);
-	exit();
+	showAccessDenied();
 }
 
 // Done changing area or room information?

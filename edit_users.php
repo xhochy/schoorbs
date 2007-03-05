@@ -102,8 +102,7 @@ if ($nusers > 0)
     // Do not allow unidentified people to browse the list.
     if(!getAuthorised(1))
     {
-        showAccessDenied($day, $month, $year, $area);
-        exit;
+        showAccessDenied();
     }
 }
 else /* We've just created the table. Assume the person doing this IS the administrator. */
@@ -133,8 +132,7 @@ if (isset($Action) && ( ($Action == "Edit") or ($Action == "Add") ))
     /* First make sure the user is authorized */
     if (!getWritable($data[1], $user))
         {
-        showAccessDenied(0, 0, 0, "");
-        exit();
+        showAccessDenied();
         }
 
     print_header(0, 0, 0, 0);
@@ -298,8 +296,7 @@ if (isset($Action) && ($Action == "Delete"))
     {
     if ($level < 2)
     	{
-        showAccessDenied(0, 0, 0, "");
-        exit();
+        showAccessDenied();
         }
 
     $r = sql_command("delete from $tbl_users where id=$Id;");
