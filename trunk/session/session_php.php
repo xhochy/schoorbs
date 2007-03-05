@@ -16,6 +16,7 @@
 function session_php_main()
 {
 	global $cookie_path_override;
+	
 	if (isset($cookie_path_override))
 	{
 	    $cookie_path = $cookie_path_override;
@@ -92,13 +93,10 @@ function printLoginForm($TargetURL)
 		$smarty->display('session_php_loginform.tpl');
 }
 
-
-
-/* authGet()
- * 
+/**
  * Request the user name/password
  * 
- * Returns: Nothing
+ * @author JFL, jberanek, Uwe L. Korn <uwelk@xhochy.org> 
  */
 function authGet()
 {
@@ -122,9 +120,7 @@ function authGet()
 function getUserName()
 {
     if (isset($_SESSION) && isset($_SESSION["UserName"]) && ($_SESSION["UserName"] != ""))
-    {
         return $_SESSION["UserName"];
-    }
 }
 
 /**
