@@ -6,8 +6,8 @@
  * @package Schoorbs
  */
 
-require_once "config.inc.php";
-require_once "functions.php";
+require_once 'config.inc.php';
+require_once 'functions.php';
 require_once "db/$dbsys.php";
 require_once 'auth/schoorbs_auth.php';
 
@@ -19,33 +19,25 @@ list($day, $month, $year) = input_DayMonthYear();
 /** area **/
 if(isset($_REQUEST['area']))
     if(!empty($_REQUEST['area']))
-        $area = $_REQUEST['area'];
-        
-if(isset($area))
-{
-	$res = sql_query("select area_name from $tbl_area where id=$area");
-	if (! $res) fatal_error(0, sql_error());
-	if (sql_count($res) == 1)
-	{
-		$row = sql_row($res, 0);
-		$area_name = $row[0];
-	}
-	sql_free($res);
-}
+    {
+        $area = intval($_REQUEST['area']);
+        $smarty->assign('area', $area);
+        $area_name = areaGetName($area);
+        $smarty->assign('area_name',$area_name);
+    }	
 
 ## Main ##
 
 if(!getAuthorised(2))
-{
 	showAccessDenied();
-}
 
 print_header($day, $month, $year, isset($area) ? $area : "");
 
 
 # This cell has the areas
-$res = sql_query("select id, area_name from $tbl_area order by area_name");
-if (!$res) fatal_error(0, sql_error());
+$res = sql_query("SELECT id, area_name FROM $tbl_area ORDER BY area_name");
+if(!$res)
+	fatal_error(0, sql_error());
 $aAreas = array();
 if (sql_count($res) == 0)
 	$noareas = 'true';
@@ -58,7 +50,8 @@ else {
 # This one has the rooms
 $aRooms = array();
 if(isset($area)) {
-	$res = sql_query("select id, room_name, description, capacity from $tbl_room where area_id=$area order by room_name");
+	$res = sql_query("SELECT id, room_name, description, capacity FROM $tbl_room where area_id = "
+		.sql_escape_arg($area)." ORDER BY room_name");
 	if (! $res) fatal_error(0, sql_error());
 	if (sql_count($res) == 0)
 		$norooms = 'true';
@@ -70,11 +63,8 @@ if(isset($area)) {
 }
 $smarty->assign('norooms',$norooms);
 $smarty->assign('rooms',$aRooms);
-$smarty->assign('area',intval($area));
 $smarty->assign('areas',$aAreas);
-$smarty->assign('area_name',$area_name);
 $smarty->assign('noareas',$noareas);
 $smarty->display('admin.tpl');
 
 require_once "trailer.php";
-?>
