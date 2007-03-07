@@ -45,6 +45,7 @@ function is_dst ( $month, $day, $year, $hour="-1" )
  * @param int $day
  * @param int $year
  * @return int
+ * @author Uwe L. Korn <uwelk@xhochy.org>
  */
 function am7($day, $month, $year)
 {
@@ -61,6 +62,7 @@ function am7($day, $month, $year)
  * @param int $day
  * @param int $year
  * @return int
+ * @author Uwe L. Korn <uwelk@xhochy.org>
  */
 function pm7($day, $month, $year)
 {
@@ -69,4 +71,41 @@ function pm7($day, $month, $year)
 	return mktime($eveningends,$eveningends_minutes,0,$month,$day,$year,
 		is_dst($month,$day,$year,$eveningends));
 }
-?>
+
+/**
+ * Returns the Day+Month+Year of yesterday
+ * 
+ * @param int $day
+ * @param int $month
+ * @param int $year
+ * @return array (day,month,year)
+ * @author Uwe L. Korn <uwelk@xhochy.org>
+ */
+function getYesterday($day, $month, $year)
+{
+	$i = mktime(12,0,0,$month,$day-1,$year);
+	$aRet = array();
+	$aRet[] = date("Y",$i);
+	$aRet[] = date("m",$i);
+	$aRet[] = date("d",$i);
+	return $aRet;
+}
+
+/**
+ * Returns the Day+Month+Year of Tomorrow
+ * 
+ * @param int $day
+ * @param int $month
+ * @param int $year
+ * @return array (day,month,year)
+ * @author Uwe L. Korn <uwelk@xhochy.org>
+ */
+function getTomorrow($day, $month, $year)
+{
+	$i = mktime(12,0,0,$month,$day+1,$year);
+	$aRet = array();
+	$aRet[] = date("Y",$i);
+	$aRet[] = date("m",$i);
+	$aRet[] = date("d",$i);
+	return $aRet;
+}

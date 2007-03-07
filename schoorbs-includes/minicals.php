@@ -6,6 +6,20 @@
  * @package PHP-Calender
  */
 
+//PHP Calendar Class
+//  
+// Copyright David Wilkinson 2000. All Rights reserved.
+// 
+// This software may be used, modified and distributed freely
+// providing this copyright notice remains intact at the head 
+// of the file.
+//
+// This software is freeware. The author accepts no liability for
+// any loss or damages whatsoever incurred directly or indirectly 
+// from the use of this script.
+//
+// URL:   http://www.cascade.org.uk/software/php/calendar/
+// Email: davidw@cascade.org.uk
 class Calendar
 {
     var $month;
@@ -176,41 +190,25 @@ class Calendar
  * @param int $room
  * @param string $dmy 
  */
-function minicals($year, $month, $day, $area, $room, $dmy) {
-
-// PHP Calendar Class
-//  
-// Copyright David Wilkinson 2000. All Rights reserved.
-// 
-// This software may be used, modified and distributed freely
-// providing this copyright notice remains intact at the head 
-// of the file.
-//
-// This software is freeware. The author accepts no liability for
-// any loss or damages whatsoever incurred directly or indirectly 
-// from the use of this script.
-//
-// URL:   http://www.cascade.org.uk/software/php/calendar/
-// Email: davidw@cascade.org.uk
-
-
-$lastmonth = mktime(12, 0, 0, $month-1, 1, $year);
-$thismonth = mktime(12, 0, 0, $month,   $day, $year);
-$nextmonth = mktime(12, 0, 0, $month+1, 1, $year);
-
-echo "<td>";
-$cal = new Calendar(date("d",$lastmonth), date("m",$lastmonth), date("Y",$lastmonth), 0, $area, $room, $dmy);
-echo $cal->getHTML();
-echo "</td>";
-
-echo "<td>";
-$cal = new Calendar(date("d",$thismonth), date("m",$thismonth), date("Y",$thismonth), 1, $area, $room, $dmy);
-echo $cal->getHTML();
-echo "</td>";
-
-echo "<td>";
-$cal = new Calendar(date("d",$nextmonth), date("m",$nextmonth), date("Y",$nextmonth), 0, $area, $room, $dmy);
-echo $cal->getHTML();
-echo "</td>";
+function minicals($year, $month, $day, $area, $room, $dmy) 
+{
+	$lastmonth = mktime(12, 0, 0, $month-1, 1, $year);
+	$thismonth = mktime(12, 0, 0, $month,   $day, $year);
+	$nextmonth = mktime(12, 0, 0, $month+1, 1, $year);
+	
+	echo "<td>";
+	$cal = new Calendar(date("d",$lastmonth), date("m",$lastmonth), date("Y",$lastmonth), 0, $area, $room, $dmy);
+	echo $cal->getHTML();
+	echo "</td>";
+	
+	echo "<td>";
+	$cal = new Calendar(date("d",$thismonth), date("m",$thismonth), date("Y",$thismonth), 1, $area, $room, $dmy);
+	echo $cal->getHTML();
+	echo "</td>";
+	
+	echo "<td>";
+	$cal = new Calendar(date("d",$nextmonth), date("m",$nextmonth), date("Y",$nextmonth), 0, $area, $room, $dmy);
+	echo $cal->getHTML();
+	echo "</td>";
 }
 ?>
