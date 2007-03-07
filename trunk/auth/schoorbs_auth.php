@@ -16,23 +16,20 @@ require_once "auth/auth_{$auth['type']}.php";
 if(isset($bSessionIncluded)) {
 	if(!$bSessionIncluded)
 		if (isset($auth['session']))
-			require_once "session/session_{$auth['session']}.php";
+			require_once "schoorbs-includes/session-plugins/session_{$auth['session']}.php";
 }			
 else
 	if (isset($auth['session'])) 
-		require_once "session/session_{$auth['session']}.php";
+		require_once "schoorbs-includes/session-plugins/session_{$auth['session']}.php";
 
-/* getAuthorised($user, $pass, $level)
- * 
+/**
  * Check to see if the user name/password is valid
  * 
- * $user  - The user name
- * $pass  - The users password
- * $level - The access level required
- * 
- * Returns:
- *   0        - The user does not have the required access
- *   non-zero - The user has the required access
+ * @param string $user The user name
+ * @param string $pass The users password
+ * @param int The access level required
+ * @return int If != 0 The user has the required access
+ * @author jberanek, JFL, Uwe L. Korn <uwelk@xhochy.org>
  */
 function getAuthorised($level)
 {
@@ -47,16 +44,12 @@ function getAuthorised($level)
     return authGetUserLevel($user, $auth["admin"]) >= $level;
 }
 
-/* getWritable($creator, $user)
- * 
+/**
  * Determines if a user is able to modify an entry
- *
- * $creator - The creator of the entry
- * $user    - Who wants to modify it
- *
- * Returns:
- *   0        - The user does not have the required access
- *   non-zero - The user has the required access
+ * @author jberanek, JFL, Uwe L. Korn <uwelk@xhochy.org>
+ * @param string $creator
+ * @param string $user
+ * @return int If != 0 The user has the required access 
  */
 function getWritable($creator, $user)
 {
@@ -80,18 +73,10 @@ function getWritable($creator, $user)
  */
 function showAccessDenied()
 {
+	global $smarty;
+
     list($day, $month, $year) = input_DayMonthYear();
     print_header($day, $month, $year, input_Area());
-?>
-  <h1><?php echo get_vocab("accessdenied")?></h1>
-  <p>
-   <?php echo get_vocab("norights")?>
-  </p>
-  <p>
-   <a href="<?php echo $_SERVER['HTTP_REFERER'] ?>"><?php echo get_vocab("returnprev"); ?></a>
-  </p>
- </body>
-</html>
-<?php
+    $smarty->display('accessdenied.tpl');
 	exit();
 }
