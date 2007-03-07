@@ -6,12 +6,12 @@
  * @package Schoorbs
  */
 
-require_once "grab_globals.php";
-require_once "config.inc.php";
-require_once "functions.php";
+require_once 'grab_globals.php';
+require_once 'config.inc.php';
+require_once 'functions.php';
 require_once "db/$dbsys.php";
 require_once 'auth/schoorbs_auth.php';
-require_once "mrbs_sql.php";
+require_once 'mrbs_sql.php';
 
 #If we dont know the right date then make it up 
 list($day, $month, $year) = input_DayMonthYear();
@@ -172,7 +172,7 @@ foreach ( $rooms as $room_id ) {
             $diff = $endtime - $starttime;
             $diff += cross_dst($reps[$i], $reps[$i] + $diff);
 	    
-	    $tmp = mrbsCheckFree($room_id, $reps[$i], $reps[$i] + $diff, $ignore_id, $repeat_id);
+	    $tmp = schoorbsCheckFree($room_id, $reps[$i], $reps[$i] + $diff, $ignore_id, $repeat_id);
 
             if(!empty($tmp))
                 $err = $err . $tmp;
@@ -185,7 +185,7 @@ foreach ( $rooms as $room_id ) {
     }
   }
   else
-    $err .= mrbsCheckFree($room_id, $starttime, $endtime-1, $ignore_id, 0);
+    $err .= schoorbsCheckFree($room_id, $starttime, $endtime-1, $ignore_id, 0);
 
 } # end foreach rooms
 

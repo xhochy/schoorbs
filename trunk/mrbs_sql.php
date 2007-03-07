@@ -2,50 +2,43 @@
 /**
  * Some common functions for data handling
  * 
- * @author jberanek
+ * @author jberanek, Uwe L. Korn <uwelk@xhochy.org>
  * @package Schoorbs
  * @subpackage DB
  */
-// $Id: mrbs_sql.php,v 1.18.2.3 2006/01/26 11:34:02 jberanek Exp $
 
-/** mrbsCheckFree()
- * 
+/** 
  * Check to see if the time period specified is free
  * 
- * $room_id   - Which room are we checking
- * $starttime - The start of period
- * $endtime   - The end of the period
- * $ignore    - An entry ID to ignore, 0 to ignore no entries
- * $repignore - A repeat ID to ignore everything in the series, 0 to ignore no series
- * 
- * Returns:
- *   nothing   - The area is free
- *   something - An error occured, the return value is human readable
+ * @param int $room_id Which room are we checking
+ * @param int $starttime The start of period
+ * @param int $endtime The end of the period
+ * @param int $ignore An entry ID to ignore, 0 to ignore no entries
+ * @param int $repignore A repeat ID to ignore everything in the series, 0 to ignore no series
+ * @return string If != null an error occured 
+ * @author jberanek, Uwe L. Korn <uwelk@xhochy.org>
  */
-function mrbsCheckFree($room_id, $starttime, $endtime, $ignore, $repignore)
+function schoorbsCheckFree($room_id, $starttime, $endtime, $ignore, $repignore)
 {
-	global $tbl_entry;
-	global $enable_periods;
-    global $periods;
+	global $tbl_entry, $enable_periods, $periods;
 
     # Select any meetings which overlap ($starttime,$endtime) for this room:
-	$sql = "SELECT id, name, start_time FROM $tbl_entry WHERE
-		start_time < $endtime AND end_time > $starttime
-		AND room_id = $room_id";
+    $sQuery = "SELECT id, name, start_time FROM $tbl_entry WHERE start_time < ".sql_escape_arg($endtime)
+    	." AND end_time > ".sql_escape_arg($starttime)." AND room_id = ".sql_escape_arg($room_id);
 
 	if ($ignore > 0)
-		$sql .= " AND id <> $ignore";
+		$sQuery .= " AND id <> ".sql_escape_arg($ignore);
 	if ($repignore > 0)
-		$sql .= " AND repeat_id <> $repignore";
-	$sql .= " ORDER BY start_time";
+		$sQuery .= " AND repeat_id <> ".sql_escape_arg($repignore);
+	$sQuery .= " ORDER BY start_time";
 
-	$res = sql_query($sql);
-	if(! $res)
+	$res = sql_query($sQuery);
+	if(!$res)
 		return sql_error();
 	if (sql_count($res) == 0)
 	{
 		sql_free($res);
-		return "";
+		return null;
 	}
 	# Get the room's area ID for linking to day, week, and month views:
 	$area = mrbsGetRoomArea($room_id);
@@ -55,8 +48,8 @@ function mrbsCheckFree($room_id, $starttime, $endtime, $ignore, $repignore)
 	for ($i = 0; ($row = sql_row($res, $i)); $i++)
 	{
 		$starts = getdate($row[2]);
-		$param_ym = "area=$area&year=$starts[year]&month=$starts[mon]";
-		$param_ymd = $param_ym . "&day=$starts[mday]";
+		$param_ym = "area=$area&amp;year=$starts[year]&amp;month=$starts[mon]";
+		$param_ymd = $param_ym . "&amp;day=$starts[mday]";
 
 
 		if( $enable_periods ) {
@@ -66,11 +59,11 @@ function mrbsCheckFree($room_id, $starttime, $endtime, $ignore, $repignore)
 		else
         	$startstr = utf8_strftime('%A %d %B %Y %H:%M:%S', $row[2]);
 
-        $err .= "<LI><A HREF=\"view_entry.php?id=$row[0]\">$row[1]</A>"
+        $err .= "<li><a HREF=\"view_entry.php?id=$row[0]\">$row[1]</a>"
 		. " ( " . $startstr . ") "
-		. "(<A HREF=\"day.php?$param_ymd\">".get_vocab("viewday")."</a>"
-		. " | <A HREF=\"week.php?room=$room_id&$param_ymd\">".get_vocab("viewweek")."</a>"
-		. " | <A HREF=\"month.php?room=$room_id&$param_ym\">".get_vocab("viewmonth")."</a>)";
+		. "(<a href=\"day.php?$param_ymd\">".get_vocab("viewday")."</a>"
+		. " | <a href=\"week.php?room=$room_id&$param_ymd\">".get_vocab("viewweek")."</a>"
+		. " | <a href=\"month.php?room=$room_id&$param_ym\">".get_vocab("viewmonth")."</a>)</li>";
 	}
 	
 	return $err;
