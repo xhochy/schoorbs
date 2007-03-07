@@ -8,7 +8,7 @@
  
 $aDirs = array('.','auth','db','includes','schoorbs-includes',
 	'schoorbs-includes/input','schoorbs-includes/rest-plugins',
-	'session');
+	'schoorbs-includes/session-plugins');
 $aFiles = array();
 
 foreach($aDirs as $sDir)
