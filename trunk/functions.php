@@ -11,7 +11,7 @@
 require_once 'smarty.php';
 require_once 'schoorbs-includes/input.functions.php';
 require_once 'schoorbs-includes/time.functions.php';
-require_once 'schoorbs-includes/area.functions.php',
+require_once 'schoorbs-includes/area.functions.php';
 
 ## Var Inits ##
 

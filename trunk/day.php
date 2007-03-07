@@ -12,7 +12,7 @@ require_once 'config.inc.php';
 require_once 'functions.php';
 require_once "db/$dbsys.php";
 require_once 'auth/schoorbs_auth.php';
-require_once 'mincals.php';
+require_once 'schoorbs-includes/minicals.php';
 
 ## Var Init ##
 
@@ -23,6 +23,10 @@ $dst_change = is_dst($month,$day,$year);
 $am7 = am7($day, $month, $year);
 $pm7 = pm7($day, $month, $year);
 
+#y? are year, month and day of yesterday
+list($yd, $ym, $yy) = getYesterday($day, $month, $year);
+#t? are year, month and day of tomorrow
+list($td, $tm, $ty) = getTomorrow($day, $month, $year);
 
 ## Main ##
 
@@ -70,19 +74,6 @@ if($pview != 1)
     minicals($year, $month, $day, $area, '', 'day');
     echo "</tr></table>\n";
 }
-
-#y? are year, month and day of yesterday
-#t? are year, month and day of tomorrow
-
-$i= mktime(12,0,0,$month,$day-1,$year);
-$yy = date("Y",$i);
-$ym = date("m",$i);
-$yd = date("d",$i);
-
-$i= mktime(12,0,0,$month,$day+1,$year);
-$ty = date("Y",$i);
-$tm = date("m",$i);
-$td = date("d",$i);
 
 #We want to build an array containing all the data we want to show
 #and then spit it out. 
@@ -297,4 +288,3 @@ else
 }
 
 require_once 'trailer.php';
-?>
