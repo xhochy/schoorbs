@@ -15,6 +15,10 @@ require_once 'schoorbs-includes/time.functions.php';
 ## Var Inits ##
 
 $pview = input_PView();
+// ensure that $morningstarts_minutes defaults to zero if not set
+if(empty($morningstarts_minutes))
+	$morningstarts_minutes = 0;
+
 
 ## Functions ##
 
