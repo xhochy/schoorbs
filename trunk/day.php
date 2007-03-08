@@ -48,19 +48,9 @@ if($pview != 1)
     # need to show either a select box or a normal html list,
     # depending on the settings in config.inc.php
     if ($area_list_format == "select")
-	    $smarty->assign('area_select_list',make_area_select_html('day.php', $area, $year, $month, $day)); # from functions.inc
+	    $smarty->assign('area_select_list',make_area_select_html('day.php', $area, $year, $month, $day));
     else
-    {
-    	# show the standard html list
-	    $sQuery = "SELECT id, area_name FROM $tbl_area ORDER BY area_name";
-   	    $res = sql_query($sQuery);
-   	    $rows = array();
-   	    if ($res) for ($i = 0; ($row = sql_row($res, $i)); $i++)
-   	    {
-   	        $rows[] = array('id' => $row[0], 'area_name' => $row[1]);
-   	    }
-        $smarty->assign('areas',$rows);
-    }
+    	$smarty->assign('areas', getAreas()); // show the standard html list
    
     $smarty->assign('area',$area);
     $smarty->assign('day',$day);
