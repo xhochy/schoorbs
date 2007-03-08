@@ -281,7 +281,7 @@ function sql_connect()
 	else
 		$db_c = @pg_connect($conninfo);
 	
-	if(!$db_c) fatal_error("\n<p>\n".get_vocab("failed_connect_db")."\n");
+	if(!$db_c) fatal_error(true,"\n<p>\n".get_vocab("failed_connect_db")."\n");
 	
 	return $db_c;
 }

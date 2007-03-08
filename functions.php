@@ -207,6 +207,10 @@ function toPeriodString($start_period, &$dur, &$units)
 # caller did that. Alway outputs the bottom of the page and exits.
 function fatal_error($need_header, $message)
 {
+	if($need_header !== true && $need_header !== false)
+		$message = $need_header;//sometimes fatal_error is called wrong
+		// no time to fix this in general, so I made this short fix
+		// REMOVE IT IN FUTURE !!!
 	if ($need_header) print_header(0, 0, 0, 0);
 	echo $message;
 	require_once "trailer.php";
