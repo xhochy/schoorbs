@@ -23,6 +23,7 @@
   * Now *minimal PHP Version: 4.3.0* !!!
   * Some php syntay errors were fixed(e.g. unexpected ',' in month.php)
   * Made a new simpler GUI  
+  * Exported a lot of code into own functions because of many duplicate code elements.
 
 === for Developers ===
 
