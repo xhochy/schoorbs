@@ -20,7 +20,7 @@ function input_DayMonthYear()
 		$day   = date("d");
 	else
 	{
-	    $day = intval($_REQUEST['day']);
+	    $day = intval(unslashes($_REQUEST['day']));
 	    if($day < 1) $day = 1;
 	    if($day > 31) $day = 31;
 	}	
@@ -30,7 +30,7 @@ function input_DayMonthYear()
 		$month = date('m');
 	else
 	{
-		$month = intval($_REQUEST['month']);
+		$month = intval(unslashes($_REQUEST['month']));
 	    if($month < 1) $month = 1;
 	    if($month > 12) $month = 12;
 	}
@@ -40,7 +40,7 @@ function input_DayMonthYear()
 		$year = date("Y");
 	else
 	{
-		$year = intval($_REQUEST['year']);
+		$year = intval(unslashes($_REQUEST['year']));
 	    if($year < 1970) $year = 1970; //there should't be installation of Schoorbs that go back to 1999
 	    if($year > 2100) $year = 2100; //Will somebody use Schoorbs in 2100?
 	}

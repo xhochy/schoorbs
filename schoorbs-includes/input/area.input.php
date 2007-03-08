@@ -36,7 +36,7 @@ function input_Area()
 	    if(empty($_REQUEST['area']))
 	        $area = get_default_area();
 	    else
-	        $area = $_REQUEST['area'];
+	        $area = unslashes($_REQUEST['area']);
 	else
 	    $area = get_default_area();
 	return $area;
