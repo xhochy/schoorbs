@@ -1,47 +1,52 @@
 <?php
 /**
- * The pgsql-database warpper
+ * Simple PHP database support for PostgreSQL.
+ * Include this file after defining the following variables:
+ *   $db_host = The hostname of the database server
+ *   $db_login = The username to use when connecting to the database
+ *   $db_password = The database account password
+ *   $db_database = The database name.
+ * Including this file connects you to the database, or exits on error.
+ * This code hides an implementation difference in error reporting by the PHP
+ * PostgreSQL and MySQL extensions. PostgreSQL reports an E_WARNING error
+ * for some queries which MySQL does not; both properly set their own
+ * error code and the PHP error raised by PostgreSQL is not needed.
+ * The code here turns that off with error_reporting() calls around each
+ * pg_exec call, so as not to make you change the display_errors
+ * setting in your php.ini configuration file.
+ * Note: In future the warnings should be prohibited through @'s before those 
+ * commands, so that no error_reporting is need to be used.
  * 
- * @author jflarvoire
+ * @author jflarvoire, Uwe L. Korn <uwelk@xhochy.org>
  * @package Schoorbs/DB/PostgreSQL
  */
-
-// pgsql.inc - Simple PHP database support for PostgreSQL.
-// Include this file after defining the following variables:
-//   $db_host = The hostname of the database server
-//   $db_login = The username to use when connecting to the database
-//   $db_password = The database account password
-//   $db_database = The database name.
-// Including this file connects you to the database, or exits on error.
-// This code hides an implementation difference in error reporting by the PHP
-// PostgreSQL and MySQL extensions. PostgreSQL reports an E_WARNING error
-// for some queries which MySQL does not; both properly set their own
-// error code and the PHP error raised by PostgreSQL is not needed.
-// The code here turns that off with error_reporting() calls around each
-// pg_exec call, so as not to make you change the display_errors
-// setting in your php.ini configuration file.
-
 
 /**
  * Free a results handle. You need not call this if you call sql_row or
  * sql_row_keyed until the row returns 0, since sql_row frees the results
  * handle when you finish reading the rows.
+ * 
+ * @param $r PostgreSQL-Result
  */
 function sql_free ($r)
 {
 	pg_free_result($r);
 }
 
-// Execute a non-SELECT SQL command (insert/update/delete).
-// Returns the number of tuples affected if OK (a number >= 0).
-// Returns -1 on error; use sql_error to get the error message.
+/**
+ * Execute a non-SELECT SQL command (insert/update/delete).
+ * Returns the number of tuples affected if OK (a number >= 0).
+ * Returns -1 on error; use sql_error to get the error message.
+ * 
+ * @param string $sql The SQL-Query
+ * @return int The number of affected rows 
+ */
 function sql_command ($sql)
 {
 	global $db_c;
-	$e = error_reporting(E_ALL & ~(E_WARNING|E_NOTICE));
-	$r = pg_query($db_c, $sql);
-	error_reporting($e);
-	if (! $r) return -1;
+	
+	$r = @pg_query($db_c, $sql);
+	if (!$r) return -1;
 	$n = pg_affected_rows($r);
 	pg_free_result($r);
 	return $n;
@@ -245,6 +250,8 @@ function sql_num_fields($result)
 /**
  * Escapes an SQL parameter
  * 
+ * @param string $sArg
+ * @return string
  * @author Uwe L. Korn <uwelk@xhochy.org>
  */
 function sql_escape_arg($sArg)
@@ -252,23 +259,31 @@ function sql_escape_arg($sArg)
 	return pg_escape_string($sArg);
 }
 
-// Establish a database connection.
-// On connection error, the message will be output without a proper HTML
-// header. There is no way I can see around this; if track_errors isn't on
-// there seems to be no way to supress the automatic error message output and
-// still be able to access the error text.
-$conninfo = (empty($db_host) ? "" : "host=$db_host ")
-	. "dbname=$db_database user=$db_login password=$db_password";
-if (empty($db_nopersist))
-	$db_c = pg_pconnect($conninfo);
-else
-	$db_c = pg_connect($conninfo);
-unset($conninfo);
-
-if (!$db_c)
+/**
+ * Establish a database connection.
+ * On connection error, the message will be output without a proper HTML
+ * header. There is no way I can see around this; if track_errors isn't on
+ * there seems to be no way to supress the automatic error message output and
+ * still be able to access the error text.
+ * 
+ * This function is called automatically when this file is included!
+ * @author Uwe L. Korn <uwelk@xhochy.org>
+ * @return PostgreSQL-Connection-Handler
+ */
+function sql_connect()
 {
-	echo "\n<p>\n" . get_vocab("failed_connect_db") . "\n";
-	exit;
+	global $db_host, $db_database, $db_login, $db_password;
+	
+	$conninfo = (empty($db_host) ? "" : "host=$db_host ")
+		. "dbname=$db_database user=$db_login password=$db_password";
+	if(empty($db_nopersist) || $db_nopersist == true)
+		$db_c = @pg_pconnect($conninfo);
+	else
+		$db_c = @pg_connect($conninfo);
+	
+	if(!$db_c) fatal_error("\n<p>\n".get_vocab("failed_connect_db")."\n");
+	
+	return $db_c;
 }
 
-?>
+$db_c = sql_connect();

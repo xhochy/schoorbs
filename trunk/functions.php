@@ -209,7 +209,7 @@ function fatal_error($need_header, $message)
 {
 	if ($need_header) print_header(0, 0, 0, 0);
 	echo $message;
-	include "trailer.php";
+	require_once "trailer.php";
 	exit(0);
 }
 
