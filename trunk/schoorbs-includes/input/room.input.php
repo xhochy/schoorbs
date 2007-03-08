@@ -38,7 +38,7 @@ function input_Room()
 	    if(empty($_REQUEST['room']))
 	        $room = get_default_room(input_Area());
 	    else
-	        $room = $_REQUEST['room'];
+	        $room = unslashes($_REQUEST['room']);
 	else
 	    $room = get_default_room(input_Area());
 	return $room;

@@ -18,5 +18,5 @@ function input_PView()
 	if (!isset($_REQUEST['pview'])) 
 		return 0;
 	else
-	    return intval($_REQUEST['pview']);
+	    return intval(unslashes($_REQUEST['pview']));
 }
