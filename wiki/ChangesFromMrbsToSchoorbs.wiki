@@ -14,9 +14,9 @@
   * Moved session includes to schoorbs-includes/session/
   * Moved all CSS to style/
 
-=== New Features / Engine updates ===
+=== New Features / Engine and GUI updates ===
   
-  * Added Smarty(smarty.php.net) as template system(License: LGPL)
+  * Added Smarty(smarty.php.net) as template system(License: LGPL) to have code and layout seperated
   * Added Dropline Neu! as icon set(License: GPL)
   * Replaced PEAR::Mail with PHPMailer(phpmailer.sourceforge.net) because PEAR:Mail is licensed under the PHP License which is GPL incompatible
   * Happend events can't be deleted anymore
@@ -24,6 +24,8 @@
   * Some php syntay errors were fixed(e.g. unexpected ',' in month.php)
   * Made a new simpler GUI  
   * Exported a lot of code into own functions because of many duplicate code elements.
+  * Some languages are now converted to UTF-8 so that there will hopefully be only one charset in the future and not many different iso-8859-#
+  * Now showing the user in front of the booked entry to make it easier see people booking at the same time too much rooms
 
 === for Developers ===
 
@@ -41,5 +43,5 @@
   * Removed nearly all usages of register_globals or grab_globals.inc/.php
   * Renamed all .inc files to .php to be sure that the sourcecode is not viewable through HTTP
   * Added sql_escape_arg function to DB wrappers, so that future fixes should prevent XSS through manipulated SQL-queries
-  * Added some input data checks to prevent some XSS and DoS Attacs
+  * Added some input data checks to prevent some XSS and DoS Attacs (e.g. http://old-mrbs/day.php?day=ee1&month=01&year=2007 isn't anymore possible)
   * Added some functions for input parsing and checking
