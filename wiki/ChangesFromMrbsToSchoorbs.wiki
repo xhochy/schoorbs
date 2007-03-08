@@ -1,32 +1,44 @@
 #summary All changes between Schoorbs 1.0 and MRBS
 #labels Phase-Implementation
 
-*At the Moment Schoorbs is forked from MRBS 1.2.5*
-  
-  * Added Smarty(smarty.php.net) as template system(License: LGPL)
+== At the Moment Schoorbs is forked from MRBS 1.2.5 ==
+
+=== Filesystem Structure ===
+
   * Moved authentication includes to auth/
   * Moved database includes to db/
   * Moved FAQ-HTML-templates to faq/
   * Moved graphics to gfx/
-  * Added Dropline Neu! as icon set(License: GPL)
   * Moved JavaScript files to js/
   * Moved language files to lang/
+  * Moved session includes to schoorbs-includes/session/
+  * Moved all CSS to style/
+
+=== New Features / Engine updates ===
+  
+  * Added Smarty(smarty.php.net) as template system(License: LGPL)
+  * Added Dropline Neu! as icon set(License: GPL)
   * Replaced PEAR::Mail with PHPMailer(phpmailer.sourceforge.net) because PEAR:Mail is licensed under the PHP License which is GPL incompatible
+  * Happend events can't be deleted anymore
+  * Now *minimal PHP Version: 4.3.0* !!!
+  * Some php syntay errors were fixed(e.g. unexpected ',' in month.php)
+  * Made a new simpler GUI  
+
+=== for Developers ===
+
   * Added automated sourcecode documentation with schoorbs-contrib/makedoc.php
   * Added a plug-and-play style REST interface
-  * Moved session includes to session/
-  * Moved all CSS to style/
   * Converted most code to valid XHTML 1.1
-  * Happend events can't be deleted anymore
   * Using username as prefix for events in the XHTML-Gui
-  * Removed nearly all usages of register_globals or grab_globals.inc/.php
-  * Renamed all .inc files to .php to be sure that the sourcecode is not viewable through HTTP
-  * Some php syntay errors were fixed(e.g. unexpected ',' in month.php)
-  * Now minimal PHP Version: 4.3.0 !!!
-  * Added sql_escape_arg function to DB wrappers, so that future fixes should prevent XSS through manipulated SQL-queries
-  * Added some input data checks to prevent some XSS and DoS Attacs
-  * Made a new simpler GUI  
   * Added Javascript library [http://dean.edwards.name/IE7/ IE7] to support transperant png and some other stuff in Internet Explorer lower than 7.
   * Added a REST interface for interapplication communication.
-  * Added some functions for input parsing and checking
   * Highlightning of Tablecells now done with http://www.prototypejs.org/
+
+
+=== Security ===
+
+  * Removed nearly all usages of register_globals or grab_globals.inc/.php
+  * Renamed all .inc files to .php to be sure that the sourcecode is not viewable through HTTP
+  * Added sql_escape_arg function to DB wrappers, so that future fixes should prevent XSS through manipulated SQL-queries
+  * Added some input data checks to prevent some XSS and DoS Attacs
+  * Added some functions for input parsing and checking
