@@ -213,19 +213,17 @@ function fatal_error($need_header, $message)
 	exit(0);
 }
 
-# Apply backslash-escape quoting unless PHP is configured to do it
-# automatically. Use this for GET/POST form parameters, since we
-# cannot predict if the PHP configuration file has magic_quotes_gpc on.
-function slashes($s)
-{
-	if (get_magic_quotes_gpc()) return $s;
-	else return addslashes($s);
-}
-
-# Remove backslash-escape quoting if PHP is configured to do it with
-# magic_quotes_gpc. Use this whenever you need the actual value of a GET/POST
-# form parameter (which might have special characters) regardless of PHP's
-# magic_quotes_gpc setting.
+# 
+/**
+ * Remove backslash-escape quoting if PHP is configured to do it with
+ * magic_quotes_gpc. Use this whenever you need the actual value of a GET/POST
+ * form parameter (which might have special characters) regardless of PHP's
+ * magic_quotes_gpc setting.
+ * 
+ * @author jberanek
+ * @param string $s
+ * @return string 
+ */
 function unslashes($s)
 {
 	if (get_magic_quotes_gpc()) return stripslashes($s);
@@ -246,19 +244,19 @@ function hour_min_format()
 	        return "%H:%M";
 	else
 		return "%I:%M%p";
-	}
+}
 
 function period_date_string($t, $mod_time=0)
 {
-        global $periods;
+	global $periods;
 
 	$time = getdate($t);
-        $p_num = $time["minutes"] + $mod_time;
-        if( $p_num < 0 ) $p_num = 0;
-        if( $p_num >= count($periods) - 1 ) $p_num = count($periods ) - 1;
+    $p_num = $time["minutes"] + $mod_time;
+    if( $p_num < 0 ) $p_num = 0;
+    if( $p_num >= count($periods) - 1 ) $p_num = count($periods ) - 1;
 	# I have made the separater a ',' as a '-' leads to an ambiguious
 	# display in report.php when showing end times.
-        return array($p_num, $periods[$p_num] . utf8_strftime(", %A %d %B %Y",$t));
+    return array($p_num, $periods[$p_num] . utf8_strftime(", %A %d %B %Y",$t));
 }
 
 function period_time_string($t, $mod_time=0)
@@ -399,4 +397,3 @@ function cross_dst ( $start, $end )
 
 	return $modification;
 }
-?>

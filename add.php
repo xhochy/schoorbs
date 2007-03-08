@@ -71,7 +71,7 @@ if(!getAuthorised(2))
 
 if ($type == "area")
 {
-	$area_name_q = slashes($name);
+	$area_name_q = sql_escape_arg($name);
 	$sQuery = "INSERT INTO $tbl_area (area_name) VALUES ('$area_name_q')";
 	if(sql_command($sQuery) < 0) 
       fatal_error(1, "<p>" . sql_error() . "</p>");
@@ -80,8 +80,8 @@ if ($type == "area")
 
 if ($type == "room")
 {
-	$room_name_q = slashes($name);
-	$description_q = slashes($description);
+	$room_name_q = sql_escape_arg($name);
+	$description_q = sql_escape_arg($description);
 	if (empty($capacity)) $capacity = 0;
 	$sQuery = "INSERT INTO $tbl_room (room_name, area_id, description, capacity)"
 	   ." VALUES ('$room_name_q',$area, '$description_q',$capacity)";
