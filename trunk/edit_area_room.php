@@ -65,10 +65,11 @@ if(!empty($room)) {
 	if ( isset($change_room) && (FALSE != $valid_email) )
 	{
         if (empty($capacity)) $capacity = 0;
-		$sql = "UPDATE $tbl_room SET room_name='" . slashes($room_name)
-			. "', description='" . slashes($description)
-			. "', capacity=$capacity, room_admin_email='"
-            . slashes($room_admin_email) . "' WHERE id=$room";
+		$sql = "UPDATE $tbl_room SET room_name = '".sql_escape_arg($room_name)
+			."', description='" . sql_escape_arg($description)
+			."', capacity=".sql_escape_arg($capacity)
+			.", room_admin_email='".sql_escape_arg($room_admin_email) 
+			."' WHERE id = ".sql_escape_arg($room);
 		if (sql_command($sql) < 0)
 			fatal_error(0, get_vocab("update_room_failed") . sql_error());
 	}
@@ -123,9 +124,9 @@ if(!empty($area))
     //
     if ( isset($change_area) && (FALSE != $valid_email) )
 	{
-		$sql = "UPDATE $tbl_area SET area_name='" . slashes($area_name)
-			. "', area_admin_email='" . slashes($area_admin_email)
-            . "' WHERE id=$area";
+		$sql = "UPDATE $tbl_area SET area_name='" . sql_escape_arg($area_name)
+			. "', area_admin_email='" . sql_escape_arg($area_admin_email)
+            . "' WHERE id=".sql_escape_arg($area);
 		if (sql_command($sql) < 0)
 			fatal_error(0, get_vocab("update_area_failed") . sql_error());
 	}
@@ -155,4 +156,4 @@ value="<?php echo get_vocab("change") ?>">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&n
 </form>
 <?php } ?>
 </TABLE>
-<?php include "trailer.php" ?>
+<?php include "trailer.php"
