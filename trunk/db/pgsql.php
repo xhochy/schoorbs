@@ -52,42 +52,72 @@ function sql_command ($sql)
 	return $n;
 }
 
-// Execute an SQL query which should return a single non-negative number value.
-// This is a lightweight alternative to sql_query, good for use with count(*)
-// and similar queries. It returns -1 on error or if the query did not return
-// exactly one value, so error checking is somewhat limited.
-// It also returns -1 if the query returns a single NULL value, such as from
-// a MIN or MAX aggregate function applied over no rows.
+/**
+ * Execute an SQL query which should return a single non-negative number value.
+ * This is a lightweight alternative to sql_query, good for use with count(*)
+ * and similar queries. It returns -1 on error or if the query did not return
+ * exactly one value, so error checking is somewhat limited.
+ * It also returns -1 if the query returns a single NULL value, such as from
+ * a MIN or MAX aggregate function applied over no rows.
+ * 
+ * @param string $sql The SQL Query
+ * @return mixed The first column of the first row
+ */
 function sql_query1 ($sql)
 {
 	global $db_c;
-	$e = error_reporting(E_ALL & ~(E_WARNING|E_NOTICE));
-	$r = pg_query($db_c, $sql);
-	error_reporting($e);
-	if (! $r) return -1;
-	if (pg_num_rows($r) != 1 || pg_num_fields($r) != 1
-		|| ($result = pg_fetch_result($r, 0, 0)) == "") $result = -1;
+	
+	$r = @pg_query($db_c, $sql);
+	if(! $r) return -1;
+	if(pg_num_rows($r) != 1 
+		|| pg_num_fields($r) != 1
+		|| ($result = pg_fetch_result($r, 0, 0)) == "") { 
+		$result = -1;
+	}
 	pg_free_result($r);
 	return $result;
 }
 
-// Execute an SQL query. Returns a database-dependent result handle,
-// which should be passed back to sql_row or sql_row_keyed to get the results.
-// Returns 0 on error; use sql_error to get the error message.
+/**
+ * Execute an SQL query. Returns a database-dependent result handle,
+ * which should be passed back to sql_row or sql_row_keyed to get the results.
+ * Returns 0 on error; use sql_error to get the error message.
+ * 
+ * @param $sql The SQL Query
+ * @return PostgreSQL-Result-Handle
+ */
 function sql_query ($sql)
 {
 	global $db_c;
-	$e = error_reporting(E_ALL & ~(E_WARNING|E_NOTICE));
-	$r = pg_query($db_c, $sql);
-	error_reporting($e);
+	
+	$r = @pg_query($db_c, $sql);
+	
 	return $r;
 }
 
-// Return a row from a result. The first row is 0.
-// The row is returned as an array with index 0=first column, etc.
-// When called with i >= number of rows in the result, cleans up from
-// the query and returns 0.
+// 
+// 
+// 
+// 
 // Typical usage: $i = 0; while ((a = sql_row($r, $i++))) { ... }
+/**
+ * Return a row from a result. The first row is 0.
+ * The row is returned as an array with index 0=first column, etc.
+ * When called with i >= number of rows in the result, cleans up from
+ * the query and returns 0.
+ * 
+ * <code>
+ * // Typical usage:
+ *for($i = 0; $data = sql_row($result, $i); $i++)
+ *{
+ *      // ...
+ *} 	
+ * </code>
+ * 
+ * @param PostgreSQL-Result-Handle $r
+ * @param int $i The number of the row to fetch
+ * @return array
+ */
 function sql_row ($r, $i)
 {
 	if ($i >= pg_num_rows($r))
@@ -98,12 +128,18 @@ function sql_row ($r, $i)
 	return pg_fetch_row($r, $i);
 }
 
-// Return a row from a result as an associative array keyed by field name.
-// The first row is 0.
-// This is actually upward compatible with sql_row since the underlying
-// routing also stores the data under number indexes.
-// When called with i >= number of rows in the result, cleans up from
-// the query and returns 0.
+/**
+ * Return a row from a result as an associative array keyed by field name.
+ * The first row is 0.
+ * This is actually upward compatible with sql_row since the underlying
+ * routing also stores the data under number indexes.
+ * When called with i >= number of rows in the result, cleans up from
+ * the query and returns 0.
+ * 
+ * @param PostgreSQL-Result-Handle $r
+ * @param int $i The number of the row to fetch
+ * @return array
+ */
 function sql_row_keyed ($r, $i)
 {
 	if ($i >= pg_num_rows($r))
@@ -114,53 +150,81 @@ function sql_row_keyed ($r, $i)
 	return pg_fetch_array($r, $i);
 }
 
-// Return the number of rows returned by a result handle from sql_query.
+/**
+ * Return the number of rows returned by a result handle from sql_query.
+ * 
+ * @param PostgreSQL-Result-Handle $r
+ * @return int
+ */
 function sql_count ($r)
 {
 	return pg_num_rows($r);
 }
 
-// Return the value of an autoincrement field from the last insert.
-// For PostgreSQL, this must be a SERIAL type field.
+/**
+ * Return the value of an autoincrement field from the last insert.
+ * For PostgreSQL, this must be a SERIAL type field.
+ * 
+ * @param string $table
+ * @param string $field
+ * @return int a new ID
+ */
 function sql_insert_id($table, $field)
 {
 	$seq_name = $table . "_" . $field . "_seq";
-	return sql_query1("select last_value from $seq_name");
+	return sql_query1("SELECT last_value FROM $seq_name");
 }
 
-// Return the text of the last error message.
+/**
+ * Return the text of the last error message.
+ * 
+ * @return string The error message
+ */
 function sql_error()
 {
 	global $db_c;
 	return pg_last_error($db_c);
 }
 
-// Begin a transaction, if the database supports it. This is used to
-// improve PostgreSQL performance for multiple insert/delete/updates.
-// There is no rollback support, since MySQL doesn't support it.
+/**
+ * Begin a transaction, if the database supports it. This is used to
+ * improve PostgreSQL performance for multiple insert/delete/updates.
+ * There is no rollback support, since MySQL doesn't support it in 
+ * older versions.
+ */
 function sql_begin()
 {
 	sql_command("BEGIN");
 }
 
-// Commit (end) a transaction. See sql_begin().
+/**
+ * Commit (end) a transaction.
+ * 
+ * @see sql_begin()
+ */
 function sql_commit()
 {
 	sql_command("COMMIT");
 }
 
-// Acquire a mutual-exclusion lock on the named table. For portability:
-// This will not lock out SELECTs.
-// It may lock out DELETE/UPDATE/INSERT or not, depending on the implementation.
-// It will lock out other callers of this routine with the same name argument.
-// It may timeout in 20 seconds and return 0, or may wait forever.
-// It returns 1 when the lock has been acquired.
-// Caller must release the lock with sql_mutex_unlock().
-// Caller must not have more than one mutex at any time.
-// Do not mix this with sql_begin()/sql_end() calls.
-//
-// In PostgreSQL, the EXCLUSIVE mode lock excludes all but SELECT.
-// It does not timeout, but waits forever for the lock.
+/**
+ * Acquire a mutual-exclusion lock on the named table. For portability:
+ * This will not lock out SELECTs.
+ * It may lock out DELETE/UPDATE/INSERT or not, depending on the implementation.
+ * It will lock out other callers of this routine with the same name argument.
+ * It may timeout in 20 seconds and return 0, or may wait forever.
+ * It returns 1 when the lock has been acquired.
+ * Caller must release the lock with sql_mutex_unlock().
+ * Caller must not have more than one mutex at any time.
+ * 
+ * Do not mix this with sql_begin()/sql_end() calls.
+ * 
+ * In PostgreSQL, the EXCLUSIVE mode lock excludes all but SELECT.
+ * It does not timeout, but waits forever for the lock.
+ * 
+ * @param string $name The name of the table which should be locked
+ * @return int 1, if successful
+ */
 function sql_mutex_lock($name)
 {
 	global $sql_mutex_shutdown_registered, $sql_mutex_unlock_name;
@@ -175,9 +239,13 @@ function sql_mutex_lock($name)
 	return 1;
 }
 
-// Release a mutual-exclusion lock on the named table. See sql_mutex_lock.
-// In PostgreSQL, all locks are released by closing the transaction; there
-// is no other way.
+/**
+ * Release a mutual-exclusion lock on the named table. See sql_mutex_lock.
+ * In PostgreSQL, all locks are released by closing the transaction; there
+ * is no other way.
+ * 
+ * @param string $name The name of the table which should be unlocked
+ */
 function sql_mutex_unlock($name)
 {
 	global $sql_mutex_unlock_name;
@@ -185,7 +253,9 @@ function sql_mutex_unlock($name)
 	$sql_mutex_unlock_name = "";
 }
 
-// Shutdown function to clean up a forgotten lock. For internal use only.
+/**
+ * Shutdown function to clean up a forgotten lock. For internal use only.
+ */
 function sql_mutex_cleanup()
 {
 	global $sql_mutex_shutdown_registered, $sql_mutex_unlock_name;
@@ -196,32 +266,54 @@ function sql_mutex_cleanup()
 	}
 }
 
-// Return a string identifying the database version:
+/**
+ * Return a string identifying the database version.
+ * 
+ * @return string The version of PostgreSQL that is used
+ */
 function sql_version()
 {
-	$r = sql_query("select version()");
+	$r = sql_query("SELECT version()");
 	$v = sql_row($r, 0);
 	sql_free($r);
 	return $v[0];
 }
 
-// Generate non-standard SQL for LIMIT clauses:
+// 
+/**
+ * Generate non-standard SQL for LIMIT clauses.
+ * 
+ * @param int $count the number of rows which will be fetched
+ * @param int $offset
+ * @return string String that could be used in a SQL-Query 
+ */
 function sql_syntax_limit($count, $offset)
 {
 	return " LIMIT $count OFFSET $offset ";
 }
 
-// Generate non-standard SQL to output a TIMESTAMP as a Unix-time:
+/**
+ * Generate non-standard SQL to output a TIMESTAMP as a Unix-time:
+ * 
+ * @param string $fieldname The name of the field containing the date information
+ * @return string String that could be used in a SQL-Query
+ */
 function sql_syntax_timestamp_to_unix($fieldname)
 {
 	return " DATE_PART('epoch', $fieldname) ";
 }
 
-// Generate non-standard SQL to match a string anywhere in a field's value
-// in a case insensitive manner. $s is the un-escaped/un-slashed string.
-// In PostgreSQL, we can do case insensitive regexp with ~*, but not case
-// insensitive LIKE matching.
-// Quotemeta escapes everything we need except for single quotes.
+/**
+ * Generate non-standard SQL to match a string anywhere in a field's value
+ * in a case insensitive manner. $s is the un-escaped/un-slashed string.
+ * In PostgreSQL, we can do case insensitive regexp with ~*, but not case
+ * insensitive LIKE matching.
+ * Quotemeta escapes everything we need except for single quotes.
+ * 
+ * @param string $fieldname
+ * @param string $s
+ * @return string
+ */
 function sql_syntax_caseless_contains($fieldname, $s)
 {
 	$s = quotemeta($s);
@@ -229,19 +321,37 @@ function sql_syntax_caseless_contains($fieldname, $s)
 	return " $fieldname ~* '$s' ";
 }
 
-// Returns the name of a field.
+/**
+ * Returns the name of a field.
+ * 
+ * @param PostgreSQL-Result-Handle $r
+ * @param int $i
+ * @return string
+ */
 function sql_field_name($result, $index)
 {
 	return pg_field_name($result, $index);
 }
 
-// Returns the type of a field. (one of "int", "real", "string", "blob", etc...)
+
+/**
+ * Returns the type of a field. (one of "int", "real", "string", "blob", etc...)
+ * 
+ * @param PostgreSQL-Result-Handle $r
+ * @param int $i
+ * @return string
+ */
 function sql_field_type($result, $index)
 {
 	return pg_field_type($result, $index);
 }
 
-// Returns the number of fields in a result.
+/**
+ * Returns the number of fields in a result.
+ * 
+ * @param PostgreSQL-Result-Handle $r
+ * @return int
+ */ 
 function sql_num_fields($result)
 {
 	return pg_num_fields($result);
@@ -286,4 +396,7 @@ function sql_connect()
 	return $db_c;
 }
 
+/**
+ * Autmatically connects to the database, when this file is included
+ */
 $db_c = sql_connect();
