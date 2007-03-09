@@ -5109,11 +5109,7 @@ class Converter
      */
     function setTemplateDir($dir)
     {
-        if ('/usr/share/php/data' != '@'.'DATA-DIR@') {
-            $templateBase = str_replace('\\', '/', '/usr/share/php/data/PhpDocumentor/phpDocumentor');
-        } else {
-            $templateBase = str_replace('\\','/',$GLOBALS['_phpDocumentor_install_dir']) . '/phpDocumentor';
-        }
+        $templateBase = str_replace('\\','/',$GLOBALS['_phpDocumentor_install_dir']) . '/phpDocumentor';
         $this->setTemplateBase($templateBase, $dir);
     }
 
@@ -5123,11 +5119,7 @@ class Converter
      */
     function getConverterDir()
     {
-        if ('/usr/share/php/data' != '@' . 'DATA-DIR@') {
-            return str_replace('\\', '/', "/usr/share/php/data/PhpDocumentor/phpDocumentor/Converters/") . $this->outputformat . "/" . $this->name;
-        } else {
-            return str_replace('\\','/',$GLOBALS['_phpDocumentor_install_dir']) ."/phpDocumentor/Converters/" . $this->outputformat . "/" . $this->name;
-        }
+        return str_replace('\\','/',$GLOBALS['_phpDocumentor_install_dir']) ."/phpDocumentor/Converters/" . $this->outputformat . "/" . $this->name;
     }
 
     /**

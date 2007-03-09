@@ -22,5 +22,11 @@ foreach($aDirs as $sDir)
 	foreach(glob($sDir.'/*.php') as $sFile)
 		$aFiles[] = $sFile;
 
-system('phpdoc -s on -dc "Schoorbs" -ti "Schoorbs Sourcecode Documentation" -t schoorbs-doc/ -f '.implode(',',$aFiles));
+system('./schoorbs-contrib/phpdoc -pp on ' .
+		'--readmeinstallchangelog ChangeLog' .
+		'-s on ' .
+		'--output HTML:Smarty:XhochY '.
+		'-dc "Schoorbs" ' .
+		'-tb '.dirname(__FILE__).'/PhpDocumentor/phpDocumentor/ '.
+		'--title "Schoorbs Sourcecode Documentation" -t schoorbs-doc/ -f '.implode(',',$aFiles));
 ?>
