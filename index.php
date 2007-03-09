@@ -13,7 +13,7 @@
 
 require_once "grab_globals.php";
 require_once "config.inc.php";
-require_once "db/$dbsys.php";
+require_once "schoorbs-includes/database/$dbsys.php";
 
 $day   = date("d");
 $month = date("m");

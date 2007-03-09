@@ -10,7 +10,7 @@
 require_once "grab_globals.php";
 require_once "config.inc.php";
 require_once "functions.php";
-require_once "db/$dbsys.php";
+require_once "schoorbs-includes/database/$dbsys.php";
 require_once "auth/schoorbs_auth.php";
 
 die('Script would like to use PEAR, which is not GPL compatible.');
