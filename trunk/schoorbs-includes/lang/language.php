@@ -291,14 +291,14 @@ $aix_utf8_converters = array
 if (MAIL_ADMIN_ON_BOOKINGS or MAIL_AREA_ADMIN_ON_BOOKINGS or
     MAIL_ROOM_ADMIN_ON_BOOKINGS or MAIL_BOOKER)
 {
-    include "lang/lang." . $default_language_tokens;
-    include "lang/lang." . MAIL_ADMIN_LANG;
+    include dirname(__FILE__)."/lang." . $default_language_tokens;
+    include dirname(__FILE__)."/lang." . MAIL_ADMIN_LANG;
     $mail_vocab = $vocab;
     unset ($vocab);
 }
 
 # Get a default set of language tokens, you can change this if you like
-include "lang/lang." . $default_language_tokens;
+include dirname(__FILE__)."/lang." . $default_language_tokens;
 
 # Define the default locale here. For a list of supported
 # locales on your system do "locale -a"
@@ -341,7 +341,7 @@ if (!$disable_automatic_language_changing)
 
   foreach ($langs as $lang => $qual)
   {
-    $lang_file = "lang/lang." . strtolower($lang);
+    $lang_file = dirname(__FILE__)."/lang." . strtolower($lang);
 
     if (file_exists($lang_file))
     {
@@ -359,7 +359,7 @@ if (!$disable_automatic_language_changing)
 
     foreach ($langs as $lang)
     {
-      $lang_file = "lang/lang." . strtolower(substr($lang,0,2));
+      $lang_file = "lang." . strtolower(substr($lang,0,2));
 
       if (file_exists($lang_file))
       {
