@@ -137,7 +137,7 @@ if($pview != 1)
 if ($room <= 0)
 {
 	echo "<h1>".get_vocab("no_rooms_for_area")."</h1>";
-	include "trailer.php";
+	require_once 'schoorbs-includes/trailer.php';
 	exit;
 }
 
@@ -336,5 +336,4 @@ $smarty->display('week.tpl');
 
 show_colour_key();
 
-include "trailer.php"; 
-?>
+require_once 'schoorbs-includes/trailer.php';

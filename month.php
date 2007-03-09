@@ -137,7 +137,7 @@ if($pview != 1)
 if ($room <= 0)
 {
     echo "<h1>".get_vocab("no_rooms_for_area")."</h1>";
-    require_once 'trailer.php';
+    require_once 'schoorbs-includes/trailer.php';
     exit;
 }
 
@@ -372,5 +372,4 @@ $smarty->assign('skipdays2', $aSkipdays2);
 $smarty->assign('days',$aDays);
 $smarty->display('month.tpl');
 
-require_once 'trailer.php';
-?>
+require_once 'schoorbs-includes/trailer.php';

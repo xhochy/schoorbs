@@ -65,7 +65,7 @@ if($type == "room")
 		echo "<H1>" .  get_vocab("sure") . "</h1>";
 		echo "<H1><a href=\"del.php?type=room&room=$room&confirm=Y\">" . get_vocab("YES") . "!</a> &nbsp;&nbsp;&nbsp; <a href=admin.php>" . get_vocab("NO") . "!</a></h1>";
 		echo "</center>";
-		include "trailer.php";
+		require_once 'schoorbs-includes/trailer.php';
 	}
 }
 
@@ -89,7 +89,6 @@ if($type == "area")
 		
 		echo get_vocab("delarea");
 		echo "<a href=admin.php>" . get_vocab("backadmin") . "</a>";
-		include "trailer.php";
+		require_once 'schoorbs-includes/trailer.php';
 	}
 }
-?>

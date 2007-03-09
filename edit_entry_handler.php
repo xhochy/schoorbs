@@ -311,4 +311,4 @@ if(strlen($err))
 
 echo "<a href=\"$returl\">".get_vocab("returncal")."</a><p>";
 
-include "trailer.php"; ?>
+require_once 'schoorbs-includes/trailer.php';

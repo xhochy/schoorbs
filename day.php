@@ -284,4 +284,4 @@ else
 }
 
 /** The footer of the HTML Page */
-require_once 'trailer.php';
+require_once 'schoorbs-includes/trailer.php';

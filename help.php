@@ -11,7 +11,7 @@ require_once "grab_globals.php";
 require_once "config.inc.php";
 require_once "schoorbs-includes/database/$dbsys.php";
 require_once 'schoorbs-includes/global.functions.php';
-require_once "version.php";
+require_once 'schoorbs-includes/version.php';
 
 print_header(date("d"), date("m"), date("Y"), get_default_area());
 
@@ -26,5 +26,4 @@ $smarty->display('help.tpl');
 
 include "faq/site_faq" . $faqfilelang . ".html";
 
-include "trailer.php";
-?>
+require_once 'schoorbs-includes/trailer.php';

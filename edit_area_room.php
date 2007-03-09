@@ -157,4 +157,5 @@ value="<?php echo get_vocab("change") ?>">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&n
 </form>
 <?php } ?>
 </TABLE>
-<?php include "trailer.php"
+<?php 
+require_once 'schoorbs-includes/trailer.php';

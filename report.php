@@ -248,4 +248,4 @@ if (isset($areamatch))
 	echo "</div>";
 }
 
-include "trailer.php";
+require_once 'schoorbs-includes/trailer.php';
