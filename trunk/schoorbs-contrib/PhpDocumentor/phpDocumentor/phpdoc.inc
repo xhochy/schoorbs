@@ -42,6 +42,7 @@
 $a = explode('/',str_replace('\\','/',dirname(realpath(__FILE__))));
 array_pop($a);
 $GLOBALS['_phpDocumentor_install_dir'] = join('/',$a);
+//$_phpDocumentor_setting['useconfig'] = false;
 // add my directory to the include path, and make it first, should fix any errors
 if (substr(PHP_OS, 0, 3) == 'WIN')
 ini_set('include_path',$GLOBALS['_phpDocumentor_install_dir'].';'.ini_get('include_path'));

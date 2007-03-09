@@ -1,15 +1,17 @@
-<html>
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.1//EN" "http://www.w3.org/TR/xhtml11/DTD/xhtml11.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="de">
 <head>
 <title>{$title}</title>
-<link rel="stylesheet" type="text/css" href="{$subdir}media/style.css">
+<link rel="stylesheet" type="text/css" href="{$subdir}media/style.css" />
 </head>
 <body>
 
-<table border="0" cellspacing="0" cellpadding="0" height="48" width="100%">
+<table border="0" cellspacing="0" cellpadding="0" style="weight: 100%;">
   <tr>
     <td class="header_top">{$package}</td>
   </tr>
-  <tr><td class="header_line"><img src="{$subdir}media/empty.png" width="1" height="1" border="0" alt=""  /></td></tr>
+  <!--<tr><td class="header_line"><img src="{$subdir}media/empty.png" width="1" height="1" border="0" alt=""  /></td></tr>-->
   <tr>
     <td class="header_menu">
   		  [ <a href="{$subdir}classtrees_{$package}.html" class="menu">class tree: {$package}</a> ]
@@ -17,12 +19,12 @@
 		  [ <a href="{$subdir}elementindex.html" class="menu">all elements</a> ]
     </td>
   </tr>
-  <tr><td class="header_line"><img src="{$subdir}media/empty.png" width="1" height="1" border="0" alt=""  /></td></tr>
+  <!--<tr><td class="header_line"><img src="{$subdir}media/empty.png" width="1" height="1" border="0" alt=""  /></td></tr>-->
 </table>
 
 <table width="100%" border="0" cellpadding="0" cellspacing="0">
   <tr valign="top">
-    <td width="200" class="menu">
+    <td width="250" class="menu">
 {if count($ric) >= 1}
 	<div id="ric">
 		{section name=ric loop=$ric}

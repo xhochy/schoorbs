@@ -221,12 +221,7 @@ and load the tokenizer extension for faster parsing (your version is ".phpversio
             $_phpDocumentor_setting = phpDocumentor_parse_ini_file($file.'.ini');
         } else
         {
-            if ('/usr/share/php/data' != '@'.'DATA-DIR@')
-            {
-                $configdir = str_replace('\\','/', '/usr/share/php/data/PhpDocumentor') . PATH_DELIMITER . 'user' . PATH_DELIMITER;
-            } else {
-                $configdir = str_replace('\\','/',$GLOBALS['_phpDocumentor_install_dir']) . PATH_DELIMITER . 'user' . PATH_DELIMITER;
-            }
+            $configdir = str_replace('\\','/',$GLOBALS['_phpDocumentor_install_dir']) . PATH_DELIMITER . 'user' . PATH_DELIMITER;
             if (isset($_phpDocumentor_options['userdir'])) $configdir = $_phpDocumentor_options['userdir'];
             if (substr($configdir,-1) != '/')
             {
@@ -699,13 +694,8 @@ and load the tokenizer extension for faster parsing (your version is ".phpversio
     {
         phpDocumentor_out("Parsing configuration file phpDocumentor.ini...");
         flush();
-        if ('/usr/share/php/data' != '@'.'DATA-DIR@')
-        {
-            $options = phpDocumentor_parse_ini_file(str_replace('\\','/', '/usr/share/php/data/PhpDocumentor') . PATH_DELIMITER . 'phpDocumentor.ini',true);
-        } else {
-            $options = phpDocumentor_parse_ini_file(str_replace('\\','/',$GLOBALS['_phpDocumentor_install_dir']) . PATH_DELIMITER . 'phpDocumentor.ini',true);
-        }
-
+        $options = phpDocumentor_parse_ini_file(str_replace('\\','/',$GLOBALS['_phpDocumentor_install_dir']) . PATH_DELIMITER . 'phpDocumentor.ini',true);
+    
         if (!$options)
         {
             print "ERROR: cannot open phpDocumentor.ini in directory " . $GLOBALS['_phpDocumentor_install_dir']."\n";
