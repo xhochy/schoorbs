@@ -69,33 +69,29 @@ function schoorbsCheckFree($room_id, $starttime, $endtime, $ignore, $repignore)
 	return $err;
 }
 
-/** mrbsDelEntry()
- * 
+/** 
  * Delete an entry, or optionally all entrys.
  * 
- * $user   - Who's making the request
- * $id     - The entry to delete
- * $series - If set, delete the series, except user modified entrys
- * $all    - If set, include user modified entrys in the series delete
- *
- * Returns:
- *   0        - An error occured
- *   non-zero - The entry was deleted
+ * @param string $user   - Who's making the request
+ * @param int $id     - The entry to delete
+ * @param bool $series - If set, delete the series, except user modified entrys
+ * @param bool $all    - If set, include user modified entrys in the series delete
+ * @return int non-zero - The entry was deleted 
  */
-function mrbsDelEntry($user, $id, $series, $all)
+function schoorbsDelEntry($user, $id, $series, $all)
 {
 	global $tbl_entry, $tbl_repeat;
 
-	$repeat_id = sql_query1("SELECT repeat_id FROM $tbl_entry WHERE id=$id");
+	$repeat_id = sql_query1("SELECT repeat_id FROM $tbl_entry WHERE id = ".sql_escape_arg($id));
 	if ($repeat_id < 0)
 		return 0;
 	
 	$sql = "SELECT create_by, id, entry_type FROM $tbl_entry WHERE ";
 	
 	if($series)
-		$sql .= "repeat_id=$repeat_id";
+		$sql .= "repeat_id=".sql_escape_arg($repeat_id);
 	else
-		$sql .= "id=$id";
+		$sql .= "id=".sql_escape_arg($id);
 	
 	$res = sql_query($sql);
 	
@@ -109,51 +105,49 @@ function mrbsDelEntry($user, $id, $series, $all)
 		if($series && $row[2] == 2 && !$all)
 			continue;
 		
-		if (sql_command("DELETE FROM $tbl_entry WHERE id=" . $row[1]) > 0)
+		if (sql_command("DELETE FROM $tbl_entry WHERE id=" . sql_escape_arg($row[1])) > 0)
 			$removed++;
 	}
 	
 	if ($repeat_id > 0 &&
-            sql_query1("SELECT count(*) FROM $tbl_entry WHERE repeat_id=$repeat_id") == 0)
-		sql_command("DELETE FROM $tbl_repeat WHERE id=$repeat_id");
+            sql_query1("SELECT count(*) FROM $tbl_entry WHERE repeat_id = ".sql_escape_arg($repeat_id)) == 0)
+		sql_command("DELETE FROM $tbl_repeat WHERE id = ".sql_escape_arg($repeat_id));
 	
 	return $removed > 0;
 }
 
-/** mrbsCreateSingleEntry()
- * 
+/**
  * Create a single (non-repeating) entry in the database
  * 
- * $starttime   - Start time of entry
- * $endtime     - End time of entry
- * $entry_type  - Entry type
- * $repeat_id   - Repeat ID
- * $room_id     - Room ID
- * $owner       - Owner
- * $name        - Name
- * $type        - Type (Internal/External)
- * $description - Description
- * 
- * Returns:
- *   0        - An error occured while inserting the entry
- *   non-zero - The entry's ID
+ * @param int $starttime   - Start time of entry
+ * @param int $endtime     - End time of entry
+ * @param string $entry_type  - Entry type
+ * @param int $repeat_id   - Repeat ID
+ * @param int $room_id     - Room ID
+ * @param string $owner       - Owner
+ * @param string $name        - Name
+ * @param string $type        - Type (Internal/External)
+ * @param string $description - Description
+ * @return int The entry's ID
  */
-function mrbsCreateSingleEntry($starttime, $endtime, $entry_type, $repeat_id, $room_id,
+function schoorbsCreateSingleEntry($starttime, $endtime, $entry_type, $repeat_id, $room_id,
                                $owner, $name, $type, $description)
 {
 	global $tbl_entry;
-
-	$name        = sql_escape_arg($name);
-	$description = sql_escape_arg($description);
 	
-	# make sure that any entry is of a positive duration
-	# this is to trap potential negative duration created when DST comes
-	# into effect
-	if( $endtime > $starttime )
-	$sql = "INSERT INTO $tbl_entry (  start_time,   end_time,   entry_type,    repeat_id,   room_id,
-	                                  create_by,    name,       type,          description)
-	                        VALUES ($starttime, $endtime, $entry_type, $repeat_id, $room_id,
-	                                '$owner',     '$name',    '$type',       '$description')";
+	/**
+	 * make sure that any entry is of a positive duration
+	 * this is to trap potential negative duration created when DST comes
+	 * into effect
+	 */ 
+	if( $endtime > $starttime ) {
+		$sql = "INSERT INTO $tbl_entry (start_time, end_time, entry_type, repeat_id, room_id,"
+			."create_by, name, type, description) VALUES (".sql_escape_arg($starttime).", "
+			.sql_escape_arg($endtime).", ".sql_escape_arg($entry_type).", "
+			.sql_escape_arg($repeat_id).", ".sql_escape_arg($room_id).", '"
+			.sql_escape_arg($owner)."', '".sql_escape_arg($name)."', '"
+			.sql_escape_arg($type)."', '".sql_escape_arg($description)."')";
+	}
 	
 	if (sql_command($sql) < 0) return 0;
 	
@@ -219,28 +213,27 @@ function mrbsCreateRepeatEntry($starttime, $endtime, $rep_type, $rep_enddate, $r
 	return sql_insert_id("$tbl_repeat", "id");
 }
 
-/** same_day_next_month()
-* Find the same day of the week in next month, same week number.
-*
-* Return the number of days to step forward for a "monthly repeat,
-* corresponding day" serie - same week number and day of week next month.
-* This function always returns either 28 or 35.
-* For dates in the 5th week of a month, the resulting day will be in the 4th
-* week of the next month if no 5th week corresponding day exist.
-* :TODO: thierry_bo 030510: repeat 5th week entries only if 5th week exist.
-* If we want a 5th week repeat type, only 5th weeks have to be booked. We need
-* also a new "monthly repeat, corresponding day, last week of the month" type.
-*
-* @param    integer     $time           timestamp of the day from which we want to find
-*                                       the same day of the week in next month, same
-*                                       week number
-* @return   integer     $days_jump      number of days to step forward to find the next occurence (28 or 35)
-* @var      integer     $days_in_month  number of days in month
-* @var      integer     $day            day of the month (01 to 31)
-* @var      integer     $weeknumber     week number for each occurence ($time)
-* @var      boolean     $temp1          first step to compute $days_jump
-* @var      integer     $next_month     intermediate next month number (1 to 12)
-* @global   integer     $_initial_weeknumber    used only for 5th weeks repeat type
+/** 
+ * Find the same day of the week in next month, same week number.
+ * 
+ * Return the number of days to step forward for a "monthly repeat,
+ * corresponding day" serie - same week number and day of week next month.
+ * This function always returns either 28 or 35.
+ * For dates in the 5th week of a month, the resulting day will be in the 4th
+ * week of the next month if no 5th week corresponding day exist.
+ * :TODO: thierry_bo 030510: repeat 5th week entries only if 5th week exist.
+ * If we want a 5th week repeat type, only 5th weeks have to be booked. We need
+ * also a new "monthly repeat, corresponding day, last week of the month" type.
+ *
+ * @param    integer     $time           timestamp of the day from which we want to find
+ *                                       the same day of the week in next month, same
+ *                                       week number
+ * @return   integer     $days_jump      number of days to step forward to find the next occurence (28 or 35)
+ * @param      integer     $days_in_month  number of days in month
+ * @param      integer     $day            day of the month (01 to 31)
+ * @param      integer     $weeknumber     week number for each occurence ($time)
+ * @param      boolean     $temp1          first step to compute $days_jump
+ * @param      integer     $next_month     intermediate next month number (1 to 12)
  */
 function same_day_next_month($time)
 {
@@ -397,7 +390,7 @@ function mrbsCreateRepeatingEntrys($starttime, $endtime, $rep_type, $rep_enddate
 	
 	if(empty($reps))
 	{
-		$ent = mrbsCreateSingleEntry($starttime, $endtime, 0, 0, $room_id, $owner, $name, $type, $description);
+		$ent = schoorbsCreateSingleEntry($starttime, $endtime, 0, 0, $room_id, $owner, $name, $type, $description);
 		return $ent;
 	}
 	
@@ -412,7 +405,7 @@ function mrbsCreateRepeatingEntrys($starttime, $endtime, $rep_type, $rep_enddate
 			$diff = $endtime - $starttime;
 			$diff += cross_dst($reps[$i], $reps[$i] + $diff);
 	    
-			mrbsCreateSingleEntry($reps[$i], $reps[$i] + $diff, 1, $ent,
+			schoorbsCreateSingleEntry($reps[$i], $reps[$i] + $diff, 1, $ent,
 				 $room_id, $owner, $name, $type, $description);
 		}
 	}

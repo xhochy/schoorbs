@@ -34,7 +34,7 @@ if(getAuthorised(1) && ($info = mrbsGetEntryInfo($id)))
         $mail_previous = getPreviousEntryData($id, $series);
     }
     sql_begin();
-	$result = mrbsDelEntry(getUserName(), $id, $series, 1);
+	$result = schoorbsDelEntry(getUserName(), $id, $series, 1);
 	sql_commit();
 	if ($result)
 	{
