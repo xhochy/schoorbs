@@ -10,7 +10,7 @@
 ## Includes ##
 
 require_once 'config.inc.php';
-require_once "db/$dbsys.php";
+require_once "schoorbs-includes/database/$dbsys.php";
 require_once 'schoorbs-includes/input.functions.php';
 require_once 'schoorbs-includes/rest.functions.php';
 require_once 'schoorbs-includes/time.functions.php';

@@ -11,9 +11,9 @@
 require_once "grab_globals.php";
 require_once "config.inc.php";
 require_once "functions.php";
-require_once "db/$dbsys.php";
+require_once "schoorbs-includes/database/$dbsys.php";
 require_once "auth/schoorbs_auth.php";
-require_once "mrbs_sql.php";
+require_once 'schoorbs-includes/database/schoorbs_sql.php';
 
 ## Main ##
 
