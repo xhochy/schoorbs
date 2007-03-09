@@ -239,7 +239,7 @@ if(empty($err))
                 $entry_type = 0;
 
             # Create the entry:
-            $new_id = mrbsCreateSingleEntry($starttime, $endtime, $entry_type, $repeat_id, $room_id,
+            $new_id = schoorbsCreateSingleEntry($starttime, $endtime, $entry_type, $repeat_id, $room_id,
                                      $create_by, $name, $type, $description);
             // Send a mail to the Administrator
             if (MAIL_ADMIN_ON_BOOKINGS or MAIL_AREA_ADMIN_ON_BOOKINGS or
@@ -278,7 +278,7 @@ if(empty($err))
 
     # Delete the original entry
     if(isset($id))
-        mrbsDelEntry(getUserName(), $id, ($edit_type == "series"), 1);
+        schoorbsDelEntry(getUserName(), $id, ($edit_type == "series"), 1);
 
     sql_mutex_unlock("$tbl_entry");
     
