@@ -7,7 +7,7 @@
 </head>
 <body>
 
-<table border="0" cellspacing="0" cellpadding="0" style="weight: 100%;">
+<table border="0" cellspacing="0" cellpadding="0" style="width: 100%;">
   <tr>
     <td class="header_top">{$package}</td>
   </tr>
