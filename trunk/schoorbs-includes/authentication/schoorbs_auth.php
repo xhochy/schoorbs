@@ -5,6 +5,7 @@
  * @author jberanek, JFL, Uwe L. Korn <uwelk@xhochy.org>
  * @package Schoorbs
  * @subpackage Auth
+ * @license http://www.gnu.org/licenses/gpl.html GNU General Public License
  */
 
 /* ~~JFL 2003/11/12 By default, use the http session mechanism */

@@ -9,6 +9,7 @@
  * 
  * @author jberanek, JFL
  * @package Schoorbs/Auth/Config
+ * @license http://www.gnu.org/licenses/gpl.html GNU General Public License
  */ 
 
 //TODO: Make passwords md5/sha1 crypted

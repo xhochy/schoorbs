@@ -4,6 +4,7 @@
  * 
  * @author jberanek
  * @package Schoorbs/DB/MySQLi
+ * @license http://www.gnu.org/licenses/gpl.html GNU General Public License
  */
 // mysqli.inc - Simple PHP database support for MySQL, using mysqli extension.
 // Include this file after defining the following variables:

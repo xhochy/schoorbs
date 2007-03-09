@@ -7,6 +7,7 @@
  * 
  * @author gwalker
  * @package Schoorbs
+ * @license http://www.gnu.org/licenses/gpl.html GNU General Public License
  */
 
 ## Includes ##

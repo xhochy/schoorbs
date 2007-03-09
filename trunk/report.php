@@ -4,6 +4,7 @@
  * 
  * @author Uwe L. Korn <uwelk@xhochy.org>, thierry_bo
  * @package Schoorbs
+ * @license http://www.gnu.org/licenses/gpl.html GNU General Public License
  */
 
 require_once 'config.inc.php';

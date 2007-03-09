@@ -7,6 +7,7 @@
  * 
  * @author JFL, jberanek, Uwe L. Korn <uwelk@xhochy.org>
  * @package Schoorbs/Session/PHP
+ * @license http://www.gnu.org/licenses/gpl.html GNU General Public License
  */
 /**
  * The main function of the PHP-Sessions, is started by including this file

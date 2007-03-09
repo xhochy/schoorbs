@@ -16,6 +16,7 @@
  * 
  * @author jberanek
  * @package Schoorbs/Session/NT
+ * @license http://www.gnu.org/licenses/gpl.html GNU General Public License
  */
 
 /** 

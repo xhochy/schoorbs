@@ -3,7 +3,8 @@
  * The mysql-database warpper
  * 
  * @author jflarvoire
- * @package Schoorbs/DB/MySQL 
+ * @package Schoorbs/DB/MySQL
+ * @license http://www.gnu.org/licenses/gpl.html GNU General Public License 
  */
 // mysql.inc - Simple PHP database support for MySQL.
 // Include this file after defining the following variables:

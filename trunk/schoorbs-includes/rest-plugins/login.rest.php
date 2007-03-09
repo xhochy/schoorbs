@@ -5,6 +5,7 @@
  * @author Uwe L. Korn <uwelk@xhochy.org>
  * @package Schoorbs
  * @subpackage REST
+ * @license http://www.gnu.org/licenses/gpl.html GNU General Public License
  */
  
 /**

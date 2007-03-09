@@ -35,6 +35,7 @@
  * 
  * @author jberanek
  * @package Schoorbs/Session/Omni
+ * @license http://www.gnu.org/licenses/gpl.html GNU General Public License
  */
  
 /* getAuth()
@@ -45,8 +46,5 @@ function authGet() { }
 
 function getUserName()
 {
-	global $REMOTE_USER;
-	return $REMOTE_USER;
+	return $_SERVER['REMOTE_USER'];
 }
-
-?>
