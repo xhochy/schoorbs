@@ -8,4 +8,8 @@
  * [http://phpmailer.sourceforge.net PHPMailer](Included in Schoorbs Package)(LGPL)
  * [http://art.gnome.org/themes/icon/1100 Dropline Neu!-Icons](Included in Schoorbs Package)(GPL)
  * [http://dean.edwards.name/IE7/ IE7(a javascript library which fixes some bugs of IE <7)](Included in Schoorbs Package)(LGPL)
+
+=== Only important for Development ===
+
  * [http://ch.tudelft.nl/~arthur/svn2cl svn2cl] for ChangeLog generation(new BSD)(Included in Schoorbs SVN)
+ * [http://www.phpdoc.org/ PhpDocumentor] for Sourcecode documentation generation(LGPL)(Included in Schoorbs SVN)
