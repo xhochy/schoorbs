@@ -405,7 +405,7 @@ $faqfilelang = "";
 
 # This next require must be done after the definitions above, as the definitions
 # are used in the included file
-require_once "lang/language.php";
+require_once 'schoorbs-includes/lang/language.php';
 
 #############
 # Entry Types

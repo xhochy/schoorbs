@@ -350,5 +350,4 @@ $smarty->assign('dur_units',$dur_units);
 $smarty->assign('create_by',$create_by);
 $smarty->display('edit_entry.tpl');
 
-require_once 'trailer.php';
-?>
+require_once 'schoorbs-includes/trailer.php';

@@ -405,5 +405,4 @@ while ($line = sql_row($list, $i++))
     }
 print "</table>\n";
 
-include "trailer.php";
-?>
+require_once 'schoorbs-includes/trailer.php';

@@ -37,14 +37,14 @@ if (!empty($advanced))
 	$smarty->assign('month',$month);
 	$smarty->assign('year',$year);
 	$smarty->display('advanced_search.tpl');
-	require_once "trailer.php";
+	require_once 'schoorbs-includes/trailer.php';
 	exit(0);
 }
 
 if (!$search_str)
 {
 	echo "<h3>" . get_vocab("invalid_search") . "</h3>";
-	include "trailer.php";
+	require_once 'schoorbs-includes/trailer.php';
 	exit;
 }
 
@@ -68,7 +68,7 @@ if(!isset($total))
 if($total <= 0)
 {
 	echo "<strong>" . get_vocab("nothing_found") . "</strong>\n";
-	include "trailer.php";
+	require_once 'schoorbs-includes/trailer.php';
 	exit;
 }
 
@@ -158,5 +158,4 @@ for ($i = 0; ($row = sql_row($result, $i)); $i++)
 }
 
 echo "</TABLE>\n";
-include "trailer.php";
-?>
+require_once 'schoorbs-includes/trailer.php';

@@ -68,4 +68,4 @@ $smarty->assign('areas',$aAreas);
 $smarty->assign('noareas',$noareas);
 $smarty->display('admin.tpl');
 
-require_once "trailer.php";
+require_once 'schoorbs-includes/trailer.php';

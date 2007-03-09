@@ -278,11 +278,10 @@ if($repeat_id || $series )
 	echo "<A HREF=\"del_entry.php?id=$id&series=1&day=$day&month=$month&year=$year\" onClick=\"return confirm('".get_vocab("confirmdel")."');\">".get_vocab("deleteseries")."</A>";
 
 ?>
-<BR>
-<?php if (isset($HTTP_REFERER)) //remove the link if displayed from an email
+<br />
+<?php if (isset($_SERVER['HTTP_REFERER'])) //remove the link if displayed from an email
 { ?>
-<a href="<?php echo $HTTP_REFERER ?>"><?php echo get_vocab("returnprev") ?></a>
+<a href="<?php echo $_SERVER['HTTP_REFERER'] ?>"><?php echo get_vocab("returnprev") ?></a>
 <?php
 }
-include "trailer.php";
-?>
+require_once 'schoorbs-includes/trailer.php';
