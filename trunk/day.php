@@ -8,10 +8,15 @@
 
 ## Includes ##
 
+/** The Configuration file */
 require_once 'config.inc.php';
-require_once 'functions.php';
+/** The general functions */ 
+require_once 'schoorbs-includes/global.functions.php';
+/** The database wrapper */
 require_once "schoorbs-includes/database/$dbsys.php";
+/** The authetication wrappers */
 require_once 'schoorbs-includes/authentication/schoorbs_auth.php';
+/** The 3 minicalendars */
 require_once 'schoorbs-includes/minicals.php';
 
 ## Var Init ##
@@ -277,4 +282,5 @@ else
     show_colour_key();
 }
 
+/** The footer of the HTML Page */
 require_once 'trailer.php';

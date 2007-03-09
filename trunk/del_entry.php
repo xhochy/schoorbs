@@ -10,10 +10,11 @@
 
 require_once "grab_globals.php";
 require_once "config.inc.php";
-require_once "functions.php";
+require_once 'schoorbs-includes/global.functions.php';
 require_once "schoorbs-includes/database/$dbsys.php";
 require_once 'schoorbs-includes/authentication/schoorbs_auth.php';
 require_once 'schoorbs-includes/database/schoorbs_sql.php';
+require_once 'schoorbs-includes/mail.functions.php';
 
 ## Main ##
 
@@ -29,7 +30,6 @@ if(getAuthorised(1) && ($info = mrbsGetEntryInfo($id)))
 
     if (MAIL_ADMIN_ON_DELETE)
     {
-        require_once "functions_mail.php";
         // Gather all fields values for use in emails.
         $mail_previous = getPreviousEntryData($id, $series);
     }

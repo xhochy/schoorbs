@@ -8,10 +8,10 @@
 
 ## Includes ##
 
-require_once 'smarty.php';
-require_once 'schoorbs-includes/input.functions.php';
-require_once 'schoorbs-includes/time.functions.php';
-require_once 'schoorbs-includes/area.functions.php';
+require_once 'smarty.functions.php';
+require_once 'input.functions.php';
+require_once 'time.functions.php';
+require_once 'area.functions.php';
 
 ## Var Inits ##
 
