@@ -9,7 +9,7 @@
  
 ## Includes ##
 
-require_once dirname(__FILE__).'/../Smarty/libs/Smarty.class.php';
+require_once dirname(__FILE__).'/Smarty/libs/Smarty.class.php';
 // Only use HTTP session for REST requests, so that no ID or equal have to be stored 
 $bSessionIncluded = 'true';
 require_once dirname(__FILE__).'/session-plugins/session_http.php';

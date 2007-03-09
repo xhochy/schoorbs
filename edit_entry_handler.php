@@ -8,10 +8,11 @@
 
 require_once 'grab_globals.php';
 require_once 'config.inc.php';
-require_once 'functions.php';
+require_once 'schoorbs-includes/global.functions.php';
 require_once "schoorbs-includes/database/$dbsys.php";
 require_once 'schoorbs-includes/authentication/schoorbs_auth.php';
 require_once 'schoorbs-includes/database/schoorbs_sql.php';
+require_once 'schoorbs-includes/mail.functions.php';
 
 #If we dont know the right date then make it up 
 list($day, $month, $year) = input_DayMonthYear();
@@ -201,7 +202,6 @@ if(empty($err))
             if (MAIL_ADMIN_ON_BOOKINGS or MAIL_AREA_ADMIN_ON_BOOKINGS or
                 MAIL_ROOM_ADMIN_ON_BOOKINGS or MAIL_BOOKER)
             {
-                require_once "functions_mail.php";
                 // Send a mail only if this a new entry, or if this is an
                 // edited entry but we have to send mail on every change,
                 // and if mrbsCreateRepeatingEntrys is successful
@@ -245,7 +245,6 @@ if(empty($err))
             if (MAIL_ADMIN_ON_BOOKINGS or MAIL_AREA_ADMIN_ON_BOOKINGS or
                 MAIL_ROOM_ADMIN_ON_BOOKINGS or MAIL_BOOKER)
             {
-                require_once "functions_mail.php";
                 // Send a mail only if this a new entry, or if this is an
                 // edited entry but we have to send mail on every change,
                 // and if mrbsCreateRepeatingEntrys is successful
