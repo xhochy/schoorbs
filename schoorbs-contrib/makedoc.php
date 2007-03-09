@@ -3,7 +3,8 @@
 /**
  * Generates automatically the sourcecode documentation of Schoorbs
  * 
- * @author Uwe L. Korn <uwelk@xhochy.org> 
+ * @author Uwe L. Korn <uwelk@xhochy.org>
+ * @license http://www.gnu.org/licenses/gpl.html GNU General Public License 
  */
  
 $aDirs = array('.','includes',

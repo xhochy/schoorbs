@@ -14,6 +14,7 @@
  * 
  * @author jberanek, JFL
  * @package Schoorbs/Auth/IMAP
+ * @license http://www.gnu.org/licenses/gpl.html GNU General Public License
  */
 /* ~~JFL 2003/11/12 By default, use the http session mechanism */
 if (!isset($auth['session'])) $auth['session']='http';

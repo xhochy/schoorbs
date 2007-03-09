@@ -5,6 +5,7 @@
  * @author Uwe L. Korn <uwelk@xhochy.org>, thierry_bo
  * @package Schoorbs
  * @subpackage Mail
+ * @license http://www.gnu.org/licenses/gpl.html GNU General Public License
  */
 
 ## Includes ##

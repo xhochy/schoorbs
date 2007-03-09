@@ -4,6 +4,7 @@
  * 
  * @author David Wilkinson <davidw@cascade.org.uk>, gwalker, Uwe L. Korn <uwelk@xhochy.org>
  * @package PHP-Calender
+ * @license - opensource
  */
 
 //PHP Calendar Class

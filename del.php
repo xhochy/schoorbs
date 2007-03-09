@@ -5,6 +5,7 @@
  * @author Uwe L. Korn <uwelk@xhochy.org>, jberanek
  * @package Schoorbs
  * @subpackage Admin
+ * @license http://www.gnu.org/licenses/gpl.html GNU General Public License
  */
 
 require_once "grab_globals.php";

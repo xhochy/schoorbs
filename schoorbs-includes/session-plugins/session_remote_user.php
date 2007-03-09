@@ -12,6 +12,7 @@
  * 
  * @author Bjorn.Wiberg@its.uu.se
  * @package Schoorbs/Session/Remote-User
+ * @license http://www.gnu.org/licenses/gpl.html GNU General Public License
  */
 /********************************************************************************************\
 *                                                                                            *

@@ -12,6 +12,7 @@
  * 
  * @author JFL, jberanek
  * @package Schoorbs/Session/Cookie
+ * @license http://www.gnu.org/licenses/gpl.html GNU General Public License
  */
 
 if (isset($cookie_path_override))

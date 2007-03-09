@@ -17,6 +17,7 @@
  * 
  * @author Uwe L. Korn <uwelk@xhochy.org>, jberanek
  * @package Schoorbs/Session/IP
+ * @license http://www.gnu.org/licenses/gpl.html GNU General Public License
  */
 
 # No need to prompt for a name - ip address always there

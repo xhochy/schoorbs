@@ -7,6 +7,7 @@
  * 
  * @author JFL, jberanek, Uwe L. Korn <uwelk@xhochy.org>
  * @package Schoorbs/Auth/DB
+ * @license http://www.gnu.org/licenses/gpl.html GNU General Public License
  */
 
 /* session_php.inc and session_cookie.inc will add a link to the user list

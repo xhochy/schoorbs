@@ -17,6 +17,7 @@
  * 
  * @author JFL, jberanek, Uwe L. Korn <uwelk@xhochy.org>
  * @package Schoorbs/Auth/Ext
+ * @license http://www.gnu.org/licenses/gpl.html GNU General Public License
  */
 
 /**

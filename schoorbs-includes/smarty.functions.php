@@ -5,6 +5,7 @@
  * @author Uwe L. Korn
  * @package Schoorbs 
  * @subpackage Smarty
+ * @license http://www.gnu.org/licenses/gpl.html GNU General Public License
  */
 
 

@@ -7,6 +7,7 @@
  * 
  * @author JFL, jberanek, Uwe L. Korn <uwelk@xhochy.org>
  * @package Schoorbs/Session/HTTP
+ * @license http://www.gnu.org/licenses/gpl.html GNU General Public License
  */ 
 
 /* authGet()

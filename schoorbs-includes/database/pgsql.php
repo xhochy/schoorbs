@@ -19,6 +19,7 @@
  * 
  * @author jflarvoire, Uwe L. Korn <uwelk@xhochy.org>
  * @package Schoorbs/DB/PostgreSQL
+ * @license http://www.gnu.org/licenses/gpl.html GNU General Public License
  */
 
 /**

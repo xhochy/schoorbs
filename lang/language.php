@@ -1,4 +1,7 @@
 <?php
+/**
+ * @license http://www.gnu.org/licenses/gpl.html GNU General Public License
+ */
 
 # A map is needed to convert from the HTTP language specifier to a
 # locale specifier for Windows

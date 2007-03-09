@@ -10,6 +10,7 @@
  * 
  * @author JPB, jberanek
  * @package Schoorbs/Auth/DB_ext
+ * @license http://www.gnu.org/licenses/gpl.html GNU General Public License
  */
 
 /* authValidateUser($user, $pass)
