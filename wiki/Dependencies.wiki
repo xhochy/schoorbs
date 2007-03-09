@@ -13,3 +13,4 @@
 
  * [http://ch.tudelft.nl/~arthur/svn2cl svn2cl] for ChangeLog generation(new BSD)(Included in Schoorbs SVN)
  * [http://www.phpdoc.org/ PhpDocumentor] for Sourcecode documentation generation(LGPL)(Included in Schoorbs SVN)
+ * [http://www.phpunit.de/ PHPUnit] for Unit Testing(new BSD)(installable through a PEAR channel: pear.phpunit.de) _The Tests only run on PHP5_
