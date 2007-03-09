@@ -11,16 +11,16 @@
 if (!isset($auth['session'])) $auth['session'] = 'http';
 
 // include the authentification wrappers
-require_once "auth/auth_{$auth['type']}.php";
+require_once "auth_{$auth['type']}.php";
 
 if(isset($bSessionIncluded)) {
 	if(!$bSessionIncluded)
 		if (isset($auth['session']))
-			require_once "schoorbs-includes/session-plugins/session_{$auth['session']}.php";
+			require_once dirname(__FILE__)."/../session-plugins/session_{$auth['session']}.php";
 }			
 else
 	if (isset($auth['session'])) 
-		require_once "schoorbs-includes/session-plugins/session_{$auth['session']}.php";
+		require_once dirname(__FILE__)."/../session-plugins/session_{$auth['session']}.php";
 
 /**
  * Check to see if the user name/password is valid

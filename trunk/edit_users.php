@@ -27,7 +27,7 @@ require_once "grab_globals.php";
 require_once "config.inc.php";
 require_once "functions.php";
 require_once "schoorbs-includes/database/$dbsys.php";
-require_once 'auth/schoorbs_auth.php';
+require_once 'schoorbs-includes/authentication/schoorbs_auth.php';
 
 /*---------------------------------------------------------------------------*\
 |                     Create the users database if needed                     |

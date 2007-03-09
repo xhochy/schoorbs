@@ -6,9 +6,15 @@
  * @author Uwe L. Korn <uwelk@xhochy.org> 
  */
  
-$aDirs = array('.','auth','db','includes','schoorbs-includes',
-	'schoorbs-includes/input','schoorbs-includes/rest-plugins',
-	'schoorbs-includes/session-plugins');
+$aDirs = array('.','includes',
+	'schoorbs-includes',
+	'schoorbs-includes/input',
+	'schoorbs-includes/rest-plugins',
+	'schoorbs-includes/session-plugins',
+	'schoorbs-includes/authentication', 
+	'schoorbs-includes/database'
+);
+
 $aFiles = array();
 
 foreach($aDirs as $sDir)

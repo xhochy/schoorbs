@@ -13,15 +13,13 @@ require_once 'grab_globals.php';
 require_once 'config.inc.php';
 require_once 'functions.php';
 require_once "schoorbs-includes/database/$dbsys.php";
-require_once 'auth/schoorbs_auth.php';
+require_once 'schoorbs-includes/authentication/schoorbs_auth.php';
 
 ## Var Init ##
 
-/** day, month, year **/
 list($day, $month, $year) = input_DayMonthYear();
-
-/** area **/
 $area = input_Area();
+$room = input_Room();
     
 /** period **/
 if(isset($_REQUEST['period']))
@@ -30,9 +28,6 @@ if(isset($_REQUEST['period']))
 /** id **/
 if(isset($_REQUEST['id']))
 	$id = intval($id);
-	
-/** room **/
-$room = input_Room();
     
 if(isset($_REQUEST['edit_type']))
 	$edit_type = $_REQUEST['edit_type']; 
