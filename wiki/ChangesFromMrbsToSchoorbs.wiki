@@ -5,12 +5,12 @@
 
 === Filesystem Structure ===
 
-  * Moved authentication includes to auth/
-  * Moved database includes to db/
+  * Moved authentication includes to schoorbs-includes/authentication/
+  * Moved database includes to schoorbs-includes/database/
   * Moved FAQ-HTML-templates to faq/
   * Moved graphics to gfx/
   * Moved JavaScript files to js/
-  * Moved language files to lang/
+  * Moved language files to schoorbs-includes/language/
   * Moved session includes to schoorbs-includes/session/
   * Moved all CSS to style/
 
@@ -36,6 +36,7 @@
   * Added Javascript library [http://dean.edwards.name/IE7/ IE7] to support transperant png and some other stuff in Internet Explorer lower than 7.
   * Added a REST interface for interapplication communication.
   * Highlightning of Tablecells now done with http://www.prototypejs.org/
+  * automated TestSuite with [http://phpunit.de PHPUnit]
 
 
 === Security ===
