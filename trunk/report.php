@@ -10,7 +10,7 @@
 require_once 'config.inc.php';
 require_once 'schoorbs-includes/global.web.php';
 require_once 'schoorbs-includes/global.functions.php';
-require_once 'includes/report.functions.php';
+require_once 'schoorbs-includes/report.functions.php';
 require_once "schoorbs-includes/database/$dbsys.php";
 
 ## Var Init ##

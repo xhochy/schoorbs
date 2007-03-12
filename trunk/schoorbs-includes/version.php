@@ -7,12 +7,23 @@
  * @license http://www.gnu.org/licenses/gpl.html GNU General Public License
  */
 
-function get_mrbs_version()
+/**
+ * Returns a string representing the version of Schoorbs 
+ */
+function get_schoorbs_version()
 {
-  # MRBS developers, make sure to update this string before each release
-  $mrbs_version = "Schoorbs 0.1";
+  # Schoorbs developers, make sure to update this string before each release
+  $schoorbs_version = "Schoorbs ".get_schoorbs_version_number();
 
-  return $mrbs_version;
+  return $schoorbs_version;
 }
 
-?>
+/**
+ * Returns a string representing the versionnumber of Schoorbs
+ * 
+ * @author Uwe L. Korn <uwelk@xhochy.org>
+ */
+function get_schoorbs_version_number()
+{
+	return '1.0';
+}
