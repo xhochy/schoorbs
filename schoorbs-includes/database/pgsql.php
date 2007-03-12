@@ -21,6 +21,12 @@
  * @package Schoorbs/DB/PostgreSQL
  * @license http://www.gnu.org/licenses/gpl.html GNU General Public License
  */
+ 
+## Includes ##
+
+require_once dirname(__FILE__).'/../../config.inc.php';
+
+## Functions ##
 
 /**
  * Free a results handle. You need not call this if you call sql_row or
@@ -381,10 +387,8 @@ function sql_escape_arg($sArg)
  * @author Uwe L. Korn <uwelk@xhochy.org>
  * @return PostgreSQL-Connection-Handler
  */
-function sql_connect()
+function sql_connect($db_login, $db_password, $db_database, $db_host = '')
 {
-	global $db_host, $db_database, $db_login, $db_password;
-	
 	$conninfo = (empty($db_host) ? "" : "host=$db_host ")
 		. "dbname=$db_database user=$db_login password=$db_password";
 	if(empty($db_nopersist) || $db_nopersist == true)
@@ -392,7 +396,7 @@ function sql_connect()
 	else
 		$db_c = @pg_connect($conninfo);
 	
-	if(!$db_c) fatal_error(true,"\n<p>\n".get_vocab("failed_connect_db")."\n");
+	if(!$db_c) fatal_error(true,get_vocab("failed_connect_db"));
 	
 	return $db_c;
 }
@@ -400,4 +404,4 @@ function sql_connect()
 /**
  * Autmatically connects to the database, when this file is included
  */
-$db_c = sql_connect();
+$db_c = sql_connect($db_login, $db_password, $db_database, $db_host);

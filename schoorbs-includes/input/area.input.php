@@ -11,8 +11,8 @@
 /**
  * Return a default area; used if no area is already known. This returns the
  * lowest area ID in the database (no guaranty there is an area 1).
- * This could be changed to implement something like per-user defaults.
  * 
+ * @todo This could be changed to implement something like per-user defaults.
  * @author Uwe L. Korn <uwelk@xhochy.org>
  * @return int the ID of the default Area
  */ 
@@ -28,8 +28,9 @@ function get_default_area()
 /**
  * Catches the Area out of the REQUEST-Array and the defaults
  * 
+ * @todo Check if there area exists
  * @author Uwe L. Korn <uwelk@xhochy.org>
- * @return array (day,month,year)
+ * @return int
  */ 
 function input_Area()
 {
@@ -37,7 +38,7 @@ function input_Area()
 	    if(empty($_REQUEST['area']))
 	        $area = get_default_area();
 	    else
-	        $area = unslashes($_REQUEST['area']);
+	        $area = intval($_REQUEST['area']);
 	else
 	    $area = get_default_area();
 	return $area;

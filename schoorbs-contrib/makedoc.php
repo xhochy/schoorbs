@@ -13,7 +13,9 @@ $aDirs = array('.','includes',
 	'schoorbs-includes/rest-plugins',
 	'schoorbs-includes/session-plugins',
 	'schoorbs-includes/authentication', 
-	'schoorbs-includes/database'
+	'schoorbs-includes/database',
+	'schoorbs-test',
+	'schoorbs-test/input-tests'
 );
 
 $aFiles = array();
