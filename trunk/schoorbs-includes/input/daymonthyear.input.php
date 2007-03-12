@@ -42,7 +42,7 @@ function input_DayMonthYear()
 	else
 	{
 		$year = intval(unslashes($_REQUEST['year']));
-	    if($year < 1970) $year = 1970; //there should't be installation of Schoorbs that go back to 1999
+	    if($year < 1970) $year = 1970; //there should't be a installation of Schoorbs that go back to 1970
 	    if($year > 2100) $year = 2100; //Will somebody use Schoorbs in 2100?
 	}
 

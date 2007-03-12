@@ -10,6 +10,12 @@
  
 ## Includes ##
 
+require_once dirname(__FILE__).'/../config.inc.php';
+require_once 'global.functions.php';
+require_once "database/$dbsys.php";
+
+## Input Plugins ##
+
 require_once 'input/daymonthyear.input.php';
 require_once 'input/area.input.php';
 require_once 'input/room.input.php';

@@ -11,6 +11,8 @@
 
 /** The Configuration file */
 require_once 'config.inc.php';
+/** The general 'things' when viewing Schoorbs on the web */
+require_once 'schoorbs-includes/global.web.php';
 /** The general functions */ 
 require_once 'schoorbs-includes/global.functions.php';
 /** The database wrapper */

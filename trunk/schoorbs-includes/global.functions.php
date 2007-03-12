@@ -9,18 +9,10 @@
 
 ## Includes ##
 
+require_once dirname(__FILE__).'/../config.inc.php';
 require_once 'smarty.functions.php';
-require_once 'input.functions.php';
 require_once 'time.functions.php';
 require_once 'area.functions.php';
-
-## Var Inits ##
-
-$pview = input_PView();
-// ensure that $morningstarts_minutes defaults to zero if not set
-if(empty($morningstarts_minutes))
-	$morningstarts_minutes = 0;
-
 
 ## Functions ##
 
@@ -212,9 +204,17 @@ function fatal_error($need_header, $message)
 		$message = $need_header;//sometimes fatal_error is called wrong
 		// no time to fix this in general, so I made this short fix
 		// REMOVE IT IN FUTURE !!!
-	if ($need_header) print_header(0, 0, 0, 0);
-	echo $message;
-	require_once "trailer.php";
+	
+	if(defined('SCHOORBS_NOGUI'))
+	{
+		echo 'Schoorbs Fatal Error: '.$message."\n";	
+	}	
+	else
+	{
+		if ($need_header) print_header(0, 0, 0, 0);
+		echo $message;
+		require_once 'trailer.php';
+	}
 	exit(0);
 }
 
