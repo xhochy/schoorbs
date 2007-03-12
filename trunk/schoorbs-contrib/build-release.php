@@ -27,7 +27,8 @@ system('cp -r *.php config.inc.php-dist robots.txt style/ schoorbs-includes/ RES
 // delete .svn directories
 system('cd schoorbs-dist/tmp/schoorbs-'
 	.get_schoorbs_version_number()
-	.' && find -name ".svn" -type d | xargs rm -rf && cd -'); 
+	.' && find -name ".svn" -type d | xargs rm -rf && cd -');
+system('rm -f schoorbs-dist/tmp/schoorbs-'.get_schoorbs_version_number().'/config.inc.php'); 
 system('cd schoorbs-dist/tmp/ && zip -r ../schoorbs-'
 	.get_schoorbs_version_number()
 	.'.zip schoorbs-'.get_schoorbs_version_number()
