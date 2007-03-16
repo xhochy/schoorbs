@@ -198,7 +198,7 @@ function toPeriodString($start_period, &$dur, &$units)
 # errors which "should never happen", not those caused by bad inputs.
 # If $need_header!=0 output the top of the page too, else assume the
 # caller did that. Alway outputs the bottom of the page and exits.
-function fatal_error($need_header, $message)
+function fatal_error($need_header, $message = '')
 {
 	if($need_header !== true && $need_header !== false)
 		$message = $need_header;//sometimes fatal_error is called wrong
@@ -207,15 +207,18 @@ function fatal_error($need_header, $message)
 	
 	if(defined('SCHOORBS_NOGUI'))
 	{
-		echo 'Schoorbs Fatal Error: '.$message."\n";	
+		if(version_compare('5.0.0',PHP_VERSION,'>'))	
+			trigger_error('Schoorbs Fatal Error: '.$message, E_USER_ERROR);
+		else
+			throw new Exception($message); 	
 	}	
 	else
 	{
 		if ($need_header) print_header(0, 0, 0, 0);
 		echo $message;
 		require_once 'trailer.php';
+		exit(0);
 	}
-	exit(0);
 }
 
 # 

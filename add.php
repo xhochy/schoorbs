@@ -9,27 +9,23 @@
 
 ## Includes ##
 
-require_once "config.inc.php";
+/** The Configuration file */
+require_once 'config.inc.php';
+/** The general 'things' when viewing Schoorbs on the web */
 require_once 'schoorbs-includes/global.web.php';
+/** The general functions */ 
 require_once 'schoorbs-includes/global.functions.php';
+/** The database wrapper */
 require_once "schoorbs-includes/database/$dbsys.php";
+/** The authetication wrappers */
 require_once 'schoorbs-includes/authentication/schoorbs_auth.php';
 
 ## Var Init ##
 
 /** day, month, year */
 list($day, $month, $year) = input_DayMonthYear();
+$type = input_Type();
 
-if(isset($_REQUEST['type']))
-	if(!empty($_REQUEST['type']))
-		$type = $_REQUEST['type'];
-	else
-		fatal_error('type not defined');//TODO: make l10n
-else
-	fatal_error('type not defined');//TODO: make l10n
-	
-if($type != 'area' && $type != 'room')
-	fatal_error('type must be one of area,room');//TODO: make l10n
 	
 if(isset($_REQUEST['name']))
 	if(!empty($_REQUEST['name']))
