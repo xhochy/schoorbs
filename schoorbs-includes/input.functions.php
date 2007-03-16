@@ -22,3 +22,4 @@ require_once 'input/room.input.php';
 require_once 'input/pview.input.php';
 require_once 'input/type.input.php';
 require_once 'input/name.input.php';
+require_once 'input/description.input.php';
