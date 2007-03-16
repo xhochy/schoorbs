@@ -1,21 +1,13 @@
 <?php
 /**
  * Simple PHP database support for PostgreSQL.
- * Include this file after defining the following variables:
- *   $db_host = The hostname of the database server
- *   $db_login = The username to use when connecting to the database
- *   $db_password = The database account password
- *   $db_database = The database name.
+ * 
+ * Include this file after defining the following variables:<br />
+ *   $db_host = The hostname of the database server<br />
+ *   $db_login = The username to use when connecting to the database<br />
+ *   $db_password = The database account password<br />
+ *   $db_database = The database name.<br />
  * Including this file connects you to the database, or exits on error.
- * This code hides an implementation difference in error reporting by the PHP
- * PostgreSQL and MySQL extensions. PostgreSQL reports an E_WARNING error
- * for some queries which MySQL does not; both properly set their own
- * error code and the PHP error raised by PostgreSQL is not needed.
- * The code here turns that off with error_reporting() calls around each
- * pg_exec call, so as not to make you change the display_errors
- * setting in your php.ini configuration file.
- * Note: In future the warnings should be prohibited through @'s before those 
- * commands, so that no error_reporting is need to be used.
  * 
  * @author jflarvoire, Uwe L. Korn <uwelk@xhochy.org>
  * @package Schoorbs/DB/PostgreSQL
@@ -24,6 +16,7 @@
  
 ## Includes ##
 
+/** The Configuration file */
 require_once dirname(__FILE__).'/../../config.inc.php';
 
 ## Functions ##
@@ -33,7 +26,7 @@ require_once dirname(__FILE__).'/../../config.inc.php';
  * sql_row_keyed until the row returns 0, since sql_row frees the results
  * handle when you finish reading the rows.
  * 
- * @param $r PostgreSQL-Result
+ * @param PostgreSQL-Result $r
  */
 function sql_free ($r)
 {
@@ -90,7 +83,7 @@ function sql_query1 ($sql)
  * which should be passed back to sql_row or sql_row_keyed to get the results.
  * Returns 0 on error; use sql_error to get the error message.
  * 
- * @param $sql The SQL Query
+ * @param string $sql The SQL Query
  * @return PostgreSQL-Result-Handle
  */
 function sql_query ($sql)
@@ -102,11 +95,6 @@ function sql_query ($sql)
 	return $r;
 }
 
-// 
-// 
-// 
-// 
-// Typical usage: $i = 0; while ((a = sql_row($r, $i++))) { ... }
 /**
  * Return a row from a result. The first row is 0.
  * The row is returned as an array with index 0=first column, etc.
@@ -331,8 +319,8 @@ function sql_syntax_caseless_contains($fieldname, $s)
 /**
  * Returns the name of a field.
  * 
- * @param PostgreSQL-Result-Handle $r
- * @param int $i
+ * @param PostgreSQL-Result-Handle $result
+ * @param int $index
  * @return string
  */
 function sql_field_name($result, $index)
@@ -344,8 +332,8 @@ function sql_field_name($result, $index)
 /**
  * Returns the type of a field. (one of "int", "real", "string", "blob", etc...)
  * 
- * @param PostgreSQL-Result-Handle $r
- * @param int $i
+ * @param PostgreSQL-Result-Handle $result
+ * @param int $index
  * @return string
  */
 function sql_field_type($result, $index)
@@ -356,7 +344,7 @@ function sql_field_type($result, $index)
 /**
  * Returns the number of fields in a result.
  * 
- * @param PostgreSQL-Result-Handle $r
+ * @param PostgreSQL-Result-Handle $result
  * @return int
  */ 
 function sql_num_fields($result)
@@ -386,6 +374,10 @@ function sql_escape_arg($sArg)
  * This function is called automatically when this file is included!
  * @author Uwe L. Korn <uwelk@xhochy.org>
  * @return PostgreSQL-Connection-Handler
+ * @param string $db_login The username for the PostgreSQL Database
+ * @param string $db_password The password for the PostgreSQL Database
+ * @param string $db_database The database which should be used
+ * @param string $db_host The host on which PostgreSQL runs
  */
 function sql_connect($db_login, $db_password, $db_database, $db_host = '')
 {

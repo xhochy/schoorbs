@@ -30,6 +30,7 @@ require_once 'PHPUnit/TextUI/TestRunner.php';
 require_once 'input-tests/area.test.php';
 require_once 'input-tests/daymonthyear.test.php';
 require_once 'input-tests/room.test.php';
+require_once 'input-tests/type.test.php';
 
 ## The Testsuite ##
 
@@ -47,6 +48,8 @@ class Input_AllTests
         $suite->addTestSuite('Input_AreaTest');
         $suite->addTestSuite('Input_DayMonthYearTest');
         $suite->addTestSuite('Input_RoomTest');
+        $suite->addTestSuite('Input_TypeTest');
+        $suite->addTestSuite('Input_TypeTest_Exceptions');
  
         return $suite;
     }
