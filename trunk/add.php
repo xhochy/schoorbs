@@ -4,6 +4,7 @@
  *
  * @author jberanek, Uwe L. Korn <uwelk@xhochy.org>
  * @package Schoorbs
+ * @subpackage Admin
  * @license http://www.gnu.org/licenses/gpl.html GNU General Public License
  */
 
@@ -30,12 +31,7 @@ $name = input_Name();
 if($type == 'room')
 {
 	$area = input_Area();
-	
-	/** description **/    
-	if(isset($_REQUEST['description']))
-		$description = $_REQUEST['description'];
-	else
-		$description = '';
+	$description = input_Description();
 		
 	if(isset($_REQUEST['capacity']))
 		if(!empty($_REQUEST['capacity']))
@@ -53,11 +49,7 @@ if(!getAuthorised(2))
 	showAccessDenied();
 }
 
-# This file is for adding new areas/rooms
-
-# we need to do different things depending on if its a room
-# or an area
-
+/** we need to do different things depending on if its a room or an area */
 if ($type == "area")
 {
 	$area_name_q = sql_escape_arg($name);

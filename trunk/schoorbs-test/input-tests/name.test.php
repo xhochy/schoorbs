@@ -43,7 +43,7 @@ class Input_NameTest_Exceptions extends PHPUnit_Extensions_ExceptionTestCase
         unset($_REQUEST['name']);
  
         $this->setExpectedException('Exception');
-        input_Type();
+        input_Name();
     }
     
     /**
@@ -61,7 +61,7 @@ class Input_NameTest_Exceptions extends PHPUnit_Extensions_ExceptionTestCase
  		$_REQUEST['name'] = '';
  
         $this->setExpectedException('Exception');
-        input_Type();
+        input_Name();
     }
 }
 
