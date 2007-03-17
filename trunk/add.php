@@ -32,14 +32,7 @@ if($type == 'room')
 {
 	$area = input_Area();
 	$description = input_Description();
-		
-	if(isset($_REQUEST['capacity']))
-		if(!empty($_REQUEST['capacity']))
-			$capacity = intval($_REQUEST['capacity']);
-		else
-			fatal_error('capacity not defined');//TODO: make l10n
-	else
-		fatal_error('capacity not defined');//TODO: make l10n
+	$capacity = input_Capacity();	
 }
 
 ## Main ##

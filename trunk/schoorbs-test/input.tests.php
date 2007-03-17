@@ -33,6 +33,7 @@ require_once 'input-tests/room.test.php';
 require_once 'input-tests/type.test.php';
 require_once 'input-tests/name.test.php';
 require_once 'input-tests/description.test.php';
+require_once 'input-tests/capacity.test.php';
 
 ## The Testsuite ##
 
@@ -55,6 +56,8 @@ class Input_AllTests
         $suite->addTestSuite('Input_NameTest');
         $suite->addTestSuite('Input_NameTest_Exceptions');
         $suite->addTestSuite('Input_DescriptionTest');
+        $suite->addTestSuite('Input_CapacityTest');
+        $suite->addTestSuite('Input_CapacityTest_Exceptions');
  
         return $suite;
     }
