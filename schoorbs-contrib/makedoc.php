@@ -14,8 +14,8 @@ $aDirs = array('.','includes',
 	'schoorbs-includes/session-plugins',
 	'schoorbs-includes/authentication', 
 	'schoorbs-includes/database',
-	'schoorbs-test',
-	'schoorbs-test/input-tests'
+	'schoorbs-tests',
+	'schoorbs-tests/input-tests'
 );
 
 $aFiles = array();
@@ -31,4 +31,3 @@ system('./schoorbs-contrib/phpdoc -pp on ' .
 		'-dc "Schoorbs" ' .
 		'-tb '.dirname(__FILE__).'/PhpDocumentor/phpDocumentor/ '.
 		'--title "Schoorbs Sourcecode Documentation" -t schoorbs-doc/ -f '.implode(',',$aFiles));
-?>
