@@ -10,10 +10,7 @@
 .tab1        {padding:5px;border-spacing:3px;}
 .tab1 td     {background-color:#DDDDDD;padding:3px;}
 pre          {background-color:#FFFFE0;padding:10px;}
-html {
-	padding: 0px;
-	margin: 0px;
-}
+html {padding: 0px; margin: 0px;}
 body {
   background-color: #FFFFFF;
   font-size: 12px;
@@ -63,10 +60,7 @@ a.menu_link {
 	color: blue;
 }
 
-a {
-	text-decoration: none;
-	color: blue;
-}
+a {text-decoration: none; color: blue;}
 a:hover {
 	text-decoration: underline;
 	color: red;
@@ -78,25 +72,91 @@ a.headerLink {
 	font-weight: bold;
 	font-size: 17px;
 }
-
 form {
 	display: inline;
 }
-
 td.banner {
 	vertical-align: middle;
 	color: white;
 	background-color: #7799FF !important;
 	border: dashed black 2px;
 }
-
 img {
 	border: 0px;
 }
-
 img.menu_icon {
-	/*height: 22px;
-	width: 22px;*/
 	position: relative;
 	top: 5px;
 }
+H1 {color:black; font-family:verdana,sans-serif; font-size:16pt}
+H2 {color:black; font-family:verdana,sans-serif; font-size:14pt}
+H3 {font-family:verdana,sans-serif}
+
+td {font-size:10pt; font-family:arial,sans-serif; border-width:1px;
+vertical-align:top}
+TD.header {color:black; font-family:verdana,sans-serif; border-width:0;
+background-color:#ffffdd; font-size:26pt}
+TD.CR { vertical-align: middle; text-align: right}
+TD.CL { vertical-align: middle; text-align: left}
+TD.BR { vertical-align: baseline; text-align: right}
+TD.BL { vertical-align: baseline; text-align: left}
+TD.TR { vertical-align: top; text-align: right}
+TD.TL { vertical-align: top; text-align: left}
+
+td form { margin:0; } /* Prevent IE from displaying margins around forms in tables.*/
+
+td.unallocated {color:gray}
+td.allocated {color:black}
+A:link.unallocated {color:#9BA9E6}
+A:link.allocated {color:#5B69A6}
+
+A:hover.unallocated {color:red}
+A:hover.allocated {color:red}
+
+A.blue {color:blue}
+A:visited.blue {color:blue}
+A:hover.blue {color:red}
+
+TH {color:#eeeeee; font-size:10pt; font-family:verdana,sans-serif;
+background-color:#999999;
+border-width:1px; border-color:#999999; vertical-align:top}
+
+.blue {background-color:#F0F0FF}
+.red  {background-color:#FFF0F0}
+.green {background-color:#DDFFDD}
+.A {background-color:#FFCCFF}
+.B {background-color:#99CCCC}
+.C {background-color:#FF9999}
+.D {background-color:#FFFF99}
+.E {background-color:#C0E0FF}
+.F {background-color:#FFCC99}
+.G {background-color:#FF6666}
+.H {background-color:#66FFFF}
+.I {background-color:#DDFFDD}
+.J {background-color:#CCCCCC}
+.white {background-color:#FFFFFF}
+
+TD.calendar { border:0px; font-size: 8pt}
+TD.calendarHeader {border:0px; font-size: 10pt}
+.calendarHighlight {color: red}
+
+TD.even_row {background-color:#FFFFFF}	/* Even rows in the day view */
+TD.odd_row {background-color:#EEEEEE;}	/* Odd rows in the day view */
+
+.highlight {  /* The highlighted cell under the cursor */
+	background-color: #AABBFF !important; 
+}
+.naked { margin: 0px; padding: 0px; border-width:0px} /* Invisible tables used for internal needs */
+
+.sitename
+{font-size: 18px;
+font-style: normal;
+font-weight: bold;
+text-transform: none;
+color:#ffffff;
+position: absolute;
+left:30px;
+top:12px}
+
+TD.month {font-size: 8pt; background-color:#FFFFFF}
+.monthday {font-size: 12pt; vertical-align: top; text-align: left}
