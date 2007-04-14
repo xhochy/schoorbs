@@ -13,6 +13,8 @@ require_once dirname(__FILE__).'/../config.inc.php';
 require_once 'smarty.functions.php';
 require_once 'time.functions.php';
 require_once 'area.functions.php';
+/** The authetication wrappers */
+require_once dirname(__FILE__).'/../schoorbs-includes/authentication/schoorbs_auth.php';
 
 ## Functions ##
 

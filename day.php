@@ -17,8 +17,6 @@ require_once 'schoorbs-includes/global.web.php';
 require_once 'schoorbs-includes/global.functions.php';
 /** The database wrapper */
 require_once "schoorbs-includes/database/$dbsys.php";
-/** The authetication wrappers */
-require_once 'schoorbs-includes/authentication/schoorbs_auth.php';
 /** The 3 minicalendars */
 require_once 'schoorbs-includes/minicals.php';
 
@@ -83,7 +81,8 @@ if($pview != 1)
 $sql = "SELECT $tbl_room.id, start_time, end_time, name, $tbl_entry.id, type,
         $tbl_entry.description, $tbl_entry.create_by
    FROM $tbl_entry, $tbl_room WHERE $tbl_entry.room_id = $tbl_room.id
-   AND area_id = ".sql_escape_arg($area)." AND start_time <= $pm7 AND end_time > $am7";
+   AND area_id = ".sql_escape_arg($area)
+   ." AND start_time <= $pm7 AND end_time > $am7";
 
 $res = sql_query($sql);
 if (! $res) fatal_error(0, sql_error());

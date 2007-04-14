@@ -3,7 +3,7 @@
  * 
  * @author Uwe L. Korn <uwelk@xhochy.org>
  */
-Schoorbs = Class.create();
+Schoorbs = {};
 Schoorbs.showRightSide = false;
 
 /**
@@ -28,7 +28,7 @@ function HighlightCell(cell)
 	if(cell.isActive) return;
 	cell.isActive = true;
 	
-	Element.addClassName(cell,'highlight');
+	$(cell).addClass('highlight');
 }
 
 /**
@@ -38,6 +38,6 @@ function HighlightCell(cell)
  */
 function UnHighlightCell(cell)
 {
-	Element.removeClassName(cell,'highlight')
+	$(cell).removeClass('highlight');
 	cell.isActive = false;
 }
