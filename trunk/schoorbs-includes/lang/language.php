@@ -336,6 +336,9 @@ if (!$disable_automatic_language_changing)
 {
   $doneit = 0;
 
+	// Deafult german
+	$locale = 'de';
+
   # First try for an exact match, so if the user specified en-gb, look
   # for lang.en-gb
 

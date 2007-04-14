@@ -225,7 +225,7 @@ function sql_num_fields($result)
  */
 function sql_escape_arg($sArg)
 {
-	return mysql_escape_string($sArg);
+	return mysql_real_escape_string($sArg);
 }
 
 

@@ -1,2 +1,2 @@
 #!/bin/sh
-phpunit AllTests schoorbs-test/all.tests.php 
+phpunit AllTests schoorbs-tests/all.tests.php 
