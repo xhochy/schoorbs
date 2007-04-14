@@ -209,10 +209,12 @@ function fatal_error($need_header, $message = '')
 	
 	if(defined('SCHOORBS_NOGUI'))
 	{
-		if(version_compare('5.0.0',PHP_VERSION,'>'))	
+		if(version_compare('5.0.0',PHP_VERSION,'>') === true) {
 			trigger_error('Schoorbs Fatal Error: '.$message, E_USER_ERROR);
-		else
-			throw new Exception($message); 	
+		} else {
+			$oException = new Exception($message);
+			throw($oException);
+		}
 	}	
 	else
 	{

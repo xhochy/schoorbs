@@ -4,7 +4,6 @@
 <head>
     <title>{$mrbs_company} - Schoorbs</title>
     <link rel="stylesheet" type="text/css" href="style/style.css" />
-    <link rel="stylesheet" href="style/mrbs.css" type="text/css" />
     <link rel="home" href="index.php" />
     <script type="text/javascript" src="js/jquery.pack.js"></script>
     <script type="text/javascript" src="js/schoorbs.js"></script>
