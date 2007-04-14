@@ -38,13 +38,13 @@ function smarty_function_genDateSelector($params, &$smarty)
     else
     	$year = intval($params['year']);
     	
-    $sOut = "<select name=\"${prefix}day\">\n";
+    $sOut = "<select name=\"${prefix}day\" id=\"${prefix}day\">\n";
 	
 	for($i = 1; $i <= 31; $i++)
 		$sOut.= "<option" . ($i == $day ? " selected=\"selected\"" : "") . ">$i</option>\n";
 
 	$sOut.= "</select>";
-	$sOut.= "<select name=\"${prefix}month\" onchange=\"ChangeOptionDays(this.form,'$prefix')\">\n";
+	$sOut.= "<select name=\"${prefix}month\" id=\"${prefix}month\" onchange=\"ChangeOptionDays('$prefix')\">\n";
 
 	for($i = 1; $i <= 12; $i++)
 	{
@@ -54,7 +54,7 @@ function smarty_function_genDateSelector($params, &$smarty)
 	}
 
 	$sOut.= "</select>";
-	$sOut.= "<select name=\"${prefix}year\" onchange=\"ChangeOptionDays(this.form,'$prefix')\">\n";
+	$sOut.= "<select name=\"${prefix}year\" id=\"${prefix}year\" onchange=\"ChangeOptionDays('$prefix')\">\n";
 
 	$min = min($year, date("Y")) - 5;
 	$max = max($year, date("Y")) + 5;
@@ -65,7 +65,3 @@ function smarty_function_genDateSelector($params, &$smarty)
 	$sOut.= "</select>";
 	return $sOut;
 }
-
-/* vim: set expandtab: */
-
-?>
