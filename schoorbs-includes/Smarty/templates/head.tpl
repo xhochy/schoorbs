@@ -5,6 +5,7 @@
     <title>{$mrbs_company} - Schoorbs</title>
     <link rel="stylesheet" type="text/css" href="style/style.css" />
     <link rel="home" href="index.php" />
+
     <script type="text/javascript" src="js/jquery.pack.js"></script>
     <script type="text/javascript" src="js/schoorbs.js"></script>
     <!-- compliance patch for microsoft browsers -->
@@ -14,10 +15,6 @@
     </script>
     <script src="js/ie7/ie7-standard-p.js" type="text/javascript"></script>
     <![endif]-->
-    
-    <!-- The following 2 javascript-files are deprecated, only included for compability -->
-    <script type="text/javascript" src="js/old.js"></script>
-    <script type="text/javascript" src="js/xbLib.js"></script>
 </head>
 <body>
 	<div id="menu_logo">
@@ -49,7 +46,7 @@
 	     			<input type="hidden" name="area" value="{$Area}" />
 	   			{/if}
            		<script type="text/javascript">
-           		ChangeOptionDays(document.Form1, ''); // Note: The 2nd arg must match the first in the call to genDateSelector above.
+           			ChangeOptionDays(''); // Note: The 2nd arg must match the first in the call to genDateSelector above.
            		</script>
            		<input type="submit" value="{get_vocab text="viewday"}" />
            </div>
