@@ -37,10 +37,10 @@ function session_php_main()
 	if (isset($_REQUEST['Action']) && ($_REQUEST['Action'] == "SetName"))
 	{
 		/* First make sure the password is valid */
-	    if (empty($_REQUEST['NewUserName']))	
+	    if (empty($_REQUEST['NewUserName'])) {	
 	        // Unset the session variables
 	        $_SESSION = array();
-	    else {
+	    } else {
 	        $NewUserName = unslashes($_REQUEST['NewUserName']);
 	        $NewUserPassword = unslashes($_REQUEST['NewUserPassword']);
 	        if (!authValidateUser($NewUserName, $NewUserPassword)) {
@@ -143,8 +143,8 @@ function PrintLogonBox()
     
     $user = getUserName();
     
-    $smarty->assign('TargetURL',$TargetURL);
-    $smarty->assign('user_list_link',$user_list_link);
+    $smarty->assign('TargetURL', $TargetURL);
+    $smarty->assign('user_list_link', $user_list_link);
     
     if(isset($user) && !empty($user))
     {
@@ -164,4 +164,3 @@ function PrintLogonBox()
 
 ## Main ##
 session_php_main();
-?>

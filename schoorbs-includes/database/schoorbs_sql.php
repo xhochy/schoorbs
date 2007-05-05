@@ -463,5 +463,3 @@ function mrbsGetRoomArea($id)
 	if ($id <= 0) return 0;
 	return $id;
 }
-
-?>
