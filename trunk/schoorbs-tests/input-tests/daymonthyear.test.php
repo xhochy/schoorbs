@@ -165,25 +165,25 @@ class Input_DayMonthYearTest extends PHPUnit_Framework_TestCase
 	public function testYearLetters()
 	{
 		unset($_GET['day']);
-        unset($_POST['day']);
-        unset($_COOKIE['day']);
-        unset($_REQUEST['day']);
+	        unset($_POST['day']);
+        	unset($_COOKIE['day']);
+	        unset($_REQUEST['day']);
+	        
+	        unset($_GET['month']);
+	        unset($_POST['month']);	
+	        unset($_COOKIE['month']);
+	        unset($_REQUEST['month']);
+	        
+	        unset($_GET['year']);
+	        unset($_POST['year']);
+	        unset($_COOKIE['year']);
+	        unset($_REQUEST['year']);
         
-        unset($_GET['month']);
-        unset($_POST['month']);
-        unset($_COOKIE['month']);
-        unset($_REQUEST['month']);
+        	$_REQUEST['day'] = 2;
+	        $_REQUEST['month'] = 2;
+        	$_REQUEST['year'] = 'sgs';
         
-        unset($_GET['year']);
-        unset($_POST['year']);
-        unset($_COOKIE['year']);
-        unset($_REQUEST['year']);
-        
-        $_REQUEST['day'] = 2;
-        $_REQUEST['month'] = 2;
-        $_REQUEST['year'] = 'sgs';
-        
-        list($day, $month, $year) = input_DayMonthYear();
+	        list($day, $month, $year) = input_DayMonthYear();
 		
 		$this->assertEquals(2, $day);
 		$this->assertEquals(2, $month);

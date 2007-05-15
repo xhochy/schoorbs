@@ -174,13 +174,15 @@ function schoorbsCreateSingleEntry($starttime, $endtime, $entry_type, $repeat_id
  *   0        - An error occured while inserting the entry
  *   non-zero - The entry's ID
  */
-function mrbsCreateRepeatEntry($starttime, $endtime, $rep_type, $rep_enddate, $rep_opt,
+function schoorbsCreateRepeatEntry($starttime, $endtime, $rep_type, $rep_enddate, $rep_opt,
                                $room_id, $owner, $name, $type, $description, $rep_num_weeks)
 {
 	global $tbl_repeat;
 
 	$name        = sql_escape_arg($name);
 	$description = sql_escape_arg($description);
+        $owner       = sql_escape_arg($owner);
+        $type        = sql_escape_arg($type);
 	
 	// Let's construct the sql statement:
 	$sql_coln = array(); $sql_val = array();
@@ -386,6 +388,7 @@ function mrbsCreateRepeatingEntrys($starttime, $endtime, $rep_type, $rep_enddate
 	global $max_rep_entrys;
 	
 	$reps = mrbsGetRepeatEntryList($starttime, $rep_enddate, $rep_type, $rep_opt, $max_rep_entrys, $rep_num_weeks);
+
 	if(count($reps) > $max_rep_entrys)
 		return 0;
 	
@@ -395,7 +398,7 @@ function mrbsCreateRepeatingEntrys($starttime, $endtime, $rep_type, $rep_enddate
 		return $ent;
 	}
 	
-	$ent = mrbsCreateRepeatEntry($starttime, $endtime, $rep_type, $rep_enddate, $rep_opt, $room_id, $owner, $name, $type, $description, $rep_num_weeks);
+	$ent = schoorbsCreateRepeatEntry($starttime, $endtime, $rep_type, $rep_enddate, $rep_opt, $room_id, $owner, $name, $type, $description, $rep_num_weeks);
 	if($ent)
 	{
 	
