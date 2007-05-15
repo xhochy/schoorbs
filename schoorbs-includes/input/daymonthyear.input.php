@@ -24,7 +24,7 @@ function input_DayMonthYear()
 	    if($day < 1) $day = 1;
 	    if($day > 31) $day = 31;
 	}	
-	
+
 	/** month **/
 	if (!isset($_REQUEST['month'])) {
 		$month = date('m');

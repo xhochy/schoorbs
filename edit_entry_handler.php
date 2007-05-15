@@ -16,10 +16,46 @@ require_once 'schoorbs-includes/authentication/schoorbs_auth.php';
 require_once 'schoorbs-includes/database/schoorbs_sql.php';
 require_once 'schoorbs-includes/mail.functions.php';
 
+## Input ##
+
 #If we dont know the right date then make it up 
 list($day, $month, $year) = input_DayMonthYear();
 
 $area = input_Area();
+
+if (isset($_REQUEST['all_day'])) {
+	$all_day = $_REQUEST['all_day'];
+}
+
+if (isset($_REQUEST['reptype'])) {
+	$rep_type = $_REQUEST['reptype'];
+}
+
+if (isset($_REQUEST['rep_end_month'])) {
+	$rep_end_month = $_REQUEST['rep_end_month'];
+}
+
+if (isset($_REQUEST['rep_end_day'])) {
+	$rep_end_day = $_REQUEST['rep_end_day'];
+}
+
+if (isset($_REQUEST['rep_end_year'])) {
+	$rep_end_year = $_REQUEST['rep_end_year'];
+}
+
+if (isset($_REQUEST['rep_day'])) {
+	$rep_day = $_REQUEST['rep_day'];
+}
+
+if (isset($_REQUEST['rep_opt'])) {
+	$rep_day = $_REQUEST['rep_opt'];
+}
+
+if (isset($_REQUEST['id'])) {
+	$id = $_REQUEST['id'];
+}
+
+## Main ##
 
 if(!getAuthorised(1) || !getWritable($create_by, getUserName()))
 {
@@ -30,7 +66,7 @@ if ($name == '')
 {
      print_header($day, $month, $year, $area);
      ?>
-       <h1><?php echo get_vocab('invalid_booking'); ?></11>
+       <h1><?php echo get_vocab('invalid_booking'); ?></h1>
        <?php echo get_vocab('must_set_description'); ?>
    </body>
 </html>
@@ -183,7 +219,7 @@ foreach ( $rooms as $room_id ) {
     }
     else
     {
-        $err        .= get_vocab("too_may_entrys") . "<P>";
+        $err        .= get_vocab("too_may_entrys") . "<br /><br />";
         $hide_title  = 1;
     }
   }
@@ -297,19 +333,19 @@ if(strlen($err))
 {
     print_header($day, $month, $year, $area);
     
-    echo "<H2>" . get_vocab("sched_conflict") . "</H2>";
+    echo "<h2>" . get_vocab("sched_conflict") . "</h2>";
     if(!isset($hide_title))
     {
         echo get_vocab("conflict");
-        echo "<UL>";
+        echo "<ul>";
     }
     
     echo $err;
     
     if(!isset($hide_title))
-        echo "</UL>";
+        echo "</ul>";
 }
 
-echo "<a href=\"$returl\">".get_vocab("returncal")."</a><p>";
+echo "<a href=\"$returl\">".get_vocab("returncal")."</a><br /><br />";
 
 require_once 'schoorbs-includes/trailer.php';

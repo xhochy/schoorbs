@@ -86,9 +86,9 @@ function getYesterday($day, $month, $year)
 {
 	$i = mktime(12,0,0,$month,$day-1,$year);
 	$aRet = array();
-	$aRet[] = date("Y",$i);
-	$aRet[] = date("m",$i);
 	$aRet[] = date("d",$i);
+	$aRet[] = date("m",$i);
+	$aRet[] = date("Y",$i);
 	return $aRet;
 }
 
@@ -105,8 +105,8 @@ function getTomorrow($day, $month, $year)
 {
 	$i = mktime(12,0,0,$month,$day+1,$year);
 	$aRet = array();
-	$aRet[] = date("Y",$i);
-	$aRet[] = date("m",$i);
 	$aRet[] = date("d",$i);
+	$aRet[] = date("m",$i);
+	$aRet[] = date("Y",$i);
 	return $aRet;
 }
