@@ -10,10 +10,11 @@
 
 ## Includes ##
 
+
 require_once 'config.inc.php';
+require_once 'schoorbs-includes/rest.functions.php';
 require_once "schoorbs-includes/database/$dbsys.php";
 require_once 'schoorbs-includes/input.functions.php';
-require_once 'schoorbs-includes/rest.functions.php';
 require_once 'schoorbs-includes/time.functions.php';
 
 ## Init ##
@@ -28,4 +29,3 @@ if(!isValidRESTFunction($sFunctionName))
 	sendRESTError('Function does not exist', 2);
 	
 callRESTFunction($sFunctionName);
-?>
