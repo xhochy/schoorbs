@@ -23,6 +23,6 @@ function rest_function_getRoomID()
 	$nRoomID = sql_query1($sQuery);
 
 	sendRESTHeaders();
-	$_TPL->assign('roomid', $nRoomID);
+	$_TPL->assign('room_id', $nRoomID);
 	$_TPL->display('getroomid.tpl');
 }
