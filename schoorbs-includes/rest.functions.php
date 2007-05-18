@@ -19,6 +19,7 @@ require_once dirname(__FILE__).'/authentication/schoorbs_auth.php';
 ## Plugins ##
 
 require_once dirname(__FILE__).'/rest-plugins/getentriesofday.rest.php';
+require_once dirname(__FILE__).'/rest-plugins/getroomid.rest.php';
 require_once dirname(__FILE__).'/rest-plugins/login.rest.php';
 
 ## Functions ##
