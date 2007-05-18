@@ -7,6 +7,7 @@
  * @license http://www.gnu.org/licenses/gpl.html GNU General Public License
  */
 
+
 require_once 'config.inc.php';
 require_once 'schoorbs-includes/global.web.php';
 require_once 'schoorbs-includes/global.functions.php';
@@ -19,33 +20,29 @@ require_once 'schoorbs-includes/authentication/schoorbs_auth.php';
 list($day, $month, $year) = input_DayMonthYear();
 
 /** area **/
-if(isset($_REQUEST['area']))
-    if(!empty($_REQUEST['area']))
-    {
-        $area = intval($_REQUEST['area']);
-        $smarty->assign('area', $area);
-        $area_name = areaGetName($area);
-        $smarty->assign('area_name',$area_name);
-    }	
+$area = input_Area();
+$area_name = areaGetName($area);
 
 ## Main ##
 
-if(!getAuthorised(2))
+if(!getAuthorised(2)) {
 	showAccessDenied();
+}
 
 print_header($day, $month, $year, isset($area) ? $area : "");
-
 
 # This cell has the areas
 $res = sql_query("SELECT id, area_name FROM $tbl_area ORDER BY area_name");
 if(!$res)
 	fatal_error(0, sql_error());
 $aAreas = array();
-if (sql_count($res) == 0)
+if (sql_count($res) == 0) {
 	$noareas = 'true';
-else {
-	for ($i = 0; ($row = sql_row($res, $i)); $i++)
-		$aAreas[] = array('name' => $row[1], 'id' => $row[0]);		
+} else {
+	for ($i = 0; ($row = sql_row($res, $i)); $i++) {
+		$aAreas[] = array('name' => $row[1], 'id' => $row[0]);
+	}
+
 	$noareas = 'false';
 }
 
@@ -67,6 +64,9 @@ $smarty->assign('norooms',$norooms);
 $smarty->assign('rooms',$aRooms);
 $smarty->assign('areas',$aAreas);
 $smarty->assign('noareas',$noareas);
+$smarty->assign('area', $area);
+$smarty->assign('area_name',$area_name);
+
 $smarty->display('admin.tpl');
 
 require_once 'schoorbs-includes/trailer.php';

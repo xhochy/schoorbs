@@ -19,13 +19,15 @@ function areaGetName($nAreaID)
 {
 	global $tbl_area;
 
-	$res = sql_query("SELECT area_name FROM $tbl_area WEHRE id = ".sql_escape_arg($nAreaID));
-	if (! $res) fatal_error(0, sql_error());
-	if (sql_count($res) == 1)
-	{
+	$sQuery = "SELECT area_name FROM $tbl_area WHERE id = ".sql_escape_arg($nAreaID);
+	$res = sql_query($sQuery);
+	if (! $res) fatal_error(true, sql_error());
+
+	if (sql_count($res) == 1) {
 		$row = sql_row($res, 0);
 		$area_name = $row[0];
 	}
+
 	sql_free($res);
 	return $area_name;
 }
