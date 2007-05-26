@@ -23,6 +23,7 @@ require_once dirname(__FILE__).'/rest-plugins/getroomid.rest.php';
 require_once dirname(__FILE__).'/rest-plugins/getperiodid.rest.php';
 require_once dirname(__FILE__).'/rest-plugins/login.rest.php';
 require_once dirname(__FILE__).'/rest-plugins/checkfree.rest.php';
+require_once dirname(__FILE__).'/rest-plugins/makebooking.rest.php';
 
 ## Functions ##
  
