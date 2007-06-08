@@ -39,55 +39,43 @@ list($td, $tm, $ty) = getTomorrow($day, $month, $year);
 # print the page header
 print_header($day, $month, $year, $area);
 
-$format = "Gi";
-if ($enable_periods) {
-	$format = "i";
-	$resolution = 60;
-	$morningstarts = 12;
-	$morningstarts_minutes = 0;
-	$eveningends = 12;
-	$eveningends_minutes = count($periods)-1;
-}
-
-if($pview != 1)
-{
+if ($pview != 1) {
     # need to show either a select box or a normal html list,
     # depending on the settings in config.inc.php
-    if ($area_list_format == "select")
-	    $smarty->assign('area_select_list', make_area_select_html('day.php', $area, $year, $month, $day));
-    else
+    if ($area_list_format == 'select') {
+    	$smarty->assign('area_select_list', 
+    		make_area_select_html('day.php', $area, $year, $month, $day));
+    } else {
     	$smarty->assign('areas', getAreas()); // show the standard html list
+    }
    
     $smarty->assign(array(
-    	'area' => $area,
-    	'day' => $day,
-    	'year' => $year,
-    	'month' => $month,
-    	'dwm' => 'day.php',
+    	'area' => $area, 'dwm' => 'day.php',
+    	'day' => $day, 'year' => $year, 'month' => $month,
     	'area_list_format' => $area_list_format
     ));
     $smarty->display('area_list.tpl');
     
-    #Draw the three month calendars
+    # Draw the three month calendars
     minicals($year, $month, $day, $area, '', 'day');
-    echo "</tr></table>\n";
+    puts('</tr></table>');
 }
 
-#We want to build an array containing all the data we want to show
-#and then spit it out. 
+# We want to build an array containing all the data we want to show
+# and then spit it out. 
 
-#Get all appointments for today in the area that we care about
-#Note: The predicate clause 'start_time <= ...' is an equivalent but simpler
-#form of the original which had 3 BETWEEN parts. It selects all entries which
-#occur on or cross the current day.
-$sql = "SELECT $tbl_room.id, start_time, end_time, name, $tbl_entry.id, type,
+# Get all appointments for today in the area that we care about
+# Note: The predicate clause 'start_time <= ...' is an equivalent but simpler
+# form of the original which had 3 BETWEEN parts. It selects all entries which
+# occur on or cross the current day.
+$sQuery = "SELECT $tbl_room.id, start_time, end_time, name, $tbl_entry.id, type,
         $tbl_entry.description, $tbl_entry.create_by
    FROM $tbl_entry, $tbl_room WHERE $tbl_entry.room_id = $tbl_room.id
    AND area_id = ".sql_escape_arg($area)
    ." AND start_time <= $pm7 AND end_time > $am7";
 
-$res = sql_query($sql);
-if (! $res) fatal_error(0, sql_error());
+$res = sql_query($sQuery);
+if (!$res) fatal_error(0, sql_error());
 for ($i = 0; ($row = sql_row($res, $i)); $i++) {
 	# Each row weve got here is an appointment.
 	#Row[0] = Room ID
@@ -156,36 +144,35 @@ if (sql_count($res) == 0) {
 	
 	$smarty->assign(array(
 		'am7' => utf8_strftime("%A %d %B %Y", $am7),
-		'pview' => $pview,
+		'pview' => $pview, 'area' => $area,
 		'yy' => $yy, 'ym' => $ym, 'yd' => $yd,
 		'ty' => $ty, 'tm' => $tm, 'td' => $td,
-		'year' => $year,
-		'day' => $day,
-		'month' => $month,
+		'year' => $year, 'day' => $day, 'month' => $month,
 		'javascript_cursor' => ($javascript_cursor ? 'true' : 'false'),
 		'show_plus_link' => ($show_plus_link ? 'true' : 'false'),
 		'times_right_side' => ($times_right_side ? 'true' : 'false'),
 		'enable_periods' => ($enable_periods ? 'true' : 'false'),
 		'highlight_method' => $highlight_method,
-		'area' => $area,
 		'period_title' => ($enable_periods ? get_vocab("period") : get_vocab("time")),
 		'room_column_width' => $room_column_width
 	));
 	
 	
 	$aRooms = array();
-	for ($i = 0; ($row = sql_row($res, $i)); $i++)
-	{
+	for ($i = 0; ($row = sql_row($res, $i)); $i++) {
 	    $rooms[] = $row[2];
-	    $aRooms[] = array('title' => $row[0], 'capacity' => $row[1], 
-	    	'id' => $row[2], 'description' => $row[3]);
+	    $aRooms[] = array(
+	    	'title' => $row[0], 'capacity' => $row[1], 
+	    	'id' => $row[2], 'description' => $row[3]
+	    );
 	}
 	$smarty->assign('rooms', $aRooms);
 	
 	# URL for highlighting a time. Don't use REQUEST_URI or you will get
 	# the timetohighlight parameter duplicated each time you click.
-	$hilite_url="day.php?year=$year&amp;month=$month&amp;day=$day&amp;area=$area&amp;timetohighlight";
-	$smarty->assign('hilite_url',$hilite_url);
+	$hilite_url = ht("day.php?year=$year&month=$month&day=$day"
+		."&area=$area&timetohighlight");
+	$smarty->assign('hilite_url', $hilite_url);
 	
 	# This is the main bit of the display
 	# We loop through time and then the rooms we just got
@@ -193,7 +180,7 @@ if (sql_count($res) == 0) {
 	# if the today is a day which includes a DST change then use
 	# the day after to generate timesteps through the day as this
 	# will ensure a constant time step
-	( $dst_change != -1 ) ? $j = 1 : $j = 0;
+	$j = (($dst_change != -1) ? 1 : 0);
 	
 	$times = array();
 	$row_class = "even_row";
@@ -214,33 +201,33 @@ if (sql_count($res) == 0) {
 			if(isset($today[$room][$time_t]['id'])) {
 				$aLoop['id'] = $today[$room][$time_t]["id"];
 				$color = $today[$room][$time_t]["color"];
-				$aLoop['descr'] = htmlspecialchars($today[$room][$time_t]["data"]);
-				$aLoop['long_descr'] = htmlspecialchars($today[$room][$time_t]["long_descr"]);
-				$aLoop['create_by'] = htmlspecialchars($today[$room][$time_t]["create_by"]);
+				$aLoop['descr'] = ht($today[$room][$time_t]["data"]);
+				$aLoop['long_descr'] = ht($today[$room][$time_t]["long_descr"]);
+				$aLoop['create_by'] = ht($today[$room][$time_t]["create_by"]);
 			}
 			
 			# $c is the colour of the cell that the browser sees. White normally,
 			# red if were hightlighting that line and a nice attractive green if the room is booked.
 			# We tell if its booked by $id having something in it
-			if (isset($aLoop['id']))
+			if (isset($aLoop['id'])) {
 				$aLoop['css_class'] = $color;
-			elseif (isset($timetohighlight) && ($time_t == $timetohighlight))
+			} elseif (isset($timetohighlight) && ($time_t == $timetohighlight)) {
 				$aLoop['css_class'] = "red";
-			else
+			} else {
 				$aLoop['css_class'] = $row_class; # Use the default color class for the row.
+			}
 			
 			# If the room isnt booked then allow it to be booked
-			if(!isset($aLoop['id']))
-			{
+			if (!isset($aLoop['id'])) {
 				$hour = date("H",$t);
 				$minute  = date("i",$t);
 				
 				if ($pview != 1) {
 					if ($enable_periods) {
 						$time_t_stripped = preg_replace( "/^0/", "", $time_t ); 
-						$aLoop['period_param'] = "&amp;period=$time_t_stripped";
+						$aLoop['period_param'] = ht("&period=$time_t_stripped");
 					} else {
-						$aLoop['period_param'] = "&amp;hour=$hour&amp;minute=$minute";
+						$aLoop['period_param'] = ht("&hour=$hour&minute=$minute");
 					}
 				}
 			}
@@ -248,12 +235,12 @@ if (sql_count($res) == 0) {
 			$cols[] = $aLoop;
 		}
       	
-	      	$time = array('time' => $time_t, 'cols' => $cols);
-		if($enable_periods)
-			$time['title'] = $periods[preg_replace( "/^0/", "", $time_t)];
-		else
-			$time['title'] = utf8_strftime(hour_min_format(),$t);
-		$times[] = $time;
+		if($enable_periods) {
+			$sTitle = $periods[preg_replace( "/^0/", "", $time_t)];
+		} else {
+			$sTitle = utf8_strftime(hour_min_format(), $t);
+		}
+		$times[] = array('time' => $time_t, 'cols' => $cols, 'title' => $sTitle);
 	}
 	
 	$smarty->assign('times', $times);
