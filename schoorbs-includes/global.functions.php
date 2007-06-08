@@ -51,12 +51,9 @@ function print_header($day, $month, $year, $area)
 	if (empty($search_str))
 		$search_str = "";
 
-	if ($unicode_encoding)
-	{
+	if ($unicode_encoding) {
 		header("Content-Type: text/html; charset=utf-8");
-	}
-	else
-	{
+	} else {
 		# We use $vocab directly instead of get_vocab() because we have
 		# no requirement to convert the vocab text, we just output
 		# the charset
@@ -74,14 +71,14 @@ function print_header($day, $month, $year, $area)
 	for($i = 1; $i <= 12; $i++)
 		$months[] = array('string' => utf8_strftime("%b", mktime(0, 0, 0, $i, 1, $year)),
 		    'id' => $i);
-    // years
-    $min = min($year, date("Y")) - 5;
+	// years
+	$min = min($year, date("Y")) - 5;
 	$max = max($year, date("Y")) + 5;
 	$years = array();
 	for($i = $min; $i <= $max; $i++)
 		$years[] = $i;
-    $smarty->assign('months',$months);
-    $smarty->assign('years',$years);
+	$smarty->assign('months',$months);
+	$smarty->assign('years',$years);
 	$smarty->assign('prefix',"");
 	
 	$smarty->assign('Area', $area);
@@ -299,12 +296,9 @@ function show_colour_key()
 	global $typel;
 	echo "<table border=\"0\"><tr>\n";
 	$nct = 0;
-	for ($ct = "A"; $ct <= "Z"; $ct++)
-	{
-		if (!empty($typel[$ct]))
-		{
-			if (++$nct > 5)
-			{
+	for ($ct = "A"; $ct <= "Z"; $ct++) {
+		if (!empty($typel[$ct])) {
+			if (++$nct > 5) {
 				$nct = 0;
 				echo "</tr><tr>";
 			}
@@ -325,13 +319,10 @@ function round_t_down($t, $resolution, $am7)
 # Round time up to the nearest resolution
 function round_t_up($t, $resolution, $am7)
 {
-	if (($t-$am7) % $resolution != 0)
-	{
+	if (($t-$am7) % $resolution != 0) {
 		return $t + $resolution - abs(((int)$t-(int)
 					       $am7) % $resolution);
-	}
-	else
-	{
+	} else {
 		return $t;
 	}
 }
@@ -408,4 +399,31 @@ function cross_dst ( $start, $end )
 		$modification = 0;
 
 	return $modification;
+}
+
+/**
+ * Alias for htmlentities
+ *
+ * @author Uwe L. Korn <uwelk@xhochy.org>
+ * @param string the text which should be escaped
+ * @param int $nQuoteStyle
+ * @param string $sCharset
+ */
+function ht($sCode, $nQuoteStyle = ENT_COMPAT, $sCharset = 'ISO-8859-1')
+{
+	return htmlentities($sCode, $nQuoteStyle, $sCharset);
+}
+
+/**
+ * Output a string and append a linebreak
+ *
+ * Should make the code clearer through avoiding unessacary double-quotes
+ * or ."\n"
+ *
+ * @author Uwe L. Korn <uwelk@xhochy.org>
+ * @param string $sText
+ */
+function puts($sText)
+{
+	echo $sText."\n";
 }

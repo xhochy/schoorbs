@@ -14,6 +14,18 @@ require_once 'input.functions.php';
 ## Var Inits ##
 
 $pview = input_PView();
+
 // ensure that $morningstarts_minutes defaults to zero if not set
-if(empty($morningstarts_minutes))
+if(empty($morningstarts_minutes)) {
 	$morningstarts_minutes = 0;
+}
+
+$format = "Gi";
+if ($enable_periods) {
+	$format = "i";
+	$resolution = 60;
+	$morningstarts = 12;
+	$morningstarts_minutes = 0;
+	$eveningends = 12;
+	$eveningends_minutes = count($periods)-1;
+}
