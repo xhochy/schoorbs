@@ -110,3 +110,42 @@ function getTomorrow($day, $month, $year)
 	$aRet[] = date("Y",$i);
 	return $aRet;
 }
+
+/**
+ * Returns the Day+Month+Year of next Week
+ *
+ * @param int $day
+ * @param int $month
+ * @param int $year
+ * @return array (day,month,year)
+ * @author Uwe L. Korn <uwelk@xhochy.org>
+ */
+function getNextWeek($day, $month, $year)
+{
+        $i = mktime(12,0,0,$month,$day+7,$year);
+        $aRet = array();
+        $aRet[] = date("d",$i);
+        $aRet[] = date("m",$i);
+        $aRet[] = date("Y",$i);
+        return $aRet;
+}
+
+/**
+ * Returns the Day+Month+Year of last Week
+ *
+ * @param int $day
+ * @param int $month
+ * @param int $year
+ * @return array (day,month,year)
+ * @author Uwe L. Korn <uwelk@xhochy.org>
+ */
+function getLastWeek($day, $month, $year)
+{
+        $i = mktime(12,0,0,$month,$day-7,$year);
+        $aRet = array();
+        $aRet[] = date("d",$i);
+        $aRet[] = date("m",$i);
+        $aRet[] = date("Y",$i);
+        return $aRet;
+}
+
