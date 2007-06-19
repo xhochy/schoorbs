@@ -44,10 +44,19 @@ array_pop($a);
 $GLOBALS['_phpDocumentor_install_dir'] = join('/',$a);
 //$_phpDocumentor_setting['useconfig'] = false;
 // add my directory to the include path, and make it first, should fix any errors
-if (substr(PHP_OS, 0, 3) == 'WIN')
-ini_set('include_path',$GLOBALS['_phpDocumentor_install_dir'].';'.ini_get('include_path'));
-else
-ini_set('include_path',$GLOBALS['_phpDocumentor_install_dir'].':'.ini_get('include_path'));
+if (substr(PHP_OS, 0, 3) == 'WIN') {
+	ini_set('include_path',
+		$GLOBALS['_phpDocumentor_install_dir'].';'
+		.dirname($GLOBALS['_phpDocumentor_install_dir']).';'
+		.ini_get('include_path')
+	);
+} else {
+	ini_set('include_path',
+		$GLOBALS['_phpDocumentor_install_dir'].':'
+		.dirname($GLOBALS['_phpDocumentor_install_dir']).':'
+		.ini_get('include_path')
+	);
+}
 
 /**
  * All command-line handling from previous version has moved to here
@@ -60,4 +69,3 @@ $phpdoc = new phpDocumentor_setup;
 $phpdoc->readCommandLineSettings();
 $phpdoc->setupConverters();
 $phpdoc->createDocs();
-?>
