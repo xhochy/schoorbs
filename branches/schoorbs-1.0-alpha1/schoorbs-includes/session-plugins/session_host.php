@@ -1,0 +1,35 @@
+<?php
+/**
+ * This is a slight variant of session_ip.
+ * 
+ * Session management scheme that uses the DNS name of the computer
+ * to identify users and administrators.
+ * Anyone who can access the server can make bookings etc.
+ *
+ * To use this authentication scheme set the following
+ * things in config.inc.php:
+ *
+ * $auth["type"]    = "none";
+ * $auth["session"] = "host";
+ *
+ * Then, you may configure admin users:
+ *
+ * $auth["admin"][] = "DNSname1";
+ * $auth["admin"][] = "DNSname2";
+ * 
+ * @author jberanek, Uwe L. Korn <uwelk@xhochy.org>
+ * @package Schoorbs/Session/Host
+ * @license http://www.gnu.org/licenses/gpl.html GNU General Public License
+ */
+
+# No need to prompt for a name - if no DNSname is returned, ip address
+# is used
+function authGet() { }
+
+function getUserName()
+{
+	$remotehostname = gethostbyaddr($_SERVER['REMOTE_ADDR']);
+        return $remotehostname;
+}
+
+?>
