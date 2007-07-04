@@ -31,6 +31,3 @@ function smarty_function_get_vocab($params, &$smarty)
     return get_vocab($params['text']);
 }
 
-/* vim: set expandtab: */
-
-?>
