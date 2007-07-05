@@ -1,0 +1,55 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!--
+  Licensed to the Apache Software Foundation (ASF) under one or more
+  contributor license agreements.  See the NOTICE file distributed with
+  this work for additional information regarding copyright ownership.
+  The ASF licenses this file to You under the Apache License, Version 2.0
+  (the "License"); you may not use this file except in compliance with
+  the License.  You may obtain a copy of the License at
+
+      http://www.apache.org/licenses/LICENSE-2.0
+
+  Unless required by applicable law or agreed to in writing, software
+  distributed under the License is distributed on an "AS IS" BASIS,
+  WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+  See the License for the specific language governing permissions and
+  limitations under the License.
+-->
+<!DOCTYPE document PUBLIC "-//APACHE//DTD Documentation V2.0//EN" "http://forrest.apache.org/dtd/document-v20.dtd">
+<document>
+  <header>
+    <title>Welcome to Schoorbs</title>
+  </header>
+  <body>
+    <section id="status">
+      <title>Status of development</title>
+      <p>
+        At the moment Schoorbs is still only available as an Alpha-version. We 
+        recommend that only interested developers should use this version.
+      </p>
+      <p>
+        <ul>
+          <li><a href="http://code.google.com/p/schoorbs/downloads/detail?name=schoorbs-1.0-alpha1.7z&amp;can=2&amp;q=">schoorbs-1.0-alpha1.7z</a></li>
+          <li><a href="http://code.google.com/p/schoorbs/downloads/detail?name=schoorbs-1.0-alpha1.zip&amp;can=2&amp;q=">schoorbs-1.0-alpha1.zip</a></li>
+        </ul>
+      </p>
+    </section>
+    <section id="features">
+      <title>Features</title>
+      <p>
+        <ul>
+          <li>View everything per a XHTML 1.1 valid Webinterface, you use your favorite Webbrowser</li>
+          <li>Runs on all servers supporting PHP(>= 4.3) and MySQL(either the mysql or the mysqli interface) or PostgreSQL.</li>
+          <li>Authentication with your existing user database (eg Netware, NT Domain, NIS etc.)</li>
+          <li>Ensures that conflicting entries cannot be entered</li>
+          <li>Reporting option</li>
+          <li>Selectable DAY / WEEK / MONTH views</li>
+          <li>Multiple auth levels (read-only, user, admin)</li>
+          <li>Multiple languages supported (translated to Czech, Chinese, Danish, Dutch, Finnish, French, German, Greek, Italian, Japanese, Norwegian, Portuguese, Spanish, Swedish)</li>
+          <li>Communication with Schoorbs through a REST-API is also possible, so making own scripts/programs using Schoorbs is possible without using PHP.</li>
+          <li>Uses the equal database structure as MRBS, you even could use both in parallel, if you want to evaluate them</li>
+        </ul>
+      </p>
+    </section>
+  </body>
+</document>

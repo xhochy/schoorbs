@@ -1,0 +1,290 @@
+ERROR   (2007-07-05) 22:56.33:038   [access] (/index.html;jsessionid=23qcjib0ri4ug) PoolThread-3/CocoonServlet: Internal Cocoon Problem
+org.apache.cocoon.ProcessingException: Failed to process pipeline
+	at [SAXParseException] - file:/tmp/schoorbs/www/src/documentation/content/xdocs/index.xml:32:106
+	at <map:serialize type="xml-document"> - file:/opt/apache-forrest-0.8/main/webapp/forrest.xmap:208:47
+	at <map:transform> - file:/opt/apache-forrest-0.8/main/webapp/forrest.xmap:123:65
+	at <map:generate> - file:/opt/apache-forrest-0.8/main/webapp/forrest.xmap:204:42
+	at <map:serialize> - file:/opt/apache-forrest-0.8/main/webapp/sitemap.xmap:279:23
+	at <map:transform> - file:/opt/apache-forrest-0.8/main/webapp/sitemap.xmap:278:71
+	at <map:transform type="i18n"> - file:/opt/apache-forrest-0.8/main/webapp/sitemap.xmap:262:40
+	at <map:transform> - file:/opt/apache-forrest-0.8/main/webapp/sitemap.xmap:250:40
+	at <map:transform> - file:/opt/apache-forrest-0.8/main/webapp/sitemap.xmap:488:65
+	at <map:transform type="linkrewriter"> - file:/opt/apache-forrest-0.8/main/webapp/sitemap.xmap:487:79
+	at <map:transform type="xinclude"> - file:/opt/apache-forrest-0.8/main/webapp/sitemap.xmap:486:41
+	at <map:transform type="idgen"> - file:/opt/apache-forrest-0.8/main/webapp/sitemap.xmap:485:38
+	at <map:generate> - file:/opt/apache-forrest-0.8/main/webapp/sitemap.xmap:484:49
+	at <map:serialize> - file:/opt/apache-forrest-0.8/main/webapp/sitemap.xmap:279:23
+	at <map:transform> - file:/opt/apache-forrest-0.8/main/webapp/sitemap.xmap:278:71
+	at <map:transform type="i18n"> - file:/opt/apache-forrest-0.8/main/webapp/sitemap.xmap:262:40
+	at <map:transform> - file:/opt/apache-forrest-0.8/main/webapp/sitemap.xmap:250:40
+	at org.apache.cocoon.ProcessingException.throwLocated(ProcessingException.java:144)
+	at org.apache.cocoon.components.pipeline.AbstractProcessingPipeline.handleException(AbstractProcessingPipeline.java:894)
+	at org.apache.cocoon.components.pipeline.impl.AbstractCachingProcessingPipeline.processXMLPipeline(AbstractCachingProcessingPipeline.java:271)
+	at org.apache.cocoon.components.pipeline.AbstractProcessingPipeline.process(AbstractProcessingPipeline.java:722)
+	at org.apache.cocoon.components.source.impl.SitemapSource.toSAX(SitemapSource.java:347)
+	at org.apache.cocoon.components.source.SourceUtil.toSAX(SourceUtil.java:97)
+	at org.apache.cocoon.components.source.SourceUtil.parse(SourceUtil.java:276)
+	at org.apache.cocoon.generation.FileGenerator.generate(FileGenerator.java:118)
+	at org.apache.cocoon.components.pipeline.impl.AbstractCachingProcessingPipeline.processXMLPipeline(AbstractCachingProcessingPipeline.java:225)
+	at org.apache.cocoon.components.pipeline.AbstractProcessingPipeline.process(AbstractProcessingPipeline.java:722)
+	at org.apache.cocoon.components.source.impl.SitemapSource.toSAX(SitemapSource.java:347)
+	at org.apache.cocoon.components.source.SourceUtil.toSAX(SourceUtil.java:97)
+	at org.apache.cocoon.components.source.SourceUtil.parse(SourceUtil.java:276)
+	at org.apache.cocoon.sitemap.DefaultContentAggregator.generate(DefaultContentAggregator.java:126)
+	at org.apache.cocoon.components.pipeline.AbstractProcessingPipeline.processXMLPipeline(AbstractProcessingPipeline.java:537)
+	at org.apache.cocoon.components.pipeline.impl.AbstractCachingProcessingPipeline.processXMLPipeline(AbstractCachingProcessingPipeline.java:174)
+	at org.apache.cocoon.components.pipeline.AbstractProcessingPipeline.process(AbstractProcessingPipeline.java:437)
+	at org.apache.cocoon.components.treeprocessor.sitemap.SerializeNode.invoke(SerializeNode.java:137)
+	at org.apache.cocoon.components.treeprocessor.AbstractParentProcessingNode.invokeNodes(AbstractParentProcessingNode.java:77)
+	at org.apache.cocoon.components.treeprocessor.ContainerNode.invoke(ContainerNode.java:38)
+	at org.apache.cocoon.components.treeprocessor.CategoryNode.invokeByName(CategoryNode.java:66)
+	at org.apache.cocoon.components.treeprocessor.sitemap.CallNode.invoke(CallNode.java:83)
+	at org.apache.cocoon.components.treeprocessor.AbstractParentProcessingNode.invokeNodes(AbstractParentProcessingNode.java:55)
+	at org.apache.cocoon.components.treeprocessor.sitemap.PreparableMatchNode.invoke(PreparableMatchNode.java:116)
+	at org.apache.cocoon.components.treeprocessor.AbstractParentProcessingNode.invokeNodes(AbstractParentProcessingNode.java:77)
+	at org.apache.cocoon.components.treeprocessor.sitemap.PipelineNode.invoke(PipelineNode.java:155)
+	at org.apache.cocoon.components.treeprocessor.AbstractParentProcessingNode.invokeNodes(AbstractParentProcessingNode.java:77)
+	at org.apache.cocoon.components.treeprocessor.sitemap.PipelinesNode.invoke(PipelinesNode.java:95)
+	at org.apache.cocoon.components.treeprocessor.ConcreteTreeProcessor.process(ConcreteTreeProcessor.java:292)
+	at org.apache.cocoon.components.treeprocessor.ConcreteTreeProcessor.process(ConcreteTreeProcessor.java:223)
+	at org.apache.cocoon.components.treeprocessor.TreeProcessor.process(TreeProcessor.java:289)
+	at org.apache.cocoon.Cocoon.process(Cocoon.java:557)
+	at org.apache.cocoon.servlet.CocoonServlet.service(CocoonServlet.java:364)
+	at javax.servlet.http.HttpServlet.service(HttpServlet.java:853)
+	at org.mortbay.jetty.servlet.ServletHolder.handle(ServletHolder.java:354)
+	at org.mortbay.jetty.servlet.WebApplicationHandler.dispatch(WebApplicationHandler.java:294)
+	at org.mortbay.jetty.servlet.ServletHandler.handle(ServletHandler.java:567)
+	at org.mortbay.http.HttpContext.handle(HttpContext.java:1808)
+	at org.mortbay.jetty.servlet.WebApplicationContext.handle(WebApplicationContext.java:525)
+	at org.mortbay.http.HttpContext.handle(HttpContext.java:1758)
+	at org.mortbay.http.HttpServer.service(HttpServer.java:879)
+	at org.mortbay.http.HttpConnection.service(HttpConnection.java:790)
+	at org.mortbay.http.HttpConnection.handleNext(HttpConnection.java:952)
+	at org.mortbay.http.HttpConnection.handle(HttpConnection.java:807)
+	at org.mortbay.http.SocketListener.handleConnection(SocketListener.java:197)
+	at org.mortbay.util.ThreadedServer.handle(ThreadedServer.java:289)
+	at org.mortbay.util.ThreadPool$PoolThread.run(ThreadPool.java:501)
+Caused by: org.xml.sax.SAXParseException: The reference to entity "can" must end with the ';' delimiter.
+	at org.apache.xerces.util.ErrorHandlerWrapper.createSAXParseException(Unknown Source)
+	at org.apache.xerces.util.ErrorHandlerWrapper.fatalError(Unknown Source)
+	at org.apache.xerces.impl.XMLErrorReporter.reportError(Unknown Source)
+	at org.apache.xerces.impl.XMLErrorReporter.reportError(Unknown Source)
+	at org.apache.xerces.impl.XMLScanner.reportFatalError(Unknown Source)
+	at org.apache.xerces.impl.XMLScanner.scanAttributeValue(Unknown Source)
+	at org.apache.xerces.impl.XMLNSDocumentScannerImpl.scanAttribute(Unknown Source)
+	at org.apache.xerces.impl.XMLNSDocumentScannerImpl.scanStartElement(Unknown Source)
+	at org.apache.xerces.impl.XMLDocumentFragmentScannerImpl$FragmentContentDispatcher.dispatch(Unknown Source)
+	at org.apache.xerces.impl.XMLDocumentFragmentScannerImpl.scanDocument(Unknown Source)
+	at org.apache.xerces.parsers.XML11Configuration.parse(Unknown Source)
+	at org.apache.xerces.parsers.XML11Configuration.parse(Unknown Source)
+	at org.apache.xerces.parsers.XMLParser.parse(Unknown Source)
+	at org.apache.xerces.parsers.AbstractSAXParser.parse(Unknown Source)
+	at org.apache.xerces.jaxp.SAXParserImpl$JAXPSAXParser.parse(Unknown Source)
+	at org.apache.excalibur.xml.impl.JaxpParser.parse(JaxpParser.java:315)
+	at org.apache.excalibur.xml.impl.JaxpParser.parse(JaxpParser.java:334)
+	at sun.reflect.GeneratedMethodAccessor24.invoke(Unknown Source)
+	at sun.reflect.DelegatingMethodAccessorImpl.invoke(DelegatingMethodAccessorImpl.java:25)
+	at java.lang.reflect.Method.invoke(Method.java:597)
+	at org.apache.cocoon.core.container.handler.PoolableComponentHandler$ProxyHandler.invoke(PoolableComponentHandler.java:147)
+	at $Proxy0.parse(Unknown Source)
+	at org.apache.cocoon.components.source.SourceUtil.parse(SourceUtil.java:281)
+	at org.apache.cocoon.generation.FileGenerator.generate(FileGenerator.java:118)
+	at org.apache.cocoon.components.pipeline.impl.AbstractCachingProcessingPipeline.processXMLPipeline(AbstractCachingProcessingPipeline.java:225)
+	... 44 more
+ERROR   (2007-07-05) 22:56.34:224   [access] (/index.html;jsessionid=23qcjib0ri4ug) PoolThread-3/CocoonServlet: Internal Cocoon Problem
+org.apache.cocoon.ProcessingException: Failed to process pipeline
+	at [SAXParseException] - file:/tmp/schoorbs/www/src/documentation/content/xdocs/index.xml:32:106
+	at <map:serialize type="xml-document"> - file:/opt/apache-forrest-0.8/main/webapp/forrest.xmap:208:47
+	at <map:transform> - file:/opt/apache-forrest-0.8/main/webapp/forrest.xmap:123:65
+	at <map:generate> - file:/opt/apache-forrest-0.8/main/webapp/forrest.xmap:204:42
+	at <map:serialize> - file:/opt/apache-forrest-0.8/main/webapp/sitemap.xmap:279:23
+	at <map:transform> - file:/opt/apache-forrest-0.8/main/webapp/sitemap.xmap:278:71
+	at <map:transform type="i18n"> - file:/opt/apache-forrest-0.8/main/webapp/sitemap.xmap:262:40
+	at <map:transform> - file:/opt/apache-forrest-0.8/main/webapp/sitemap.xmap:250:40
+	at <map:transform> - file:/opt/apache-forrest-0.8/main/webapp/sitemap.xmap:488:65
+	at <map:transform type="linkrewriter"> - file:/opt/apache-forrest-0.8/main/webapp/sitemap.xmap:487:79
+	at <map:transform type="xinclude"> - file:/opt/apache-forrest-0.8/main/webapp/sitemap.xmap:486:41
+	at <map:transform type="idgen"> - file:/opt/apache-forrest-0.8/main/webapp/sitemap.xmap:485:38
+	at <map:generate> - file:/opt/apache-forrest-0.8/main/webapp/sitemap.xmap:484:49
+	at <map:serialize> - file:/opt/apache-forrest-0.8/main/webapp/sitemap.xmap:279:23
+	at <map:transform> - file:/opt/apache-forrest-0.8/main/webapp/sitemap.xmap:278:71
+	at <map:transform type="i18n"> - file:/opt/apache-forrest-0.8/main/webapp/sitemap.xmap:262:40
+	at <map:transform> - file:/opt/apache-forrest-0.8/main/webapp/sitemap.xmap:250:40
+	at org.apache.cocoon.ProcessingException.throwLocated(ProcessingException.java:144)
+	at org.apache.cocoon.components.pipeline.AbstractProcessingPipeline.handleException(AbstractProcessingPipeline.java:894)
+	at org.apache.cocoon.components.pipeline.impl.AbstractCachingProcessingPipeline.processXMLPipeline(AbstractCachingProcessingPipeline.java:271)
+	at org.apache.cocoon.components.pipeline.AbstractProcessingPipeline.process(AbstractProcessingPipeline.java:722)
+	at org.apache.cocoon.components.source.impl.SitemapSource.toSAX(SitemapSource.java:347)
+	at org.apache.cocoon.components.source.SourceUtil.toSAX(SourceUtil.java:97)
+	at org.apache.cocoon.components.source.SourceUtil.parse(SourceUtil.java:276)
+	at org.apache.cocoon.generation.FileGenerator.generate(FileGenerator.java:118)
+	at org.apache.cocoon.components.pipeline.impl.AbstractCachingProcessingPipeline.processXMLPipeline(AbstractCachingProcessingPipeline.java:225)
+	at org.apache.cocoon.components.pipeline.AbstractProcessingPipeline.process(AbstractProcessingPipeline.java:722)
+	at org.apache.cocoon.components.source.impl.SitemapSource.toSAX(SitemapSource.java:347)
+	at org.apache.cocoon.components.source.SourceUtil.toSAX(SourceUtil.java:97)
+	at org.apache.cocoon.components.source.SourceUtil.parse(SourceUtil.java:276)
+	at org.apache.cocoon.sitemap.DefaultContentAggregator.generate(DefaultContentAggregator.java:126)
+	at org.apache.cocoon.components.pipeline.AbstractProcessingPipeline.processXMLPipeline(AbstractProcessingPipeline.java:537)
+	at org.apache.cocoon.components.pipeline.impl.AbstractCachingProcessingPipeline.processXMLPipeline(AbstractCachingProcessingPipeline.java:174)
+	at org.apache.cocoon.components.pipeline.AbstractProcessingPipeline.process(AbstractProcessingPipeline.java:437)
+	at org.apache.cocoon.components.treeprocessor.sitemap.SerializeNode.invoke(SerializeNode.java:137)
+	at org.apache.cocoon.components.treeprocessor.AbstractParentProcessingNode.invokeNodes(AbstractParentProcessingNode.java:77)
+	at org.apache.cocoon.components.treeprocessor.ContainerNode.invoke(ContainerNode.java:38)
+	at org.apache.cocoon.components.treeprocessor.CategoryNode.invokeByName(CategoryNode.java:66)
+	at org.apache.cocoon.components.treeprocessor.sitemap.CallNode.invoke(CallNode.java:83)
+	at org.apache.cocoon.components.treeprocessor.AbstractParentProcessingNode.invokeNodes(AbstractParentProcessingNode.java:55)
+	at org.apache.cocoon.components.treeprocessor.sitemap.PreparableMatchNode.invoke(PreparableMatchNode.java:116)
+	at org.apache.cocoon.components.treeprocessor.AbstractParentProcessingNode.invokeNodes(AbstractParentProcessingNode.java:77)
+	at org.apache.cocoon.components.treeprocessor.sitemap.PipelineNode.invoke(PipelineNode.java:155)
+	at org.apache.cocoon.components.treeprocessor.AbstractParentProcessingNode.invokeNodes(AbstractParentProcessingNode.java:77)
+	at org.apache.cocoon.components.treeprocessor.sitemap.PipelinesNode.invoke(PipelinesNode.java:95)
+	at org.apache.cocoon.components.treeprocessor.ConcreteTreeProcessor.process(ConcreteTreeProcessor.java:292)
+	at org.apache.cocoon.components.treeprocessor.ConcreteTreeProcessor.process(ConcreteTreeProcessor.java:223)
+	at org.apache.cocoon.components.treeprocessor.TreeProcessor.process(TreeProcessor.java:289)
+	at org.apache.cocoon.Cocoon.process(Cocoon.java:557)
+	at org.apache.cocoon.servlet.CocoonServlet.service(CocoonServlet.java:364)
+	at javax.servlet.http.HttpServlet.service(HttpServlet.java:853)
+	at org.mortbay.jetty.servlet.ServletHolder.handle(ServletHolder.java:354)
+	at org.mortbay.jetty.servlet.WebApplicationHandler.dispatch(WebApplicationHandler.java:294)
+	at org.mortbay.jetty.servlet.ServletHandler.handle(ServletHandler.java:567)
+	at org.mortbay.http.HttpContext.handle(HttpContext.java:1808)
+	at org.mortbay.jetty.servlet.WebApplicationContext.handle(WebApplicationContext.java:525)
+	at org.mortbay.http.HttpContext.handle(HttpContext.java:1758)
+	at org.mortbay.http.HttpServer.service(HttpServer.java:879)
+	at org.mortbay.http.HttpConnection.service(HttpConnection.java:790)
+	at org.mortbay.http.HttpConnection.handleNext(HttpConnection.java:952)
+	at org.mortbay.http.HttpConnection.handle(HttpConnection.java:807)
+	at org.mortbay.http.SocketListener.handleConnection(SocketListener.java:197)
+	at org.mortbay.util.ThreadedServer.handle(ThreadedServer.java:289)
+	at org.mortbay.util.ThreadPool$PoolThread.run(ThreadPool.java:501)
+Caused by: org.xml.sax.SAXParseException: The reference to entity "can" must end with the ';' delimiter.
+	at org.apache.xerces.util.ErrorHandlerWrapper.createSAXParseException(Unknown Source)
+	at org.apache.xerces.util.ErrorHandlerWrapper.fatalError(Unknown Source)
+	at org.apache.xerces.impl.XMLErrorReporter.reportError(Unknown Source)
+	at org.apache.xerces.impl.XMLErrorReporter.reportError(Unknown Source)
+	at org.apache.xerces.impl.XMLScanner.reportFatalError(Unknown Source)
+	at org.apache.xerces.impl.XMLScanner.scanAttributeValue(Unknown Source)
+	at org.apache.xerces.impl.XMLNSDocumentScannerImpl.scanAttribute(Unknown Source)
+	at org.apache.xerces.impl.XMLNSDocumentScannerImpl.scanStartElement(Unknown Source)
+	at org.apache.xerces.impl.XMLDocumentFragmentScannerImpl$FragmentContentDispatcher.dispatch(Unknown Source)
+	at org.apache.xerces.impl.XMLDocumentFragmentScannerImpl.scanDocument(Unknown Source)
+	at org.apache.xerces.parsers.XML11Configuration.parse(Unknown Source)
+	at org.apache.xerces.parsers.XML11Configuration.parse(Unknown Source)
+	at org.apache.xerces.parsers.XMLParser.parse(Unknown Source)
+	at org.apache.xerces.parsers.AbstractSAXParser.parse(Unknown Source)
+	at org.apache.xerces.jaxp.SAXParserImpl$JAXPSAXParser.parse(Unknown Source)
+	at org.apache.excalibur.xml.impl.JaxpParser.parse(JaxpParser.java:315)
+	at org.apache.excalibur.xml.impl.JaxpParser.parse(JaxpParser.java:334)
+	at sun.reflect.GeneratedMethodAccessor24.invoke(Unknown Source)
+	at sun.reflect.DelegatingMethodAccessorImpl.invoke(DelegatingMethodAccessorImpl.java:25)
+	at java.lang.reflect.Method.invoke(Method.java:597)
+	at org.apache.cocoon.core.container.handler.PoolableComponentHandler$ProxyHandler.invoke(PoolableComponentHandler.java:147)
+	at $Proxy0.parse(Unknown Source)
+	at org.apache.cocoon.components.source.SourceUtil.parse(SourceUtil.java:281)
+	at org.apache.cocoon.generation.FileGenerator.generate(FileGenerator.java:118)
+	at org.apache.cocoon.components.pipeline.impl.AbstractCachingProcessingPipeline.processXMLPipeline(AbstractCachingProcessingPipeline.java:225)
+	... 44 more
+ERROR   (2007-07-05) 22:56.43:685   [access] (/index.html;jsessionid=23qcjib0ri4ug) PoolThread-3/CocoonServlet: Internal Cocoon Problem
+org.apache.cocoon.ProcessingException: Failed to process pipeline
+	at [SAXParseException] - file:/tmp/schoorbs/www/src/documentation/content/xdocs/index.xml:32:114
+	at <map:serialize type="xml-document"> - file:/opt/apache-forrest-0.8/main/webapp/forrest.xmap:208:47
+	at <map:transform> - file:/opt/apache-forrest-0.8/main/webapp/forrest.xmap:123:65
+	at <map:generate> - file:/opt/apache-forrest-0.8/main/webapp/forrest.xmap:204:42
+	at <map:serialize> - file:/opt/apache-forrest-0.8/main/webapp/sitemap.xmap:279:23
+	at <map:transform> - file:/opt/apache-forrest-0.8/main/webapp/sitemap.xmap:278:71
+	at <map:transform type="i18n"> - file:/opt/apache-forrest-0.8/main/webapp/sitemap.xmap:262:40
+	at <map:transform> - file:/opt/apache-forrest-0.8/main/webapp/sitemap.xmap:250:40
+	at <map:transform> - file:/opt/apache-forrest-0.8/main/webapp/sitemap.xmap:488:65
+	at <map:transform type="linkrewriter"> - file:/opt/apache-forrest-0.8/main/webapp/sitemap.xmap:487:79
+	at <map:transform type="xinclude"> - file:/opt/apache-forrest-0.8/main/webapp/sitemap.xmap:486:41
+	at <map:transform type="idgen"> - file:/opt/apache-forrest-0.8/main/webapp/sitemap.xmap:485:38
+	at <map:generate> - file:/opt/apache-forrest-0.8/main/webapp/sitemap.xmap:484:49
+	at <map:serialize> - file:/opt/apache-forrest-0.8/main/webapp/sitemap.xmap:279:23
+	at <map:transform> - file:/opt/apache-forrest-0.8/main/webapp/sitemap.xmap:278:71
+	at <map:transform type="i18n"> - file:/opt/apache-forrest-0.8/main/webapp/sitemap.xmap:262:40
+	at <map:transform> - file:/opt/apache-forrest-0.8/main/webapp/sitemap.xmap:250:40
+	at org.apache.cocoon.ProcessingException.throwLocated(ProcessingException.java:144)
+	at org.apache.cocoon.components.pipeline.AbstractProcessingPipeline.handleException(AbstractProcessingPipeline.java:894)
+	at org.apache.cocoon.components.pipeline.impl.AbstractCachingProcessingPipeline.processXMLPipeline(AbstractCachingProcessingPipeline.java:271)
+	at org.apache.cocoon.components.pipeline.AbstractProcessingPipeline.process(AbstractProcessingPipeline.java:722)
+	at org.apache.cocoon.components.source.impl.SitemapSource.toSAX(SitemapSource.java:347)
+	at org.apache.cocoon.components.source.SourceUtil.toSAX(SourceUtil.java:97)
+	at org.apache.cocoon.components.source.SourceUtil.parse(SourceUtil.java:276)
+	at org.apache.cocoon.generation.FileGenerator.generate(FileGenerator.java:118)
+	at org.apache.cocoon.components.pipeline.impl.AbstractCachingProcessingPipeline.processXMLPipeline(AbstractCachingProcessingPipeline.java:225)
+	at org.apache.cocoon.components.pipeline.AbstractProcessingPipeline.process(AbstractProcessingPipeline.java:722)
+	at org.apache.cocoon.components.source.impl.SitemapSource.toSAX(SitemapSource.java:347)
+	at org.apache.cocoon.components.source.SourceUtil.toSAX(SourceUtil.java:97)
+	at org.apache.cocoon.components.source.SourceUtil.parse(SourceUtil.java:276)
+	at org.apache.cocoon.sitemap.DefaultContentAggregator.generate(DefaultContentAggregator.java:126)
+	at org.apache.cocoon.components.pipeline.AbstractProcessingPipeline.processXMLPipeline(AbstractProcessingPipeline.java:537)
+	at org.apache.cocoon.components.pipeline.impl.AbstractCachingProcessingPipeline.processXMLPipeline(AbstractCachingProcessingPipeline.java:174)
+	at org.apache.cocoon.components.pipeline.AbstractProcessingPipeline.process(AbstractProcessingPipeline.java:437)
+	at org.apache.cocoon.components.treeprocessor.sitemap.SerializeNode.invoke(SerializeNode.java:137)
+	at org.apache.cocoon.components.treeprocessor.AbstractParentProcessingNode.invokeNodes(AbstractParentProcessingNode.java:77)
+	at org.apache.cocoon.components.treeprocessor.ContainerNode.invoke(ContainerNode.java:38)
+	at org.apache.cocoon.components.treeprocessor.CategoryNode.invokeByName(CategoryNode.java:66)
+	at org.apache.cocoon.components.treeprocessor.sitemap.CallNode.invoke(CallNode.java:83)
+	at org.apache.cocoon.components.treeprocessor.AbstractParentProcessingNode.invokeNodes(AbstractParentProcessingNode.java:55)
+	at org.apache.cocoon.components.treeprocessor.sitemap.PreparableMatchNode.invoke(PreparableMatchNode.java:116)
+	at org.apache.cocoon.components.treeprocessor.AbstractParentProcessingNode.invokeNodes(AbstractParentProcessingNode.java:77)
+	at org.apache.cocoon.components.treeprocessor.sitemap.PipelineNode.invoke(PipelineNode.java:155)
+	at org.apache.cocoon.components.treeprocessor.AbstractParentProcessingNode.invokeNodes(AbstractParentProcessingNode.java:77)
+	at org.apache.cocoon.components.treeprocessor.sitemap.PipelinesNode.invoke(PipelinesNode.java:95)
+	at org.apache.cocoon.components.treeprocessor.ConcreteTreeProcessor.process(ConcreteTreeProcessor.java:292)
+	at org.apache.cocoon.components.treeprocessor.ConcreteTreeProcessor.process(ConcreteTreeProcessor.java:223)
+	at org.apache.cocoon.components.treeprocessor.TreeProcessor.process(TreeProcessor.java:289)
+	at org.apache.cocoon.Cocoon.process(Cocoon.java:557)
+	at org.apache.cocoon.servlet.CocoonServlet.service(CocoonServlet.java:364)
+	at javax.servlet.http.HttpServlet.service(HttpServlet.java:853)
+	at org.mortbay.jetty.servlet.ServletHolder.handle(ServletHolder.java:354)
+	at org.mortbay.jetty.servlet.WebApplicationHandler.dispatch(WebApplicationHandler.java:294)
+	at org.mortbay.jetty.servlet.ServletHandler.handle(ServletHandler.java:567)
+	at org.mortbay.http.HttpContext.handle(HttpContext.java:1808)
+	at org.mortbay.jetty.servlet.WebApplicationContext.handle(WebApplicationContext.java:525)
+	at org.mortbay.http.HttpContext.handle(HttpContext.java:1758)
+	at org.mortbay.http.HttpServer.service(HttpServer.java:879)
+	at org.mortbay.http.HttpConnection.service(HttpConnection.java:790)
+	at org.mortbay.http.HttpConnection.handleNext(HttpConnection.java:952)
+	at org.mortbay.http.HttpConnection.handle(HttpConnection.java:807)
+	at org.mortbay.http.SocketListener.handleConnection(SocketListener.java:197)
+	at org.mortbay.util.ThreadedServer.handle(ThreadedServer.java:289)
+	at org.mortbay.util.ThreadPool$PoolThread.run(ThreadPool.java:501)
+Caused by: org.xml.sax.SAXParseException: The reference to entity "q" must end with the ';' delimiter.
+	at org.apache.xerces.util.ErrorHandlerWrapper.createSAXParseException(Unknown Source)
+	at org.apache.xerces.util.ErrorHandlerWrapper.fatalError(Unknown Source)
+	at org.apache.xerces.impl.XMLErrorReporter.reportError(Unknown Source)
+	at org.apache.xerces.impl.XMLErrorReporter.reportError(Unknown Source)
+	at org.apache.xerces.impl.XMLScanner.reportFatalError(Unknown Source)
+	at org.apache.xerces.impl.XMLScanner.scanAttributeValue(Unknown Source)
+	at org.apache.xerces.impl.XMLNSDocumentScannerImpl.scanAttribute(Unknown Source)
+	at org.apache.xerces.impl.XMLNSDocumentScannerImpl.scanStartElement(Unknown Source)
+	at org.apache.xerces.impl.XMLDocumentFragmentScannerImpl$FragmentContentDispatcher.dispatch(Unknown Source)
+	at org.apache.xerces.impl.XMLDocumentFragmentScannerImpl.scanDocument(Unknown Source)
+	at org.apache.xerces.parsers.XML11Configuration.parse(Unknown Source)
+	at org.apache.xerces.parsers.XML11Configuration.parse(Unknown Source)
+	at org.apache.xerces.parsers.XMLParser.parse(Unknown Source)
+	at org.apache.xerces.parsers.AbstractSAXParser.parse(Unknown Source)
+	at org.apache.xerces.jaxp.SAXParserImpl$JAXPSAXParser.parse(Unknown Source)
+	at org.apache.excalibur.xml.impl.JaxpParser.parse(JaxpParser.java:315)
+	at org.apache.excalibur.xml.impl.JaxpParser.parse(JaxpParser.java:334)
+	at sun.reflect.GeneratedMethodAccessor24.invoke(Unknown Source)
+	at sun.reflect.DelegatingMethodAccessorImpl.invoke(DelegatingMethodAccessorImpl.java:25)
+	at java.lang.reflect.Method.invoke(Method.java:597)
+	at org.apache.cocoon.core.container.handler.PoolableComponentHandler$ProxyHandler.invoke(PoolableComponentHandler.java:147)
+	at $Proxy0.parse(Unknown Source)
+	at org.apache.cocoon.components.source.SourceUtil.parse(SourceUtil.java:281)
+	at org.apache.cocoon.generation.FileGenerator.generate(FileGenerator.java:118)
+	at org.apache.cocoon.components.pipeline.impl.AbstractCachingProcessingPipeline.processXMLPipeline(AbstractCachingProcessingPipeline.java:225)
+	... 44 more
+ERROR   (2007-07-05) 23:04.09:757   [core.manager.fop] (/links.pdf) PoolThread-4/MessageHandler: unknown font sans,normal,normal so defaulted font to any
+ERROR   (2007-07-05) 23:04.09:778   [core.manager.fop] (/links.pdf) PoolThread-4/MessageHandler: unknown font sans,normal,normal so defaulted font to any
+ERROR   (2007-07-05) 23:04.09:780   [core.manager.fop] (/links.pdf) PoolThread-4/MessageHandler: unknown font sans,normal,normal so defaulted font to any
+ERROR   (2007-07-05) 23:04.09:781   [core.manager.fop] (/links.pdf) PoolThread-4/MessageHandler: unknown font sans,normal,normal so defaulted font to any
+ERROR   (2007-07-05) 23:04.09:782   [core.manager.fop] (/links.pdf) PoolThread-4/MessageHandler: unknown font sans,normal,normal so defaulted font to any
+ERROR   (2007-07-05) 23:04.09:783   [core.manager.fop] (/links.pdf) PoolThread-4/MessageHandler: unknown font sans,normal,normal so defaulted font to any
+ERROR   (2007-07-05) 23:04.09:785   [core.manager.fop] (/links.pdf) PoolThread-4/MessageHandler: unknown font sans,normal,normal so defaulted font to any
+ERROR   (2007-07-05) 23:04.09:785   [core.manager.fop] (/links.pdf) PoolThread-4/MessageHandler: unknown font sans,normal,normal so defaulted font to any
+ERROR   (2007-07-05) 23:04.09:785   [core.manager.fop] (/links.pdf) PoolThread-4/MessageHandler: unknown font sans,normal,normal so defaulted font to any
+ERROR   (2007-07-05) 23:04.09:792   [core.manager.fop] (/links.pdf) PoolThread-4/MessageHandler: unknown font sans,normal,normal so defaulted font to any
+ERROR   (2007-07-05) 23:04.09:792   [core.manager.fop] (/links.pdf) PoolThread-4/MessageHandler: unknown font sans,normal,normal so defaulted font to any
