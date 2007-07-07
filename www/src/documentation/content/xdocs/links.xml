@@ -7,22 +7,18 @@
   <body>
     <section id="other-xy-links">
       <title>Other sites for Schoorbs</title>
-      <p>
-        <ul>
-          <li><a href="http://code.google.com/p/schoorbs/">Schoorbs @ Google Code</a></li>
-          <li><a href="https://launchpad.net/schoorbs/">Schoorbs @ Launchpad.com</a></li>
-          <li><a href="http://freshmeat.net/projects/schoorbs/">Schoorbs @ Freshmeat</a></li>
-          <li><a href="http://xhochy.com/schoorbs">Schoorbs information on the main XhochY-site</a></li>
-        </ul>
-      </p>
+      <ul>
+        <li><a href="http://code.google.com/p/schoorbs/">Schoorbs @ Google Code</a></li>
+        <li><a href="https://launchpad.net/schoorbs/">Schoorbs @ Launchpad.com</a></li>
+        <li><a href="http://freshmeat.net/projects/schoorbs/">Schoorbs @ Freshmeat</a></li>
+        <li><a href="http://xhochy.com/schoorbs">Schoorbs information on the main XhochY-site</a></li>
+      </ul>
     </section>
     <section id="other-links">
       <title>Other related sites</title>
-      <p>
-        <ul>
-          <li><a href="http://mrbs.sourceforge.net">MRBS &dash; The codebase of Schoorbs</a></li>
-        </ul>
-      </p>
+      <ul>
+        <li><a href="http://mrbs.sourceforge.net">MRBS &dash; The codebase of Schoorbs</a></li>
+      </ul>
     </section>
   </body>
 </document>
