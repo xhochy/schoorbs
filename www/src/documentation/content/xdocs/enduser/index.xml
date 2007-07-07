@@ -23,21 +23,18 @@
   <body>
     <section id="status">
       <title>Status of development</title>
-      <p>
+<p>
         At the moment Schoorbs is still only available as an Alpha-version. We 
         recommend that only interested developers should use this version.
       </p>
-      <p>
-        <ul>
+         <ul>
           <li><a href="http://code.google.com/p/schoorbs/downloads/detail?name=schoorbs-1.0-alpha1.7z&amp;can=2&amp;q=">schoorbs-1.0-alpha1.7z</a></li>
           <li><a href="http://code.google.com/p/schoorbs/downloads/detail?name=schoorbs-1.0-alpha1.zip&amp;can=2&amp;q=">schoorbs-1.0-alpha1.zip</a></li>
         </ul>
-      </p>
     </section>
     <section id="features">
       <title>Features</title>
-      <p>
-        <ul>
+   <ul>
           <li>View everything per a XHTML 1.1 valid Webinterface, you use your favorite Webbrowser</li>
           <li>Runs on all servers supporting PHP(>= 4.3) and MySQL(either the mysql or the mysqli interface) or PostgreSQL.</li>
           <li>Authentication with your existing user database (eg Netware, NT Domain, NIS etc.)</li>
@@ -49,7 +46,6 @@
           <li>Communication with Schoorbs through a REST-API is also possible, so making own scripts/programs using Schoorbs is possible without using PHP.</li>
           <li>Uses the equal database structure as MRBS, you even could use both in parallel, if you want to evaluate them</li>
         </ul>
-      </p>
     </section>
   </body>
 </document>

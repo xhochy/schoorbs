@@ -77,7 +77,7 @@ which will be used to configure the chosen Forrest skin.
   <host-url>http://xhochy.com</host-url>
   <host-logo></host-logo>
 <!-- relative url of a favicon file, normally favicon.ico -->
-  <favicon-url>favicon.ico</favicon-url>
+<!--  <favicon-url>favicon.ico</favicon-url>-->
 <!-- The following are used to construct a copyright statement -->
   <disable-copyright-footer>false</disable-copyright-footer>
 <!-- @inception enable automatic generation of a date-range to current date -->
