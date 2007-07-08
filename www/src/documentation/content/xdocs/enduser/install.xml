@@ -1,0 +1,47 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE document PUBLIC "-//APACHE//DTD Documentation V2.0//EN" "http://forrest.apache.org/dtd/document-v20.dtd">
+<document>
+  <header>
+    <title>Installation</title>
+  </header>
+  <body>
+
+    <section id="prerequests">
+      <title>prerequests</title>
+      <table>
+        <tr>
+          <th>Component</th>
+          <th>Version</th>
+        </tr>
+        <tr>
+          <td>Apache HTTPD (+ mod_rewrite for REST-Interface)</td>
+          <td>all should work</td>
+        </tr>
+        <tr>
+          <td>PHP as Apache module</td>
+          <td>4.3.x/4.4.x/5.x</td>
+        </tr>
+        <tr>
+          <td>MySQL or PostgreSQL</td>
+          <td>4.x/5.x(My) or 7.x/8.x(Postgre)</td>
+        </tr>
+      </table>
+    </section>
+
+    <section id="upgrade-mrbs">
+      <title>upgrade from MRBS</title>
+      <p>
+        If you have already an old MRBS installation, you should first make a backup of your old 
+        files (especially config.inc.php) and your database. If you have downloaded the Schoorbs 
+        package, you should extract it to a location where your webserver can access it. Then 
+        copy your old config.inc.php to the new Schoorbs installation and you should have a running
+        Schoorbs.
+      </p>
+    </section>
+
+    <section id="freshinstall">
+      <title>fresh installation</title>
+    </section>
+
+  </body>
+</document>

@@ -45,6 +45,7 @@ See http://forrest.apache.org/docs/linking.html for more info
   </about>
   <enduser label="End-user Documentation" href="enduser/" tab="enduser">
     <index label="Overview" href="index.html"/>
+    <install label="Installation" href="install.html"/>
   </enduser>
   <files>
     <hello_print href="hello.pdf"/>

@@ -15,6 +15,6 @@
     be displayed when their parent tab is selected.    
   -->
   <tab id="" label="Home" dir="" indexfile="index.html"/>
-  <tab id="enduser" label="End-user Documentation" dir="enduser" />
+  <tab label="End-user Documentation" dir="enduser" id="enduser" />
   <tab label="API Documentation" href="http://schoorbs.xhochy.com/src-doc/" />
 </tabs>
