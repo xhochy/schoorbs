@@ -41,16 +41,13 @@ See http://forrest.apache.org/docs/linking.html for more info
   <about label="About">
     <index label="Index" href="index.html" description="Welcome to Schoorbs"/>
     <links label="Links" href="links.html" description="Links related to Schoorbs" />
+    <license label="License" href="license.html" description="License of Schoorbs(GPL)" />
     <linkmap label="Sitemap (ToC)" href="linkmap.html" description="Table of Contents"/>
   </about>
   <enduser label="End-user Documentation" href="enduser/" tab="enduser">
     <index label="Overview" href="index.html"/>
     <install label="Installation" href="install.html"/>
   </enduser>
-  <files>
-    <hello_print href="hello.pdf"/>
-    <test1 href="test1.html"/>
-  </files>
 <!--
   The href must be wholesite.html/pdf  You can change the labels and node names
   <all label="All">
