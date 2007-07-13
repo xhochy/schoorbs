@@ -110,14 +110,18 @@
           After we now should have a working database structure, we need to tell Schoorbs how to access
           the database. All configuration about database in done in Schoorbs at the head of the 
           config.inc.php. At first we have to inform Schoorbs which database driver it should use
-          (variable $dbsys), for PostgreSQL we have at the moment only one option, the 'psql'-driver.
+          (variable <code>$dbsys</code>), for PostgreSQL we have at the moment only one option, the 'psql'-driver.
           But if you use MySQL, you can choose, if you want to use the 'mysql'- oder the 
           'mysql<strong>i</strong>'-driver. You can use the 'mysql'-driver for PHP 4 and PHP 5,
           but the 'mysqli'-driver is limited to PHP 5. It does not really make a difference which
           driver you use, 'mysql' may be more stable and 'mysqli' may have a better performance.
-   
-          <!-- continue here with further database config docs -->
-
+        </p>
+        <p>
+          With <code>$db_host</code> we tell Schoorbs where the database server is running, in most cases
+          'localhost' is the best choice. In <code>$db_database</code> we set the database where the tables
+          are stored, the table prefix is defined in <code>$db_tbl_prefix</code>. <code>$db_login</code>
+          and <code>$db_password</code> are the places to store the authentication details. If you want to
+          use peristent (pooled) connection, you have to set <code>$db_nopersist</code> to true.
         </p>
       </section> 
     </section>
