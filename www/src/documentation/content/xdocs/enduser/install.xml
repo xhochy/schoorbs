@@ -7,7 +7,7 @@
   <body>
 
     <section id="prerequests">
-      <title>prerequests</title>
+      <title>Prerequests</title>
       <table>
         <tr>
           <th>Component</th>
@@ -29,7 +29,7 @@
     </section>
 
     <section id="upgrade-mrbs">
-      <title>upgrade from MRBS</title>
+      <title>Upgrade from MRBS</title>
       <p>
         If you have already an old MRBS installation, you should first make a backup of your old 
         files (especially config.inc.php) and your database. If you have downloaded the Schoorbs 
@@ -40,7 +40,86 @@
     </section>
 
     <section id="freshinstall">
-      <title>fresh installation</title>
+      <title>Fresh Installation</title>
+      <p>
+        After you have downloaded a version of Schoorbs, you should extract it to a directory, your
+        webserver can access. Now make a copy of config.inc.php-dist and name it 'config.inc.php'.
+      </p>
+      <p>
+        <strong>Example:</strong><br />
+        <code>$ unzip schoorbs.zip</code>&nbsp;&nbsp;or&nbsp;&nbsp;<code>$ 7za x schoorbs.7z</code><br />
+        <code>$ cd schoorbs</code><br />
+        <code>$ cp config.inc.php-dist config.inc.php</code>
+      </p>
+    </section>
+
+    <section id="database">
+      <title>Database setup</title>
+      <p>
+        If you're making a new installation of Schoorbs, you have to generate the database 
+        environment for it. There are some differences between MySQL and PostgreSQL which are
+        explained in the following paragraphs.
+      </p>
+      <section id="database-mysql">
+        <title>MySQL</title>
+        <p>
+          If we do not use an existing database, we have to create a new one with
+        </p>
+        <p>
+          <code>$ mysqladmin create schoorbs</code>
+        </p>
+        <p>
+          In the next step we need to create the tables. With the given file 
+          <a href="tables.my.sql">tables.my.sql</a> you create all the needed tables with the prefix
+          'schoorbs_', if you want another prefix, you have to change it at each command. For legacy/
+          backward-compability-cases, it's a <a href="tables-legacy.my.sql">tables-legacy.my.sql</a>
+          available, where all commands start with 'mrbs_'. The following command should execute the 
+          sql-commands from the file in the file:
+        </p>
+        <p>
+          <code>$ mysql schoorbs &lt; tables.my.sql</code>
+        </p>
+      </section>
+      <section id="database-postgresql">
+        <title>PostgreSQL</title>
+        <p>
+          If we need to create a database for the PostgreSQL-setup, we could do this with a command,
+          that is slightly shorter than the MySQL one:
+        </p>
+        <p>
+          <code>$ createdb schoorbs</code>
+        </p>
+        <p>
+          In opposite to MySQL where we have one SQL-file for all versions, with PostgreSQL, we have 
+          to seperate between the server-versions before 7.3 and 7.3+. For the old school database 
+          users we have <a href="tables.pg.sql">tables.pg.sql</a> with 'schoorbs_' as the command 
+          prefix, for legacy cases there is a <a href="tables-legacy.pg.sql">tables-legacy.pg.sql</a>
+          with 'mrbs_'-prefix available too. The modern 7.3+ users should use 
+          <a href="tables.pg.73and_above.sql">tables.pg.73and_above.sql</a>('schoorbs_')
+          or <a href="tables-legacy.pg.73and_above.sql">tables-legacy.pg.73and_above.sql</a>
+          ('mrbs_'), because there are some differences in the SQL-syntax between those generations.
+          You can apply those SQL-commands to your database with
+        </p>
+        <p>
+          <code>$ psql -a -f tables.pg.sql schoorbs</code>
+        </p>
+      </section>
+      <section id="database-schoorbs-config">
+        <title>Databaseconfiguration in Schoorbs</title> 
+        <p>
+          After we now should have a working database structure, we need to tell Schoorbs how to access
+          the database. All configuration about database in done in Schoorbs at the head of the 
+          config.inc.php. At first we have to inform Schoorbs which database driver it should use
+          (variable $dbsys), for PostgreSQL we have at the moment only one option, the 'psql'-driver.
+          But if you use MySQL, you can choose, if you want to use the 'mysql'- oder the 
+          'mysql<strong>i</strong>'-driver. You can use the 'mysql'-driver for PHP 4 and PHP 5,
+          but the 'mysqli'-driver is limited to PHP 5. It does not really make a difference which
+          driver you use, 'mysql' may be more stable and 'mysqli' may have a better performance.
+   
+          <!-- continue here with further database config docs -->
+
+        </p>
+      </section> 
     </section>
 
   </body>
