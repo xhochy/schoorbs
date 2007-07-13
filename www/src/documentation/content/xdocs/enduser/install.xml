@@ -126,6 +126,48 @@
       </section> 
     </section>
 
+    <section id="calendar-setup">
+      <title>Calendar settings</title>
+      <p>
+        In Schoorbs there are two ways to setup the calendar, the first one is the clock-based. It lets you
+        define when the days starts and when it ends. In this timespan, it is always possible to book the 
+        room/resource but only in fixed timespan, e.g. all 45 minutes. The other way is the period-based.
+        Here you define timespans by giving them a name rather than setting up a fixed time unit, these
+        names could be times too, but they all will be handled as strings. You choose your favourite system
+        by setting <code>$enable_periods</code> either to true or to false.  
+      </p>
+
+      <section id="period-calendar">
+        <title>Setting up a period-based calendar</title>
+        <p>
+           Creating a period-based calendar is very simple. You just define in the configurationfile how
+           your timespand are named and add them to the the <code>$period</code>-array. E.g.:
+        </p>
+        <p>
+          <code>$periods[] = "08:00-08:45";</code>
+        </p>
+      </section>
+
+      <section id="clock-calendar">
+        <title>Setting up a clock-based calendar</title>
+        <p>
+          A clock-based calendar may not be as simple as a period-based calendar, but it could save 
+          you the work of naming each time unit. At first we have to define in <code>$resolution</code>
+          how long a timespan is, the length is defined in seconds, so a time unit of half an hour 
+          would be <code>$resolution = 1800;</code>. With <code>$morningstarts</code> you set the 
+          hour when a day starts, with <code>$morningstarts_minutes</code> you do it with the minutes.
+          <code>$eveningends</code> and <code>$eveningends_minutes</code> do the same for the end of 
+          the day. For people who care about the beginning of the week, could set this with 
+          <code>$weekstarts</code> either to sunday(set to 0) or monday(set to 1). In some countries
+          it is common to have the da in front of the month, in others there's the month in front of 
+          the day. Schoorbs takes care of this difference with <code>$dateformat</code>, with a value
+          of '0' the month is in front, with 1 it's the day. Another difference is the hour format, 
+          mostly english contries have 1-12pm/am, the others have 0-23/24, for the first case you
+          have to set <code>$twentyfourhour_format</code> to 0, for the other case to 1.   
+        </p>
+      </section>
+    </section>
+
     <section id="misc-setup">
       <title>Miscellaneous settings</title>
       <section id="site-id-setup">
