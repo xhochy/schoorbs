@@ -126,5 +126,21 @@
       </section> 
     </section>
 
+    <section id="misc-setup">
+      <title>Miscellaneous settings</title>
+      <section id="site-id-setup">
+        <title>Site identification information</title>
+        <p>
+          With the variables <code>$mrbs_admin</code> and <code>$mrbs_admin_email</code> you define who your 
+          administration contact is and under which mail he is contactable. This information is shown on the
+          help-page. If you want to change the branding in the left top, you have to edit <code>$mrbs_company</code>.
+          Please take special care of this variable, because the content of it is send directly to the user, which
+          makes it possible to insert (X)HTML-Code in it. When Schoorbs is running behind a proxy, it sometimes
+          may happen that the URLs are broken, to override the used URL-base you just need to set <code>$url_base</code>
+          to a valid adress. 
+        </p>
+      </section>
+    </section>
+
   </body>
 </document>
