@@ -7,7 +7,6 @@
  * @license http://www.gnu.org/licenses/gpl.html GNU General Public License
  */
 
-require_once "grab_globals.php";
 require_once "config.inc.php";
 require_once 'schoorbs-includes/global.web.php';
 require_once "schoorbs-includes/database/$dbsys.php";
@@ -25,6 +24,6 @@ $smarty->assign('schoorbs_admin',$mrbs_admin);
 
 $smarty->display('help.tpl'); 
 
-include "faq/site_faq" . $faqfilelang . ".html";
+require_once "schoorbs-includes/faq/site_faq${faqfilelang}.html";
 
 require_once 'schoorbs-includes/trailer.php';
