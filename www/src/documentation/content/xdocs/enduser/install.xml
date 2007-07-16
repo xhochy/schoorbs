@@ -182,46 +182,46 @@
         Excluding the site identification settings there are a lot more simple settings. In the 
         configuration file, they are all metioned by small comment each.<br />
         These settings control:
-        <ul>
-          <li>
-            the maximum number of repeat entries which can be created at once (a safety feature)
-          </li>
-          <li>
-            the default report time period
-          </li>
-          <li>
-            the number of search results to return per page
-          </li>
-          <li>
-            the page refresh rate
-          </li>
-          <li>
-            the way area/rooms are selected (html list or a drop-down select box)
-          </li>
-          <li>
-            the way entries are displayed in monthly view (start/end slot, brief description or both)
-          </li>
-          <li>
-            the way weeks are displayed in the bottom of the page (as week numbers (ie.
-            42) instead of 'first day of the week' (13 Oct))
-          </li>
-          <li>
-            display of times on right and left side in day and week view
-          </li>
-          <li>
-            display of horizontal stripes on the day view
-          </li>
-          <li>
-            cells highlighting options
-          </li>
-          <li>
-            the default starting view (month, week or day)
-          </li>
-          <li>
-            the default room to start with
-          </li>
-        </ul>
       </p>
+      <ul>
+        <li>
+          the maximum number of repeat entries which can be created at once (a safety feature)
+        </li>
+        <li>
+          the default report time period
+        </li>
+        <li>
+          the number of search results to return per page
+        </li>
+        <li>
+         the page refresh rate
+        </li>
+        <li>
+          the way area/rooms are selected (html list or a drop-down select box)
+        </li>
+        <li>
+          the way entries are displayed in monthly view (start/end slot, brief description or both)
+        </li>
+        <li>
+          the way weeks are displayed in the bottom of the page (as week numbers (ie.
+          42) instead of 'first day of the week' (13 Oct))
+        </li>
+        <li>
+          display of times on right and left side in day and week view
+        </li>
+        <li>
+          display of horizontal stripes on the day view
+        </li>
+        <li>
+          cells highlighting options
+        </li>
+        <li>
+          the default starting view (month, week or day)
+        </li>
+        <li>
+          the default room to start with
+        </li>
+      </ul>
       <section id="site-id-setup">
         <title>Site identification information</title>
         <p>
