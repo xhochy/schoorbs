@@ -64,7 +64,7 @@
         	{else}
             	<a href="edit_entry.php?room={$room}&amp;area={$area}&amp;hour={$morningstarts}&amp;minute=0&amp;year={$year}&amp;month={$month}&amp;day={$days_item.cday}">
             {/if}
-            	<img src="gfx/list-add-small.png" style="border: 0px;" alt="neuer Eintrag" />
+            	<img src="schoorbs-misc/gfx/list-add-small.png" style="border: 0px;" alt="neuer Eintrag" />
             </a>
     	{else}
         	&nbsp;

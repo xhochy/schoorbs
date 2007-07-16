@@ -59,11 +59,11 @@
 					{if $pview neq 1}
 						{if $enable_periods eq "true"}
 							<a href="edit_entry.php?room={$room}&amp;area={$area}&amp;period={$WeekDay.time_t_stripped}&amp;year={$WeekDay.wyear}&amp;month={$WeekDay.wmonth}&amp;day={$WeekDay.wday}">
-								<img style="border: 0px;" src="gfx/list-add-small.png" width="10" height="10" alt="New Button" />
+								<img style="border: 0px;" src="schoorbs-misc/gfx/list-add-small.png" width="10" height="10" alt="New Button" />
 							</a>
 						{else}
 							<a href="edit_entry.php?room={$room}&amp;area={$area}&amp;hour={$WeekDay.hour}&amp;minute={$WeekDay.minute}&amp;year={$WeekDay.wyear}&amp;month={$WeekDay.wmonth}&amp;day={$WeekDay.wday}">
-								<img style="border: 0px;" src="gfx/list-add-small.png" width="10" height="10" alt="New Button" />
+								<img style="border: 0px;" src="schoorbs-misc/gfx/list-add-small.png" width="10" height="10" alt="New Button" />
 							</a>
 						{/if}
 					{else}
