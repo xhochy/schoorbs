@@ -45,7 +45,7 @@
 			{if $col.id eq ""}
 				{if $pview neq 1}
 					<a href="edit_entry.php?area={$area}&amp;room={$col.room}&amp;year={$year}&amp;month={$month}&amp;day={$day}{$col.period_param}">
-					<img alt="gfx/list-add-small.png" src="gfx/list-add-small.png" style="width: 10px; height: 10px; border: 0px" /></a>
+					<img alt="schoorbs-misc/gfx/list-add-small.png" src="schoorbs-misc/gfx/list-add-small.png" style="width: 10px; height: 10px; border: 0px" /></a>
 				{else}
 					&nbsp;
 				{/if}

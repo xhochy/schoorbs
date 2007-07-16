@@ -3,17 +3,17 @@
 <html xmlns="http://www.w3.org/1999/xhtml" xml:lang="de">
 <head>
     <title>{$mrbs_company} - Schoorbs</title>
-    <link rel="stylesheet" type="text/css" href="style/style.css" />
+    <link rel="stylesheet" type="text/css" href="schoorbs-misc/style/style.css" />
     <link rel="home" href="index.php" />
 
-    <script type="text/javascript" src="js/jquery.pack.js"></script>
-    <script type="text/javascript" src="js/schoorbs.js"></script>
+    <script type="text/javascript" src="schoorbs-misc/js/jquery.pack.js"></script>
+    <script type="text/javascript" src="schoorbs-misc/js/schoorbs.js"></script>
     <!-- compliance patch for microsoft browsers -->
     <!--[if lt IE 7]>
     <script type="text/javascript">
         IE7_PNG_SUFFIX = ".png";
     </script>
-    <script src="js/ie7/ie7-standard-p.js" type="text/javascript"></script>
+    <script src="schoorbs-misc/js/ie7/ie7-standard-p.js" type="text/javascript"></script>
     <![endif]-->
 </head>
 <body>
@@ -21,7 +21,7 @@
 		<br />
 		<a class="headerLink" style="color: #55555;" href="index.php" rel="home">{$mrbs_company}</a>
 		<br /><br />
-		<small><a href="http://code.google.com/p/schoorbs">Powered by Schoorbs</a></small>
+		<small><a href="http://schoorbs.xhochy.com">Powered by Schoorbs</a></small>
 	</div>
 	<div id="menu">
 		{if $logonbox neq ""}
@@ -32,15 +32,15 @@
 	    	</table>
     	{/if}
 		<br />
-		<a class="menu_link" href="help.php"><img src="gfx/help.png" class="menu_icon" alt="{get_vocab text="help"}" />{get_vocab text="help"}</a>
+		<a class="menu_link" href="help.php"><img src="schoorbs-misc/gfx/help.png" class="menu_icon" alt="{get_vocab text="help"}" />{get_vocab text="help"}</a>
 		&nbsp;|&nbsp;
-		<a class="menu_link" href="report.php"><img src="gfx/report.png" class="menu_icon" alt="{get_vocab text="report}" />{get_vocab text="report}</a>
+		<a class="menu_link" href="report.php"><img src="schoorbs-misc/gfx/report.png" class="menu_icon" alt="{get_vocab text="report}" />{get_vocab text="report}</a>
 		&nbsp;|&nbsp;
-		<a class="menu_link" href="admin.php"><img src="gfx/admin.png" class="menu_icon" alt="{get_vocab text="admin"}" />{get_vocab text="admin"}</a>
+		<a class="menu_link" href="admin.php"><img src="schoorbs-misc/gfx/admin.png" class="menu_icon" alt="{get_vocab text="admin"}" />{get_vocab text="admin"}</a>
 		<br /><br />
 		<form action="day.php" method="get">
         	<div id="menu_selector">
-        		<img src="gfx/view.png" class="menu_icon" alt="{get_vocab text="search"}" />
+        		<img src="schoorbs-misc/gfx/view.png" class="menu_icon" alt="{get_vocab text="search"}" />
            		{genDateSelector prefix=$prefix day=$Day month=$Month year=$Year}
 	   			{if $Area neq ""}
 	     			<input type="hidden" name="area" value="{$Area}" />
@@ -55,7 +55,7 @@
 		<form method="get" action="search.php">
         	<div id="menu_searchbox">
         		<a class="menu_link" style="font-size: 14px;" href="search.php?advanced=1">
-        			<img src="gfx/find.png" class="menu_icon" alt="{get_vocab text="search"}" />
+        			<img src="schoorbs-misc/gfx/find.png" class="menu_icon" alt="{get_vocab text="search"}" />
         			{get_vocab text="search"}
         		</a>
            		<input type="text" name="search_str" value="{$search_str}" size="10" />

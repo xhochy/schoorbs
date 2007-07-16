@@ -20,3 +20,7 @@ end
 ## clean Task ##
 
 CLEAN.exclude 'core'
+CLEAN.include 'schoorbs-dist/*'
+CLEAN.include 'schoorbs-doc/*'
+CLEAN.include 'schoorbs-includes/Smarty/templates_c/*'
+CLEAN.exclude '.svn'
