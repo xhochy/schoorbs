@@ -168,8 +168,60 @@
       </section>
     </section>
 
+    <section id="auth">
+      <title>Authentication</title>
+      <p>
+        For installation instructions concerning authentication, please read the special page about
+        it.
+      </p>
+    </section>
+
     <section id="misc-setup">
       <title>Miscellaneous settings</title>
+      <p>
+        Excluding the site identification settings there are a lot more simple settings. In the 
+        configuration file, they are all metioned by small comment each.<br />
+        These settings control:
+        <ul>
+          <li>
+            the maximum number of repeat entries which can be created at once (a safety feature)
+          </li>
+          <li>
+            the default report time period
+          </li>
+          <li>
+            the number of search results to return per page
+          </li>
+          <li>
+            the page refresh rate
+          </li>
+          <li>
+            the way area/rooms are selected (html list or a drop-down select box)
+          </li>
+          <li>
+            the way entries are displayed in monthly view (start/end slot, brief description or both)
+          </li>
+          <li>
+            the way weeks are displayed in the bottom of the page (as week numbers (ie.
+            42) instead of 'first day of the week' (13 Oct))
+          </li>
+          <li>
+            display of times on right and left side in day and week view
+          </li>
+          <li>
+            display of horizontal stripes on the day view
+          </li>
+          <li>
+            cells highlighting options
+          </li>
+          <li>
+            the default starting view (month, week or day)
+          </li>
+          <li>
+            the default room to start with
+          </li>
+        </ul>
+      </p>
       <section id="site-id-setup">
         <title>Site identification information</title>
         <p>
@@ -181,6 +233,16 @@
           may happen that the URLs are broken, to override the used URL-base you just need to set <code>$url_base</code>
           to a valid adress. 
         </p>
+      </section>
+      <section id="mail">
+        <title>E-Mail support</title>
+        <p>
+          At the moment mail support is not considered as stable since we had to switch to a other 
+          mail-protocol-wrapper library through legal issues.  For experimental/hopeful users, please
+          refer to our copy of the old MRBS documentation (the mail-wrapper is still backwards compatible). 
+        </p>
+        <source>
+        </source>
       </section>
     </section>
 

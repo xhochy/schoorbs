@@ -1,0 +1,214 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE document PUBLIC "-//APACHE//DTD Documentation V2.0//EN" "http://forrest.apache.org/dtd/document-v20.dtd">
+<document>
+  <header>
+    <title>Enduser documentation for Schoorbs</title>
+  </header>
+  <body>
+    <section id="Mail">
+      <title>E-Mail support in Schoorbs (experimental)</title>
+      <p>
+        MRBS used for its E-Mail handling the PEAR::Mail library which was licensed unter the 
+        PHP-license which is incompatible with the GPL, the license Schoorbs/MRBS is licensed 
+        under. Through this legal case we had to switch to a new mailing backend (PhpMailer),
+        we haven't already had the time to test it as need, so we consider this feature as
+        experimental, even if there were no bug reports till now. For documentation cases the old
+        MRBS mail documentation should help you:
+      </p>
+      <source>
+MRBS can send emails to various recipients and in accordance with events.
+
+There are four recipients types:
+
+- MRBS administrator
+- Area administrators
+- Room administrators
+- Bookers
+
+With settings described below, you can decide that MRBS sends emails to all
+these recipients, or any combination of them. Each one can be selected
+individually. Note that the word 'administrator' is used here only for mail
+purposes, it is not related to any approval workflow.
+
+There are three events types:
+
+- entry creation
+- entry change
+- entry deletion
+
+As for recipients, you can choose to send mails for any of these three events.
+
+There are many other settings, including mail transport agent (php mail, smtp
+server, unix sendmail), content of the mail subject and body, either a link to
+the entries or full description (with changes between edited entry and its
+previous state). Read the following parameters for detailed informations:
+
+MAIL_ADMIN_ON_BOOKINGS
+
+Set to TRUE if you want to be notified when entries are booked. Default is
+FALSE
+
+MAIL_AREA_ADMIN_ON_BOOKINGS
+
+Set to TRUE if you want AREA ADMIN to be notified when entries are booked.
+Default is FALSE. Area admin emails are set in room_area admin page.
+
+MAIL_ROOM_ADMIN_ON_BOOKINGS
+
+Set to TRUE if you want ROOM ADMIN to be notified when entries are booked.
+Default is FALSE. Room admin emails are set in room_area admin page.
+
+MAIL_ADMIN_ON_DELETE
+
+Set to TRUE if you want ADMIN to be notified when entries are deleted. Email
+will be sent to mrbs admin, area admin and room admin as per above settings,
+as well as to booker if MAIL_BOOKER is TRUE (see below).
+
+MAIL_ADMIN_ALL
+
+Set to TRUE if you want to be notified on every change (i.e, on new entries)
+but also each time they are edited. Edited entries will display the modified
+fields in brackets after the new value if MAIL_DETAILS is set to TRUE
+(see below). Default is FALSE (only new entries).
+
+MAIL_DETAILS
+
+Set to TRUE is you want to show entry details in email, otherwise only a
+link to view_entry is provided. Irrelevant for deleted entries, as email body
+will always have entry details, since there is no possibility to provide a
+link. Default is FALSE.
+
+MAIL_BOOKER
+
+Set to TRUE if you want the entry booker to receive a copy of his entry as
+well as any future changes (depends of MAIL_ADMIN_ALL, see below). Default
+is FALSE. MRBS can turn some of your user databases to advantage, as there
+are several authentication schemes where the username is the same as
+the email address username .For example, if your mrbs users come from an
+ldap directory and mrbs use this authentication scheme, it is likely your
+organisation emails addresses will use this username with '@domain'. If
+this is the case, you just have to set MAIL_BOOKER to TRUE and provide your
+domain below. This setting is available too if you use MRBS own user
+database (auth_db).
+
+MAIL_DOMAIN
+
+If MAIL_BOOKER is set to TRUE (see above) and you use an authentication
+scheme other than 'auth_db', you need to provide the mail domain that will
+be appended to the username to produce a valid email address (ie.
+"@domain.com").
+
+MAIL_USERNAME_SUFFIX
+
+If you use MAIL_DOMAIN above and username returned by mrbs contains extra
+strings appended like domain name ('username.domain'), you need to provide
+this extra string here so that it will be removed from the username.
+
+MAIL_ADMIN_BACKEND
+
+Set the name of the backend to use to transport your mails. Either "mail",
+"smtp" or "sendmail":
+
+·   mail
+Sends a mail using PHPs build-in mail()-function. This means this function
+must not be disabled and you have a minimal control over your server and
+settings in php.ini :
+    'SMTP' and 'smtp_port' for Windows and 'sendmail_from' and 'sendmail_path'
+    for Unix
+
+·   sendmail
+Sends a mail using a sendmail unix program.
+
+·   smtp
+Sends a mail connecting directly to an smtp server.
+
+# Sendmail settings
+
+SENDMAIL_PATH
+
+Set the path of the Sendmail program (only used with "sendmail" backend).
+Default is "/usr/bin/sendmail"
+
+SENDMAIL_ARGS
+
+Set additional Sendmail parameters (only used with "sendmail" backend).
+(example "-t -i"). Default is ""
+
+# SMTP settings
+
+SMTP_HOST
+
+Set smtp server to connect. Default is 'localhost' (only used with "smtp"
+backend).
+
+SMTP_PORT
+
+Set smtp port to connect. Default is '25' (only used with "smtp" backend).
+
+SMTP_AUTH
+
+Set whether or not to use SMTP authentication. Default is 'FALSE'
+
+SMTP_USERNAME
+
+Set the username to use for SMTP authentication. Use only if SMTP_AUTH is
+set to TRUE. Default is ''
+
+SMTP_PASSWORD
+
+Set the password to use for SMTP authentication. Use only if SMTP_AUTH is
+set to TRUE. Default is ''
+
+# Miscellaneous settings
+
+MAIL_ADMIN_LANG
+
+Set the language used for emails (chooses from an available lang.* file).
+Default is 'en'.
+
+MAIL_FROM
+
+Set the email address of the From field. Default is the $mrbs_admin_email
+variable.
+
+MAIL_RECIPIENTS
+
+Set the recipient email. Default is $mrbs_admin_email. You can define
+more than one recipient like this "john@doe.com,scott@tiger.com"
+
+MAIL_CC
+
+Set email address of the Carbon Copy field. Default is ''. You can define
+more than one recipient (see MAIL_RECIPIENTS)
+
+$mail["subject"]
+
+Set the content of the Subject field. Default is
+"Entry added/changed for $mrbs_company MRBS"
+
+$mail["subject_delete"]
+
+Set the content of the Subject field for deleted fields. Default is
+"Entry deleted for $mrbs_company MRBS";
+
+$mail["new_entry"]
+
+Set the content of the message when a new entry is booked. What you type
+here will be added at the top of the message body. Default is:
+"A new entry has been booked, here are the details:"
+
+$mail["changed_entry"]
+
+Set the content of the message when an entry is modified. What you type
+here will be added at the top of the message body. Default is:
+"An entry has been modified, here are the details:"
+
+$mail["deleted_entry"]
+
+Set the content of the message when an entry is deleted. What you type
+here will be added at the top of the message body. Default is
+"An entry has been deleted, here are the details:"
+      </source>
+    </section>
+  </body>
+</document>

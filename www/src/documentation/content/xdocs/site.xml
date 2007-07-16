@@ -47,6 +47,7 @@ See http://forrest.apache.org/docs/linking.html for more info
   <enduser label="End-user Documentation" href="enduser/" tab="enduser">
     <index label="Overview" href="index.html"/>
     <install label="Installation" href="install.html"/>
+    <mail label="Mail support (experimental)" href="mail.html"/>
   </enduser>
 <!--
   The href must be wholesite.html/pdf  You can change the labels and node names
