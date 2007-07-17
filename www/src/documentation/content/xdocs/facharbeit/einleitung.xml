@@ -1,0 +1,40 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE document PUBLIC "-//APACHE//DTD Documentation V2.0//EN" "http://forrest.apache.org/dtd/document-v20.dtd">
+<document>
+  <header>
+    <title>Einleitung</title>
+  </header>
+  <body>
+    <section id="aufgabe">
+      <title>Aufgabenstellung</title>
+      <p>
+         Meine Facharbeit bestand in dem Einrichten und Verbessern eines Raumbuchungssystems am 
+         HSG. Weiterhin habe ich noch einen Stundenplanparser zum automatischen Einlesen und 
+         Eintragen des aktuellen Stundenplans in das Raumbuchungssystem erstellt. Vor Beginn der
+         Facharbeit habe ich mit meinem Betreuungslehrer, Herrn Merkert, auf die Software MRBS als
+         Grundlage geeinigt, da hier schon wichtige Funktionen eines Raumbuchungssystems vorhanden
+         sind, jedoch leider einige Sicherheitsmängel ausgebessert werden müssen. Um die Software 
+         besser zu verstehen und sie einfacher analysierbar zu machen, habe ich die Dateien neu 
+         strukturiert und den Quelltext etwas aufgeräumt. Da meine Vorschläge, u.a. die HTML 
+         Ausgabe valide zu machen und das System weiter abzusichern nicht mit der bisherigen 
+         Struktur von MRBS kompatibel sind, habe ich mich entschieden eine Abspaltung(„Fork“) von 
+         MRBS zu machen und diese Schoorbs zu nennen. Im folgenden meine ich mit MRBS die Software,
+         die ich nicht verändert habe, und mit Schoorbs das Ergebnis meiner Facharbeit. Beide 
+         Programme, Schoorbs und der Stundenplanparser sind Platformunabhängig geschrieben, d.h. 
+         sie können auf nahezu allen System ausgeführt werden, Schoorbs benötigt dazu lediglich 
+         einen PHP-Interpreter und der Stundenplanparser XULRunner(Basis von u.a. Firefox).
+      </p>
+    </section>
+    <section id="sysanalyse">
+      <title>Systemanalyse</title>
+      <ul>
+        <li><a href="http://mrbs.sourceforge.net/">MRBS Homepage</a></li>
+        <li>
+          <a href="http://www.schooltool.org/">Schooltool, ein Raumbuchungsystem in Python</a>, 
+          jedoch wäre hier die Anbindung an die aktuelle Nutzdatenbank des HSG erschwert gewesen.
+        </li>
+        <li><a href="http://www.k5n.us/webcalendar.php">Webcalendar, die Grundlage von MRBS</a></li>
+      </ul>
+    </section>
+  </body>
+</document>

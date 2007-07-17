@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE document PUBLIC "-//APACHE//DTD Documentation V2.0//EN" "http://forrest.apache.org/dtd/document-v20.dtd">
+<document>
+  <header>
+    <title>Facharbeit (Schoorbs' source)</title>
+  </header>
+  <body>
+    <section id="about">
+      <title>What is this about?</title>
+      <p>
+        A "Facharbeit" is a scholar work which you do in class 11/12 in Germany. You do it in one of 
+        your main courses. It is a work which is not connected to the lessons you do at this time in
+        school, but it has a precisly defined topic and is a form of long-time homework. I published
+        it here to give all of you, who can read german texts, a overview why I forked MRBS and what
+        I've done and why. Mainly it discusses security issues but there is a part about the 
+        REST-interface and one about the nasty PHP/HTML-mixtures in MRBS. In opposite to the software
+        resulted of it, the text of the Facharbeit is not opensource,  
+      </p>
+    </section>
+  </body>
+</document>

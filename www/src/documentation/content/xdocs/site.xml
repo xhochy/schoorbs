@@ -48,7 +48,13 @@ See http://forrest.apache.org/docs/linking.html for more info
     <index label="Overview" href="index.html"/>
     <install label="Installation" href="install.html"/>
     <mail label="Mail support (experimental)" href="mail.html"/>
+    <room_area label="Area + Room Administration" href="room_area.html"/>
   </enduser>
+  <facharbeit label="Facharbeit (Schoorbs' source)" href="facharbeit/" tab="Facharbeit">
+    <index label="Introduction" href="index.html" />
+    <einleitung label="Einleitung" href="einleitung.html" />
+    <endnutzer label="Endnutzer- dokumentation" href="endnutzer.html" />
+  </facharbeit>
 <!--
   The href must be wholesite.html/pdf  You can change the labels and node names
   <all label="All">
