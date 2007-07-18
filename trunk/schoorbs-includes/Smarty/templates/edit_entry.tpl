@@ -1,3 +1,4 @@
+<script src="schoorbs-misc/js/editentry.js" type="text/javascript"></script>
 <script type="text/javascript">
 // do a little form verifying
 function validate_and_submit ()
@@ -57,22 +58,11 @@ function validate_and_submit ()
 
   return true;
 {literal}}{/literal}
-function OnAllDayClick(allday) // Executed when the user clicks on the all_day checkbox.
-{literal}{{/literal}
-  form = document.forms["main"];
-  if (allday.checked) // If checking the box...
-  {literal}{{/literal}
-    {if $enable_periods neq "true"}
-      form.hour.value = "00";
-      form.minute.value = "00";
-    {/if}
-    if (form.dur_units.value!="days") // Don't change it if the user already did.
-    {literal}{{/literal}
-      form.duration.value = "1";
-      form.dur_units.value = "days";
-    {literal}}{/literal}
-  {literal}}{/literal}
-{literal}}{/literal}
+{if $enable_periods neq "true"}
+var enablePeriods = false;
+{else}
+var enablePeriods = true;
+{/if}
 </script>
 <h2>
 	{if $id neq -1}
@@ -86,7 +76,7 @@ function OnAllDayClick(allday) // Executed when the user clicks on the all_day c
 	{/if}
 </h2>
 
-<form name="main" action="edit_entry_handler.php" method="get">
+<form name="main" id="main-form" action="edit_entry_handler.php" method="get">
 	<table border="0">
 	<tr>
 		<td class="CR"><strong>{get_vocab text="namebooker"}</strong></td>
@@ -106,9 +96,9 @@ function OnAllDayClick(allday) // Executed when the user clicks on the all_day c
 		<tr>
 			<td class="CR"><strong>{get_vocab text="time"}</strong></td>
 		  	<td class="CL">
-		  		<input name="hour" size="2" value="{if $twentyfourhour_format neq "true" and $start_hour > 12}{$start_hour-12}{else}{$start_hour}{/if}" maxlength="2" />
+		  		<input id="main-hour" name="hour" size="2" value="{if $twentyfourhour_format neq "true" and $start_hour > 12}{$start_hour-12}{else}{$start_hour}{/if}" maxlength="2" />
 		  		:
-		  		<input name="minute" size="2" value="{$start_min}" maxlength="2" />
+		  		<input id="main-minute" name="minute" size="2" value="{$start_min}" maxlength="2" />
 		  		{if $twentyfourhour_format neq "true"}
 		  			<input name="ampm" type="radio" value="am"{if $start_hour < 12} checked="checked"{/if} />{php}echo utf8_strftime("%p",mktime(1,0,0,1,1,2000));{/php}
 		   			<input name="ampm" type="radio" value="pm"{if $start_hour >= 12} checked="checked"{/if} />{php}echo utf8_strftime("%p",mktime(13,0,0,1,1,2000));{/php}
@@ -130,8 +120,8 @@ function OnAllDayClick(allday) // Executed when the user clicks on the all_day c
 		<tr>
 			<td class="CR"><strong>{get_vocab text="duration"}</strong></td>
 			<td class="CL">
-				<input name="duration" size="7" value="{$duration}" />
-				<select name="dur_units">
+				<input id="main-duration" name="duration" size="7" value="{$duration}" />
+				<select id="main-dur-units" name="dur_units">
 					{if $enable_periods eq "true"}
 						{capture assign=unit_text}{get_vocab text="periods"}{/capture}
 						<option value="periods"{if $dur_units eq $unit_text} selected="selected"{/if}>{$unit_text}</option>
@@ -148,7 +138,7 @@ function OnAllDayClick(allday) // Executed when the user clicks on the all_day c
 						<option value="weeks"{if $dur_units eq $unit_text} selected="selected"{/if}>{$unit_text}</option>
 					{/if}
 				</select>
-				<input name="all_day" type="checkbox" value="yes" onclick="OnAllDayCick(this)" />&nbsp;{get_vocab text="all_day"}
+				<input name="all_day" id="all-day-checkbox" type="checkbox" value="yes"  />&nbsp;{get_vocab text="all_day"}
 			</td>
 		</tr>
         {if $num_areas > 1}
