@@ -55,6 +55,12 @@ if (isset($_REQUEST['id'])) {
 	$id = $_REQUEST['id'];
 }
 
+if (isset($_REQUEST['rooms'])) {
+    $rooms = $_REQUEST['rooms'];
+} else {
+    fatal_error(true, 'No room selected');
+}
+
 ## Main ##
 
 if(!getAuthorised(1) || !getWritable($create_by, getUserName()))
