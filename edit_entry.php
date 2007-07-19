@@ -36,8 +36,7 @@ if(isset($_REQUEST['edit_type']))
 
 ## Main ##
 
-if(!getAuthorised(1))
-{
+if (!getAuthorised(1)) {
 	showAccessDenied();
 }
 

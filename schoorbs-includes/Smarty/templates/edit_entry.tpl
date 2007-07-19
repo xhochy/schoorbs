@@ -1,63 +1,9 @@
 <script src="schoorbs-misc/js/editentry.js" type="text/javascript"></script>
 <script type="text/javascript">
-// do a little form verifying
-function validate_and_submit ()
-{literal}{{/literal}
-  // null strings and spaces only strings not allowed
-  if(/(^$)|(^\s+$)/.test(document.forms["main"].name.value))
-  {literal}{{/literal}
-    alert ( "{get_vocab text="you_have_not_entered"}\n{get_vocab text="brief_description"}");
-    return false;
-  {literal}}{/literal}
-  {if $enable_periods neq "true"}
-	
-	  h = parseInt(document.forms["main"].hour.value);
-	  m = parseInt(document.forms["main"].minute.value);
-	
-	  if(h > 23 || m > 59)
-	  {literal}{{/literal}
-	    alert("{get_vocab text="you_have_not_entered"}\n{get_vocab text="valid_time_of_day"}");
-	    return false;
-	  {literal}}{/literal}
-  {/if}
-
-  // check form element exist before trying to access it
-  if( document.forms["main"].id )
-    i1 = parseInt(document.forms["main"].id.value);
-  else
-    i1 = 0;
-
-  i2 = parseInt(document.forms["main"].rep_id.value);
-  if ( document.forms["main"].rep_num_weeks)
-  {literal}{{/literal}
-  	n = parseInt(document.forms["main"].rep_num_weeks.value);
-  {literal}}{/literal}
-  if ((!i1 || (i1 && i2)) && document.forms["main"].rep_type && document.forms["main"].rep_type[6].checked && (!n || n < 2))
-  {literal}{{/literal}
-    alert("{get_vocab text="you_have_not_entered"}\n{get_vocab text="useful_n-weekly_value"}");
-    return false;
-  {literal}}{/literal}
-
-  // check that a room(s) has been selected
-  // this is needed as edit_entry_handler does not check that a room(s)
-  // has been chosen
-  if( document.forms["main"].elements['rooms[]'].selectedIndex == -1 )
-  {literal}{{/literal}
-    alert("{get_vocab text="you_have_not_selected"}\n{get_vocab text="valid_room"}");
-    return false;
-  {literal}}{/literal}
-
-  // Form submit can take some times, especially if mails are enabled and
-  // there are more than one recipient. To avoid users doing weird things
-  // like clicking more than one time on submit button, we hide it as soon
-  // it is clicked.
-  document.forms["main"].save_button.disabled="true";
-
-  // would be nice to also check date to not allow Feb 31, etc...
-  document.forms["main"].submit();
-
-  return true;
-{literal}}{/literal}
+var you_have_not_entered = "{get_vocab text="you_have_not_entered"}";
+var brief_description = "{get_vocab text="brief_description"}";
+var valid_time_of_day = "{get_vocab text="valid_time_of_day"}";
+var valid_room = "{get_vocab text="valid_room"}";
 {if $enable_periods neq "true"}
 var enablePeriods = false;
 {else}
@@ -80,7 +26,7 @@ var enablePeriods = true;
 	<table border="0">
 	<tr>
 		<td class="CR"><strong>{get_vocab text="namebooker"}</strong></td>
-  		<td class="CL"><input name="name" size="40" value="{$name|escape:"html"}" /></td>
+  		<td class="CL"><input id="main-name" name="name" size="40" value="{$name|escape:"html"}" /></td>
   	</tr>
 	<tr>
 		<td class="TR"><strong>{get_vocab text="fulldescription"}</strong></td>
@@ -179,7 +125,7 @@ var enablePeriods = true;
   			<table>
   			<tr>
   				<td>
-  					<select name="rooms[]" multiple="yes">
+  					<select name="rooms[]" id="main-rooms" multiple="yes">
   						{foreach from=$rooms item=rooms_item}
   							<option {if $rooms_item.id eq $room_id}selected="selected" {/if}value="{$rooms_item.id}">{$rooms_item.name}</option>
   						{/foreach}
@@ -233,13 +179,13 @@ var enablePeriods = true;
 	{if $display_rep_num_weeks eq "true"}
 		<tr>
 			<td class="CR"><strong>{get_vocab text="rep_num_weeks"}</strong> {get_vocab text="rep_for_nweekly"}</td>
-			<td class="CL"><input type="text" name="rep_num_weeks" value="{$rep_num_weeks}" /></td>
+			<td class="CL"><input type="text" id="main-rep-num-weeks" name="rep_num_weeks" value="{$rep_num_weeks}" /></td>
 		</tr>
 	{/if}
 	<tr>
 		<td colspan="2" style="text-align: center">
 			<script type="text/javascript">
-				document.writeln ( '<input type="button" name="save_button" value="{get_vocab text="save"}" onclick="validate_and_submit()" />' );
+				document.writeln ( '<input id="main-save-button" type="button" name="save_button" value="{get_vocab text="save"}" onclick="validate_and_submit()" />' );
 			</script>
 			<noscript>
 				<input type="submit" value="{get_vocab text="save"}" />
@@ -249,9 +195,9 @@ var enablePeriods = true;
 	</table>
 	<input type="hidden" name="returl" value="{$smarty.server.HTTP_REFFERER}" />
 	<input type="hidden" name="create_by" value="{$create_by}" />
-	<input type="hidden" name="rep_id" value="{$rep_id}" />
+	<input type="hidden" id="main-rep-id" name="rep_id" value="{$rep_id}" />
 	<input type="hidden" name="edit_type" value="{$edit_type}" />
 	{if $id neq ""}
-		<input type="hidden" name="id" value="{$id}" />
+		<input type="hidden" id="main-id" name="id" value="{$id}" />
 	{/if}
 </form>
