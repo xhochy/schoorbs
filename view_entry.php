@@ -165,31 +165,18 @@ $enable_periods ? toPeriodString($start_period, $duration, $dur_units) : toTimeS
 $repeat_key = "rep_type_".$rep_type;
 
 # Now that we know all the data we start drawing it
-
+$smarty->assign(array(
+    'name' => $name,
+    'description' => $description,
+    'area_name' => $area_name,
+    'room_name' => $room_name,
+    'start_date' => $start_date,
+    'duration' => $duration,
+    'dur_units' => $dur_units,
+    'end_date' => $end_date
+));
+$smarty->display('view_entry.tpl');
 ?>
-
-<H3><?php echo $name ?></H3>
- <table border=0>
-   <tr>
-    <td><b><?php echo get_vocab("description") ?></b></td>
-    <td><?php    echo nl2br($description) ?></td>
-   </tr>
-   <tr>
-    <td><b><?php echo get_vocab("room").":" ?></b></td>
-    <td><?php    echo  nl2br($area_name . " - " . $room_name) ?></td>
-   </tr>
-   <tr>
-    <td><b><?php echo get_vocab("start_date") ?></b></td>
-    <td><?php    echo $start_date ?></td>
-   </tr>
-   <tr>
-    <td><b><?php echo get_vocab("duration") ?></b></td>
-    <td><?php    echo $duration . " " . $dur_units ?></td>
-   </tr>
-   <tr>
-    <td><b><?php echo get_vocab("end_date") ?></b></td>
-    <td><?php    echo $end_date ?></td>
-   </tr>
    <tr>
     <td><b><?php echo get_vocab("type") ?></b></td>
     <td><?php    echo empty($typel[$type]) ? "?$type?" : $typel[$type] ?></td>
@@ -256,10 +243,7 @@ if($repeat_id || $series )
 
 ?>
 <br />
-<?php if (isset($_SERVER['HTTP_REFERER'])) { //remove the link if displayed from an email ?>
-<a href="<?php echo $_SERVER['HTTP_REFERER'] ?>"><?php echo get_vocab("returnprev") ?></a>
 <?php
-}
 
 /** The footer of the HTML Page */
 require_once 'schoorbs-includes/trailer.php';
