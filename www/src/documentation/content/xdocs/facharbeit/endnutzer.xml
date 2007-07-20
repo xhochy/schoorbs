@@ -215,5 +215,71 @@
         </source>
       </section>
     </section>
+
+    <section id="common-use">
+      <title>Normaler Gebrauch</title>
+      <section id="room-booking">
+        <title>einen Raum einmalig/wiederholend bestellen</title>
+        <p>
+          Standardmäßig muss man auf das grüne Kreuz klicken um den „Bestellvorgang“ für einen Raum
+          zu starten. Es ist hierbei jedoch nicht wichtig welchen Termin man auswählt bzw. welchen 
+          Raum, man muss nur achten, dass man im richtigen Bereich auf das Kreuz klickt, alle 
+          anderen Parameter kann man auf der darauffolgenden Seite noch ändern.
+        </p>
+        <figure src="enduser-doku1.png" alt="Raumübersicht" />
+        <p>
+          Hat man nun darauf geklickt wird man auf die Seite „Eintrag hinzufügen“ weitergeleitet. 
+          Unter Kurzbeschreibung sollte man das Unterrichtsfach und die Klassen eintragen. Eine 
+          vollständige Beschreibung ist nicht zwingend nötig, sie ist aber bei Terminen, die von 
+          mehreren Lehrern betreut werden sehr sinnvoll, da man so auch noch direkt relevante 
+          Informationen mitteilen kann. Unter Period gibt man die Starteinheit(entweder eine 
+          Schulstunde oder eine Pause) ein. Pausen habe ich buchbar gemacht um Überschneidungen 
+          bei z.B. Kursarbeiten vorzubeugen, bei denen 2 Lehrer beide während der Pause schreiben 
+          wollten, der eine in der Pause noch zu Ende, der andere wollte in der Pause mit der 
+          nächsten Kursarbeit schon anfangen. Genauso muss man auch aufpassen, dass man bei der 
+          Anzahl der Periods, die man benötigt auch bei 2/3 oder mehr Schulstunden die Pausen auch 
+          noch mitzählt, was bedeutet, dass wenn man den Informatiksaal für die 1., 2. und 3. Stunde
+          bestellen würde, man ihn für 4 Periods reservieren müsste. Bei der Art kann man festlegen,
+          ob man lediglich normalen Unterricht macht oder ob man eine Kursarbeit schreibt, dies 
+          dient lediglich zur Information anderer Kollegen und hat intern keine Bedeutung.
+        </p>
+        <figure src="enduser-doku2.png" alt="Raumbestellung" />
+        <p>
+          Alles was ich bisher erklärt habe, muss man für alle Termine wissen, egal ob man sie für 
+          ein einziges Mal bucht oder ob sie häufiger vorkommen. Sollte letzteres ein Mal vorkommen
+          so sind die letzten drei Zeilen des Formulars interessant. Bei dem „Ende der Wiederholung“
+          legt man den letzten Tag fest, an dem nochmals der Termin auftreten dürfte, die anderen 
+          beiden Felder dürften selbsterklärend sein.
+        </p>
+        <p>
+          Nach einen Klick auf Speichern bekommt man entweder den Kalender angezeigt, inklusive des
+          neu gebuchten Termins oder eine Liste aller Termine, die mit dem Termin in Konflikt liegen,
+          den man buchen wollte. 
+        </p>
+      </section>
+      <section id="unusage-room">
+        <title>einen Raum abbestellen</title>
+        <p>
+           Sollte man eine Buchung doch nicht benötigen kann man diese, sofern sie nicht in der 
+           Vergangenheit liegt, wieder abbestellen. Hierzu klickt man in der Kalenderübersicht 
+           einfach auf den Termin. Am unteren Ende der Informationen zu diesem Termin gibt es 
+           einen Link „Eintrag löschen“, dieser löscht nur diesen Eintrag, egal ob es ein einzelner
+           ist oder ob er zu einer wiederhiolenden Veranstaltung gehört. Sollte es eine 
+           wiederholende Veranstaltung sein, hat man auch noch die Möglichkeit auf den Link „Alle 
+           Einträge löschen“ zu klicken, was dann alle Einträge dieser Veranstaltung löschen würde.
+           Zur Sicherheit macht Schoorbs/MRBS aber vor jedem Löschen noch eine Ja/Nein-Abfrage per 
+           Javascript.
+        </p>
+      </section>
+      <section id="change-booking">
+        <title>einen Termin ändern</title>
+        <p>
+          Hat man beim Bestellen einen Fehler gemacht und möchte den Termin nicht erst löschen und 
+          dann wieder neu eingeben, kann man auf der Übersichtsseite des Termin auf „Eintrag ändern“ 
+          klicken und man kann dann dort alles wieder neu einstellen, genauso als würde man einen 
+          neuen Eintrag hinzufügen.
+        </p>
+      </section>
+    </section>
   </body>
 </document>
