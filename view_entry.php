@@ -9,7 +9,6 @@
 
 ## Includes ##
 
-require_once "grab_globals.php";
 require_once "config.inc.php";
 require_once 'schoorbs-includes/global.web.php';
 require_once 'schoorbs-includes/global.functions.php';
