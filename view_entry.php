@@ -81,11 +81,11 @@ sql_free($res);
 # versions of MRBS mistakenly had the backslash-escapes in the actual database
 # records because of an extra addslashes going on. Fix your database and
 # leave this code alone, please.
-$name         = htmlspecialchars($row[0]);
-$description  = htmlspecialchars($row[1]);
-$create_by    = htmlspecialchars($row[2]);
-$room_name    = htmlspecialchars($row[3]);
-$area_name    = htmlspecialchars($row[4]);
+$name         = ht($row[0]);
+$description  = ht($row[1]);
+$create_by    = ht($row[2]);
+$room_name    = ht($row[3]);
+$area_name    = ht($row[4]);
 $type         = $row[5];
 $room_id      = $row[6];
 $updated      = time_date_string($row[7]);
@@ -106,8 +106,7 @@ else
 
 $rep_type = 0;
 
-if( $series == 1 ){
-
+if ($series) {
 	$rep_type     = $row[11];
 	$rep_end_date = utf8_strftime('%A %d %B %Y',$row[12]);
 	$rep_opt      = $row[13];
@@ -117,13 +116,10 @@ if( $series == 1 ){
 	# edit_entry.php
 	# So I will look for the first entry in the series where the entry is
 	# as per the original series settings
-	$sql = "SELECT id
-	        FROM $tbl_entry
-		WHERE repeat_id=\"$id\" AND entry_type=\"1\"
-		ORDER BY start_time
-		LIMIT 1";
-	$res = sql_query($sql);
-	if (! $res) fatal_error(0, sql_error());
+	$sQuery = "SELECT id FROM ${tbl_entry} WHERE repeat_id = \"${id}\" AND entry_type= \"1\" "
+        ."ORDER BY start_time  LIMIT 1";
+	$res = sql_query($sQuery);
+	if (!$res) fatal_error(0, sql_error());
 	if(sql_count($res) < 1) {
 		# if all entries in series have been modified then
 		# as a fallback position just select the first entry
@@ -132,30 +128,23 @@ if( $series == 1 ){
 		# this page will display the start time of the series
 		# but edit_entry.php will display the start time of the entry
 		sql_free($res);
-		$sql = "SELECT id
-			FROM $tbl_entry
-			WHERE repeat_id=\"$id\"
-			ORDER BY start_time
-			LIMIT 1";
+		$sql = "SELECT id FROM ${tbl_entry}	WHERE repeat_id=\"${id}\" ORDER BY start_time "
+            ."LIMIT 1";
 		$res = sql_query($sql);
-		if (! $res) fatal_error(0, sql_error());
+		if (!$res) fatal_error(0, sql_error());
 	}
 	$row = sql_row($res, 0);
 	$id = $row[0];
 	sql_free($res);
-}
-else {
-
+} else {
 	$repeat_id = $row[11];
 
-	if($repeat_id != 0)
-	{
-		$res = sql_query("SELECT rep_type, end_date, rep_opt, rep_num_weeks
-				FROM $tbl_repeat WHERE id=$repeat_id");
-		if (! $res) fatal_error(0, sql_error());
+	if ($repeat_id != 0) {
+		$res = sql_query("SELECT rep_type, end_date, rep_opt, rep_num_weeks FROM ${tbl_repeat} "
+            ."WHERE id = ${repeat_id}");
+		if (!$res) fatal_error(0, sql_error());
 
-		if (sql_count($res) == 1)
-		{
+		if (sql_count($res) == 1) {
 			$row = sql_row($res, 0);
 
 			$rep_type     = $row[0];
@@ -170,7 +159,7 @@ else {
 
 $enable_periods ? toPeriodString($start_period, $duration, $dur_units) : toTimeString($duration, $dur_units);
 
-$repeat_key = "rep_type_" . $rep_type;
+$repeat_key = "rep_type_".$rep_type;
 
 # Now that we know all the data we start drawing it
 
@@ -216,25 +205,22 @@ $repeat_key = "rep_type_" . $rep_type;
    </tr>
 <?php
 
-if($rep_type != 0)
-{
+if ($rep_type != 0) {
 	$opt = "";
-	if (($rep_type == 2) || ($rep_type == 6))
-	{
+	if (($rep_type == 2) || ($rep_type == 6)) {
 		# Display day names according to language and preferred weekday start.
-		for ($i = 0; $i < 7; $i++)
-		{
+		for ($i = 0; $i < 7; $i++) {
 			$daynum = ($i + $weekstarts) % 7;
 			if ($rep_opt[$daynum]) $opt .= day_name($daynum) . " ";
 		}
 	}
-	if ($rep_type == 6)
-	{
+	if ($rep_type == 6) {
 		echo "<tr><td><b>".get_vocab("rep_num_weeks").get_vocab("rep_for_nweekly")."</b></td><td>$rep_num_weeks</td></tr>\n";
 	}
 	
-	if($opt)
+	if($opt) {
 		echo "<tr><td><b>".get_vocab("rep_rep_day")."</b></td><td>$opt</td></tr>\n";
+    }
 	
 	echo "<tr><td><b>".get_vocab("rep_end_date")."</b></td><td>$rep_end_date</td></tr>\n";
 }
@@ -267,8 +253,7 @@ if($repeat_id || $series )
 
 ?>
 <br />
-<?php if (isset($_SERVER['HTTP_REFERER'])) //remove the link if displayed from an email
-{ ?>
+<?php if (isset($_SERVER['HTTP_REFERER'])) { //remove the link if displayed from an email ?>
 <a href="<?php echo $_SERVER['HTTP_REFERER'] ?>"><?php echo get_vocab("returnprev") ?></a>
 <?php
 }
