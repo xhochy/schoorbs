@@ -22,67 +22,54 @@ list($day, $month, $year) = input_DayMonthYear();
 
 $area = input_Area();
 
-if( empty($series) ) 
-	$series = 0;
-else 
-	$series = 1;
+if (empty($_REQUEST['series'])) {
+    $series = false;
+} else {
+    $series = true;
+} 
 
+if (isset($_REQUEST['id'])) {
+    if (empty($_REQUEST['id'])) {
+	        fatal_error(true, "A room id must be secified"); 
+	} else {
+	        $id = intval($_REQUEST['id']);
+    }
+} else {
+	    fatal_error(true, "A room id must be secified");
+}
+	
 ## Main ##
 
 print_header($day, $month, $year, $area);
 
-if( $series ){
-	$sql = "
-	SELECT $tbl_repeat.name,
-	       $tbl_repeat.description,
-	       $tbl_repeat.create_by,
-	       $tbl_room.room_name,
-	       $tbl_area.area_name,
-	       $tbl_repeat.type,
-	       $tbl_repeat.room_id,
-	       " . sql_syntax_timestamp_to_unix("$tbl_repeat.timestamp") . ",
-	       ($tbl_repeat.end_time - $tbl_repeat.start_time),
-	       $tbl_repeat.start_time,
-	       $tbl_repeat.end_time,
-	       $tbl_repeat.rep_type,
-	       $tbl_repeat.end_date,
-	       $tbl_repeat.rep_opt,
-	       $tbl_repeat.rep_num_weeks
-
-	FROM  $tbl_repeat, $tbl_room, $tbl_area
-	WHERE $tbl_repeat.room_id = $tbl_room.id
-		AND $tbl_room.area_id = $tbl_area.id
-		AND $tbl_repeat.id=$id
-	";
+if($series){
+	$sQuery = "SELECT ${tbl_repeat}.name, ${tbl_repeat}.description, ${tbl_repeat}.create_by,"
+	    ."${tbl_room}.room_name, ${tbl_area}.area_name, ${tbl_repeat}.type, ${tbl_repeat}.room_id,"
+        .sql_syntax_timestamp_to_unix("${tbl_repeat}.timestamp").
+        ", (${tbl_repeat}.end_time - ${tbl_repeat}.start_time), ${tbl_repeat}.start_time,"
+        ."${tbl_repeat}.end_time, ${tbl_repeat}.rep_type, ${tbl_repeat}.end_date,"
+        ."${tbl_repeat}.rep_opt, ${tbl_repeat}.rep_num_weeks FROM  ${tbl_repeat}, ${tbl_room},"
+        ."${tbl_area} WHERE ${tbl_repeat}.room_id = ${tbl_room}.id AND "
+        ."${tbl_room}.area_id = ${tbl_area}.id AND ${tbl_repeat}.id = ".$id; 
+        // $id doesn't need to be escaped since we've done a intval() on it 
 }
 else {
-	$sql = "
-	SELECT $tbl_entry.name,
-	       $tbl_entry.description,
-	       $tbl_entry.create_by,
-	       $tbl_room.room_name,
-	       $tbl_area.area_name,
-	       $tbl_entry.type,
-	       $tbl_entry.room_id,
-	       " . sql_syntax_timestamp_to_unix("$tbl_entry.timestamp") . ",
-	       ($tbl_entry.end_time - $tbl_entry.start_time),
-	       $tbl_entry.start_time,
-	       $tbl_entry.end_time,
-	       $tbl_entry.repeat_id
-
-	FROM  $tbl_entry, $tbl_room, $tbl_area
-	WHERE $tbl_entry.room_id = $tbl_room.id
-		AND $tbl_room.area_id = $tbl_area.id
-		AND $tbl_entry.id=$id
-	";
+	$sQuery = "SELECT ${tbl_entry}.name, ${tbl_entry}.description, ${tbl_entry}.create_by,"
+        ."${tbl_room}.room_name, ${tbl_area}.area_name, ${tbl_entry}.type, ${tbl_entry}.room_id,"
+        .sql_syntax_timestamp_to_unix("${tbl_entry}.timestamp")
+        .", (${tbl_entry}.end_time - ${tbl_entry}.start_time), ${tbl_entry}.start_time,"
+        ."${tbl_entry}.end_time, ${tbl_entry}.repeat_id FROM  ${tbl_entry}, ${tbl_room},"
+        ."${tbl_area} WHERE ${tbl_entry}.room_id = ${tbl_room}.id AND "
+        ."${tbl_room}.area_id = ${tbl_area}.id AND ${tbl_entry}.id = ".$id;
+        // $id doesn't need to be escaped since we've done a intval() on it
 }
 
-$res = sql_query($sql);
-if (! $res) fatal_error(0, sql_error());
+$res = sql_query($sQuery);
+if (!$res) fatal_error(false, sql_error());
 
 if(sql_count($res) < 1) {
 	fatal_error(
-		0,
+        false,
 		($series ? get_vocab("invalid_series_id") : get_vocab("invalid_entry_id"))
 	);
 }
@@ -285,4 +272,5 @@ if($repeat_id || $series )
 <a href="<?php echo $_SERVER['HTTP_REFERER'] ?>"><?php echo get_vocab("returnprev") ?></a>
 <?php
 }
+
 require_once 'schoorbs-includes/trailer.php';
