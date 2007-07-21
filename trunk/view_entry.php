@@ -96,6 +96,11 @@ $updated      = time_date_string($row[7]);
 # so that user see what he expects to see
 $duration     = $row[8] - cross_dst($row[9], $row[10]);
 
+// Collect data for microformat
+$mfStartDateRaw = $row[9];
+$mfEndDateRaw = $row[10];
+$mfUpdatedRaw = $row[7];
+
 if( $enable_periods )
 	list( $start_period, $start_date) =  period_date_string($row[9]);
 else
@@ -211,6 +216,16 @@ if($repeat_id || $series ) {
         ."\" onClick=\"return confirm('".get_vocab("confirmdel")."');\">".get_vocab("deleteseries")."</a>";
 }
 
+// Generate data for the micorformat
+if ($enable_periods) {
+    $mfStartDate = strftime("%Y-%m-%d", $mfStartDateRaw);
+    $mfEndDate = strftime("%Y-%m-%d", $mfEndDateRaw);
+} else {
+    $mfStartDate = strftime("%Y-%m-%dT%H:%M:00", $mfStartDateRaw);
+    $mfEndDate = strftime("%Y-%m-%dT%H:%M:00", $mfEndDateRaw);
+}
+$mfUpdated = strftime("%Y-%m-%dT%H:%M:00", $mfUpdatedRaw);
+
 # Now that we know all the data we start drawing it
 $smarty->assign(array(
     'name' => $name,
@@ -227,7 +242,10 @@ $smarty->assign(array(
     'repeat_key' => get_vocab($repeat_key),
     'repeatAppend' => $sRepeatAppend,
     'repeatAppend2' => $sRepeatAppend2,
-    'repeatAppend3' => $sRepeatAppend3
+    'repeatAppend3' => $sRepeatAppend3,
+    'mfStartDate' => $mfStartDate,
+    'mfEndDate' => $mfEndDate,
+    'mfUpdated' => $mfUpdated
 ));
 $smarty->display('view_entry.tpl');
 
