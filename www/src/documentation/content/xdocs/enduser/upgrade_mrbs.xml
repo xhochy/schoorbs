@@ -1,0 +1,55 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE document PUBLIC "-//APACHE//DTD Documentation V2.0//EN" "http://forrest.apache.org/dtd/document-v20.dtd">
+<document>
+  <header>
+    <title>Upgrade from MRBS 1.2.x</title>
+  </header>
+  <body>
+    <section id="upgrade-mrbs">
+      <title>Upgrade from MRBS 1.2.x</title>
+      <p>
+        If you have already an old MRBS installation, you should first make a backup of your old 
+        files (especially config.inc.php) and your database. If you have downloaded the Schoorbs 
+        package, you should extract it to a location where your webserver can access it. Then 
+        copy your old config.inc.php to the new Schoorbs installation and you should have a running
+        Schoorbs.
+      </p>
+      <p>
+        <strong>Example of an upgrade from MRBS 1.2.5 to Schoorbs using a Linx distribution or a 
+        Linux/Unix-like system (e.g. Apple MacOS):</strong>
+      </p>
+      <p>
+        At first we do a backup of the old MRBS installation files into a tar.gz-archive:<br />
+        <code>$ tar zcf mrbs-backup.tar.gz mrbs/</code><br /><br />
+        Then we make a backup of the database, either MySQL oder PostgreSQL:<br />
+        <code>$ mysqldump mrbs --password=.... --user=mrbs --host=localhost > mbrs.sql</code>
+        or
+        <code>$ pg_dump mrbs  > mbrs.sql</code><br /><br />
+        Now, after all data is backed up, we download a new version of Schoorbs into the same 
+        directory as mrbs/ is in. For example if we have downloaded the 7z-archive, we extract
+        it with:<br />
+        <code>$ 7zr x schoorbs.7z</code>
+        When the archive is extracted we should have a new directory called schoobrs, in which we
+        copy the old config.inc.php to keep the settings we have configured for MRBS. We do not 
+        have to change anything concearning the database because the database interface in Schoorbs
+        is the same as in MRBS (but a bit more secure).<br />
+        <code>$ cp mrbs/config.inc.php schoorbs/</code><br /><br />
+        We now have a running Schoorbs, but at another location than the old MRBS-installation. 
+        Because we made a backup of our old MRBS-data we just could remove the mrbs/ directory
+        and set a link from it to the new schoorbs/-directory:<br />
+        <code>$ rm -rf mrbs/</code><br />
+        <code>$ ln -s mrbs schoorbs/</code><br /><br />
+        The room/resource booking system is now upgraded to Schoorbs, if you want to use some new 
+        Schoorbs features you might need to enable them, e.g. activate the .htaccess files for the 
+        REST-interface.
+      </p>
+    </section>
+
+    <p>
+      <a rel="license" href="http://creativecommons.org/licenses/by-sa/3.0/">
+        <img alt="Creative Commons License" style="border-width:0" src="http://i.creativecommons.org/l/by-sa/3.0/80x15.png" />
+      </a>
+    </p>
+
+  </body>
+</document>

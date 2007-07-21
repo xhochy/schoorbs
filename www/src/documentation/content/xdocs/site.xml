@@ -47,6 +47,7 @@ See http://forrest.apache.org/docs/linking.html for more info
   <enduser label="End-user Documentation" href="enduser/" tab="enduser">
     <index label="Overview" href="index.html"/>
     <install label="Installation" href="install.html"/>
+    <upgrade_mrbs label="Upgrade from MRBS 1.2.x" href="upgrade_mrbs.html" />
     <mail label="Mail support (experimental)" href="mail.html"/>
     <room_area label="Area + Room Administration" href="room_area.html"/>
   </enduser>
