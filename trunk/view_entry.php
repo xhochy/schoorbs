@@ -164,37 +164,7 @@ $enable_periods ? toPeriodString($start_period, $duration, $dur_units) : toTimeS
 
 $repeat_key = "rep_type_".$rep_type;
 
-# Now that we know all the data we start drawing it
-$smarty->assign(array(
-    'name' => $name,
-    'description' => $description,
-    'area_name' => $area_name,
-    'room_name' => $room_name,
-    'start_date' => $start_date,
-    'duration' => $duration,
-    'dur_units' => $dur_units,
-    'end_date' => $end_date
-));
-$smarty->display('view_entry.tpl');
-?>
-   <tr>
-    <td><b><?php echo get_vocab("type") ?></b></td>
-    <td><?php    echo empty($typel[$type]) ? "?$type?" : $typel[$type] ?></td>
-   </tr>
-   <tr>
-    <td><b><?php echo get_vocab("createdby") ?></b></td>
-    <td><?php    echo $create_by ?></td>
-   </tr>
-   <tr>
-    <td><b><?php echo get_vocab("lastupdate") ?></b></td>
-    <td><?php    echo $updated ?></td>
-   </tr>
-   <tr>
-    <td><b><?php echo get_vocab("rep_type") ?></b></td>
-    <td><?php    echo get_vocab($repeat_key) ?></td>
-   </tr>
-<?php
-
+$sRepeatAppend = "";
 if ($rep_type != 0) {
 	$opt = "";
 	if (($rep_type == 2) || ($rep_type == 6)) {
@@ -205,45 +175,61 @@ if ($rep_type != 0) {
 		}
 	}
 	if ($rep_type == 6) {
-		echo "<tr><td><b>".get_vocab("rep_num_weeks").get_vocab("rep_for_nweekly")."</b></td><td>$rep_num_weeks</td></tr>\n";
+		$sRepeatAppend.= "<tr><td><strong>".get_vocab("rep_num_weeks").get_vocab("rep_for_nweekly")."</strong></td><td>${rep_num_weeks}</td></tr>\n";
 	}
 	
 	if($opt) {
-		echo "<tr><td><b>".get_vocab("rep_rep_day")."</b></td><td>$opt</td></tr>\n";
+		$sRepeatAppend.= "<tr><td><strong>".get_vocab("rep_rep_day")."</strong></td><td>${opt}</td></tr>\n";
     }
 	
-	echo "<tr><td><b>".get_vocab("rep_end_date")."</b></td><td>$rep_end_date</td></tr>\n";
+	$sRepeatAppend.= "<tr><td><strong>".get_vocab("rep_end_date")."</strong></td><td>${rep_end_date}</td></tr>\n";
 }
 
-?>
-</table>
-<br>
-<p>
-<?php
-if( ! $series )
-	echo "<a href=\"edit_entry.php?id=$id\">". get_vocab("editentry") ."</a>";
+$sRepeatAppend2 = "";
+if(!$series )
+	$sRepeatAppend2.= "<a href=\"edit_entry.php?id=${id}\">". get_vocab("editentry") ."</a>";
 
 if($repeat_id)
-	echo " - ";
+	$sRepeatAppend2.= " - ";
 
 if($repeat_id || $series )
-	echo "<a href=\"edit_entry.php?id=$id&edit_type=series&day=$day&month=$month&year=$year\">".get_vocab("editseries")."</a>";
+	$sRepeatAppend2.= "<a href=\"".ht("edit_entry.php?id=${id}&edit_type=series&day=${day}&month=${month}&year=${year}")."\">".get_vocab("editseries")."</a>";
 
-?>
-<BR>
-<?php
-if( ! $series )
-	echo "<A HREF=\"del_entry.php?id=$id&series=0\" onClick=\"return confirm('".get_vocab("confirmdel")."');\">".get_vocab("deleteentry")."</A>";
+
+
+$sRepeatAppend3 = "";
+if(!$series) {
+	$sRepeatAppend3.= "<a href=\"".ht("del_entry.php?id=${id}&series=0")."\" onClick=\"return confirm('"
+        .get_vocab("confirmdel")."');\">".get_vocab("deleteentry")."</a>";
+}
 
 if($repeat_id)
-	echo " - ";
+	$sRepeatAppend3.= " - ";
 
-if($repeat_id || $series )
-	echo "<A HREF=\"del_entry.php?id=$id&series=1&day=$day&month=$month&year=$year\" onClick=\"return confirm('".get_vocab("confirmdel")."');\">".get_vocab("deleteseries")."</A>";
+if($repeat_id || $series ) {
+	$sRepeatAppend3.= "<a href=\"".ht("del_entry.php?id=${id}&series=1&day=${day}&month=${month}&year=${year}")
+        ."\" onClick=\"return confirm('".get_vocab("confirmdel")."');\">".get_vocab("deleteseries")."</a>";
+}
 
-?>
-<br />
-<?php
+# Now that we know all the data we start drawing it
+$smarty->assign(array(
+    'name' => $name,
+    'description' => $description,
+    'area_name' => $area_name,
+    'room_name' => $room_name,
+    'start_date' => $start_date,
+    'duration' => $duration,
+    'dur_units' => $dur_units,
+    'end_date' => $end_date,
+    'typelabel' => (empty($typel[$type]) ? "?$type?" : $typel[$type]),
+    'create_by' => $create_by,
+    'updated' => $updated,
+    'repeat_key' => get_vocab($repeat_key),
+    'repeatAppend' => $sRepeatAppend,
+    'repeatAppend2' => $sRepeatAppend2,
+    'repeatAppend3' => $sRepeatAppend3
+));
+$smarty->display('view_entry.tpl');
 
 /** The footer of the HTML Page */
 require_once 'schoorbs-includes/trailer.php';
