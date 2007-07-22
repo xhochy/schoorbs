@@ -31,14 +31,20 @@
     <section id="freshinstall">
       <title>Fresh Installation</title>
       <p>
-        After you have downloaded a version of Schoorbs, you should extract it to a directory, your
-        webserver can access. Now make a copy of config.inc.php-dist and name it 'config.inc.php'.
-      </p>
-      <p>
-        <strong>Example:</strong><br />
-        <code>$ unzip schoorbs.zip</code>&nbsp;&nbsp;or&nbsp;&nbsp;<code>$ 7za x schoorbs.7z</code><br />
+        For a new, fresh installation we need to download a 7z-/Zip-archive of Schoorbs. To make 
+        Schoorbs accessible from the web we need to extract the archive into a directory, which the
+        webserver can access. In the most common cases on Linux, you use /var/www.<br />
+        <code>$ cd /var/www</code><br />
+        <code>$ 7zr x schoorbs.7z</code>
+        or
+        <code>$ unzip schoorbs.zip</code><br /><br />
+        After we have extract all the files, we need to copy config.inc.php-dist to config.inc.php
+        we will later set all configuration options. <br />
         <code>$ cd schoorbs</code><br />
-        <code>$ cp config.inc.php-dist config.inc.php</code>
+        <code>$ cp config.inc.php-dist config.inc.php</code><br /><br />
+        Now all files need for Schoorbs are in the right place and should be accessbile by the 
+        wevserver, for the storage of the data of the bookings and available rooms, we need to
+        setup the database.
       </p>
     </section>
 
