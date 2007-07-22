@@ -58,21 +58,27 @@
       <section id="database-mysql">
         <title>MySQL</title>
         <p>
-          If we do not use an existing database, we have to create a new one with
-        </p>
-        <p>
-          <code>$ mysqladmin create schoorbs</code>
-        </p>
-        <p>
+          First, we connect to the database as root, if you have set a password for root, you need to
+          the option --password at the end of this command.<br />  
+          <code>$ mysql --user=root mysql</code><br /><br />
+
+          If you do not already have a database were we could create the tables for schoorbs, then we
+          need to create one, we name it schoorbs in this example.<br />
+          <code>mysql&gt; CREATE DATABASE schoorbs;</code><br /><br />
+
+          For access to the database we need a valid combination of username and password, in the best 
+          (most secure) case, it just has access to the database in which we store the data for 
+          Schoorbs. If already one exists, skip this step.<br />
+          <code>mysql&gt; GRANT ALL PRIVILEGES ON schoorbs.* TO 'schoorbs'@'%' IDENTIFIED BY 'test';</code> 
+          generates a user schoorbs with password test and full access to the database schoorbs.<br /><br /> 
+        
           In the next step we need to create the tables. With the given file 
           <a href="tables.my.sql">tables.my.sql</a> you create all the needed tables with the prefix
           'schoorbs_', if you want another prefix, you have to change it at each command. For legacy/
           backward-compability-cases, it's a <a href="tables-legacy.my.sql">tables-legacy.my.sql</a>
           available, where all commands start with 'mrbs_'. The following command should execute the 
-          sql-commands from the file in the file:
-        </p>
-        <p>
-          <code>$ mysql schoorbs &lt; tables.my.sql</code>
+          sql-commands from the file in the file: <br />
+          <code>$ mysql schoorbs &lt; --user=schoorbs --password=test tables.my.sql</code>
         </p>
       </section>
       <section id="database-postgresql">
