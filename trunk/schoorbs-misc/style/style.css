@@ -124,3 +124,33 @@ td.odd_row {background-color:#EEEEEE;}	/* Odd rows in the day view */
 .naked { margin: 0px; padding: 0px; border-width:0px} /* Invisible tables used for internal needs */
 TD.month {font-size: 8pt; background-color:#FFFFFF}
 .monthday {font-size: 12pt; vertical-align: top; text-align: left}
+
+
+.calendar-wrapper {
+    margin: 0px 10px;
+    padding: 0px 10px;
+}
+
+#arealist {
+  width: 200px;
+}
+
+#arealist-title {
+    margin-bottom: 5px;
+    font-weight: bold; 
+    font-size: medium; 
+    color: black;
+    text-decoration: underline;
+}
+
+#roomlist {
+  width: 200px;
+}
+
+#roomlist-title {
+    margin-bottom: 5px;
+    font-weight: bold; 
+    font-size: medium; 
+    color: black;
+    text-decoration: underline;
+}

@@ -1,6 +1,6 @@
-<td style="width: 30%;">
-	<span style="text-decoration: underline;">{get_vocab text="rooms"}</span>
-	<br />
+<td>
+  <div id="roomlist">
+	<div id="roomlist-title">{get_vocab text="rooms"}</div>
 	{if $area_list_format eq "select"}
            {$room_select_list}
 	{else}
@@ -13,4 +13,5 @@
 			<br />
 		{/foreach}
 	{/if}
+  </div>
 </td>  

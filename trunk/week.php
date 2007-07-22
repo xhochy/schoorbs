@@ -196,8 +196,8 @@ for ($j = 0; $j<=($num_of_days-1) ; $j++) {
 } 
 
 $aDays = array();
-$dformat = "%a<br />%b %d";
-for ($j = 0; $j<=($num_of_days-1) ; $j++) {
+$dformat = "%a, %b %d";
+for ($j = 0; $j <= ($num_of_days - 1); $j++) {
 	$t = mktime( 12, 0, 0, $month, $day+$j, $year); 
 	$aDays[] = array('year' => strftime("%Y", $t), 'month' => strftime("%m", $t), 'day' => strftime("%d", $t),
     	'text' => utf8_strftime($dformat, $t));

@@ -51,7 +51,7 @@
 				{/if}
 			{elseif $col.descr neq ""}
 				<a href="view_entry.php?id={$col.id}&amp;area={$area}&amp;day={$day}&amp;month={$month}&amp;year={$year}" title="{$col.long_descr}">
-		 			<span style="font-weight: bold;">{$col.create_by}</span>&mdash;{$col.descr}
+		 			{$col.descr} <span style="font-weight: bold;">({$col.create_by})</span>
 				</a>
 			{else}
 				&nbsp;"&nbsp;
