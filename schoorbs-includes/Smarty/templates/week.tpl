@@ -28,11 +28,10 @@
 <table cellspacing="0" border="1" width="100%">
 <tr>
 	<th style="width: 1%">
-		<br />
 		{if $enable_periods eq "true"}{get_vocab text="period"}{else}{get_vocab text="time"}{/if}
 	</th>
 	{foreach from=$days item=days_item}
-		<th style="width: 14%;">
+		<th class="weekday-header">
 			<a href="day.php?year={$days_item.year}&amp;month={$days_item.month}&amp;day={$days_item.day}&amp;area={$area}" 
 				title="{get_vocab text="viewday"}">{$days_item.text}</a>
 		</th>
@@ -71,9 +70,7 @@
 					{/if}
 				{elseif $WeekDay.description neq ""}
 					<a href="view_entry.php?id={$WeekDay.id}&amp;area={$area}&amp;day={$WeekDay.wday}&amp;month={$WeekDay.wmonth}&amp;year={$WeekDay.wyear}" title="{$WeekDay.long_descr}">
-						<span style="font-weight: bold;">{$WeekDay.create_by}</span>
-						&mdash;
-						{$WeekDay.description}
+						{$WeekDay.description} <span style="font-weight: bold;">({$WeekDay.create_by})</span>
 					</a>
 				{else}
 					&nbsp;"&nbsp;

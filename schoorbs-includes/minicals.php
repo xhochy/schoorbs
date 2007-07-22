@@ -197,19 +197,19 @@ function minicals($year, $month, $day, $area, $room, $dmy)
 	$thismonth = mktime(12, 0, 0, $month,   $day, $year);
 	$nextmonth = mktime(12, 0, 0, $month+1, 1, $year);
 	
-	echo "<td>";
+    puts('<td style="width: 100%">&nbsp;</td>');
+	puts('<td class="calendar-wrapper">');
 	$cal = new Calendar(date("d",$lastmonth), date("m",$lastmonth), date("Y",$lastmonth), 0, $area, $room, $dmy);
 	echo $cal->getHTML();
 	echo "</td>";
 	
-	echo "<td>";
+	puts('<td class="calendar-wrapper">');
 	$cal = new Calendar(date("d",$thismonth), date("m",$thismonth), date("Y",$thismonth), 1, $area, $room, $dmy);
 	echo $cal->getHTML();
 	echo "</td>";
 	
-	echo "<td>";
+	puts('<td class="calendar-wrapper">');
 	$cal = new Calendar(date("d",$nextmonth), date("m",$nextmonth), date("Y",$nextmonth), 0, $area, $room, $dmy);
 	echo $cal->getHTML();
 	echo "</td>";
 }
-?>
