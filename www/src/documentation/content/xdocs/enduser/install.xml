@@ -78,7 +78,7 @@
           backward-compability-cases, it's a <a href="tables-legacy.my.sql">tables-legacy.my.sql</a>
           available, where all commands start with 'mrbs_'. The following command should execute the 
           sql-commands from the file in the file: <br />
-          <code>$ mysql schoorbs &lt; --user=schoorbs --password=test tables.my.sql</code>
+          <code>$ mysql schoorbs --user=schoorbs --password=test &lt; tables.my.sql</code>
         </p>
       </section>
       <section id="database-postgresql">
