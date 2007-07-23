@@ -69,7 +69,7 @@
           For access to the database we need a valid combination of username and password, in the best 
           (most secure) case, it just has access to the database in which we store the data for 
           Schoorbs. If already one exists, skip this step.<br />
-          <code>mysql&gt; GRANT ALL PRIVILEGES ON schoorbs.* TO 'schoorbs'@'%' IDENTIFIED BY 'test';</code> 
+          <code>mysql&gt; GRANT ALL PRIVILEGES ON schoorbs.* TO 'schoorbs'@'localhost' IDENTIFIED BY 'test';</code> 
           generates a user schoorbs with password test and full access to the database schoorbs.<br /><br /> 
         
           In the next step we need to create the tables. With the given file 
@@ -84,13 +84,17 @@
       <section id="database-postgresql">
         <title>PostgreSQL</title>
         <p>
-          If we need to create a database for the PostgreSQL-setup, we could do this with a command,
-          that is slightly shorter than the MySQL one:
-        </p>
-        <p>
-          <code>$ createdb schoorbs</code>
-        </p>
-        <p>
+          For the installation tasks related to PostgreSQL, we must me loged in as the user postgres.<br />
+          <code>$ sudo su - postgres</code><br /><br />
+          If you do not have a user, except the administration-account, that could be used to access
+          the database(which we might need to create later on) for Schoorbs, we need to create a new 
+          one. With the following command we create a user that has no super-rights (-S option) neither
+          is allowed to create databases (-D) or roles (-R), but is able to log in (-l). PostgreSQL
+          should prompt for a password (-P) and save it encrypted (-E) in the database.<br /> 
+          <code>$ createuser -S -D -R -l -P -E  schoorbs</code><br /><br /> 
+          If there isn't already a database for schoorbs available, we create a new, utf-8 encoded
+          database, that belongs to the user schoorbs and is named schoorbs too.<br />
+          <code>$ createdb --owner=schoorbs --encoding=utf-8 schoorbs</code><br /><br />
           In opposite to MySQL where we have one SQL-file for all versions, with PostgreSQL, we have 
           to seperate between the server-versions before 7.3 and 7.3+. For the old school database 
           users we have <a href="tables.pg.sql">tables.pg.sql</a> with 'schoorbs_' as the command 
@@ -99,9 +103,7 @@
           <a href="tables.pg.73and_above.sql">tables.pg.73and_above.sql</a>('schoorbs_')
           or <a href="tables-legacy.pg.73and_above.sql">tables-legacy.pg.73and_above.sql</a>
           ('mrbs_'), because there are some differences in the SQL-syntax between those generations.
-          You can apply those SQL-commands to your database with
-        </p>
-        <p>
+          You can apply those SQL-commands to your database with<br />
           <code>$ psql -a -f tables.pg.sql schoorbs</code>
         </p>
       </section>
