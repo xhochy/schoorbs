@@ -1,0 +1,70 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE document PUBLIC "-//APACHE//DTD Documentation V2.0//EN" "http://forrest.apache.org/dtd/document-v20.dtd">
+<document>
+  <header>
+    <title>Roadmap</title>
+  </header>
+  <body>
+    <section id="status">
+      <title>Overview</title>
+      <p>
+        At the moment we still only release alpha versions of Schoorbs since many features are 
+        rewritten or evaluated if they are secure. With this site we want to present you what our
+        main goals are in the next coming alpha versions. 
+      </p>
+    </section>
+    <section id="schoorbs-1.0-alpha-1">
+      <title>Schoorbs 1.0-Alpha 1</title>
+      <p>
+        <strong>Released:</strong> 
+        <a href="http://xhochy.org/en/2007/07/05/schoorbs-10-alpha-1-released/">Alpha 1 Announcement 
+        on the english XhochY Weblog.</a> 
+      </p>
+    </section>
+    <section id="schoorbs-1.0-alpha-2">
+      <title>Schoorbs 1.0-Alpha 2</title>
+      <ul>
+        <li>Documentation about Installation finished</li>
+        <li>Javasript-Library for using the Schoorbs-REST-Interface</li>
+        <li>Rakefile should be able to build releases or we have a make-release.rb</li>
+      </ul>
+    </section>
+    <section id="schoorbs-1.0-alpha-3">
+      <title>Schoorbs 1.0-Alpha 3</title>
+      <ul>
+        <li>Javascript- and CSS-files should now be deployed compressed</li>
+        <li>Add a backup function to the Web-Admin-GUI</li>
+        <li>more and better Unit Tests</li>
+      </ul>
+    </section>
+    <section id="schoorbs-1.0-alpha-4">
+      <title>Schoorbs 1.0-Alpha 4</title>
+      <ul>
+        <li>Rewritten search interface, results will be flavoured with hCalendar-mircoformat</li>
+        <li>E-Mail support should become stable</li>
+        <li>Languagefiles should be stored as .po's and imported into Launchpad</li>
+      </ul>
+    </section>
+    <section id="schoorbs-1.0-alpha-5">
+      <title>Schoorbs 1.0-Alpha 5</title>
+      <ul>
+        <li>Ubuntu/Debian-package</li>
+        <li>Installationscript</li>
+        <li>Rewritten report function with PDF export</li>
+      </ul>
+    </section>
+    <section id="schoorbs-1.0-alpha-6">
+      <title>Schoorbs 1.0-Alpha 6</title>
+      <ul>
+        <li>Support for PHP accelerators/cachers (especially APC)</li>
+        <li>Export a week as iCal</li>
+        <li>...</li>
+      </ul>
+    </section>
+    <p>
+      <a rel="license" href="http://creativecommons.org/licenses/by-sa/3.0/">
+        <img alt="Creative Commons License" style="border-width:0" src="http://i.creativecommons.org/l/by-sa/3.0/80x15.png" />
+      </a>
+    </p>
+  </body>
+</document>
