@@ -21,7 +21,7 @@
 		<br />
 		<a class="headerLink" style="color: #55555;" href="index.php" rel="home">{$mrbs_company}</a>
 		<br /><br />
-		<small><a href="http://schoorbs.xhochy.com">Powered by Schoorbs</a></small>
+		<small class="vcard"><a class="url" href="http://schoorbs.xhochy.com">Powered by <span class="fn org">Schoorbs</span></a></small>
 	</div>
 	<div id="menu">
 		{if $logonbox neq ""}
