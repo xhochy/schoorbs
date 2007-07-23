@@ -14,7 +14,9 @@ body {
 }
 #menu_logo {
 	position: absolute;
-	width: 240px;
+	/*width: 240px;*/
+    min-width: 240px;
+    max-width: 50%;
 	left: 20px;
 	padding:0px;
 	margin:0px
