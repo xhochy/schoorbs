@@ -1,0 +1,11 @@
+#!/usr/bin/env ruby
+###########################################################
+## The main Rakefile for Schoorbs-JS-REST-Client library ##
+###########################################################
+
+task :default => :test
+
+# We need spidermonkey to run the tests
+task :test do 
+  sh '/usr/bin/env smjs schoorbsREST-test.js'
+end
