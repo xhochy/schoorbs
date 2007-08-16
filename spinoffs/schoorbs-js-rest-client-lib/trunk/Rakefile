@@ -3,9 +3,44 @@
 ## The main Rakefile for Schoorbs-JS-REST-Client library ##
 ###########################################################
 
-task :default => :test
+require 'rake/clean'
 
-# We need spidermonkey to run the tests
+## Constants ##
+
+CHROME = File.expand_path(File.join('test', 'chrome'))
+JAR = File.expand_path(File.join(CHROME, 'schoorbs-js-lib-test.jar'))
+LIB = File.expand_path('schoorbsREST.js')
+jar_src = FileList[File.join(CHROME, 'unpacked', '*'), File.join(CHROME, 'unpacked', '*', '*')]
+jar_src.exclude '.svn' 
+
+## Task dependencies ##
+
+task :default => :test
+task :build => JAR 
+task :test => :build
+
+## (longer) Tasks ##
+
 task :test do 
-  sh '/usr/bin/env smjs schoorbsREST-test.js'
+  sh 'xulrunner test/application.ini'
+end
+
+## Clean Task ##
+
+CLEAN.include JAR
+CLEAN.include File.join(CHROME, 'unpacked', 'schoorbsREST.js')
+
+## File Tasks ##
+
+file JAR => FileList[jar_src, LIB] do
+  # save initial directory
+  olddir = Dir.getwd
+  # switch to the directory with the source js-files
+  Dir.chdir File.join(CHROME, 'unpacked')
+  # get the library we should test
+  File.copy LIB, File.join(CHROME, 'unpacked', 'schoorbsREST.js')
+  # copy all files into a zip file(with the suffix .jar) (uncompressed for faster loading)
+  sh 'find -name "*" -not -type d | grep -v .svn | grep -v "~" | xargs zip -0 ' + JAR 
+  # return to initial working directory
+  Dir.chdir olddir
 end

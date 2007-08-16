@@ -30,3 +30,13 @@ schoorbsREST.getRoomID = function (roomName) {
         return false;
     }
 }
+
+schoorbsREST.login = function() {
+    var req = new XMLHttpRequest();
+	req.open('GET', schoorbsREST.endPoint + '/REST/login/', false); 
+	req.send(null); 
+	if(req.status != 200) {
+  		return false;
+    }
+    return true;
+}

@@ -1,0 +1,21 @@
+#resulttable row {
+    border-bottom: black 0.5px solid;
+}
+#resulttable column {
+    border-left: black 0.5px groove;
+}
+.not-run {
+    background-color: yellow; 
+    margin: 0px; 
+    padding: 4px;
+}
+.failed {
+    background-color: red;
+    margin: 0px; 
+    padding: 4px;
+}
+.succeded {
+    background-color: lime;
+    margin: 0px; 
+    padding: 4px;
+}
