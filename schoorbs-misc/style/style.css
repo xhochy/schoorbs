@@ -95,10 +95,6 @@ A.blue {color:blue}
 A:visited.blue {color:blue}
 A:hover.blue {color:red}
 
-TH {color:#eeeeee; font-size:10pt; font-family:verdana,sans-serif;
-background-color:#999999;
-border-width:1px; border-color:#999999; vertical-align:top}
-
 .blue {background-color:#F0F0FF}
 .red  {background-color:#FFF0F0}
 .green {background-color:#DDFFDD}
@@ -131,6 +127,22 @@ TD.month {font-size: 8pt; background-color:#FFFFFF}
 .calendar-wrapper {
     margin: 0px 10px;
     padding: 0px 10px;
+}
+
+th {
+    color: black;
+    background-color: silver;
+    border: 0px;
+}
+th a {
+    color: black;
+}
+td.red {
+    border: 0px;
+    background-color: #ddd;
+}
+td.red a {
+    color: black;
 }
 
 #arealist {
