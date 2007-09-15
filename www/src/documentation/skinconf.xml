@@ -61,7 +61,7 @@ which will be used to configure the chosen Forrest skin.
   <project-name>Schoorbs</project-name>
   <project-description>a Web 2.0 room/resource booking system</project-description>
   <project-url>http://schoorbs.xhochy.com/</project-url>
-  <project-logo>images/project.png</project-logo>
+  <project-logo>http://static.xhochy.com/gfx/xhochy-product-logos/schoorbs.png</project-logo>
 <!-- Alternative static image:
   <project-logo>images/project-logo.gif</project-logo> -->
 <!-- optional group logo
