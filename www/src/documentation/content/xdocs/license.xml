@@ -5,7 +5,22 @@
     <title>Welcome to Schoorbs</title>
   </header>
   <body>
-    <section id="status">
+	<section id="which">
+		<title>How all is licensed</title>
+		<ul>
+			<li>The Schoorbs application and sourcecode is liceneed under the terms of the GPL.</li>
+			<li>
+				This website is mostly licensed under the terms of the 
+				"Creative Commons Attribution-Share Alike 3.0 Unported"-license, where there is
+				a CC BY-SA symbol on the bottom of the page.
+			</li>
+			<li>
+				All other content on this website, which is not specially marked, is not free,
+				and is copyrighted by their its owners.
+			</li>  
+		</ul>
+	</section>
+    <section id="gpl">
       <title>GNU GENERAL PUBLIC LICENSE</title>
       <source>		    
 		       Version 2, June 1991
