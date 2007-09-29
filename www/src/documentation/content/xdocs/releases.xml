@@ -1,0 +1,38 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE document PUBLIC "-//APACHE//DTD Documentation V2.0//EN" "http://forrest.apache.org/dtd/document-v20.dtd">
+<document>
+  <header>
+    <title>Releases</title>
+  </header>
+  <body>
+    <section id="status">
+      <title>Overview</title>
+      <p>
+        At the moment we still only release alpha versions of Schoorbs since many features are 
+        rewritten or evaluated if they are secure. Because of this, the number of stable will
+		still remain for some months nil.
+      </p>
+    </section>
+    <section id="schoorbs-1.0">
+		<title>Schoorbs 1.0</title>
+		<ul>
+			<li><strong>Stable</strong></li>
+			<li>
+				<strong>Unstable</strong>
+				<ul>
+					<li>
+		        		<em>Schoorbs 1.0-Alpha 1:</em>&nbsp;
+        				<a href="http://xhochy.org/en/2007/07/05/schoorbs-10-alpha-1-released/">Announcement 
+        				on the english XhochY Weblog.</a> 
+					</li>
+				</ul>
+			</li>
+		</ul>
+    </section>
+    <p>
+      <a rel="license" href="http://creativecommons.org/licenses/by-sa/3.0/">
+        <img alt="Creative Commons License" style="border-width:0" src="http://i.creativecommons.org/l/by-sa/3.0/80x15.png" />
+      </a>
+    </p>
+  </body>
+</document>
