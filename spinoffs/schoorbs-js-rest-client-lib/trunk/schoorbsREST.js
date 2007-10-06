@@ -25,7 +25,7 @@ schoorbsREST.getRoomID = function (roomName) {
 	var xml = req.responseXML;
     var result = xml.getElementsByTagName('room_id');
     if (result.length > 0) {
-        return result[0];
+        return result[0].textContent;
     } else {
         return false;
     }
@@ -45,7 +45,7 @@ schoorbsREST.getPeriodID = function (periodName) {
     var xml = req.responseXML;
     var result = xml.getElementsByTagName('period_id');
     if (result.length > 0) {
-        return result[0];
+        return result[0].textContent;
     } else {
         return false;
     }
@@ -71,7 +71,7 @@ schoorbsREST.checkFree = function (saal, period_id, days) {
     var xml = req.responseXML;
     var result = xml.getElementsByTagName('free');
     if (result.length > 0) {
-        return result[0] == 'true';
+        return result[0].textContent == 'true';
     } else {
         return false;
     }
