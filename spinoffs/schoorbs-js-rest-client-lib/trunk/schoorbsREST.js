@@ -97,8 +97,9 @@ schoorbsREST.makeBooking = function (saal, period_id, days, entry_name) {
 		alert('Konnte Stunde nicht reservieren');
         return false;
 	}
+    
     var xml = req.responseXML;
-    var result = xml.getElementsByTagName('make_booking');
+    var result = xml.getElementsByTagName('made_booking');
     if (result.length > 0) {
         return result[0].textContent == 'true';
     } else {
