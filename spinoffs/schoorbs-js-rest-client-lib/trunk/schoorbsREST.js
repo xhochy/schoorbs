@@ -31,6 +31,26 @@ schoorbsREST.getRoomID = function (roomName) {
     }
 }
 
+schoorbsREST.getPeriodID = function (periodName) {
+	var req = new XMLHttpRequest();
+	req.open('GET', schoorbsREST.endPoint + '/REST/getPeriodID?name=' + escape(periodName), false);
+	// it's not sure, that Schoorbs returns the content with a MimeType-Header
+    // (depends on the server on which Schoorbs is running) 
+    req.overrideMimeType('text/xml');
+	req.send(null);
+	if (req.status != 200) {
+		alert('Konnte Period-ID nicht herausfinden');
+        return false;
+	}
+    var xml = req.responseXML;
+    var result = xml.getElementsByTagName('period_id');
+    if (result.length > 0) {
+        return result[0];
+    } else {
+        return false;
+    }
+}
+
 schoorbsREST.login = function() {
     var req = new XMLHttpRequest();
 	req.open('GET', schoorbsREST.endPoint + '/REST/login/', false); 
