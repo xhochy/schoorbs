@@ -33,6 +33,7 @@ See http://forrest.apache.org/docs/linking.html for more info
   <enduser label="End-user Documentation" href="enduser/" tab="enduser">
     <index label="Overview" href="index.html"/>
     <install label="Installation" href="install.html"/>
+	<authentication label="Authentication" href="authentication.html"/>
     <upgrade_mrbs label="Upgrade from MRBS 1.2.x" href="upgrade_mrbs.html" />
     <mail label="Mail support (experimental)" href="mail.html"/>
     <room_area label="Area + Room Administration" href="room_area.html"/>
@@ -42,24 +43,8 @@ See http://forrest.apache.org/docs/linking.html for more info
     <einleitung label="Einleitung" href="einleitung.html" />
     <endnutzer label="Endnutzer- dokumentation" href="endnutzer.html" />
   </facharbeit>
-<!--
-  The href must be wholesite.html/pdf  You can change the labels and node names
   <all label="All">
     <whole_site_html label="Whole Site HTML" href="wholesite.html"/>
     <whole_site_pdf label="Whole Site PDF" href="wholesite.pdf"/>
   </all>
-  -->
-  <external-refs>
-    <forrest href="http://forrest.apache.org/">
-      <linking href="docs/linking.html"/>
-      <validation href="docs/validation.html"/>
-      <webapp href="docs/your-project.html#webapp"/>
-      <dtd-docs href="docs/dtd-docs.html"/>
-      <new_content_type href="docs/your-project.html#adding_new_content_type"/>
-      <buildPlugin href="docs/howto/howto-buildPlugin.html"/>
-    </forrest>
-    <forrest-zone href="http://forrest.zones.apache.org/"/>
-    <cocoon href="http://cocoon.apache.org/"/>
-    <xml.apache.org href="http://xml.apache.org/"/>
-  </external-refs>
 </site>
