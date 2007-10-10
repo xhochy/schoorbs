@@ -5,7 +5,15 @@
 	<projects>
 	</projects>
 	<buildSpec>
+		<buildCommand>
+			<name>org.rubypeople.rdt.core.rubybuilder</name>
+			<arguments>
+			</arguments>
+		</buildCommand>
 	</buildSpec>
 	<natures>
+      <nature>net.sourceforge.phpeclipse.phpnature</nature>
+		<nature>org.rubypeople.rdt.core.rubynature</nature>
+        
 	</natures>
 </projectDescription>
