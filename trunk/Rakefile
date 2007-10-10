@@ -5,7 +5,8 @@
 
 ## Includes ##
 
-require 'rake/clean'
+require 'rake/clean' 
+require 'schoorbs-contrib/release.rb'
 
 ## Tasks ##
 

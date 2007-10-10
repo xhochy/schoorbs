@@ -25,5 +25,5 @@ function get_schoorbs_version()
  */
 function get_schoorbs_version_number()
 {
-	return '1.0';
+	return file_get_contents(dirname(__FILE__).'/version.txt');
 }
