@@ -1,0 +1,2 @@
+content schoorbs-js-lib-test jar:schoorbs-js-lib-test.jar!/
+locale schoorbs-js-lib-test en-US jar:schoorbs-js-lib-test.jar!/en-US/

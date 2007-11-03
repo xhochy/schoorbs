@@ -1,0 +1,31 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE window SYSTEM "chrome://schoorbs-js-lib-test/locale/">
+<?xml-stylesheet href="chrome://global/skin/global.css" type="text/css"?>
+<?xml-stylesheet href="schoorbs-js-lib-test.css" type="text/css"?>
+<?xul-overlay href="chrome://global/content/globalOverlay.xul"?>
+<?xul-overlay href="chrome://communicator/content/tasksOverlay.xul"?>
+<?xul-overlay href="chrome://communicator/content/utilityOverlay.xul"?>
+<window
+  id="testwindow" orient="vertical"
+  title="Schoorbs-JS-REST-Client library TEST"
+  xmlns="http://www.mozilla.org/keymaster/gatekeeper/there.is.only.xul"
+  xmlns:html="http://www.w3.org/1999/xhtml"
+  windowtype="testwindow"
+  width="640" height="480" onload="init();">
+  
+  <script type="text/javascript" src="main.js" />
+  <script type="text/javascript" src="schoorbsREST.js" />
+  
+  <grid flex="1" id="resulttable">
+    <columns>
+      <column style="min-width: 100px;" flex="1" />
+      <column style="min-width: 100px;"/>
+      <column style="min-width: 100px;"/>
+    </columns>
+    <rows>
+      <row><label value="Test" /><label value="Expected" /><label value="Result" /></row>
+      <row><label value="login" /><label value="true" /><label value="not run" class="not-run" id="test-result-1" /></row>
+      <row></row>
+    </rows>
+  </grid>
+</window>
