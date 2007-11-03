@@ -23,11 +23,11 @@
     </section>
     <section id="schoorbs-1.0-alpha-2">
       <title>Schoorbs 1.0-Alpha 2</title>
-      <ul>
-        <li>Documentation about Installation finished</li>
-        <li>Javasript-Library for using the Schoorbs-REST-Interface</li>
-        <li>Rakefile should be able to build releases or we have a make-release.rb</li>
-      </ul>
+      <p>
+        <strong>Released:</strong> 
+        <a href="http://xhochy.org/en/2007/11/03/schoorbs-10-alpha-2-released/">Alpha 2 Announcement 
+        on the english XhochY Weblog.</a> 
+      </p>
     </section>
     <section id="schoorbs-1.0-alpha-3">
       <title>Schoorbs 1.0-Alpha 3</title>
