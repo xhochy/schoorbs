@@ -11,8 +11,10 @@ task :release => [:doc, :test]
 Software Requirements for making a release:
 
  -> zip commandline utility (ZIP software is spreaded on nearly every PC)
- -> 7z commandline utility (very good compression, mostly a lot smaller than zip)
+ -> 7z commandline utility (very good compression, a lot smaller than zip)
  ** We do not use tar since we don't need any file attributes
+ -> subversion (this needs to be a working copy)
+ -> xsltproc (for generating the changelog)
 
 releases are saved in schoorbs-dist/schoorbs-<release-short-name>/*
 =end
