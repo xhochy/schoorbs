@@ -261,5 +261,3 @@ if (mysqli_connect_errno()) {
     echo "\n<p>\n" . get_vocab("failed_connect_db") . " : " . mysqli_connect_error();
     exit;
 }
-
-?>
