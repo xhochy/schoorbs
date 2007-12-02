@@ -120,5 +120,3 @@ function authGetUserLevel($user, $lev1_admin)
    // Everybody else is access level '1'
    return 1;
 }
-
-?>

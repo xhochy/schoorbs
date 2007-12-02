@@ -59,4 +59,3 @@ function authGetUserLevel($user, $lev1_admin)
     return 1;
 }
 
-?>
