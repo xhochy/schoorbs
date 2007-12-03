@@ -50,7 +50,7 @@ if (!$search_str)
 }
 
 # now is used so that we only display entries newer than the current time
-echo "<h3>" . get_vocab("search_results") . " \"<font color=\"blue\">$search_str</font>\"</H3>\n";
+echo "<h3>" . get_vocab("search_results") . " \"<font color=\"blue\">$search_str</font>\"</h3>\n";
 
 $now = mktime(0, 0, 0, $month, $day, $year);
 
@@ -96,20 +96,20 @@ $has_next = $search_pos < ($total-$search["count"]);
 
 if($has_prev || $has_next)
 {
-	echo "<B>" . get_vocab("records") . ($search_pos+1) . get_vocab("through") . ($search_pos+$num_records) . get_vocab("of") . $total . "</B><BR>";
+	echo "<b>" . get_vocab("records") . ($search_pos+1) . get_vocab("through") . ($search_pos+$num_records) . get_vocab("of") . $total . "</b><br />";
 
 	# display a "Previous" button if necessary
 	if($has_prev)
 	{
-		echo "<A HREF=\"search.php?search_str=$search_url&search_pos=";
+		echo "<a href=\"search.php?search_str=$search_url&search_pos=";
 		echo max(0, $search_pos-$search["count"]);
 		echo "&total=$total&year=$year&month=$month&day=$day\">";
 	}
 
-	echo "<B>" . get_vocab("previous") . "</B>";
+	echo "<b>" . get_vocab("previous") . "</b>";
 
 	if($has_prev)
-		echo "</A>";
+		echo "</a>";
 
 	# print a separator for Next and Previous
 	echo(" | ");
@@ -117,46 +117,47 @@ if($has_prev || $has_next)
 	# display a "Previous" button if necessary
 	if($has_next)
 	{
-		echo "<A HREF=\"search.php?search_str=$search_url&search_pos=";
+		echo "<a href=\"search.php?search_str=$search_url&search_pos=";
 		echo max(0, $search_pos+$search["count"]);
 		echo "&total=$total&year=$year&month=$month&day=$day\">";
 	}
 
-	echo "<B>". get_vocab("next") ."</B>";
+	echo "<b>". get_vocab("next") ."</b>";
 
 	if($has_next)
-		echo "</A>";
+		echo "</a>";
 }
 ?>
-  <P>
-  <TABLE BORDER=2 CELLSPACING=0 CELLPADDING=3>
-   <TR>
-    <TH><?php echo get_vocab("entry") ?></TH>
-    <TH><?php echo get_vocab("createdby") ?></TH>
-    <TH><?php echo get_vocab("namebooker") ?></TH>
-    <TH><?php echo get_vocab("description") ?></TH>
-    <TH><?php echo get_vocab("start_date") ?></TH>
-   </TR>
+  <p>
+  <table border=2 cellspacing=0 cellpadding=3>
+   <tr>
+    <th><?php echo get_vocab("entry") ?></th>
+    <th><?php echo get_vocab("createdby") ?></th>
+    <th><?php echo get_vocab("namebooker") ?></th>
+    <th><?php echo get_vocab("description") ?></th>
+    <th><?php echo get_vocab("start_date") ?></th>
+   </tr>
 <?php
 for ($i = 0; ($row = sql_row($result, $i)); $i++)
 {
-	echo "<TR>";
-	echo "<TD><A HREF=\"view_entry.php?id=$row[0]\">".get_vocab("view")."</A></TD>\n";
-	echo "<TD>" . htmlspecialchars($row[1]) . "</TD>\n";
-	echo "<TD>" . htmlspecialchars($row[2]) . "</TD>\n";
-	echo "<TD>" . htmlspecialchars($row[3]) . "</TD>\n";
+	echo "<tr>";
+	echo "<td><a href=\"view_entry.php?id=$row[0]\">".get_vocab("view")."</a></td>\n";
+	echo "<td>" . htmlspecialchars($row[1]) . "</td>\n";
+	echo "<td>" . htmlspecialchars($row[2]) . "</td>\n";
+	echo "<td>" . htmlspecialchars($row[3]) . "</td>\n";
 	// generate a link to the day.php
 	$link = getdate($row[4]);
-	echo "<TD><A HREF=\"day.php?day=$link[mday]&month=$link[mon]&year=$link[year]&area=$row[5]\">";
+	echo "<td><a href=\"day.php?day=$link[mday]&month=$link[mon]&year=$link[year]&area=$row[5]\">";
 	if(empty($enable_periods)){
         	$link_str = time_date_string($row[4]);
         }
         else {
         	list(,$link_str) = period_date_string($row[4]);
         }
-        echo "$link_str</A></TD>";
-	echo "</TR>\n";
+        echo "$link_str</a></td>";
+	echo "</tr>\n";
 }
 
-echo "</TABLE>\n";
+echo "</table>\n";
+
 require_once 'schoorbs-includes/trailer.php';
