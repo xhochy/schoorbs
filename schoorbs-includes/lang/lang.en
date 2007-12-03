@@ -21,7 +21,7 @@ $vocab["report"]             = "Report";
 $vocab["admin"]              = "Admin";
 $vocab["help"]               = "Help";
 $vocab["search"]             = "Search:";
-$vocab["not_php3"]             = "<H1>WARNING: This probably doesn't work with PHP3</H1>";
+$vocab["not_php3"]             = "<h1>WARNING: This probably doesn't work with PHP3</H1>";
 
 # Used in day.php
 $vocab["bookingsfor"]        = "Bookings for";
@@ -45,7 +45,7 @@ $vocab["addentry"]           = "Add Entry";
 $vocab["editentry"]          = "Edit Entry";
 $vocab["editseries"]         = "Edit Series";
 $vocab["namebooker"]         = "Brief Description:";
-$vocab["fulldescription"]    = "Full Description:<br>&nbsp;&nbsp;(Number of people,<br>&nbsp;&nbsp;Internal/External etc)";
+$vocab["fulldescription"]    = "Full Description:<br />&nbsp;&nbsp;(Number of people,<br />&nbsp;&nbsp;Internal/External etc)";
 $vocab["date"]               = "Date:";
 $vocab["start_date"]         = "Start Time:";
 $vocab["end_date"]           = "End Time:";

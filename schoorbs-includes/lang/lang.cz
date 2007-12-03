@@ -20,7 +20,7 @@ $vocab["report"]             = "Výpis";
 $vocab["admin"]              = "Administrátor";
 $vocab["help"]               = "Pomoc";
 $vocab["search"]             = "Hledat:";
-$vocab["not_php3"]             = "<H1>UPOZORNĚNÍ: Toto zřejmě není funkční s PHP3</H1>";
+$vocab["not_php3"]             = "<h1>UPOZORNĚNÍ: Toto zřejmě není funkční s PHP3</H1>";
 
 # Used in day.php
 $vocab["bookingsfor"]        = "Objednáno pro";
@@ -44,7 +44,7 @@ $vocab["addentry"]           = "Přidat záznam";
 $vocab["editentry"]          = "Editovat záznam";
 $vocab["editseries"]         = "Editovat sérii";
 $vocab["namebooker"]         = "Popis instrukce:";
-$vocab["fulldescription"]    = "Celkový popis:<br>&nbsp;&nbsp;(Počet cestujících,<br>&nbsp;&nbsp;Obsazeno/Volná místa atd)";
+$vocab["fulldescription"]    = "Celkový popis:<br />&nbsp;&nbsp;(Počet cestujících,<br />&nbsp;&nbsp;Obsazeno/Volná místa atd)";
 $vocab["date"]               = "Datum:";
 $vocab["start_date"]         = "Začátek:";
 $vocab["end_date"]           = "Konec:";

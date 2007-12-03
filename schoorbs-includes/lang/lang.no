@@ -22,7 +22,7 @@ $vocab["report"]             = "Rapport";
 $vocab["admin"]              = "Admin";
 $vocab["help"]               = "Hjelp";
 $vocab["search"]             = "Søk:";
-$vocab["not_php3"]           = "<H1>NB: Dette virker sannsynligvis ikke med PHP3</H1>";
+$vocab["not_php3"]           = "<h1>NB: Dette virker sannsynligvis ikke med PHP3</H1>";
 
 # Used in day.php
 $vocab["bookingsfor"]        = "Booking for";
@@ -46,7 +46,7 @@ $vocab["addentry"]           = "Booking";
 $vocab["editentry"]          = "Endre booking";
 $vocab["editseries"]         = "Endre serie";
 $vocab["namebooker"]         = "Kort beskrivelse:";
-$vocab["fulldescription"]    = "Lang beskrivelse:<br>&nbsp;&nbsp;(Antall personer,<br>&nbsp;&nbsp;Internt/Eksternt osv)";
+$vocab["fulldescription"]    = "Lang beskrivelse:<br />&nbsp;&nbsp;(Antall personer,<br />&nbsp;&nbsp;Internt/Eksternt osv)";
 $vocab["date"]               = "Dato:";
 $vocab["start_date"]         = "Starttid:";
 $vocab["end_date"]           = "Sluttid:";
