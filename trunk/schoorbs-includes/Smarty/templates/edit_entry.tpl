@@ -125,7 +125,7 @@ var enablePeriods = true;
   			<table>
   			<tr>
   				<td>
-  					<select name="rooms[]" id="main-rooms" multiple="yes">
+  					<select name="rooms[]" id="main-rooms" multiple="multiple">
   						{foreach from=$rooms item=rooms_item}
   							<option {if $rooms_item.id eq $room_id}selected="selected" {/if}value="{$rooms_item.id}">{$rooms_item.name}</option>
   						{/foreach}
@@ -188,11 +188,12 @@ var enablePeriods = true;
 				document.writeln ( '<input id="main-save-button" type="button" name="save_button" value="{get_vocab text="save"}" onclick="validate_and_submit()" />' );
 			</script>
 			<noscript>
-				<input type="submit" value="{get_vocab text="save"}" />
+				<div><input type="submit" value="{get_vocab text="save"}" /></div>
 			</noscript>
 		</td>
 	</tr>
 	</table>
+	<div>
 	<input type="hidden" name="returl" value="{$smarty.server.HTTP_REFFERER}" />
 	<input type="hidden" name="create_by" value="{$create_by}" />
 	<input type="hidden" id="main-rep-id" name="rep_id" value="{$rep_id}" />
@@ -200,4 +201,5 @@ var enablePeriods = true;
 	{if $id neq ""}
 		<input type="hidden" id="main-id" name="id" value="{$id}" />
 	{/if}
+        </div>
 </form>
