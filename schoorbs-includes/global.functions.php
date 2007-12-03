@@ -347,10 +347,10 @@ function make_area_select_html( $link, $current, $year, $month, $day )
 	$out_html .= "
   </select>
 
-  <INPUT TYPE=HIDDEN NAME=day        VALUE=\"$day\">
-  <INPUT TYPE=HIDDEN NAME=month      VALUE=\"$month\">
-  <INPUT TYPE=HIDDEN NAME=year       VALUE=\"$year\">
-  <input type=submit value=\"".get_vocab("change")."\">
+  <input type=\"hidden\" name=\"day\"        value=\"$day\">
+  <input type=\"hidden\" name=\"month\"      value=\"$month\">
+  <input type=\"hidden\" name=\"year\"       value=\"$year\">
+  <input type=\"submit\" value=\"".get_vocab("change")."\">
 </form>\n";
 
 	return $out_html;
@@ -373,10 +373,10 @@ function make_room_select_html( $link, $area, $current, $year, $month, $day )
    	}
 	$out_html .= "
   </select>
-  <INPUT TYPE=HIDDEN NAME=day        VALUE=\"$day\"        >
-  <INPUT TYPE=HIDDEN NAME=month      VALUE=\"$month\"        >
-  <INPUT TYPE=HIDDEN NAME=year       VALUE=\"$year\"      >
-  <INPUT TYPE=HIDDEN NAME=area       VALUE=\"$area\"         >
+  <input type=\"hidden\" name=\"day\"        value=\"$day\"        >
+  <input type=\"hidden\" name=\"month\"      value=\"$month\"        >
+  <input type=\"hidden\" name=\"year\"       value=\"$year\"      >
+  <input type=\"hidden\" name=\"area\"       value=\"$area\"         >
   <input type=submit value=\"".get_vocab("change")."\">
 </form>\n";
 
