@@ -63,8 +63,8 @@ if($type == "room")
 		}
 		
 		echo "<center>";
-		echo "<H1>" .  get_vocab("sure") . "</h1>";
-		echo "<H1><a href=\"del.php?type=room&room=$room&confirm=Y\">" . get_vocab("YES") . "!</a> &nbsp;&nbsp;&nbsp; <a href=admin.php>" . get_vocab("NO") . "!</a></h1>";
+		echo "<h1>" .  get_vocab("sure") . "</h1>";
+		echo "<h1><a href=\"del.php?type=room&room=$room&confirm=Y\">" . get_vocab("YES") . "!</a> &nbsp;&nbsp;&nbsp; <a href=admin.php>" . get_vocab("NO") . "!</a></h1>";
 		echo "</center>";
 		require_once 'schoorbs-includes/trailer.php';
 	}
