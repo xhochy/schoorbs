@@ -44,7 +44,7 @@ $vocab["addentry"]           = "Eintrag hinzufügen";
 $vocab["editentry"]          = "Eintrag ändern";
 $vocab["editseries"]         = "Alle Einträge ändern";
 $vocab["namebooker"]         = "Kurzbeschreibung ";
-$vocab["fulldescription"]    = "Vollständige Beschreibung:<br>&nbsp;&nbsp;(Anzahl der Teilnehmer etc;)";
+$vocab["fulldescription"]    = "Vollständige Beschreibung:<br />&nbsp;&nbsp;(Anzahl der Teilnehmer etc;)";
 $vocab["date"]               = "Tag:";
 $vocab["start_date"]         = "Anfangsdatum:";
 $vocab["end_date"]           = "Enddatum:";
@@ -246,3 +246,5 @@ $vocab["for_any_questions"]  = "für Fragen die hier nicht beantwortet sind.";
 
 # Used in mysql.inc AND pgsql.inc
 $vocab["failed_connect_db"]  = "Fataler Fehler: Kann nicht an Datenbank anbinden";
+
+?>

@@ -21,7 +21,7 @@ $vocab["report"]             = "報表";
 $vocab["admin"]              = "系統管理";
 $vocab["help"]               = "說明";
 $vocab["search"]             = "搜尋:";
-$vocab["not_php3"]             = "<H1>WARNING: This probably doesn't work with PHP3</H1>";
+$vocab["not_php3"]             = "<h1>WARNING: This probably doesn't work with PHP3</H1>";
 
 # Used in day.php
 $vocab["bookingsfor"]        = "預約:";
@@ -45,7 +45,7 @@ $vocab["addentry"]           = "新增";
 $vocab["editentry"]          = "修改";
 $vocab["editseries"]         = "整批修改";
 $vocab["namebooker"]         = "預約人姓名:";
-$vocab["fulldescription"]    = "說明:<br>&nbsp;&nbsp;(聯約電話,部門,,<br>&nbsp;&nbsp;會議主題 等)";
+$vocab["fulldescription"]    = "說明:<br />&nbsp;&nbsp;(聯約電話,部門,,<br />&nbsp;&nbsp;會議主題 等)";
 $vocab["date"]               = "日期:";
 $vocab["start_date"]         = "起始時間:";
 $vocab["end_date"]           = "結束時間:";

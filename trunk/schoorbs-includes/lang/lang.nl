@@ -21,7 +21,7 @@ $vocab["report"]             = "Rapportage";
 $vocab["admin"]              = "Admin";
 $vocab["help"]               = "Help";
 $vocab["search"]             = "Zoek:";
-$vocab["not_php3"]             = "<H1>Waarschuwing: Werkt waarschijnlijk niet met PHP3</H1>";
+$vocab["not_php3"]             = "<h1>Waarschuwing: Werkt waarschijnlijk niet met PHP3</H1>";
 
 # Used in day.php
 $vocab["bookingsfor"]        = "Boekingen voor";
@@ -45,7 +45,7 @@ $vocab["addentry"]           = "Boeking Toevoegen";
 $vocab["editentry"]          = "Boeking Wijzigen";
 $vocab["editseries"]         = "Wijzig Reeks";
 $vocab["namebooker"]         = "Korte Omschrijving:";
-$vocab["fulldescription"]    = "Volledige Omschrijving:<br>&nbsp;&nbsp;(Aantal mensen,<br>&nbsp;&nbsp;Intern/Extern etc)";
+$vocab["fulldescription"]    = "Volledige Omschrijving:<br />&nbsp;&nbsp;(Aantal mensen,<br />&nbsp;&nbsp;Intern/Extern etc)";
 $vocab["date"]               = "Datum:";
 $vocab["start_date"]         = "Start Tijd:";
 $vocab["end_date"]           = "Eind Tijd:";
