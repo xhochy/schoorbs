@@ -8,7 +8,8 @@
  * @author JFL, jberanek, Uwe L. Korn <uwelk@xhochy.org>
  * @package Schoorbs/Session/PHP
  * @license http://www.gnu.org/licenses/gpl.html GNU General Public License
- */
+ */
+
 /**
  * The main function of the PHP-Sessions, is started by including this file
  * 
@@ -151,10 +152,10 @@ function PrintLogonBox()
         // words 'you are xxxx' becomes a link to the
         // report page with only entries created by xxx. Past entries are not
         // displayed but this can be changed
-       	$search_string = "report.php?From_day=$day&From_month=$month&".
-          "From_year=$year&To_day=1&To_month=12&To_year=2030&areamatch=&".
-          "roommatch=&namematch=&descrmatch=&summarize=1&sortby=r&display=d&".
-          "sumby=d&creatormatch=$user";
+       	$search_string = "report.php?From_day=$day&amp;From_month=$month&amp;".
+          "From_year=$year&amp;To_day=1&amp;To_month=12&amp;To_year=2030&amp;areamatch=&amp;".
+          "roommatch=&amp;namematch=&amp;descrmatch=&amp;summarize=1&amp;sortby=r&amp;display=d&amp;".
+          "sumby=d&amp;creatormatch=$user";
         $smarty->assign('search_string',$search_string);
     }
     
