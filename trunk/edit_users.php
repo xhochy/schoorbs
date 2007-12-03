@@ -55,8 +55,8 @@ CREATE TABLE $tbl_users
     $r = sql_command($cmd);
     if ($r == -1)
         { // No need to localize this: Only the admin running this for the first time would see it.
-        print "Error creating the $tbl_users table.<br>\n";
-        print sql_error() . "<br>\n";
+        print "Error creating the $tbl_users table.<br />\n";
+        print sql_error() . "<br />\n";
         exit();
         }
     $nusers = 0;
@@ -181,13 +181,13 @@ if (isset($Action) && ( ($Action == "Edit") or ($Action == "Add") ))
         (!isset($invalid_email)) ? $invalid_email = '' : '' ;
         if ( ($field_name[$i] == "email") && (1 == $invalid_email) )
         {
-            print ("<td><STRONG>" . get_vocab('invalid_email') . "<STRONG></td>\n");
+            print ("<td><strong>" . get_vocab('invalid_email') . "</strong></td>\n");
         }
         print "    </tr>\n";
         }
     print "  </table>\n";
 
-    print " <br>" . get_vocab("password_twice") . "...<br><br>\n";
+    print " <br />" . get_vocab("password_twice") . "...<br /><br />\n";
     print "  <table>\n";
     for ($i=0; $i<2; $i++)
         {
@@ -216,7 +216,7 @@ if (isset($Action) && ($Action == "Update"))
         {
 	print_header(0, 0, 0, "");
 
-        print get_vocab("passwords_not_eq") . "<br>\n";
+        print get_vocab("passwords_not_eq") . "<br />\n";
 
         print "<form method=post action=\"" . basename($PHP_SELF) . "\">\n";
         print "  <input type=submit value=\" " . get_vocab("ok") . " \" /> <br />\n";
@@ -259,7 +259,7 @@ if (isset($Action) && ($Action == "Update"))
         if ($field_name[$i]=="id") $Field[$i] = $Id;
         if ($field_name[$i]=="name") $Field[$i] = strtolower($Field[$i]);
         if (($field_name[$i]=="password") && ($password0!="")) $Field[$i]=md5($password0);
-        /* print "$field_name[$i] = $Field[$i]<br>"; */
+        /* print "$field_name[$i] = $Field[$i]<br />"; */
         if ($i > 0) $operation = $operation . ", ";
         if ($field_istext[$i]) $operation .= "'";
         if ($field_isnum[$i] && ($Field[$i] == "")) $Field[$i] = "0";
@@ -268,15 +268,15 @@ if (isset($Action) && ($Action == "Update"))
         }
     $operation = $operation . ");";
 
-    /* print $operation . "<br>\n"; */
+    /* print $operation . "<br />\n"; */
     $r = sql_command($operation);
     if ($r == -1)
     {
 	print_header(0, 0, 0, "");
 
 	// This is unlikely to happen in normal  operation. Do not translate.
-        print "Error updating the $tbl_users table.<br>\n";
-        print sql_error() . "<br>\n";
+        print "Error updating the $tbl_users table.<br />\n";
+        print sql_error() . "<br />\n";
         
         print "<form method=post action=\"" . basename($PHP_SELF) . "\">\n";
         print "  <input type=submit value=\" " . get_vocab("ok") . " \" /> <br />\n";
@@ -306,8 +306,8 @@ if (isset($Action) && ($Action == "Delete"))
 	print_header(0, 0, 0, "");
 
 	// This is unlikely to happen in normal  operation. Do not translate.
-        print "Error deleting entry $Id from the $tbl_users table.<br>\n";
-        print sql_error() . "<br>\n";
+        print "Error deleting entry $Id from the $tbl_users table.<br />\n";
+        print sql_error() . "<br />\n";
         
         print "<form method=post action=\"" . basename($PHP_SELF) . "\">\n";
         print "  <input type=submit value=\" " . get_vocab("ok") . " \" /> <br />\n";
@@ -315,7 +315,7 @@ if (isset($Action) && ($Action == "Delete"))
 
         exit();
         }
-    /* print "Database updated successfully.<br><br>\n"; */
+    /* print "Database updated successfully.<br /><br />\n"; */
     /* Success. Do not display a message. Simply fall through into the list display. */
     }
 
