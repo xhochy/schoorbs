@@ -179,7 +179,7 @@ function accumulate(&$row, &$count, &$hours, $report_start, $report_end,
 	# Use brief description or created by as the name:
 	$name = htmlspecialchars($row[($sumby == "d" ? 3 : 6)]);
     # Area and room separated by break:
-	$room = htmlspecialchars($row[8]) . "<br>" . htmlspecialchars($row[9]);
+	$room = htmlspecialchars($row[8]) . "<br />" . htmlspecialchars($row[9]);
 	# Accumulate the number of bookings for this room and name:
 	@$count[$room][$name]++;
 	# Accumulate hours used, clipped to report range dates:
@@ -199,7 +199,7 @@ function accumulate_periods(&$row, &$count, &$hours, $report_start, $report_end,
 	# Use brief description or created by as the name:
 	$name = htmlspecialchars($row[($sumby == "d" ? 3 : 6)]);
     # Area and room separated by break:
-	$room = htmlspecialchars($row[8]) . "<br>" . htmlspecialchars($row[9]);
+	$room = htmlspecialchars($row[8]) . "<br />" . htmlspecialchars($row[9]);
 	# Accumulate the number of bookings for this room and name:
 	@$count[$room][$name]++;
 	# Accumulate hours used, clipped to report range dates:
@@ -245,7 +245,7 @@ function do_summary(&$count, &$hours, &$room_hash, &$name_hash)
 		$col_count_total[$c] = 0;
 		$col_hours_total[$c] = 0.0;
 	}
-	echo "<td class=\"BR\" align=right><br><b>".get_vocab("total")."</b></td></tr>\n";
+	echo "<td class=\"BR\" align=right><br /><b>".get_vocab("total")."</b></td></tr>\n";
 	$grand_count_total = 0;
 	$grand_hours_total = 0;
 
@@ -282,4 +282,3 @@ function do_summary(&$count, &$hours, &$room_hash, &$name_hash)
 	cell($grand_count_total, $grand_hours_total);
 	echo "</tr></table>\n";
 }
-?>
