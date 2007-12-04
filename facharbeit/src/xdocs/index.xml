@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE document PUBLIC "-//APACHE//DTD Documentation V2.0//EN" "http://forrest.apache.org/dtd/document-v20.dtd">
+<document>
+  <header>
+    <title>Einleitung</title>
+  </header>
+  <body>
+    <section id="short">
+      <title>Beschreibung der Aufgabenstellung</title>
+      <p>
+        ...
+      </p>
+    </section>
+    <section id="long">
+      <title>Pflichtenheft</title>
+      <p>
+        ...
+      </p>
+    </section>
+  </body>
+</document>

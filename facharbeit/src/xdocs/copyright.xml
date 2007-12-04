@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE document PUBLIC "-//APACHE//DTD Documentation V2.0//EN" "http://forrest.apache.org/dtd/document-v20.dtd">
+<document>
+  <header>
+    <title>Urheberrechtshinweise</title>
+  </header>
+  <body>
+    <section id="short">
+      <title>Beschreibung der Aufgabenstellung</title>
+      <p>
+        Ich gebe meine Facharbeit zur weiteren Publikation unter der 
+        <a rel="license" href="http://creativecommons.org/licenses/by-nd/2.0/de/">Creative Commons Namensnennung-Keine Bearbeitung 2.0 Deutschland</a>
+        Lizenz frei. Die jeweiligen Bedingungen zur Nutzung erfahren sie auf der Creative Commons Seite. Ich habe mich zu diesem Schritt
+        entschlossen, da .... <!-- TODO --> 
+      </p>
+    </section>
+  </body>
+</document>

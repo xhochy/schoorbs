@@ -1,0 +1,37 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!--
+Forrest site.xml
+
+This file contains an outline of the site's information content.  It is used to:
+- Generate the website menus (though these can be overridden - see docs)
+- Provide semantic, location-independent aliases for internal 'site:' URIs, eg
+<link href="site:changes"> links to changes.html (or ../changes.html if in
+  subdir).
+- Provide aliases for external URLs in the external-refs section.  Eg, <link
+  href="ext:cocoon"> links to http://cocoon.apache.org/ 
+
+See http://forrest.apache.org/docs/linking.html for more info
+-->
+<!-- The label attribute of the outer "site" element will only show
+  in the linkmap (linkmap.html).
+  Use elements project-name and group-name in skinconfig to change name of 
+  your site or project that is usually shown at the top of page.
+  No matter what you configure for the href attribute, Forrest will
+  always use index.html when you request http://yourHost/
+  See FAQ: "How can I use a start-up-page other than index.html?"
+-->
+<site label="Facharbeit" href="" xmlns="http://apache.org/forrest/linkmap/1.0"
+  tab="">
+  <about label="Inhalt">
+    <index label="Einleitung" href="index.html" description="Einleitung"/>
+    <copyright label="Urheberrechtshinweise" href="copyright.html" description="Urheberrechtshinweise" />
+    <whole_site_pdf label="Alles als PDF" href="wholesite.pdf"/>
+  </about>
+<!--
+  The href must be wholesite.html/pdf  You can change the labels and node names
+  <all label="All">
+    <whole_site_html label="Whole Site HTML" href="wholesite.html"/>
+    <whole_site_pdf label="Whole Site PDF" href="wholesite.pdf"/>
+  </all>
+  -->
+</site>
