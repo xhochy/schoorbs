@@ -14,8 +14,48 @@
     <section id="long">
       <title>Pflichtenheft</title>
       <p>
-        ...
+        Die während meiner Facharbeit modifizierte Software soll folgende
+        Kriterien erfüllen:
       </p>
+      <ul>
+        <li>
+          Die Softwareinstallation muss aus dem Internet erreichbar sein,
+          die Zugriffe, vor allem die Authentifikation, sollen alle
+          verschlüsselt übertragen werden.
+        </li>
+        <li>
+          Die Benutzerdaten, Name und Passwort des Benutzers, müssen die
+          geleichen wie im gesamten Schulnetz sein.
+        </li>
+        <li>
+          Nur Lehrer sollen das Recht auf Bearbeitung/Erstellen von Einträgen
+          haben, Schüler sollen jedoch sich informieren können, welche Säle 
+          belägt sind.
+        </li>
+        <li>
+          Lehrer A darf Einträge von Lehrer B weder bearbeiten noch löschen.
+        </li>
+        <li>
+          Die Aktivitäten der Lehrer können optional mitgeschnitten werden, um
+          so den Missbrauch der Software/des Systems zu verhindern. 
+        </li>
+        <li>
+          Der Programmcode soll ordentlich strukturiert und dokumentiert sein.
+        </li>
+        <li>
+          Die während der Facharbeit erstellte Software soll allgemein nutzbar
+          sein, d.h. die Software soll nicht auf den Einsatz am Hohenstaufen 
+          Gymnasium spezialisiert sein.
+        </li>
+        <li>
+          Der aktuelle Stundenplan soll eingelesen werden und die Stunden
+          vorweg priorisiert reserviert werden.
+        </li>
+        <li>
+          Die jeweiligen Schnittstellen sollen klar gegliedert und sauber
+          dokumentiert sein.
+        </li>
+      </ul>
     </section>
   </body>
 </document>
