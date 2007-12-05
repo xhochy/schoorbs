@@ -14,11 +14,21 @@ See http://forrest.apache.org/docs/linking.html for more info
 -->
 <site label="Facharbeit" href="" xmlns="http://apache.org/forrest/linkmap/1.0"
   tab="">
-  <about label="Inhalt">
+  <about label="Einführung">
     <index label="Einleitung" href="index.html" description="Einleitung"/>
-    <copyright label="Urheberrechtshinweise" href="copyright.html" description="Urheberrechtshinweise" />
-    <whole_site_pdf label="Alles als PDF" href="wholesite.pdf"/>
+    <copyright label="Urheberrecht" href="copyright.html" description="Urheberrechtshinweise" />
   </about>
+  <enduser label="Nutzung">
+    <!-- Wie habe ich MRBS installiert -->
+    <install label="Installation" href="install.html" description="Installation" />
+  </enduser>
+  <developer label="Technisches">
+    <!-- Zusammenhang zwischen Kern und den Modulen als Grafik -->
+    <structure label="Grundstruktur" href="structure.html" description="Grundaufbau" />
+  </developer>
+  <additional label="Anhang">
+    <whole_site_pdf label="Alles als PDF" href="wholesite.pdf"/>
+  </additional>
 <!--
   The href must be wholesite.html/pdf  You can change the labels and node names
   <all label="All">
