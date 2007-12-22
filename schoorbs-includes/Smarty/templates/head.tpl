@@ -34,8 +34,11 @@
 		<br />
 		<a class="menu_link" href="help.php"><img src="schoorbs-misc/gfx/help.png" class="menu_icon" alt="{get_vocab text="help"}" />{get_vocab text="help"}</a>
 		&nbsp;|&nbsp;
+		<!-- Report link deactivated due to deactivated report-page -->
+		<!--
 		<a class="menu_link" href="report.php"><img src="schoorbs-misc/gfx/report.png" class="menu_icon" alt="{get_vocab text="report}" />{get_vocab text="report}</a>
 		&nbsp;|&nbsp;
+		-->
 		<a class="menu_link" href="admin.php"><img src="schoorbs-misc/gfx/admin.png" class="menu_icon" alt="{get_vocab text="admin"}" />{get_vocab text="admin"}</a>
 		<br /><br />
 		<form action="day.php" method="get">
@@ -52,7 +55,8 @@
            </div>
 		</form>
 		&nbsp;&nbsp;
-		<form method="get" action="search.php">
+		<!-- Search deactivated due to deactivated search page -->
+		<!--<form method="get" action="search.php">
         	<div id="menu_searchbox">
         		<a class="menu_link" style="font-size: 14px;" href="search.php?advanced=1">
         			<img src="schoorbs-misc/gfx/find.png" class="menu_icon" alt="{get_vocab text="search"}" />
@@ -64,7 +68,7 @@
            		<input type="hidden" name="year" value="{$Year}" />
            		{$pview}
         	</div>
-    	</form>
+    	</form>-->
     	<br />
     	&nbsp;
 	</div>
