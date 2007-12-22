@@ -28,11 +28,14 @@ if (!file_exists(dirname(__FILE__).'/../config.inc.php')) {
     $sDir = dirname(__FILE__).'/buildbot-test-configuration/'
         .$sUser.'-AT-'.$sHost;
         
-    echo " --- Building Test Environment for ${sUser}@${sHost} ---\n";
+    echo "# Building Test Environment for ${sUser}@${sHost}\n";
     
     if (file_exists($sDir.'/config.inc.php')) {
-           copy($sDir.'/config.inc.php', dirname(__FILE__).'/../config.inc.php');
-    }   
+        echo "## Found suitable config.inc.php\n";
+        copy($sDir.'/config.inc.php', dirname(__FILE__).'/../config.inc.php');
+    } else {
+        echo "## Didn't find suitable config.inc.php\n";
+    }
     
     if (file_exists($sDir.'/pre-test.sh')) {
            system('/usr/bin/env sh '.escapeshellarg($sDir.'/pre-test.sh').' '.escapeshellarg(realpath(dirname(__FILE__).'/../')));
