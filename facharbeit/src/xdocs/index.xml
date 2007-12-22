@@ -8,7 +8,26 @@
     <section id="short">
       <title>Beschreibung der Aufgabenstellung</title>
       <p>
-        ...
+        Vor Beginn meiner Facharbeit war das Prozedere zur Reservierung eines
+        Saales bzw. einer anderen Resource (z.B. Fernseher) sehr einfach 
+        gelöst: Es gab eine Liste für die ganze Woche, in die man sich als Lehrer
+        eintragen musste, wenn man eben die jeweilige Ressource wollte. Dieses
+        simple Lösung besitzt jedoch einige Nachteile, weshalb die Nutzung
+        eines elektronischen Buchungssystems in Erwägung gezogen werden kann.
+        So gibt es diese Liste nur an einem Ort, d.h. spontane Buchungen einer
+        Ressource sind nicht möglich, dies kann nur während der Schulzeit in der
+        Schule geschehen, nicht komfortabel z.B. von zu Hause während der 
+        Unterrichtsplanung.
+      </p>
+      <p>
+        Unter anderem um den eben genannten Komfort, so wie weitere Aspekte 
+        (siehe Pflichtenheft), bereitzustellen, werde ich in meiner Facharbeit
+        das Raum-/Ressourcenbuchungssystem MRBS zuerst analysieren, danach
+        werde ich einige Modifikationen vornehmen, um das System an die
+        Anforderungen anzupassen. Parallel dazu bzw. im Anschluss habe ich noch
+        eine Dokumentation der Software verfasst, welche das System auf der 
+        einen Seite für den normalen Anwender und auf der anderen für 
+        potentielle Entwickler bzw. technisch interessierte erklärt. 
       </p>
     </section>
     <section id="long">
