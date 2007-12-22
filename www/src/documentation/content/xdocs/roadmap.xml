@@ -32,29 +32,36 @@
     <section id="schoorbs-1.0-alpha-3">
       <title>Schoorbs 1.0-Alpha 3</title>
       <ul>
-        <li>Javascript- and CSS-files should now be deployed compressed</li>
-        <li>Add a backup function to the Web-Admin-GUI</li>
-        <li>more and better Unit Tests</li>
+        <li>Fixed AUTH/DB</li>
+        <li>Fixed DB/MySQLi</li>
+        <li>more and better Unit Tests -> BuildBot</li>
       </ul>
     </section>
     <section id="schoorbs-1.0-alpha-4">
       <title>Schoorbs 1.0-Alpha 4</title>
+      <ul>
+        <li>Javascript- and CSS-files should now be deployed compressed</li>
+        <li>Add a backup function to the Web-Admin-GUI</li>
+      </ul>
+    </section>
+    <section id="schoorbs-1.0-alpha-5">
+      <title>Schoorbs 1.0-Alpha 5</title>
       <ul>
         <li>Rewritten search interface, results will be flavoured with hCalendar-mircoformat</li>
         <li>E-Mail support should become stable</li>
         <li>Languagefiles should be stored as .po's and imported into Launchpad</li>
       </ul>
     </section>
-    <section id="schoorbs-1.0-alpha-5">
-      <title>Schoorbs 1.0-Alpha 5</title>
+    <section id="schoorbs-1.0-alpha-6">
+      <title>Schoorbs 1.0-Alpha 6</title>
       <ul>
         <li>Ubuntu/Debian-package</li>
         <li>Installationscript</li>
         <li>Rewritten report function with PDF export</li>
       </ul>
     </section>
-    <section id="schoorbs-1.0-alpha-6">
-      <title>Schoorbs 1.0-Alpha 6</title>
+    <section id="schoorbs-1.0-alpha-7">
+      <title>Schoorbs 1.0-Alpha 7</title>
       <ul>
         <li>Support for PHP accelerators/cachers (especially APC)</li>
         <li>Export a week as iCal</li>
@@ -68,3 +75,4 @@
     </p>
   </body>
 </document>
+ 
