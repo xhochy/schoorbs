@@ -21,6 +21,7 @@ require_once 'PHPUnit/Framework.php';
 require_once 'PHPUnit/TextUI/TestRunner.php';
 
 ## Check for a suitable config.inc.php ##
+
 if (!file_exists(dirname(__FILE__).'/../config.inc.php')) {
     $sHost = php_uname('n');
     $sUser = get_current_user();
