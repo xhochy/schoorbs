@@ -243,7 +243,7 @@ function sql_escape_arg($sArg)
 {
 	global $mysqli;
 		
-	return $msqli->real_escape_string($sArg);
+	return $mysqli->real_escape_string($sArg);
 }
 
 
