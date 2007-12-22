@@ -177,7 +177,7 @@ $default_room = 0;
 ###############################################
 # Authentication settings - read AUTHENTICATION
 ###############################################
-$auth["session"] = "php"; # How to get and keep the user ID. One of
+$auth["session"] = "http"; # How to get and keep the user ID. One of
                           # "http" "php" "cookie" "ip" "host" "nt" "omni"
                           # "remote_user"
 $auth["type"] = "config"; # How to validate the user/password. One of "none"
