@@ -13,18 +13,13 @@
  * @license http://www.gnu.org/licenses/gpl.html GNU General Public License
  */
 
-/* authValidateUser($user, $pass)
+/**
+ * Checks if the specified username/password pair is valid 
  * 
- * Checks if the specified username/password pair are valid
- * 
- * $user  - The user name
- * $pass  - The password
- * 
- * Returns:
- *   0        - The pair are invalid or do not exist
- *   non-zero - The pair are valid
+ * @return int 0 => Pair is invalid or doesn't exist | non-zero => Pair is valid 
+ * @param $user string The user name
+ * @param $pass string The password
  */
-
 function authValidateUser($user, $pass)
 {
    global $auth;
@@ -95,14 +90,12 @@ function authValidateUser($user, $pass)
    return $retval;
 }
 
-/* authGetUserLevel($user)
+/**
+ * Determines the user's access level
  * 
- * Determines the users access level
- * 
- * $user - The user name
- *
- * Returns:
- *   The users access level
+ * @return int The user's access level  
+ * @param $user string The user name
+ * @param $lev1_admin array
  */
 function authGetUserLevel($user, $lev1_admin)
 {
