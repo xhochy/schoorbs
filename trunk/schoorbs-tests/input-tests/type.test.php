@@ -10,6 +10,11 @@
 
 ## Defines ##
 
+/**
+ * Define that we are running Schoorbs without a GUI
+ * 
+ * @ignore 
+ */
 define('SCHOORBS_NOGUI',true);
 
 ## Main Schoorbs Code Includes ##
@@ -25,6 +30,7 @@ require_once 'PHPUnit/Framework.php';
 /**
  * Testsuite for the input checking and getting of input_Type()
  * 
+ * @package Schoorbs-Test
  * @author Uwe L. Korn <uwelk@xhochy.org>
  */ 
 class Input_TypeTest extends PHPUnit_Framework_TestCase

@@ -8,11 +8,17 @@
  */
 
 if (!defined('PHPUnit_MAIN_METHOD')) {
+    /**
+     * Set AllTests::main as main method that should be started with PHPUnit 
+     */
     define('PHPUnit_MAIN_METHOD', 'AllTests::main');
 }
 
 ## Defines ##
 
+/**
+ * Define that we are running Schoorbs without a GUI
+ */
 define('SCHOORBS_NOGUI',true);
 
 ## PHPUnit Includes ##
@@ -49,15 +55,26 @@ require_once 'input.tests.php';
 
 ## The Testsuite ##
  
+/**
+ * Interface Class for all available Tests
+ *  
+ * @package Schoorbs-Test
+ */
 class AllTests
 {
+    /**
+     * Start the Tests 
+     */
     public static function main()
     {
-        
-        
         PHPUnit_TextUI_TestRunner::run(self::suite());
     }
  
+    /**
+     * Get all Tests
+     * 
+     * @return PHPUnit_Framework_TestSuite Suite containing all available Tests
+     */
     public static function suite()
     {
         $suite = new PHPUnit_Framework_TestSuite('PHPUnit');
