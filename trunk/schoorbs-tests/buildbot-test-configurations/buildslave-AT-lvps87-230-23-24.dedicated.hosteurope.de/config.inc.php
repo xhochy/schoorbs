@@ -12,19 +12,19 @@
 ###################
 # Which database system: "pgsql"=PostgreSQL, "mysql"=MySQL
 # "mysqli"=MySQL via the mysqli PHP extension
-$dbsys = "mysql";
+$dbsys = "pgsql";
 # Hostname of database server. For pgsql, can use "" instead of localhost
 # to use Unix Domain Sockets instead of TCP/IP.
-$db_host = "localhost";
+$db_host = "";
 # Database name:
-$db_database = "mrbs";
+$db_database = "buildslave-mrbs";
 # Database login user name:
-$db_login = "mrbs";
+$db_login = "buildslave";
 # Database login password:
 $db_password = '......please enter your own.......';
 # Prefix for table names.  This will allow multiple installations where only
 # one database is available
-$db_tbl_prefix = "mrbs_";
+$db_tbl_prefix = "schoorbs_";
 # Comment this to use PHP persistent (pooled) database connections:
 $db_nopersist = 1;
 
