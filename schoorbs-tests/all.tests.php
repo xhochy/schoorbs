@@ -25,7 +25,7 @@ if (!file_exists(dirname(__FILE__).'/../config.inc.php')) {
     $sHost = php_uname('n');
     $sUser = get_current_user();
     
-    $sDir = dirname(__FILE__).'buildbot-test-configuration/'
+    $sDir = dirname(__FILE__).'/buildbot-test-configuration/'
         .$sUser.'-AT-'.$sHost;
         
     echo " --- Building Test Environment for ${sUser}@${sHost} ---\n";
