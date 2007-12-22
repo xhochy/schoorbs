@@ -9,11 +9,22 @@
  */
  
 if (!defined('PHPUnit_MAIN_METHOD')) {
+    /**
+     * Set Input_AllTests::main as main method that should be started 
+     * with PHPUnit
+     * 
+     * @ignore
+     */
     define('PHPUnit_MAIN_METHOD', 'Input_AllTests::main');
 }
 
 ## Defines ##
 
+/**
+ * Define that we are running Schoorbs without a GUI
+ * 
+ * @ignore
+ */
 define('SCHOORBS_NOGUI',true);
 
 ## Main Schoorbs Code Includes ##
