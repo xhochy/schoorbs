@@ -24,10 +24,8 @@ require_once 'PHPUnit/TextUI/TestRunner.php';
 
 if (!file_exists(dirname(__FILE__).'/../config.inc.php')) {
     $sHost = php_uname('n');
-    $sUser = get_current_user();
     
-    $sDir = dirname(__FILE__).'/buildbot-test-configurations/'
-        .$sUser.'-AT-'.$sHost;
+    $sDir = dirname(__FILE__).'/buildbot-test-configurations/'.$sHost;
         
     echo "# Building Test Environment for ${sUser}@${sHost}\n";
     
