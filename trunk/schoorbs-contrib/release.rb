@@ -64,9 +64,9 @@ task :release do
   working_dir = getwd()
   puts '## Making the zip-archive'
   chdir File.join('schoorbs-dist', 'tmp')
-  sh 'zip -9 -r ' + File.join('..', 'schoorbs-' + version, 'schoorbs-' + version + '.zip') + ' schoorbs'
+  sh 'zip -9 -q -r ' + File.join('..', 'schoorbs-' + version, 'schoorbs-' + version + '.zip') + ' schoorbs'
   puts '## Making the 7z-archive'
-  sh '7zr -t7z -m0=lzma -mx=9 -mfb=64 -md=32m -ms=on a ' + File.join('..', 'schoorbs-' + version, 'schoorbs-' + version + '.7z') + ' schoorbs'
+  sh '7zr -t7z -bd -m0=lzma -mx=9 -mfb=64 -md=32m -ms=on a ' + File.join('..', 'schoorbs-' + version, 'schoorbs-' + version + '.7z') + ' schoorbs'
   chdir working_dir
   
   puts '# Clean up'
