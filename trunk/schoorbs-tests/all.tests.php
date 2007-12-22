@@ -22,15 +22,17 @@ require_once 'PHPUnit/TextUI/TestRunner.php';
 
 ## Check for a suitable config.inc.php ##
 
-if (!file_exists(dirname(__FILE__).'../config.inc.php')) {
+if (!file_exists(dirname(__FILE__).'/../config.inc.php')) {
     $sHost = php_uname('n');
     $sUser = get_current_user();
     
     $sDir = dirname(__FILE__).'buildbot-test-configuration/'
         .$sUser.'-AT-'.$sHost;
+        
+    echo " --- Building Test Environment for ${sUser}@${sHost} ---\n";
     
     if (file_exists($sDir.'/config.inc.php')) {
-           copy($sDir.'/config.inc.php', dirname(__FILE__).'../config.inc.php');
+           copy($sDir.'/config.inc.php', dirname(__FILE__).'/../config.inc.php');
     }   
     
     if (file_exists($sDir.'/pre-test.sh')) {
