@@ -52,13 +52,10 @@ class Input_AllTests
         $suite->addTestSuite('Input_DayMonthYearTest');
         $suite->addTestSuite('Input_RoomTest');
         $suite->addTestSuite('Input_TypeTest');
-        $suite->addTestSuite('Input_TypeTest_Exceptions');
         $suite->addTestSuite('Input_NameTest');
-        $suite->addTestSuite('Input_NameTest_Exceptions');
         $suite->addTestSuite('Input_DescriptionTest');
         $suite->addTestSuite('Input_CapacityTest');
-        $suite->addTestSuite('Input_CapacityTest_Exceptions');
- 
+        
         return $suite;
     }
 }
