@@ -37,7 +37,8 @@ function authValidateUser($user, $pass)
    $user = strtolower($user);
    $user = sql_escape_arg($user);
    $pass = md5($pass);
-   return sql_query1("select count(*) from $tbl_users where name='$user' and password='$pass';");
+   return sql_query1("SELECT COUNT(*) FROM $tbl_users WHERE name='"
+       .sql_escape_arg($user)."' AND password='".sql_escape_arg($user)."';");
 }
 
 /**

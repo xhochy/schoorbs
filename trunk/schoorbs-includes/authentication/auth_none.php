@@ -1,7 +1,7 @@
 <?php
 /**
  * Dummy authentication scheme, that accepts any user.
- * Useful for using mrbs without authentication,
+ * Useful for using Schoorbs without authentication,
  * or in combination with a session scheme that already enforces
  * its own authentication. For example that in IIS.
  * 
@@ -33,14 +33,12 @@ function authValidateUser($user, $pass)
     return 1;
 }
 
-/* authGetUserLevel($user)
+/**
+ * Determines the user's access level
  * 
- * Determines the users access level
- * 
- * $user - The user name
- *
- * Returns:
- *   The users access level
+ * @return int The user's access level  
+ * @param $user string The user name
+ * @param $lev1_admin array
  */
 function authGetUserLevel($user, $lev1_admin)
 {
