@@ -27,12 +27,10 @@ function sql_free ($r)
 // Returns -1 on error; use sql_error to get the error message.
 function sql_command ($sql)
 {
-  global $mysqli;
-  
   $ret = -1;
 
-  if ($mysqli->query($sql)) {
-    $ret = $mysqli->affected_rows;
+  if (MySQLiSingleton::getInstance()->query($sql)) {
+    $ret = MySQLiSingleton::getInstance()->affected_rows;
   }
   return $ret;
 }
@@ -45,9 +43,7 @@ function sql_command ($sql)
 // a MIN or MAX aggregate function applied over no rows.
 function sql_query1 ($sql)
 {
-    global $mysqli;
-    
-    $r = $mysqli->query($sql);
+    $r = MySQLiSingleton::getInstance()->query($sql);
     if (! $r) return -1;
     if (($r->num_rows != 1) || ($r->field_count != 1) ||
         (($row = $r->fetch_row()) == NULL)) {
@@ -62,10 +58,7 @@ function sql_query1 ($sql)
 // Returns 0 on error; use sql_error to get the error message.
 function sql_query ($sql)
 {
-    global $mysqli;
-
-    $r = $mysqli->query($sql);
-    return $r;
+    return MySQLiSingleton::getInstance()->query($sql);
 }
 
 // Return a row from a result. The first row is 0.
@@ -109,17 +102,13 @@ function sql_count ($r)
 // Must be called right after an insert on that table!
 function sql_insert_id($table, $field)
 {
-    global $mysqli;
-
-    return $mysqli->insert_id;
+    return MySQLiSingleton::getInstance()->insert_id;
 }
 
 // Return the text of the last error message.
 function sql_error()
 {
-    global $mysqli;
-
-    return $mysqli->error;
+    return MySQLiSingleton::getInstance()->error;
 }
 
 // Begin a transaction, if the database supports it. This is used to
@@ -240,21 +229,51 @@ function sql_num_fields($result)
  */
 function sql_escape_arg($sArg)
 {
-	global $mysqli;
-		
-	return $mysqli->real_escape_string($sArg);
+	return MySQLiSingleton::getInstance()->real_escape_string($sArg);
 }
 
 /**
- * Establish a database connection.
- * On connection error, the message will be output without a proper HTML
- * header. There is no way I can see around this; if track_errors isn't on
- * there seems to be no way to supress the automatic error message output and
- * still be able to access the error text.
+ * The place where we store the MySQLi connection
+ * 
+ * Save the connection as a Singleton and not as a global variable to provide 
+ * Support for PHPUnit TestCases. Since MySQLi is only available with php5, we
+ * are able to use PHP5 structures too.
+ * 
+ * @author Uwe L. Korn
  */
-$mysqli = new mysqli($db_host, $db_login, $db_password, $db_database);
-/* check connection */
-if (mysqli_connect_errno()) {
-   echo "\n<p>\n" . get_vocab("failed_connect_db") . " : " . mysqli_connect_error();
-   exit;
+class MySQLiSingleton {
+    /**
+     * Establish a database connection.
+     * On connection error, the message will be output without a proper HTML
+     * header. There is no way I can see around this; if track_errors isn't on
+     * there seems to be no way to supress the automatic error message output and
+     * still be able to access the error text.
+     * 
+     * @author Uwe L. Korn
+     */
+    public static function connect($db_host, $db_login, $db_password, $db_database) {
+        self::$mysqli = new mysqli($db_host, $db_login, $db_password, $db_database);
+        
+        // check connection
+        if (mysqli_connect_errno()) {
+           echo "\n<p>\n" . get_vocab("failed_connect_db") . " : " . mysqli_connect_error();
+           exit;
+        }
+    }
+    
+    private static $mysqli = null;
+    
+    /**
+     * Get the active MySQLi connection
+     * 
+     * @return mysqli 
+     */
+    public static function getInstance() {
+        return self::$mysqli;
+    }
 }
+
+/** 
+ * Automatically connect to the database
+ */
+MySQLiSingleton::connect($db_host, $db_login, $db_password, $db_database);
