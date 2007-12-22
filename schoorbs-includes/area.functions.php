@@ -19,7 +19,7 @@ function areaGetName($nAreaID)
 {
 	global $tbl_area;
 
-	$sQuery = "SELECT area_name FROM $tbl_area WHERE id = ".sql_escape_arg($nAreaID);
+	$sQuery = "SELECT area_name FROM $tbl_area WHERE id = ".intval($nAreaID);
 	$res = sql_query($sQuery);
 	if (! $res) fatal_error(true, sql_error());
 

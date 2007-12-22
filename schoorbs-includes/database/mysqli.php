@@ -1,19 +1,18 @@
 <?php
 /**
- * The mysql-database warpper
+ * mysqli.php - Simple PHP database support for MySQL, using mysqli extension.
  * 
- * @author jberanek
+ * Include this file after defining the following variables:
+ *   $db_host = The hostname of the database server
+ *   $db_login = The username to use when connecting to the database
+ *   $db_password = The database account password
+ *   $db_database = The database name.
+ * Including this file connects you to the database, or exits on error.
+ * 
+ * @author jberanek, Uwe L. Korn
  * @package Schoorbs/DB/MySQLi
  * @license http://www.gnu.org/licenses/gpl.html GNU General Public License
  */
-// mysqli.inc - Simple PHP database support for MySQL, using mysqli extension.
-// Include this file after defining the following variables:
-//   $db_host = The hostname of the database server
-//   $db_login = The username to use when connecting to the database
-//   $db_password = The database account password
-//   $db_database = The database name.
-// Including this file connects you to the database, or exits on error.
-
 
 // Free a results handle. You need not call this if you call sql_row or
 // sql_row_keyed until the row returns 0, since sql_row frees the results
@@ -246,18 +245,16 @@ function sql_escape_arg($sArg)
 	return $mysqli->real_escape_string($sArg);
 }
 
-
-
-// Establish a database connection.
-// On connection error, the message will be output without a proper HTML
-// header. There is no way I can see around this; if track_errors isn't on
-// there seems to be no way to supress the automatic error message output and
-// still be able to access the error text.
-
+/**
+ * Establish a database connection.
+ * On connection error, the message will be output without a proper HTML
+ * header. There is no way I can see around this; if track_errors isn't on
+ * there seems to be no way to supress the automatic error message output and
+ * still be able to access the error text.
+ */
 $mysqli = new mysqli($db_host, $db_login, $db_password, $db_database);
-
 /* check connection */
 if (mysqli_connect_errno()) {
-    echo "\n<p>\n" . get_vocab("failed_connect_db") . " : " . mysqli_connect_error();
-    exit;
+   echo "\n<p>\n" . get_vocab("failed_connect_db") . " : " . mysqli_connect_error();
+   exit;
 }
