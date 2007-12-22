@@ -41,7 +41,7 @@ if (!file_exists(dirname(__FILE__).'/../config.inc.php')) {
            system('/usr/bin/env sh '.escapeshellarg($sDir.'/pre-test.sh').' '.escapeshellarg(realpath(dirname(__FILE__).'/../')));
     }
 } else {
-    echo " --- Using given environment for tests ---\n";
+    echo "# Using given environment for tests\n";
 }
 
 ## Underlying Test Suites ##
