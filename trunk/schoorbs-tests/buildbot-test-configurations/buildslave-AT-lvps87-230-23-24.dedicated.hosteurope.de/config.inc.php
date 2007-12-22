@@ -21,7 +21,7 @@ $db_database = "buildslave-mrbs";
 # Database login user name:
 $db_login = "buildslave";
 # Database login password:
-$db_password = '......please enter your own.......';
+$db_password = 'none';
 # Prefix for table names.  This will allow multiple installations where only
 # one database is available
 $db_tbl_prefix = "schoorbs_";
