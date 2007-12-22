@@ -19,51 +19,8 @@ require_once dirname(__FILE__).'/../../schoorbs-includes/input.functions.php';
 ## PHPUnit Includes ##
  
 require_once 'PHPUnit/Framework.php';
-require_once 'PHPUnit/Extensions/ExceptionTestCase.php';
 
 ## Test ##
-
-/**
- * Testsuite for the input checking and getting of input_Name() //only Exceptions
- * 
- * @author Uwe L. Korn <uwelk@xhochy.org>
- */ 
-class Input_CapacityTest_Exceptions extends PHPUnit_Extensions_ExceptionTestCase
-{
-	/**
-	 * Checks if an exception is thrown if type isn't set
-	 * 
-	 * @author Uwe L. Korn <uwelk@xhochy.org>
-	 */	
-    public function testNotSet()
-    {
-        unset($_GET['capacity']);
-        unset($_POST['capacity']);
-        unset($_COOKIE['capacity']);
-        unset($_REQUEST['capacity']);
- 
-        $this->setExpectedException('Exception');
-        input_Capacity();
-    }
-    
-    /**
-	 * Checks if an exception is thrown if type is empty
-	 * 
-	 * @author Uwe L. Korn <uwelk@xhochy.org>
-	 */	
-    public function testEmpty()
-    {
-        unset($_GET['capacity']);
-        unset($_POST['capacity']);
-        unset($_COOKIE['capacity']);
-        unset($_REQUEST['capacity']);
- 
- 		$_REQUEST['capacity'] = '';
- 
-        $this->setExpectedException('Exception');
-        input_Capacity();
-    }
-}
 
 /**
  * Testsuite for the input checking and getting of input_Name()
@@ -104,5 +61,39 @@ class Input_CapacityTest extends PHPUnit_Framework_TestCase
  		$_REQUEST['capacity'] = 'dd';
  
         $this->assertEquals(0, input_Capacity());
+    }
+    
+    /**
+	 * Checks if an exception is thrown if type isn't set
+	 * 
+	 * @author Uwe L. Korn <uwelk@xhochy.org>
+	 */	
+    public function testNotSet()
+    {
+        unset($_GET['capacity']);
+        unset($_POST['capacity']);
+        unset($_COOKIE['capacity']);
+        unset($_REQUEST['capacity']);
+ 
+        $this->setExpectedException('Exception');
+        input_Capacity();
+    }
+    
+    /**
+	 * Checks if an exception is thrown if type is empty
+	 * 
+	 * @author Uwe L. Korn <uwelk@xhochy.org>
+	 */	
+    public function testEmpty()
+    {
+        unset($_GET['capacity']);
+        unset($_POST['capacity']);
+        unset($_COOKIE['capacity']);
+        unset($_REQUEST['capacity']);
+ 
+ 		$_REQUEST['capacity'] = '';
+ 
+        $this->setExpectedException('Exception');
+        input_Capacity();
     }
 }
