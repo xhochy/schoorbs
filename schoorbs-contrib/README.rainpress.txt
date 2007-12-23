@@ -1,10 +1,10 @@
-Packr is used for compressing the JavaScript files in the release packages, it
-is thirdparty software and shouldn't be modified explicitly for Schoorbs.
+Rainpress is used for compressing the CSS files in the release packages, it
+is seperate software and shouldn't be modified explicitly for Schoorbs.
 
 License
 =======
 
-Copyright (c) 2007 Dean Edwards, James Coglan
+Copyright (c) 2007 Uwe L. Korn.
 
 Permission is hereby granted, free of charge, to any person obtaining a copy of
 this software and associated documentation files (the "Software"), to deal in 

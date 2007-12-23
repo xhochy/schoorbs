@@ -5,6 +5,7 @@
 
 require 'fileutils'
 require File.join(File.dirname(__FILE__), 'packr', '/packr.rb')
+require File.join(File.dirname(__FILE__), 'rainpress', '/packer.rb')
 
 task :release => [:doc, :test]
 
@@ -62,7 +63,7 @@ task :release do
   Dir[File.join('schoorbs-dist', 'tmp', 'schoorbs', '**','.svn')].each do |d|
     FileUtils.rm_rf d  
   end
-  puts '## Compress Javascript files'
+  puts '## Compressing Javascript files'
   dir = File.join('schoorbs-dist', 'tmp', 'schoorbs', 'schoorbs-misc', 'js')
   files = FileList[File.join(dir, '*.js')] - FileList[File.join(dir, '*pack*.js')] 
   files.each do |js|
@@ -72,6 +73,14 @@ task :release do
       end
   end
   working_dir = getwd()
+  puts '## Compressing CSS files'
+  packer = Rainpress::Packer.new
+  FileList[File.join('schoorbs-dist', 'tmp', 'schoorbs', 'schoorbs-misc', 'css', '*.css')].each do |css|
+    data = packer.compress(File.read(css))
+    File.open(css, 'w') do |f|
+      f.write(data)
+    end
+  end
   puts '## Making the zip-archive'
   chdir File.join('schoorbs-dist', 'tmp')
   sh 'zip -9 -q -r ' + File.join('..', 'schoorbs-' + version, 'schoorbs-' + version + '.zip') + ' schoorbs'
