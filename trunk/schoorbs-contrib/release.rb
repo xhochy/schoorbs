@@ -4,6 +4,7 @@
 ######################
 
 require 'fileutils'
+require File.join(File.dirname(__FILE__), 'packr', '/packr.rb')
 
 task :release => [:doc, :test]
 
@@ -60,6 +61,15 @@ task :release do
   puts '## Remove SVN directories'
   Dir[File.join('schoorbs-dist', 'tmp', 'schoorbs', '**','.svn')].each do |d|
     FileUtils.rm_rf d  
+  end
+  puts '## Compress Javascript files'
+  dir = File.join('schoorbs-dist', 'tmp', 'schoorbs', 'schoorbs-misc', 'js')
+  files = FileList[File.join(dir, '*.js')] - FileList[File.join(dir, '*pack*.js')] 
+  files.each do |js|
+      data = File.read(js)
+      File.open(js, 'w') do |f|
+        f.write(Packr.pack(data, :base62 => true))
+      end
   end
   working_dir = getwd()
   puts '## Making the zip-archive'
