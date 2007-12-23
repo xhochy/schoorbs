@@ -2,60 +2,39 @@
 <!DOCTYPE document PUBLIC "-//APACHE//DTD Documentation V2.0//EN" "http://forrest.apache.org/dtd/document-v20.dtd">
 <document>
   <header>
-    <title>Einleitung</title>
+    <title>Installation</title>
   </header>
   <body>
-    <section id="short">
-      <title>Beschreibung der Aufgabenstellung</title>
+    <section id="requirements">
+      <title>Vorraussetzungen</title>
       <p>
-        ...
-      </p>
-    </section>
-    <section id="long">
-      <title>Pflichtenheft</title>
-      <p>
-        Die während meiner Facharbeit modifizierte Software soll folgende
-        Kriterien erfüllen:
+        Im Gegensatz zur aktiven Entwicklung an Schoorbs, braucht man zur
+        normalen Nutzung kaum Zusatzsoftware. Folgende Komponenten sollten
+        genügen:
       </p>
       <ul>
         <li>
-          Die Softwareinstallation muss aus dem Internet erreichbar sein,
-          die Zugriffe, vor allem die Authentifikation, sollen alle
-          verschlüsselt übertragen werden.
+          Ein moderner Webserver, vorzugsweise Apache. Für die 
+          REST-Schnittstelle wird der Apache2 inklusive mod_rewirte benötigt.
+          Diese Schnittstelle wird in den meisten Fällen jedoch nicht genutzt, 
+          weshalb man hierauf nicht achten muss. Am HSG jedoch wird die
+          REST-Schnittstelle zum Einspielen des Stundenplans genutzt, weshalb
+          auch der Einsatz des Apache2 notwendig ist.
         </li>
         <li>
-          Die Benutzerdaten, Name und Passwort des Benutzers, müssen die
-          geleichen wie im gesamten Schulnetz sein.
+          PHP >= 4.3 als Servermodul(SAPI) oder per Fast(CGI)
         </li>
         <li>
-          Nur Lehrer sollen das Recht auf Bearbeitung/Erstellen von Einträgen
-          haben, Schüler sollen jedoch sich informieren können, welche Säle 
-          belägt sind.
-        </li>
-        <li>
-          Lehrer A darf Einträge von Lehrer B weder bearbeiten noch löschen.
-        </li>
-        <li>
-          Die Aktivitäten der Lehrer können optional mitgeschnitten werden, um
-          so den Missbrauch der Software/des Systems zu verhindern. 
-        </li>
-        <li>
-          Der Programmcode soll ordentlich strukturiert und dokumentiert sein.
-        </li>
-        <li>
-          Die während der Facharbeit erstellte Software soll allgemein nutzbar
-          sein, d.h. die Software soll nicht auf den Einsatz am Hohenstaufen 
-          Gymnasium spezialisiert sein.
-        </li>
-        <li>
-          Der aktuelle Stundenplan soll eingelesen werden und die Stunden
-          vorweg priorisiert reserviert werden.
-        </li>
-        <li>
-          Die jeweiligen Schnittstellen sollen klar gegliedert und sauber
-          dokumentiert sein.
+          Als Datenbank kann PosgtreSQL >= 7.x oder MySQL >= 4.x genutzt werden,
+          die jeweiligen PHP-Module zur Datenbank müssen auch installiert sein.
         </li>
       </ul>
+    </section>
+    <section id="long">
+      <title>Installationsanleitung</title>
+      <p>
+        ...
+      </p>
     </section>
   </body>
 </document>
