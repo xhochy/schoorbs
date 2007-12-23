@@ -41,8 +41,7 @@
       <title>Schoorbs 1.0-Alpha 4</title>
       <ul>
         <li>Javascript- and CSS-files should now be deployed compressed</li>
-        <li>Add a backup function to the Web-Admin-GUI</li>
-        <li>Languagefiles should be stored as .po's and imported into Launchpad</li>
+        <li>Add a backup/restore function to the Web-Admin-GUI</li>
       </ul>
     </section>
     <section id="schoorbs-1.0-alpha-5">
