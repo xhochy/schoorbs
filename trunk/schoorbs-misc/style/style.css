@@ -19,12 +19,10 @@ body {
     max-width: 50%;
 	left: 20px;
 	padding:0px;
-	margin:0px
+	margin:0px;
 }
 #menu {
-  margin-left: 240px;
-  background-color:#fff;
-  padding-left: 20px;
+  padding-left: 240px;
   font-size: 14px;
   font-weight: bold;
   padding-top: 20px;
@@ -51,8 +49,8 @@ a:hover {
 }
 a.headerLink {
 	color: black; 
-	font-weight: bold;
-	font-size: 17px;
+	/*font-weight: bold;*/
+	font-size: 20px;
 }
 form {display: inline;}
 td.banner {

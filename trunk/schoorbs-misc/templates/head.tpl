@@ -40,7 +40,7 @@
 		&nbsp;|&nbsp;
 		-->
 		<a class="menu_link" href="admin.php"><img src="schoorbs-misc/gfx/admin.png" class="menu_icon" alt="{get_vocab text="admin"}" />{get_vocab text="admin"}</a>
-		<br /><br />
+		&nbsp;|&nbsp;
 		<form action="day.php" method="get">
         	<div id="menu_selector">
         		<img src="schoorbs-misc/gfx/view.png" class="menu_icon" alt="{get_vocab text="search"}" />
