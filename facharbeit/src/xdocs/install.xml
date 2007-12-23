@@ -33,7 +33,31 @@
     <section id="long">
       <title>Installationsanleitung</title>
       <p>
-        ...
+        <!-- Dateien -->
+        Beim Einsatz von Schoorbs sollte man die jeweils neueste Version
+        benutzen, da in dieser die meisten bekannten Fehler schon korrigiert
+        sind. Auf <a href="http://schoorbs.xhochy.com/">schoorbs.xhochy.com</a>
+        ist diese immer verlinkt, sie wird in 2 Editionen bereitgestellt, ein
+        Mal als Zip-Archiv und ein Mal als 7z-Archiv. Beide Archive enthalten
+        die gleichen Dateien, jedoch ist das Zip-Archiv deutlich größer, 
+        wobei aber auf nahezu jedem Computer heutzutage ein Programm zum 
+        Entpacken von Zip-Acrhiven vorhanden ist. Viele Nutzer haben dagegen
+        aber oftmals kein Programm installiert, um das deutlich kleinere 
+        7z-Archiv zu entpacken.<br />
+        Das jeweils gewählte Archiv sollte man nun in einem Verzeichnis
+        entpacken, auf welches der Webserver zugreifen kann, wie Sie dies
+        jeweils bei Ihrem Webserver einstellen, lesen Sie in dessen Dokumentation
+        nach. Zu beachten ist hierbei noch, dass die PHP-Dateien nicht direkt
+        ausgeliefert werden sollen, sondern zuerst noch von einem PHP-Interpreter
+        ausgewertet werden müssen, weil sonst der Nutzer anstatt der erwarteten
+        HTML-Seite nur den Quelltext der jeweiligen PHP-Datei zu sehen bekommt.
+      </p>
+      <p>
+        <!-- Installation Datenbank -->
+        
+        <!-- Installation MySQL -->
+        
+        <!-- Installation PostgreSQL -->
       </p>
     </section>
   </body>
