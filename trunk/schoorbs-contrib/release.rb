@@ -38,7 +38,7 @@ task :release do
   puts '# Make the source documentation archive'
   FileUtils.cp_r 'schoorbs-doc', File.join('schoorbs-dist', 'tmp')
   puts '## Remove SVN directories'
-  Dir[File.join('schoorbs-dist', 'tmp', 'schoorbs-doc', '**','.svn')].each do |d|
+  Dir[File.join('schoorbs-dist', 'schoorbs-report', 'tmp', 'schoorbs-doc', '**','.svn')].each do |d|
     FileUtils.rm_rf d  
   end
   working_dir = getwd()
