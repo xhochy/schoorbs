@@ -8,7 +8,11 @@
     <section id="in-gerneral">
       <title>Allgemein</title>
       <p>
-        ... 
+        Jegliche Konfiguration des Ressourcenbuchungssystems findet in der Datei
+        <code>config.inc.php</code> statt. Bei einer neuen Installation existiert
+        diese Datei jedoch noch nicht, nur <code>config.inc.php-dist</code>, 
+        eine Beispielkonfiguration. Sie können diese Datei einfach nach 
+        <code>config.inc.php</code> kopieren und diese dann bearbeiten.
       </p>
     </section>
   </body>
