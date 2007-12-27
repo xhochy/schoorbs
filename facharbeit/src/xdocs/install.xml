@@ -66,7 +66,23 @@
       <p>        
         <!-- Installation MySQL -->
         <strong>datenbankbezogene Installation bei MySQL:</strong><br />
+        Um möglichst wenig Zusatzsoftware vorrauszusetzen, zeige ich die
+        Installation des MySQL-bezogenen Teils mit Hilfe der 
+        Kommandozeilenprogramme, welche direkt mit MySQL zusammen ausgeliefert
+        werden. Als Basis muss ein Datenbank-Nutzer existieren, der Schreibszugriff 
+        auf die Datenbank hat, in der die Tabellen für Schoorbs angelegt werden 
+        sollen. Es gibt zur Installation 2 vorgefertigte SQL-Scripte, 
+        <code>tables.my.sql</code> und <code>tables-legacy.my.sql</code>, 
+        ersteres erstellt dabei Datenbank-Tabellen für Schoorbs mit dem Präfix
+        'schoorbs_', die legacy-Variante hingegen erzeugt Tabllen mit dem 
+        Präfix 'mrbs_'. Möchte man einen anderen Präfix für die Tabellen haben,
+        so muss man eine dieser beiden Dateien manuell bearbeiten.<br />
+        Hat man sich nun für einen Präfix entschieden, kann man die Tabellen
+        in der Datenbank mit folgenden Kommandozeilenaufruf erzeugen:
       </p>
+      <code>
+        mysql -u &lt;Nutzer&gt; -p &lt;Datenbank&gt; &lt; tables.my.sql
+      </code>
       <p>  
         <!-- Installation PostgreSQL -->
         <strong>datenbankbezogene Installation bei PostgreSQL:</strong><br />
