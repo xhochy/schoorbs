@@ -54,10 +54,22 @@
       </p>
       <p>
         <!-- Installation Datenbank -->
-        
+        Bei Schoorbs/MRBS werden die gesamten Daten(z.B. Buchungen) in einer 
+        Datenbank gespeichert. Als mögliche Datenbanksoftware wird zur Zeit nur
+        MySQL oder PostgreSQL unterstützt. Da beide Systeme bei der 
+        Konfiguration und Installation der Tabellen gößtenteils unterschiedlich 
+        sind, sind für beide im Folgenden separate Anleitungen vorhanden. Im 
+        Verzeichnis <code>schoorbs-misc/install-sql</code> finden sich für beide
+        Datenbanksysteme SQL-Scripte, die bei der Installation hilfreich sind
+        und im nachfolgenden Absatz benutzt werden.
+      </p>
+      <p>        
         <!-- Installation MySQL -->
-        
+        <strong>datenbankbezogene Installation bei MySQL:</strong><br />
+      </p>
+      <p>  
         <!-- Installation PostgreSQL -->
+        <strong>datenbankbezogene Installation bei PostgreSQL:</strong><br />
       </p>
     </section>
   </body>
