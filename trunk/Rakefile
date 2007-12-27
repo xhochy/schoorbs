@@ -15,7 +15,7 @@ task :default => [:clean, :doc]
 ## CLI Tasks ##
 
 task :test do
-  sh '/usr/bin/env phpunit AllTests schoorbs-tests/all.tests.php'
+  sh 'phpunit AllTests schoorbs-tests/all.tests.php'
 end
 
 task :doc => 'schoorbs-doc/elementindex.html'
