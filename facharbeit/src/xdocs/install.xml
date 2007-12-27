@@ -65,7 +65,9 @@
       </p>
       <p>        
         <!-- Installation MySQL -->
-        <strong>datenbankbezogene Installation bei MySQL:</strong><br />
+        <strong>datenbankbezogene Installation bei MySQL:</strong>
+      </p>
+      <p>
         Um möglichst wenig Zusatzsoftware vorrauszusetzen, zeige ich die
         Installation des MySQL-bezogenen Teils mit Hilfe der 
         Kommandozeilenprogramme, welche direkt mit MySQL zusammen ausgeliefert
@@ -85,7 +87,32 @@
       </p>
       <p>  
         <!-- Installation PostgreSQL -->
-        <strong>datenbankbezogene Installation bei PostgreSQL:</strong><br />
+        <strong>datenbankbezogene Installation bei PostgreSQL:</strong>
+      </p>
+      <p>
+        Möchte man PostreSQL benutzten, so muss man die Version der Software 
+        beachten. Da sich bei Version 7.3 einige Funktionen geändert haben, 
+        gibt es für diese und neuere Versionen separate SQL-Scripte zur 
+        Installation. Sie bekommen ihre aktuelle PostgreSQL-Version per
+        folgendem Kommando angezeigt:
+      </p>
+      <p>
+        <code>psql -V</code>
+      </p>
+      <p>
+        Abhängig von der vorhanden Version gibt es die SQL-Scripte
+        <code>tables.pg.73and_above.sql</code> und 
+        <code>tables-legacy.pg.73and_above.sql</code> bzw. 
+        <code>tables.pg.sql</code> und <code>tables-legacy.sql</code>. Die
+        ersten beiden Scripte sind angepasst für die Verwendung bei den neueren
+        PostgreSQL-Versionen. Die Scripte mit dem Zusatz 'legacy' erzeugen 
+        Tabellen mit dem Präfix 'mrbs_', die anderen beiden mit 'schoorbs_'.
+        Möchte man Tabellen mit einem alternativen Präfix, so muss man ein 
+        Script manuell bearbeiten. Zum Erzeugen der Tabellen in der Datenbank
+        reicht das Ausführen des folgenden Befehls auf der Kommandozeile:
+      </p>
+      <p>
+        <code>psql -a -f tables.pg.sql &lt;Datenbank&gt;</code>
       </p>
     </section>
   </body>
