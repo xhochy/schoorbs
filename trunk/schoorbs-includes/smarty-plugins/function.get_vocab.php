@@ -9,8 +9,8 @@
 /**
  * Smarty {get_vocab} function plugin
  *
- * Type:     function<br>
- * Name:     get_vocab<br>
+ * Type:     function<br />
+ * Name:     get_vocab<br />
  * Purpose:  Translate a text in an other language
  * @author Uwe L. Korn <uwelk@xhochy.org>
  * @param array
