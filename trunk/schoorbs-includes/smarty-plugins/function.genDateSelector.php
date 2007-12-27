@@ -9,8 +9,8 @@
 /**
  * Smarty {genDateSelector} function plugin
  *
- * Type:     function<br>
- * Name:     genDateSelector<br>
+ * Type:     function<br />
+ * Name:     genDateSelector<br />
  * Purpose:  Generates a form for selecting a specific date
  * @author Uwe L. Korn <uwelk@xhochy.org>, jberanek
  * @param array
