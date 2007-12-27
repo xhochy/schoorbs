@@ -21,6 +21,7 @@ See http://forrest.apache.org/docs/linking.html for more info
   <enduser label="Nutzung">
     <!-- Wie habe ich MRBS installiert -->
     <install label="Installation" href="install.html" description="Installation" />
+    <configuaration label="Konfiguration" href="configuration.html" description="Konfiguration" />
   </enduser>
   <developer label="Technisches">
     <!-- Zusammenhang zwischen Kern und den Modulen als Grafik -->
