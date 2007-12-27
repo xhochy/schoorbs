@@ -80,9 +80,9 @@
         Hat man sich nun für einen Präfix entschieden, kann man die Tabellen
         in der Datenbank mit folgenden Kommandozeilenaufruf erzeugen:
       </p>
-      <code>
-        mysql -u &lt;Nutzer&gt; -p &lt;Datenbank&gt; &lt; tables.my.sql
-      </code>
+      <p>
+        <code>mysql -u &lt;Nutzer&gt; -p &lt;Datenbank&gt; &lt; tables.my.sql</code>
+      </p>
       <p>  
         <!-- Installation PostgreSQL -->
         <strong>datenbankbezogene Installation bei PostgreSQL:</strong><br />
