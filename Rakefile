@@ -15,7 +15,7 @@ task :default => [:clean, :doc]
 ## CLI Tasks ##
 
 task :test do
-  sh 'phpunit AllTests schoorbs-tests/all.tests.php'
+  sh 'phpunit --coverage-html ./schoorbs-report AllTests schoorbs-tests/all.tests.php'
 end
 
 task :doc => 'schoorbs-doc/elementindex.html'
@@ -25,6 +25,7 @@ task :doc => 'schoorbs-doc/elementindex.html'
 CLEAN.exclude 'core'
 CLEAN.include 'schoorbs-dist/*'
 CLEAN.include 'schoorbs-doc/*'
+CLEAN.include 'schoorbs-report/'
 CLEAN.include 'schoorbs-includes/Smarty/templates_c/*'
 CLEAN.exclude '.svn'
 
