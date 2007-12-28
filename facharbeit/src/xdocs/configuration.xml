@@ -202,8 +202,7 @@ $auth["type"] = "config";
 $auth["admin"][] = "nutzername1"; 
 # 'auth_config' user database
 $auth["user"]["nutzername1"] = "password1";
-$auth["user"]["nutzername2"] = "password2";
-</source>
+$auth["user"]["nutzername2"] = "password2";</source>
     </section>
   </body>
 </document>
