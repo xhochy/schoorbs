@@ -14,6 +14,14 @@
         eine Beispielkonfiguration. Sie können diese Datei einfach nach 
         <code>config.inc.php</code> kopieren und diese dann bearbeiten.
       </p>
+      <p>
+        <strong>Achtung:</strong><br />
+        Nicht dokumentierte Variabeln haben zur Zeit keine Wirkung, da z.B. 
+        beim <a href="http://de.wikipedia.org/wiki/Abspaltung_(Softwareentwicklung)">Fork</a>
+        von MRBS einige Module, wie z.B. die Authentifizierung über LDAP, 
+        deaktiviert wurden, oder die Variabeln sind nur während der Entwicklung
+        bedeutent und sollten deshalb nicht verändert werden.
+      </p>
     </section>
     <section id="database">
       <title>Datenbank</title>
@@ -47,15 +55,13 @@
       <p>
         <strong>Beispielkonfiguration (für eine Verbindung per MySQLi):</strong>
       </p>
-      <p>
-        <code>$dbsys = "mysqli";</code><br />
-        <code>$db_host = "localhost";</code><br />
-        <code>$db_database = "schoorbs";</code><br />
-        <code>$db_login = 'schoorbs';</code><br />
-        <code>$db_password = 'geheimes_passwort';</code><br />
-        <code>$db_tbl_prefix = "schoorbs_";</code><br />
-        <code>$db_nopersist = 1;</code><br />
-      </p>
+      <source>$dbsys = "mysqli";
+$db_host = "localhost";
+$db_database = "schoorbs";
+$db_login = 'schoorbs';
+$db_password = 'geheimes_passwort';
+$db_tbl_prefix = "schoorbs_";
+$db_nopersist = 1;</source>
     </section>
     <section id="site-id">
       <title>Seiteninformationen</title>
@@ -70,11 +76,67 @@
       <p>
         <strong>Beispielkonfiguration:</strong>
       </p>
+      <source>$mrbs_admin = "Uwe L. Korn";
+$mrbs_admin_email = "uwelk@xhochy.org";
+$mrbs_company = "Hohenstaufen Gymnasium Kaiserslautern";</source>
+    </section>
+    <section id="calendar">
+      <title>Kalender / Zeiteinheiten</title>
       <p>
-        <code>$mrbs_admin = "Uwe L. Korn";</code><br />
-        <code>$mrbs_admin_email = "uwelk@xhochy.org";</code><br />
-        <code>$mrbs_company = "Hohenstaufen Gymnasium Kaiserslautern";</code>
+        Bei Schoorbs gibt es 2 Möglichkeiten die Zeiteinheiten, welche gebucht
+        werden können festzulegen. Auf der einen Seite gibt es die Möglichkeit
+        eine feste Dauer(<code>$resolutuin</code>) in Sekunden anzugeben, die 
+        für jede Einheit gilt. Solche Einheiten kann man zwischen einem 
+        angebenen Tagesstart(<code>$morningstarts</code> (Stunde) und 
+        <code>$morningstarts_minutes</code> (Minuten)) und einem angebenen 
+        Tagesende(<code>$eveningends</code> (Stunde) und 
+        <code>$eveningends_minutes</code> (Minuten)) buchen. Hat man z.B. als 
+        Tagesstart 7:30 angeben, und als Auflösung 1800(-> 1/2 h) gewählt, so
+        kann man jeweils um 7:30, 8:00, 8:30, ... eine Einheit buchen.<br />
+        Möchte man nun aber Zeiteinheiten mit unterschiedlicher Länge bzw.
+        möchte man die Einheit überhaupt nicht über die Zeit, sondern über
+        einen spezifischen Namen bestimmen, so kann man einen Array(<code>$periods</code>)
+        angeben, welche Einheiten verfügbar sein sollen. Um diese Funktion
+        zu nutzen, muss man die Variable <code>$enable_periods</code> auf
+        <code>true</code> setzen.<br />
+        Allgemein gesehen kann man noch auswählen, ob der Wochenbeginn an einem
+        Sonntag(<code>$weekstarts = 0;</code>) oder an einem Montag
+        (<code>$weekstarts = 1;</code>) ist. 
       </p>
+      <p>
+        <strong>Beispielkonfiguration mit festen Zeiteinheiten:</strong>
+      </p>
+      <source>$enable_periods = false;
+$resolution = 2700;
+$morningstarts = 8;
+$eveningends   = 17;
+$morningstarts_minutes = 0;
+$eveningends_minutes = 0;
+$periods[] = array();
+$weekstarts = 1;</source>
+      <p>
+        <strong>Beispielkonfiguration mit benannten Zeiteinheiten</strong>
+      </p>
+      <source>$enable_periods = true;
+$resolution = 2700;
+$morningstarts = 8;
+$eveningends   = 17;
+$morningstarts_minutes = 0;
+$eveningends_minutes = 0;
+$periods[] = "08:00-08:45";
+$periods[] = "08:45-09:30";
+$periods[] = "09:30-09:45";
+$periods[] = "09:45-10:30";
+$periods[] = "10:30-11:15";
+$periods[] = "11:15-11:30";
+$periods[] = "11:30-12:15";
+$periods[] = "12:15-13:00";
+$periods[] = "13:00-13:15";
+$periods[] = "13:15-14:00";
+$periods[] = "14:00-14:45";
+$periods[] = "14:45-15:30";
+$periods[] = "15:30-16:15";
+$weekstarts = 1;</source>
     </section>
   </body>
 </document>
