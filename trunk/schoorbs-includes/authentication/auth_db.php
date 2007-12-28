@@ -20,7 +20,8 @@ require_once dirname(__FILE__).'/../database/'.$dbsys.'.php';
  * session_php.inc and session_cookie.inc will add a link to the user list
  * in the logon box, if the value $user_list_link is set.
  */
-$user_list_link = "edit_users.php";
+//$user_list_link = "edit_users.php";
+unset($user_list_link);
 
 /**
  * Checks if the specified username/password pair are valid
