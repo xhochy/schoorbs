@@ -27,5 +27,3 @@ function getUserName()
 {
 	return $_SERVER['REMOTE_ADDR'];
 }
-
-?>
