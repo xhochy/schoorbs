@@ -17,14 +17,14 @@ $dbsys = "mysql";
 # to use Unix Domain Sockets instead of TCP/IP.
 $db_host = "localhost";
 # Database name:
-$db_database = "mrbs";
+$db_database = "schoorbs";
 # Database login user name:
-$db_login = "mrbs";
+$db_login = "schoorbs";
 # Database login password:
 $db_password = '......please enter your own.......';
 # Prefix for table names.  This will allow multiple installations where only
 # one database is available
-$db_tbl_prefix = "mrbs_";
+$db_tbl_prefix = "schoorbs_";
 # Uncomment this to NOT use PHP persistent (pooled) database connections:
 $db_nopersist = 1;
 
@@ -41,8 +41,8 @@ $mrbs_admin_email = "foo.bar@example.com";
 $mrbs_company = '<a href="http://code.google.com/p/schoorbs">Schoorbs</a>';
 
 # This is to fix URL problems when using a proxy in the environment.
-# If links inside MRBS appear broken, then specify here the URL of
-# your MRBS root directory, as seen by the users. For example:
+# If links inside Schoorbs appear broken, then specify here the URL of
+# your Schoorbs root directory, as seen by the users. For example:
 # $url_base =  "http://webtools.uab.ericsson.se/oam";
 # It is also recommended that you set this if you intend to use email
 # notifications, to ensure that the correct URL is displayed in the
@@ -187,8 +187,8 @@ $ldap_tls = false;
 # $ldap_user_attrib like this:
 #   (&($ldap_user_attrib=username)($ldap_filter))
 # After binding to check the password, this check is used to see that
-# they are a valid user of mrbs.
-#$ldap_filter = "mrbsuser=y";
+# they are a valid user of Schoorbs.
+#$ldap_filter = "schoorbsuser=y";
 
 # 'auth_imap' configuration settings
 # See AUTHENTICATION for details of how check against multiple servers
@@ -214,19 +214,19 @@ $pop3_port = "110";
 $unicode_encoding = 1;
 
 # Set this to a different language specifier to default to different
-# language tokens. This must equate to a lang.* file in MRBS.
+# language tokens. This must equate to a lang.* file in Schoorbs.
 # e.g. use "fr" to use the translations in "lang.fr" as the default
 # translations
 $default_language_tokens = "en";
 
-# Set this to 1 to disable the automatic language changing MRBS performs
+# Set this to 1 to disable the automatic language changing Schoorbs performs
 # based on the user's browser language settings. It will ensure that
 # the language displayed is always the value of $default_language_tokens,
 # as specified above
 $disable_automatic_language_changing = 0;
 
-# Set this to a valid locale (for the OS you run the MRBS server on)
-# if you want to override the automatic locale determination MRBS
+# Set this to a valid locale (for the OS you run the Schoorbs server on)
+# if you want to override the automatic locale determination Schoorbs
 # performs
 $override_locale = "";
 
@@ -437,7 +437,8 @@ $mail["deleted_entry"] = "An entry has been deleted, here are the details:";
 # Disable magic quoting on database returns:
 set_magic_quotes_runtime(0);
 
-# Make sure notice errors are not reported, they can break mrbs code:
+# Make sure notice errors are not reported, they can break Schoorbs code:
+# Subject to be fixed!
 error_reporting (E_ALL ^ E_NOTICE);
 
 # These variables specify the names of the tables in the database
