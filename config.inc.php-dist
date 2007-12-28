@@ -124,56 +124,6 @@ $dateformat = 0;
 # in 24 hour format
 $twentyfourhour_format = 1;
 
-########################
-# Miscellaneous settings
-########################
-
-# Maximum repeating entrys (max needed +1):
-$max_rep_entrys = 365 + 1;
-
-# Default report span in days:
-$default_report_days = 60;
-
-# Results per page for searching:
-$search["count"] = 20;
-
-# Page refresh time (in seconds). Set to 0 to disable
-$refresh_rate = 0;
-
-# should areas be shown as a list or a drop-down select box?
-$area_list_format = "list";
-#$area_list_format = "select";
-
-# Entries in monthly view can be shown as start/end slot, brief description or
-# both. Set to "description" for brief description, "slot" for time slot and
-# "both" for both. Default is "both", but 6 entries per day are shown instead
-# of 12.
-$monthly_view_entries_details = "both";
-
-# To view weeks in the bottom (trailer.php) as week numbers (42) instead of
-# 'first day of the week' (13 Oct), set this to TRUE
-$view_week_number = false;
-
-# To display times on right side in day and week view, set to TRUE;
-$times_right_side = false;
-
-# Control the active cursor in day/week/month views.
-$javascript_cursor = true; # Change to false if clients have old browsers
-                           # incompatible with JavaScript.
-$show_plus_link = true; # Change to true to always show the (+) link as in
-                        # MRBS 1.1.
-$highlight_method = "hybrid"; # One of "bgcolor", "class", "hybrid".
-
-# Define default starting view (month, week or day)
-# Default is day
-$default_view = "day";
-
-# Define default room to start with (used by index.php)
-# Room numbers can be determined by looking at the Edit or Delete URL for a
-# room on the admin page.
-# Default is 0
-$default_room = 0;
-
 ###############################################
 # Authentication settings - read AUTHENTICATION
 ###############################################
@@ -254,6 +204,56 @@ $pop3_host = "pop3-server-name";
 # The POP3 server port
 $pop3_port = "110";
 
+
+########################
+# Miscellaneous settings
+########################
+
+# Maximum repeating entrys (max needed +1):
+$max_rep_entrys = 365 + 1;
+
+# Default report span in days:
+$default_report_days = 60;
+
+# Results per page for searching:
+$search["count"] = 20;
+
+# Page refresh time (in seconds). Set to 0 to disable
+$refresh_rate = 0;
+
+# should areas be shown as a list or a drop-down select box?
+$area_list_format = "list";
+#$area_list_format = "select";
+
+# Entries in monthly view can be shown as start/end slot, brief description or
+# both. Set to "description" for brief description, "slot" for time slot and
+# "both" for both. Default is "both", but 6 entries per day are shown instead
+# of 12.
+$monthly_view_entries_details = "both";
+
+# To view weeks in the bottom (trailer.php) as week numbers (42) instead of
+# 'first day of the week' (13 Oct), set this to TRUE
+$view_week_number = false;
+
+# To display times on right side in day and week view, set to TRUE;
+$times_right_side = false;
+
+# Control the active cursor in day/week/month views.
+$javascript_cursor = true; # Change to false if clients have old browsers
+                           # incompatible with JavaScript.
+$show_plus_link = true; # Change to true to always show the (+) link as in
+                        # MRBS 1.1.
+$highlight_method = "hybrid"; # One of "bgcolor", "class", "hybrid".
+
+# Define default starting view (month, week or day)
+# Default is day
+$default_view = "day";
+
+# Define default room to start with (used by index.php)
+# Room numbers can be determined by looking at the Edit or Delete URL for a
+# room on the admin page.
+# Default is 0
+$default_room = 0;
 
 ###############################################
 # Email settings
