@@ -22,6 +22,8 @@ See http://forrest.apache.org/docs/linking.html for more info
     <!-- Wie habe ich MRBS installiert -->
     <install label="Installation" href="install.html" description="Installation" />
     <configuaration label="Konfiguration" href="configuration.html" description="Konfiguration" />
+    <usage label="Normaler Gebrauch" href="usage.html" desctiption="Normaler Gebrauch" />
+    <admin label="Administration" href="administration.html" description="Administration" />
   </enduser>
   <developer label="Technisches">
     <!-- Zusammenhang zwischen Kern und den Modulen als Grafik -->

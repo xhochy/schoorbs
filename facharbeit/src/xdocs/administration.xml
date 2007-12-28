@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE document PUBLIC "-//APACHE//DTD Documentation V2.0//EN" "http://forrest.apache.org/dtd/document-v20.dtd">
+<document>
+  <header>
+    <title>Administration</title>
+  </header>
+  <body>
+    <section id="areas">
+      <title>Bereiche</title>
+      <p>
+        ... 
+      </p>
+    </section>
+    <section id="rooms">
+      <title>Ressourcen</title>
+      <p>
+        ...
+      </p>
+    </section>
+  </body>
+</document>
