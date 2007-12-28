@@ -246,5 +246,24 @@ $typel["E"] = get_vocab("external");
 $typel["I"] = get_vocab("internal");
 # $typel["J"] = "J";</source>
     </section>
+    <section id="misc">
+      <title>Sontige Einstellungen</title>
+      <p>
+        Sontige Konfigurationen sind z.B. die maximale Anzahl an Wiederholungen,
+        die ein regelmäßiger Termin haben kann(<code>$max_rep_entrys</code>). 
+        Weiterhin kann man noch festlegen, ob auch auf der rechten Seite der 
+        Tabelle die Uhrzeiten angezeigt werden sollen, was man durch das Setzen
+        von <code>$times_right_side</code> auf <code>true</code> bzw. 
+        <code>false</code> aktivieren bzw. deaktivieren kann. Mit 
+        <code>$javascript_cursor</code> kann man das farbliche Hervorheben der 
+        Tabellenspalte aktivieren, über die man gerade mit dem Mauszeiger geht, 
+        diese Funktion wäre zwar auch mit CSS implemtierbar, jedoch würde sie
+        dann nicht korrekt von allen Browser dargestellt werden, weshalb hier
+        die Javascript-Variante, die einzig verfügbare ist. Mit 
+        <code>$default_view</code> legt man fest, welche Ansicht normalerweise
+        benutzt wird, wenn der Nutzer im Browser die Index-Seite ansteuert, 
+        mögliche Ansichten sind: Tag('day'), Woche('week') oder Monat('month'). 
+      </p>
+    </section>
   </body>
 </document>
