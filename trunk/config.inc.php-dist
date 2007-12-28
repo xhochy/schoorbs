@@ -204,6 +204,66 @@ $pop3_host = "pop3-server-name";
 # The POP3 server port
 $pop3_port = "110";
 
+##########
+# Language
+##########
+
+# Set this to 1 to use UTF-8 in all pages and in the database, otherwise
+# text gets enterered in the database in different encodings, dependent
+# on the users' language
+$unicode_encoding = 1;
+
+# Set this to a different language specifier to default to different
+# language tokens. This must equate to a lang.* file in MRBS.
+# e.g. use "fr" to use the translations in "lang.fr" as the default
+# translations
+$default_language_tokens = "en";
+
+# Set this to 1 to disable the automatic language changing MRBS performs
+# based on the user's browser language settings. It will ensure that
+# the language displayed is always the value of $default_language_tokens,
+# as specified above
+$disable_automatic_language_changing = 0;
+
+# Set this to a valid locale (for the OS you run the MRBS server on)
+# if you want to override the automatic locale determination MRBS
+# performs
+$override_locale = "";
+
+# faq file language selection. IF not set, use the default english file.
+# IF your language faq file is available, set $faqfilelang to match the
+# end of the file name, including the underscore (ie. for site_faq_fr.html
+# use "_fr"
+$faqfilelang = ""; 
+
+# This next require must be done after the definitions above, as the definitions
+# are used in the included file
+require_once 'schoorbs-includes/lang/language.php';
+
+#############
+# Entry Types
+#############
+# This array maps entry type codes (letters A through J) into descriptions.
+# Each type has a color (see TD.x classes in the style sheet mrbs.css).
+#    A=Pink  B=Blue-green  C=Peach  D=Yellow      E=Light blue
+#    F=Tan   G=Red         H=Aqua   I=Light green J=Gray
+# The value for each type is a short (one word is best) description of the
+# type. The values must be escaped for HTML output ("R&amp;D").
+# Please leave I and E alone for compatibility.
+# If a type's entry is unset or empty, that type is not defined; it will not
+# be shown in the day view color-key, and not offered in the type selector
+# for new or edited entries.
+
+#$typel["A"] = "A";
+#$typel["B"] = "B";
+#$typel["C"] = "C";
+# $typel["D"] = "D";
+$typel["E"] = get_vocab("external");
+# $typel["F"] = "F";
+# $typel["G"] = "G";
+# $typel["H"] = "H";
+$typel["I"] = get_vocab("internal");
+# $typel["J"] = "J";
 
 ########################
 # Miscellaneous settings
@@ -370,67 +430,6 @@ $mail["changed_entry"] = "An entry has been modified, here are the details:";
 # Set the content of the message when an entry is deleted. What you type
 # here will be added at the top of the message body.
 $mail["deleted_entry"] = "An entry has been deleted, here are the details:";
-
-##########
-# Language
-##########
-
-# Set this to 1 to use UTF-8 in all pages and in the database, otherwise
-# text gets enterered in the database in different encodings, dependent
-# on the users' language
-$unicode_encoding = 1;
-
-# Set this to a different language specifier to default to different
-# language tokens. This must equate to a lang.* file in MRBS.
-# e.g. use "fr" to use the translations in "lang.fr" as the default
-# translations
-$default_language_tokens = "en";
-
-# Set this to 1 to disable the automatic language changing MRBS performs
-# based on the user's browser language settings. It will ensure that
-# the language displayed is always the value of $default_language_tokens,
-# as specified above
-$disable_automatic_language_changing = 0;
-
-# Set this to a valid locale (for the OS you run the MRBS server on)
-# if you want to override the automatic locale determination MRBS
-# performs
-$override_locale = "";
-
-# faq file language selection. IF not set, use the default english file.
-# IF your language faq file is available, set $faqfilelang to match the
-# end of the file name, including the underscore (ie. for site_faq_fr.html
-# use "_fr"
-$faqfilelang = ""; 
-
-# This next require must be done after the definitions above, as the definitions
-# are used in the included file
-require_once 'schoorbs-includes/lang/language.php';
-
-#############
-# Entry Types
-#############
-# This array maps entry type codes (letters A through J) into descriptions.
-# Each type has a color (see TD.x classes in the style sheet mrbs.css).
-#    A=Pink  B=Blue-green  C=Peach  D=Yellow      E=Light blue
-#    F=Tan   G=Red         H=Aqua   I=Light green J=Gray
-# The value for each type is a short (one word is best) description of the
-# type. The values must be escaped for HTML output ("R&amp;D").
-# Please leave I and E alone for compatibility.
-# If a type's entry is unset or empty, that type is not defined; it will not
-# be shown in the day view color-key, and not offered in the type selector
-# for new or edited entries.
-
-#$typel["A"] = "A";
-#$typel["B"] = "B";
-#$typel["C"] = "C";
-# $typel["D"] = "D";
-$typel["E"] = get_vocab("external");
-# $typel["F"] = "F";
-# $typel["G"] = "G";
-# $typel["H"] = "H";
-$typel["I"] = get_vocab("internal");
-# $typel["J"] = "J";
 
 ##########################################
 # PHP System Configuration - internal use, do not change
