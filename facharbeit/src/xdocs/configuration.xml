@@ -15,5 +15,47 @@
         <code>config.inc.php</code> kopieren und diese dann bearbeiten.
       </p>
     </section>
+    <section id="database">
+      <title>Datenbank</title>
+      <p>
+        Der erste Abschnitt der Konfiguration von Schoorbs in der Datei 
+        <code>config.inc.php</code> betrifft die Einstellungen zur Datenbank.
+        Wie schon im Kapitel zur Installation erwähnt, hat man bei Schoorbs nur
+        die Wahl zwischen MySQL und PostgreSQL. Jedoch gibt es für die Nutzung
+        von MySQL zwei unterschiedliche Module, ein Mal das Module 
+        <code>mysqli</code>, welches an sich nur für Syteme mit PHP 5+ und 
+        MySQL 5+ eignet, bei diesen aber sehr empfehlenswert ist. Für alle
+        anderen Systeme mit MySQL sollte man das Modul <code>mysql</code> 
+        nutzen. Für den Zugriff auf PostgreSQL steht nur das Modul
+        <code>pgsql</code> zur Verfügung. Das jeweils passende Modul schreiben
+        Sie als Wert zur Variable <code>$dbsys</code>. In die Variable
+        <code>$db_host</code> tragen sie den Namen des Computers ein, auf welchem
+        der Datenbankserver läuft, bei PostgreSQL können sie diesen Wert auch
+        leer lassen, wenn sie möchten, dass die Verbindung zur Datenbank anstatt
+        über TCP/IP per Unix Socket geschiet. Den Namen der Datenbank tragen
+        Sie bei der Variable <code>$db_database</code> ein. Nutzername und
+        Passwort gehören in die Variabeln <code>$db_login</code> und
+        <code>$db_password</code>. In <code>$db_tbl_prefix</code> tragen Sie
+        den während der Installation gewählten Tabellenpräfix ein, meistens ist
+        dies 'schoorbs_' oder 'mrbs_'. Als letzte Konfigurationsmöglichkeit
+        können Sie wählen, ob Sie peristente Datenbankverbindungen haben wollen.
+        Sie sollten diese jedoch nur nutzen, wenn Sie genau wissen, was Sie tun,
+        ansonsten empfiehlt sich das Deaktivieren von peristenten Verbindungen,
+        welches durch das Setzen von <code>$db_nopersist = 1;</code> bewirkt
+        wird.
+      </p>
+      <p>
+        <strong>Beispielkonfiguration (für eine Verbindung per MySQLi):</strong>
+      </p>
+      <p>
+        <code>$dbsys = "mysqli";</code><br />
+        <code>$db_host = "localhost";</code><br />
+        <code>$db_database = "schoorbs";</code><br />
+        <code>$db_login = 'schoorbs';</code><br />
+        <code>$db_password = 'geheimes_passwort';</code><br />
+        <code>$db_tbl_prefix = "schoorbs_";</code><br />
+        <code>$db_nopersist = 1;</code><br />
+      </p>
+    </section>
   </body>
 </document>
