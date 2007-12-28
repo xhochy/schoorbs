@@ -1,0 +1,21 @@
+#!/usr/bin/env ruby
+################################################
+## The main Rakefile for the Schoorbs website ##
+################################################
+
+## Includes ##
+
+## Tasks ##
+
+task :default => [:clean, :site]
+
+## CLI Tasks ##
+
+task :site do
+  sh 'forrest site'
+end
+
+task :clean do
+  sh 'forrest clean'
+end
+
