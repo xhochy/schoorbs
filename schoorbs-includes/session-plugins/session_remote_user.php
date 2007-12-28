@@ -14,27 +14,6 @@
  * @package Schoorbs/Session/Remote-User
  * @license http://www.gnu.org/licenses/gpl.html GNU General Public License
  */
-/********************************************************************************************\
-*                                                                                            *
-*   File name       session_remote_user.inc                                                  *
-*                                                                                            *
-*   Description        *
-*                                  *
-*                                                                                            *
-*   Notes                                  *
-*                                                          *
-*                     
-*                                                                                            *
-*                                *
-*                                  *
-*                                                                                            *
-*   History                                                                                  *
-*    2006-01-04   Created based on session_http.inc                    *
-*    2006-02-16 Bjorn.Wiberg@its.uu.se  Made logout link a configuration item                *
-*                                                                                            *
-\*********************************************************************************************/
-
-// $Id: session_remote_user.inc,v 1.1.2.1 2006/04/26 10:01:43 jberanek Exp $
 
 /* authGet()
  * 
