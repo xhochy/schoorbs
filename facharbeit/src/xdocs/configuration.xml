@@ -57,5 +57,24 @@
         <code>$db_nopersist = 1;</code><br />
       </p>
     </section>
+    <section id="site-id">
+      <title>Seiteninformationen</title>
+      <p>
+        Als sogenannte Seiteninformationen kann man hier nur den Administrations-Kontakt
+        und den Titel der Seite festlegen. Den Namen des Administrators weist 
+        man der Variable <code>$mrbs_admin</code> zu, seine E-Mail trägt man in
+        <code>$mrbs_admin_email</code> ein. Den Titel der Seite legt man in der
+        Variable <code>$mrbs_company</code> fest, dieser Titel kann auch (X)HTML-Tags
+        wie z.b. <code>&lt;a&gt;</code> enthalten.
+      </p> 
+      <p>
+        <strong>Beispielkonfiguration:</strong>
+      </p>
+      <p>
+        <code>$mrbs_admin = "Uwe L. Korn";</code><br />
+        <code>$mrbs_admin_email = "uwelk@xhochy.org";</code><br />
+        <code>$mrbs_company = "Hohenstaufen Gymnasium Kaiserslautern";</code>
+      </p>
+    </section>
   </body>
 </document>
