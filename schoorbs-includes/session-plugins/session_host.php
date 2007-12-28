@@ -31,5 +31,3 @@ function getUserName()
 	$remotehostname = gethostbyaddr($_SERVER['REMOTE_ADDR']);
         return $remotehostname;
 }
-
-?>
