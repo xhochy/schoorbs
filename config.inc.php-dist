@@ -25,7 +25,7 @@ $db_password = '......please enter your own.......';
 # Prefix for table names.  This will allow multiple installations where only
 # one database is available
 $db_tbl_prefix = "mrbs_";
-# Comment this to use PHP persistent (pooled) database connections:
+# Uncomment this to NOT use PHP persistent (pooled) database connections:
 $db_nopersist = 1;
 
 ################################
