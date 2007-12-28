@@ -204,5 +204,23 @@ $auth["admin"][] = "nutzername1";
 $auth["user"]["nutzername1"] = "password1";
 $auth["user"]["nutzername2"] = "password2";</source>
     </section>
+    <section id="language">
+      <title>Sprache</title>
+      <p>
+        Zur Sprache sind bei Schoorbs nicht viele Einstellungen notwendig.
+        Normalerweise wird alles per UTF-8 ausgeben, an einigen Stellen besteht
+        jedoch die Möglichkeit dies zu unterlassen, möchte man dies, so 
+        kommentiert man die Zeile <code>$unicode_encoding = 1;</code> aus.
+        Schoorbs versucht die Sprache des Nutzers automatisch zu ermitteln,
+        sollte dies jedoch mal nicht gelingen, so wird auf die Variable
+        <code>$default_language_tokens</code> zurürckgegriffen, welche einen
+        zweistelligen Sprachcode(kleine Buchstaben, z.B.: 'de') enthält.
+        Standardmäßig werden die häufig gestellten Fragen(FAQ) in Englisch
+        angezeigt, es existieren jedoch auch Versionen in Spanisch('_es'),
+        Deutsch('_de') und Französisch('_fr'), möchte man lieber eine dieser
+        Sprachen haben, so muss man die jeweilige Zeichenkette in die Variable
+        <code>$faqfilelang</code> eintragen.
+      </p>
+    </section>
   </body>
 </document>
