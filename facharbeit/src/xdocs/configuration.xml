@@ -138,5 +138,72 @@ $periods[] = "14:45-15:30";
 $periods[] = "15:30-16:15";
 $weekstarts = 1;</source>
     </section>
+    <section id="auth">
+      <title>Authentifizierung</title>
+      <p>
+        Bei der Authentifizierung bei Schoorbs gibt es 2 modulare Bereiche, 
+        'authentication' (Variable: <code>$auth["type"]</code>) und 'session'
+        (Variable: <code>$auth["session"]</code>). 
+      </p>
+      <p>
+        Der Bereich 'session' ist für
+        Schnittstelle verantwortlich, die vom Benutzer Nutzername und Passwort
+        verlangt und dieses auch über mehrere HTTP-Requests hinweg speichert.
+        Hier stehen die Module 'cookie' (Abfrage des Passworts per HTML-GUI, 
+        speichern des Namens/Passworts in einem Cookie), 'host'(Der DNS-Hostname
+        des Nutzers ist der Nutzername, Passwörter gibt es nicht), 'http' 
+        (Name/Passwort werden über HTTP-Authentication nachgefragt), 'ip'
+        (Die IP des Nutzers ist der Nutzername, Passwörter gibt es nicht), 
+        'php' (Name/Passwort werden per HTML abgefragt, Name/Passwort werden
+        mit PHPs internem Session-Handling abgespeichert) und 'remote_user'
+        (wie 'http', nur hier ist der Webserver für die HTTP-Authentikation
+        zuständig).<br />
+        <strong>Zusatz zu 'http':</strong> Den Titel der HTTP-Authentifikation
+        kann man mit der Variable <code>$auth["realm"]</code> setzen.<br />
+        <strong>Zustatz zu 'remote_user':</strong> Man kann einen Link 
+        spezifizieren, auf dem sich Nutzer ausloggen können: 
+        <code>$auth['remote_user']['logout_link']</code><br />
+      </p>
+      <p>
+        Die Überprüfung der Kombination von Nutzername und Passwort wird im
+        Bereich 'authentication' erledigt. Hier existieren 4 Module: 'config'
+        (Die zulässign Name/Passwort-Kombinationen werden in der 
+        <code>config.inc.php</code> fest abgespeichert), 'db' (Name und Passwort
+        werden in der Datenbank abgespeichert), 'ext' (Es wird ein Programm 
+        ausgeführt, welches die Kombination überprüft) und 'none' (Jegliche
+        Kombination von Name/Passwort wird als korrekt angesehen).<br />
+        <strong>Zusatz zu 'config':</strong> Die Name/Passwort-Kombinationen
+        werden im Array <code>$auth["user"]</code> gespeichert, z.b.:
+        <code>$auth["user"]["nutzername1"] = "password1";</code><br />
+        <strong>Zusatz zu 'ext':</strong> Das auszuführende Programm wird in
+        der Variable <code>$auth["prog"]</code> festgelegt, die Parameter für 
+        das Programm in <code>$auth["params"]</code>, wobei bei den Parametern
+        '#PASSWORD#' und '#USERNAME#' jeweils durch die zu überprüfende 
+        Kombination ersetzt wird. 
+      </p>
+      <p>
+        Die beiden Bereiche regeln zwar, wie und wer sich einloggen darf, 
+        jedoch legen sie noch nicht fest, welcher Benutzer Administratorrechte
+        hat. Einem Benutzer kann man Administratorrechte geben in dem man ihm
+        dem Array <code>$auth["admin"]</code> hinzufügt, z.B.:
+        <code>$auth["admin"][] = "nutzername1";</code>.<br />
+        Administratoren können neue Bereiche und Ressourcen erstellen und 
+        Einträge anderer Nutzer bearbeiten.
+      </p>
+      <p>
+        <strong>
+          Beispielkonfiguartion (mit 'session'='php' und 'type'='config'):
+        </strong>
+      </p>
+      <source>
+$auth["session"] = "php"; 
+$auth["type"] = "config"; 
+# The list of administrators (can modify other peoples settings)
+$auth["admin"][] = "nutzername1"; 
+# 'auth_config' user database
+$auth["user"]["nutzername1"] = "password1";
+$auth["user"]["nutzername2"] = "password2";
+</source>
+    </section>
   </body>
 </document>
