@@ -222,5 +222,29 @@ $auth["user"]["nutzername2"] = "password2";</source>
         <code>$faqfilelang</code> eintragen.
       </p>
     </section>
+    <section id="cats">
+      <title>Kategorien</title>
+      <p>
+        Schoorbs bietet die Möglichkeit Buchungen in Kategorien einzuodnen und 
+        sie passend farblich zu hinterlegen. Dazu existieren die Arrayspalten 
+        'A' - 'J' des Arrays $typel. Jeder Buchstabe färbt den jeweiligen 
+        Eintrag anders, die Farbe wird per CSS 
+        (<code>schoorbs-misc/style/style.css</code>) festgelegt. Die Kategorien
+        'external' und 'internal' müssen hierbei jedoch immer erhalten bleiben.
+      </p>
+      <p>
+        <strong>Beispielkategorien (bei schulischer Nutzung):</strong> 
+      </p>
+      <source>$typel["A"] = "Referat";
+$typel["B"] = "normaler Unterricht";
+$typel["C"] = "Kursarbeit";
+# $typel["D"] = "D";
+$typel["E"] = get_vocab("external");
+# $typel["F"] = "F";
+# $typel["G"] = "G";
+# $typel["H"] = "H";
+$typel["I"] = get_vocab("internal");
+# $typel["J"] = "J";</source>
+    </section>
   </body>
 </document>
