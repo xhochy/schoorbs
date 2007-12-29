@@ -22,8 +22,14 @@
     </section>
     <section id="rooms">
       <title>Ressourcen</title>
+      <figure alt="Ressourcenadministration" src="images/raumadmin.jpg" />
       <p>
-        ...
+        Räume sind zwar die Kerneinheiten des Raumbuchungssystem, jedoch lassen
+        sie ganz einfach administrieren. Im Gegensatz zu den Bereichen muss man 
+        hier außer des Namens auch noch die Kapazität des Raumes und eine kleine 
+        Beschreibung angeben. Diese zusätzlichen Daten sind jedoch nur informativ 
+        und werden nicht für irgendwelche Berechnungen benutzt. „Löschen“ und 
+        „Bearbeiten“ funktionieren genau wie bei der Bereichsadministration.
       </p>
     </section>
   </body>
