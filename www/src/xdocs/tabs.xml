@@ -17,5 +17,4 @@
   <tab id="" label="Home" dir="" indexfile="index.html"/>
   <tab label="End-user Documentation" dir="enduser" id="enduser" />
   <tab label="API Documentation" href="http://schoorbs.xhochy.com/src-doc/" />
-  <tab label="Facharbeit (Schoorbs' source)" dir="facharbeit" indexfile="index.html" id="Facharbeit"/>
 </tabs>

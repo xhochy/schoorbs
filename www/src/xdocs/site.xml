@@ -38,11 +38,6 @@ See http://forrest.apache.org/docs/linking.html for more info
     <mail label="Mail support (experimental)" href="mail.html"/>
     <room_area label="Area + Room Administration" href="room_area.html"/>
   </enduser>
-  <facharbeit label="Facharbeit (Schoorbs' source)" href="facharbeit/" tab="Facharbeit">
-    <index label="Introduction" href="index.html" />
-    <einleitung label="Einleitung" href="einleitung.html" />
-    <endnutzer label="Endnutzer- dokumentation" href="endnutzer.html" />
-  </facharbeit>
   <all label="All">
     <whole_site_html label="Whole Site HTML" href="wholesite.html"/>
     <whole_site_pdf label="Whole Site PDF" href="wholesite.pdf"/>
