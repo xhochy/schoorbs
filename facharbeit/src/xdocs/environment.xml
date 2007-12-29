@@ -2,11 +2,17 @@
 <!DOCTYPE document PUBLIC "-//APACHE//DTD Documentation V2.0//EN" "http://forrest.apache.org/dtd/document-v20.dtd">
 <document>
   <header>
-    <title>Grundstruktur</title>
+    <title>Entwicklungsumgebung</title>
   </header>
   <body>
-    <section id="short">
-      <title>Aufbau von Schoorbs</title>
+    <section id="required">
+      <title>Vorraussetzungen</title>
+      <p>
+        ...
+      </p>
+    </section>
+    <section id="helper">
+      <title>hilfreiche Programme</title>
       <p>
         ...
       </p>

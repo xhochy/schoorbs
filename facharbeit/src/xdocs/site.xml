@@ -26,6 +26,7 @@ See http://forrest.apache.org/docs/linking.html for more info
     <admin label="Administration" href="administration.html" description="Administration" />
   </enduser>
   <developer label="Technisches">
+    <environment label="Entwicklungshilfen" href="environment.html" description="Entwicklungshilfen" />
     <!-- Zusammenhang zwischen Kern und den Modulen als Grafik -->
     <structure label="Grundstruktur" href="structure.html" description="Grundaufbau" />
   </developer>

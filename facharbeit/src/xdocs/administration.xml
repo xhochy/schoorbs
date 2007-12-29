@@ -23,7 +23,7 @@
     <section id="rooms">
       <title>Ressourcen</title>
       <figure alt="Ressourcenadministration" src="images/raumadmin.jpg" />
-      <p>
+      <p class="pageBreakAfter">
         Räume sind zwar die Kerneinheiten des Raumbuchungssystem, jedoch lassen
         sie ganz einfach administrieren. Im Gegensatz zu den Bereichen muss man 
         hier außer des Namens auch noch die Kapazität des Raumes und eine kleine 
