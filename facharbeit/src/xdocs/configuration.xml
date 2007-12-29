@@ -248,7 +248,7 @@ $typel["I"] = get_vocab("internal");
     </section>
     <section id="misc">
       <title>Sontige Einstellungen</title>
-      <p>
+      <p class="pageBreakAfter">
         Sontige Konfigurationen sind z.B. die maximale Anzahl an Wiederholungen,
         die ein regelmäßiger Termin haben kann(<code>$max_rep_entrys</code>). 
         Weiterhin kann man noch festlegen, ob auch auf der rechten Seite der 

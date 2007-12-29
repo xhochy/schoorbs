@@ -111,7 +111,7 @@
         Script manuell bearbeiten. Zum Erzeugen der Tabellen in der Datenbank
         reicht das Ausführen des folgenden Befehls auf der Kommandozeile:
       </p>
-      <p>
+      <p class="pageBreakAfter">
         <code>psql -a -f tables.pg.sql &lt;Datenbank&gt;</code>
       </p>
     </section>

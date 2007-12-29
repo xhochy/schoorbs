@@ -7,7 +7,7 @@
   <body>
     <section id="short">
       <title>Lizensierung</title>
-      <p>
+      <p class="pageBreakAfter">
         Ich gebe meine Facharbeit zur weiteren Publikation unter der 
         <a href="http://creativecommons.org/licenses/by-nd/2.0/de/">Creative Commons Namensnennung-Keine Bearbeitung 2.0 Deutschland</a>
         Lizenz frei. Die jeweiligen Bedingungen zur Nutzung erfahren sie auf der Creative Commons Seite. Ich habe mich zu diesem Schritt
