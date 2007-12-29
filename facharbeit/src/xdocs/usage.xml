@@ -8,11 +8,51 @@
     <section id="booking">
       <title>Buchen einer Ressource</title>
       <p>
-        ... 
+        Standardmäßig muss man auf das grüne Kreuz klicken um den 
+        „Bestellvorgang“ für einen Raum zu starten. Es ist hierbei jedoch nicht
+        wichtig welchen Termin man auswählt bzw. welchen Raum, man muss nur 
+        achten, dass man im richtigen <strong>Bereich</strong> auf das Kreuz 
+        klickt, alle anderen Parameter kann man auf der darauffolgenden Seite 
+        noch ändern.
+      </p>
+      <figure alt="Tabelle zur Raumbuchung" src="images/enduser-doku1.jpg" />
+      <p>
+        Hat man nun darauf geklickt wird man auf die Seite „Eintrag hinzufügen“
+        weitergeleitet. Unter Kurzbeschreibung sollte man das Unterrichtsfach 
+        und die Klassen eintragen. Eine vollständige Beschreibung ist nicht 
+        zwingend nötig, sie ist aber bei Terminen, die von mehreren Lehrern 
+        betreut werden sehr sinnvoll, da man so auch noch direkt relevante 
+        Informationen mitteilen kann. Unter Period gibt man die Starteinheit
+        (am HSG: entweder eine Schulstunde oder eine Pause) ein.<br />
+        <strong>HSG-sepzifischer Zusatz:</strong><br /> 
+        Pausen habe ich buchbar gemacht um Überschneidungen bei z.B. 
+        Kursarbeiten vorzubeugen, bei denen 2 Lehrer beide während der Pause 
+        schreiben wollten, der eine in der Pause noch zu Ende, der andere 
+        wollte in der Pause mit der nächsten Kursarbeit schon anfangen. 
+        Genauso muss man auch aufpassen, dass man bei der Anzahl der Periods, 
+        die man benötigt auch bei 2/3 oder mehr Schulstunden die Pausen auch 
+        noch mitzählt, was bedeutet, dass wenn man den Informatiksaal für 
+        die 1., 2. und 3. Stunde bestellen würde, man ihn für 4 Periods 
+        reservieren müsste. Bei der Art kann man festlegen, ob man lediglich 
+        normalen Unterricht macht oder ob man eine Kursarbeit schreibt, dies 
+        dient lediglich zur Information anderer Kollegen und hat intern keine 
+        Bedeutung.
+      </p>
+      <figure alt="Tabelle zur Raumbuchung" src="images/enduser-doku2.jpg" />
+      <p>
+        Alles was ich bisher erklärt habe, muss man für alle Termine wissen, 
+        egal ob man sie für ein einziges Mal bucht oder ob sie häufiger 
+        vorkommen. Sollte letzteres der Fall sein, so sind die letzten drei 
+        Zeilen des Formulars interessant. Bei dem „Ende der Wiederholung“ legt 
+        man den letzten Tag fest, an dem nochmals der Termin auftreten dürfte, 
+        die anderen beiden Felder dürften selbsterklärend sein.<br />
+        Nach einen Klick auf Speichern bekommt man entweder den Kalender 
+        angezeigt, inklusive des neu gebuchten Termins oder eine Liste aller 
+        Termine, die mit dem Termin in Konflikt liegen, den man buchen wollte.
       </p>
     </section>
     <section id="change">
-      <title>Änderung einer Buchung</title>
+      <title>Ändern einer Buchung</title>
       <p>
         ...
       </p>
