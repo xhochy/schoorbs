@@ -75,7 +75,7 @@ task :release do
   working_dir = getwd()
   puts '## Compressing CSS files'
   packer = Rainpress::Packer.new
-  FileList[File.join('schoorbs-dist', 'tmp', 'schoorbs', 'schoorbs-misc', 'css', '*.css')].each do |css|
+  FileList[File.join('schoorbs-dist', 'tmp', 'schoorbs', 'schoorbs-misc', 'style', '*.css')].each do |css|
     data = packer.compress(File.read(css))
     File.open(css, 'w') do |f|
       f.write(data)
