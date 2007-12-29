@@ -7,8 +7,17 @@
   <body>
     <section id="areas">
       <title>Bereiche</title>
+      <figure alt="Bereichsadministration" src="images/bereichsadmin.jpg" />
       <p>
-        ... 
+        Bereiche sind für die Funktionsfähigkeits des Ressourcenbuchungsystems 
+        unwichtig, jedoch helfen sie den Überblick über eine große Menge an 
+        Ressourcen zu halten. Als Informationen zur Erstellung eines Bereiches 
+        wird nur dessen Name benötigt, den man auf der Seite Admin im oben 
+        gezeigten Feld eingibt. Möchte man einen Bereich wieder loswerden, so 
+        klickt man hinter dessen Namen auf „Löschen“, ist der Name des Bereichs 
+        falsch geschrieben oder sollte er sich mal ändern, kann man dies mit 
+        einem Klick auf „Bearbeiten“ korrigieren. Das Ändern des Namens hat 
+        keinen Einfluss auf die Ressourcen und deren Termine des Raumes.
       </p>
     </section>
     <section id="rooms">
