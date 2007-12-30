@@ -10,19 +10,27 @@
  
 ## Includes ##
 
+/** Use Smarty for REST Output */
 require_once dirname(__FILE__).'/Smarty/libs/Smarty.class.php';
-// Only use HTTP session for REST requests, so that no ID or equal have to be stored 
 $bSessionIncluded = 'true';
+/** Only use HTTP session for REST requests, so that no ID or equal have to be stored */ 
 require_once dirname(__FILE__).'/session-plugins/session_http.php';
+/** The Schoorbs Authentication Backend */
 require_once dirname(__FILE__).'/authentication/schoorbs_auth.php';
 
 ## Plugins ##
 
+/** The getEntriesOfDay-REST-Function */
 require_once dirname(__FILE__).'/rest-plugins/getentriesofday.rest.php';
+/** The getRoomID-REST-Function */
 require_once dirname(__FILE__).'/rest-plugins/getroomid.rest.php';
+/** The getPeriodID-REST-Function */
 require_once dirname(__FILE__).'/rest-plugins/getperiodid.rest.php';
+/** The login-REST-Function */
 require_once dirname(__FILE__).'/rest-plugins/login.rest.php';
+/** The checkFree-REST-Function */
 require_once dirname(__FILE__).'/rest-plugins/checkfree.rest.php';
+/** The makeBooking-REST-Function */
 require_once dirname(__FILE__).'/rest-plugins/makebooking.rest.php';
 
 ## Functions ##

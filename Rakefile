@@ -43,7 +43,7 @@ src_doc = {
     'schoorbs-includes/database/*.php',
     'schoorbs-tests/*.php',
     'schoorbs-tests/input-tests/*.php'
-    ],
+    ] - FileList['config.inc.php'],
   'Title' => '"Schoorbs Sourcecode Documentation"'
 }
 
