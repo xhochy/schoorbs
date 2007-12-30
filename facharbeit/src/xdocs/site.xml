@@ -27,8 +27,6 @@ See http://forrest.apache.org/docs/linking.html for more info
   </enduser>
   <developer label="Technisches">
     <environment label="Entwicklungshilfen" href="environment.html" description="Entwicklungshilfen" />
-    <!-- Zusammenhang zwischen Kern und den Modulen als Grafik -->
-    <structure label="Grundstruktur" href="structure.html" description="Grundaufbau" />
     <inputs label="Eingabeverarbeitung" href="inputs.html" description="Eingabeverarbeitung" />
     <auth label="Authentifizierung" href="auth.html" description="Authentifizierung" />
     <db label="Datenbank" href="db.html" description="Datenbank" />
