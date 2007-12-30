@@ -365,5 +365,72 @@ $this->assertEquals(2, $day);
 $this->assertEquals(2, $month);
 $this->assertEquals(1970, $year);</source>
     </section>
+    <section id="links">
+      <title>Literaturverweise</title>
+      <ul>
+        <li>
+          <strong>[1]</strong> <a href="http://mrbs.sourcforge.net/">Meeting Room 
+          Booking System</a>
+        </li>
+        <li>
+          <strong>[2]</strong> MRBS-1.2.5-Quellcode → day.php, Z. 104-107
+        </li>
+        <li>
+          <strong>[3]</strong> 
+          <a href="http://de.wikipedia.org/wiki/SQL-Injektion">
+            Artikel SQL-Injektion. In: Wikipedia, Die freie Enzyklopädie.  
+          </a>
+        </li>
+        <li>
+          <strong>[4]</strong> MRBS-1.2.5-Quellcode → session_php.php, Z. 189-192
+        </li>
+        <li>
+          <strong>[5]</strong>
+          <a href="http://de.wikipedia.org/wiki/Cross-Site_Scripting">
+            Artikel Cross-Site Scripting. In: Wikipedia, Die freie Enzyklopädie.
+          </a>
+        </li>
+        <li>
+          <strong>[6]</strong>
+          <a href="http://de.wikipedia.org/wiki/Phishing">
+            Artikel Phishing. In: Wikipedia, Die freie Enzyklopädie.
+          </a>
+        </li>
+        <li>
+          <strong>[7]</strong>
+          <a href="http://php.net/manual/de/ref.info.php#ini.max-execution-time">
+            Information über max_execution_time auf php.net
+          </a>
+        </li>
+        <li>
+          <strong>[8]</strong>
+          <a href="http://de.wikipedia.org/wiki/Denial_of_Service">
+            Artikel Denial of Service. In: Wikipedia, Die freie Enzyklopädie.
+          </a>
+        </li>
+        <li>
+          <strong>[9]</strong> MRBS-1.2.5-Quellcode → day.php, Z. 13-25
+        </li>
+        <li>
+          <strong>[10]</strong>
+          <a href="http://php.net/manual/de/function.mysql-real-escape-string.php">
+            mysql_real_escape_string auf php.net
+          </a>
+        </li>
+        <li>
+          <strong>[11]</strong>
+          <a href="http://php.net/manual/de/function.pg-escape-string.php">
+            pg_escape_string auf php.net
+          </a>
+        </li>
+        <li>
+          <strong>[12]</strong>
+          <a href="http://www.phpunit.de/">
+            PHPUnit Testingframework
+          </a>
+        </li>
+      </ul>
+      <p class="pageBreakAfter">&nbsp;</p>
+    </section>
   </body>
 </document>
