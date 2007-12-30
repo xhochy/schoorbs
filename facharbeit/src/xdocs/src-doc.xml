@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE document PUBLIC "-//APACHE//DTD Documentation V2.0//EN" "http://forrest.apache.org/dtd/document-v20.dtd">
+<document>
+  <header>
+    <title>Quellcode Dokumentation</title>
+  </header>
+  <body>
+    <section id="short">
+      <title>Dokumentieren</title>
+      <p>
+        <!-- Wie kommentiere ich richtig? -->
+        <!-- Nutzen = Dokumentierte API -->
+        ...
+      </p>
+    </section>
+    <section id="creation">
+      <title>Erstellen der Dokumentation</title>
+      <p>
+        <!-- Wie lasse ich die Doku aus den Dateien heraus erstellen? -->
+        ...
+      </p>
+    </section>
+  </body>
+</document>

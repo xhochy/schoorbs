@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE document PUBLIC "-//APACHE//DTD Documentation V2.0//EN" "http://forrest.apache.org/dtd/document-v20.dtd">
+<document>
+  <header>
+    <title>REST-Schnittstelle</title>
+  </header>
+  <body>
+    <section id="what">
+      <title>Was ist REST?</title>
+      <p>
+        ...
+      </p>
+    </section>
+    <section id="use">
+      <title>Nutzen & Aufbau</title>
+      <p>
+        <!-- Wie ist sie programmiert? -->
+        <!-- Wie nutze ich sie? -->
+        <!-- Und wozu?? -->
+        ...
+      </p>
+    </section>
+  </body>
+</document>

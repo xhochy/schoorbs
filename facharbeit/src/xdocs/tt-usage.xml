@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE document PUBLIC "-//APACHE//DTD Documentation V2.0//EN" "http://forrest.apache.org/dtd/document-v20.dtd">
+<document>
+  <header>
+    <title>Nutzung</title>
+  </header>
+  <body>
+    <section id="short">
+      <title>Grundlegendes</title>
+      <p>
+        <!--  Welche Befehle? -->
+        <!-- Welches Eingabeformat? -->
+        <!-- Was wird *genau* gemacht? -->
+        <!-- Warum dürfen es nur Administratoren? -->
+        ...
+      </p>
+    </section>
+  </body>
+</document>

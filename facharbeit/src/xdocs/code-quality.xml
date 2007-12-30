@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE document PUBLIC "-//APACHE//DTD Documentation V2.0//EN" "http://forrest.apache.org/dtd/document-v20.dtd">
+<document>
+  <header>
+    <title>Codequalität</title>
+  </header>
+  <body>
+    <section id="mrbs">
+      <title>MRBS</title>
+      <p>
+        <!-- Was war schlecht? -->
+        ...
+      </p>
+    </section>
+    <section id="schoorbs">
+      <title>Veränderungen</title>
+      <p>
+        <!-- Was hab ich tun können? -->
+        ...
+      </p>
+    </section>
+  </body>
+</document>
