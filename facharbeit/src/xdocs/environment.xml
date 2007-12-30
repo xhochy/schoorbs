@@ -8,8 +8,46 @@
     <section id="required">
       <title>Vorraussetzungen</title>
       <p>
-        ...
+        Bei der Nutzung von Schoorbs kommt man mit sehr wenig Abhängigkeiten aus,
+        im absoluten Gegangensatz dazu ist bei der aktiven Entwicklung an Schoorbs
+        inzwischen eine große Sammlung an Software nötig. Diese wird entweder zum
+        Testen, Dokumentieren oder Paktetieren der Software benutzt. Folgende
+        Komponenten sind notwendig zum Ausführen <strong>aller</strong> Schritte:
       </p>
+      <ul>
+        <li>
+          <strong>rake</strong> - Ein in Ruby geschriebenes Buildsystem, welches
+          den Ablauf der einzelnen Prozesse (z.B. das Testen der Software)
+          koordiniert.
+        </li> 
+        <li>
+          <strong>PHPDocumentor</strong> - Eine Software, welche automatisch
+          eine HTML-Dokumentation zu den Klassen, Variabeln und Funktionen von
+          Schoorbs an Hand der Quelltext-Kommentare erstellt.
+        </li>
+        <li>
+          <strong>PHPUnit 3</strong> - System zum Testen von Funktionen/Klassen
+          in PHP.
+        </li>
+        <li>
+          <strong>XDebug</strong> - Erweiterung zu PHP, sie wird von PHPUnit
+          genutzt, um darzustellen, welche Bereiche des Quelltextes mit den
+          ausgeführten Tests abgedeckt wurden.
+        </li>
+        <li>
+          <strong>Subversion</strong> - Das Versionsverwaltungssystem, in dem
+          der gesamte Quellcode gelagert ist. 
+        </li>
+        <li>
+          <strong>xsltproc</strong> - Simpler XSLT-Prozessor, wird bei Paketieren
+          benötigt um aus der XML-Ausgabe von `svn log` eine Changelog-Datei zu 
+          erzeugen.
+        </li>
+        <li>
+          <strong>ZIP und 7z</strong> - Komprimierungsprogramme, welche beim
+          Paketieren benutzt werden.
+        </li>
+      </ul>
     </section>
     <section id="helper">
       <title>hilfreiche Programme</title>
