@@ -7,9 +7,126 @@
   <body>
     <section id="short">
       <title>Grundlegendes</title>
+      <note>
+        Dieses Kapitel bezieht sich auf die Eingabeverarbeitung von MRBS und 
+        den dazu ergriffenen Gegenmaßnahmen in Schoorbs. Die erwähnten
+        Schwachstellen sind in Schoorbs nicht mehr vorhanden, jedoch in
+        <strong>allen</strong> im Umlauf befindenen, neueren MRBS-Versionen.
+      </note>
       <p>
-        ...
+         Die Eingabeverarbeitung ist die größte Schwachstelle vieler 
+         PHP-Programme, so auch von MRBS[1]. Oftmals werden Parameter direkt 
+         vom Benutzer unverändert in SQL-Befehle übernommen(siehe [2]), dies 
+         wird SQL-Injection[3] genannt und kann genutzt werden um beliebige 
+         Kommandos auf der Datenbank auszuführen. An manchen Stellen werden auch,
+         oftmals nicht erwartet, Benutzereingaben direkt wieder ausgeben, so 
+         kann man Nutzer mit gefälschten Links auf gefälschte Seiten locken, 
+         die aber unter der richtigen URL aufgerufen werden(Bsp: siehe [4]), 
+         solche Schwachstellen werden mit XSS beschrieben[5]. Dies wird häufig 
+         durch die Nutzung von grab_globals.inc(wird später unter XSS-Lösung 
+         beschrieben) verursacht, da so keine Trennung mehr von internen und 
+         externen($_REQUEST, $_GET, …) Variabeln möglich ist. Diese Art von 
+         Sicherheitslücken ist heutzutage die Grundlage von Phishing-Attacken[6]. 
+         Für den Benutzer unsichtbar, aber für den stabilen Betrieb der Software
+         sehr schädlich sind Endlosschleifen, bei der ein PHP-Script meistens 
+         mit der voreingestellten max_execution_time[7] von 30s die CPU
+         vollständig belastet. Würde jemand nun mehrere (>20) Anfragen alle 
+         20-30s an den Server schicken, so wäre dieser überlastet, müsste 
+         andere Anfragen zurückstellen, was zu mehr Speicherverbruauch führt, 
+         wobei der Server(z.B. Apache) irgendwann mehr Speicher bräuchte als 
+         man ihm zur Verfügung stellen könnte und daraufhin abstürtzt, vor 
+         allem auf älteren Windows-PCs(95 und 98) führte dies auch öfters zu 
+         einem Abstürtzen des Betriebsystems. Die Art von Sicherheitslücke 
+         hat an sich keinen eigenen Namen, die Methode sie auszunutzen wird 
+         aber “DoS-Attacke“[8] genannt.
       </p>
+      <p>
+        Es darf jedoch nicht ganz verschwiegen werden, dass Ansätze von 
+        Eingabeüberptüfung schon vorhanden sind, so wird z.B. wenn eine 
+        Komponente(Tag, Monat, Jahr) eines Datums fehlt, das Datum auf den 
+        heutigen Tag gestetzt. Auch andere Werte, z.B. die Variable $area, 
+        wird, wenn nicht gestetzt, mit dem Defaultwert initialisiert(siehe [9]). 
+        Jedoch sind diese Methoden zu simpel gehalten und bieten kaum Sicherheit, 
+        im folgenden möchte ich zeigen, wie ich diese 3 Schwachstellen 
+        ausgebessert habe.
+      </p>
+    </section>
+    <section id="sql-injection">
+      <title>SQL-Injection-Lösung</title>
+      <p>
+        Zuerst werde ich, wie allen folgenden Lösungen, zeigen wie man die 
+        Schwachstelle ausnutzt. Da wir uns mit Eingabeparametern beschäftigen, 
+        muss man nur eine spezielle geformte URL erstellen um die Schwachstelle 
+        auszunutzen. Als Beispiel für den Angriff auf die Datenbank nehme ich mir:
+      </p>
+      <source>$sql = "SELECT $tbl_room.id, start_time, end_time, name, $tbl_entry.id,
+        type, $tbl_entry.description
+        FROM $tbl_entry, $tbl_room
+        WHERE $tbl_entry.room_id = $tbl_room.id
+        AND area_id = $area
+        AND start_time &lt;= $pm7 AND end_time > $am7";</source>
+      <p>
+        Die Variable <code>$area</code> wird hier unverändert aus dem Query-Teil 
+        der URL übernommen, das heißt man kann hier auch einen beliebigen String 
+        angeben, also auch Teile eines SQL-Befehls. Nehmen wir mal an, wir haben 
+        keinen Account, möchten aber trotzdem eine Buchung vornehmen, also 
+        beenden wir erst mal den Teil des SQL-Befehls, der vor der Variable ist.
+        So nehmen wir als Wert für die <code>area_id</code>, die abgefragt werden 
+        soll '1' und beenden den Befehl mit ';', da dies aber ein HTTP-Parameter 
+        ist, muss ';' als '%3B' geschrieben werden, so haben wir schon 
+        <code>area=1%3B</code>. Als nächstes bauen wir uns den INSERT-Befehl, 
+        da man normalerweise nicht weiß, wie die Tabellen bei der jeweiligen 
+        MRBS Installation heißen, müsste man jetzt einfach raten, ich nehme 
+        hier den Standardnamen 'mrbs_entry', meinen Benutzer habe ich '5' genannt,
+        da ' von PHP automatisch maskiert werden und ich diese für Strings 
+        brauche(5 habe ich als Integer eingebaut), als Befehl nutze ich dann folgenden:
+      </p>
+      <source>INSERT INTO mrbs_entry (start_time, end_time, entry_type,
+        repeat_id, room_id, create_by, name) VALUES (1165662420, 
+        1165662480, 0, 0, 1, 5, 5);</source>
+      <p>
+        Als HTTP-Parameter kodiert sieht dieser dann folgend aus:
+      </p>
+      <source>INSERT%20INTO%20mrbs_entry%20%28start_time%2C%20end_time
+%2C%20entry_type%2C%20repeat_id%2C%20room_id%2C%20create_by
+%2C%20name%29%20VALUES%20%281165662420%2C%201165662480
+%2C%200%2C%200%2C%201%2C%205%2C%205%29%3B</source>
+      <p>
+        Nun müssen wir noch sicherstellen, dass der andere Teil des normalen 
+        Befehls richtig ausgeführt wird, so erzeugen wir kann simpel mit
+      </p>
+      <source>SELECT * FROM mrbs_entry WHERE true 
+//... hier kommt dann der Rest des normalen Befehls ...</source>
+      <p>
+        Alle diese 3 Teile packt man nun zu einem Parameter zusammen und erhält 
+        folgende Beispiel-URL (Zeilenumbrüche sollten ignoriert werden):
+      </p>
+      <source>http://mrbs/day.php?day=10&amp;month=04&amp;year=2007&amp;area=1%3BINSERT
+%20INTO%20mrbs_entry%20%28start_time%2C%20end_time
+%2C%20entry_type%2C%20repeat_id%2C%20room_id%2C%20create_by
+%2C%20name%29%20VALUES%20%281165662420%2C%201165662480%2C%200
+%2C%200%2C%201%2C%205%2C%205%29%3BSELECT%20*%20FROM%20mrbs_entry
+%20WHERE%20true%20</source>
+      <p>
+        SQL-Injections sind die wohl einfach abzusichersten Lücken, da man hier 
+        nicht jede einzelne Variablen auf bestimmte Vorraussetzungen prüfen 
+        muss(wodurch man pro Eingabeparameter eine Funktion bräuchte). Man muss 
+        nur die Variable maskieren, so dass sie nur als einzelner Parameter 
+        eines SQL-Befehl angesehen wird. Dies kann man mit den Funktionen 
+        <code>mysql_real_escape_string</code>[10] und 
+        <code>pg_escape_string</code>[11] machen, da MRBS aber eine einheitliche
+        Datenbankschnittstelle hat und die beiden Funktionen nicht identisch 
+        sind, habe ich sie in der Funktion <code>sql_escape_arg</code> gekapselt.
+        Diese Änderung im Prinzip wirkt sich nur minimal auf den Quelltext aus, 
+        aber extrem auf die Sicherheit eines PHP-Programms, meinen 
+        Beispiel-SQL-Befehl von oben sieht dann wie folgend aus:
+      </p>
+      <source>$sql = "SELECT $tbl_room.id, start_time, end_time, name, $tbl_entry.id,
+         type, $tbl_entry.description, $tbl_entry.create_by
+         FROM $tbl_entry, $tbl_room WHERE   
+         $tbl_entry.room_id = $tbl_room.id AND area_id = "
+         .sql_escape_arg($area) // Absicherung gegen SQL-Injection
+         ." AND start_time &lt;= $pm7 AND end_time &gt; $am7";</source>
     </section>
   </body>
 </document>
