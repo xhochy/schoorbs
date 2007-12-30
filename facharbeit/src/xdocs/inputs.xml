@@ -128,5 +128,51 @@
          .sql_escape_arg($area) // Absicherung gegen SQL-Injection
          ." AND start_time &lt;= $pm7 AND end_time &gt; $am7";</source>
     </section>
+    <section id="xss">
+      <title>XSS(Cross-Site-Scripting)-Lösung</title>
+      <p>
+        Als Grundlage des Beispiels nehme ich den Code von [4], dieses Komanndo 
+        befindet sich in der Funktion <code>PrintLogonBox()</code>, die Variable 
+        <code>$user_list_link</code> wird per <code>global</code> eingebunden.
+      </p>
+      <source>if (isset($user_list_link)) print "
+	     &lt;br&gt;
+	     &lt;A href=\"$user_list_link\"&gt;" . get_vocab('user_list') . "&lt;/A&gt;&lt;br&gt;\n";</source>
+      <p>
+        Eigentlich ist gedacht, sie zu nutzen um einen Link zu einer Liste aller 
+        Benutzer bereitzustellen, wenn diese Variable nicht gesetzt ist, dann wird 
+        auch der HTML-Code nicht angezeigt, da jedoch MRBS grab_globals.inc 
+        benutzt, können wir jede beliebige globale Variable belegen. Die Datei 
+        grab_globals.inc ist an sich der Hauptverursacher für die Sicherheitslücken 
+        in MRBS, da es die Eigenschaft register_globals=on auch auf Platformen 
+        simuliert, wo diese aus Sicherheitsgründen abgeschaltet ist. Auf 
+        register_globals, also das Einbinden von Variablen aus den Arrays 
+        $_SERVER, $_ENV, $_GET, $_POST und $_POST als normale Variablen, 
+        basieren viele der Attacken gegen PHP-Scripte, da viele Programmierer 
+        nicht auf die korrekte Initialisierung ihrer Variabeln achten. Um 
+        solchen Programmierfehlern vorzubeugen wurde auch beschlossen, 
+        register_globals vollständig aus PHP zu entfernen(in der kommenden 
+        Version 6). Zurück zu meinem Beispiel: Wir möchten nun also einen 
+        Link anzeigen lassen, um z.B. Besucher auf seine Homepage zu locken, 
+        zwar steht in diesem Fall immer noch „Benutzerliste“ als Linkname, 
+        jedoch die Adresse können wir frei bestimmen. Nehmen wir als Beispiel 
+        meine Homepage <code>http://xhochy.org</code> , wir maskieren diese für HTTP 
+        <code>http%3A//xhochy.org</code> und hängen sie an die normale 
+        URL an(als Wert für den Parameter <code>user_list_link</code>). So 
+        erhalten wir folgende URL, bei der rechts oben in der Loginbox ein Link
+        mit der Aufschrift 'Benutzerliste' auf meine Homepage zeigt.
+      </p>
+      <source>http://mrbs/day.php?user_list_link=http%3A//xhochy.org</source>
+      <p>
+        Um diesen Problem zu entgehen, habe ich die grab_globals.inc aus nahezu 
+        allen zum Betrieb nötigen Dateien entfernt und die betreffenden Variablen, 
+        die der Benutzer eingeben solte entweder direkt aus <code>$_REQUEST</code> 
+        geholt oder eine eigene Funktion erstellt um diese zu parsen(siehe DoS-Lösung).
+        Durch dieses Vorgehen muss man an der obigen Funktionen nichts ändern, 
+        andere Variablen wie z.B. <code>$year</code> müssen aber zuerst manuell 
+        initialisert werden:
+      </p>
+      <source>$year = intval($_REQUEST['year']);</source>
+    </section>
   </body>
 </document>
