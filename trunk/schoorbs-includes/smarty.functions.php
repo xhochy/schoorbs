@@ -9,12 +9,14 @@
  */
 
 
-// put full path to Smarty.class.php
+/** The genDateSelector-Smarty Pluign */
 require_once dirname(__FILE__).'/smarty-plugins/function.genDateSelector.php';
+/** The get_vocab-Smarty Plugin */
 require_once dirname(__FILE__).'/smarty-plugins/function.get_vocab.php';
+/** put full path to Smarty.class.php */
 require_once dirname(__FILE__).'/Smarty/libs/Smarty.class.php';
 
-// Init Smarty
+/** Init Smarty */
 $smarty = new Smarty();
 
 $smarty->template_dir = realpath(dirname(__FILE__).'/../schoorbs-misc/templates');

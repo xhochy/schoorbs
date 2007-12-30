@@ -70,7 +70,7 @@ function sql_query1 ($sql)
  * which should be passed back to sql_row or sql_row_keyed to get the results.
  * Returns 0 on error; use sql_error to get the error message.
  * 
- * @return 
+ * @return MySQLi-Result
  * @param $sql string A SQL-Query
  */
 function sql_query ($sql)

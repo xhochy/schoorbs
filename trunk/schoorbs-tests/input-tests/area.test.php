@@ -31,6 +31,7 @@ require_once 'PHPUnit/Framework.php';
  * Testsuite for the input checking and getting of input_Area()
  * 
  * @package Schoorbs-Test
+ * @subpackage Input
  * @author Uwe L. Korn <uwelk@xhochy.org>
  */ 
 class Input_AreaTest extends PHPUnit_Framework_TestCase

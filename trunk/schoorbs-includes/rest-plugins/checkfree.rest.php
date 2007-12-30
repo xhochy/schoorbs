@@ -8,6 +8,7 @@
  * @license http://www.gnu.org/licenses/gpl.html GNU General Public License
  */
  
+/** Include the database backend */
 require_once dirname(__FILE__).'/../database/schoorbs_sql.php';
  
 /**

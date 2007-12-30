@@ -48,6 +48,13 @@ require_once 'input-tests/capacity.test.php';
 
 ## The Testsuite ##
 
+/**
+ * Test all input_*-Functions
+ * 
+ * @package Schoorbs-Test
+ * @subpackage Input
+ * @return 
+ */
 class Input_AllTests
 {
     public static function main()
