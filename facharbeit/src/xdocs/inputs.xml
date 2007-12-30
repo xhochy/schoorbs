@@ -284,5 +284,86 @@ if($day &gt; 31) $day = 31;</source>
       </p>
       <source>list($day, $month, $year) = input_DayMonthYear();</source>
     </section>
+    <section id="tests">
+      <title>Tests</title>
+      <p>
+        Das Absichern gegen SQL-Injection und XSS-Angriffe war sehr einfach, 
+        gegen DoS-Angriffe ist der Schutz jedoch sehr komplex, weshalb ich für 
+        die input_&lt;varname&gt;()-Funktionen Tests geschrieben habe. Ich habe 
+        für die Test das Unittesting-Framework PHPUnit[12] als Grundlage 
+        genommen. Hier werden einzelne Testsektionen als Kindklassen von 
+        PHPUnit_Framework_TestCase definiert, ich habe pro Funktion 1 Klasse 
+        geschrieben. Wie schon im vorherigen Abschnitt, benutze ich hier die 
+        Funktionen input_DayMonthYear() als Beispiel. Insgesamt habe ich 5 
+        Testfunktionen geschrieben, die erste überprüft das Verhalten, wenn 
+        keine der 3 Variabeln gesetzt ist. Hierzu leere ich sichterheitshalber 
+        alle Stellen an denen die Funktion nach day, month oder year suchen 
+        könnte(ich suche zwar zur Zeit nur in <code>$_REQUEST</code>, aber die 
+        Tests sollen nicht den aktuellen Zustand testen, sondern überprüfen, ob 
+        die Spezifikation der Funktion eingehalten wurde):
+      </p>
+      <source>unset($_GET['day']);
+unset($_POST['day']);
+unset($_COOKIE['day']);
+unset($_REQUEST['day']);
+ 
+unset($_GET['month']);
+unset($_POST['month']); 
+unset($_COOKIE['month']);
+unset($_REQUEST['month']);
+ 
+unset($_GET['year']);
+unset($_POST['year']);
+unset($_COOKIE['year']);
+unset($_REQUEST['year']);</source>
+      <p>
+        Jetzt rufe ich die Funktion standardmäßig auf und schreibe das Ergebnis 
+        in die Variablen <code>$day</code>, <code>$month</code> und 
+        <code>$year</code>:
+      </p>
+      <source>list($day, $month, $year) = input_DayMonthYear();</source>
+      <p>
+        Nun überprüfe ich mit Hilfe der Funktion <code>assertEquals()</code>, 
+        welche man von der Elternklasse geerbt hat, ob das Ergebnis mit der 
+        Spezifikation übereinstimmt. Sollte <code>assertEquals()</code> nicht 
+        zwei gleiche Variabeln als Parameter bekommen, so schlägt automatisch 
+        dieser Test fehl. Laut Spezifikation sollte als Defaultwert immer der 
+        heutige Tag genommen werden:
+      </p>
+      <source>$this->assertEquals(date('d'), $day);
+$this->assertEquals(date('m'), $month);
+$this->assertEquals(date('Y'), $year);</source>
+      <p>
+        Nachdem ich nun die Defaultwerte getestet habe, überprüfe ich nun den 
+        Mechanismus zum automatischen Anpassen des Tags an die jeweilige 
+        Kombination aus Monat und Jahr, ich gebe zum Test den 30.2.2007 ein und 
+        möchte als korrigiertes Ergebnis 28.2.2007 haben:
+      </p>
+      <source>$_REQUEST['day'] = 30;
+$_REQUEST['month'] = 2;
+$_REQUEST['year'] = 2007;
+ 
+list($day, $month, $year) = input_DayMonthYear();
+ 
+$this->assertEquals(28, $day);
+$this->assertEquals(2, $month);
+$this->assertEquals(2007, $year);</source>
+      <p>
+        Als letztes überprüfe ich noch das Verhalten auf Buchstaben in der 
+        Eingabe, da dies die Eingabedaten waren, wodurch ich erst auf dieses 
+        Problem aufmerksam wurde. Da Buchstaben bei <code>intval()</code> das 
+        Ergebnis „0“ erzeugen, erwarte ich hier das mögliche Minimun, also bei 
+        Monat und Tag 1, bei Jahr 1970. Hier als Beispiel der Test für das Jahr:
+      </p>
+      <source>$_REQUEST['day'] = 2;
+$_REQUEST['month'] = 2;
+$_REQUEST['year'] = 'sgs';
+ 
+list($day, $month, $year) = input_DayMonthYear();
+ 
+$this->assertEquals(2, $day);
+$this->assertEquals(2, $month);
+$this->assertEquals(1970, $year);</source>
+    </section>
   </body>
 </document>
