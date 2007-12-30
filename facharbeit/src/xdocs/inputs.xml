@@ -174,5 +174,115 @@
       </p>
       <source>$year = intval($_REQUEST['year']);</source>
     </section>
+    <section id="dos">
+      <title>DoS(Denial of Service)-Lösung</title>
+      <p>
+        Bei DoS-Angriffen reicht normalerweise nie ein Seitenaufruf auf, da 
+        Webserver eigentlich normalerweise ca. 100 Seitenaufrufe pro Sekunde 
+        verkraften sollten, wenn man jedoch mehrere gleichzeitig laufen lässt, 
+        die immer mehr Arbeitsspeicher brauchen und die CPU voll auslasten, 
+        bekommt der Webserver dann doch irgendwann Probleme die Anfragen zu 
+        verwalten. Wird jetzt die Seite, die eine Endlosschleife beinhaltet 
+        mehrmals aufgrufen, wird irgendwann so viel Speicher belegt sein, 
+        dass der Webserver zum Verarbeiten der neuen Anfragen keinen 
+        Arbeitsspeicher mehr bekommen kann und so abstürtzt. PHP hat hier mit 
+        <code>max_execution_time</code> sogar einen Schutz eingebaut, jedoch 
+        ist die Laufzeit von 30 Sekunden hier ausreichend um den Server 
+        abstürzen zu lassen. Mein Windows-Apache-Testrechner brauchte ca. 3 min 
+        bis er eingeforen war. Das Beheben dieser Sicherheitslücke ist leider 
+        nicht sehr einfach, da man jeden Eingabeparameter zunächst überprüfen 
+        muss, ob er auch in einem Bereich ist, der von Parameter zu Parameter 
+        variiert. Als Beispiel möchte ich hier zeigen, wie ich die Eingaben 
+        von Tag, Monat und Jahr überprüft habe und wieso man sie überhaupt 
+        überprüfen muss. MRBS prüft bei einenm Aufruf einer Seite automatisch, 
+        ob der Tag zu dem genannten Monat und Jahr passt und subtrahiert ihn 
+        gegebenenfalls mit folgender Schleife:
+      </p>
+      <source>while (!checkdate(intval($month), intval($day), 
+      intval($year)))
+   $day--;</source>
+      <p>
+        Sollte nun <code>$day</code> &lt; 1 sein, so würde es ca 2<sup>32</sup>-30 
+        Durchläufe brauchen, bis das Datum wieder richtig ist, da PHP aber auch 
+        die Integervariable gegenbenfalls in eine float-Variable umwandelt 
+        falls sie -INT_MAX unterschreitet, dauert dies noch deutlich länger 
+        bzw wird irgenwann sinnlos, wenn der Unterschied zwischen der jetzigen 
+        und dann folgenden float-Zahl größer als 1 ist, woraufhin sich 
+        <code>$day</code> nicht mehr verändert und eine Endlosschleife 
+        entstanden ist. Ich habe nun für jede zu überprüfende Variable im 
+        Ornder schoorbs-includes/input/ eine Datei mit einer 
+        input_&lt;varname&gt;()-Funktion angelegt. Diese Funktionen holen die 
+        Variable aus dem <code>$_REQUEST</code>-Array heraus, setzen sie 
+        gegebenenfalls auf den Default-Wert und stellen sicher, dass sie in 
+        einem zulässigen Bereich ist. Die Variable <code>$day</code> wird auf 
+        den heutigen Tag gesetzt, falls sie nicht gegeben ist.
+      </p>
+      <source>$day = date("d");</source>
+      <p>
+        Hat man 'day' jedoch schon gegeben, so gehe ich zu erst sicher, dass 
+        es eine integer-Variable ist.
+      </p>
+      <source>$day = intval(unslashes($_REQUEST['day']));</source>
+      <p>
+        Danach setzte ich den Tag auf 1 sollte <code>$day</code> kleiner als 1 
+        sein und auf 31, sollte <code>$day</code> größer als 31 sein, da es 
+        sonst keine möglichen Tage in einem Monat gibt, die genaue Anpassung, 
+        z.B. ob es den 31 in dem jeweiligen Monat überhaupt gibt, findet erst 
+        später statt.
+      </p>
+      <source>if($day &lt; 1) $day = 1;
+if($day &gt; 31) $day = 31;</source>
+      <p>
+        Bei dem Monat benutze ich das selbe Vorgehen, bei dem Jahr hingegen 
+        bemühe ich mich auch noch die Jahreszahlen in einem sinnvollen Bereich 
+        zu halten, so ist keine Jahreszahl kleiner 1970 zugelassen, weil dies 
+        den Unix-Timestamp kleiner als 0 machen würde und keine Jahreszahl 
+        größer als 2100 zugelassen, da wohl in diesem Jahr niemand mehr 
+        Schoorbs/MRBS nutzt. Zum Schluss führe ich noch die oben genannte 
+        while-Schleife aus um sicherzustellen, dass nicht Tage wie z.B. 
+        31.2. vorkommen. Insgesamt ergibt sich dann folgender Code:
+      </p>
+      <source>function input_DayMonthYear()
+{
+  /** day **/ 
+  if (!isset($_REQUEST['day'])) {
+    $day   = date("d");
+  } else {
+      $day = intval(unslashes($_REQUEST['day']));
+      if($day &lt; 1) $day = 1;
+      if($day &gt; 31) $day = 31;
+  } 
+ 
+  /** month **/
+  if (!isset($_REQUEST['month'])) {
+    $month = date('m');
+  } else {
+    $month = intval(unslashes($_REQUEST['month']));
+      if($month &lt; 1) $month = 1;
+      if($month &gt; 12) $month = 12;
+  }
+ 
+  /** year **/
+  if (!isset($_REQUEST['year'])) {
+    $year = date("Y");
+  } else {
+    $year = intval(unslashes($_REQUEST['year']));
+      if($year &lt; 1970) $year = 1970; 
+      if($year &gt; 2100) $year = 2100; 
+  }
+ 
+  // Make the date valid if day is more then 
+  // number of days in month
+  while (!checkdate($month, $day, $year)) {
+    $day--;
+  }
+ 
+  return array($day, $month, $year);
+}</source>
+      <p>
+        Dieser Code wird folgendermaßen angewandt:
+      </p>
+      <source>list($day, $month, $year) = input_DayMonthYear();</source>
+    </section>
   </body>
 </document>
