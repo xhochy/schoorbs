@@ -19,6 +19,7 @@ task :clean do
   sh 'forrest clean'
 end
 
+task :publish_to_schoorbs_xhochy_com => [:site]
 task :publish_to_schoorbs_xhochy_com do
   sh 'rm -rf /srv/www/schoorbs.xhochy.com/*'
   sh 'cp -r build/site/* /srv/www/schoorbs.xhochy.com'
