@@ -38,7 +38,7 @@
       </p>
       <ul>
         <li><a href="http://schoorbs.googlecode.com/svn/">the plain Subversion repositority</a></li>
-        <li><a href="https://trac.xhochy.com/schoorbs/browser">a comfortable sourcecode browser (Trac)</a></li>
+        <li><a href="http://websvn.xhochy.com/listing.php?repname=Schoorbs">a comfortable sourcecode browser (WebSVN)</a></li>
       </ul>
     </section>
   </body>
