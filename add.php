@@ -28,8 +28,7 @@ list($day, $month, $year) = input_DayMonthYear();
 $type = input_Type();
 $name = input_Name();
 	
-if($type == 'room')
-{
+if ($type == 'room') {
 	$area = input_Area();
 	$description = input_Description();
 	$capacity = input_Capacity();	
@@ -37,30 +36,19 @@ if($type == 'room')
 
 ## Main ##
 
-if(!getAuthorised(2))
-{
-	showAccessDenied();
-}
+if (!getAuthorised(2)) showAccessDenied();
 
-/** we need to do different things depending on if its a room or an area */
-if ($type == "area")
-{
-	$area_name_q = sql_escape_arg($name);
-	$sQuery = "INSERT INTO $tbl_area (area_name) VALUES ('$area_name_q')";
-	if(sql_command($sQuery) < 0) 
-      fatal_error(1, sql_error());
-    $area = sql_insert_id("$tbl_area", "id");
-}
-
-if ($type == "room")
-{
-	$room_name_q = sql_escape_arg($name);
-	$description_q = sql_escape_arg($description);
-	if (empty($capacity)) $capacity = 0;
-	$sQuery = "INSERT INTO $tbl_room (room_name, area_id, description, capacity)"
-	   ." VALUES ('$room_name_q',$area, '$description_q',$capacity)";
-	if (sql_command($sQuery) < 0) 
-      fatal_error(1, sql_error());
+/** we need to do different things depending on if it's a room or an area */
+if ($type == "area") {
+	$sQuery = 'INSERT INTO '.$tbl_area.' (area_name) VALUES (\''
+        .sql_escape_arg($name).'\')';
+	if(sql_command($sQuery) < 0) fatal_error(true, sql_error());
+    $area = sql_insert_id($tbl_area, "id");
+} else if ($type == "room") {
+	$sQuery = 'INSERT INTO '.$tbl_room.' (room_name, area_id, description,'
+        .'capacity) VALUES (\''.sql_escape_arg($name).'\', '.$area.', \''
+        .sql_escape_arg($description).'\', '.$capacity.')';
+	if (sql_command($sQuery) < 0) fatal_error(true, sql_error());
 }
 
 header("Location: admin.php?area=$area");
