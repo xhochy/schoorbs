@@ -288,6 +288,8 @@ $aix_utf8_converters = array
 # Language token handling
 
 // Get first default set of language tokens for emails.
+/**
+ ** Mailing is disabeled
 if (MAIL_ADMIN_ON_BOOKINGS or MAIL_AREA_ADMIN_ON_BOOKINGS or
     MAIL_ROOM_ADMIN_ON_BOOKINGS or MAIL_BOOKER)
 {
@@ -296,6 +298,7 @@ if (MAIL_ADMIN_ON_BOOKINGS or MAIL_AREA_ADMIN_ON_BOOKINGS or
     $mail_vocab = $vocab;
     unset ($vocab);
 }
+*/
 
 # Get a default set of language tokens, you can change this if you like
 include dirname(__FILE__)."/lang." . $default_language_tokens;
