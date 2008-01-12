@@ -2,7 +2,7 @@
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.1//EN" "http://www.w3.org/TR/xhtml11/DTD/xhtml11.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml" xml:lang="de">
 <head>
-    <title>{$mrbs_company} - Schoorbs</title>
+    <title>{$mrbs_company|strip_tags} - Schoorbs</title>
     <link rel="stylesheet" type="text/css" href="schoorbs-misc/style/style.css" />
     <link rel="home" href="index.php" />
 
