@@ -49,9 +49,11 @@ if (!file_exists(dirname(__FILE__).'/../config.inc.php')) {
     echo "# Using given environment for tests\n";
 }
 
+/** Include the configuration */
+require_once dirname(__FILE__).'/../config.inc.php';
+
 /** Override session module, since some of them are not yet suitable for the unittests */
 $auth["session"] = "http";
-require_once dirname(__FILE__).'/../config.inc.php';
 
 ## Underlying Test Suites ##
  
