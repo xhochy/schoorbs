@@ -1,0 +1,17 @@
+#summary How to release a new version of Rainpress
+#labels Featured,Phase-Deploy,Phase-Implementation,Phase-Support
+
+= Things to do before releasing =
+
+  * Make sure that there are no open bugs for the upcoming release
+  * Make sure all unit-tests run without a problem
+
+= Things to do while releasing =
+ 
+ * Build a zip- and a 7z-archive of Schoorbs -> `rake release`
+ * Upload those packages
+ * Announce on http://xhochy.org/en
+ * Announce on [https://launchpad.net/schoorbs/+announce Launchpad]
+ * Announce on [http://groups.google.com/group/xy-announce XhochY Announce]
+ * Announce on [http://groups.google.com/group/schoorbs-general-discussion Schoorbs general discussion]
+ * Announce on Freshmeat and add this release
