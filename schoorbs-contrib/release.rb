@@ -57,7 +57,7 @@ task :release do
   FileUtils.cp File.join('schoorbs-contrib', 'LICENSE_GPL'), 'LICENSE'
   
   puts '# Make the source archive'
-  files = Dir['*'] - Dir['schoorbs-contrib', 'schoorbs-tests', 'schoorbs-dist', 'schoorbs-doc', 'Rakefile', 'config.inc.php']
+  files = Dir['*'] - ['schoorbs-contrib', 'schoorbs-tests', 'schoorbs-dist', 'schoorbs-doc', 'Rakefile', 'config.inc.php']
   FileUtils.cp_r files.to_a, File.join('schoorbs-dist', 'tmp', 'schoorbs')
   puts '## Remove SVN directories'
   Dir[File.join('schoorbs-dist', 'tmp', 'schoorbs', '**','.svn')].each do |d|
