@@ -49,6 +49,9 @@ if (!file_exists(dirname(__FILE__).'/../config.inc.php')) {
     echo "# Using given environment for tests\n";
 }
 
+/** Override session module, since some of them are not yet suitable for the unittests */
+$auth['session'] = 'http';
+
 ## Underlying Test Suites ##
  
 require_once 'input.tests.php';
