@@ -5,17 +5,19 @@
     <title>Authentifizierung</title>
   </header>
   <body>
-    <section id="session">
-      <title>Mensch-Maschine-Interaktion (Sessionmanagement)</title>
+    <section id="all">
+      <title>Aufbau</title>
       <p>
-        ...
+        Die Authentifizierung bei MRBS ist sehr gut durchdachtes, modulares 
+        System, das in 2 Bereiche aufgeteilt ist: Datenentgebennahme 
+        (Session-Module) und Datenüberprüfung(Auth-Module). Ich habe im 
+        folgenden UML-Diagram den Systemaufbau nachmodelliert, hierzu muss man 
+        beachten, dass das UML-Diagram von einer objektorientierten Achitektur 
+        ausgeht, MRBS jedoch lediglich Funktionen aus dem Modul einbindet. Im 
+        Folgenden habe ich Auth/Ext und Session/PHP als Beispiel-Implementierungen
+        der jeweiligen Schnittstellen genommen.
       </p>
-    </section>
-    <section id="auth">
-      <title>Nutzerdatenbank</title>
-      <p>
-        ...
-      </p>
+      <figure src="images/auth-uml.jpg" alt="UML-Diagramm zur Authentifikation" />
     </section>
   </body>
 </document>
