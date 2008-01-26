@@ -32,12 +32,12 @@ CLEAN.exclude '.svn'
 ## Deb(ian) Package Tasks ##  
 
 task :source_deb do 
-  sh 'debuild -S -I.svn -us -uc'
+  sh '/usr/bin/debuild -S -I.svn -us -uc'
 end
 task :source_deb => [:clean]
 
 task :binary_deb_fakeroot do
-  sh 'dpkg-buildpackage -rfakeroot'
+  sh 'dpkg-buildpackage -rfakeroot -I.svn -us -uc'
 end
 task :binary_deb_fakeroot => [:source_deb]
 
