@@ -5,10 +5,183 @@
     <title>Datenbank</title>
   </header>
   <body>
-    <section id="api">
-      <title>API</title>
+    <section id="programming">
+      <title>Programmierung</title>
       <p>
-        ...
+        Schoorbs/MRBS bietet die Möglichkeit entweder MySQL oder PostgreSQL als
+        Datenbank-Backend zu nutzen, für MySQL stehen sogar 2 Möglichkeiten zur 
+        Kommunikation bereit, zum einen die alten mysql_*-Funktionen, die schon 
+        seit PHP 4 existieren und die neuen, objektorientierten 
+        MySQLi-Funktionen von PHP5. Am HSG nutzen wir jedoch PostgreSQL, da es 
+        eher Fehler meldet, anstatt eine Lösung zu raten(häufiges Verhalten bei 
+        MySQL), um möglicherweise Probleme zu vermeiden, was aber eher Probleme 
+        erzeugt, da man so schlecht Fehler findet. Wie schon zuvor im Abschnitt 
+        „Eingabeverarbeitung“ erwähnt, waren anfangs noch SQL-Injections 
+        möglich, was jedoch durch das Einführen und strikte Nutzen von 
+        <code>sql_escape_arg()</code> jetzt nicht mehr möglich ist. Im Gegensatz
+        zu anderen Lösungen, die alle Funktionen, die Daten aus einer Datenbank 
+        laden, ohne dass der Programmierer der Steuerung einen SQL-Query bauen 
+        muss, wird in MRBS nur der Teil von SQL-Queries mit Funktionen 
+        nachgebildet, der sich zwischen MySQL und PostgreSQL unterscheidet, z.B. 
+        die LIMIT-Anweisung, welche in MySQL mit <code>LIMIT x,y</code> angeben 
+        wird, heißt in PostgreSQL <code>LIMIT y OFFSET x</code> 
+        (LIMIT-Anweisungen werden durch die Funktion 
+        <code>sql_syntax_limit()</code> erstellt). Diese sehr niedrig angesetzte
+        Datenbankabstraktion macht das Erweitern um einen anderen Datenbanktyp
+        sehr komplex, da man Schoorbs/MRBS an mehreren Stellen anpassen müssten.
+        Eine weitere Besonderheit des Datenbank Layers ist, dass man mit 
+        <code>sql_row()</code> nicht die nächste Zeile des Ergebnisses der 
+        Datenbankabfrage bekommt, sondern man immer die Zeilennummer angeben 
+        muss, dies macht Schleifen wie
+      </p>
+      <source>while($data = sql_row($r)) { ... }</source>
+      <p>
+        unmöglich. Ich habe auch nirgendwo einen Nutzen für diese Ansprechweise 
+        gefunden, jedoch möchte ich die Datenbankschnittstelle nicht verändern 
+        um die Abwärtskompatibliltät zu älteren Versionen beizubehalten, genauso
+        werde ich auch die Struktur der Datenbank beibehalten, damit meine 
+        Facharbeit nicht nur in der Schule problemlos eingesetzt werden kann, 
+        sondern auch die leichte Migration von alten MRBS-Installationen auf 
+        Schoorbs ermöglicht.
+      </p>        
+    </section>
+    <section id="helper">
+      <title>Hilfsfunktionen</title>
+      <p>
+         Da in Schoorbs/MRBS nicht alle Datenbankaltivitäten mit 1 Query 
+         erledigt sind, gibt es noch einige Hilfsfunktionen, die häufig 
+         wiederkehrende Aufgaben abstrahieren. Alle Hilfsfunktionen, die mit 
+         mrbs… beginnen sind die ursprünglichen, alle die mit schoorbs… beginnen, 
+         wurden von mir verändert. Als erstes will ich hier die Funktion 
+         <code>schoorbsCheckFree()</code> analysieren. Sie überprüft, ob ein 
+         Raum in einer gewissen Zeitspanne frei ist, dabei kann man auch einen 
+         (wiederholenden) Termin ignorieren. Hierzu werden per SQL-Query alle 
+         Termine aus der Datenbank abgerufen, die nach der angebenen Startzeit 
+         enden oder vor der angebenen Endzeit starten. Sollte es einen 
+         (oder mehrer) solchen Termin geben, so wird eine HTML-Liste mit den 
+         möglichen Konflikten ausgegeben. Die Ausgaben als HTML ist vorteilhaft, 
+         da man so nicht auf die Struktur der URLs achten muss, jedoch kann man 
+         die Informationen anderwärtig nicht nochmals benutzen. Eine weitere 
+         Hilfsfunktion ist <code>schoorbsDelEntry()</code>, welche einen oder 
+         mehrere Einträge aus der Datenbank löscht. Als erster Schritt wird hier 
+         ermittelt, ob der Termin zu einer sich wiederholenden Veranstaltung 
+         gehört, sollte dies der Fall sein wird diese gelöscht. Die zur 
+         jeweiligen ID gehöreden Termine werden dann aus der Datenbank geholt 
+         und mithilfe einer for-Schleife durchlaufen (Hier ist ein Beispiel für 
+         das oben genannte Problem mit <code>sql_row()</code>). Sollte der Nutzer 
+         keine Rechte den Termin zu löschen, so wird er direkt abgewiesen, ist 
+         festgelegt, dass nur unmodifizierte Einträge bei einer wiederholenden 
+         Veranstaltung gelöscht werden sollen, so werden jetzt die modifizierten 
+         übersprungen. Sollte der Termin jetzt noch nicht abgewiesen worden 
+         sein, so wird er gelöscht.
+       </p>
+       <p>
+         Möchte man nur eine einzelnen Eintrag erstellen, so kann man die 
+         Hilfsfunktion <code>schoorbsCreateSingleEntry()</code> benutzen. Sie 
+         überprüft lediglich, ob der Termin über eine positive Zeitspanne geht 
+         und sendet dann alle benötigten Daten an das DMBS. Sollte der SQL-Query 
+         erfolgreich ausgeführt worden sein, wird die ID des neuen Termins 
+         zurückgegeben. Will man jedoch einen sich wiederholenden Eintrag 
+         erstellen muss man die Funktion <code>mrbsCreateRepeatingEntrys()</code>
+         benutzen. Diese Funktion lässt sich zu erst von 
+         <code>mrbsGetRepeatEntryList()</code>(wird im nächsten Abschnitt 
+         erklärt) eine Liste aller Termine, die auftreten, erstellen. Sollte die
+         Anzahl der auftretenden Termine größer als die Zahl der maximal 
+         erlaubten Wiederholungen sein, so wird man hier schon abgewiesen. 
+         Sollte die verherige Funktion keine Termine zurückgeliefert haben, wird
+         ein einzelner Eintrag erstellt. Sind jedoch zuvor Termine zurückgegeben
+         worden, so wird in der Tabelle <code>repeat</code> die Wiederholung 
+         vermerkt und dann die Termine alle einzeln in die Datenbank eingepflegt. 
+         Man speichert die Wiederholung in der Tabelle <code>repeat</code> mit 
+         der Funktion <code>schoorbsCreateRepeatEntry()</code>. Dies ist eine 
+         sehr simple Funktion, es werden einfach alle Spalten, wie z.B. Raum, 
+         Startzeit usw. gefüllt, ohne jegliche Verzweigungen in der Funktion zu 
+         haben. Zum Schluss gibt die Funktion noch die ID der Wiederholung zurück.
+       </p>
+       <p>
+         Zum Schluss gibt es noch 2 Hilfsfunktionen, die einem nur Informationen
+         liefern. Die erste ist <code>mrbsGetRepeatEntryList()</code>, sie nimmt 
+         Start- und Endzeit eines wiederholenden Termins entgegen und liefert 
+         die einzelnen Termine wieder zurück. Hierzu zerlegt sie die Startzeit 
+         als erstes in ihre einzelnen Komponenten(z.B. Tag, Stunde, …), danach 
+         geht sie in einer for-Schleife alle Termine durch. Pro 
+         for-Schleifen-Durchgang wird die aktuelle Zeit zu einen Array 
+         hinzugefügt, welcher als Ergebnis zurückgegeben wird. Bei jedem
+         Durchlauf wird die Zeit um die je nach Typ verschiedene Zeitdifferenz 
+         zwischen 2 Terminen erhöht. Die zweite Informationshilfsfunktion ist 
+         <code>mrbsGetEntryInfo()</code>, sie ruft lediglich die Spalte eines 
+         Termins aus der Datenbank ab und gibt sie als assoziativen Array zurück.
+      </p>
+    </section>
+    <section id="structure">
+      <title>Struktur</title>
+      <p>
+        Insgesamt werden 4 Tabellen zur Speicherung der Termine genutzt. Im 
+        Folgenden stelle ich alle 4 Tabellen vor, als Namen benutzte ich den 
+        Tabellenname ohne Präfix. In der Tabelle <code>area</code> sind die 
+        einzelnen Bereiche gespeichert, für welche es Räume gibt. Eine 
+        Tabellenzeile besteht hier lediglich aus der ID des Bereichs, dem Namen 
+        des Bereichs und der E-Mail des Bereichsadministrators. Die Tabelle ist 
+        lediglich zur Strukturierung der Räume notwendig, jedoch unwichtig für 
+        irgendwelche automatischen Raumbuchungen. Die verfügbaren Räume werden 
+        in der Tabelle <code>rooms</code> gespeichert, jeder Raum bekommt hier auch wieder 
+        eine ID zugeordnet. In der zweiten Spalte steht in dieser Tabelle immer 
+        die ID des Bereichs, zu welchen der Raum zugeordnet worden ist, die der 
+        Spalte ID der Tabelle <code>area</code> entspricht. In <code>room_name</code>
+        steht der Name des Raums, in <code>description</code> die Beschreibung 
+        des Raums. Beide werden als <code>varying char</code> gespeichert, 
+        was bei ersterm sinnvoll ist, jedoch ist es vielleicht 
+        realitätsnaher <code>description</code> als <code>text</code> zu 
+        speichern, da man so nicht die Begrenzung von 60 Zeichen hätte, was bei 
+        Beschreibungen öfters ausgenutzt wird, bei der Geschwindigkeit gäbe es 
+        auch keine Verluste laut PostgreSQL-Hilfe(„There are no performance 
+        differences between these three types.“, 
+        <a href="http://www.postgresql.org/docs/8.2/static/datatype-character.html">PostgreSQL (8.2) Character Data Types</a>). 
+        Im Feld <code>room_admin_email</code> hingegen wird <code>text</code> als 
+        Datentyp genutzt um die E-Mail des Raumadministrators zu speichern. 
+        Abschließend wird die Anzahl der Plätze(<code>capacity</code>) noch als 
+        <code>integer</code> gespeichert, wobei eigentlich negative Platzzahlen 
+        nicht vorkommen, weshalb man auch <code>unsigned integer</code> hätte 
+        nutzen können, um Fehler vorzubeugen.
+      </p>
+      <p>
+        Bis jetzt habe ich zuerst die Tabellen zur Kategorisierung der Termine 
+        vorgestellt, die in der Tabelle <code>entry</code> gespeichert werden. 
+        Wie alle anderen Tabellen hat sie wieder als Hauptspalte <code>id</code>, 
+        dazu kommen noch die selbsterklärenden Spalten <code>start_time</code>, 
+        <code>end_time</code>, <code>room_id</code> und <code>create_by</code>. 
+        Die Spalte <code>repeat_id</code> werde ich zusammen mit der Tabelle 
+        <code>repeat</code> erklären, bis dahin ignoriere ich sie. In der Spalte 
+        <code>name</code> wird der Titel des Termins, in <code>description</code> 
+        die Beschreibung gespeichert. Der Typ des Termins(also 'Extern' → 'E', 
+        'normaler Unterricht' → 'B', usw …) wird in der Spalte <code>type</code> 
+        gespeichert, den Sinn der Spalte <code>entry_type</code> habe ich nicht 
+        herrausbekommen. <code>timestamp</code> wird zur Speichernung der 
+        letzten Änderung benutzt.
+      </p>
+      <p>
+        Um sich wiederholende Termine abzuspeichern, gibt es noch die zusätzliche
+        Tabelle <code>repeat</code>. Wie in allen anderen Tabellen gibt es hier 
+        die (inzwischen) selbsterklärenden Spalten <code>id</code>, <code>room_id</code>,
+        <code>timestamp</code>, <code>create_by</code>, <code>name</code>, 
+        <code>type</code> und <code>description</code> (die meisten wurden im 
+        vorherigen Abschnitt erklärt). <code>start_time</code> und <code>end_time</code>
+        bezeichnen hier die Start- und Endzeit des ersten Auftretens des Termins,
+        <code>end_date</code> die Startzeit des letzten Auftretens. Mit <code>rep_type</code>
+        wird die Art der Wiederholung beschrieben, folgende Tabelle erläutert die 
+        jeweiligen Bedeutungen:
+      </p>
+      <table>
+      <tr><th>rep_type im DBMS</th><th>Bedeutung</th></tr>
+      <tr><td>1</td><td>tägliche Wiederholung</td></tr>
+      <tr><td>2</td><td>wöchentliche Wiederholung</td></tr>
+      <tr><td>3</td><td>monatliche Wiederholung</td></tr>
+      <tr><td>4</td><td>jährliche Wiederholung </td></tr>
+      <tr><td>5</td><td>monatliche Wiederholung in der gleichen Wochen und am gleichen Wochentag</td></tr>
+      </table>
+      <p>
+        Die Bedeutung der Spalten <code>rep_num_weeks</code> und <code>rep_opt</code>
+        war nicht herauszubekommen.
       </p>
     </section>
   </body>
