@@ -7,7 +7,7 @@ require 'fileutils'
 require File.join(File.dirname(__FILE__), 'packr', '/packr.rb')
 require File.join(File.dirname(__FILE__), 'rainpress', '/packer.rb')
 
-task :release => [:doc, :test]
+task :release => [:doc, :test, :source_deb]
 
 =begin
 Software Requirements for making a release:
@@ -57,7 +57,7 @@ task :release do
   FileUtils.cp File.join('schoorbs-contrib', 'LICENSE_GPL'), 'LICENSE'
   
   puts '# Make the source archive'
-  files = Dir['*'] - ['schoorbs-contrib', 'schoorbs-tests', 'schoorbs-dist', 'schoorbs-doc', 'Rakefile', 'config.inc.php']
+  files = Dir['*'] - ['schoorbs-contrib', 'schoorbs-tests', 'schoorbs-dist', 'schoorbs-doc', 'Rakefile', 'config.inc.php', 'debian']
   FileUtils.cp_r files.to_a, File.join('schoorbs-dist', 'tmp', 'schoorbs')
   puts '## Remove SVN directories'
   Dir[File.join('schoorbs-dist', 'tmp', 'schoorbs', '**','.svn')].each do |d|
