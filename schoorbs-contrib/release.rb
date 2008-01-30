@@ -14,7 +14,7 @@ end
 RELEASE_TMP_DIR = File.join(Dir.pwd, 'schoorbs-dist', 'tmp')
 RELEASE_SRC_DIR = File.join(RELEASE_TMP_DIR, 'schoorbs')
 RELEASE_DIST_DIR = File.join(Dir.pwd, 'schoorbs-dist', 'schoorbs-' + SCHOORBS_VERSION)
-RELEASE_SRC_FILES = Dir['*'] - ['schoorbs-contrib', 'schoorbs-tests', 'schoorbs-dist', 'schoorbs-doc', 'Rakefile', 'config.inc.php', 'debian', 'build-stamp', 'configure-stamp']
+RELEASE_SRC_FILES = Dir['*'] - ['schoorbs-contrib', 'schoorbs-tests', 'schoorbs-report', 'schoorbs-dist', 'schoorbs-doc', 'Rakefile', 'config.inc.php', 'debian', 'build-stamp', 'configure-stamp']
 
 ## Includes ##
 
