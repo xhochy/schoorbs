@@ -9,6 +9,7 @@
 = Things to do while releasing =
  
  * Build a zip- and a 7z-archive of Schoorbs -> `rake release`
+ * Build Debian and Ubuntu Packages of Schoorbs -> `rake debian:binary:fakeroot` (TODO: document repos)
  * Upload those packages
  * Announce on http://xhochy.org/en
  * Announce on [https://launchpad.net/schoorbs/+announce Launchpad]
