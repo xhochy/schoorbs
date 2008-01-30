@@ -11,7 +11,8 @@
  * Build a zip- and a 7z-archive of Schoorbs -> `rake release`
  * Build Debian and Ubuntu Packages of Schoorbs -> `rake debian:binary:fakeroot` (TODO: document repos)
  * Upload those packages
- * Announce on http://xhochy.org/en
+ * Announce on [http://xhochy.org/en xhochy.org/en]
+ * Announce on [http://xhochy.com xhochy.com]
  * Announce on [https://launchpad.net/schoorbs/+announce Launchpad]
  * Announce on [http://groups.google.com/group/xy-announce XhochY Announce]
  * Announce on [http://groups.google.com/group/schoorbs-general-discussion Schoorbs general discussion]
