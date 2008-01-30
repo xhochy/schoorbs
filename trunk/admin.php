@@ -35,7 +35,7 @@ if(!getAuthorised(2)) {
 	showAccessDenied();
 }
 
-print_header($day, $month, $year, isset($area) ? $area : "");
+print_header();
 
 # This cell has the areas
 $res = sql_query("SELECT id, area_name FROM $tbl_area ORDER BY area_name");

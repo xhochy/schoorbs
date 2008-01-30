@@ -52,7 +52,7 @@ list($yd, $ym, $yy) = getLastWeek($day, $month, $year);
 list($td, $tm, $ty) = getNextWeek($day, $month, $year);
 
 # print the page header
-print_header($day, $month, $year, $area);
+print_header();
 
 # Define the start and end of each day of the week in a way which is not
 # affected by daylight saving...

@@ -43,7 +43,7 @@ if (isset($_REQUEST['id'])) {
 	
 ## Main ##
 
-print_header($day, $month, $year, $area);
+print_header();
 
 if($series){
 	$sQuery = "SELECT ${tbl_repeat}.name, ${tbl_repeat}.description, ${tbl_repeat}.create_by,"

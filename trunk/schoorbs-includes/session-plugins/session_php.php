@@ -45,7 +45,7 @@ function session_php_main()
 	        $NewUserName = unslashes($_REQUEST['NewUserName']);
 	        $NewUserPassword = unslashes($_REQUEST['NewUserPassword']);
 	        if (!authValidateUser($NewUserName, $NewUserPassword)) {
-	            print_header(0, 0, 0, 0);
+	            print_header();
 	            echo "<p>".get_vocab('unknown_user')."</p>\n";
 	            printLoginForm($_REQUEST['TargetURL']);
 	            exit();
@@ -59,7 +59,7 @@ function session_php_main()
 	    /* Note HTTP 1.1 mandates an absolute URL. Most modern browsers support relative URLs,
 	        which allows to work around problems with DNS inconsistencies in the server name.
 	        Anyway, if the browser cannot redirect automatically, the manual link below will work. */
-	    print_header(0, 0, 0, 0);
+	    print_header();
 	    echo "<br />\n";
 	    echo "<p>Please click <a href=\"$TargetURL\">here</a> if you're not redirected automatically to the page you requested.</p>\n";
 	    echo "</body>\n";
@@ -73,7 +73,7 @@ function session_php_main()
 	*/
 	if (isset($_REQUEST['Action']) && ($_REQUEST['Action'] == "QueryName"))
 	{
-	    print_header(0, 0, 0, 0);
+	    print_header();
 	    printLoginForm($_REQUEST['TargetURL']);
 	    exit();
 	}
@@ -102,7 +102,7 @@ function printLoginForm($TargetURL)
  */
 function authGet()
 {
-    print_header(0, 0, 0, 0);
+    print_header();
 
     echo "<p>".get_vocab("norights")."</p>\n";
 

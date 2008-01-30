@@ -57,7 +57,7 @@ if (isset($_REQUEST['change_done'])) {
 	sql_query($sQuery);
 }
 
-print_header($day, $month, $year, isset($area) ? $area : "");
+print_header();
 
 if(!empty($room)) {
 	

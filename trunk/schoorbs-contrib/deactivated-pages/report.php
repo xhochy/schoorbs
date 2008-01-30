@@ -115,7 +115,7 @@ else
 ## Main ##
 
 # print the page header
-print_header($day, $month, $year, $area);
+print_header();
 
 $smarty->assign('pview',$pview);
 $smarty->assign('From_day',$From_day);

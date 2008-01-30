@@ -191,7 +191,7 @@ if(!getWritable($create_by, getUserName()))
 	showAccessDenied();
 }
 
-print_header($day, $month, $year, $area);
+print_header();
 
 # Determine the area id of the room in question first
 $sQuery = "SELECT area_id FROM $tbl_room WHERE id = $room_id";

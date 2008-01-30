@@ -76,8 +76,7 @@ function showAccessDenied()
 {
 	global $smarty;
 
-    list($day, $month, $year) = input_DayMonthYear();
-    print_header($day, $month, $year, input_Area());
+    print_header();
     $smarty->display('accessdenied.tpl');
 	exit();
 }
