@@ -9,9 +9,13 @@
 
 ## Includes ##
 
+/** The Schoorbs configuration */
 require_once dirname(__FILE__).'/../config.inc.php';
+/** Smarty Template Engine */
 require_once 'smarty.functions.php';
+/** Funtions for time handling */
 require_once 'time.functions.php';
+/** Functions for area handling */
 require_once 'area.functions.php';
 /** The authetication wrappers */
 require_once dirname(__FILE__).'/../schoorbs-includes/authentication/schoorbs_auth.php';
@@ -31,39 +35,27 @@ function cmp3($a, $b)
  * Prints the Header of the XHTML page
  *
  * @author jberanek, Uwe L. Korn <uwelk@xhochy.org>
- * @param int $day
- * @param int $month
- * @param int $year
- * @param int $area
  */
-function print_header($day, $month, $year, $area)
+function print_header()
 {
 	global $mrbs_company, $search_str, $locale_warning, $pview;
 	global $smarty, $unicode_encoding, $vocab, $unicode_encoding;
 
-	# If we dont know the right date then make it up 
-	if($day < 1 || $day > 31)
-		$day   = date("d");
-	if($month < 1 || $month > 12)
-		$month = date("m");
-	if($year < 2000 || $year > 2050)
-		$year  = date("Y");
-	if (empty($search_str))
-		$search_str = "";
+    list($day, $month, $year) = input_DayMonthYear();
+    $area = input_Area();
+	if (empty($search_str)) $search_str = '';
 
 	if ($unicode_encoding) {
-		header("Content-Type: text/html; charset=utf-8");
+		header('Content-Type: text/html; charset=utf-8');
 	} else {
 		# We use $vocab directly instead of get_vocab() because we have
 		# no requirement to convert the vocab text, we just output
 		# the charset
-		header("Content-Type: text/html; charset=".$vocab["charset"]);
+		header('Content-Type: text/html; charset='.$vocab['charset']);
 	}
 
-	header("Pragma: no-cache");                          // HTTP 1.0
-	header("Expires: Mon, 26 Jul 1997 05:00:00 GMT");    // Date in the past
-	
-	$smarty->assign('mrbs_company',$mrbs_company);
+	header('Pragma: no-cache');                          // HTTP 1.0
+	header('Expires: Mon, 26 Jul 1997 05:00:00 GMT');    // Date in the past
 	
 	/** day, month, year selector **/
 	// months
@@ -77,19 +69,9 @@ function print_header($day, $month, $year, $area)
 	$years = array();
 	for($i = $min; $i <= $max; $i++)
 		$years[] = $i;
-	$smarty->assign('months',$months);
-	$smarty->assign('years',$years);
-	$smarty->assign('prefix',"");
 	
-	$smarty->assign('Area', $area);
-	$smarty->assign('SearchStr',$search_str);
-	$smarty->assign('Day',$day);
-	$smarty->assign('Month',$month);
-	$smarty->assign('Year', $year);
-	$sPViewEcho = "";
-	$sLogonBox = "";
-	if($pview != 1)
-	{
+	$sPViewEcho = ''; $sLogonBox = '';
+	if($pview != 1) {
 	    # show a warning if this is using a low version of php
         if (substr(phpversion(), 0, 1) == 3)
 	        $sPViewEcho.= get_vocab("not_php3");
@@ -98,8 +80,7 @@ function print_header($day, $month, $year, $area)
         if (!empty($locale_warning))
             $sPViewEcho.= "[Warning: ".$locale_warning."]";
 
-        if (!empty($area))
-            $sPViewEcho.= "<input type=\"hidden\" name=\"area\" value=\"$area\" />";
+        $sPViewEcho.= '<input type="hidden" name="area" value="'.$area.'" />';
 
         # For session protocols that define their own logon box...
         if (function_exists('PrintLogonBox'))
@@ -110,8 +91,20 @@ function print_header($day, $month, $year, $area)
    	        ob_end_clean();
        	}        
     }
-    $smarty->assign('logonbox',$sLogonBox);
-    $smarty->assign('pview',$sPViewEcho);
+    
+    $smarty->assign(array(
+		'months' => $months,
+		'years' => $years,
+		'prefix' => "",
+		'Area' => $area,
+		'SearchStr' => $search_str,
+		'Day' => $day,
+		'Month' => $month,
+		'Year' => $year,
+		'mrbs_company' => $mrbs_company,
+		'pview' => $sPViewEcho,
+		'logonbox' => $sLogonBox
+		));
 	$smarty->display('head.tpl');
 }
 
@@ -204,18 +197,14 @@ function fatal_error($need_header, $message = '')
 		// no time to fix this in general, so I made this short fix
 		// REMOVE IT IN FUTURE !!!
 	
-	if(defined('SCHOORBS_NOGUI'))
-	{
+	if(defined('SCHOORBS_NOGUI')) {
 		if(version_compare('5.0.0',PHP_VERSION,'>') === true) {
 			trigger_error('Schoorbs Fatal Error: '.$message, E_USER_ERROR);
 		} else {
-			$oException = new Exception($message);
-			throw($oException);
+			$oException = new Exception($message); throw($oException);
 		}
-	}	
-	else
-	{
-		if ($need_header) print_header(0, 0, 0, 0);
+	} else {
+		if ($need_header) print_header();
 		echo $message;
 		require_once 'trailer.php';
 		exit(0);

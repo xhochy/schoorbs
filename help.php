@@ -13,7 +13,7 @@ require_once "schoorbs-includes/database/$dbsys.php";
 require_once 'schoorbs-includes/global.functions.php';
 require_once 'schoorbs-includes/version.php';
 
-print_header(date("d"), date("m"), date("Y"), get_default_area());
+print_header();
 
 $smarty->assign('mrbs_version', get_schoorbs_version());
 $smarty->assign('sql_version',sql_version());

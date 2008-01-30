@@ -30,7 +30,7 @@ if (!empty($search_str))
 	$search_str = htmlspecialchars($search_text);
 }
 
-print_header($day, $month, $year, $area);
+print_header();
 
 if (!empty($advanced))
 {

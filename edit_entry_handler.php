@@ -70,7 +70,7 @@ if(!getAuthorised(1) || !getWritable($create_by, getUserName()))
 
 if ($name == '')
 {
-     print_header($day, $month, $year, $area);
+     print_header();
      ?>
        <h1><?php echo get_vocab('invalid_booking'); ?></h1>
        <?php echo get_vocab('must_set_description'); ?>
@@ -337,7 +337,7 @@ sql_mutex_unlock("$tbl_entry");
 
 if(strlen($err))
 {
-    print_header($day, $month, $year, $area);
+    print_header();
     
     echo "<h2>" . get_vocab("sched_conflict") . "</h2>";
     if(!isset($hide_title))

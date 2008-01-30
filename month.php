@@ -31,7 +31,7 @@ $room = input_Room();
 ## Main ##
 
 # print the page header
-print_header($day, $month, $year, $area);
+print_header();
 
 # Month view start time. This ignores morningstarts/eveningends because it
 # doesn't make sense to not show all entries for the day, and it messes

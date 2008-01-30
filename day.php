@@ -37,7 +37,7 @@ list($td, $tm, $ty) = getTomorrow($day, $month, $year);
 ## Main ##
 
 # print the page header
-print_header($day, $month, $year, $area);
+print_header();
 
 if ($pview != 1) {
     # need to show either a select box or a normal html list,

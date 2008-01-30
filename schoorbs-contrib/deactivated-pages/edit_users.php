@@ -136,7 +136,7 @@ if (isset($Action) && ( ($Action == "Edit") or ($Action == "Add") ))
         showAccessDenied();
         }
 
-    print_header(0, 0, 0, 0);
+    print_header();
 
     if ($Action == "Edit")
     {
@@ -214,7 +214,7 @@ if (isset($Action) && ($Action == "Update"))
     /* To do: Add JavaScript to verify passwords _before_ sending the form here */
     if ($password0 != $password1)
         {
-	print_header(0, 0, 0, "");
+	print_header();
 
         print get_vocab("passwords_not_eq") . "<br />\n";
 
@@ -272,7 +272,7 @@ if (isset($Action) && ($Action == "Update"))
     $r = sql_command($operation);
     if ($r == -1)
     {
-	print_header(0, 0, 0, "");
+	print_header();
 
 	// This is unlikely to happen in normal  operation. Do not translate.
         print "Error updating the $tbl_users table.<br />\n";
@@ -303,7 +303,7 @@ if (isset($Action) && ($Action == "Delete"))
     $r = sql_command("delete from $tbl_users where id=$Id;");
     if ($r == -1)
         {
-	print_header(0, 0, 0, "");
+	print_header();
 
 	// This is unlikely to happen in normal  operation. Do not translate.
         print "Error deleting entry $Id from the $tbl_users table.<br />\n";
@@ -325,7 +325,7 @@ if (isset($Action) && ($Action == "Delete"))
 
 /* Print the standard MRBS header */
 
-print_header(0, 0, 0, "");
+print_header();
 
 print "<h2>" . get_vocab("user_list") . "</h2>\n";
 
