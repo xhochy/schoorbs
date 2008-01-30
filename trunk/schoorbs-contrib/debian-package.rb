@@ -21,7 +21,7 @@ namespace :debian do
     task :fakeroot do
       sh 'dpkg-buildpackage -rfakeroot -I.svn -us -uc'
     end
-    task :fakeroot => [:source, :pre_release]
+    task :fakeroot => [:source]
  
     task :copyfiles do
       if ENV['DISTDIR'] == nil
