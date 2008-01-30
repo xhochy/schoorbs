@@ -30,11 +30,22 @@ namespace :debian do
         DISTDIR = ENV['DISTDIR']
       end
     
-      puts "Copying Schoorbs files to #{DISTDIR}"
       FileList[File.join(RELEASE_SRC_DIR, '*')].each do |file|
         FileUtils.cp_r file, DISTDIR
       end
+      
+      FileUtils.cp File.join('debian/config.inc.php'), DISTDIR
     end #^ :copyfiles
+    
+    task :placeSampeConfig do
+      if ENV['DISTDIR'] == nil
+        DISTDIR = File.join(Dir.pwd, 'debian', 'schoorbs')
+      else
+        DISTDIR = ENV['DISTDIR']
+      end
+      
+      FileUtils.cp 'config.inc.php-dist', File.join(DISTDIR, 'config-schoorbs.example.com.php')
+    end
     
   end
   

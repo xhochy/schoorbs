@@ -35,6 +35,7 @@ install: build
 	# Add here commands to install the package into debian/schoorbs.
 	rake doc
 	rake DISTDIR=$(CURDIR)/debian/schoorbs/usr/share/schoorbs debian:binary:copyfiles
+	rake DISTDIR=$(CURDIR)/debian/schoorbs/etc/schoorbs debian:binary:placeSampeConfig
 	
 
 
