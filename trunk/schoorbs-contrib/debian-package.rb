@@ -47,6 +47,13 @@ namespace :debian do
       FileUtils.cp 'config.inc.php-dist', File.join(DISTDIR, 'config-schoorbs.example.com.php')
     end
     
+    
+    task :installDependencies do
+      if not File.exists?('/usr/bin/phpdoc')
+        sh 'pear update-all'
+        sh 'pear install --alldeps PhpDocumentor'
+      end
+    end    
   end
   
 end
