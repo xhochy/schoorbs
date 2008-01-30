@@ -1,4 +1,4 @@
-#summary How to release a new version of Rainpress
+#summary How to release a new version of Schoorbs
 #labels Featured,Phase-Deploy,Phase-Implementation,Phase-Support
 
 = Things to do before releasing =
