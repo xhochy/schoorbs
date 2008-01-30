@@ -50,7 +50,7 @@ namespace :debian do
     
     task :installDependencies do
       if not File.exists?('/usr/bin/phpdoc')
-        sh 'pear update-all'
+        sh 'pear upgrade-all'
         sh 'pear install --alldeps PhpDocumentor'
       end
     end    
