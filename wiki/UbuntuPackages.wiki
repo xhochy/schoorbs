@@ -2,7 +2,7 @@
 #labels Phase-Deploy
 = About =
 
-At the moment there are only packages available for Ubuntu 7.10 "Gutsy Gibbon". Due to the portability of deb-Packages, in future, there will be packages for several Ubuntu versions, other Debian derivates and Debian itself
+At the moment there are only packages available for Ubuntu 7.10 "Gutsy Gibbon". Due to the portability of deb-Packages, in future, there will be packages for several Ubuntu versions.
 
 = Ubuntu 7.10 Gutsy Gibbon =
 
