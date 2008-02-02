@@ -1,0 +1,12 @@
+#!/bin/sh -e
+
+# To address security bug #363580
+chmod 640 /etc/wordpress/config* >/dev/null 2>&1 || true
+chgrp www-data /etc/wordpress/config* >/dev/null 2>&1 || true
+
+chown -R www-data:www-data /usr/share/schoorbs/
+
+#DEBHELPER#
+
+exit 0
+
