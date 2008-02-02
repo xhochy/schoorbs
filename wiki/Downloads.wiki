@@ -1,0 +1,9 @@
+#summary How to get Schoorbs
+#labels Phase-Deploy
+
+= Schoorbs 1.0 (unstable) =
+
+  * UbuntuPackages
+  * DebianPackages
+  * [http://static.xhochy.com/software/schoorbs/1.0/schoorbs-1.0-alpha4/schoorbs-1.0-alpha4.7z 7z-archive]
+  * [http://static.xhochy.com/software/schoorbs/1.0/schoorbs-1.0-alpha4/schoorbs-1.0-alpha4.zip ZIP-archive]
