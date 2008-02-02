@@ -17,32 +17,33 @@
       <title>Schoorbs 1.0-Alpha 1</title>
       <p>
         <strong>Released:</strong> 
-        <a href="http://xhochy.org/en/2007/07/05/schoorbs-10-alpha-1-released/">Alpha 1 Announcement 
-        on the english XhochY Weblog.</a> 
+        <a href="http://xhochy.org/en/2007/07/05/schoorbs-10-alpha-1-released/">
+        Alpha 1 Announcement on the english XhochY Weblog.</a> 
       </p>
     </section>
     <section id="schoorbs-1.0-alpha-2">
       <title>Schoorbs 1.0-Alpha 2</title>
       <p>
         <strong>Released:</strong> 
-        <a href="http://xhochy.org/en/2007/11/03/schoorbs-10-alpha-2-released/">Alpha 2 Announcement 
-        on the english XhochY Weblog.</a> 
+        <a href="http://xhochy.org/en/2007/11/03/schoorbs-10-alpha-2-released/">
+        Alpha 2 Announcement on the english XhochY Weblog.</a> 
       </p>
     </section>
     <section id="schoorbs-1.0-alpha-3">
       <title>Schoorbs 1.0-Alpha 3</title>
       <p>
         <strong>Released:</strong> 
-        <a href="http://xhochy.org/en/2007/12/23/schoorbs-10-alpha-3-released/">Alpha 3 Announcement 
-        on the english XhochY Weblog.</a> 
+        <a href="http://xhochy.org/en/2007/12/23/schoorbs-10-alpha-3-released/">
+        Alpha 3 Announcement on the english XhochY Weblog.</a> 
       </p>
     </section>
     <section id="schoorbs-1.0-alpha-4">
       <title>Schoorbs 1.0-Alpha 4</title>
-      <ul>
-        <li>Javascript- and CSS-files should now be deployed compressed</li>
-        <li>Add a backup/restore function to the Web-Admin-GUI</li>
-      </ul>
+      <p>
+        <strong>Released:</strong>
+        <a href="http://xhochy.org/en/2008/02/02/schoorbs-10-alpha-4-released/">
+        Alpha 4 Announcement on the english XhochY Weblog.</a> 
+      </p>
     </section>
     <section id="schoorbs-1.0-alpha-5">
       <title>Schoorbs 1.0-Alpha 5</title>
@@ -54,7 +55,7 @@
     <section id="schoorbs-1.0-alpha-6">
       <title>Schoorbs 1.0-Alpha 6</title>
       <ul>
-        <li>Ubuntu/Debian-package</li>
+        <li>Add a backup/restore function to the Web-Admin-GUI</li>
         <li>Installationscript</li>
         <li>Rewritten report function with PDF export</li>
       </ul>
