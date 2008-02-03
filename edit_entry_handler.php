@@ -6,147 +6,75 @@
  * @package Schoorbs
  * @license http://www.gnu.org/licenses/gpl.html GNU General Public License
  */
+ 
+## Includes ##
 
 require_once 'grab_globals.php';
-require_once 'config.inc.php';
-require_once 'schoorbs-includes/global.web.php';
-require_once 'schoorbs-includes/global.functions.php';
-require_once "schoorbs-includes/database/$dbsys.php";
-require_once 'schoorbs-includes/authentication/schoorbs_auth.php';
 require_once 'schoorbs-includes/database/schoorbs_sql.php';
 require_once 'schoorbs-includes/mail.functions.php';
 
+/** The Configuration file */
+require_once 'config.inc.php';
+/** The general 'things' when viewing Schoorbs on the web */
+require_once 'schoorbs-includes/global.web.php';
+/** The general functions */ 
+require_once 'schoorbs-includes/global.functions.php';
+/** The database wrapper */
+require_once "schoorbs-includes/database/$dbsys.php";
+/** The authetication wrappers */
+require_once 'schoorbs-includes/authentication/schoorbs_auth.php';
+
 ## Input ##
 
-#If we dont know the right date then make it up 
+/** day, month, year */
 list($day, $month, $year) = input_DayMonthYear();
-
 $area = input_Area();
+$name = input_Name();
 
-if (isset($_REQUEST['all_day'])) {
-	$all_day = $_REQUEST['all_day'];
-}
-
-if (isset($_REQUEST['reptype'])) {
-	$rep_type = $_REQUEST['reptype'];
-}
-
-if (isset($_REQUEST['rep_end_month'])) {
-	$rep_end_month = $_REQUEST['rep_end_month'];
-}
-
-if (isset($_REQUEST['rep_end_day'])) {
-	$rep_end_day = $_REQUEST['rep_end_day'];
-}
-
-if (isset($_REQUEST['rep_end_year'])) {
-	$rep_end_year = $_REQUEST['rep_end_year'];
-}
-
-if (isset($_REQUEST['rep_day'])) {
-	$rep_day = $_REQUEST['rep_day'];
-}
-
-if (isset($_REQUEST['rep_opt'])) {
-	$rep_day = $_REQUEST['rep_opt'];
-}
-
-if (isset($_REQUEST['id'])) {
-	$id = $_REQUEST['id'];
-}
-
+if (isset($_REQUEST['all_day'])) $all_day = $_REQUEST['all_day'];
+if (isset($_REQUEST['reptype'])) $rep_type = $_REQUEST['reptype'];
+if (isset($_REQUEST['rep_end_month'])) $rep_end_month = $_REQUEST['rep_end_month'];
+if (isset($_REQUEST['rep_end_day'])) $rep_end_day = $_REQUEST['rep_end_day'];
+if (isset($_REQUEST['rep_end_year'])) $rep_end_year = $_REQUEST['rep_end_year'];
+if (isset($_REQUEST['rep_day'])) $rep_day = $_REQUEST['rep_day'];
+if (isset($_REQUEST['rep_opt'])) $rep_day = $_REQUEST['rep_opt'];
+if (isset($_REQUEST['id'])) $id = $_REQUEST['id'];
 if (isset($_REQUEST['rooms'])) {
     $rooms = $_REQUEST['rooms'];
 } else {
     fatal_error(true, 'No room selected');
 }
 
-## Main ##
-
-if(!getAuthorised(1) || !getWritable($create_by, getUserName()))
-{
-    showAccessDenied();
-}
-
-if ($name == '')
-{
-     print_header();
-     ?>
-       <h1><?php echo get_vocab('invalid_booking'); ?></h1>
-       <?php echo get_vocab('must_set_description'); ?>
-   </body>
-</html>
-<?php
-     exit;
-}
-
-# Support locales where ',' is used as the decimal point
-$duration = preg_replace('/,/', '.', $duration);
-
-if( $enable_periods ) {
-	$resolution = 60;
+if (isset($_REQUEST['hour'])) $hour = intval($_REQUEST['hour']);
+if (isset($_REQUEST['minute'])) $minute = intval($_REQUEST['minute']);
+if (isset($_REQUEST['period'])) $period = intval($_REQUEST['period']);
+list($duration, $dur_units, $units) = input_Duration();
+if ($enable_periods) {
 	$hour = 12;
 	$minute = $period;
-        $max_periods = count($periods);
-        if( $dur_units == "periods" && ($minute + $duration) > $max_periods )
-        {
-            $duration = (24*60*floor($duration/$max_periods)) + ($duration%$max_periods);
-        }
-        if( $dur_units == "days" && $minute == 0 )
-        {
-		$dur_units = "periods";
-                $duration = $max_periods + ($duration-1)*60*24;
-        }
-    }
-
-// Units start in seconds
-$units = 1.0;
-
-switch($dur_units)
-{
-    case "years":
-        $units *= 52;
-    case "weeks":
-        $units *= 7;
-    case "days":
-        $units *= 24;
-    case "hours":
-        $units *= 60;
-    case "periods":
-    case "minutes":
-        $units *= 60;
-    case "seconds":
-        break;
 }
 
-// Units are now in "$dur_units" numbers of seconds
 
+## Main ##
 
-if(isset($all_day) && ($all_day == "yes"))
-{
-    if( $enable_periods )
-    {
+if(!getAuthorised(1) || !getWritable($create_by, getUserName())) showAccessDenied();
+
+if (isset($all_day) && ($all_day == 'yes')) {
+    if($enable_periods) {
         $starttime = mktime(12, 0, 0, $month, $day, $year);
         $endtime   = mktime(12, $max_periods, 0, $month, $day, $year);
-    }
-    else
-    {
+    } else {
         $starttime = mktime($morningstarts, 0, 0, $month, $day  , $year, is_dst($month, $day  , $year));
         $end_minutes = $eveningends_minutes + $morningstarts_minutes;
         ($eveningends_minutes > 59) ? $end_minutes += 60 : '';
         $endtime   = mktime($eveningends, $end_minutes, 0, $month, $day, $year, is_dst($month, $day, $year));
     }
-}
-else
-{
-    if (!$twentyfourhour_format)
-    {
-      if (isset($ampm) && ($ampm == "pm") && ($hour<12))
-      {
+} else {
+    if (!$twentyfourhour_format) {
+      if (isset($ampm) && ($ampm == "pm") && ($hour<12)) {
         $hour += 12;
       }
-      if (isset($ampm) && ($ampm == "am") && ($hour>11))
-      {
+      if (isset($ampm) && ($ampm == "am") && ($hour>11)) {
         $hour -= 12;
       }
     }

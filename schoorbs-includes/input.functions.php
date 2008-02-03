@@ -24,3 +24,4 @@ require_once 'input/type.input.php';
 require_once 'input/name.input.php';
 require_once 'input/description.input.php';
 require_once 'input/capacity.input.php';
+require_once 'input/duration.input.php';
