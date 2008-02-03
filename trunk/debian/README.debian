@@ -1,12 +1,12 @@
 #### Quick setup
 
 Hint: The usage of Schoorbs in Debian/Ubuntu is inspired by the way it done with
-wordpress. Again thanks to those who made that solution
+Drupal. Again thanks to those who made that solution. 
 
 Setup apache to point to /usr/share/schoorbs. See the examples/apache.conf
 
 #### A little more about the (multiple blog) configuration
 
 The default config.inc.php searches for a configuration filename based
-on the Schoorbs' host. This allows you to host more than one Schoorbs installation
-on a Debian system.
+on the Schoorbs' host and directory. This allows you to host more than one 
+Schoorbs installation on a Debian system.
