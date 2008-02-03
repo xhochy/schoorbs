@@ -156,7 +156,7 @@ function PrintLogonBox()
           "From_year=$year&amp;To_day=1&amp;To_month=12&amp;To_year=2030&amp;areamatch=&amp;".
           "roommatch=&amp;namematch=&amp;descrmatch=&amp;summarize=1&amp;sortby=r&amp;display=d&amp;".
           "sumby=d&amp;creatormatch=$user";
-        $smarty->assign('search_string',$search_string);
+        $smarty->assign('search_string', $search_string);
     }
     
     $smarty->assign('user',$user);
