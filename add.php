@@ -40,14 +40,19 @@ if (!getAuthorised(2)) showAccessDenied();
 
 /** we need to do different things depending on if it's a room or an area */
 if ($type == "area") {
-	$sQuery = 'INSERT INTO '.$tbl_area.' (area_name) VALUES (\''
-        .sql_escape_arg($name).'\')';
+	$sQuery = sprintf(
+		'INSERT INTO %s (area_name) VALUES (\'%s\')', 
+		$tbl_area, sql_escape_arg($name)
+	);
 	if(sql_command($sQuery) < 0) fatal_error(true, sql_error());
     $area = sql_insert_id($tbl_area, "id");
 } else if ($type == "room") {
-	$sQuery = 'INSERT INTO '.$tbl_room.' (room_name, area_id, description,'
-        .'capacity) VALUES (\''.sql_escape_arg($name).'\', '.$area.', \''
-        .sql_escape_arg($description).'\', '.$capacity.')';
+	$sQuery = sprintf(
+		'INSERT INTO %s (room_name, area_id, description, capacity)'
+		.' VALUES (\'%s\', %d, \'%s\', %d)', 
+        $tbl_room, sql_escape_arg($name), $area, sql_escape_arg($description), 
+        $capacity
+    );
 	if (sql_command($sQuery) < 0) fatal_error(true, sql_error());
 }
 
