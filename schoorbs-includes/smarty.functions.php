@@ -14,7 +14,14 @@ require_once dirname(__FILE__).'/smarty-plugins/function.genDateSelector.php';
 /** The get_vocab-Smarty Plugin */
 require_once dirname(__FILE__).'/smarty-plugins/function.get_vocab.php';
 /** put full path to Smarty.class.php */
-require_once dirname(__FILE__).'/Smarty/libs/Smarty.class.php';
+/** Use Smarty for REST Output */
+if (file_exists(dirname(__FILE__).'/Smarty/libs/libs/Smarty.class.php') {
+	// On Debian systems
+	require_once dirname(__FILE__).'/Smarty/libs/libs/Smarty.class.php';
+} else {
+    // On other systems (including Ubuntu)
+	require_once dirname(__FILE__).'/Smarty/libs/Smarty.class.php';
+}
 
 /** Init Smarty */
 $smarty = new Smarty();

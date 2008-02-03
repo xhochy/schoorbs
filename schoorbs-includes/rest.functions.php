@@ -11,7 +11,13 @@
 ## Includes ##
 
 /** Use Smarty for REST Output */
-require_once dirname(__FILE__).'/Smarty/libs/Smarty.class.php';
+if (file_exists(dirname(__FILE__).'/Smarty/libs/libs/Smarty.class.php') {
+	// On Debian systems
+	require_once dirname(__FILE__).'/Smarty/libs/libs/Smarty.class.php';
+} else {
+    // On other systems (including Ubuntu)
+	require_once dirname(__FILE__).'/Smarty/libs/Smarty.class.php';
+}
 $bSessionIncluded = 'true';
 /** Only use HTTP session for REST requests, so that no ID or equal have to be stored */ 
 require_once dirname(__FILE__).'/session-plugins/session_http.php';
