@@ -44,7 +44,7 @@ namespace :debian do
         DISTDIR = ENV['DISTDIR']
       end
       
-      FileUtils.cp 'config.inc.php-dist', File.join(DISTDIR, 'config-schoorbs.example.com.php')
+      FileUtils.cp 'config.inc.php-dist', File.join(DISTDIR, 'config-default.php')
     end
     
   end

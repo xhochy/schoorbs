@@ -1,3 +1,10 @@
+schoorbs (1.0a4.1) unstable; urgency=low
+
+  * Files under /usr belong to root
+  * Smarty Cache will be stored in /var/cache/schoorbs
+
+ -- Uwe L. Korn <packaging@xhochy.com>  Sat, 2 Feb 2008 22:36:00 +0100
+
 schoorbs (1.0a4) unstable; urgency=low
 
   * 1.0 Alpha 4 
