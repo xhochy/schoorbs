@@ -1,6 +1,5 @@
 #labels Phase-Deploy
-
-= Schoorbs 1.0 (unstable) =
+= Schoorbs 1.0 (unstable, alpha4) =
 
   * UbuntuPackages
   * DebianPackages
