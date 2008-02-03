@@ -2,14 +2,14 @@ Source: schoorbs
 Section: web
 Priority: optional
 Maintainer: Uwe L. Korn <packaging@xhochy.com>
-Build-Depends: debhelper (>= 5), rake, php-pear
+Build-Depends: debhelper (>= 5), rake
 Standards-Version: 3.7.3
 
 Package: schoorbs
 Architecture: all
 Suggests: virtual-mysql-server | postgresql
 Conflicts: mysql-server (<< 4.0.20-8)
-Depends: libapache2-mod-php5 | php5 | php5-cgi | libapache2-mod-php4 | php4 | php4-cgi, apache2 | httpd,  php5-mysql | php4-mysql | php5-pgsql
+Depends: libapache2-mod-php5 | php5 | php5-cgi | libapache2-mod-php4 | php4 | php4-cgi, apache2 | httpd,  php5-mysql | php4-mysql | php5-pgsql, smarty, libphp-phpmailer
 Description: webbased(php) resource and room booking system
  Schoorbs is a free(GPL) system to make room and resource
  bookings through a WebGUI or interact with it through a
