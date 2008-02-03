@@ -16,12 +16,12 @@
  */ 
 function input_Duration() 
 {
-	global $enable_periods, $periods;
+	global $enable_periods, $periods, $period;
 
 	if (isset($_REQUEST['duration'])) {
-		$duration = intval($_REQUEST['duration']);
+		$duration = max(1, intval($_REQUEST['duration']));
 	} else {
-		$duration = 0;
+		$duration = 1;
 	}
 	// Support locales where ',' is used as the decimal point
 	$duration = preg_replace('/,/', '.', $duration);
@@ -61,13 +61,23 @@ function input_Duration()
 	        break;
 	    case 'seconds':
 		default:
-			$dur_units = 'seconds';
-			$units = 1;
+			if ($enable_periods) {
+				$dur_units = 'periods';
+				$units = 60;
+			} else {
+				$dur_units = 'seconds';
+				$units = 1;
+			}
 			break;
 		}
 	} else {
-		$dur_units = 'seconds';
-		$units = 1;
+		if ($enable_periods) {
+			$dur_units = 'periods';
+			$units = 60;
+		} else {
+			$dur_units = 'seconds';
+			$units = 1;
+		}
 	}
 
 	return array($duration, $dur_units, $units);
