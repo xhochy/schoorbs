@@ -10,42 +10,47 @@
  * If you want to display a logout link, set in config.inc.php:
  * $auth['remote_user']['logout_link'] = '/logout/link.html';
  * 
- * @author Bjorn.Wiberg@its.uu.se
+ * @author Bjorn.Wiberg@its.uu.se, Uwe L. Korn <uwelk@xhochy.org>
  * @package Schoorbs/Session/Remote-User
  * @license http://www.gnu.org/licenses/gpl.html GNU General Public License
  */
 
-/* authGet()
- * 
+/**
  * Request the user name/password
- * 
- * Returns: Nothing
  */
 function authGet()
 {
   // User is expected to already be authenticated by the web server, so do nothing
 }
 
+/**
+ * Returns the username, if defined
+ * 
+ * @author Uwe L. Korn <uwelk@xhochy.org>, Bjorn.Wiberg@its.uu.se
+ * @return string
+ */
 function getUserName()
 {
-  if ((!isset($_SERVER['REMOTE_USER'])) || (!is_string($_SERVER['REMOTE_USER'])) || (empty($_SERVER['REMOTE_USER']))) {
-    return null;
-  } else {
-    return $_SERVER['REMOTE_USER'];
-  }
+	if ((!isset($_SERVER['REMOTE_USER'])) || (!is_string($_SERVER['REMOTE_USER'])) || (empty($_SERVER['REMOTE_USER']))) {
+		return null;
+	} else {
+		return $_SERVER['REMOTE_USER'];
+	}
 }
 
-// Print the logon entry on the top banner.
+/**
+ * Print the logon entry on the top banner.
+ * 
+ * @author Uwe L. Korn <uwelk@xhochy.org>
+ */
 function PrintLogonBox()
 {
-	global $user_list_link;
-        global $auth;
+	global $user_list_link, $auth;
   
 	$user = getUserName();
 
-	if (isset($user))
-	{
-	// words 'you are xxxx' becomes a link to the
+	if (isset($user)) {
+		// words 'you are xxxx' becomes a link to the
         // report page with only entries created by xxx. Past entries are not
         // displayed but this can be changed
        	$search_string = "report.php?From_day=$day&amp;From_month=$month&amp;".
@@ -64,7 +69,7 @@ function PrintLogonBox()
 <?php
 // Retrieve logout link from configuration, if specified
 if (isset($auth['remote_user']['logout_link']) && is_string($auth['remote_user']['logout_link']) && (!empty($auth['remote_user']['logout_link']))) {
-  print '<a href="' . $auth['remote_user']['logout_link'] .'">' . get_vocab('logoff') . "</a><BR>\n";
+  print '<a href="' . $auth['remote_user']['logout_link'] .'">' . get_vocab('logoff') . "</a><br />\n";
 }
 ?>
 
@@ -74,8 +79,8 @@ if (isset($auth['remote_user']['logout_link']) && is_string($auth['remote_user']
     else
     {
 ?>
-    </TABLE>
-    <h1>Error, REMOTE_USER was not set when it should have been</H1>
+    </table>
+    <h1>Error, REMOTE_USER was not set when it should have been</h1>
 <?php
     exit;
     }
