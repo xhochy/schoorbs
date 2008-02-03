@@ -11,7 +11,7 @@
 ## Includes ##
 
 /** Use Smarty for REST Output */
-if (file_exists(dirname(__FILE__).'/Smarty/libs/libs/Smarty.class.php') {
+if (file_exists(dirname(__FILE__).'/Smarty/libs/libs/Smarty.class.php')) {
 	// On Debian systems
 	require_once dirname(__FILE__).'/Smarty/libs/libs/Smarty.class.php';
 } else {
