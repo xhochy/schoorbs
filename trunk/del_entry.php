@@ -9,14 +9,25 @@
 
 ## Includes ##
 
-require_once "grab_globals.php";
-require_once "config.inc.php";
+/** The Configuration file */
+require_once 'config.inc.php';
+/** The general 'things' when viewing Schoorbs on the web */
 require_once 'schoorbs-includes/global.web.php';
+/** The general functions */ 
 require_once 'schoorbs-includes/global.functions.php';
+/** The database wrapper */
 require_once "schoorbs-includes/database/$dbsys.php";
+/** The authetication wrappers */
 require_once 'schoorbs-includes/authentication/schoorbs_auth.php';
+/** Database helper functions */
 require_once 'schoorbs-includes/database/schoorbs_sql.php';
+/** E-Mail helper functions */
 require_once 'schoorbs-includes/mail.functions.php';
+
+## Var Init ##
+
+if (isset($_REQUEST['id'])) $id = intval($_REQUEST['id']);
+if (isset($_REQUEST['series'])) $series = intval($_REQUEST['series']);
 
 ## Main ##
 
@@ -28,10 +39,9 @@ if(getAuthorised(1) && ($info = mrbsGetEntryInfo($id)))
 	$area  = mrbsGetRoomArea($info["room_id"]);
 
     if($info['start_time'] < time())
-        fatal_error(true,'Start time in Past, could not delete entry!');
+        fatal_error(true, 'Start time in Past, could not delete entry!');
 
-    if (MAIL_ADMIN_ON_DELETE)
-    {
+    if (MAIL_ADMIN_ON_DELETE) {
         // Gather all fields values for use in emails.
         $mail_previous = getPreviousEntryData($id, $series);
     }
@@ -42,7 +52,7 @@ if(getAuthorised(1) && ($info = mrbsGetEntryInfo($id)))
 	{
         // Send a mail to the Administrator
         (MAIL_ADMIN_ON_DELETE) ? $result = notifyAdminOnDelete($mail_previous) : '';
-        Header("Location: day.php?day=$day&month=$month&year=$year&area=$area");
+        header("Location: day.php?day=$day&month=$month&year=$year&area=$area");
 		exit();
 	}
 }
