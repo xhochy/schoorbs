@@ -59,7 +59,7 @@ function PrintLogonBox()
           "sumby=d&amp;creatormatch=$user"; ?>
 
     <td class="banner" style="background-color:#c0e0ff; text-align:center;">
-      <a name="logonBox" href="<?php echo "$search_string\" title=\""
+      <a href="<?php echo "$search_string\" title=\""
          . get_vocab('show_my_entries') . "\">" . get_vocab('you_are')." "
          .$user ?></a><br />
 <?php if (isset($user_list_link)) print "	  <br />\n	  " .
