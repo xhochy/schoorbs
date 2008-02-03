@@ -19,7 +19,7 @@
 <body>
 	<div id="menu_logo">
 		<br />
-		<a class="headerLink" style="color: #55555;" href="index.php" rel="home">{$mrbs_company}</a>
+		<span class="headerLink" style="color: #55555;">{$mrbs_company}</span>
 		<br /><br />
 		<small class="vcard"><a class="url" href="http://schoorbs.xhochy.com">Powered by <span class="fn org">Schoorbs</span></a></small>
 	</div>
