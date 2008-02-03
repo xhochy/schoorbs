@@ -108,9 +108,6 @@ A:hover.blue {color:red}
 .J {background-color:#CCCCCC}
 .white {background-color:white}
 
-td.calendar { border:0px; font-size: 8pt}
-td.calendarHeader {border:0px; font-size: 10pt}
-.calendarHighlight {color: red}
 td.even_row {background-color:#FFFFFF}	/* Even rows in the day view */
 td.odd_row {background-color:#EEEEEE;}	/* Odd rows in the day view */
 
@@ -121,11 +118,6 @@ td.odd_row {background-color:#EEEEEE;}	/* Odd rows in the day view */
 TD.month {font-size: 8pt; background-color:#FFFFFF}
 .monthday {font-size: 12pt; vertical-align: top; text-align: left}
 
-
-.calendar-wrapper {
-    margin: 0px 10px;
-    padding: 0px 10px;
-}
 
 th {
     color: black;
@@ -165,4 +157,30 @@ td.red a {
     font-size: medium; 
     color: black;
     text-decoration: underline;
+}
+
+.minical-empty-day {
+	background-color: #d5d8d3;
+}
+.minical-day {
+	font-size: 10pt;
+	background-color: #f0f0f0;
+	text-align: center;
+	padding: 3px;
+}
+.minical-header {
+	font-size: 10pt;
+	background-color: #DDCAF6;
+	padding: 3px;
+}
+td.calendarHeader {border:0px; font-size: 10pt}
+.calendarHighlight {
+	color: red;
+}
+.minical {
+	border: 1px solid black;
+}
+.calendar-wrapper {
+    margin: 0px 10px;
+    padding: 0px 10px;
 }
