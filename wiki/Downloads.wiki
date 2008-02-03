@@ -1,4 +1,3 @@
-#summary How to get Schoorbs
 #labels Phase-Deploy
 
 = Schoorbs 1.0 (unstable) =
