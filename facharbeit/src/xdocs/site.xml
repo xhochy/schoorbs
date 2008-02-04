@@ -32,7 +32,6 @@ See http://forrest.apache.org/docs/linking.html for more info
     <db label="Datenbank" href="db.html" description="Datenbank" />
     <code-quality label="Codequalität" href="code-quality.html" description="Codequalität" />
     <output label="Ausgabe" href="output.html" description="Ausgabe" />
-    <gui label="GUI" href="gui.html" description="GUI" />
   </developer>
   <timetable label="Stundenplanparser">
     <tt-usage label="Nutzung" href="tt-usage.html" description="Nutzung" />
