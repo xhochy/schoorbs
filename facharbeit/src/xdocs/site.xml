@@ -30,10 +30,9 @@ See http://forrest.apache.org/docs/linking.html for more info
     <inputs label="Eingabeverarbeitung" href="inputs.html" description="Eingabeverarbeitung" />
     <auth label="Authentifizierung" href="auth.html" description="Authentifizierung" />
     <db label="Datenbank" href="db.html" description="Datenbank" />
-    <src-doc label="Quellcode Dokumentation" href="src-doc.html" description="Quellcode Dokumentation" />
+    <code-quality label="Codequalität" href="code-quality.html" description="Codequalität" />
     <output label="Ausgabe" href="output.html" description="Ausgabe" />
     <gui label="GUI" href="gui.html" description="GUI" />
-    <code-quality label="Codequalität" href="code-quality.html" description="Codequalität" />
   </developer>
   <timetable label="Stundenplanparser">
     <tt-usage label="Nutzung" href="tt-usage.html" description="Nutzung" />
