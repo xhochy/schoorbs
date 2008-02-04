@@ -120,9 +120,9 @@ function schoorbsDelEntry($user, $id, $series, $all)
 /**
  * Create a single (non-repeating) entry in the database
  * 
- * @param int $starttime   - Start time of entry
- * @param int $endtime     - End time of entry
- * @param string $entry_type  - Entry type
+ * @param int $starttime Start time of entry
+ * @param int $endtime End time of entry
+ * @param string $entry_type Entry type
  * @param int $repeat_id   - Repeat ID
  * @param int $room_id     - Room ID
  * @param string $owner       - Owner
@@ -141,18 +141,19 @@ function schoorbsCreateSingleEntry($starttime, $endtime, $entry_type, $repeat_id
 	 * this is to trap potential negative duration created when DST comes
 	 * into effect
 	 */ 
-	if( $endtime > $starttime ) {
-		$sql = "INSERT INTO $tbl_entry (start_time, end_time, entry_type, repeat_id, room_id,"
-			."create_by, name, type, description) VALUES (".sql_escape_arg($starttime).", "
-			.sql_escape_arg($endtime).", ".sql_escape_arg($entry_type).", "
-			.sql_escape_arg($repeat_id).", ".sql_escape_arg($room_id).", '"
-			.sql_escape_arg($owner)."', '".sql_escape_arg($name)."', '"
-			.sql_escape_arg($type)."', '".sql_escape_arg($description)."')";
+	if($endtime > $starttime) {
+		$sQuery = sprintf(
+			'INSERT INTO %s (start_time, end_time, entry_type, repeat_id, '
+			.'room_id, create_by, name, type, description) VALUES ( %d, %d, %s,'
+			.' %d, %d, \'%s\', \'%s\', \'%s\', \'%s\')', 
+			$tbl_entry, $starttime, $endtime, sql_escape_arg($entry_type), 
+			$repeat_id, $room_id, sql_escape_arg($owner), sql_escape_arg($name), 
+			sql_escape_arg($type), sql_escape_arg($description)
+		);
 	}
+	if (sql_command($sQuery) < 0) return 0;
 	
-	if (sql_command($sql) < 0) return 0;
-	
-	return sql_insert_id("$tbl_entry", "id");
+	return sql_insert_id($tbl_entry, 'id');
 }
 
 /** mrbsCreateRepeatEntry()
