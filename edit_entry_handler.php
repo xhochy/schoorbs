@@ -10,8 +10,6 @@
 ## Includes ##
 
 require_once 'grab_globals.php';
-require_once 'schoorbs-includes/database/schoorbs_sql.php';
-require_once 'schoorbs-includes/mail.functions.php';
 
 /** The Configuration file */
 require_once 'config.inc.php';
@@ -23,6 +21,12 @@ require_once 'schoorbs-includes/global.functions.php';
 require_once "schoorbs-includes/database/$dbsys.php";
 /** The authetication wrappers */
 require_once 'schoorbs-includes/authentication/schoorbs_auth.php';
+/** Database helper functions */
+require_once 'schoorbs-includes/database/schoorbs_sql.php';
+/** E-Mail helper functions */
+require_once 'schoorbs-includes/mail.functions.php';
+/** Helper function for this page */
+require_once 'schoorbs-includes/edit_entry_handler.functions.php';
 
 ## Input ##
 
@@ -38,6 +42,7 @@ if (isset($_REQUEST['rep_end_day'])) $rep_end_day = $_REQUEST['rep_end_day'];
 if (isset($_REQUEST['rep_end_year'])) $rep_end_year = $_REQUEST['rep_end_year'];
 if (isset($_REQUEST['rep_day'])) $rep_day = $_REQUEST['rep_day'];
 if (isset($_REQUEST['rep_opt'])) $rep_day = $_REQUEST['rep_opt'];
+if (isset($_REQUEST['ampm'])) $rep_day = $_REQUEST['ampm'];
 if (isset($_REQUEST['id'])) $id = $_REQUEST['id'];
 if (isset($_REQUEST['rooms'])) {
     $rooms = $_REQUEST['rooms'];
@@ -52,61 +57,41 @@ list($duration, $dur_units, $units) = input_Duration();
 if ($enable_periods) {
 	$hour = 12;
 	$minute = $period;
+	$max_periods = count($periods);
 }
-
 
 ## Main ##
 
 if(!getAuthorised(1) || !getWritable($create_by, getUserName())) showAccessDenied();
 
 if (isset($all_day) && ($all_day == 'yes')) {
-    if($enable_periods) {
-        $starttime = mktime(12, 0, 0, $month, $day, $year);
-        $endtime   = mktime(12, $max_periods, 0, $month, $day, $year);
-    } else {
-        $starttime = mktime($morningstarts, 0, 0, $month, $day  , $year, is_dst($month, $day  , $year));
-        $end_minutes = $eveningends_minutes + $morningstarts_minutes;
-        ($eveningends_minutes > 59) ? $end_minutes += 60 : '';
-        $endtime   = mktime($eveningends, $end_minutes, 0, $month, $day, $year, is_dst($month, $day, $year));
-    }
+    list($starttime, $endtime) = allDayStartEndTime();
 } else {
-    if (!$twentyfourhour_format) {
-      if (isset($ampm) && ($ampm == "pm") && ($hour<12)) {
-        $hour += 12;
-      }
-      if (isset($ampm) && ($ampm == "am") && ($hour>11)) {
-        $hour -= 12;
-      }
-    }
+	if (!$twentyfourhour_format) {
+		if (isset($ampm) && ($ampm == "pm") && ($hour < 12)) {
+			$hour += 12;
+		}
+		if (isset($ampm) && ($ampm == "am") && ($hour > 11)) {
+			$hour -= 12;
+		}
+	}
 
-    $starttime = mktime($hour, $minute, 0, $month, $day, $year, is_dst($month, $day, $year, $hour));
-    $endtime   = mktime($hour, $minute, 0, $month, $day, $year, is_dst($month, $day, $year, $hour)) + ($units * $duration);
-
-    # Round up the duration to the next whole resolution unit.
-    # If they asked for 0 minutes, push that up to 1 resolution unit.
-    $diff = $endtime - $starttime;
-    if (($tmp = $diff % $resolution) != 0 || $diff == 0)
-        $endtime += $resolution - $tmp;
-
-    $endtime += cross_dst( $starttime, $endtime );
+	list($starttime, $endtime) = commonStartEndTime($hour, $minute, $units, $duration);
 }
 
-if(isset($rep_type) && isset($rep_end_month) && isset($rep_end_day) && isset($rep_end_year))
-{
+if (isset($rep_type) && isset($rep_end_month) && isset($rep_end_day) && isset($rep_end_year)) {
     // Get the repeat entry settings
     $rep_enddate = mktime($hour, $minute, 0, $rep_end_month, $rep_end_day, $rep_end_year);
-}
-else
+} else {
     $rep_type = 0;
+}
 
-if(!isset($rep_day))
-    $rep_day = array();
+if(!isset($rep_day)) $rep_day = array();
 
 # For weekly repeat(2), build string of weekdays to repeat on:
 $rep_opt = "";
 if (($rep_type == 2) || ($rep_type == 6))
     for ($i = 0; $i < 7; $i++) $rep_opt .= empty($rep_day[$i]) ? "0" : "1";
-
 
 # Expand a series into a list of start times:
 if ($rep_type != 0)
@@ -115,8 +100,7 @@ if ($rep_type != 0)
 
 # When checking for overlaps, for Edit (not New), ignore this entry and series:
 $repeat_id = 0;
-if (isset($id))
-{
+if (isset($id)) {
     $ignore_id = $id;
     $repeat_id = sql_query1("SELECT repeat_id FROM $tbl_entry WHERE id=$id");
     if ($repeat_id < 0)
@@ -144,7 +128,7 @@ foreach ( $rooms as $room_id ) {
 	    # cross DST
             $diff = $endtime - $starttime;
             $diff += cross_dst($reps[$i], $reps[$i] + $diff);
-	    
+    
 	    $tmp = schoorbsCheckFree($room_id, $reps[$i], $reps[$i] + $diff, $ignore_id, $repeat_id);
 
             if(!empty($tmp))
@@ -251,20 +235,19 @@ if(empty($err))
     if(isset($id))
         schoorbsDelEntry(getUserName(), $id, ($edit_type == "series"), 1);
 
-    sql_mutex_unlock("$tbl_entry");
+    sql_mutex_unlock($tbl_entry);
     
     $area = mrbsGetRoomArea($room_id);
     
     # Now its all done go back to the day view
-    Header("Location: day.php?year=$year&month=$month&day=$day&area=$area");
+    header("Location: day.php?year=$year&month=$month&day=$day&area=$area");
     exit;
 }
 
 # The room was not free.
-sql_mutex_unlock("$tbl_entry");
+sql_mutex_unlock($tbl_entry);
 
-if(strlen($err))
-{
+if (strlen($err) > 0) {
     print_header();
     
     echo "<h2>" . get_vocab("sched_conflict") . "</h2>";
