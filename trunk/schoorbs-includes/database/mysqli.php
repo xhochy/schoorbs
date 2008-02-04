@@ -91,8 +91,10 @@ function sql_query ($sql)
  */
 function sql_row ($r, $i)
 {
+	if ($r == null) return 0;
     if ($i >= $r->num_rows) {
       $r->close();
+      
       return 0;
     }
     $r->data_seek($i);
