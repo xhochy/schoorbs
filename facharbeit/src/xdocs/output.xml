@@ -5,14 +5,290 @@
     <title>Ausgabe (MVC)</title>
   </header>
   <body>
+    <section id="critics">
+      <title>Kritikpunkte</title>
+      <p>
+        Einer meiner persönlichen Hauptkritikpunkte an MRBS war die Ausgabe. 
+        Die Logik(⇒ Controller) und die Ausgabe(⇒ View) waren total vermischt, 
+        hat man z.B. die Uhrzeit berechnet kam in der nächsten Zeile sofort 
+        eine <code>echo()</code>-Anweisung um dies als HTML auszugeben. Da ich 
+        ein Freund der <em>MVC-Architektur</em> bin, vor allem wegen der 
+        besseren Übersichtlichkeit und der verbesserten Modularität habe ich 
+        die Ausgabe des HTML-Codes in Template-Dateien ausgelagert, welche vom 
+        Template-System <a href="http://smarty.php.net">Smarty</a> geparst und 
+        verwaltet werden. So kann man nun die Logik verändern ohne 
+        unabsichtlich die Ausgabe zu zerstören. Durch die abgetrennten Templates 
+        kann nun auch verschiedene Designs für die GUI entwerfen. Man muss nur 
+        noch die *.tpl-Dateien ersetzen, vorher musste man immer den Code 
+        anpassen und man bekam enorme Probleme, wenn man auf eine neue 
+        Softwareversion updaten wollte.
+      </p>
+      <p>
+        HTML-Seiten werden auch dann angezeigt, wenn ihr Code nicht dem Standard 
+        entspricht(im Gegensatz zu XML-Dateien), jedoch wird dieser Code von 
+        manchen Browsern fehlinterpretiert und Suchmaschinen kommen mit solchen 
+        Dokumenten schlechter zurecht, dazu ist ein valider HTML-Code eine 
+        wichtige Vorraussetzung für Behindertenfreundlichkeit. Ich habe nahezu 
+        alle HTML-Ausgaben(ca. 96%) valide gemacht, leider nicht alle, da dies 
+        das Volumen der Facharbeit endgültig sprengen würde. Eine sehr große 
+        Hilfe bei diesem Prozess war auch die Auslagerung des HTML-Code in die 
+        Templates, da man so direkt die Struktur des Codes auf einen Blick 
+        erkennt.
+      </p>
+      <p>
+        Wichtig für die Validität ist auch noch, dass bei XHTML-Dokumenten 
+        entweder der Doctype oder die XML-Processing-Anweisung in der ersten 
+        Zeile steht, dieser Aspekt wird oft vernachlässigt, lässt sich bei PHP 
+        aber sehr einfach sicherstellen, da man bei Dateien, die mit Code enden 
+        das letzte <code>?&gt;</code> weglassen kann, so dass die nachfolgenden 
+        Zeilen als leeren Code nur interpretiert, aber nicht ausgegeben werden. 
+        Diese Technik ist ein oft nicht beachteter, aber offizieller Hinweis aus 
+        der offiziellen PHP-Dokumentation.
+      </p>
+      <p>
+        Obwohl viele Teile von MRBS schon stark veraltet wirken, bringt es 
+        einige JavaScript Funktionen mit, die dem Benutzer eine nettere GUI 
+        bieten sollen. Jedoch sind die verwendeten JavaScript Funktionen sehr 
+        umständlich programmiert und funktionieren in neueren Browsern nicht 
+        mehr. Ich habe deshalb hier u.a. die Basisbibliothek gewechselt und den 
+        Code angepasst, so dass er auch mit modernen Browsern ausgeführt werden 
+        kann.
+      </p>
+    </section>
+    <section id="js">
+      <title>Javascript Hilfen</title>
+      <p>
+        Gleich zu Anfang möchte ich anmerken, dass ich Javascript nur als Hilfe 
+        einsetze, alle Seiten funktionieren auch ohne Javascript einwandfrei. 
+        Die beiden Fälle, die ich hier beschreibe waren zwar auch schon in MRBS 
+        vorhanden, jedoch ist ihre Implementierung so veraltet und schlecht 
+        programmiert, dass sie in nahezu keinem modernen Browser mehr 
+        funktioniert hat. Ich habe auch noch die Javascript-Bibliothek 
+        <a href="http://jquery.com">jQuery</a> eingebunden, da sie behilflich 
+        ist, wenn man Scripte für unterschiedliche Browser implementiert und sie 
+        einige Hilfsfunktionen bereitstellt.
+      </p>
+      <p>
+	    <strong>Zellenhervorhebung</strong>
+	  </p>
+      <p>
+         Eine einzelne Zelle einer Tabelle hervorzuheben ist sehr hilfreich, da 
+         man oft nicht genau sieht, in welcher Zeile man sich befindet(vor allem 
+         bei schlecht gewählten Cursorsymbolen). Diese Funktionalität könnte man 
+         zwar über eine CSS-Klasse td:hover realisieren, die jedoch nur von 
+         neueren Feuerfüchsen und Opera unterstützt wird, weshalb die 
+         Javascriptlösung eine nahezu platformunabhängige Technik darstellt. 
+         Fährt man mit der Maus über die Zelle, so wird das 
+         <code>onmousein</code>-Ereignis ausgelöst und die Funktion 
+         <code>HighlightCell</code> aufgerufen. Zuerst wird geprüft, ob die 
+         Eigenschaft <code>isActive</code>(eigene Erweiterung des DOM von mir) 
+         bei dieser Zelle gesetzt auf true ist, wenn nicht wird dies dann 
+         gemacht und nur dann wird der Zelle die CSS-Klasse <code>highlight</code>
+         hinzugefügt. Da ich eine CSS-Klasse zum Objekt hinzufüge und nicht 
+         z.B. die Hintergrungfarbe ändere, kann man immer variabel per CSS 
+         festlegen, was geändert werden soll, man könnte also auch ein 
+         Hintergrundbild einfügen. Bewegt sich nun mit dem Mauszeiger woanders 
+         hin, so wird das <code>onmouseout</code>-Ereignis ausgelöst und die 
+         Funktion <code>UnHighlightCell</code> aufgerufen, wo die CSS-Klasse 
+         <code>highlight</code> wieder entfernt wird.
+      </p>
+      <p>
+        <strong>automatische Anpassung des Datumfeldes</strong>
+      </p>
+      <p>
+        Bei Schoorbs/MRBS gibt es oben in der Mitte ein Formular, bei welchem 
+        man einen Tag auswählen kann, zu dem man springen will, jedoch hat nicht 
+        jeder Monat die gleiche Anzahl an Tagen, sollte also jemand den Monat 
+        oder das Jahr wechseln, so muss die Liste mit den möglichen Tagen 
+        angepasst werden, dies wird mit der Funktion <code>ChangeOptionDays</code>
+        realisiert. Wie auch schon die vorherige Javascripthilfe hat dies auch 
+        nicht in neueren Browsern funktioniert, weil die DOM-Zugriffe über nicht 
+        standardkonforme Anweisungen geschah. Ich habe das Vorgehen bei dieser 
+        Funktion beigehalten, aber die Zugriffe auf die HTML-Elemente geändert, 
+        die Vorgehensweise der Funktion ist wie folgt:
+      </p>
+      <ol>
+        <li>
+          Mit Hilfe der jQuery-Bibliothke werden die Referenzen auf die 
+          Eingabefelder geholt
+        </li>
+        <li>
+          Es wird die Anzahl der Tage, die der aktuell eingestellte Monat hat 
+          berechnet
+        </li>
+        <li>
+          Hat die Liste der Tage mehr Einträge als der Monat Tage hat, werden 
+          die letzten gelöscht
+        </li>
+        <li>
+          Hat die Luste der Tage weniger Einträge als der Monat Tage hat, werden 
+          die noch fehlenden hinzugefügt
+        </li>
+      </ol>
+    </section>
     <section id="template">
       <title>Template-System</title>
       <p>
-        <!-- Was ist das? -->
-        <!-- Warum? -->
-        <!-- Wie ist es denn jetzt aufgebaut? -->
-        ...
+        Wie schon in den Abschnitten zuvor erwähnt, habe ich den (X)HTML-Code 
+        ausgelagert. Dazu habe ich das Template-System Smarty benutzt, welches 
+        vollständig in PHP geschrieben ist und so auf allen Platformen läuft, 
+        auf denen auch der Rest des Codes läuft, ein anderer Vorteil von Smarty 
+        ist die Möglichkeit auch noch ein bisschen Funktionalität einzubauen, 
+        z.B. habe ich durch ein Plugin die Unterstützung für Übersetzungen 
+        innerhalb des Templates ermöglicht.
       </p>
+      <p>
+        Der erste Schritt bei der Integration von Smarty ist das Bereitstellen 
+        einer Ornderstruktur:
+      </p>
+      <ul>
+        <li>
+          Ein Ordner zum Speichern der Templates
+        </li>
+        <li>
+          Ein Ordner zum Zwischenspeichern der kompilierten Templates (Schoorbs 
+          benötigt auf diesen Ordner Schreibrechte)
+        </li>
+        <li>
+          Ein Ordner zum Cachen der fertig gerenderten Seiten (nicht benutzt)
+        </li>
+        <li>
+          Ein Ordner zum Speichern der Konfigurationsdateuen (nicht benutzt)
+        </li>
+      </ul>
+      <p>
+        Hat man diese Ordner angelegt, kann man mit dem Schreiben der Templates 
+        anfangen. Um Smarty zu nutzen muss man ein Objekt der gleichnamigen 
+        Klasse erstellen und ihm die Positionen der gerade eben erstellten 
+        Ordner mitteilen. 
+      </p>
+      <source>$smarty = new Smarty();
+ 
+$smarty->template_dir = dirname(__FILE__).'/Smarty/templates';
+$smarty->compile_dir = dirname(__FILE__).'/Smarty/templates_c';
+$smarty->cache_dir = dirname(__FILE__).'/Smarty/cache';
+$smarty->config_dir = dirname(__FILE__).'/Smarty/configs';</source>
+      <p>
+        <strong>typische Anwendung</strong>
+      </p>
+      <p>
+        Wie man Smarty innerhalb eines PHP-Scripts möchte ich nun im Folgenden 
+        an einem Ausschnitt von <code>day.php</code> zeigen, welcher sich über 
+        die erste if-Abfrage des Main-Blocks erstreckt. Mit diesem Template soll 
+        eine Liste aller verfügbaren Bereiche dargestellt werden. Templates 
+        enthalten immer die Struktur des Dokuments und definieren an welche
+        Stellen die Daten eingefügt werden sollen. Die Daten die in das Template 
+        eingefügt werden sollen, übermittelt man mit der Funktionen 
+        <code>assign()</code>. Es gibt 2 Varianten diese Funktion aufzurufen, 
+        entweder gibt man als ersten Parameter den Namen der Variable an und als 
+        zweiten Parameter den Inhalt oder man übergibt als einzigen Parameter 
+        einen assoziativen Array, wobei hier der Schlüssel der Variablenname ist 
+        und der Inhalt des Feldes im Array gleichzeitig der Inhalt der Variable 
+        ist.
+      </p>
+      <p>
+        Variante 1:
+      </p>
+      <source>$smarty->assign('area_select_list', make_area_select_html('day.php', $area, $year, $month, $day));</source>
+      <p>
+        Variante 2:
+      </p>
+      <source>$smarty->assign(array(
+    'area' => $area, 'dwm' => 'day.php',
+    'day' => $day, 'year' => $year, 'month' => $month,
+    'area_list_format' => $area_list_format
+));</source>
+      <p>
+        Nachdem man nun die Daten übergeben hat, muss man Smarty mit 
+        <code>display()</code> nur noch sagen, welches Template es nutzen soll 
+        und damit wäre die Arbeit für den Programmierer der Logik getan, wenn 
+        man im Team arbeiten würde.
+      </p>
+      <source>$smarty->display('area_list.tpl');</source>
+      <p>
+        <strong>typisches Template</strong>
+      </p>
+      <p>
+        Nachdem ich gerade eben die Arbeitsschritte des (Logik-)Programmiers 
+        erklärt habe, komme ich nun zum Bereich, der für einen Layouter wichtig 
+        wäre, der Aufbau des Templates. Wie man auf den ersten Blick bei unterm 
+        Beispiel erkennt, besteht ein Template entweder aus (X)HTML-Code oder in 
+        geschweifte Klammern gesetzter Smarty-Code. Die erste Smarty-Anweisung 
+        führt mein <code>get_vocab</code>-Plugin aus und holt sich damit die 
+        passende Übersetzung für „areas“.
+      </p>
+      <source>{get_vocab text="areas"}</source>
+      <p>
+        In der darauffolgenden Zeile steht eine if-Abfrage, die 
+        <code>$area_list_format</code> mit „select“ vergleicht(⇒ 'eq' 
+        entspricht '=='). Schreibt man in Smarty einfach nur den Namen einer 
+        Variable in Klammern, so wird diese dort ausgeben. Foreach-Schleifen 
+        funktionieren in Smarty genauso wie in normalen PHP. Bei dem Zugriff auf 
+        <code>$row.id</code> könnte man als Programmierer, der nicht nur in PHP 
+        programmiert, denken, <code>$row</code> wäre ein Objekt und <code>id</code> 
+        eine Eigenschaft, was jedoch nicht so ist. Bei <code>$row</code> handelt 
+        es sich um einen assoziativen Array, <code>$row.id</code> ist eine 
+        besondere Schreibweise von Smarty und ist äquivalent zu 
+        <code>$row['id']</code> in PHP.
+      </p>
+      <source>&lt;table width="100%"&gt;
+    &lt;tr&gt;
+        &lt;td style="width: 40%;"&gt;
+           &lt;span style="text-decoration: underline"&gt;{get_vocab text="areas"}&lt;/span&gt;&lt;br /&gt;
+           {if $area_list_format eq "select"}
+           {$area_select_list}
+           {else}
+           {foreach from=$areas item=row}
+                &lt;a href="{$dwm}?year={$year}&amp;amp;month={$month}&amp;amp;day={$day}&amp;amp;area={$row.id}"&gt;
+                {if $row.id eq $area}
+                    &lt;span style="color: red;"&gt;{$row.area_name|escape:"html"}&lt;/span&gt;
+                {else}
+                    {$row.area_name|escape:"html"}
+                {/if}
+                &lt;/a&gt;&lt;br /&gt;
+           {/foreach}
+           {/if}
+        &lt;/td&gt;</source>
+      <p>
+        <strong>get_vocab Plugin</strong>
+      </p>
+      <p>
+        Zum Übersetzten von Textstellen wird in den PHP-Scripten von 
+        MRBS/Schoorbs die Funktion <code>get_vocab()</code> genutzt. Zwar kann 
+        man in Smarty mit <code>{php}..code..{/php}</code> auch PHP-Code benutzen, 
+        jedoch verfehlt dies eigentlich den Sinn der Trennung zwischen 
+        Programmierung und Layout. Smarty bietet hierzu die Möglichkeit Plugins 
+        zu erstellen, die dann Funktionen nach dem Type 
+        <code>{funcname argname=argval arg2name=arg2val}</code> bereitstellen. 
+        Plugins legt man bei Smarty im Verzeichnis 
+        <code>&lt;Smarty-Installation&gt;/lib/plugins</code> ab. Um nun in 
+        Smarty eine Funktion <code>get_vocab</code> zu bekommen, erstellt man 
+        hierzu in PHP eine Funktion <code>smarty_function_get_vocab</code>.
+      </p>
+      <p>
+        Da wir bei Smarty die Parameter einer Funktion nicht wie üblich bekommen, 
+        sondern über einen assoziativen Array namens <code>$params</code>, muss 
+        man überprüfen, ob auch alle Parameter gegeben sind, in diesem Fall 
+        braucht man nur den Parameter <code>text</code>, ist dieser nicht 
+        vorhanden gebe ich über das Smarty-Objekt einen Fehler aus. 
+      </p>
+      <source>if (!isset($params['text'])) {
+    $smarty->trigger_error("get_vocab: missing 'text' parameter");
+    return;
+}</source>
+      <p>
+        Da es keinen Sinn macht für einen leeren String extra die Funktion 
+        <code>get_vocab</code> aufzurufen, gebe ich auch nichts zurück, wenn 
+        nichts eingegeben wurde.
+      </p>
+      <source>if($params['text'] == '') {
+    return;
+}</source>
+      <p>
+        Sollte alles gegeben sein, so rufe ich <code>get_vocab()</code> auf und 
+        gebe deren Rückgabewert direkt wieder aus.
+      </p>
+      <source>return get_vocab($params['text']);</source>
     </section>
   </body>
 </document>
