@@ -5,18 +5,99 @@
     <title>Codequalität</title>
   </header>
   <body>
-    <section id="mrbs">
-      <title>MRBS</title>
-      <p>
-        <!-- Was war schlecht? -->
-        ...
-      </p>
-    </section>
     <section id="schoorbs">
-      <title>Veränderungen</title>
+      <title>Codequalität in MRBS und meine Veränderungen in Schoorbs</title>
       <p>
-        <!-- Was hab ich tun können? -->
-        ...
+       Für den Endkunden unwichtig, jedoch für den Entwickler von hoher 
+       Bedeutung ist die Qualität des Codes. Ist er schön strukturiert und 
+       kompakt aufgebaut, lässt er sich simpler warten und einfacher 
+       Funktionalitäten ergänzen. Ist der Code hingegen komplex und 
+       durcheinander geschrieben(<cite>'It was hard to write, so it should be 
+       hard to read'</cite>) können hier sich eher Fehler einschleichen, denn 
+       keiner außer dem Autor versteht den Code und die dazugehörige Logik.
+     </p>
+     <p>
+       Ein gute Hilfe Fehler zu finden ist die Möglichkeit an bestimmten Stellen 
+       sogenannten Debug-Code einzufügen, der die Inhalte bestimmter Variabeln 
+       ausgibt, jedoch sollte jeder Entwickler ihn auch sofort wieder entfernen, 
+       wenn er seinen Fehler gefunden hat, da Debug-Code normalerweise schnell 
+       und ohne genaueres Nachdenken geschrieben wurde und so auch eine mögliche 
+       Sicherheitslücke sein könnte. Die einzigste Möglichkeit Debug-Code in 
+       einem Endprodukt beständig zu erhalten wäre der Einsatz eines 
+       ausgereifeten Protokollierungssystem, was aber meist wieder die 
+       Performance erheblich drückt. In MRBS war an vielen Stellen Debug-Code 
+       vorhanden, der keinen sinnvollen Nutzen hat, weshalb ich ihn entfernt 
+       habe.
+     </p>
+     <p>
+       Ein schlechter Programmierstil ist es, wenn man bestimmte Codeblöcke 
+       einfach kopiert und danach nicht verändert, sondern die gleiche 
+       Funktionalität an zwei oder mehr Orten hat. Sollte man nun ein Fehler 
+       gefunden werden, muss man erst alle Orte suchen, an denen der Fehler 
+       durch Copy&amp;Paste auch noch sein könnte. In MRBS kam die vor allem im 
+       ersten Drittel eines Scripts vor, von dem ich jetzt viele Teile 
+       ausgelagert habe, als Beispiel hierfür kann ich die 
+       <code>input_*()</code>-Funktionen nennen, die ich im vorderen Teil der
+       Facharbeit (Eingabeverarbeitung) beschrieben habe. Da ich durch das 
+       Ausgliedern einen enormen Zuwachs an Dateien bekommen habe, habe ich auch 
+       eine neue Ordnerstruktur angelegt: Alle Dateien, die nicht direkt 
+       aufgerufen werden, sondern nur Funktionalität bereitstellen, liegen unter 
+       <code>'schoorbs-includes/'</code>, sollte es von einem Teilbereich 
+       mehrere Dateien geben, so habe ich dafür auch noch einen Unterordner 
+       angelegt, z.B. <code>'schoorbs-includes/database/'</code>.
+     </p>
+     <p>
+       Eine wichtige Eigenschaft von guten Code ist seine Lesbarkeit, um die 
+       Struktur schnell zu erkennen. Hierzu definiert man meistens 
+       Kodierungsrichtlinien(engl. Styleguide), die Einrückungen und 
+       Variabelnpräfixe enthalten. In MRBS ist leider kein klarer 
+       Programmierstil zu entdecken, weshalb ich während meiner Softwareanalyse 
+       den Code besser strukturiert habe, hierzu habe ich mich an den Styleguide 
+       des <a href="http://pear.php.net/">PEAR-Projekts</a> gehalten, da dieser 
+       durch seine Verbreitung und gut durchdachte Ausarbeitung ein sehr hohes 
+       Ansehen in der PHP-Szene genießt. Durch den nun neu strukturierten Code 
+       war es extrem einfacher bestimmte Sinnabschnitte innerhalb eines Scripts 
+       zu erkennen, vor allem Schleifen wurden hierdurch deutlich lesbarer.
+     </p>
+     <p>
+       Ein weiter Kritikpunkt ist die Nutzung von <code>include</code> als 
+       Anweisung zum Einbinden von anderen Scripten, da hier das Programm selbst 
+       dann weiterläuft, wenn eine Datei nicht gefunden wurde und so bestimmte 
+       Funktionen/Konfiguartionen nicht zur Verfügung stehen. In diesem Fall ist 
+       die Anweisung <code>require</code> hier deutlich sicherer, da wir jedoch meistens 
+       (eigentlich immer) nicht wollen, dass eine Datei zwei Mal eingebunden 
+       wird und so Funktionen doppelt definiert sind, habe ich alle 
+       <code>include</code>-Anweisungen durch <code>require_once</code> ersetzt.
+     </p>
+     <p>
+       Leider waren bei dem meiner Facharbeit zu Grunde liegende MRBS innerhalb 
+       eines Scritps die einzelnen Vorgänge nicht sauber voneinander abgetrennt, 
+       weshalb ich die Abfloge von bestimmten Codeblöcken vertauscht habe. 
+       Jetzt verfolgen alle Scripte den geleichen Prozess, zu erst werden allen 
+       benötigten Dateien eingebunden, dann werden die Variabeln initialisiert, 
+       entweder als durch einen Defaultwert oder durch eine Eingaber per 
+       <code>POST</code>/<code>GET</code>-Parameter, darauffolgt der Hauptteil 
+       des Scripts. Im Hauptteil werden nacheinander alle wichtigen Werte zur 
+       Anzeige eines Templates erzeugt und dann Template dann ausgegeben, pro 
+       Script werden ungefähr 2-3 Templates bearbeitet.
+     </p>
+     <p>
+       Zu verständlichen Code gehören auch sinnvolle Kommentare, so dass man an 
+       nicht selbst erschließenden Stellen die Funktions durch den Kommentar 
+       dargestellt bekommt. Ich habe einen großen Teil der Kommentare so 
+       strukturiert, dass man die mit Hilfe des Tools PHPDocumentor extrahieren 
+       kann und als HTML-Seite dann einen Überblick über die verfügbaren 
+       Funktionen und deren Nutzen erhält. Man kann diese 
+       <cite>'Code-Dokumentation'</cite> mit dem Befehl <code>rake doc</code>
+       erzeugen, sie befindet sich dann im Verzeichnis 
+       <code>'schoorbs-doc/'</code>.
+     </p>
+     <p>
+       Die ganzen Umstrukturierungen führen erfreulicherweise auch zu einem 
+       kompakteren Code, teils durch die Auslagerung von doppelten Funktionen, 
+       teils durch den Einsatz eines Templatesystems. Dies kann man sehr gut am 
+       Beispiel der Datei <code>day.php</code> sehen, die inzwischen um mehr als 
+       100 Zeilen kürzer ist.
       </p>
     </section>
   </body>
