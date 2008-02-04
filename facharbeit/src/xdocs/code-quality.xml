@@ -12,8 +12,8 @@
        Bedeutung ist die Qualität des Codes. Ist er schön strukturiert und 
        kompakt aufgebaut, lässt er sich simpler warten und einfacher 
        Funktionalitäten ergänzen. Ist der Code hingegen komplex und 
-       durcheinander geschrieben(<cite>'It was hard to write, so it should be 
-       hard to read'</cite>) können hier sich eher Fehler einschleichen, denn 
+       durcheinander geschrieben(<em>'It was hard to write, so it should be 
+       hard to read'</em>) können hier sich eher Fehler einschleichen, denn 
        keiner außer dem Autor versteht den Code und die dazugehörige Logik.
      </p>
      <p>
@@ -88,7 +88,7 @@
        strukturiert, dass man die mit Hilfe des Tools PHPDocumentor extrahieren 
        kann und als HTML-Seite dann einen Überblick über die verfügbaren 
        Funktionen und deren Nutzen erhält. Man kann diese 
-       <cite>'Code-Dokumentation'</cite> mit dem Befehl <code>rake doc</code>
+       <em>'Code-Dokumentation'</em> mit dem Befehl <code>rake doc</code>
        erzeugen, sie befindet sich dann im Verzeichnis 
        <code>'schoorbs-doc/'</code>.
      </p>
