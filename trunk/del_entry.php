@@ -21,8 +21,6 @@ require_once "schoorbs-includes/database/$dbsys.php";
 require_once 'schoorbs-includes/authentication/schoorbs_auth.php';
 /** Database helper functions */
 require_once 'schoorbs-includes/database/schoorbs_sql.php';
-/** E-Mail helper functions */
-require_once 'schoorbs-includes/mail.functions.php';
 /** The logging wrapper */
 require_once 'schoorbs-includes/logging.functions.php';
 
@@ -43,17 +41,11 @@ if(getAuthorised(1) && ($info = mrbsGetEntryInfo($id)))
     if($info['start_time'] < time())
         fatal_error(true, 'Start time in Past, could not delete entry!');
 
-    if (MAIL_ADMIN_ON_DELETE) {
-        // Gather all fields values for use in emails.
-        $mail_previous = getPreviousEntryData($id, $series);
-    }
     sql_begin();
 	$result = schoorbsDelEntry(getUserName(), $id, $series, 1);
 	sql_commit();
 	if ($result)
 	{
-        // Send a mail to the Administrator
-        (MAIL_ADMIN_ON_DELETE) ? $result = notifyAdminOnDelete($mail_previous) : '';
         // Log deletion of entry
         schoorbsLogDeletedEntry($info);
         header("Location: day.php?day=$day&month=$month&year=$year&area=$area");
