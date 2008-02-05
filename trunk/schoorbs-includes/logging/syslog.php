@@ -21,7 +21,8 @@
  */
 function schoobsLogStart_Backend()
 {
-	openlog('Schoorbs', LOG_ODELAY | LOG_PID, LOG_USER);
+	openlog('Schoorbs', LOG_ODELAY | LOG_PID, 
+		$_SCHOORBS['logging']['syslog-facility']);
 }
 
 /**
@@ -32,6 +33,8 @@ function schoobsLogStart_Backend()
  */
 function schoorbsLogWriteLine_Backend($sLine)
 {
-	syslog(LOG_INFO, $sLine);
+	global $_SCHOORBS;
+	
+	syslog($_SCHOORBS['logging']['syslog-priority'], $sLine);
 }
  
