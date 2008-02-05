@@ -1,0 +1,47 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE document PUBLIC "-//APACHE//DTD Documentation V2.0//EN" "http://forrest.apache.org/dtd/document-v20.dtd">
+<document>
+  <header>
+    <title>Konfiguration</title>
+  </header>
+  <body>
+    <section id="short">
+      <title>Allgemein</title>
+      <p>
+        <!-- Wozu Logging ? -->
+        <!-- Was wird protokolliert? -->
+        <!-- Wo richte ich es ein? -->
+        <!-- Was ist zu beachten (Datenschutz, Performance) ? -->
+        <!-- Welches Backend nutze ich am Besten? -->
+        ...
+      </p>
+     </section>
+     <section id="syslog">
+      <title>Syslog</title>
+      <p>
+        <!-- Welche Optionen gibt es? -->
+        <!-- Welche Software-Vorraussetzungen müssen erfüllt sein? -->
+        <!-- Muss ich noch woanders Einstellungen vornehmen? -->
+        ...
+      </p>
+    </section>
+    <section id="file">
+      <title>Datei</title>
+      <p>
+        <!-- Welche Optionen gibt es? -->
+        <!-- Welche Software-Vorraussetzungen müssen erfüllt sein? -->
+        <!-- Muss ich noch woanders Einstellungen vornehmen? -->
+        ...
+      </p>
+    </section>
+    <section id="database">
+      <title>Datenbank</title>
+      <p>
+        <!-- Welche Optionen gibt es? -->
+        <!-- Welche Software-Vorraussetzungen müssen erfüllt sein? -->
+        <!-- Muss ich noch woanders Einstellungen vornehmen? -->
+        ...
+      </p>
+    </section>
+  </body>
+</document>

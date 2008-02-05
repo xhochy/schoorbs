@@ -33,6 +33,10 @@ See http://forrest.apache.org/docs/linking.html for more info
     <code-quality label="Codequalität" href="code-quality.html" description="Codequalität" />
     <output label="Ausgabe" href="output.html" description="Ausgabe" />
   </developer>
+  <logging label="Logging">
+    <log-config label="Konfiguration" description="Konfiguration" href="log-config.html" />
+    <log-usage label="Anwendung" description="Anwendung" href="log-usage.html" />
+  </logging>
   <timetable label="Stundenplanparser">
     <tt-usage label="Nutzung" href="tt-usage.html" description="Nutzung" />
     <tt-devel label="Technisches" href="tt-devel.html" description="Technisches" />

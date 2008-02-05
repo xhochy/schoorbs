@@ -1,0 +1,26 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE document PUBLIC "-//APACHE//DTD Documentation V2.0//EN" "http://forrest.apache.org/dtd/document-v20.dtd">
+<document>
+  <header>
+    <title>Nutzung</title>
+  </header>
+  <body>
+    <section id="tech-usage">
+      <title>technische Anwendung</title>
+      <p>
+        <!-- Wie spricht man die Logging-Schnittstelle an? -->
+        <!-- Wie kann ich selber an bestimmten Stellen in Schoorbs Logging einbauen? -->
+        ...
+      </p>
+    </section>
+    <section id="tech-own">
+      <title>eingenes Backend programmieren</title>
+      <p>
+        <!-- Wozu? -->
+        <!-- Welche Funktionen muss ich implementieren? -->
+        <!-- Wie kann ich es Test(auch Unit-Tests einbauen!!) ? -->
+        ...
+      </p>
+    </section>
+  </body>
+</document>
