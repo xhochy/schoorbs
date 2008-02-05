@@ -16,7 +16,7 @@ require_once 'schoorbs-includes/global.web.php';
 /** The general functions */ 
 require_once 'schoorbs-includes/global.functions.php';
 /** The database wrapper */
-require_once "schoorbs-includes/database/$dbsys.php";
+require_once 'schoorbs-includes/database/'.$dbsys.'.php';
 /** The authetication wrappers */
 require_once 'schoorbs-includes/authentication/schoorbs_auth.php';
 /** Database helper functions */
@@ -31,21 +31,21 @@ if (isset($_REQUEST['series'])) $series = intval($_REQUEST['series']);
 
 ## Main ##
 
-if(getAuthorised(1) && ($info = mrbsGetEntryInfo($id)))
-{
-	$day   = strftime("%d", $info["start_time"]);
-	$month = strftime("%m", $info["start_time"]);
-	$year  = strftime("%Y", $info["start_time"]);
-	$area  = mrbsGetRoomArea($info["room_id"]);
+if (getAuthorised(1) && ($info = mrbsGetEntryInfo($id))) {
+	$day   = date('d', $info['start_time']);
+	$month = date('m', $info['start_time']);
+	$year  = date('Y', $info['start_time']);
+	$area  = mrbsGetRoomArea($info['room_id']);
 
-    if($info['start_time'] < time())
+    if ($info['start_time'] <= time()) {
+        /** @todo Translate this */
         fatal_error(true, 'Start time in Past, could not delete entry!');
+    }
 
     sql_begin();
 	$result = schoorbsDelEntry(getUserName(), $id, $series, 1);
 	sql_commit();
-	if ($result)
-	{
+	if ($result) {
         // Log deletion of entry
         schoorbsLogDeletedEntry($info);
         header("Location: day.php?day=$day&month=$month&year=$year&area=$area");
