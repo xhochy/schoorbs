@@ -8,6 +8,25 @@
  * @license http://www.gnu.org/licenses/gpl.html GNU General Public License
  */
 
+/**
+ * Get the name of a room/resource
+ *
+ * @author Uwe L. Korn <uwelk@xhochy.org>
+ * @param $nResourceID int
+ * @return string
+ */
+function schoorbsGetResourceName($nResourceID)
+{
+	global $tbl_room;
+	
+	$sQuery = sprintf(
+		'SELECT room_name FROM %s WHERE id = %d',
+		$tbl_room, $nResourceID
+	);
+	
+	return sql_query1($sQuery);
+}
+
 /** 
  * Check to see if the time period specified is free
  * 
@@ -417,8 +436,7 @@ function mrbsCreateRepeatingEntrys($starttime, $endtime, $rep_type, $rep_enddate
 	return $ent;
 }
 
-/* mrbsGetEntryInfo()
- *
+/**
  * Get the booking's entrys
  * 
  * $id = The ID for which to get the info for.
@@ -438,7 +456,7 @@ function mrbsGetEntryInfo($id)
 	$res = sql_query($sql);
 	if (! $res) return;
 	
-	$ret = "";
+	$ret = array();
 	if(sql_count($res) > 0)
 	{
 		$row = sql_row($res, 0);
@@ -449,8 +467,8 @@ function mrbsGetEntryInfo($id)
 		$ret["repeat_id"]   = $row[3];
 		$ret["room_id"]     = $row[4];
 		$ret["timestamp"]   = $row[5];
-		$ret["create_by"]   = $row[6];
-		$ret["name"]        = $row[7];
+		$ret['create_by']   = $row[6];
+		$ret['name']        = $row[7];
 		$ret["type"]        = $row[8];
 		$ret["description"] = $row[9];
 	}

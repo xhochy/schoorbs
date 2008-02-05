@@ -1,6 +1,6 @@
 <?php
 /**
- * mysql.php - Simple PHP database support for MySQL.
+ * Simple PHP database support for MySQL.
  * 
  * Include this file after defining the following variables:
  *   $db_host = The hostname of the database server
