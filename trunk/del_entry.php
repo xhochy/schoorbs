@@ -23,6 +23,8 @@ require_once 'schoorbs-includes/authentication/schoorbs_auth.php';
 require_once 'schoorbs-includes/database/schoorbs_sql.php';
 /** E-Mail helper functions */
 require_once 'schoorbs-includes/mail.functions.php';
+/** The logging wrapper */
+require_once 'schoorbs-includes/logging.functions.php';
 
 ## Var Init ##
 
@@ -52,6 +54,8 @@ if(getAuthorised(1) && ($info = mrbsGetEntryInfo($id)))
 	{
         // Send a mail to the Administrator
         (MAIL_ADMIN_ON_DELETE) ? $result = notifyAdminOnDelete($mail_previous) : '';
+        // Log deletion of entry
+        schoorbsLogDeletedEntry($info);
         header("Location: day.php?day=$day&month=$month&year=$year&area=$area");
 		exit();
 	}

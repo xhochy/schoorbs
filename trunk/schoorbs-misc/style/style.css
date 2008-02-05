@@ -161,12 +161,15 @@ td.red a {
 
 .minical-empty-day {
 	background-color: #d5d8d3;
+	text-align: center; 
+	vertical-align: top;
 }
 .minical-day {
 	font-size: 10pt;
 	background-color: #f0f0f0;
 	text-align: center;
 	padding: 3px;
+	vertical-align: top;
 }
 .minical-header {
 	font-size: 10pt;
