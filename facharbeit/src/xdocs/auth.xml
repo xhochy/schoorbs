@@ -19,5 +19,53 @@
       </p>
       <figure src="images/auth-uml.jpg" alt="UML-Diagramm zur Authentifikation" />
     </section>
+    <section id="hsg-install">
+      <title>HSG Installation</title>
+      <p>
+        Am HSG wird die Authentifikation nicht von Schoorbs geregelt, sondern 
+        eine Ebene höher vom Apache Webserver. Um Schoorbs mitzuteilen, dass es 
+        nicht für die Authentifizierung zuständig ist, aktiviert man das Modul
+        Auth/None. Der Apache Webserver teilt uns den Nuternamen, bei
+        erfolgreicher Authentifikation, über die Umgebungsvariable REMOTE_USER 
+        mit.
+      </p>
+      <p><strong>Auth/None</strong></p>
+      <p>
+        Das Auth/None-Modul akzeptiert jeden Nutzernamen und jedes beliebige
+        Passwort dazu als gültige Kombination. Dieses ist nicht mehr als echte
+        Authentifizierung anzusehen, eher ist dieses Modul gedacht, Schoorbs
+        vorzutäuschen, man würde die Authentifikation selbst erledigen, jedoch
+        sind die Eingabewerte von einer höheren Ebene, in diesem Fall vom Apache
+        Webserver, schon überprüft worden. Ungültige 
+        Nutzer/Passwort-Kombinationen werden überhaupt nicht an Schoorbs 
+        weitergeleitet. 
+      </p>
+      <p>
+        Dieses Verhalten wird durch die Implementation der 
+        Funktion <code>authValidateUser</code> erzeugt, welche in diesem Modul 
+        lediglich aus der Zeile <code>return 1;</code> besteht. Lediglich in der 
+        Implementierung von <code>authGetUserLevel</code> befindet sich Logik. 
+        Ist kein Nutzername gestetzt, gilt dies als nicht angemeldet, was am
+        HSG nicht passieren kann, da dort lediglich die bereits 
+        authentifizierten Nutzer überhaupt die Schoorbs-Installation erreichen
+        können. Sollte der Nutzername in der Liste der Administratoren 
+        eingetragen sein, so bekommt dieser Nutzer Admininistrationsrechte, ist
+        er nicht in dieser Liste eingetragen, bekommt er die Rechte eines 
+        normalen Nutzers. Die in dieser Funktion vorkommende Logik findet man in
+        nahezu allen Auth-Modulen wieder, weshalb in zukünftigen Versionen von 
+        Schoorbs eine Generalisierung der Logik möglich wäre, jedoch habe ich
+        dies nicht gemacht um die Auth-Schnittstelle abwärtskompatibel zu MRBS 
+        zu halten.
+      </p>
+      <p><strong>Session/Remote_User</strong></p>
+      <p>
+        <!-- Was macht es? -->
+        ...
+      </p>
+      <p>
+        <!-- Technisch -->
+        ...
+      </p>
+    </section>
   </body>
 </document>
