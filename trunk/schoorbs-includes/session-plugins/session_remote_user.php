@@ -20,7 +20,8 @@
  */
 function authGet()
 {
-  // User is expected to already be authenticated by the web server, so do nothing
+  // User is expected to already be authenticated by the web server, 
+  // so do nothing
 }
 
 /**
@@ -45,43 +46,17 @@ function getUserName()
  */
 function PrintLogonBox()
 {
-	global $user_list_link, $auth;
+	global $user_list_link, $auth, $smarty;
   
 	$user = getUserName();
 
-	if (isset($user)) {
-		// words 'you are xxxx' becomes a link to the
-        // report page with only entries created by xxx. Past entries are not
-        // displayed but this can be changed
-       	$search_string = "report.php?From_day=$day&amp;From_month=$month&amp;".
-          "From_year=$year&amp;To_day=1&amp;To_month=12&amp;To_year=2030&amp;areamatch=&amp;".
-          "roommatch=&amp;namematch=&amp;descrmatch=&amp;summarize=1&amp;sortby=r&amp;display=d&amp;".
-          "sumby=d&amp;creatormatch=$user"; ?>
-
-    <td class="banner" style="background-color:#c0e0ff; text-align:center;">
-      <a href="<?php echo "$search_string\" title=\""
-         . get_vocab('show_my_entries') . "\">" . get_vocab('you_are')." "
-         .$user ?></a><br />
-<?php if (isset($user_list_link)) print "	  <br />\n	  " .
-	    "<a href='$user_list_link'>" . get_vocab('user_list') . "</a><br />\n" ;
-?>
-
-<?php
-// Retrieve logout link from configuration, if specified
-if (isset($auth['remote_user']['logout_link']) && is_string($auth['remote_user']['logout_link']) && (!empty($auth['remote_user']['logout_link']))) {
-  print '<a href="' . $auth['remote_user']['logout_link'] .'">' . get_vocab('logoff') . "</a><br />\n";
-}
-?>
-
-    </td>
-<?php
-    }
-    else
-    {
-?>
-    </table>
-    <h1>Error, REMOTE_USER was not set when it should have been</h1>
-<?php
-    exit;
+	if (isset($user)) { 
+		$smarty->assign(array(
+			'user' =>  $user,
+			'user_list_link' => $user_list_link,
+			'logout_link' => $auth['remote_user']['logout_link']
+		));
+		$smarty->display('session_remote_user_loginbox.tpl');
+    } else {		fatal_error(true, '<h1>Error, REMOTE_USER was not set when it should have been</h1>');
     }
 }
