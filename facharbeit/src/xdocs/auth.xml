@@ -60,11 +60,30 @@
       <p><strong>Session/Remote_User</strong></p>
       <p>
         <!-- Was macht es? -->
-        ...
+        Das Session/Remote_User-Modul nutzt als Quelle für den Nutzernamen die 
+        Umgebungsvariable <code>REMOTE_USER</code>, welche man in PHP per 
+        <code>$_SERVER['REMOTE_USER']</code> auslesen kann. Am HSG fragt der 
+        Apache per HTTP-Authentifikation die Nutzername/Passwort-Kombination ab,
+        die er dann wieder mit der eingestellten Nutzerdatenbank abgleicht. Nur
+        wenn diese Kombination gültig ist, wird die HTTP-Anfrage an Schoorbs 
+        weitergeleitet, d.h. Anfragen mit falscher Nutzername/Passwort-Kombination
+        rufen überhaupt keinen Programm-Code auf, weshalb Angreifer nur aus dem 
+        Kreis der Nutzer mit Account kommen können, dritte ohne 
+        Authentifizierungsdaten werden schon vom Apache abgewiesen. Weiterhin 
+        wird auch nur der Nutzername, jedoch nicht das Passwort, an Schoorbs 
+        weitergeleitet, so dass man auch nicht durch Modifizieren des Codes als z.B.
+        Programmadminstrator, d.h. jemand der den Programmcode verändern kann, 
+        die Passwörter ausspähen kann.
       </p>
       <p>
         <!-- Technisch -->
-        ...
+        Ähnlich wie beim Auth/None-Modul beinhaltet das Session/Remote_User-Modul
+        nahezu keine Logik. Die Funktion <code>getUserName</code> gibt z.B. den
+        Nutzernamen zurück, wenn er gesetzt ist, ansonsten null. 
+        <code>authGet</code> beinhaltet sogar überhaupt keinen Code und stellt 
+        nur die Schnittstelle bereit. <code>PrintLoginBox</code> zeigt entweder 
+        den Nutzernamen an oder schmeisst einen fatalen Fehler, wenn der 
+        Nutzername nicht gesetzt ist.
       </p>
     </section>
   </body>
