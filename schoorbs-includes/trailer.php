@@ -7,10 +7,10 @@
  * @license http://www.gnu.org/licenses/gpl.html GNU General Public License
  */
 
-echo "<div class=\"footer\">";
+echo '<div class="footer">';
 if ( $pview != 1 ) {
 
-echo "<hr /><strong>".get_vocab("viewday").":</strong>\n";
+echo '<hr /><strong>'.get_vocab("viewday").":</strong>\n";
 
 list($day, $month, $year) = input_DayMonthYear();
 
@@ -42,8 +42,7 @@ $ctime = mktime(0, 0, 0, $month, $day, $year);
 # How many days to skip back to first day of week:
 $skipback = (date("w", $ctime) - $weekstarts + 7) % 7;
 	
-for ($i = -4; $i <= 4; $i++)
-{
+for ($i = -4; $i <= 4; $i++) {
 	$ctime = mktime(0, 0, 0, $month, $day + 7 * $i - $skipback, $year);
 
 	$cweek  = date("W", $ctime);
@@ -52,12 +51,9 @@ for ($i = -4; $i <= 4; $i++)
 	$cyear  = date("Y", $ctime);
 	if ($i != -4) echo " | ";
 
-	if ($view_week_number)
-	{
+	if ($view_week_number) {
 		$str = $cweek;
-	}
-	else
-	{
+	} else {
 		$str = utf8_strftime(empty($dateformat)? "%b %d" : "%d %b", $ctime);
 	}
 	if ($i == 0) echo '<strong>[ ';
@@ -66,8 +62,7 @@ for ($i = -4; $i <= 4; $i++)
 }
 
 echo "<br /><strong>".get_vocab("viewmonth").":</strong>\n";
-for ($i = -2; $i <= 6; $i++)
-{
+for ($i = -2; $i <= 6; $i++) {
 	$ctime = mktime(0, 0, 0, $month + $i, 1, $year);
 	$str = utf8_strftime("%b %Y", $ctime);
 	
@@ -84,8 +79,6 @@ echo '<div style="text-align: center"><a href="' . basename($_SERVER['PHP_SELF']
 
 }
 ?>
-
-<hr />
 </div>
 </body>
 </html>
