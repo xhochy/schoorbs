@@ -40,9 +40,16 @@ if (isset($_REQUEST['id'])) {
 	$id = -1;
 }
 
+if (isset($_REQUEST['all_day'])) {
+	$all_day = strtolower(trim($_REQUEST['all_day']));
+	if ($all_day != 'yes') $all_day = 'no';
+} else {
+	$all_day = 'no';
+}
+
 // TODO: cleaner
 
-if (isset($_REQUEST['all_day'])) $all_day = $_REQUEST['all_day'];
+
 if (isset($_REQUEST['reptype'])) $rep_type = $_REQUEST['reptype'];
 if (isset($_REQUEST['rep_end_month'])) $rep_end_month = $_REQUEST['rep_end_month'];
 if (isset($_REQUEST['rep_end_day'])) $rep_end_day = $_REQUEST['rep_end_day'];
@@ -83,7 +90,7 @@ if ($id != -1) {
 
 if(!getAuthorised(1) || !getWritable($create_by, getUserName())) showAccessDenied();
 
-if (isset($all_day) && ($all_day == 'yes')) {
+if ($all_day == 'yes') {
     list($starttime, $endtime) = allDayStartEndTime();
 } else {
 	if (!$twentyfourhour_format) {
