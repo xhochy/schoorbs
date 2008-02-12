@@ -72,6 +72,10 @@ if ($enable_periods) {
 	}
 }
 
+if (isset($_REQUEST['ampm'])) {
+	$ampm = strtolower($_REQUEST['ampm']);
+}
+
 // TODO: cleaner
 
 
@@ -81,7 +85,7 @@ if (isset($_REQUEST['rep_end_day'])) $rep_end_day = $_REQUEST['rep_end_day'];
 if (isset($_REQUEST['rep_end_year'])) $rep_end_year = $_REQUEST['rep_end_year'];
 if (isset($_REQUEST['rep_day'])) $rep_day = $_REQUEST['rep_day'];
 if (isset($_REQUEST['rep_opt'])) $rep_day = $_REQUEST['rep_opt'];
-if (isset($_REQUEST['ampm'])) $rep_day = $_REQUEST['ampm'];
+
 
 if (isset($_REQUEST['rooms'])) {
     $rooms = $_REQUEST['rooms'];
