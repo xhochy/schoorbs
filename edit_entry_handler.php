@@ -35,6 +35,14 @@ list($day, $month, $year) = input_DayMonthYear();
 $area = input_Area();
 $name = input_Name();
 
+if (isset($_REQUEST['id'])) {
+	$id = intval($_REQUEST['id']);
+} else {
+	$id = -1;
+}
+
+// TODO: cleaner
+
 if (isset($_REQUEST['all_day'])) $all_day = $_REQUEST['all_day'];
 if (isset($_REQUEST['reptype'])) $rep_type = $_REQUEST['reptype'];
 if (isset($_REQUEST['rep_end_month'])) $rep_end_month = $_REQUEST['rep_end_month'];
@@ -43,7 +51,7 @@ if (isset($_REQUEST['rep_end_year'])) $rep_end_year = $_REQUEST['rep_end_year'];
 if (isset($_REQUEST['rep_day'])) $rep_day = $_REQUEST['rep_day'];
 if (isset($_REQUEST['rep_opt'])) $rep_day = $_REQUEST['rep_opt'];
 if (isset($_REQUEST['ampm'])) $rep_day = $_REQUEST['ampm'];
-if (isset($_REQUEST['id'])) $id = $_REQUEST['id'];
+
 if (isset($_REQUEST['rooms'])) {
     $rooms = $_REQUEST['rooms'];
 } else {
@@ -61,6 +69,18 @@ if ($enable_periods) {
 }
 
 ## Main ##
+
+if ($id != -1) {
+	$sQuery = sprintf(
+		'SELECT create_by FROM %s WHERE id = %d', 
+		$tbl_entry, $id
+	);
+	$create_by = sql_query1($sQuery);
+	var_dump($sQuery);
+	var_dump($create_by);
+} else {
+	$create_by = getUserName();
+}
 
 if(!getAuthorised(1) || !getWritable($create_by, getUserName())) showAccessDenied();
 
