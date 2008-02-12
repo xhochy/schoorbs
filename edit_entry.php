@@ -308,14 +308,12 @@ else
    - we are editing an existing repeating entry ($rep_type is set and
      $rep_type != 0 and $edit_type == "series" )
 */
-if ( ( !isset( $id ) ) Xor ( isset( $rep_type ) && ( $rep_type != 0 ) && ( "series" == $edit_type ) ) )
-{
+if(($id == -1) || (isset($rep_type) && ($rep_type != 0) && ('series' == $edit_type))) {
 	$smarty->assign('display_rep_num_week','true');
 	$smarty->assign('rep_num_weeks',$rep_num_weeks);
-} 
-else
+} else {
 	$smarty->assign('display_rep_num_week','false');
-
+}
 
 $smarty->assign('rep_days',$aRepDays);
 $smarty->assign('rep_end_day',$rep_end_day);

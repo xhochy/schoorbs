@@ -176,7 +176,7 @@ var enablePeriods = true;
 		</tr>
 		{$rep_add}
 	{/if}
-	{if $display_rep_num_weeks eq "true"}
+	{if $display_rep_num_week eq "true"}
 		<tr>
 			<td class="CR"><strong>{get_vocab text="rep_num_weeks"}</strong> {get_vocab text="rep_for_nweekly"}</td>
 			<td class="CL"><input type="text" id="main-rep-num-weeks" name="rep_num_weeks" value="{$rep_num_weeks}" /></td>
