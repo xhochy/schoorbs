@@ -32,6 +32,13 @@ require_once 'schoorbs-includes/edit_entry_handler.functions.php';
 
 /** day, month, year */
 list($day, $month, $year) = input_DayMonthYear();
+/** rep_end_ + (day, month, year) */
+list($rep_end_day, $rep_end_month, $rep_end_year) = input_DayMonthYear('rep_end_');
+// if really not set, unset them again
+if (!isset($_REQUEST['rep_end_day'])) unset($rep_end_day);
+if (!isset($_REQUEST['rep_end_month'])) unset($rep_end_month);
+if (!isset($_REQUEST['rep_end_year'])) unset($rep_end_year);
+/** duration & Co. */
 list($duration, $dur_units, $units) = input_Duration();
 $name = input_Name();
 
@@ -87,10 +94,6 @@ if (isset($_REQUEST['reptype'])) {
 
 // TODO: cleaner
 
-
-if (isset($_REQUEST['rep_end_month'])) $rep_end_month = $_REQUEST['rep_end_month'];
-if (isset($_REQUEST['rep_end_day'])) $rep_end_day = $_REQUEST['rep_end_day'];
-if (isset($_REQUEST['rep_end_year'])) $rep_end_year = $_REQUEST['rep_end_year'];
 if (isset($_REQUEST['rep_day'])) $rep_day = $_REQUEST['rep_day'];
 if (isset($_REQUEST['rep_opt'])) $rep_day = $_REQUEST['rep_opt'];
 
