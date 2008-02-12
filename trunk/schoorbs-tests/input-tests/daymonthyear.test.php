@@ -196,4 +196,165 @@ class Input_DayMonthYearTest extends PHPUnit_Framework_TestCase
 		$this->assertEquals(2, $month);
 		$this->assertEquals(1970, $year);
 	}
+	
+	/**
+	 * Checks if today is returned if no date is given (with prefix)
+	 * 
+	 * @author Uwe L. Korn <uwelk@xhochy.org>
+	 */
+	public function testTodayPrefixed()
+	{
+		unset($_GET['aa_day']);
+        unset($_POST['aa_day']);
+        unset($_COOKIE['aa_day']);
+        unset($_REQUEST['aa_day']);
+        
+        unset($_GET['aa_month']);
+        unset($_POST['aa_month']);
+        unset($_COOKIE['aa_month']);
+        unset($_REQUEST['aa_month']);
+        
+        unset($_GET['aa_year']);
+        unset($_POST['aa_year']);
+        unset($_COOKIE['aa_year']);
+        unset($_REQUEST['aa_year']);
+		
+		list($day, $month, $year) = input_DayMonthYear('aa_');
+		
+		$this->assertEquals(date('d'), $day);
+		$this->assertEquals(date('m'), $month);
+		$this->assertEquals(date('Y'), $year);
+	}
+	
+	/**
+	 * Check if 30th Februrary is automatically corrected (with prefix)
+	 * 
+	 * @author Uwe L. Korn <uwelk@xhochy.org>
+	 */
+	public function test30FebPrefixed()
+	{
+		unset($_GET['aa_day']);
+        unset($_POST['aa_day']);
+        unset($_COOKIE['aa_day']);
+        unset($_REQUEST['aa_day']);
+        
+        unset($_GET['aa_month']);
+        unset($_POST['aa_month']);
+        unset($_COOKIE['aa_month']);
+        unset($_REQUEST['aa_month']);
+        
+        unset($_GET['aa_year']);
+        unset($_POST['aa_year']);
+        unset($_COOKIE['aa_year']);
+        unset($_REQUEST['aa_year']);
+        
+        $_REQUEST['aa_day'] = 30;
+        $_REQUEST['aa_month'] = 2;
+        $_REQUEST['aa_year'] = 2007;
+        
+        list($day, $month, $year) = input_DayMonthYear('aa_');
+		
+		$this->assertEquals(28, $day);
+		$this->assertEquals(2, $month);
+		$this->assertEquals(2007, $year);
+	}
+	
+	/**
+	 * Check if numbers with a letter are ignored (with prefix)
+	 * 
+	 * @author Uwe L. Korn <uwelk@xhochy.org>
+	 */
+	public function testDayLettersPrefixed()
+	{
+		unset($_GET['aa_day']);
+        unset($_POST['aa_day']);
+        unset($_COOKIE['aa_day']);
+        unset($_REQUEST['aa_day']);
+        
+        unset($_GET['aa_month']);
+        unset($_POST['aa_month']);
+        unset($_COOKIE['aa_month']);
+        unset($_REQUEST['aa_month']);
+        
+        unset($_GET['aa_year']);
+        unset($_POST['aa_year']);
+        unset($_COOKIE['aa_year']);
+        unset($_REQUEST['aa_year']);
+        
+        $_REQUEST['aa_day'] = 'e2e';
+        $_REQUEST['aa_month'] = 2;
+        $_REQUEST['aa_year'] = 2007;
+        
+        list($day, $month, $year) = input_DayMonthYear('aa_');
+		
+		$this->assertEquals(1, $day);
+		$this->assertEquals(2, $month);
+		$this->assertEquals(2007, $year);
+	}
+	
+	/**
+	 * Check if numbers with a letter are ignored (with prefix)
+	 * 
+	 * @author Uwe L. Korn <uwelk@xhochy.org>
+	 */
+	public function testMonthLettersPrefixed()
+	{
+		unset($_GET['aa_day']);
+        unset($_POST['aa_day']);
+        unset($_COOKIE['aa_day']);
+        unset($_REQUEST['aa_day']);
+        
+        unset($_GET['aa_month']);
+        unset($_POST['aa_month']);
+        unset($_COOKIE['aa_month']);
+        unset($_REQUEST['aa_month']);
+        
+        unset($_GET['aa_year']);
+        unset($_POST['aa_year']);
+        unset($_COOKIE['aa_year']);
+        unset($_REQUEST['aa_year']);
+        
+        $_REQUEST['aa_day'] = 2;
+        $_REQUEST['aa_month'] = 'e2e';
+        $_REQUEST['aa_year'] = 2007;
+        
+        list($day, $month, $year) = input_DayMonthYear('aa_');
+		
+		$this->assertEquals(2, $day);
+		$this->assertEquals(1, $month);
+		$this->assertEquals(2007, $year);
+	}
+	
+	/**
+	 * Check if numbers with a letter are ignored (with prefix)
+	 * 
+	 * @author Uwe L. Korn <uwelk@xhochy.org>
+	 */
+	public function testYearLettersPrefixed()
+	{
+		unset($_GET['aa_day']);
+        unset($_POST['aa_day']);
+       	unset($_COOKIE['aa_day']);
+        unset($_REQUEST['aa_day']);
+	        
+        unset($_GET['aa_month']);
+        unset($_POST['aa_month']);	
+        unset($_COOKIE['aa_month']);
+        unset($_REQUEST['aa_month']);
+	        
+        unset($_GET['aa_year']);
+        unset($_POST['aa_year']);
+        unset($_COOKIE['aa_year']);
+        unset($_REQUEST['aa_year']);
+        
+       	$_REQUEST['aa_day'] = 2;
+        $_REQUEST['aa_month'] = 2;
+       	$_REQUEST['aa_year'] = 'sgs';
+        
+        list($day, $month, $year) = input_DayMonthYear('aa_');
+		
+		$this->assertEquals(2, $day);
+		$this->assertEquals(2, $month);
+		$this->assertEquals(1970, $year);
+	}
 }
