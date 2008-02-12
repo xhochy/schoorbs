@@ -76,10 +76,18 @@ if (isset($_REQUEST['ampm'])) {
 	$ampm = strtolower($_REQUEST['ampm']);
 }
 
+if (isset($_REQUEST['reptype'])) {
+	$rep_type = intval($_REQUEST['reptype']);
+	if ($rep_type < 0) $rep_type = 0;
+	fatal_error(true, 'Internal error: reptype of >5 not supported').
+} else {
+	$rep_type = 0;
+}
+
+
 // TODO: cleaner
 
 
-if (isset($_REQUEST['reptype'])) $rep_type = $_REQUEST['reptype'];
 if (isset($_REQUEST['rep_end_month'])) $rep_end_month = $_REQUEST['rep_end_month'];
 if (isset($_REQUEST['rep_end_day'])) $rep_end_day = $_REQUEST['rep_end_day'];
 if (isset($_REQUEST['rep_end_year'])) $rep_end_year = $_REQUEST['rep_end_year'];
@@ -93,8 +101,6 @@ if (isset($_REQUEST['rooms'])) {
     fatal_error(true, 'No room selected');
 }
 
-
-
 ## Main ##
 
 if ($id != -1) {
@@ -103,8 +109,6 @@ if ($id != -1) {
 		$tbl_entry, $id
 	);
 	$create_by = sql_query1($sQuery);
-	var_dump($sQuery);
-	var_dump($create_by);
 } else {
 	$create_by = getUserName();
 }
@@ -126,7 +130,7 @@ if ($all_day == 'yes') {
 	list($starttime, $endtime) = commonStartEndTime($hour, $minute, $units, $duration);
 }
 
-if (isset($rep_type) && isset($rep_end_month) && isset($rep_end_day) && isset($rep_end_year)) {
+if (($rep_type != 0) && isset($rep_end_month) && isset($rep_end_day) && isset($rep_end_year)) {
     // Get the repeat entry settings
     $rep_enddate = mktime($hour, $minute, 0, $rep_end_month, $rep_end_day, $rep_end_year);
 } else {
@@ -137,7 +141,7 @@ if(!isset($rep_day)) $rep_day = array();
 
 # For weekly repeat(2), build string of weekdays to repeat on:
 $rep_opt = "";
-if (($rep_type == 2) || ($rep_type == 6))
+if ($rep_type == 2)
     for ($i = 0; $i < 7; $i++) $rep_opt .= empty($rep_day[$i]) ? "0" : "1";
 
 # Expand a series into a list of start times:
@@ -146,7 +150,6 @@ if ($rep_type != 0)
         $rep_type, $rep_opt, $max_rep_entrys, $rep_num_weeks);
 
 # When checking for overlaps, for Edit (not New), ignore this entry and series:
-$repeat_id = 0;
 if ($id != -1) {
     $ignore_id = $id;
     $repeat_id = sql_query1(sprintf(
@@ -157,11 +160,11 @@ if ($id != -1) {
 }
 else {
     $ignore_id = 0;
+    $repeat_id = 0;
 }
 
 # Acquire mutex to lock out others trying to book the same slot(s).
-if (!sql_mutex_lock($tbl_entry))
-    fatal_error(1, get_vocab("failed_to_acquire"));
+if (!sql_mutex_lock($tbl_entry)) fatal_error(1, get_vocab("failed_to_acquire"));
     
 # Check for any schedule conflicts in each room we're going to try and
 # book in
@@ -238,10 +241,11 @@ if(empty($err))
         else
         {
             # Mark changed entry in a series with entry_type 2:
-            if ($repeat_id > 0)
+            if ($repeat_id > 0) {
                 $entry_type = 2;
-            else
+            } else {
                 $entry_type = 0;
+            }
 
             # Create the entry:
             $new_id = schoorbsCreateSingleEntry($starttime, $endtime, $entry_type, $repeat_id, $room_id,
