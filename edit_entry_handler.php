@@ -32,7 +32,6 @@ require_once 'schoorbs-includes/edit_entry_handler.functions.php';
 
 /** day, month, year */
 list($day, $month, $year) = input_DayMonthYear();
-$area = input_Area();
 $name = input_Name();
 
 if (isset($_REQUEST['id'])) {
@@ -120,17 +119,20 @@ if ($rep_type != 0)
 
 # When checking for overlaps, for Edit (not New), ignore this entry and series:
 $repeat_id = 0;
-if (isset($id)) {
+if ($id != -1) {
     $ignore_id = $id;
-    $repeat_id = sql_query1("SELECT repeat_id FROM $tbl_entry WHERE id=$id");
-    if ($repeat_id < 0)
-        $repeat_id = 0;
+    $repeat_id = sql_query1(sprintf(
+    	'SELECT repeat_id FROM %s WHERE id = %d',
+    	$tbl_entry, $id
+    ));
+    if ($repeat_id < 0) $repeat_id = 0;
 }
-else
+else {
     $ignore_id = 0;
+}
 
 # Acquire mutex to lock out others trying to book the same slot(s).
-if (!sql_mutex_lock("$tbl_entry"))
+if (!sql_mutex_lock($tbl_entry))
     fatal_error(1, get_vocab("failed_to_acquire"));
     
 # Check for any schedule conflicts in each room we're going to try and
@@ -181,7 +183,7 @@ if(empty($err))
                 // Send a mail only if this a new entry, or if this is an
                 // edited entry but we have to send mail on every change,
                 // and if mrbsCreateRepeatingEntrys is successful
-                if ( ( (isset($id) && MAIL_ADMIN_ALL) or !isset($id) ) && (0 != $new_id) )
+                if ( ( (($id != -1) && MAIL_ADMIN_ALL) or ($id == -1) ) && (0 != $new_id) )
                 {
                     // Get room name and area name. Would be better to avoid
                     // a database access just for that. Ran only if we need
@@ -198,11 +200,10 @@ if(empty($err))
                     }
                     // If this is a modified entry then call
                     // getPreviousEntryData to prepare entry comparison.
-                    if ( isset($id) )
-                    {
+                    if ($id != -1) {
                         $mail_previous = getPreviousEntryData($id, 1);
                     }
-                    $result = notifyAdminOnBooking(!isset($id), $new_id);
+                    $result = notifyAdminOnBooking(($id == -1), $new_id);
                 }
             }
         }
@@ -224,7 +225,7 @@ if(empty($err))
                 // Send a mail only if this a new entry, or if this is an
                 // edited entry but we have to send mail on every change,
                 // and if mrbsCreateRepeatingEntrys is successful
-                if ( ( (isset($id) && MAIL_ADMIN_ALL) or !isset($id) ) && (0 != $new_id) )
+                if ( ( (($id != -1) && MAIL_ADMIN_ALL) or ($id == -1) ) && (0 != $new_id) )
                 {
                     // Get room name and are name. Would be better to avoid
                     // a database access just for that. Ran only if we need
@@ -241,18 +242,17 @@ if(empty($err))
                     }
                     // If this is a modified entry then call
                     // getPreviousEntryData to prepare entry comparison.
-                   if ( isset($id) )
-                    {
+                    if ($id != -1 ) {
                         $mail_previous = getPreviousEntryData($id, 0);
                     }
-                    $result = notifyAdminOnBooking(!isset($id), $new_id);
+                    $result = notifyAdminOnBooking(($id == -1), $new_id);
                 }
             }
         }
     } # end foreach $rooms
 
     # Delete the original entry
-    if(isset($id))
+    if($id != -1)
         schoorbsDelEntry(getUserName(), $id, ($edit_type == "series"), 1);
 
     sql_mutex_unlock($tbl_entry);
