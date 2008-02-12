@@ -91,12 +91,18 @@ if (isset($_REQUEST['reptype'])) {
 	$rep_type = 0;
 }
 
+if (isset($_REQUEST['rep_day']) && is_array($_REQUEST['rep_day'])) {
+	$rep_day = $_REQUEST['rep_day'];
+} else {
+	$rep_day = array();
+}
+
+if (isset($_REQUEST['rep_num_weeks'])) {
+	$rep_num_weeks = intval($_REQUEST['rep_num_weeks']);
+	if ($rep_num_weeks < 0) $rep_num_weeks = 0;
+}
 
 // TODO: cleaner
-
-if (isset($_REQUEST['rep_day'])) $rep_day = $_REQUEST['rep_day'];
-if (isset($_REQUEST['rep_opt'])) $rep_day = $_REQUEST['rep_opt'];
-
 
 if (isset($_REQUEST['rooms'])) {
     $rooms = $_REQUEST['rooms'];
@@ -140,12 +146,11 @@ if (($rep_type != 0) && isset($rep_end_month) && isset($rep_end_day) && isset($r
     $rep_type = 0;
 }
 
-if(!isset($rep_day)) $rep_day = array();
-
 # For weekly repeat(2), build string of weekdays to repeat on:
-$rep_opt = "";
-if ($rep_type == 2)
-    for ($i = 0; $i < 7; $i++) $rep_opt .= empty($rep_day[$i]) ? "0" : "1";
+$rep_opt = '';
+if ($rep_type == 2) {
+    for ($i = 0; $i < 7; $i++) $rep_opt .= empty($rep_day[$i]) ? '0' : '1';
+}
 
 # Expand a series into a list of start times:
 if ($rep_type != 0)
