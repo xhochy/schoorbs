@@ -48,6 +48,30 @@ if (isset($_REQUEST['all_day'])) {
 	$all_day = 'no';
 }
 
+if ($enable_periods) {
+	$hour = 12;
+	$minute = $period;
+	$max_periods = count($periods);
+	
+	if (isset($_REQUEST['period'])) {
+		$period = intval($_REQUEST['period']);
+	} else {
+		$period = 0;
+	}
+} else {
+	if (isset($_REQUEST['hour'])) {
+		$hour = intval($_REQUEST['hour']);
+	} else {
+		$hour = 12;
+	}
+	
+	if (isset($_REQUEST['minute'])) {
+		$minute = intval($_REQUEST['minute']);
+	} else {
+		$minute = 0;
+	}
+}
+
 // TODO: cleaner
 
 
@@ -65,14 +89,7 @@ if (isset($_REQUEST['rooms'])) {
     fatal_error(true, 'No room selected');
 }
 
-if (isset($_REQUEST['hour'])) $hour = intval($_REQUEST['hour']);
-if (isset($_REQUEST['minute'])) $minute = intval($_REQUEST['minute']);
-if (isset($_REQUEST['period'])) $period = intval($_REQUEST['period']);
-if ($enable_periods) {
-	$hour = 12;
-	$minute = $period;
-	$max_periods = count($periods);
-}
+
 
 ## Main ##
 
