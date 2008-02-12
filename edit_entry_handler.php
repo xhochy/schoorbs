@@ -102,9 +102,7 @@ if (isset($_REQUEST['rep_num_weeks'])) {
 	if ($rep_num_weeks < 0) $rep_num_weeks = 0;
 }
 
-// TODO: cleaner
-
-if (isset($_REQUEST['rooms'])) {
+if (isset($_REQUEST['rooms']) && is_array($_REQUEST['rooms'])) {
     $rooms = $_REQUEST['rooms'];
 } else {
     fatal_error(true, 'No room selected');
@@ -176,42 +174,33 @@ if (!sql_mutex_lock($tbl_entry)) fatal_error(1, get_vocab("failed_to_acquire"));
     
 # Check for any schedule conflicts in each room we're going to try and
 # book in
-$err = "";
-foreach ( $rooms as $room_id ) {
-  if ($rep_type != 0 && !empty($reps))
-  {
-    if(count($reps) < $max_rep_entrys)
-    {
-        
-        for($i = 0; $i < count($reps); $i++)
-        {
-	    # calculate diff each time and correct where events
-	    # cross DST
-            $diff = $endtime - $starttime;
-            $diff += cross_dst($reps[$i], $reps[$i] + $diff);
-    
-	    $tmp = schoorbsCheckFree($room_id, $reps[$i], $reps[$i] + $diff, $ignore_id, $repeat_id);
-
-            if(!empty($tmp))
-                $err = $err . $tmp;
-        }
-    }
-    else
-    {
-        $err        .= get_vocab("too_may_entrys") . "<br /><br />";
-        $hide_title  = 1;
-    }
-  }
-  else
-    $err .= schoorbsCheckFree($room_id, $starttime, $endtime-1, $ignore_id, 0);
-
+$err = '';
+foreach ($rooms as $room_id) {
+	$room_id = intval($room_id);
+	if ($rep_type != 0 && !empty($reps)) {
+    	if(count($reps) < $max_rep_entrys) {
+    	    for($i = 0; $i < count($reps); $i++) {
+			    # calculate diff each time and correct where events
+			    # cross DST
+    	        $diff = $endtime - $starttime;
+    	        $diff += cross_dst($reps[$i], $reps[$i] + $diff);
+    	
+			    $tmp = schoorbsCheckFree($room_id, $reps[$i], $reps[$i] + $diff, 
+			    	$ignore_id, $repeat_id);
+    	        if(!empty($tmp)) $err = $err.$tmp;
+    	    }
+	    } else {
+    	    $err        .= get_vocab('too_may_entrys') . '<br /><br />';
+    	    $hide_title  = 1;
+		}
+  } else
+    $err.= schoorbsCheckFree($room_id, $starttime, $endtime-1, $ignore_id, 0);
 } # end foreach rooms
 
-if(empty($err))
-{
-    foreach ( $rooms as $room_id ) {
-        if($edit_type == "series")
-        {
+if (empty($err)) {
+	foreach ( $rooms as $room_id ) {
+		$room_id = intval($room_id);
+        if ($edit_type == 'series') {
             $new_id = mrbsCreateRepeatingEntrys($starttime, $endtime,   $rep_type, $rep_enddate, $rep_opt,
                                       $room_id,   $create_by, $name,     $type,        $description,
                                       isset($rep_num_weeks) ? $rep_num_weeks : 0);
