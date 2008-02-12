@@ -32,6 +32,7 @@ require_once 'schoorbs-includes/edit_entry_handler.functions.php';
 
 /** day, month, year */
 list($day, $month, $year) = input_DayMonthYear();
+list($duration, $dur_units, $units) = input_Duration();
 $name = input_Name();
 
 if (isset($_REQUEST['id'])) {
@@ -67,7 +68,6 @@ if (isset($_REQUEST['rooms'])) {
 if (isset($_REQUEST['hour'])) $hour = intval($_REQUEST['hour']);
 if (isset($_REQUEST['minute'])) $minute = intval($_REQUEST['minute']);
 if (isset($_REQUEST['period'])) $period = intval($_REQUEST['period']);
-list($duration, $dur_units, $units) = input_Duration();
 if ($enable_periods) {
 	$hour = 12;
 	$minute = $period;
