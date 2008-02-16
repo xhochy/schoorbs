@@ -68,7 +68,22 @@ function schoorbsLogEditEntry($aOldEntryInfo, $aNewEntryInfo) {
 	schoorbsLogWriteLine_Backend($sLine);
 }
 
+/**
+ * Log that someone has created an entry
+ *
+ * @author Uwe L. Korn <uwelk@xhochy.org>
+ * @param $aNewEntryInfo array
+ * @todo Translate message
+ */
 function schoorbsLogAddEntry($aNewEntryInfo){
+	$sLine = sprintf(
+		'User "%s" created entry "%s" (%s -> %s) in resource "%s"',
+		getUserName(), $aNewEntryInfo['name'],
+		date('d M Y H:i:s', $aNewEntryInfo['start_time']),
+		date('d M Y H:i:s', $aNewEntryInfo['end_time']),
+		schoorbsGetResourceName($aNewEntryInfo['room_id'])
+	);
+	schoorbsLogWriteLine_Backend($sLine);
 }
 
 ## Main ##

@@ -25,6 +25,8 @@ require_once 'schoorbs-includes/database/schoorbs_sql.php';
 require_once 'schoorbs-includes/mail.functions.php';
 /** Helper function for this page */
 require_once 'schoorbs-includes/edit_entry_handler.functions.php';
+/** The logging wrapper */
+require_once 'schoorbs-includes/logging.functions.php';
 
 ## Input ##
 
@@ -236,7 +238,7 @@ if (empty($err)) {
             	'room_id' => $room_id
             );
             if ($id != -1) { // Edit
-            	$aOldEntryInfo = mrbsGetEntryInfo($id)            	
+            	$aOldEntryInfo = mrbsGetEntryInfo($id);
             	schoorbsLogEditEntry($aOldEntryInfo, $aNewEntryInfo);
             } else { // Add
             	schoorbsLogAddEntry($aNewEntryInfo);
@@ -262,7 +264,7 @@ if (empty($err)) {
             	'room_id' => $room_id
             );
             if ($id != -1) { // Edit
-            	$aOldEntryInfo = mrbsGetEntryInfo($id)            	
+            	$aOldEntryInfo = mrbsGetEntryInfo($id);
             	schoorbsLogEditEntry($aOldEntryInfo, $aNewEntryInfo);
             } else { // Add
             	schoorbsLogAddEntry($aNewEntryInfo);
@@ -280,11 +282,9 @@ if (empty($err)) {
     $area = mrbsGetRoomArea($room_id);
     
     # Now its all done go back to the day view
-    header(sprintf(
-    	'Location: day.php?year=%n&month=%n&day=%n&area=%s', 
-    	$year, $month, $day, urlencode($area)
-    ));
-    exit;
+    header("Location: day.php?year=$year&month=$month&day=$day&area="
+    	.urlencode($area));
+    exit(0);
 }
 
 # The room was not free.
