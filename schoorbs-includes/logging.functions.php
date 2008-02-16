@@ -45,6 +45,32 @@ function schoorbsLogDeletedEntry($aEntryInfo)
 	schoorbsLogWriteLine_Backend($sLine);
 }
 
+/**
+ * Log that someone has edited an entry
+ *
+ * @author Uwe L. Korn <uwelk@xhochy.org>
+ * @param $aOldEntryInfo array
+ * @param $aNewEntryInfo array
+ * @todo Translate message
+ */
+function schoorbsLogEditEntry($aOldEntryInfo, $aNewEntryInfo) {
+	$sLine = sprintf('User "%s" modified entry "%s" in resource "%s" (%s -> %s)'
+		.' created by "%s": (name => "%s", resource => "%s", (%s -> %s))',
+		getUserName(), $aOldEntryInfo['name'], 
+		schoorbsGetResourceName($aOldEntryInfo['room_id']),		
+		date('d M Y H:i:s', $aOldEntryInfo['start_time']),
+		date('d M Y H:i:s', $aOldEntryInfo['end_time']),
+		$aOldEntryInfo['create_by'], $aNewEntryInfo['name'],
+		schoorbsGetResourceName($aNewEntryInfo['room_id']),
+		date('d M Y H:i:s', $aNewEntryInfo['start_time']),
+		date('d M Y H:i:s', $aNewEntryInfo['end_time'])
+	);
+	schoorbsLogWriteLine_Backend($sLine);
+}
+
+function schoorbsLogAddEntry($aNewEntryInfo){
+}
+
 ## Main ##
 
 // startup the Backend
