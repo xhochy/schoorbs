@@ -72,35 +72,27 @@ function print_header()
 	
 	$sPViewEcho = ''; $sLogonBox = '';
 	if($pview != 1) {
-	    # show a warning if this is using a low version of php
-        if (substr(phpversion(), 0, 1) == 3)
-	        $sPViewEcho.= get_vocab("not_php3");
-
-    	//TODO: Warunung anders ausgeben
-        if (!empty($locale_warning))
-            $sPViewEcho.= "[Warning: ".$locale_warning."]";
+        if (!empty($locale_warning)) {
+            $sPViewEcho.= '[Warning: '.$locale_warning.']';
+        }
 
         $sPViewEcho.= '<input type="hidden" name="area" value="'.$area.'" />';
 
-        # For session protocols that define their own logon box...
-        if (function_exists('PrintLogonBox'))
-   	    {
+        // For session protocols that define their own logon box...
+        if (function_exists('PrintLogonBox')) {
    	        ob_start();
    	        PrintLogonBox();
-   	        $sLogonBox.= ob_get_contents();
+   	        $sLogonBox = ob_get_contents();
    	        ob_end_clean();
        	}        
     }
     
     $smarty->assign(array(
-		'months' => $months,
-		'years' => $years,
-		'prefix' => "",
+		'months' => $months, 'years' => $years,
+		'prefix' => '',
 		'Area' => $area,
 		'SearchStr' => $search_str,
-		'Day' => $day,
-		'Month' => $month,
-		'Year' => $year,
+		'Day' => $day, 'Month' => $month, 'Year' => $year,
 		'mrbs_company' => $mrbs_company,
 		'pview' => $sPViewEcho,
 		'logonbox' => $sLogonBox
@@ -110,79 +102,51 @@ function print_header()
 
 function toTimeString(&$dur, &$units)
 {
-	if($dur >= 60)
-	{
+	if ($dur >= 60) {
 		$dur /= 60;
-
-		if($dur >= 60)
-		{
+		if ($dur >= 60) {
 			$dur /= 60;
-
-			if(($dur >= 24) && ($dur % 24 == 0))
-			{
+			if (($dur >= 24) && ($dur % 24 == 0)) {
 				$dur /= 24;
-
-				if(($dur >= 7) && ($dur % 7 == 0))
-				{
+				if (($dur >= 7) && ($dur % 7 == 0)) {
 					$dur /= 7;
-
-					if(($dur >= 52) && ($dur % 52 == 0))
-					{
+					if (($dur >= 52) && ($dur % 52 == 0)) {
 						$dur  /= 52;
-						$units = get_vocab("years");
-					}
-					else
-						$units = get_vocab("weeks");
-				}
-				else
-					$units = get_vocab("days");
-			}
-			else
-				$units = get_vocab("hours");
-		}
-		else
-			$units = get_vocab("minutes");
-	}
-	else
-		$units = get_vocab("seconds");
+						$units = get_vocab('years');
+					} else $units = get_vocab("weeks");
+				} else $units = get_vocab('days');
+			} else $units = get_vocab('hours');
+		} else $units = get_vocab('minutes');
+	} else $units = get_vocab('seconds');
 }
 
 
 function toPeriodString($start_period, &$dur, &$units)
 {
-	global $enable_periods;
-        global $periods;
+	global $enable_periods, $periods;
 
-        $max_periods = count($periods);
-
+	$max_periods = count($periods);
 	$dur /= 60;
 
-        if( $dur >= $max_periods || $start_period == 0 )
-        {
-                if( $start_period == 0 && $dur == $max_periods )
-                {
-                        $units = get_vocab("days");
-                        $dur = 1;
-                        return;
-                }
-
-                $dur /= 60;
-                if(($dur >= 24) && is_int($dur))
-                {
-                	$dur /= 24;
-			$units = get_vocab("days");
-                        return;
-                }
-                else
-                {
-			$dur *= 60;
-                        $dur = ($dur % $max_periods) + floor( $dur/(24*60) ) * $max_periods;
-                        $units = get_vocab("periods");
-                        return;
+    if (($dur >= $max_periods) || ($start_period == 0)) {
+		if (($start_period == 0) && ($dur == $max_periods)) {
+			$units = get_vocab('days');
+			$dur = 1;
+			return;
 		}
-        }
-        else
-		$units = get_vocab("periods");
+
+        $dur /= 60;
+        if (($dur >= 24) && is_int($dur)) {
+			$dur /= 24;
+			$units = get_vocab('days');
+			return;
+		} else {
+			$dur *= 60;
+			$dur = ($dur % $max_periods) + floor( $dur/(24*60) ) * $max_periods;
+			$units = get_vocab('periods');
+			return;
+		}
+	} else $units = get_vocab('periods');
 }
 
 # Error handler - this is used to display serious errors such as database
@@ -207,7 +171,7 @@ function fatal_error($need_header, $message = '')
 		if ($need_header) print_header();
 		echo $message;
 		require_once 'trailer.php';
-		exit(0);
+		exit(1);
 	}
 }
 
@@ -231,17 +195,18 @@ function unslashes($s)
 # Get the local day name based on language. Note 2000-01-02 is a Sunday.
 function day_name($daynumber)
 {
-	return utf8_strftime("%A", mktime(0,0,0,1,2+$daynumber,2000));
+	return utf8_strftime('%A', mktime(0,0,0,1,2+$daynumber,2000));
 }
 
 function hour_min_format()
 {
     global $twentyfourhour_format;
     
-    if ($twentyfourhour_format)
-	        return "%H:%M";
-	else
-		return "%I:%M%p";
+    if ($twentyfourhour_format) {
+		return '%H:%M';
+	} else {
+		return '%I:%M%p';
+	}
 }
 
 function period_date_string($t, $mod_time=0)
@@ -249,23 +214,23 @@ function period_date_string($t, $mod_time=0)
 	global $periods;
 
 	$time = getdate($t);
-    $p_num = $time["minutes"] + $mod_time;
+    $p_num = $time['minutes'] + $mod_time;
     if( $p_num < 0 ) $p_num = 0;
     if( $p_num >= count($periods) - 1 ) $p_num = count($periods ) - 1;
 	# I have made the separater a ',' as a '-' leads to an ambiguious
 	# display in report.php when showing end times.
-    return array($p_num, $periods[$p_num] . utf8_strftime(", %A %d %B %Y",$t));
+    return array($p_num, $periods[$p_num] . utf8_strftime(', %A %d %B %Y', $t));
 }
 
 function period_time_string($t, $mod_time=0)
 {
-        global $periods;
+	global $periods;
 
 	$time = getdate($t);
-        $p_num = $time["minutes"] + $mod_time;
-        if( $p_num < 0 ) $p_num = 0;
-        if( $p_num >= count($periods) - 1 ) $p_num = count($periods ) - 1;
-        return $periods[$p_num];
+    $p_num = $time['minutes'] + $mod_time;
+    if( $p_num < 0 ) $p_num = 0;
+    if( $p_num >= count($periods) - 1 ) $p_num = count($periods ) - 1;
+    return $periods[$p_num];
 }
 
 function time_date_string($t)
