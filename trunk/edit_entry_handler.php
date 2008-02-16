@@ -86,7 +86,9 @@ if (isset($_REQUEST['ampm'])) {
 if (isset($_REQUEST['reptype'])) {
 	$rep_type = intval($_REQUEST['reptype']);
 	if ($rep_type < 0) $rep_type = 0;
-	fatal_error(true, 'Internal error: reptype of >5 not supported').
+	if ($rep_type > 5) {
+		fatal_error(true, 'Internal error: reptype of >5 not supported');
+	}
 } else {
 	$rep_type = 0;
 }
@@ -106,6 +108,12 @@ if (isset($_REQUEST['rooms']) && is_array($_REQUEST['rooms'])) {
     $rooms = $_REQUEST['rooms'];
 } else {
     fatal_error(true, 'No room selected');
+}
+
+if (isset($_REQUEST['edit_type']) {
+	$edit_type = trim(strtolower($_REQUEST['edit_type']));
+} else {
+	$edit_type = '';
 }
 
 ## Main ##
@@ -190,8 +198,8 @@ foreach ($rooms as $room_id) {
     	        if(!empty($tmp)) $err = $err.$tmp;
     	    }
 	    } else {
-    	    $err        .= get_vocab('too_may_entrys') . '<br /><br />';
-    	    $hide_title  = 1;
+    	    $err.= get_vocab('too_may_entrys').'<br /><br />';
+    	    $hide_title = 1;
 		}
   } else
     $err.= schoorbsCheckFree($room_id, $starttime, $endtime-1, $ignore_id, 0);
@@ -201,9 +209,9 @@ if (empty($err)) {
 	foreach ( $rooms as $room_id ) {
 		$room_id = intval($room_id);
         if ($edit_type == 'series') {
-            $new_id = mrbsCreateRepeatingEntrys($starttime, $endtime,   $rep_type, $rep_enddate, $rep_opt,
-                                      $room_id,   $create_by, $name,     $type,        $description,
-                                      isset($rep_num_weeks) ? $rep_num_weeks : 0);
+            $new_id = mrbsCreateRepeatingEntrys($starttime, $endtime, $rep_type, 
+            	$rep_enddate, $rep_opt, $room_id, $create_by, $name, $type, 
+            	$description, isset($rep_num_weeks) ? $rep_num_weeks : 0);
             // Send a mail to the Administrator
             if (MAIL_ADMIN_ON_BOOKINGS or MAIL_AREA_ADMIN_ON_BOOKINGS or
                 MAIL_ROOM_ADMIN_ON_BOOKINGS or MAIL_BOOKER)
@@ -299,19 +307,19 @@ sql_mutex_unlock($tbl_entry);
 if (strlen($err) > 0) {
     print_header();
     
-    echo "<h2>" . get_vocab("sched_conflict") . "</h2>";
-    if(!isset($hide_title))
-    {
-        echo get_vocab("conflict");
-        echo "<ul>";
+    echo '<h2>' . get_vocab('sched_conflict') . '</h2>';
+    if (!isset($hide_title)) {
+        echo get_vocab('conflict');
+        echo '<ul>';
     }
     
     echo $err;
     
-    if(!isset($hide_title))
-        echo "</ul>";
+    if(!isset($hide_title)) {
+        echo '</ul>';
+    }
 }
 
-echo "<a href=\"$returl\">".get_vocab("returncal")."</a><br /><br />";
+echo "<a href=\"$returl\">".get_vocab('returncal').'</a><br /><br />';
 
 require_once 'schoorbs-includes/trailer.php';
