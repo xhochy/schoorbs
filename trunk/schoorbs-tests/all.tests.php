@@ -52,6 +52,8 @@ if (!file_exists(dirname(__FILE__).'/../config.inc.php')) {
 /** Include the configuration */
 require_once dirname(__FILE__).'/../config.inc.php';
 
+require_once 'test.configuration.php';
+
 /** Override session module, since some of them are not yet suitable for the unittests */
 $auth["session"] = "http";
 
