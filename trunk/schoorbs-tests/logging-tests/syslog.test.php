@@ -56,7 +56,7 @@ class Logging_SyslogTest extends PHPUnit_Framework_TestCase
         $syslog1 = tempnam('/tmp', 'schoorbs-test-logging-syslog');
         $syslog2 = tempnam('/tmp', 'schoorbs-test-logging-syslog');
          
-        file_put_contents($syslog1, file_get_contents('/var/log/syslog'));
+        file_put_contents($syslog1, file_get_contents(TestConfiguration::$sSyslogLocation));
         
         $sLine = 'Schoorbs-Tests->Logging->Logging_SyslogTest->testLine: '.mt_rand();
         
@@ -65,7 +65,7 @@ class Logging_SyslogTest extends PHPUnit_Framework_TestCase
         // Wait for syslog to flush
         sleep(2);
         
-        file_put_contents($syslog2, file_get_contents('/var/log/syslog'));
+        file_put_contents($syslog2, file_get_contents(TestConfiguration::$sSyslogLocation));
         
         exec('diff '.escapeshellarg($syslog1).' '.escapeshellarg($syslog2), $aOutput);
         
