@@ -32,7 +32,7 @@ $area = input_Area();
 /** room */
 $room = input_Room();
 /** id **/
-if(isset($_REQUEST['id'])) $id = intval($id);
+if(isset($_REQUEST['id'])) $id = intval($_REQUEST['id']);
 
 if (isset($_REQUEST['edit_type'])) {
 	$edit_type = trim(strtolower($_REQUEST['edit_type']));
