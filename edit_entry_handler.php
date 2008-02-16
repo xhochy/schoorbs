@@ -9,8 +9,6 @@
  
 ## Includes ##
 
-require_once 'grab_globals.php';
-
 /** The Configuration file */
 require_once 'config.inc.php';
 /** The general 'things' when viewing Schoorbs on the web */
@@ -41,6 +39,14 @@ if (!isset($_REQUEST['rep_end_year'])) unset($rep_end_year);
 /** duration & Co. */
 list($duration, $dur_units, $units) = input_Duration();
 $name = input_Name();
+$description = input_Description();
+
+if (isset($_REQUEST['type'])) {
+	$type = trim(strtoupper($_REQUEST['type']));
+	if (empty($type)) $type = 'I';
+} else {
+	$type = 'I';
+}
 
 if (isset($_REQUEST['id'])) {
 	$id = intval($_REQUEST['id']);
@@ -56,15 +62,15 @@ if (isset($_REQUEST['all_day'])) {
 }
 
 if ($enable_periods) {
-	$hour = 12;
-	$minute = $period;
-	$max_periods = count($periods);
-	
 	if (isset($_REQUEST['period'])) {
 		$period = intval($_REQUEST['period']);
 	} else {
 		$period = 0;
 	}
+
+	$hour = 12;
+	$minute = $period;
+	$max_periods = count($periods);
 } else {
 	if (isset($_REQUEST['hour'])) {
 		$hour = intval($_REQUEST['hour']);
@@ -110,10 +116,16 @@ if (isset($_REQUEST['rooms']) && is_array($_REQUEST['rooms'])) {
     fatal_error(true, 'No room selected');
 }
 
-if (isset($_REQUEST['edit_type']) {
+if (isset($_REQUEST['edit_type'])) {
 	$edit_type = trim(strtolower($_REQUEST['edit_type']));
 } else {
 	$edit_type = '';
+}
+
+if (isset($_REQUEST['returl'])) {
+	$returl = unslashes($_REQUEST['returl']);
+} else {
+	$returl = 'index.php';
 }
 
 ## Main ##
@@ -212,6 +224,7 @@ if (empty($err)) {
             $new_id = mrbsCreateRepeatingEntrys($starttime, $endtime, $rep_type, 
             	$rep_enddate, $rep_opt, $room_id, $create_by, $name, $type, 
             	$description, isset($rep_num_weeks) ? $rep_num_weeks : 0);
+
             // Send a mail to the Administrator
             if (MAIL_ADMIN_ON_BOOKINGS or MAIL_AREA_ADMIN_ON_BOOKINGS or
                 MAIL_ROOM_ADMIN_ON_BOOKINGS or MAIL_BOOKER)
@@ -219,13 +232,12 @@ if (empty($err)) {
                 // Send a mail only if this a new entry, or if this is an
                 // edited entry but we have to send mail on every change,
                 // and if mrbsCreateRepeatingEntrys is successful
-                if ( ( (($id != -1) && MAIL_ADMIN_ALL) or ($id == -1) ) && (0 != $new_id) )
+                if (((($id != -1) && MAIL_ADMIN_ALL) or ($id == -1)) && (0 != $new_id))
                 {
                     // Get room name and area name. Would be better to avoid
                     // a database access just for that. Ran only if we need
                     // details
-                    if (MAIL_DETAILS)
-                    {
+                    if (MAIL_DETAILS) {
                         $sql = "SELECT r.id, r.room_name, r.area_id, a.area_name ";
                         $sql .= "FROM $tbl_room r, $tbl_area a ";
                         $sql .= "WHERE r.id=$room_id AND r.area_id = a.id";
