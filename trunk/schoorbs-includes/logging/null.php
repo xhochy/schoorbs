@@ -18,4 +18,13 @@
 function schoobsLogStart_Backend()
 {
 }
+
+/**
+ * Write a line into the nirwana
+ * 
+ * @author Uwe L. Korn <uwelk@xhochy.org>
+ * @param $sLine string
+ */
+function schoorbsLogWriteLine_Backend($sLine) {
+}
  
