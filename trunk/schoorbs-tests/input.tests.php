@@ -47,6 +47,7 @@ require_once 'input-tests/description.test.php';
 require_once 'input-tests/capacity.test.php';
 require_once 'input-tests/duration.test.php';
 require_once 'input-tests/pview.test.php';
+require_once 'input-tests/all_day.test.php';
 
 ## The Testsuite ##
 
@@ -77,6 +78,7 @@ class Input_AllTests
         $suite->addTestSuite('Input_CapacityTest');
         $suite->addTestSuite('Input_DurationTest');
         $suite->addTestSuite('Input_PViewTest');
+        $suite->addTestSuite('Input_All_DayTest');
         
         return $suite;
     }

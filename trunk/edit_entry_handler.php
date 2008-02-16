@@ -40,8 +40,12 @@ if (!isset($_REQUEST['rep_end_month'])) unset($rep_end_month);
 if (!isset($_REQUEST['rep_end_year'])) unset($rep_end_year);
 /** duration & Co. */
 list($duration, $dur_units, $units) = input_Duration();
+/** name */
 $name = input_Name();
+/** description */
 $description = input_Description();
+/** all_day */
+$all_day = input_All_Day();
 
 if (isset($_REQUEST['type'])) {
 	$type = trim(strtoupper($_REQUEST['type']));
@@ -54,13 +58,6 @@ if (isset($_REQUEST['id'])) {
 	$id = intval($_REQUEST['id']);
 } else {
 	$id = -1;
-}
-
-if (isset($_REQUEST['all_day'])) {
-	$all_day = strtolower(trim($_REQUEST['all_day']));
-	if ($all_day != 'yes') $all_day = 'no';
-} else {
-	$all_day = 'no';
 }
 
 if ($enable_periods) {
@@ -185,14 +182,13 @@ if ($id != -1) {
     	$tbl_entry, $id
     ));
     if ($repeat_id < 0) $repeat_id = 0;
-}
-else {
+} else {
     $ignore_id = 0;
     $repeat_id = 0;
 }
 
 # Acquire mutex to lock out others trying to book the same slot(s).
-if (!sql_mutex_lock($tbl_entry)) fatal_error(1, get_vocab("failed_to_acquire"));
+if (!sql_mutex_lock($tbl_entry)) fatal_error(true, get_vocab("failed_to_acquire"));
     
 # Check for any schedule conflicts in each room we're going to try and
 # book in
@@ -228,47 +224,25 @@ if (empty($err)) {
             $new_id = mrbsCreateRepeatingEntrys($starttime, $endtime, $rep_type, 
             	$rep_enddate, $rep_opt, $room_id, $create_by, $name, $type, 
             	$description, isset($rep_num_weeks) ? $rep_num_weeks : 0);
-            
-            // Log action	
-            $aNewEntryInfo = array(
-            	'create_by' => getUserName(),
-            	'start_time' => $starttime,
-            	'end_time' => $endtime,
-            	'name' => $name,
-            	'room_id' => $room_id
-            );
-            if ($id != -1) { // Edit
-            	$aOldEntryInfo = mrbsGetEntryInfo($id);
-            	schoorbsLogEditEntry($aOldEntryInfo, $aNewEntryInfo);
-            } else { // Add
-            	schoorbsLogAddEntry($aNewEntryInfo);
-            }
         } else {
-            # Mark changed entry in a series with entry_type 2:
+            // Mark changed entry in a series with entry_type 2:
             if ($repeat_id > 0) {
                 $entry_type = 2;
             } else {
                 $entry_type = 0;
             }
 
-            # Create the entry:
+            // Create the entry:
             $new_id = schoorbsCreateSingleEntry($starttime, $endtime, $entry_type, 
             	$repeat_id, $room_id, $create_by, $name, $type, $description);
-       
-            // Log action	
-            $aNewEntryInfo = array(
-            	'create_by' => getUserName(),
-            	'start_time' => $starttime,
-            	'end_time' => $endtime,
-            	'name' => $name,
-            	'room_id' => $room_id
-            );
-            if ($id != -1) { // Edit
-            	$aOldEntryInfo = mrbsGetEntryInfo($id);
-            	schoorbsLogEditEntry($aOldEntryInfo, $aNewEntryInfo);
-            } else { // Add
-            	schoorbsLogAddEntry($aNewEntryInfo);
-            }
+        }
+
+        $aNewEntryInfo = mrbsGetEntryInfo($new_id);
+        if ($id != -1) { // Edit
+        	$aOldEntryInfo = mrbsGetEntryInfo($id);
+        	schoorbsLogEditEntry($aOldEntryInfo, $aNewEntryInfo);
+        } else { // Add
+        	schoorbsLogAddEntry($aNewEntryInfo);
         }
     } # end foreach $rooms
 
@@ -282,17 +256,16 @@ if (empty($err)) {
     $area = mrbsGetRoomArea($room_id);
     
     # Now its all done go back to the day view
-    header("Location: day.php?year=$year&month=$month&day=$day&area="
-    	.urlencode($area));
+    header("Location: day.php?year=$year&month=$month&day=$day&area=$area");
     exit(0);
 }
 
 # The room was not free.
 sql_mutex_unlock($tbl_entry);
 
+print_header();
+
 if (strlen($err) > 0) {
-    print_header();
-    
     echo '<h2>' . get_vocab('sched_conflict') . '</h2>';
     if (!isset($hide_title)) {
         echo get_vocab('conflict');
@@ -301,9 +274,7 @@ if (strlen($err) > 0) {
     
     echo $err;
     
-    if(!isset($hide_title)) {
-        echo '</ul>';
-    }
+    if(!isset($hide_title)) echo '</ul>';
 }
 
 echo "<a href=\"$returl\">".get_vocab('returncal').'</a><br /><br />';
