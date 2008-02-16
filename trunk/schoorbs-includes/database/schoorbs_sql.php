@@ -481,7 +481,10 @@ function mrbsGetRoomArea($id)
 {
 	global $tbl_room;
 
-	$id = sql_query1("SELECT area_id FROM $tbl_room WHERE (id = $id)");
+	$id = sql_query1(sprintf(
+		'SELECT area_id FROM %s WHERE id = %d',
+		$tbl_room, $id
+	));
 	if ($id <= 0) return 0;
 	return $id;
 }
