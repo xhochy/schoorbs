@@ -49,7 +49,7 @@ REPARAGRAPH="no"
 SEPARATEDAYLOGS="no"
 CHANGELOG=""
 OUTSTYLE="cl"
-SVNLOGCMD="svn --verbose --xml log"
+SVNLOGCMD="svn --verbose --xml log http://schoorbs.googlecode.com/svn/trunk"
 SVNINFOCMD="svn info"
 AUTHORSFILE=""
 TITLE="ChangeLog"
@@ -288,6 +288,7 @@ then
 fi
 
 # actually run the command we need
+echo "$SVNLOGCMD"
 eval "$SVNLOGCMD" | \
   xsltproc --stringparam strip-prefix "$STRIPPREFIX" \
            --stringparam linelen "$LINELEN" \
