@@ -58,6 +58,7 @@ $auth["session"] = "http";
 ## Underlying Test Suites ##
  
 require_once 'input.tests.php';
+require_once 'logging.tests.php';
 
 ## The Testsuite ##
  
@@ -86,6 +87,7 @@ class AllTests
         $suite = new PHPUnit_Framework_TestSuite('PHPUnit');
  
         $suite->addTest(Input_AllTests::suite());
+        $suite->addTest(Logging_AllTests::suite());
  
         return $suite;
     }
