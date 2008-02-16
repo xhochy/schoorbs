@@ -194,7 +194,7 @@ var enablePeriods = true;
 	</tr>
 	</table>
 	<div>
-	<input type="hidden" name="returl" value="{$smarty.server.HTTP_REFFERER}" />
+	<input type="hidden" name="returl" value="{$smarty.server.HTTP_REFERER}" />
 	<input type="hidden" name="create_by" value="{$create_by}" />
 	<input type="hidden" id="main-rep-id" name="rep_id" value="{$rep_id}" />
 	<input type="hidden" name="edit_type" value="{$edit_type}" />
