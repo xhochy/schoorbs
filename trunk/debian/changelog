@@ -1,3 +1,17 @@
+schoorbs (1.0a5) unstable; urgency=low
+
+  * Removed grab_globals.php, which extracted all _GET, _POST and _COOKIE variables as global variables
+  * Rewritten edit_entry.php and edit_entry_handler.php to work without grab_globals.php
+  * Removed automated mails when booking a room
+  * Added logging system, at the moment only syslog is available as a backend
+  * Supporting Smarty 2.6.19
+  * Official(tested) Support now for 
+    - Ubuntu 7.10 "Gutsy Gibbon"
+    - Ubuntu 7.04 "Feisty Fawn"
+    - Debian 4.0 "Etch"
+
+ -- Uwe L. Korn <packaging@xhochy.com> Sun, 17 Feb 2008 15:09:16 +0100
+
 schoorbs (1.0a4.1) unstable; urgency=low
 
   * Files under /usr belong to root
