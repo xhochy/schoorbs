@@ -16,4 +16,5 @@
  * Announce on [https://launchpad.net/schoorbs/+announce Launchpad]
  * Announce on [http://groups.google.com/group/xy-announce XhochY Announce]
  * Announce on [http://groups.google.com/group/schoorbs-general-discussion Schoorbs general discussion]
+ * Announce on [http://schoorbs.xhochy.com the Schoorbs Website]
  * Announce on Freshmeat and add this release
