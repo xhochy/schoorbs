@@ -6,11 +6,11 @@ schoorbs (1.0a5) unstable; urgency=low
   * Added logging system, at the moment only syslog is available as a backend
   * Supporting Smarty 2.6.19
   * Official(tested) Support now for 
-    - Ubuntu 7.10 "Gutsy Gibbon"
-    - Ubuntu 7.04 "Feisty Fawn"
-    - Debian 4.0 "Etch"
+  * Ubuntu 7.10 "Gutsy Gibbon"
+  * Ubuntu 7.04 "Feisty Fawn"
+  * Debian 4.0 "Etch"
 
- -- Uwe L. Korn <packaging@xhochy.com> Sun, 17 Feb 2008 15:09:16 +0100
+ -- Uwe L. Korn <packaging@xhochy.com>  Sun, 17 Feb 2008 15:09:16 +0100
 
 schoorbs (1.0a4.1) unstable; urgency=low
 
