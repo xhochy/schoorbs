@@ -26,32 +26,11 @@ define('SCHOORBS_NOGUI',true);
 require_once 'PHPUnit/Framework.php';
 require_once 'PHPUnit/TextUI/TestRunner.php';
 
-## Check for a suitable config.inc.php ##
-
-if (!file_exists(dirname(__FILE__).'/../config.inc.php')) {
-    $sHost = php_uname('n');
-    
-    $sDir = dirname(__FILE__).'/buildbot-test-configurations/'.$sHost;
-        
-    echo "# Building Test Environment for ${sUser}@${sHost}\n";
-    
-    if (file_exists($sDir.'/config.inc.php')) {
-        echo "## Found suitable config.inc.php\n";
-        copy($sDir.'/config.inc.php', dirname(__FILE__).'/../config.inc.php');
-    } else {
-        echo "## Didn't find suitable config.inc.php\n";
-    }
-    
-    if (file_exists($sDir.'/pre-test.sh')) {
-           system('/usr/bin/env sh '.escapeshellarg($sDir.'/pre-test.sh').' '.escapeshellarg(realpath(dirname(__FILE__).'/../')));
-    }
-} else {
-    echo "# Using given environment for tests\n";
-}
+## Configurations ##
 
 /** Include the configuration */
 require_once dirname(__FILE__).'/../config.inc.php';
-
+/** The Configuration for the Tests */
 require_once 'test.configuration.php';
 
 /** Override session module, since some of them are not yet suitable for the unittests */
