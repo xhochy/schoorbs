@@ -22,7 +22,7 @@ deb http://static.xhochy.com/ubuntu/ feisty schoorbs
 deb-src http://static.xhochy.com/ubuntu/ feisty schoorbs
 }}}
 
-= Note =
+= Security =
 
 Packages in these repositories can be gpg authenticated. The key that is being used for signing the packages is 129DE187. You can enter this key into the APT trusted keys database with the following command:
 
