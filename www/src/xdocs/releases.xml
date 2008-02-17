@@ -40,6 +40,11 @@
                       <a href="http://xhochy.org/en/2008/02/02/schoorbs-10-alpha-4-released/">Announcement 
                       on the english XhochY Weblog.</a> 
                     </li>
+                    <li>
+                      <em>Schoorbs 1.0-Alpha 5:</em>&nbsp;
+                      <a href="http://xhochy.org/en/2008/02/17/schoorbs-10-alpha-5-released/">Announcement 
+                      on the english XhochY Weblog.</a> 
+                    </li>
 				</ul>
 			</li>
 		</ul>
@@ -47,7 +52,7 @@
     <section id="continous">
       <title>Continous Builds</title>
       <p>
-        At <a href="http://buildbot.xhochy.com/schoorbs/">buildbot.xhochy.com</a> we have a continous builder
+        At <a href="http://buildbot.xhochy.com/">buildbot.xhochy.com</a> we have a continous builder
         which goes through each new Subversion revision, at the moment we do not provide a environment for testing
         on it, so all builds will fail. In the future, we hope to be able to provide a Package for each revision. This
         should be a kind of modern nightly builds.

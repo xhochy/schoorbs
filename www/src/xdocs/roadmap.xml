@@ -13,56 +13,17 @@
         main goals are in the next coming alpha versions. 
       </p>
     </section>
-    <section id="schoorbs-1.0-alpha-1">
-      <title>Schoorbs 1.0-Alpha 1</title>
-      <p>
-        <strong>Released:</strong> 
-        <a href="http://xhochy.org/en/2007/07/05/schoorbs-10-alpha-1-released/">
-        Alpha 1 Announcement on the english XhochY Weblog.</a> 
-      </p>
-    </section>
-    <section id="schoorbs-1.0-alpha-2">
-      <title>Schoorbs 1.0-Alpha 2</title>
-      <p>
-        <strong>Released:</strong> 
-        <a href="http://xhochy.org/en/2007/11/03/schoorbs-10-alpha-2-released/">
-        Alpha 2 Announcement on the english XhochY Weblog.</a> 
-      </p>
-    </section>
-    <section id="schoorbs-1.0-alpha-3">
-      <title>Schoorbs 1.0-Alpha 3</title>
-      <p>
-        <strong>Released:</strong> 
-        <a href="http://xhochy.org/en/2007/12/23/schoorbs-10-alpha-3-released/">
-        Alpha 3 Announcement on the english XhochY Weblog.</a> 
-      </p>
-    </section>
-    <section id="schoorbs-1.0-alpha-4">
-      <title>Schoorbs 1.0-Alpha 4</title>
-      <p>
-        <strong>Released:</strong>
-        <a href="http://xhochy.org/en/2008/02/02/schoorbs-10-alpha-4-released/">
-        Alpha 4 Announcement on the english XhochY Weblog.</a> 
-      </p>
-    </section>
-    <section id="schoorbs-1.0-alpha-5">
-      <title>Schoorbs 1.0-Alpha 5</title>
-      <ul>
-        <li>Rewritten search interface, results will be flavoured with hCalendar-mircoformat</li>
-        <li>E-Mail support should become stable</li>
-      </ul>
-    </section>
     <section id="schoorbs-1.0-alpha-6">
       <title>Schoorbs 1.0-Alpha 6</title>
       <ul>
         <li>Add a backup/restore function to the Web-Admin-GUI</li>
-        <li>Installationscript</li>
         <li>Rewritten report function with PDF export</li>
       </ul>
     </section>
     <section id="schoorbs-1.0-alpha-7">
       <title>Schoorbs 1.0-Alpha 7</title>
       <ul>
+        <li>Rewritten search interface, results will be flavoured with hCalendar-mircoformat</li>
         <li>Support for PHP accelerators/cachers (especially APC)</li>
         <li>Export a week as iCal</li>
         <li>...</li>
