@@ -49,6 +49,8 @@ install: build
 	rm -rf $(CURDIR)/debian/schoorbs/usr/share/schoorbs/schoorbs-includes/Smarty/libs
 	# PHPMailer is available as debian package
 	rm -rf $(CURDIR)/debian/schoorbs/usr/share/schoorbs/schoorbs-includes/mail
+    # Move log-config to etc/schoorbs/
+	mv $(CURDIR)/debian/schoorbs/usr/share/schoorbs/schoorbs-includes/logging.configuration.php $(CURDIR)/debian/schoorbs/etc/schoorbs
 	
 # Build architecture-independent files here.
 binary-indep: build install
