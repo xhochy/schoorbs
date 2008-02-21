@@ -18,7 +18,13 @@ task :default => [:clean, :doc]
 
 desc 'Execute all unit tests for Schoorbs'
 task :test do
-  sh 'phpunit --coverage-html ./schoorbs-report AllTests schoorbs-tests/all.tests.php'
+  begin
+    sh 'php -m | grep -i xdebug' # check if the xdebug module is installed
+    coverage = '--coverage-html ./schoorbs-report'
+  rescue
+    coverage = ''
+  end
+  sh 'phpunit ' + coverage + ' AllTests schoorbs-tests/all.tests.php'
 end
 
 desc 'Generate the sourcecode documentation'
