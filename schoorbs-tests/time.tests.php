@@ -1,10 +1,10 @@
 <?php
 /**
- * The Testsuite for all logging related functions
+ * The Testsuite for all time related functions
  * 
  * @author Uwe L. Korn <uwelk@xhochy.org>
  * @package Schoorbs-Test
- * @subpackage Logging
+ * @subpackage Time
  * @license http://www.gnu.org/licenses/gpl.html GNU General Public License
  */
  
@@ -36,7 +36,7 @@ require_once 'PHPUnit/TextUI/TestRunner.php';
 
 ## The Logging Tests ##
 
-require_once 'logging-tests/syslog.test.php';
+require_once 'time-tests/getYesterday.test.php';
  
 ## The Testsuite ##
 
@@ -44,10 +44,10 @@ require_once 'logging-tests/syslog.test.php';
  * Test all logging-Functions
  * 
  * @package Schoorbs-Test
- * @subpackage Logging
+ * @subpackage Time
  * @return 
  */
-class Logging_AllTests
+class Time_AllTests
 {
     public static function main()
     {
@@ -58,12 +58,12 @@ class Logging_AllTests
     {
         $suite = new PHPUnit_Framework_TestSuite('PHPUnit');
  
-        $suite->addTestSuite('Logging_SyslogTest');
+        $suite->addTestSuite('Time_GetYesterdayTest');
         
         return $suite;
     }
 }
 
-if (PHPUnit_MAIN_METHOD == 'Logging_AllTests::main') {
+if (PHPUnit_MAIN_METHOD == 'Time_AllTests::main') {
     Logging_AllTests::main();
 }
