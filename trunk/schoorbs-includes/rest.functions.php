@@ -105,7 +105,7 @@ function InitRESTSmarty()
 
 	$_TPL = new Smarty();
 
-	$_TPL->template_dir = dirname(__FILE__).'/Smarty/templates/REST';
+	$_TPL->template_dir = realpath(dirname(__FILE__).'/../schoorbs-misc/templates/REST');
 	$_TPL->compile_dir = dirname(__FILE__).'/Smarty/templates_c';
 	$_TPL->cache_dir = dirname(__FILE__).'/Smarty/cache';
 	$_TPL->config_dir = dirname(__FILE__).'/Smarty/configs';
