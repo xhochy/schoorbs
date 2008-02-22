@@ -37,6 +37,7 @@ require_once 'PHPUnit/TextUI/TestRunner.php';
 ## The Logging Tests ##
 
 require_once 'time-tests/getYesterday.test.php';
+require_once 'time-tests/getTomorrow.test.php';
  
 ## The Testsuite ##
 
@@ -59,6 +60,7 @@ class Time_AllTests
         $suite = new PHPUnit_Framework_TestSuite('PHPUnit');
  
         $suite->addTestSuite('Time_GetYesterdayTest');
+        $suite->addTestSuite('Time_GetTomorrowTest');
         
         return $suite;
     }
