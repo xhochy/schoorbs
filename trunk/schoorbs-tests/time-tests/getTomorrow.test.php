@@ -31,7 +31,7 @@ require_once 'PHPUnit/Framework.php';
  * Testsuite for the getTomorrow function
  * 
  * @package Schoorbs-Test
- * @subpackage Logging
+ * @subpackage Time
  * @author Uwe L. Korn <uwelk@xhochy.org>
  */ 
 class Time_GetTomorrowTest extends PHPUnit_Framework_TestCase
