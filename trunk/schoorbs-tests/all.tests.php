@@ -40,6 +40,7 @@ $auth["session"] = "http";
  
 require_once 'input.tests.php';
 require_once 'logging.tests.php';
+require_once 'time.tests.php';
 
 ## The Testsuite ##
  
@@ -69,6 +70,7 @@ class AllTests
  
         $suite->addTest(Input_AllTests::suite());
         $suite->addTest(Logging_AllTests::suite());
+        $suite->addTest(Time_AllTests::suite());
  
         return $suite;
     }
