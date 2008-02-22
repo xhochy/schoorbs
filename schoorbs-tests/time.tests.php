@@ -38,6 +38,7 @@ require_once 'PHPUnit/TextUI/TestRunner.php';
 
 require_once 'time-tests/getYesterday.test.php';
 require_once 'time-tests/getTomorrow.test.php';
+require_once 'time-tests/getNextWeek.test.php';
  
 ## The Testsuite ##
 
@@ -61,6 +62,7 @@ class Time_AllTests
  
         $suite->addTestSuite('Time_GetYesterdayTest');
         $suite->addTestSuite('Time_GetTomorrowTest');
+        $suite->addTestSuite('Time_GetNextWeekTest');
         
         return $suite;
     }
