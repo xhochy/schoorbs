@@ -23,7 +23,9 @@ function rest_function_getRoomID()
 		$tbl_room, sql_escape_arg($sName)
 	));
 	
-	if (!isset($nRoomID)) sendRESTError('Couldn\'t find a fitting room.', -1);
+	if (!isset($nRoomID) || ($nRoomID == -1)) {
+		sendRESTError('Couldn\'t find a fitting room.', -1);
+	}
 
 	sendRESTHeaders();
 	$_TPL->assign('room_id', $nRoomID);
