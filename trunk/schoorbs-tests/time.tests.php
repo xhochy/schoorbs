@@ -41,6 +41,7 @@ require_once 'time-tests/getTomorrow.test.php';
 require_once 'time-tests/getNextWeek.test.php';
 require_once 'time-tests/getLastWeek.test.php';
 require_once 'time-tests/toTimeString.test.php';
+require_once 'time-tests/toPeriodString.test.php';
  
 ## The Testsuite ##
 
@@ -67,6 +68,7 @@ class Time_AllTests
         $suite->addTestSuite('Time_GetNextWeekTest');
         $suite->addTestSuite('Time_GetLastWeekTest');
         $suite->addTestSuite('Time_ToTimeStringTest');
+        $suite->addTestSuite('Time_ToPeriodStringTest');
         
         return $suite;
     }
