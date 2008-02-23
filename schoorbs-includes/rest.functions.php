@@ -77,7 +77,9 @@ function sendRESTError($sMessage, $nCode)
 	$_TPL->assign('message',$sMessage);
 	$_TPL->assign('code',$nCode);
 	$_TPL->display('error.tpl');
-	exit($nCode);
+	
+	if (defined('REST_TESTING')) return;
+	else exit($nCode);
 }
 
 /**
@@ -87,6 +89,7 @@ function sendRESTError($sMessage, $nCode)
  */
 function sendRESTHeaders()
 {
+	if (defined('REST_TESTING')) return;
 	header('Content-type: text/xml; charset=utf-8');
 	
 	// REST-Answers should never be chached!

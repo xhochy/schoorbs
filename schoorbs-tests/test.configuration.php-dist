@@ -18,4 +18,9 @@
 class TestConfiguration
 {
 	public static $sSyslogLocation = '/var/log/syslog';
+	
+	/** Database **/
+	// Attention !! Tables will be dropped an recreated during the tests
+
+	public static $sDatabaseTablePrefix = 'schoorbs_devel_';
 }
