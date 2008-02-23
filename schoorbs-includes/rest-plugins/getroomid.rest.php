@@ -18,9 +18,10 @@ function rest_function_getRoomID()
 	global $_TPL, $tbl_room;
 	
 	$sName = unslashes($_REQUEST['name']);
-	$sQuery = "SELECT id FROM $tbl_room WHERE room_name = '"
-		.sql_escape_arg($sName).'\'';
-	$nRoomID = sql_query1($sQuery);
+	$nRoomID = sql_query1(sprintf(
+		'SELECT id FROM %s WHERE room_name = \'%s\'',
+		$tbl_room, sql_escape_arg($sName)
+	));
 
 	sendRESTHeaders();
 	$_TPL->assign('room_id', $nRoomID);
