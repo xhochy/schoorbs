@@ -30,6 +30,8 @@ require_once 'PHPUnit/TextUI/TestRunner.php';
 
 /** Include the configuration */
 require_once dirname(__FILE__).'/../config.inc.php';
+/** Load the configuration into the new Configuration Singleton */
+require_once 'configuration.helper.php';
 /** The Configuration for the Tests */
 require_once 'test.configuration.php';
 
@@ -41,6 +43,8 @@ $auth["session"] = "http";
 require_once 'input.tests.php';
 require_once 'logging.tests.php';
 require_once 'time.tests.php';
+require_once 'rest.tests.php';
+require_once 'database.tests.php';
 
 ## The Testsuite ##
  
@@ -71,6 +75,8 @@ class AllTests
         $suite->addTest(Input_AllTests::suite());
         $suite->addTest(Logging_AllTests::suite());
         $suite->addTest(Time_AllTests::suite());
+        $suite->addTest(REST_AllTests::suite());
+        $suite->addTest(Database_AllTests::suite());
  
         return $suite;
     }
