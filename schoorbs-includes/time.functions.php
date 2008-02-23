@@ -149,3 +149,67 @@ function getLastWeek($day, $month, $year)
         return $aRet;
 }
 
+/**
+ * Format the duration as nice time-string
+ * 
+ * @param $dur int
+ * @param $units string
+ * @author Uwe L. Korn <uwelk@xhochy.org>
+ */
+function toTimeString(&$dur, &$units)
+{
+	if ($dur >= 60) {
+		$dur /= 60;
+		if ($dur >= 60) {
+			$dur /= 60;
+			if (($dur >= 24) && ($dur % 24 == 0)) {
+				$dur /= 24;
+				if (($dur >= 7) && ($dur % 7 == 0)) {
+					$dur /= 7;
+					if (($dur >= 52) && ($dur % 52 == 0)) {
+						$dur  /= 52;
+						$units = get_vocab('years');
+					} else $units = get_vocab('weeks');
+				} else $units = get_vocab('days');
+			} else $units = get_vocab('hours');
+		} else $units = get_vocab('minutes');
+	} else $units = get_vocab('seconds');
+}
+
+
+/**
+ * Format the duration as a nice period-string
+ *
+ * @param $start_period int
+ * @param $dur int
+ * @param $units string
+ * @author Uwe L. Korn <uwelk@xhochy.org>
+ */
+function toPeriodString($start_period, &$dur, &$units)
+{
+	global $periods;
+
+	$max_periods = count($periods);
+	$dur /= 60;
+
+    if (($dur >= $max_periods) || ($start_period == 0)) {
+		if (($start_period == 0) && ($dur == $max_periods)) {
+			$units = get_vocab('days');
+			$dur = 1;
+			return;
+		}
+
+        $dur /= 60;
+        if (($dur >= 24) && is_int($dur)) {
+			$dur /= 24;
+			$units = get_vocab('days');
+			return;
+		} else {
+			$dur *= 60;
+			$dur = ($dur % $max_periods) + floor( $dur/(24*60) ) * $max_periods;
+			$units = get_vocab('periods');
+			return;
+		}
+	} else $units = get_vocab('periods');
+}
+

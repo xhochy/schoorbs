@@ -100,54 +100,6 @@ function print_header()
 	$smarty->display('head.tpl');
 }
 
-function toTimeString(&$dur, &$units)
-{
-	if ($dur >= 60) {
-		$dur /= 60;
-		if ($dur >= 60) {
-			$dur /= 60;
-			if (($dur >= 24) && ($dur % 24 == 0)) {
-				$dur /= 24;
-				if (($dur >= 7) && ($dur % 7 == 0)) {
-					$dur /= 7;
-					if (($dur >= 52) && ($dur % 52 == 0)) {
-						$dur  /= 52;
-						$units = get_vocab('years');
-					} else $units = get_vocab("weeks");
-				} else $units = get_vocab('days');
-			} else $units = get_vocab('hours');
-		} else $units = get_vocab('minutes');
-	} else $units = get_vocab('seconds');
-}
-
-
-function toPeriodString($start_period, &$dur, &$units)
-{
-	global $enable_periods, $periods;
-
-	$max_periods = count($periods);
-	$dur /= 60;
-
-    if (($dur >= $max_periods) || ($start_period == 0)) {
-		if (($start_period == 0) && ($dur == $max_periods)) {
-			$units = get_vocab('days');
-			$dur = 1;
-			return;
-		}
-
-        $dur /= 60;
-        if (($dur >= 24) && is_int($dur)) {
-			$dur /= 24;
-			$units = get_vocab('days');
-			return;
-		} else {
-			$dur *= 60;
-			$dur = ($dur % $max_periods) + floor( $dur/(24*60) ) * $max_periods;
-			$units = get_vocab('periods');
-			return;
-		}
-	} else $units = get_vocab('periods');
-}
 
 # Error handler - this is used to display serious errors such as database
 # errors without sending incomplete HTML pages. This is only used for
@@ -175,7 +127,6 @@ function fatal_error($need_header, $message = '')
 	}
 }
 
-# 
 /**
  * Remove backslash-escape quoting if PHP is configured to do it with
  * magic_quotes_gpc. Use this whenever you need the actual value of a GET/POST
