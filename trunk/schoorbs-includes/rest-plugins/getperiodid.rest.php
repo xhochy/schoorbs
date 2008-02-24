@@ -21,8 +21,11 @@ function rest_function_getPeriodID()
 	for ($i = 0; $i < count($periods); $i++) {
 		if ($periods[$i] == $sName) {
 			$nPeriodID = $i;
-			break;
 		}
+	}
+	
+	if (!isset($nPeriodID)) {
+		sendRESTError('Couldn\'t find a fitting period.', -1);
 	}
 
 	sendRESTHeaders();

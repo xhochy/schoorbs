@@ -43,6 +43,7 @@ require_once 'PHPUnit/Extensions/OutputTestCase.php';
 ## The REST Tests ##
 
 require_once 'rest-tests/getroomid.test.php';
+require_once 'rest-tests/getperiodid.test.php';
 
 ## The Testsuite ##
 
@@ -65,6 +66,7 @@ class REST_AllTests
         $suite = new PHPUnit_Framework_TestSuite('PHPUnit');
  
         $suite->addTestSuite('REST_GetroomidTest');
+        $suite->addTestSuite('REST_GetperiodidTest');
         
         return $suite;
     }
