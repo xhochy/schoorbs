@@ -8,6 +8,11 @@
  * @license http://www.gnu.org/licenses/gpl.html GNU General Public License
  */
  
+ 
+/*** ATTENTION !!! ***/
+// Tests with backend=pgsql are not supported at the moment since this backend
+// uses a global variable to store the connection
+ 
 if (!defined('PHPUnit_MAIN_METHOD')) {
     /**
      * Set Input_AllTests::main as main method that should be started 
