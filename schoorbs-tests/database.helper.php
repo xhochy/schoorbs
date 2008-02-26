@@ -35,7 +35,7 @@ class DatabaseHelper
 	 */
 	public static function flavourTblGlobals()
 	{
-		global $tbl_room;
+		global $tbl_room, $tbl_entry, $tbl_repeat, $tbl_room;
 		$sPrefix = TestConfiguration::$sDatabaseTablePrefix;
 		
 		$tbl_area   = $sPrefix.'area';

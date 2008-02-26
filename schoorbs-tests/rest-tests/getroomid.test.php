@@ -95,6 +95,7 @@ class REST_GetroomidTest extends PHPUnit_Extensions_OutputTestCase
 		$_REQUEST['name'] = $this->sNonRoom;
 		
 		$this->expectOutputRegex('/(<rsp)[\s]+(stat="fail">)/');
+		$this->setExpectedException('Exception');
 		
 		callRESTFunction('getRoomID');
     }
