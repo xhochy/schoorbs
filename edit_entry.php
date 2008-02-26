@@ -40,6 +40,7 @@ if (isset($_REQUEST['edit_type'])) {
 	$edit_type = '';
 }
 
+
 ## Main ##
 
 if (!getAuthorised(1)) showAccessDenied();
@@ -146,8 +147,12 @@ if (isset($id)) {
 	$start_month = $month;
 	$start_year  = $year;
     // Avoid notices for $hour and $minute if periods is enabled
-    (isset($_REQUEST['hour'])) ? $start_hour = $_REQUEST['hour'] : '';
-	(isset($_REQUEST['minute'])) ? $start_min = $_REQUEST['minute'] : '';
+    if (isset($_REQUEST['hour'])) $start_hour = intval($_REQUEST['hour']);
+    elseif ($enable_periods) $start_hour = 12;
+	if (isset($_REQUEST['minute'])) $start_min = intval($_REQUEST['minute']);
+	elseif (isset($_REQUEST['period']) && $enable_periods) { 
+		$start_min = intval($_REQUEST['period']);
+	}
 	$duration    = ($enable_periods ? 60 : 60 * 60);
 	$type        = 'I';
 	$room_id     = $room;
@@ -324,6 +329,7 @@ $smarty->assign(array(
 	'dur_units' => $dur_units,
 	'create_by' => $create_by
 ));
+
 $smarty->display('edit_entry.tpl');
 
 require_once 'schoorbs-includes/trailer.php';
