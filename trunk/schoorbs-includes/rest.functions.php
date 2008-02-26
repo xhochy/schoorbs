@@ -74,11 +74,11 @@ function sendRESTError($sMessage, $nCode)
 	global $_TPL;
 	
 	sendRESTHeaders();
-	$_TPL->assign('message',$sMessage);
-	$_TPL->assign('code',$nCode);
+	$_TPL->assign('message', $sMessage);
+	$_TPL->assign('code', $nCode);
 	$_TPL->display('error.tpl');
 	
-	if (defined('REST_TESTING')) return;
+	if (defined('REST_TESTING')) throw new Exception('REST Exception' + $sMessage);
 	else exit($nCode);
 }
 

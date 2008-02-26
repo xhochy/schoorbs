@@ -91,6 +91,7 @@ class REST_GetperiodidTest extends PHPUnit_Extensions_OutputTestCase
 		$_REQUEST['name'] = 'p3';
 		
 		$this->expectOutputRegex('/(<rsp)[\s]+(stat="fail">)/');
+		$this->setExpectedException('Exception');
 		
 		callRESTFunction('getPeriodID');
     }

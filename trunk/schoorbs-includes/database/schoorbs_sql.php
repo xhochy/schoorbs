@@ -43,9 +43,12 @@ function schoorbsCheckFree($room_id, $starttime, $endtime, $ignore, $repignore)
 	global $tbl_entry, $enable_periods, $periods;
 
     # Select any meetings which overlap ($starttime,$endtime) for this room:
-    $sQuery = "SELECT id, name, start_time FROM $tbl_entry WHERE start_time < ".sql_escape_arg($endtime)
-    	." AND end_time > ".sql_escape_arg($starttime)." AND room_id = ".sql_escape_arg($room_id);
-
+    $sQuery = sprintf(
+    	'SELECT id, name, start_time FROM %s WHERE start_time < %d AND end_time'
+    	.' > %d AND room_id = %d',
+    	$tbl_entry, $endtime, $starttime, $room_id
+    );
+    
 	if ($ignore > 0)
 		$sQuery .= " AND id <> ".sql_escape_arg($ignore);
 	if ($repignore > 0)
@@ -53,10 +56,8 @@ function schoorbsCheckFree($room_id, $starttime, $endtime, $ignore, $repignore)
 	$sQuery .= " ORDER BY start_time";
 
 	$res = sql_query($sQuery);
-	if(!$res)
-		return sql_error();
-	if (sql_count($res) == 0)
-	{
+	if(!$res) fatal_error(true, sql_error());	
+	if (sql_count($res) == 0) {
 		sql_free($res);
 		return null;
 	}
