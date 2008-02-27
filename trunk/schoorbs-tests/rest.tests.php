@@ -45,6 +45,7 @@ require_once 'PHPUnit/Extensions/OutputTestCase.php';
 require_once 'rest-tests/getroomid.test.php';
 require_once 'rest-tests/getperiodid.test.php';
 require_once 'rest-tests/checkfree.test.php';
+require_once 'rest-tests/makebooking.test.php';
 
 ## The Testsuite ##
 
@@ -69,6 +70,7 @@ class REST_AllTests
         $suite->addTestSuite('REST_GetroomidTest');
         $suite->addTestSuite('REST_GetperiodidTest');
         $suite->addTestSuite('REST_CheckfreeTest');
+        $suite->addTestSuite('REST_MakeBookingTest');
         
         return $suite;
     }

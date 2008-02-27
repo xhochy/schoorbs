@@ -17,9 +17,9 @@ if (!defined('PHPUnit_MAIN_METHOD')) {
 ## Defines ##
 
 /**
- * Define that we are running Schoorbs without a GUI
+ * Define that we are running Schoorbs without a GUI -> CLI or Testing mode
  */
-define('SCHOORBS_NOGUI',true);
+define('SCHOORBS_NOGUI', true);
 
 ## PHPUnit Includes ##
 
@@ -36,7 +36,7 @@ require_once 'configuration.helper.php';
 require_once 'test.configuration.php';
 
 /** Override session module, since some of them are not yet suitable for the unittests */
-$auth["session"] = "http";
+$auth['session'] = 'http';
 
 ## Underlying Test Suites ##
  

@@ -37,7 +37,7 @@ function getAuthorised($level)
     global $auth;
 
     $user = getUserName();
-    if(isset($user) == FALSE) {
+    if(!isset($user)) {
         authGet();
         return 0;
     }

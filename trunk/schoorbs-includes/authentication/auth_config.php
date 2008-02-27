@@ -24,14 +24,19 @@
 function authValidateUser($user, $pass)
 {
 	global $auth;
-
+	
 	// Check if we do not have a username/password
-	if(!isset($user) || !isset($pass) || strlen($pass) == 0) return false;
+	if (!isset($user) || !isset($pass) || strlen($pass) == 0) return false;
 	// Check if	the user exists
-	if(isset($auth['user'][$user]) && ($auth['user'][$user] == $pass)) return true;
-	// Check if the user exists in lowercase type
-	$user = strtolower($user);
-	if(isset($auth['user'][$user]) && ($auth['user'][$user] == $pass)) return true;
+	if (isset($auth['user'][$user])) {
+		if ($auth['user'][$user] == $pass) return true;
+	} else { // Check if the user exists in lowercase type
+		$user = strtolower($user);
+		if (isset($auth['user'][$user])) {
+			if ($auth['user'][$user] == $pass) return true;
+		}
+	}
+	
 	// User unknown or password invalid
 	return false;		
 }
