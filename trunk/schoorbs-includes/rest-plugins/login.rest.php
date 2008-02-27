@@ -18,9 +18,10 @@ function rest_function_login()
 	global $_TPL;
 	
 	if(!getAuthorised(1)){
-		sendRESTError('Access Denied', 4);
+		return sendRESTError('Access Denied', 4);
 	}		
+	
 	sendRESTHeaders();
-	$_TPL->assign('username',getUserName());
+	$_TPL->assign('username', getUserName());
 	$_TPL->display('login.tpl');
 }
