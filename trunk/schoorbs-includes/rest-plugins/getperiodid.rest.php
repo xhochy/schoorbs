@@ -25,7 +25,7 @@ function rest_function_getPeriodID()
 	}
 	
 	if (!isset($nPeriodID)) {
-		sendRESTError('Couldn\'t find a fitting period.', -1);
+		return sendRESTError('Couldn\'t find a fitting period.', -1);
 	}
 
 	sendRESTHeaders();
