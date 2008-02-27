@@ -27,6 +27,36 @@ function schoorbsGetResourceName($nResourceID)
 	return sql_query1($sQuery);
 }
 
+/**
+ * Delete all bookings that conflict with the given room-time combination
+ *
+ * @author Uwe L. Korn <uwelk@xhochy.org>
+ * @return boolean true on success
+ */
+function schoorbsDeleteConflicts($nRoomID, $nStartTime, $nEndTime, $sUsername)
+{
+	global $tbl_entry;
+
+	// Select any meetings which overlap ($nStartTime, $nEndTime) for this room:
+    $hResult = sql_query(sprintf(
+    	'SELECT id FROM %s WHERE start_time < %d AND end_time > %d AND'
+    	.' room_id = %d',
+    	$tbl_entry, $nEndTime, $nStartTime, $nRoomID
+    ));
+    
+    if (!$hResult) fatal_error(true, sql_error());
+    if (sql_count($hResult) == 0) {
+		sql_free($hResult);
+		return true;
+	}
+	
+	for ($i = 0; ($row = sql_row($hResult, $i)); $i++) {
+		if (schoorbsDelEntry($sUsername, $row[0], false, false) == 0) return false;
+	}
+	
+	return true;
+}
+
 /** 
  * Check to see if the time period specified is free
  * 
@@ -56,7 +86,7 @@ function schoorbsCheckFree($room_id, $starttime, $endtime, $ignore, $repignore)
 	$sQuery .= " ORDER BY start_time";
 
 	$res = sql_query($sQuery);
-	if(!$res) fatal_error(true, sql_error());	
+	if (!$res) fatal_error(true, sql_error());	
 	if (sql_count($res) == 0) {
 		sql_free($res);
 		return null;

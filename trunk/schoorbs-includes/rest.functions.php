@@ -38,6 +38,8 @@ require_once dirname(__FILE__).'/rest-plugins/login.rest.php';
 require_once dirname(__FILE__).'/rest-plugins/checkfree.rest.php';
 /** The makeBooking-REST-Function */
 require_once dirname(__FILE__).'/rest-plugins/makebooking.rest.php';
+/** The replaceBooking-REST-Function */
+require_once dirname(__FILE__).'/rest-plugins/replacebooking.rest.php';
 
 ## Functions ##
  
