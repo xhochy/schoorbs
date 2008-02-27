@@ -24,7 +24,7 @@ function rest_function_getRoomID()
 	));
 	
 	if (!isset($nRoomID) || ($nRoomID == -1)) {
-		sendRESTError('Couldn\'t find a fitting room.', -1);
+		return sendRESTError('Couldn\'t find a fitting room.', -1);
 	}
 
 	sendRESTHeaders();
