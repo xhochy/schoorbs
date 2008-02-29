@@ -56,7 +56,6 @@ require_once 'input-tests/all_day.test.php';
  * 
  * @package Schoorbs-Test
  * @subpackage Input
- * @return 
  */
 class Input_AllTests
 {

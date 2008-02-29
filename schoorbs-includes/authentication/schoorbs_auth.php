@@ -8,10 +8,10 @@
  * @license http://www.gnu.org/licenses/gpl.html GNU General Public License
  */
 
-/* ~~JFL 2003/11/12 By default, use the http session mechanism */
+// ~~JFL 2003/11/12 By default, use the http session mechanism
 if (!isset($auth['session'])) $auth['session'] = 'http';
 
-// include the authentification wrappers
+/** include the authentification wrappers **/
 require_once "auth_{$auth['type']}.php";
 
 if(isset($bSessionIncluded)) {

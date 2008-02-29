@@ -7,20 +7,32 @@
  * @license - opensource
  */
 
-//PHP Calendar Class
-//  
-// Copyright David Wilkinson 2000. All Rights reserved.
-// 
-// This software may be used, modified and distributed freely
-// providing this copyright notice remains intact at the head 
-// of the file.
-//
-// This software is freeware. The author accepts no liability for
-// any loss or damages whatsoever incurred directly or indirectly 
-// from the use of this script.
-//
-// URL:   http://www.cascade.org.uk/software/php/calendar/
-// Email: davidw@cascade.org.uk
+/**
+ * PHP Calendar Class
+ * 
+ * Copyright David Wilkinson 2000. All Rights reserved.
+ * 
+ * 
+ * This software may be used, modified and distributed freely
+ * providing this copyright notice remains intact at the head 
+ * of the file.
+ *
+ * This software is freeware. The author accepts no liability for
+ * any loss or damages whatsoever incurred directly or indirectly 
+ * from the use of this script.
+ *
+ * URL:   http://www.cascade.org.uk/software/php/calendar/
+ * Email: davidw@cascade.org.uk
+ *
+ * Modified for Schoorbs!
+ *
+ * Copyright Uwe L. Korn 2007-2008. All Rights reserved.
+ * 
+ * The modification is under the same license as Schoorbs.
+ *
+ * @package PHP-Calender
+ * @author David Wilkinson <davidw@cascade.org.uk>, gwalker, Uwe L. Korn <uwelk@xhochy.org>
+ */
 class Calendar
 {
     var $month;

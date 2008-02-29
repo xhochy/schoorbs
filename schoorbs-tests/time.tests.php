@@ -50,7 +50,6 @@ require_once 'time-tests/toPeriodString.test.php';
  * 
  * @package Schoorbs-Test
  * @subpackage Time
- * @return 
  */
 class Time_AllTests
 {

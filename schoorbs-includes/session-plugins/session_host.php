@@ -22,8 +22,10 @@
  * @license http://www.gnu.org/licenses/gpl.html GNU General Public License
  */
 
-# No need to prompt for a name - if no DNSname is returned, ip address
-# is used
+/**
+ * No need to prompt for a name - if no DNSname is returned, ip address
+ * is used.
+ */
 function authGet() { }
 
 function getUserName()

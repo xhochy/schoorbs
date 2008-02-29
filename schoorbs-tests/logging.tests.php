@@ -45,7 +45,6 @@ require_once 'logging-tests/syslog.test.php';
  * 
  * @package Schoorbs-Test
  * @subpackage Logging
- * @return 
  */
 class Logging_AllTests
 {

@@ -56,7 +56,6 @@ require_once 'rest-tests/login.test.php';
  * 
  * @package Schoorbs-Test
  * @subpackage REST
- * @return 
  */
 class REST_AllTests
 {

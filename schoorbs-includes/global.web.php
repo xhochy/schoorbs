@@ -9,6 +9,7 @@
 
 ## Includes ##
 
+/** The input getting & validating functions */
 require_once 'input.functions.php';
  
 ## Var Inits ##

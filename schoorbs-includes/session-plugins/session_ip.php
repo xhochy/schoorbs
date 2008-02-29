@@ -20,9 +20,14 @@
  * @license http://www.gnu.org/licenses/gpl.html GNU General Public License
  */
 
-# No need to prompt for a name - ip address always there
+/**
+ * No need to prompt for a name - ip address always there
+ */
 function authGet() { }
 
+/**
+ * UserName == IP
+ */
 function getUserName()
 {
 	return $_SERVER['REMOTE_ADDR'];
