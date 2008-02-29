@@ -16,7 +16,7 @@ require_once 'schoorbs-includes/global.web.php';
 /** The general functions */ 
 require_once 'schoorbs-includes/global.functions.php';
 /** The database wrapper */
-require_once 'schoorbs-includes/database/'.$dbsys.'.php';
+require_once "schoorbs-includes/database/$dbsys.php";
 /** The authetication wrappers */
 require_once 'schoorbs-includes/authentication/schoorbs_auth.php';
 /** Database helper functions */

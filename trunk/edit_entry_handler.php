@@ -21,8 +21,6 @@ require_once "schoorbs-includes/database/$dbsys.php";
 require_once 'schoorbs-includes/authentication/schoorbs_auth.php';
 /** Database helper functions */
 require_once 'schoorbs-includes/database/schoorbs_sql.php';
-/** E-Mail helper functions */
-require_once 'schoorbs-includes/mail.functions.php';
 /** Helper function for this page */
 require_once 'schoorbs-includes/edit_entry_handler.functions.php';
 /** The logging wrapper */

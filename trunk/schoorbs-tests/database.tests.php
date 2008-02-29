@@ -54,7 +54,6 @@ require_once 'database.helper.php';
  * 
  * @package Schoorbs-Test
  * @subpackage Database
- * @return 
  */
 class Database_AllTests
 {

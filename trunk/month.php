@@ -9,11 +9,17 @@
 
 ## Includes ##
 
+/** The Configuration file */
 require_once 'config.inc.php';
+/** The general 'things' when viewing Schoorbs on the web */
 require_once 'schoorbs-includes/global.web.php';
+/** The general functions */ 
 require_once 'schoorbs-includes/global.functions.php';
+/** The database wrapper */
 require_once "schoorbs-includes/database/$dbsys.php";
+/** The authetication wrappers */
 require_once 'schoorbs-includes/authentication/schoorbs_auth.php';
+/** The 3 minicalendars */
 require_once 'schoorbs-includes/minicals.php';
 
 ## Var Init ##

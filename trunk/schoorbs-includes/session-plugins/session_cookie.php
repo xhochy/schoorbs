@@ -15,12 +15,9 @@
  * @license http://www.gnu.org/licenses/gpl.html GNU General Public License
  */
 
-if (isset($cookie_path_override))
-{
+if (isset($cookie_path_override)) {
     $cookie_path = $cookie_path_override;
-}
-else
-{
+} else {
     $cookie_path = $_SERVER['PHP_SELF'];
     $cookie_path = ereg_replace('[^/]*$', '', $cookie_path);
 }
@@ -72,18 +69,17 @@ if (isset($Action) && ($Action == "SetName"))
     exit();
 }
 
-/*
-  Display the login form. Used by two routines below.
-  Will eventually return to $TargetURL.
-*/
+/**
+ * Display the login form. Used by two routines below.
+ * Will eventually return to $TargetURL.
+ */
 function printLoginForm($TargetURL)
 {
-    global $PHP_SELF;
 ?>
 <p>
   <?php echo get_vocab("please_login") ?>
 </p>
-<form method="post" action="<?php echo basename($PHP_SELF) ?>">
+<form method="post" action="<?php echo basename($_SERVER['PHP_SELF']) ?>">
   <table>
     <tr>
       <td align="right"><?php echo get_vocab("user_name") ?></td>
