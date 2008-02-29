@@ -35,13 +35,7 @@ function sql_free ($r)
  */
 function sql_command ($sql)
 {
-  $ret = -1;
-
-  if (MySQLiSingleton::getInstance()->query($sql)) {
-    $ret = MySQLiSingleton::getInstance()->affected_rows;
-  }
-  return $ret;
-}
+	return MySQLiSingleton::command($sql);}
 
 /**
  * Execute an SQL query which should return a single non-negative number value.
@@ -318,14 +312,15 @@ function sql_num_fields($result)
     return $result->field_count;
 }
 
+
 /**
- * Escapes an SQL parameter
+ * Escapes a string for use as a SQL parameter
  * 
  * @author Uwe L. Korn <uwelk@xhochy.org>
  */
 function sql_escape_arg($sArg)
 {
-	return MySQLiSingleton::getInstance()->real_escape_string($sArg);
+	return MySQLiSingleton::escapeString($sArg);
 }
 
 /**
@@ -356,6 +351,33 @@ class MySQLiSingleton {
            echo "\n<p>\n" . get_vocab("failed_connect_db") . " : " . mysqli_connect_error();
            exit(1);
         }
+    }
+    
+    /**
+	 * Execute a non-SELECT SQL command (create/insert/update/delete).
+	 * Returns -1 on error; use sql_error to get the error message.
+	 * 
+	 * @param $sQuery string A non-SELECT SQL-Query
+	 * @return The number of affected rows or -1 on error
+	 */
+    public static function command($sQuery) {
+    	$ret = -1;
+
+		if (self::$mysqli->query($sQuery) === true) {
+			$ret = self::$mysqli->affected_rows;
+		}
+		return $ret;
+    }
+    
+    /**
+	 * Escapes a string for use as a SQL parameter
+	 * 
+	 * @author Uwe L. Korn <uwelk@xhochy.org>
+	 * @param $sString string 
+	 * @return string
+	 */
+    public static function escapeString($sString) {
+    	return self::$mysqli->real_escape_string($sString);
     }
     
     private static $mysqli = null;
