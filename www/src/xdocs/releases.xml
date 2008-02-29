@@ -21,9 +21,9 @@
 				<strong>Unstable</strong>
 				<ul>
 					<li>
-		        		<em>Schoorbs 1.0-Alpha 1:</em>&nbsp;
-        				<a href="http://xhochy.org/en/2007/07/05/schoorbs-10-alpha-1-released/">Announcement 
-        				on the english XhochY Weblog.</a> 
+		        	  <em>Schoorbs 1.0-Alpha 1:</em>&nbsp;
+        			  <a href="http://xhochy.org/en/2007/07/05/schoorbs-10-alpha-1-released/">Announcement 
+        			  on the english XhochY Weblog.</a> 
 					</li>
                     <li>
                       <em>Schoorbs 1.0-Alpha 2:</em>&nbsp;
@@ -52,10 +52,12 @@
     <section id="continous">
       <title>Continous Builds</title>
       <p>
-        At <a href="http://buildbot.xhochy.com/">buildbot.xhochy.com</a> we have a continous builder
-        which goes through each new Subversion revision, at the moment we do not provide a environment for testing
-        on it, so all builds will fail. In the future, we hope to be able to provide a Package for each revision. This
-        should be a kind of modern nightly builds.
+        At <a href="http://cruisecontrol-rb.xhochy.com/projects/Schoorbs">buildbot.xhochy.com</a> we have a continous builder
+        which goes through each new Subversion revision. This should help 
+        developers to verify that Schoorbs runs on other platforms too. Locally
+        we have a virtual machine with several chroot-environments to check Schoorbs
+        in several Database&lt;-&gt;PHP combinations. If you want to have this
+        machine, just contact us through our <a href="http://groups.google.com/group/schoorbs-general-discussion">mailinglist</a>.
       </p>
     </section>
     <p>
