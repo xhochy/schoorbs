@@ -5,11 +5,13 @@
     <title>Welcome to Schoorbs</title>
   </header>
   <body>
-    <section id="status">
-      <title>Status of development</title>
+    <section id="what">
+      <title>What is Schoorbs</title>
       <p>
-        At the moment Schoorbs is still only available as an Alpha-version. We 
-        recommend that only interested developers should use this version.
+        Schoorbs is a free room/resource booking system licensed under the GPLv2
+        which is served as a web application using PHP and MySQL/PostgreSQL. At 
+        the moment there is no stable release of Schoorbs, but you could test the
+        pre-release versions if you want to get an impression how Schoorbs is like.        
       </p>
       <ul>
         <li><a href="http://static.xhochy.com/software/schoorbs/1.0/schoorbs-1.0-alpha5/schoorbs-1.0-alpha5.7z">schoorbs-1.0-alpha5.7z</a></li>
@@ -19,20 +21,30 @@
     <section id="features">
       <title>Features</title>
       <ul>
-        <li>View everything per a XHTML 1.1 valid Webinterface, you use your favorite Webbrowser</li>
-        <li>Runs on all servers supporting PHP(>= 4.3) and MySQL(either the mysql or the mysqli interface) or PostgreSQL.</li>
-        <li>Authentication with your existing user database (eg Netware, NT Domain, NIS etc.)</li>
-        <li>Ensures that conflicting entries cannot be entered</li>
-        <li>Reporting option</li>
-        <li>Selectable DAY / WEEK / MONTH views</li>
-        <li>Multiple auth levels (read-only, user, admin)</li>
-        <li>Multiple languages supported (translated to Czech, Chinese, Danish, Dutch, Finnish, French, German, Greek, Italian, Japanese, Norwegian, Portuguese, Spanish, Swedish)</li>
+        <li>Access it using your favorite webbrowser (valid XHTML 1.1)</li>
+        <li>Runs on every webserver supporting PHP(>= 4.3) and MySQL or PostgreSQL.</li>
+        <li>Ensures that conflicting entries cannot be entered.</li>
+        <li>Selectable <strong>Day / Week / Month</strong> views.</li>
+        <li>Very flexible options on resource/room bookings.</li>
+        <li>Multiple authentication levels (read-only, user, administrator).</li>
+        <li>Multiple languages supported (translated to Czech, Chinese, Danish, Dutch, Finnish, French, German, Greek, Italian, Japanese, Norwegian, Portuguese, Spanish, Swedish).</li>
         <li>Communication with Schoorbs through a REST-API is also possible, so making own scripts/programs using Schoorbs is possible without using PHP.</li>
-        <li>Uses the equal database structure as MRBS, you even could use both in parallel, if you want to evaluate them</li>
+        <li>Uses the equal database structure as <a href="http://mrbs.sf.net/">MRBS</a>, you even could use both in parallel, if you want to evaluate them.</li>
       </ul>
     </section>
+    <section id="contact">
+      <title>Contact</title>
+      <p>
+        All problems about Schoorbs, not depending if they are developement related
+        or just a usage question, could be posted on our 
+        <a href="http://groups.google.com/group/schoorbs-general-discussion">mailinglist</a>.
+        If you find a bug in Schoorbs or you want to propose a new feature, just
+        submit a new entry at our 
+        <a href="http://code.google.com/p/schoorbs/issues/list">issue tracker</a>.
+      </p>
+    </section>
     <section id="source">
-      <title>Browinsg/Getting the complete source</title>
+      <title>Browsing/Getting the complete source</title>
       <p>
         via ...
       </p>
