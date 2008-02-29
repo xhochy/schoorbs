@@ -30,7 +30,7 @@ See http://forrest.apache.org/docs/linking.html for more info
     <roadmap label="Roadmap" href="roadmap.html" description="Roadmap" />
     <linkmap label="Sitemap (ToC)" href="linkmap.html" description="Table of Contents"/>
   </about>
-  <enduser label="End-user Documentation" href="enduser/" tab="enduser">
+  <enduser label="Documentation(EN)" href="enduser/" tab="enduser">
     <index label="Overview" href="index.html"/>
     <install label="Installation" href="install.html"/>
 	<authentication label="Authentication" href="authentication.html"/>
@@ -38,6 +38,9 @@ See http://forrest.apache.org/docs/linking.html for more info
     <mail label="Mail support (experimental)" href="mail.html"/>
     <room_area label="Area + Room Administration" href="room_area.html"/>
   </enduser>
+  <endnutzer label="Dokumentation(DE)" href="endnutzer/" tab="endnutzer">
+    <index label="Überblick" href="index.html"/>
+  </endnutzer>
   <all label="All">
     <whole_site_html label="Whole Site HTML" href="wholesite.html"/>
     <whole_site_pdf label="Whole Site PDF" href="wholesite.pdf"/>
