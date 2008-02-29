@@ -52,6 +52,7 @@ src_doc = {
     'schoorbs-includes/session-plugins/*.php',
     'schoorbs-includes/authentication/*.php', 
     'schoorbs-includes/database/*.php',
+    'schoorbs-includes/lang/*.php',
     'schoorbs-tests/*.php',
     'schoorbs-tests/input-tests/*.php'
     ] - FileList['config.inc.php'],
