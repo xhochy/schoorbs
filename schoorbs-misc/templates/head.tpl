@@ -21,7 +21,7 @@
 		<br />
 		<span class="headerLink" style="color: #55555;">{$mrbs_company}</span>
 		<br /><br />
-		<small class="vcard"><a class="url" href="http://schoorbs.xhochy.com">Powered by <span class="fn org">Schoorbs</span></a></small>
+		
 	</div>
 	<div id="menu">
 		{if $logonbox neq ""}
@@ -32,28 +32,13 @@
 	    	</table>
     	{/if}
 		<br />
-		<a class="menu_link" href="help.php"><img src="schoorbs-misc/gfx/help.png" class="menu_icon" alt="{get_vocab text="help"}" />{get_vocab text="help"}</a>
-		&nbsp;|&nbsp;
+		
 		<!-- Report link deactivated due to deactivated report-page -->
 		<!--
 		<a class="menu_link" href="report.php"><img src="schoorbs-misc/gfx/report.png" class="menu_icon" alt="{get_vocab text="report}" />{get_vocab text="report}</a>
 		&nbsp;|&nbsp;
 		-->
-		<a class="menu_link" href="admin.php"><img src="schoorbs-misc/gfx/admin.png" class="menu_icon" alt="{get_vocab text="admin"}" />{get_vocab text="admin"}</a>
-		&nbsp;|&nbsp;
-		<form action="day.php" method="get">
-        	<div id="menu_selector">
-        		<img src="schoorbs-misc/gfx/view.png" class="menu_icon" alt="{get_vocab text="search"}" />
-           		{genDateSelector prefix=$prefix day=$Day month=$Month year=$Year}
-	   			{if $Area neq ""}
-	     			<input type="hidden" name="area" value="{$Area}" />
-	   			{/if}
-           		<script type="text/javascript">
-           			ChangeOptionDays(''); // Note: The 2nd arg must match the first in the call to genDateSelector above.
-           		</script>
-           		<input type="submit" value="{get_vocab text="viewday"}" />
-           </div>
-		</form>
+		
 		&nbsp;&nbsp;
 		<!-- Search deactivated due to deactivated search page -->
 		<!--<form method="get" action="search.php">
@@ -72,4 +57,19 @@
     	<br />
     	&nbsp;
 	</div>
-	<hr />
+	<div id="linkbar">
+		<span id="poweredby" class="vcard"><a class="url" href="http://schoorbs.xhochy.com">Powered by <span class="fn org">Schoorbs</span></a></span>
+		<a class="menu_link" href="admin.php">{get_vocab text="admin"}</a><a class="menu_link" href="help.php">{get_vocab text="help"}</a>
+		<form action="day.php" method="get">
+        	<div id="menu_selector">
+        		{genDateSelector prefix=$prefix day=$Day month=$Month year=$Year}
+	   			{if $Area neq ""}
+	     			<input type="hidden" name="area" value="{$Area}" />
+	   			{/if}
+           		<script type="text/javascript">
+           			ChangeOptionDays(''); // Note: The 2nd arg must match the first in the call to genDateSelector above.
+           		</script>
+           		<input class="gendateselector-submit" type="submit" value="{get_vocab text="viewday"}" />
+           </div>
+		</form>
+	</div>

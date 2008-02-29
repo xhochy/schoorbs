@@ -32,11 +32,6 @@ body {
 	position: relative;
 	left: 50px;
 }
-#menu_selector {
-	border: solid 1px black;
-	display: inline;
-	padding: 5px;
-}
 #menu_searchbox {
 	border: solid 1px black;
 	display: inline;
@@ -168,7 +163,7 @@ td.red a {
 	font-size: 10pt;
 	background-color: #f0f0f0;
 	text-align: center;
-	padding: 3px;
+	padding: 1px 2px;
 	vertical-align: top;
 }
 .minical-header {
@@ -186,4 +181,56 @@ td.calendarHeader {border:0px; font-size: 10pt}
 .calendar-wrapper {
     margin: 0px 10px;
     padding: 0px 10px;
+}
+#linkbar {
+	background-color: #5a8096;
+	padding: 3px 0px;
+	text-align: center;
+	margin: 5px 0px;
+}
+
+#linkbar a {
+	color: white;
+	padding: 6px 8px;
+	margin: 0px;
+	border: 1px white solid;
+}
+
+#linkbar a:hover {
+	color: #E3C888;
+	text-decoration: none;
+}
+
+.gendateselector {
+	border: 1px solid white;
+	background-color: #87c0e2;
+	color: white;
+	margin: 0px;
+	padding: 0px;
+	font-size: 10pt;
+}
+
+.gendateselector-submit {
+	border: 1px solid silver;
+	margin: 0px;
+	padding: 0px;
+	font-size: 10pt;
+}
+
+#poweredby {
+	float: right;
+	padding: 4px;
+}
+
+#poweredby a {
+	border-right: 0px;
+	border-top: 0px;
+	border-bottom: 0px;
+}
+
+#menu_selector {
+	display: inline;
+	padding: 0px;
+	margin: 0px;
+	margin-left: 50px;
 }
