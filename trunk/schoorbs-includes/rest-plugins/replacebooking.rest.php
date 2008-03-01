@@ -91,6 +91,18 @@ function rest_function_replaceBooking()
 	} else {
 		return sendRESTError('Type not set!', -1);
 	}	
+	
+	// Support Bookings for different usernames since the user doing this 
+	// request must be an admin
+	if (isset($_REQUEST['user'])) {
+		$sUsername = unslashes($_REQUEST['user']);
+		
+		if (empty($sUsername)) {
+			$sUsername = getUserName();
+		}
+	} else {
+		$sUsername = getUserName();
+	}
 
 	foreach ($aDays as $aDay) {
 		// make time - only periods supported at the moment
@@ -106,7 +118,7 @@ function rest_function_replaceBooking()
 		}
 		
 		//make booking
-		schoorbsCreateSingleEntry($nStartTime, $nEndTime, 0, 0, $nRoomID, getUserName(), $sName, $sType, $sDescription);
+		schoorbsCreateSingleEntry($nStartTime, $nEndTime, 0, 0, $nRoomID, $sUsername, $sName, $sType, $sDescription);
 	}
 
 	sendRESTHeaders();
