@@ -45,9 +45,7 @@
 </tr>
 {foreach from=$times item=times_item}
 	<tr>
-		<td class="red">
-			<a href="{$hilite_url}={$times_item.time_t}"  title="{get_vocab text="highlight_line"}">{$times_item.time}</a>
-		</td>
+		<td class="times">{$times_item.time}</td>
 		{foreach from=$times_item.WeekDays item=WeekDay}
 			<td class="{$WeekDay.color}" style="text-align: center;"
 				{if $javascript_cursor eq "true"}
@@ -78,9 +76,7 @@
 			</td>
 		{/foreach}
 		{if $times_right_side eq "true"}
-			<td class="red">
-				<a href="{$hilite_url}={$times_item.time_t}"  title="{get_vocab text="highlight_line"}">{$times_item.time}</a>
-			</td>
+			<td class="times">{$times_item.time}</td>
 		{/if}
 		</tr>
 {/foreach}

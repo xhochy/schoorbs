@@ -138,6 +138,7 @@ th a {
 td.red {
     border: 0px;
     background-color: #ddd;
+    color: black;
 }
 td.red a {
     color: black;
@@ -262,4 +263,10 @@ td.calendarHeader {border:0px; font-size: 10pt
 #colour-keys span {
 	padding: 2px 8px;
 	border: 1px solid silver;
+}
+
+td.times {
+	background-color: #ddd;
+    color: black;
+    border: 0px;
 }

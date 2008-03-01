@@ -168,12 +168,6 @@ if (sql_count($res) == 0) {
 	}
 	$smarty->assign('rooms', $aRooms);
 	
-	# URL for highlighting a time. Don't use REQUEST_URI or you will get
-	# the timetohighlight parameter duplicated each time you click.
-	$hilite_url = ht("day.php?year=$year&month=$month&day=$day"
-		."&area=$area&timetohighlight");
-	$smarty->assign('hilite_url', $hilite_url);
-	
 	# This is the main bit of the display
 	# We loop through time and then the rooms we just got
 
@@ -211,8 +205,6 @@ if (sql_count($res) == 0) {
 			# We tell if its booked by $id having something in it
 			if (isset($aLoop['id'])) {
 				$aLoop['css_class'] = $color;
-			} elseif (isset($timetohighlight) && ($time_t == $timetohighlight)) {
-				$aLoop['css_class'] = "red";
 			} else {
 				$aLoop['css_class'] = $row_class; # Use the default color class for the row.
 			}
