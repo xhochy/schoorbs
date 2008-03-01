@@ -59,14 +59,14 @@ task :pre_release do
       end
   end
   
-  puts '## Compressing CSS files'
-  packer = Rainpress::Packer.new
-  FileList[File.join(RELEASE_SRC_DIR, 'schoorbs-misc', 'style', '*.css')].each do |css|
-    data = packer.compress(File.read(css))
-    File.open(css, 'w') do |f|
-      f.write(data)
-    end
-  end
+  #puts '## Compressing CSS files'
+  #packer = Rainpress::Packer.new
+  #FileList[File.join(RELEASE_SRC_DIR, 'schoorbs-misc', 'style', '*.css')].each do |css|
+  #  data = packer.compress(File.read(css))
+  #  File.open(css, 'w') do |f|
+  #    f.write(data)
+  #  end
+  #end
   
 end
 
