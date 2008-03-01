@@ -207,10 +207,6 @@ for ($j = 0; $j <= ($num_of_days - 1); $j++) {
 # This is the main bit of the display. Outer loop is for the time slots,
 # inner loop is for days of the week.
 
-# URL for highlighting a time. Don't use REQUEST_URI or you will get
-# the timetohighlight parameter duplicated each time you click.
-$hilite_url = ht("week.php?year=$year&month=$month&day=$day&area=$area&room=$room&timetohighlight");
-
 # if the first day of the week to be displayed contains as DST change then
 # move to the next day to get the hours in the day.
 ( $dst_change[0] != -1 ) ? $j = 1 : $j = 0;
@@ -226,11 +222,7 @@ for (
 	# use hour:minute format
 	$time_t = date($format, $t);
 
-	# Color to use for empty cells: white, unless highlighting this row:
-	if (isset($timetohighlight) && $timetohighlight == $time_t)
-		$empty_color = "red";
-	else
-		$empty_color = "white";
+	$empty_color = "white";
 
 	$aWeekDays = array();
 	# See note above: weekday==0 is day $weekstarts, not necessarily Sunday.
@@ -263,8 +255,6 @@ for (
  		# We tell if its booked by $id having something in it
  		if (isset($id))
  			$c = $color;
- 		elseif (isset($timetohighlight) && ($time_t == $timetohighlight))
- 			$c = "red";
  		else
  			$c = $row_class;
  			
@@ -291,7 +281,7 @@ $smarty->assign(array(
     'times_right_side' => ($times_right_side ? 'true' : 'false'),
     'highlight_method' => $highlight_method,
     'enable_periods' => ($enable_periods ? 'true' : 'false'),
-    'days' => $aDays, 'hilite_url' => $hilite_url
+    'days' => $aDays
 ));
 $smarty->display('week.tpl');
 

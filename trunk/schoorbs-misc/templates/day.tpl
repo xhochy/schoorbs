@@ -35,7 +35,7 @@
 </tr>	
 {foreach from=$times item=time}
 	<tr>
-		<td class="red"><a href="{$hilite_url}={$time.time}" title="{get_vocab text="highlight_line"}">{$time.title}</a></td>
+		<td class="times">{$time.title}</td>
 		{foreach from=$time.cols item=col}
 			<td class="{$col.css_class}" style="text-align: center"
 				{if $javascript_cursor eq "true"}
@@ -59,7 +59,7 @@
 			</td>
 		{/foreach}
 		{if $times_right_side eq "true"}
-			<td class="red"><a href="{$hilite_url}={$time.time}" title="{get_vocab text="highlight_line"}">{$time.title}</a></td>
+			<td class="time">{$time.title}</td>
 		{/if}
 	</tr>
 {/foreach}
