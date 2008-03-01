@@ -18,9 +18,14 @@ if (file_exists(dirname(__FILE__).'/Smarty/libs/libs/Smarty.class.php')) {
     // On other systems (including Ubuntu)
 	require_once dirname(__FILE__).'/Smarty/libs/Smarty.class.php';
 }
-$bSessionIncluded = 'true';
-/** Only use HTTP session for REST requests, so that no ID or equal have to be stored */ 
-require_once dirname(__FILE__).'/session-plugins/session_http.php';
+
+// Session/Remote_User could be used for REST calls too, but else use 
+// Session/HTTP
+if ($auth['session'] != 'remote_user') { 
+	$bSessionIncluded = 'true';
+	/** Only use HTTP session for REST requests, so that no ID or equal have to be stored */ 
+	require_once dirname(__FILE__).'/session-plugins/session_http.php';
+}
 /** The Schoorbs Authentication Backend */
 require_once dirname(__FILE__).'/authentication/schoorbs_auth.php';
 

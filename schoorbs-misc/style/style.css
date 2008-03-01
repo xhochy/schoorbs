@@ -187,7 +187,9 @@ td.red a {
 	text-align: center; 
 	vertical-align: top;
 }
-td.calendarHeader {border:0px; font-size: 10pt
+.calendarHeader {
+	border:0px; 
+	font-size: 10pt
 	text-align: center; 
 	vertical-align: top;
 }
