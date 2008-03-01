@@ -46,14 +46,13 @@ function getUserName()
  */
 function PrintLogonBox()
 {
-	global $user_list_link, $auth, $smarty;
+	global $auth, $smarty;
   
 	$user = getUserName();
 
 	if (isset($user)) { 
 		$smarty->assign(array(
 			'user' =>  $user,
-			'user_list_link' => $user_list_link,
 			'logout_link' => $auth['remote_user']['logout_link']
 		));
 		$smarty->display('session_remote_user_loginbox.tpl');

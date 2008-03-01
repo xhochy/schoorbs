@@ -220,7 +220,7 @@ td.calendarHeader {border:0px; font-size: 10pt
 	text-decoration: none;
 }
 
-.gendateselector {
+#linkbar .gendateselector {
 	border: 1px solid white;
 	background-color: #87c0e2;
 	color: white;
@@ -229,7 +229,7 @@ td.calendarHeader {border:0px; font-size: 10pt
 	font-size: 10pt;
 }
 
-.gendateselector-submit {
+#linkbar .gendateselector-submit {
 	border: 1px solid silver;
 	margin: 0px;
 	padding: 0px;

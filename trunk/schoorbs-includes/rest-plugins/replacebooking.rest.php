@@ -38,7 +38,7 @@ function rest_function_replaceBooking()
 				$nDay = intval($_REQUEST['day'][$i]);
 				$nYear = intval($_REQUEST['year'][$i]);
 				if (!checkdate($nMonth, $nDay, $nYear)) {
-					return sendRESTError('Only periods are supported at the moment!', -1);
+					return sendRESTError('Given date is invalid!', -1);
 				}
 				$aDays[] = array('day' => $nDay, 'month' => $nMonth, 
 					'year' => $nYear);
