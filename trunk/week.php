@@ -24,16 +24,13 @@ require_once 'schoorbs-includes/minicals.php';
 
 ## Var Init ##
 
-/** day, month, year **/
 list($day, $month, $year) = input_DayMonthYear();
-
-/** area **/
 $area = input_Area();
-    
-/** room **/
 $room = input_Room();
 
 ## Main ##
+
+print_header();
 
 $num_of_days = 7; #could also pass this in as a parameter or whatever
 
@@ -46,13 +43,10 @@ if (($weekday = (date("w", $time) - $weekstarts + 7) % 7) > 0) {
 	$year  = date("Y", $time);
 }
 
-#y? are year, month and day of yesterday
+// y? are year, month and day of yesterday
 list($yd, $ym, $yy) = getLastWeek($day, $month, $year);
-#t? are year, month and day of tomorrow
+// t? are year, month and day of tomorrow
 list($td, $tm, $ty) = getNextWeek($day, $month, $year);
-
-# print the page header
-print_header();
 
 # Define the start and end of each day of the week in a way which is not
 # affected by daylight saving...
