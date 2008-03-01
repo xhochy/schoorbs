@@ -10,7 +10,7 @@
  
 ## Includes ##
 
-/** Use Smarty for REST Output */
+// Use Smarty for REST Output
 if (file_exists(dirname(__FILE__).'/Smarty/libs/libs/Smarty.class.php')) {
 	// On Debian systems
 	require_once dirname(__FILE__).'/Smarty/libs/libs/Smarty.class.php';
@@ -29,118 +29,141 @@ if ($auth['session'] != 'remote_user') {
 /** The Schoorbs Authentication Backend */
 require_once dirname(__FILE__).'/authentication/schoorbs_auth.php';
 
-## Plugins ##
-
-/** The getEntriesOfDay-REST-Function */
-require_once dirname(__FILE__).'/rest-plugins/getentriesofday.rest.php';
-/** The getRoomID-REST-Function */
-require_once dirname(__FILE__).'/rest-plugins/getroomid.rest.php';
-/** The getPeriodID-REST-Function */
-require_once dirname(__FILE__).'/rest-plugins/getperiodid.rest.php';
-/** The login-REST-Function */
-require_once dirname(__FILE__).'/rest-plugins/login.rest.php';
-/** The checkFree-REST-Function */
-require_once dirname(__FILE__).'/rest-plugins/checkfree.rest.php';
-/** The makeBooking-REST-Function */
-require_once dirname(__FILE__).'/rest-plugins/makebooking.rest.php';
-/** The replaceBooking-REST-Function */
-require_once dirname(__FILE__).'/rest-plugins/replacebooking.rest.php';
-
-## Functions ##
- 
 /**
- * Searches for the last occurrence of 'REST' 
- * and cuts the function name out of the url
- * 
+ * The static class representing the REST-interface of Schoorbs
+ *
  * @author Uwe L. Korn <uwelk@xhochy.org>
- * @param string $sURL the URL which was called(normally $_SERVER['REDIRECT_URL'])
- * @return string the name of the called function 
+ * @package Schoorbs
+ * @subpackage REST
+ * @license http://www.gnu.org/licenses/gpl.html GNU General Public License
  */
-function getRESTFunctionName($sURL)
+class SchoorbsREST
 {
-	if(($nPos = strrpos($sURL,'REST')) === false) 
-		sendRESTError('not a valid Schoorbs-REST-URL',1);
-	$sResult = substr($sURL, $nPos + 4);
-	$sResult = trim($sResult,'/');
-	if(empty($sResult))
-		sendRESTError('not a valid Schoorbs-REST-URL',1);
-	if(!ctype_alnum($sResult))
-		sendRESTError('not a valid Schoorbs-REST-URL',1);
-	return $sResult;
-}
-
-/**
- * Return an REST-XML answer for an error and stops the script
- * 
- * @author Uwe L. Korn
- * @param string $sMessage
- * @param int $nCode
- */
-function sendRESTError($sMessage, $nCode)
-{
-	global $_TPL;
+	public static $oTPL;
 	
-	sendRESTHeaders();
-	$_TPL->assign('message', $sMessage);
-	$_TPL->assign('code', $nCode);
-	$_TPL->display('error.tpl');
+	/** 
+	 * Initialize the REST-interface, e.g. the template system
+	 *
+	 * @author Uwe L. Korn <uwelk@xhochy.org>
+	 */
+	public static function init()
+	{
+		self::$oTPL = new Smarty();
+		self::$oTPL->template_dir = dirname(__FILE__).'/../schoorbs-misc/templates/REST';
+		self::$oTPL->compile_dir = dirname(__FILE__).'/Smarty/templates_c';
+		self::$oTPL->cache_dir = dirname(__FILE__).'/Smarty/cache';
+		self::$oTPL->config_dir = dirname(__FILE__).'/Smarty/configs';
+	}
 	
-	if (defined('REST_TESTING')) throw new Exception('REST Exception' + $sMessage);
-	else exit($nCode);
-}
-
-/**
- * Sends the HTTP-headers specifing an REST-Document
- * 
- * @author Uwe L. Korn <uwelk@xhochy.org>
- */
-function sendRESTHeaders()
-{
-	if (defined('REST_TESTING')) return;
-	header('Content-type: text/xml; charset=utf-8');
+	/**
+	 * Checks if the REST-functions exists
+	 * 
+	 * @author Uwe L. Korn <uwelk@xhochy.org>
+	 * @param string
+	 * @return bool
+	 */
+	public static function isValidFunction($sFunctionName)
+	{
+		if (function_exists('rest_function_'.$sFunctionName)) {
+			return true;
+		} 
+		
+		$sFile = dirname(__FILE__).'/rest-plugins/'.strtolower($sFunctionName).'.rest.php';
+		if (file_exists($sFile)) {
+			require_once $sFile;
+			return function_exists('rest_function_'.$sFunctionName);
+		} 
+		return false;
+	}
 	
-	// REST-Answers should never be chached!
-	header('Cache-Control: no-cache, must-revalidate'); // HTTP/1.1
-	header('Expires: Mon, 26 Jul 1997 05:00:00 GMT'); // Date in the past
-}
-
-/**
- * Inits the Smarty Template System for REST-Rendering
- * 
- * @author Uwe L. Korn <uwelk@xhochy.org>
- */
-function InitRESTSmarty()
-{
-	global $_TPL;	
-
-	$_TPL = new Smarty();
-
-	$_TPL->template_dir = realpath(dirname(__FILE__).'/../schoorbs-misc/templates/REST');
-	$_TPL->compile_dir = dirname(__FILE__).'/Smarty/templates_c';
-	$_TPL->cache_dir = dirname(__FILE__).'/Smarty/cache';
-	$_TPL->config_dir = dirname(__FILE__).'/Smarty/configs';
+	/**
+	 * Calls a REST function
+	 * 
+	 * @author Uwe L. Korn <uwelk@xhochy.org>
+	 * @param string $sFunctionName
+	 */
+	public static function call($sFunctionName)
+	{
+		call_user_func('rest_function_'.$sFunctionName);
+	}
 	
+	/**
+	 * Handle an incoming REST/HTTP-Request
+	 *
+	 * The functionname is extracted out of $_SERVER['REDIRECT_URL']
+	 *
+	 * @author <uwelk@xhochy.org>
+	 */
+	public static function handleRequest() 
+	{
+		$sFunctionName = self::getFunctionName($_SERVER['REDIRECT_URL']);
+		if(!self::isValidFunction($sFunctionName)) {
+			return self::sendError('Function does not exist', 2);
+		}
+		self::call($sFunctionName);
+	}
+	
+	/**
+	 * Searches for the last occurrence of 'REST' 
+	 * and cuts the function name out of the url
+	 * 
+	 * @author Uwe L. Korn <uwelk@xhochy.org>
+	 * @param string $sURL the URL which was called(normally $_SERVER['REDIRECT_URL'])
+	 * @return string the name of the called function 
+	 */
+	public static function getFunctionName($sURL)
+	{
+		if (($nPos = strrpos($sURL, 'REST')) === false) {
+			return self::sendError('not a valid Schoorbs-REST-URL',1);
+		}
+		$sResult = substr($sURL, $nPos + 4);
+		$sResult = trim($sResult, '/');
+		if (empty($sResult)) {
+			return self::sendError('not a valid Schoorbs-REST-URL',1);
+		}
+		if (!ctype_alnum($sResult)) {
+			return self::sendError('not a valid Schoorbs-REST-URL',1);
+		}
+		return $sResult;
+	}
+	
+	/**
+	 * Sends the HTTP-headers specifing an REST-Document
+	 * 
+	 * @author Uwe L. Korn <uwelk@xhochy.org>
+	 */
+	public static function sendHeaders()
+	{
+		// Send no headers while we are in unit tests
+		if (defined('REST_TESTING')) return;
+		header('Content-type: text/xml; charset=utf-8');
+	
+		// REST-Answers should never be chached!
+		header('Cache-Control: no-cache, must-revalidate'); // HTTP/1.1
+		header('Expires: Mon, 26 Jul 1997 05:00:00 GMT'); // Date in the past
+	}
+	
+	/**
+	 * Return an REST-XML answer for an error and stops the script
+	 * 
+	 * @author Uwe L. Korn
+	 * @param string $sMessage
+	 * @param int $nCode
+	 */
+	public static function sendError($sMessage, $nCode)
+	{
+		self::sendHeaders();
+		self::$oTPL->assign('message', $sMessage);
+		self::$oTPL->assign('code', $nCode);
+		self::$oTPL->display('error.tpl');
+	
+		if (defined('REST_TESTING')) {
+			throw new Exception('REST Exception' + $sMessage);
+		} else {
+			exit($nCode);
+		}
+	}
 }
 
-/**
- * Calls a REST function
- * 
- * @author Uwe L. Korn <uwelk@xhochy.org>
- * @param string $sFunctionName
- */
-function callRESTFunction($sFunctionName)
-{
-	call_user_func('rest_function_'.$sFunctionName);
-}
-
-/**
- * Checks if the REST-functions exists
- * 
- * @author Uwe L. Korn <uwelk@xhochy.org>
- * @param string
- * @return bool
- */
-function isValidRESTFunction($sFunctionName)
-{
-	return function_exists('rest_function_'.$sFunctionName);
-}
+// Automatically start up the REST-interface if it's included
+SchoorbsREST::init();

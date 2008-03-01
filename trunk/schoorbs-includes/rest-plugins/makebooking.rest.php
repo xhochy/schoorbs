@@ -20,10 +20,10 @@ require_once dirname(__FILE__).'/../database/schoorbs_sql.php';
  */ 
 function rest_function_makeBooking()
 {
-	global $_TPL, $enable_periods;
+	global $enable_periods;
 	
 	if(!getAuthorised(1)){
-        return sendRESTError('Access Denied', 4);         
+        return SchoorbsREST::sendError('Access Denied', 4);         
     }
 
 	if ($enable_periods) {
@@ -35,13 +35,13 @@ function rest_function_makeBooking()
 				$nDay = intval($_REQUEST['day'][$i]);
 				$nYear = intval($_REQUEST['year'][$i]);
 				if (!checkdate($nMonth, $nDay, $nYear)) {
-					return sendRESTError('Only periods are supported at the moment!', -1);
+					return SchoorbsREST::sendError('Only periods are supported at the moment!', -1);
 				}
 				$aDays[] = array('day' => $nDay, 'month' => $nMonth, 
 					'year' => $nYear);
 			}
 		} else {
-			return sendRESTError('Only date arrays are supported at the moment!', -1);
+			return SchoorbsREST::sendError('Only date arrays are supported at the moment!', -1);
 		}
 	} else {
 		die('Only periods are supported at the moment!');
@@ -55,21 +55,21 @@ function rest_function_makeBooking()
 	if (isset($_REQUEST['room'])) {
 		$nRoomID = intval($_REQUEST['room']);
 	} else {
-		return sendRESTError('Period not set!', -1);
+		return SchoorbsREST::sendError('Period not set!', -1);
 	}
 	if (isset($_REQUEST['period'])) {
 		$nPeriodID = intval($_REQUEST['period']);
 	} else {
-		return sendRESTError('Period not set!', -1);
+		return SchoorbsREST::sendError('Period not set!', -1);
 	}
 	if (isset($_REQUEST['name'])) {
 		$sName = unslashes($_REQUEST['name']);
 		
 		if (empty($sName)) {
-			return sendRESTError('Name is empty!', -1);
+			return SchoorbsREST::sendError('Name is empty!', -1);
 		}
 	} else {
-		return sendRESTError('Name not set!', -1);
+		return SchoorbsREST::sendError('Name not set!', -1);
 	}
 	// Description could be empty, but the client should specify that explicitly
 	// Given a not-set description could be a failure by the client, there still
@@ -77,16 +77,16 @@ function rest_function_makeBooking()
 	if (isset($_REQUEST['description'])) {
 		$sDescription = unslashes($_REQUEST['description']);
 	} else {
-		return sendRESTError('Description not set!', -1);
+		return SchoorbsREST::sendError('Description not set!', -1);
 	}
 	if (isset($_REQUEST['type'])) {
 		$sType = unslashes($_REQUEST['type']);
 		
 		if (empty($sType)) {
-			return sendRESTError('Type is empty!', -1);
+			return SchoorbsREST::sendError('Type is empty!', -1);
 		}
 	} else {
-		return sendRESTError('Type not set!', -1);
+		return SchoorbsREST::sendError('Type not set!', -1);
 	}	
 
 	$bMade = true;
@@ -105,12 +105,12 @@ function rest_function_makeBooking()
 		schoorbsCreateSingleEntry($nStartTime, $nEndTime, 0, 0, $nRoomID, getUserName(), $sName, $sType, $sDescription);
 	}
 
-	sendRESTHeaders();
+	SchoorbsREST::sendHeaders();
 	if ($bMade) {
-		$_TPL->assign('made_booking', 'true');
+		SchoorbsREST::$oTPL->assign('made_booking', 'true');
 	} else {
-		$_TPL->assign('made_booking', 'false');
+		SchoorbsREST::$oTPL->assign('made_booking', 'false');
 	}
 	
-	$_TPL->display('makebooking.tpl');
+	SchoorbsREST::$oTPL->display('makebooking.tpl');
 }

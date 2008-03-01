@@ -15,7 +15,7 @@
  */ 
 function rest_function_getRoomID()
 {
-	global $_TPL, $tbl_room;
+	global $tbl_room;
 	
 	$sName = unslashes($_REQUEST['name']);
 	$nRoomID = sql_query1(sprintf(
@@ -24,10 +24,10 @@ function rest_function_getRoomID()
 	));
 	
 	if (!isset($nRoomID) || ($nRoomID == -1)) {
-		return sendRESTError('Couldn\'t find a fitting room.', -1);
+		return SchoorbsREST::sendError('Couldn\'t find a fitting room.', -1);
 	}
 
-	sendRESTHeaders();
-	$_TPL->assign('room_id', $nRoomID);
-	$_TPL->display('getroomid.tpl');
+	SchoorbsREST::sendHeaders();
+	SchoorbsREST::$oTPL->assign('room_id', $nRoomID);
+	SchoorbsREST::$oTPL->display('getroomid.tpl');
 }

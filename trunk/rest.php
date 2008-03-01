@@ -21,16 +21,7 @@ require_once 'schoorbs-includes/input.functions.php';
 /** The time related functions */
 require_once 'schoorbs-includes/time.functions.php';
 
-## Init ##
-
-InitRESTSmarty();
-
 ## Main ##
 
-$sURL = $_SERVER['REDIRECT_URL'];
-$sFunctionName = getRESTFunctionName($sURL);
-if(!isValidRESTFunction($sFunctionName)) {
-	sendRESTError('Function does not exist', 2);
-}
-	
-callRESTFunction($sFunctionName);
+// just let the SchoorbsREST class handle everything
+SchoorbsREST::handleRequest();

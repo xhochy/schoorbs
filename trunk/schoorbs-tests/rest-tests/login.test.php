@@ -53,9 +53,6 @@ class REST_LoginTest extends PHPUnit_Extensions_OutputTestCase
 	{
 		global $auth;
 		
-		// Start up the REST Output system
-		InitRESTSmarty();
-		
 		// Authorise the testing System via Session/HTTP
 		$_SERVER['PHP_AUTH_PW'] = 'TestPassword';
 		$_SERVER['PHP_AUTH_USER'] = 'TestUser';
@@ -79,7 +76,8 @@ class REST_LoginTest extends PHPUnit_Extensions_OutputTestCase
 		$this->expectOutputRegex('/(<rsp)[\s]+(stat="fail">)/');
 		$this->setExpectedException('Exception');
 		
-		callRESTFunction('login');
+		$_SERVER['REDIRECT_URL'] = 'http://localhost/REST/login';
+		SchoorbsREST::handleRequest();
 		
 		$_SERVER['PHP_AUTH_PW'] = $pw;
 		$_SERVER['PHP_AUTH_USER'] = $user;
@@ -92,9 +90,10 @@ class REST_LoginTest extends PHPUnit_Extensions_OutputTestCase
 	 */
 	public function testAuthorised() 
 	{
-		$this->expectOutputRegex('/(<username)[\s]+(value=")('.$_SERVER['PHP_AUTH_USER']
-			.')(")[\s]*\/>/');
+		$this->expectOutputRegex('/(<username)[\s]+(value=")('.
+			$_SERVER['PHP_AUTH_USER'].')(")[\s]*\/>/');
 		
-		callRESTFunction('login');
+		$_SERVER['REDIRECT_URL'] = 'http://localhost/REST/login';
+		SchoorbsREST::handleRequest();
 	}
 }

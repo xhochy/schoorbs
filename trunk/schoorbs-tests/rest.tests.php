@@ -34,6 +34,9 @@ define('REST_TESTING', true);
 
 ## Main Schoorbs Code Includes ##
 
+require_once dirname(__FILE__).'/../schoorbs-includes/database/schoorbs_sql.php';
+require_once dirname(__FILE__).'/../schoorbs-includes/rest.functions.php';
+
 ## PHPUnit Includes ##
  
 require_once 'PHPUnit/Framework.php';
@@ -48,6 +51,7 @@ require_once 'rest-tests/checkfree.test.php';
 require_once 'rest-tests/makebooking.test.php';
 require_once 'rest-tests/replacebooking.test.php';
 require_once 'rest-tests/login.test.php';
+require_once 'rest-tests/general.test.php';
 
 ## The Testsuite ##
 
@@ -68,6 +72,7 @@ class REST_AllTests
     {
         $suite = new PHPUnit_Framework_TestSuite('PHPUnit');
  
+ 		$suite->addTestSuite('REST_GeneralTest');
         $suite->addTestSuite('REST_GetroomidTest');
         $suite->addTestSuite('REST_GetperiodidTest');
         $suite->addTestSuite('REST_CheckfreeTest');

@@ -61,9 +61,6 @@ class REST_ReplaceBookingTest extends PHPUnit_Extensions_OutputTestCase
 		$this->nRoom = DatabaseHelper::addRoom($this->nArea, $this->sRoom, 
 			'description', 2);
 		
-		// Start up the REST Output system
-		InitRESTSmarty();
-		
 		// Booking at 10/31/2007 12:00
 		$this->nBookingDay = 31;
 		$this->nBookingMonth = 10;
@@ -149,7 +146,8 @@ class REST_ReplaceBookingTest extends PHPUnit_Extensions_OutputTestCase
 		$this->expectOutputRegex('/(<rsp)[\s]+(stat="fail">)/');
 		$this->setExpectedException('Exception');
 		
-		callRESTFunction('replaceBooking');
+		$_SERVER['REDIRECT_URL'] = 'http://localhost/REST/replaceBooking';
+		SchoorbsREST::handleRequest();
 		
 		$_SERVER['PHP_AUTH_PW'] = $pw;
 		$_SERVER['PHP_AUTH_USER'] = $user;
@@ -167,7 +165,8 @@ class REST_ReplaceBookingTest extends PHPUnit_Extensions_OutputTestCase
 		$this->expectOutputRegex('/(<rsp)[\s]+(stat="fail">)/');
 		$this->setExpectedException('Exception');
 		
-		callRESTFunction('replaceBooking');
+		$_SERVER['REDIRECT_URL'] = 'http://localhost/REST/replaceBooking';
+		SchoorbsREST::handleRequest();
 	}
 	
 	/**
@@ -186,7 +185,8 @@ class REST_ReplaceBookingTest extends PHPUnit_Extensions_OutputTestCase
 		$this->expectOutputRegex('/(<rsp)[\s]+(stat="fail">)/');
 		$this->setExpectedException('Exception');
 		
-		callRESTFunction('replaceBooking');
+		$_SERVER['REDIRECT_URL'] = 'http://localhost/REST/replaceBooking';
+		SchoorbsREST::handleRequest();
 	}
 	
 	/**
@@ -205,7 +205,8 @@ class REST_ReplaceBookingTest extends PHPUnit_Extensions_OutputTestCase
 		$this->expectOutputRegex('/(<rsp)[\s]+(stat="fail">)/');
 		$this->setExpectedException('Exception');
 		
-		callRESTFunction('replaceBooking');
+		$_SERVER['REDIRECT_URL'] = 'http://localhost/REST/replaceBooking';
+		SchoorbsREST::handleRequest();
 	}
 	
 	/**
@@ -225,7 +226,8 @@ class REST_ReplaceBookingTest extends PHPUnit_Extensions_OutputTestCase
 		$this->expectOutputRegex('/(<rsp)[\s]+(stat="fail">)/');
 		$this->setExpectedException('Exception');
 		
-		callRESTFunction('replaceBooking');
+		$_SERVER['REDIRECT_URL'] = 'http://localhost/REST/replaceBooking';
+		SchoorbsREST::handleRequest();
 	}
 	
 	/**
@@ -246,7 +248,8 @@ class REST_ReplaceBookingTest extends PHPUnit_Extensions_OutputTestCase
 		$this->expectOutputRegex('/(<rsp)[\s]+(stat="fail">)/');
 		$this->setExpectedException('Exception');
 		
-		callRESTFunction('replaceBooking');
+		$_SERVER['REDIRECT_URL'] = 'http://localhost/REST/replaceBooking';
+		SchoorbsREST::handleRequest();
 	}
 	
 	/**
@@ -268,7 +271,8 @@ class REST_ReplaceBookingTest extends PHPUnit_Extensions_OutputTestCase
 		$this->expectOutputRegex('/(<rsp)[\s]+(stat="fail">)/');
 		$this->setExpectedException('Exception');
 		
-		callRESTFunction('replaceBooking');
+		$_SERVER['REDIRECT_URL'] = 'http://localhost/REST/replaceBooking';
+		SchoorbsREST::handleRequest();
 	}
 	
 	/**
@@ -290,7 +294,8 @@ class REST_ReplaceBookingTest extends PHPUnit_Extensions_OutputTestCase
 		$this->expectOutputRegex('/(<rsp)[\s]+(stat="fail">)/');
 		$this->setExpectedException('Exception');
 		
-		callRESTFunction('replaceBooking');
+		$_SERVER['REDIRECT_URL'] = 'http://localhost/REST/replaceBooking';
+		SchoorbsREST::handleRequest();
 	}
 	
 	/**
@@ -313,7 +318,8 @@ class REST_ReplaceBookingTest extends PHPUnit_Extensions_OutputTestCase
 		$this->expectOutputRegex('/(<rsp)[\s]+(stat="fail">)/');
 		$this->setExpectedException('Exception');
 		
-		callRESTFunction('replaceBooking');
+		$_SERVER['REDIRECT_URL'] = 'http://localhost/REST/replaceBooking';
+		SchoorbsREST::handleRequest();
 	}
 	
 	/**
@@ -337,7 +343,8 @@ class REST_ReplaceBookingTest extends PHPUnit_Extensions_OutputTestCase
 		$this->expectOutputRegex('/(<rsp)[\s]+(stat="fail">)/');
 		$this->setExpectedException('Exception');
 		
-		callRESTFunction('replaceBooking');
+		$_SERVER['REDIRECT_URL'] = 'http://localhost/REST/replaceBooking';
+		SchoorbsREST::handleRequest();
 	}
 	
 	/**
@@ -360,7 +367,8 @@ class REST_ReplaceBookingTest extends PHPUnit_Extensions_OutputTestCase
 		
 		$this->expectOutputRegex('/<made_booking>true<\/made_booking>/');
 		
-		callRESTFunction('replaceBooking');
+		$_SERVER['REDIRECT_URL'] = 'http://localhost/REST/replaceBooking';
+		SchoorbsREST::handleRequest();
 	}
 	
 	/**
@@ -384,7 +392,8 @@ class REST_ReplaceBookingTest extends PHPUnit_Extensions_OutputTestCase
 		
 		$this->expectOutputRegex('/<made_booking>true<\/made_booking>/');
 		
-		callRESTFunction('replaceBooking');
+		$_SERVER['REDIRECT_URL'] = 'http://localhost/REST/replaceBooking';
+		SchoorbsREST::handleRequest();
 	}
 	
 	/**
@@ -408,7 +417,8 @@ class REST_ReplaceBookingTest extends PHPUnit_Extensions_OutputTestCase
 		
 		$this->expectOutputRegex('/<made_booking>true<\/made_booking>/');
 		
-		callRESTFunction('replaceBooking');
+		$_SERVER['REDIRECT_URL'] = 'http://localhost/REST/replaceBooking';
+		SchoorbsREST::handleRequest();
 	}
 	
 	/**
@@ -437,6 +447,7 @@ class REST_ReplaceBookingTest extends PHPUnit_Extensions_OutputTestCase
 		// there's a conflict, but we don't care
 		$this->expectOutputRegex('/<made_booking>true<\/made_booking>/');
 		
-		callRESTFunction('replaceBooking');
+		$_SERVER['REDIRECT_URL'] = 'http://localhost/REST/replaceBooking';
+		SchoorbsREST::handleRequest();
 	}
 }

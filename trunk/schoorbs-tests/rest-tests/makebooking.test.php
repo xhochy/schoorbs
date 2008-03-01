@@ -61,9 +61,6 @@ class REST_MakeBookingTest extends PHPUnit_Extensions_OutputTestCase
 		$this->nRoom = DatabaseHelper::addRoom($this->nArea, $this->sRoom, 
 			'description', 2);
 		
-		// Start up the REST Output system
-		InitRESTSmarty();
-		
 		// Booking at 10/31/2007 12:00
 		$this->nBookingDay = 31;
 		$this->nBookingMonth = 10;
@@ -104,7 +101,8 @@ class REST_MakeBookingTest extends PHPUnit_Extensions_OutputTestCase
 		$this->expectOutputRegex('/(<rsp)[\s]+(stat="fail">)/');
 		$this->setExpectedException('Exception');
 		
-		callRESTFunction('makeBooking');
+		$_SERVER['REDIRECT_URL'] = 'http://localhost/REST/makeBooking';
+		SchoorbsREST::handleRequest();
 		
 		$_SERVER['PHP_AUTH_PW'] = $pw;
 		$_SERVER['PHP_AUTH_USER'] = $user;
@@ -152,7 +150,8 @@ class REST_MakeBookingTest extends PHPUnit_Extensions_OutputTestCase
 		$this->expectOutputRegex('/(<rsp)[\s]+(stat="fail">)/');
 		$this->setExpectedException('Exception');
 		
-		callRESTFunction('makeBooking');
+		$_SERVER['REDIRECT_URL'] = 'http://localhost/REST/makeBooking';
+		SchoorbsREST::handleRequest();
 	}
 	
 	/**
@@ -201,7 +200,8 @@ class REST_MakeBookingTest extends PHPUnit_Extensions_OutputTestCase
 		$this->expectOutputRegex('/(<rsp)[\s]+(stat="fail">)/');
 		$this->setExpectedException('Exception');
 		
-		callRESTFunction('makeBooking');
+		$_SERVER['REDIRECT_URL'] = 'http://localhost/REST/makeBooking';
+		SchoorbsREST::handleRequest();
 	}
 	
 	/**
@@ -250,7 +250,8 @@ class REST_MakeBookingTest extends PHPUnit_Extensions_OutputTestCase
 		$this->expectOutputRegex('/(<rsp)[\s]+(stat="fail">)/');
 		$this->setExpectedException('Exception');
 		
-		callRESTFunction('makeBooking');
+		$_SERVER['REDIRECT_URL'] = 'http://localhost/REST/makeBooking';
+		SchoorbsREST::handleRequest();
 	}
 	
 	/**
@@ -300,7 +301,8 @@ class REST_MakeBookingTest extends PHPUnit_Extensions_OutputTestCase
 		$this->expectOutputRegex('/(<rsp)[\s]+(stat="fail">)/');
 		$this->setExpectedException('Exception');
 		
-		callRESTFunction('makeBooking');
+		$_SERVER['REDIRECT_URL'] = 'http://localhost/REST/makeBooking';
+		SchoorbsREST::handleRequest();
 	}
 	
 	/**
@@ -351,7 +353,8 @@ class REST_MakeBookingTest extends PHPUnit_Extensions_OutputTestCase
 		$this->expectOutputRegex('/(<rsp)[\s]+(stat="fail">)/');
 		$this->setExpectedException('Exception');
 		
-		callRESTFunction('makeBooking');
+		$_SERVER['REDIRECT_URL'] = 'http://localhost/REST/makeBooking';
+		SchoorbsREST::handleRequest();
 	}
 	
 	/**
@@ -403,7 +406,8 @@ class REST_MakeBookingTest extends PHPUnit_Extensions_OutputTestCase
 		$this->expectOutputRegex('/(<rsp)[\s]+(stat="fail">)/');
 		$this->setExpectedException('Exception');
 		
-		callRESTFunction('makeBooking');
+		$_SERVER['REDIRECT_URL'] = 'http://localhost/REST/makeBooking';
+		SchoorbsREST::handleRequest();
 	}
 	
 	/**
@@ -455,7 +459,8 @@ class REST_MakeBookingTest extends PHPUnit_Extensions_OutputTestCase
 		$this->expectOutputRegex('/(<rsp)[\s]+(stat="fail">)/');
 		$this->setExpectedException('Exception');
 		
-		callRESTFunction('makeBooking');
+		$_SERVER['REDIRECT_URL'] = 'http://localhost/REST/makeBooking';
+		SchoorbsREST::handleRequest();
 	}
 	
 	/**
@@ -508,7 +513,8 @@ class REST_MakeBookingTest extends PHPUnit_Extensions_OutputTestCase
 		$this->expectOutputRegex('/(<rsp)[\s]+(stat="fail">)/');
 		$this->setExpectedException('Exception');
 		
-		callRESTFunction('makeBooking');
+		$_SERVER['REDIRECT_URL'] = 'http://localhost/REST/makeBooking';
+		SchoorbsREST::handleRequest();
 	}
 	
 	/**
@@ -562,7 +568,8 @@ class REST_MakeBookingTest extends PHPUnit_Extensions_OutputTestCase
 		$this->expectOutputRegex('/(<rsp)[\s]+(stat="fail">)/');
 		$this->setExpectedException('Exception');
 		
-		callRESTFunction('makeBooking');
+		$_SERVER['REDIRECT_URL'] = 'http://localhost/REST/makeBooking';
+		SchoorbsREST::handleRequest();
 	}
 	
 	/**
@@ -615,7 +622,8 @@ class REST_MakeBookingTest extends PHPUnit_Extensions_OutputTestCase
 		
 		$this->expectOutputRegex('/<made_booking>true<\/made_booking>/');
 		
-		callRESTFunction('makeBooking');
+		$_SERVER['REDIRECT_URL'] = 'http://localhost/REST/makeBooking';
+		SchoorbsREST::handleRequest();
 	}
 	
 	/**
@@ -673,6 +681,7 @@ class REST_MakeBookingTest extends PHPUnit_Extensions_OutputTestCase
 		
 		$this->expectOutputRegex('/<made_booking>false<\/made_booking>/');
 		
-		callRESTFunction('makeBooking');
+		$_SERVER['REDIRECT_URL'] = 'http://localhost/REST/makeBooking';
+		SchoorbsREST::handleRequest();
 	}
 }
