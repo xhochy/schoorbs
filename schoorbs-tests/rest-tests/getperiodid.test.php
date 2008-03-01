@@ -54,9 +54,6 @@ class REST_GetperiodidTest extends PHPUnit_Extensions_OutputTestCase
 		global $periods;
 		
 		$periods = array('p1', 'p2');
-		
-		// Start up the REST Output system
-		InitRESTSmarty();
 	}
 
 	/**
@@ -74,7 +71,8 @@ class REST_GetperiodidTest extends PHPUnit_Extensions_OutputTestCase
 		
 		$this->expectOutputRegex('/<period_id>1<\/period_id>/');
 		
-		callRESTFunction('getPeriodID');
+		$_SERVER['REDIRECT_URL'] = 'http://localhost/REST/getPeriodID';
+		SchoorbsREST::handleRequest();
     }
     
     /**
@@ -93,6 +91,7 @@ class REST_GetperiodidTest extends PHPUnit_Extensions_OutputTestCase
 		$this->expectOutputRegex('/(<rsp)[\s]+(stat="fail">)/');
 		$this->setExpectedException('Exception');
 		
-		callRESTFunction('getPeriodID');
+		$_SERVER['REDIRECT_URL'] = 'http://localhost/REST/getPeriodID';
+		SchoorbsREST::handleRequest();
     }
 }

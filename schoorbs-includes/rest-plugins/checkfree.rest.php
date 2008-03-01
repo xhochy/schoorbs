@@ -19,7 +19,7 @@ require_once dirname(__FILE__).'/../database/schoorbs_sql.php';
  */ 
 function rest_function_checkFree()
 {
-	global $_TPL, $enable_periods;
+	global $enable_periods;
 
 	if ($enable_periods) {
 		if (is_array($_REQUEST['day'])) {
@@ -30,22 +30,22 @@ function rest_function_checkFree()
 				$nDay = intval($_REQUEST['day'][$i]);
 				$nYear = intval($_REQUEST['year'][$i]);
 				if (!checkdate($nMonth, $nDay, $nYear)) {
-					return sendRESTError('Only periods are supported at the moment!', -1);
+					return SchoorbsREST::sendError('Only periods are supported at the moment!', -1);
 				}
 				$aDays[] = array('day' => $nDay, 'month' => $nMonth, 
 					'year' => $nYear);
 			}
 		} else {
-			return sendRESTError('The dates must be passed as an array!', -1);
+			return SchoorbsREST::sendError('The dates must be passed as an array!', -1);
 		}
 	} else {
-		return sendRESTError('Only periods are supported at the moment!', -1);
+		return SchoorbsREST::sendError('Only periods are supported at the moment!', -1);
 	}
 	
 	if (isset($_REQUEST['period'])) {
 		$nPeriodID = intval($_REQUEST['period']);
 	} else {
-		return sendRESTError('Period not set!', -1);
+		return SchoorbsREST::sendError('Period not set!', -1);
 	}
 	
 	// We don't use input_Room(); since if there is none defined, we want an error
@@ -56,7 +56,7 @@ function rest_function_checkFree()
 	if (isset($_REQUEST['room'])) {
 		$nRoomID = intval($_REQUEST['room']);
 	} else {
-		return sendRESTError('Period not set!', -1);
+		return SchoorbsREST::sendError('Period not set!', -1);
 	}
 	
 
@@ -74,12 +74,12 @@ function rest_function_checkFree()
 		}
 	}
 
-	sendRESTHeaders();
+	SchoorbsREST::sendHeaders();
 	if ($bFree) {
-		$_TPL->assign('free', 'true');
+		SchoorbsREST::$oTPL->assign('free', 'true');
 	} else {
-		$_TPL->assign('free', 'false');
+		SchoorbsREST::$oTPL->assign('free', 'false');
 	}
 	
-	$_TPL->display('checkfree.tpl');
+	SchoorbsREST::$oTPL->display('checkfree.tpl');
 }

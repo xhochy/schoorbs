@@ -15,7 +15,7 @@
  */ 
 function rest_function_getPeriodID()
 {
-	global $_TPL, $periods;
+	global $periods;
 	
 	$sName = unslashes($_REQUEST['name']);
 	for ($i = 0; $i < count($periods); $i++) {
@@ -25,10 +25,10 @@ function rest_function_getPeriodID()
 	}
 	
 	if (!isset($nPeriodID)) {
-		return sendRESTError('Couldn\'t find a fitting period.', -1);
+		return SchoorbsREST::sendError('Couldn\'t find a fitting period.', -1);
 	}
 
-	sendRESTHeaders();
-	$_TPL->assign('period_id', $nPeriodID);
-	$_TPL->display('getperiodid.tpl');
+	SchoorbsREST::sendHeaders();
+	SchoorbsREST::$oTPL->assign('period_id', $nPeriodID);
+	SchoorbsREST::$oTPL->display('getperiodid.tpl');
 }

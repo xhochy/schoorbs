@@ -58,9 +58,6 @@ class REST_GetroomidTest extends PHPUnit_Extensions_OutputTestCase
 		$this->sRoom = 'Test1';
 		$this->sNonRoom = 'Test0';
 		$this->nRoom = DatabaseHelper::addRoom($this->nArea, $this->sRoom, '', 2);
-		
-		// Start up the REST Output system
-		InitRESTSmarty();
 	}
 
 	/**
@@ -78,7 +75,8 @@ class REST_GetroomidTest extends PHPUnit_Extensions_OutputTestCase
 		
 		$this->expectOutputRegex('/<room_id>'.$this->nRoom.'<\/room_id>/');
 		
-		callRESTFunction('getRoomID');
+		$_SERVER['REDIRECT_URL'] = 'http://localhost/REST/getRoomID';
+		SchoorbsREST::handleRequest();
     }
     
     /**
@@ -97,6 +95,7 @@ class REST_GetroomidTest extends PHPUnit_Extensions_OutputTestCase
 		$this->expectOutputRegex('/(<rsp)[\s]+(stat="fail">)/');
 		$this->setExpectedException('Exception');
 		
-		callRESTFunction('getRoomID');
+		$_SERVER['REDIRECT_URL'] = 'http://localhost/REST/getRoomID';
+		SchoorbsREST::handleRequest();
     }
 }

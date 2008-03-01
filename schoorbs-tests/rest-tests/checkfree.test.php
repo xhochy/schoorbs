@@ -61,9 +61,6 @@ class REST_CheckfreeTest extends PHPUnit_Extensions_OutputTestCase
 		$this->nRoom = DatabaseHelper::addRoom($this->nArea, $this->sRoom, 
 			'description', 2);
 		
-		// Start up the REST Output system
-		InitRESTSmarty();
-		
 		// Booking at 10/31/2007 12:00
 		$this->nBookingDay = 31;
 		$this->nBookingMonth = 10;
@@ -113,7 +110,8 @@ class REST_CheckfreeTest extends PHPUnit_Extensions_OutputTestCase
 		$this->expectOutputRegex('/(<rsp)[\s]+(stat="fail">)/');
 		$this->setExpectedException('Exception');
 		
-		callRESTFunction('checkFree');
+		$_SERVER['REDIRECT_URL'] = 'http://localhost/REST/checkFree';
+		SchoorbsREST::handleRequest();
     }
     
     /**
@@ -150,7 +148,8 @@ class REST_CheckfreeTest extends PHPUnit_Extensions_OutputTestCase
 		$this->expectOutputRegex('/(<rsp)[\s]+(stat="fail">)/');
 		$this->setExpectedException('Exception');
 		
-		callRESTFunction('checkFree');
+		$_SERVER['REDIRECT_URL'] = 'http://localhost/REST/checkFree';
+		SchoorbsREST::handleRequest();
     }
     
     /**
@@ -188,7 +187,8 @@ class REST_CheckfreeTest extends PHPUnit_Extensions_OutputTestCase
 		$this->expectOutputRegex('/(<rsp)[\s]+(stat="fail">)/');
 		$this->setExpectedException('Exception');
 		
-		callRESTFunction('checkFree');
+		$_SERVER['REDIRECT_URL'] = 'http://localhost/REST/checkFree';
+		SchoorbsREST::handleRequest();
     }
     
     /**
@@ -227,7 +227,8 @@ class REST_CheckfreeTest extends PHPUnit_Extensions_OutputTestCase
 		$this->expectOutputRegex('/(<rsp)[\s]+(stat="fail">)/');
 		$this->setExpectedException('Exception');
 		
-		callRESTFunction('checkFree');
+		$_SERVER['REDIRECT_URL'] = 'http://localhost/REST/checkFree';
+		SchoorbsREST::handleRequest();
     }
     
     /**
@@ -265,7 +266,8 @@ class REST_CheckfreeTest extends PHPUnit_Extensions_OutputTestCase
 		
 		$this->expectOutputRegex('/<free>false<\/free>/');
 		
-		callRESTFunction('checkFree');
+		$_SERVER['REDIRECT_URL'] = 'http://localhost/REST/checkFree';
+		SchoorbsREST::handleRequest();
     }
     
     /**
@@ -303,6 +305,7 @@ class REST_CheckfreeTest extends PHPUnit_Extensions_OutputTestCase
 		
 		$this->expectOutputRegex('/<free>true<\/free>/');
 		
-		callRESTFunction('checkFree');
+		$_SERVER['REDIRECT_URL'] = 'http://localhost/REST/checkFree';
+		SchoorbsREST::handleRequest();
     }
 }

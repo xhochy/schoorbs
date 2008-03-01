@@ -15,13 +15,11 @@
  */ 
 function rest_function_login()
 {
-	global $_TPL;
-	
 	if(!getAuthorised(1)){
-		return sendRESTError('Access Denied', 4);
+		return SchoorbsREST::sendError('Access Denied', 4);
 	}		
 	
-	sendRESTHeaders();
-	$_TPL->assign('username', getUserName());
-	$_TPL->display('login.tpl');
+	SchoorbsREST::sendHeaders();
+	SchoorbsREST::$oTPL->assign('username', getUserName());
+	SchoorbsREST::$oTPL->display('login.tpl');
 }
