@@ -58,7 +58,7 @@ function rest_function_replaceBooking()
 	if (isset($_REQUEST['room'])) {
 		$nRoomID = intval($_REQUEST['room']);
 	} else {
-		return sendRESTError('Period not set!', -1);
+		return sendRESTError('Room not set!', -1);
 	}
 	if (isset($_REQUEST['period'])) {
 		$nPeriodID = intval($_REQUEST['period']);
