@@ -52,7 +52,7 @@ a:hover {
 form {display: inline;}
 td.banner {
 	vertical-align: middle;
-	color: white;
+	color: #E0691A;
 	background-color: #eeeeee !important;
 	border-width: 1px;
 	border-style: solid;
@@ -189,7 +189,7 @@ td.red a {
 }
 .calendarHeader {
 	border:0px; 
-	font-size: 10pt
+	font-size: 10pt;
 	text-align: center; 
 	vertical-align: top;
 }
