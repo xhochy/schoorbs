@@ -18,28 +18,21 @@
 </head>
 <body>
 	<div id="menu_logo">
-		<br />
 		<span class="headerLink" style="color: #55555;">{$mrbs_company}</span>
-		<br /><br />
-		
 	</div>
 	<div id="menu">
 		{if $logonbox neq ""}
-			<table width="120" style="float: right;">
+			<table style="float: right;">
 	    	<tr>
 	    		{$logonbox}
 	    	</tr>
 	    	</table>
     	{/if}
-		<br />
-		
-		<!-- Report link deactivated due to deactivated report-page -->
-		<!--
+
+		<!-- // Report link deactivated due to deactivated report-page 
 		<a class="menu_link" href="report.php"><img src="schoorbs-misc/gfx/report.png" class="menu_icon" alt="{get_vocab text="report}" />{get_vocab text="report}</a>
-		&nbsp;|&nbsp;
 		-->
 		
-		&nbsp;&nbsp;
 		<!-- Search deactivated due to deactivated search page -->
 		<!--<form method="get" action="search.php">
         	<div id="menu_searchbox">
@@ -54,8 +47,6 @@
            		{$pview}
         	</div>
     	</form>-->
-    	<br />
-    	&nbsp;
 	</div>
 	<div id="linkbar">
 		<span id="poweredby" class="vcard"><a class="url" href="http://schoorbs.xhochy.com">Powered by <span class="fn org">Schoorbs</span></a></span>

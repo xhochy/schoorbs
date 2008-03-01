@@ -20,6 +20,7 @@ body {
 	left: 20px;
 	padding:0px;
 	margin:0px;
+	top: 20px;
 }
 #menu {
   padding-left: 240px;
@@ -27,6 +28,7 @@ body {
   font-weight: bold;
   padding-top: 20px;
   text-align: center;
+  min-height: 60px;
 }
 #menu_subpanel {
 	position: relative;
@@ -51,8 +53,19 @@ form {display: inline;}
 td.banner {
 	vertical-align: middle;
 	color: white;
-	background-color: #7799FF !important;
-	border: dashed black 2px;
+	background-color: #eeeeee !important;
+	border-width: 1px;
+	border-style: solid;
+	border-color: #cccccc;
+	padding: 4px;
+}
+td.banner a {
+	font-weight: normal;
+	color: #E0691A;
+	font-size: 10pt;
+}
+td.banner a {
+	text-decoration: none;
 }
 img {border: 0px;}
 img.menu_icon {
@@ -99,7 +112,7 @@ A:hover.blue {color:red}
 .F {background-color:#FFCC99}
 .G {background-color:#FF6666}
 .H {background-color:#66FFFF}
-.I {background-color:#DDFFDD}
+.I {background-color:#cceecc}
 .J {background-color:#CCCCCC}
 .white {background-color:white}
 
@@ -170,8 +183,13 @@ td.red a {
 	font-size: 10pt;
 	background-color: #DDCAF6;
 	padding: 3px;
+	text-align: center; 
+	vertical-align: top;
 }
-td.calendarHeader {border:0px; font-size: 10pt}
+td.calendarHeader {border:0px; font-size: 10pt
+	text-align: center; 
+	vertical-align: top;
+}
 .calendarHighlight {
 	color: red;
 }
@@ -233,4 +251,15 @@ td.calendarHeader {border:0px; font-size: 10pt}
 	padding: 0px;
 	margin: 0px;
 	margin-left: 50px;
+}
+
+#colour-keys {
+	padding: 4px;
+	margin: 4px;
+	text-align: center;
+}
+
+#colour-keys span {
+	padding: 2px 8px;
+	border: 1px solid silver;
 }

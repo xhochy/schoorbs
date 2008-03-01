@@ -1,10 +1,10 @@
 <table class="minical">
 <tr>
-	<td style="text-align: center; vertical-align: top;" class="calendarHeader" colspan="7">{$monthName}&nbsp;{$year}</td> 
+	<td class="calendarHeader" colspan="7">{$monthName}&nbsp;{$year}</td> 
 </tr>
 <tr>
 {foreach from=$firstdays item=firstdays_item}
-	<td style="text-align: center; vertical-align: top;" class="minical-header">{$firstdays_item}</td>
+	<td class="minical-header">{$firstdays_item}</td>
 {/foreach}
 </tr>
 {foreach from=$loop1 item=loop1_item}

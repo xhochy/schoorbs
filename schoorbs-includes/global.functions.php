@@ -199,19 +199,20 @@ function time_date_string($t)
 function show_colour_key()
 {
 	global $typel;
-	echo "<table border=\"0\"><tr>\n";
+	//echo "<table border=\"0\"><tr>\n";
+	echo '<div id="colour-keys">';
 	$nct = 0;
 	for ($ct = "A"; $ct <= "Z"; $ct++) {
 		if (!empty($typel[$ct])) {
 			if (++$nct > 5) {
 				$nct = 0;
-				echo "</tr><tr>";
+				echo '<br />';
 			}
-			echo "<td class=\"$ct\">";
-			echo "$typel[$ct]</td>\n";
+			printf('<span class="%s">%s</span>', $ct, $typel[$ct]);
 		}
 	}
-	echo "</tr></table>\n";
+	//echo "</tr></table>\n";
+	echo "</div>\n";
 }
 
 # Round time down to the nearest resolution
