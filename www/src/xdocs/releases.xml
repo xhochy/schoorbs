@@ -8,9 +8,9 @@
     <section id="status">
       <title>Overview</title>
       <p>
-        At the moment we still only release alpha versions of Schoorbs since many features are 
-        rewritten or evaluated if they are secure. Because of this, the number of stable will
-		still remain for some months nil.
+        At the moment we only release beta versions of Schoorbs which are
+        not supposed for productive usage, only to evaluate Schoorbs or make 
+        "smoke tests" until we think it's time to release the final Schoorbs 1.0.
       </p>
     </section>
     <section id="schoorbs-1.0">
@@ -43,6 +43,11 @@
                     <li>
                       <em>Schoorbs 1.0-Alpha 5:</em>&nbsp;
                       <a href="http://xhochy.org/en/2008/02/17/schoorbs-10-alpha-5-released/">Announcement 
+                      on the english XhochY Weblog.</a> 
+                    </li>
+                    <li>
+                      <em>Schoorbs 1.0-Beta 1:</em>&nbsp;
+                      <a href="http://xhochy.org/en/2008/03/02/schoorbs-10-beta-1-released/">Announcement 
                       on the english XhochY Weblog.</a> 
                     </li>
 				</ul>

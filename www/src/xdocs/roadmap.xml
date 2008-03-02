@@ -8,26 +8,10 @@
     <section id="status">
       <title>Overview</title>
       <p>
-        At the moment we still only release alpha versions of Schoorbs since many features are 
-        rewritten or evaluated if they are secure. With this site we want to present you what our
-        main goals are in the next coming alpha versions. 
+        Since the first Beta release of Schoorbs, there will only be bug fixes
+        submitted to Schoorbs 1.0, for Schoorbs 2.0 new ideas could be discussed
+        on our <a href="http://groups.google.com/group/schoorbs-general-discussion">mailinglist</a>.
       </p>
-    </section>
-    <section id="schoorbs-1.0-alpha-6">
-      <title>Schoorbs 1.0-Alpha 6</title>
-      <ul>
-        <li>Add a backup/restore function to the Web-Admin-GUI</li>
-        <li>Rewritten report function with PDF export</li>
-      </ul>
-    </section>
-    <section id="schoorbs-1.0-alpha-7">
-      <title>Schoorbs 1.0-Alpha 7</title>
-      <ul>
-        <li>Rewritten search interface, results will be flavoured with hCalendar-mircoformat</li>
-        <li>Support for PHP accelerators/cachers (especially APC)</li>
-        <li>Export a week as iCal</li>
-        <li>...</li>
-      </ul>
     </section>
     <p>
       <a rel="license" href="http://creativecommons.org/licenses/by-sa/3.0/">
