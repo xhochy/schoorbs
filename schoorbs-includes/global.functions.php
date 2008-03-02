@@ -46,12 +46,22 @@ function print_header()
 	if (empty($search_str)) $search_str = '';
 
 	if ($unicode_encoding) {
-		header('Content-Type: text/html; charset=utf-8');
+		if (eregi("msie", $_SERVER['HTTP_USER_AGENT']) && !eregi("opera", $_SERVER['HTTP_USER_AGENT'])) {
+			// MS Internet Explorer
+			header('Content-Type: text/html; charset=utf-8');
+		} else {
+			header('Content-Type: application/xhtml+xml; charset=utf-8');
+		}
 	} else {
 		# We use $vocab directly instead of get_vocab() because we have
 		# no requirement to convert the vocab text, we just output
 		# the charset
-		header('Content-Type: text/html; charset='.$vocab['charset']);
+		if (eregi("msie", $_SERVER['HTTP_USER_AGENT']) && !eregi("opera", $_SERVER['HTTP_USER_AGENT'])) {
+			// MS Internet Explorer
+			header('Content-Type: text/html; charset='.$vocab['charset']);
+		} else {
+			header('Content-Type: application/xhtml+xml; charset='.$vocab['charset']);
+		}
 	}
 
 	header('Pragma: no-cache');                          // HTTP 1.0
