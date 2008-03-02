@@ -18,7 +18,7 @@
 </head>
 <body>
 	<div id="menu_logo">
-		<span class="headerLink" style="color: #55555;">{$mrbs_company}</span>
+		<span class="headerLink" style="color: #555;">{$mrbs_company}</span>
 	</div>
 	<div id="menu">
 		{if $logonbox neq ""}

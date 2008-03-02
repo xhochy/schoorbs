@@ -1,3 +1,7 @@
+table {
+	font-size: 10pt;
+}
+
 .rot         {color:#FF0000;}
 .blau        {color:#0000FF;}
 .tab1        {padding:5px;border-spacing:3px;}
@@ -215,6 +219,7 @@ td.red a {
 	padding: 6px 8px;
 	margin: 0px;
 	border: 1px white solid;
+	border-top: 0px;
 }
 
 #linkbar a:hover {
@@ -271,4 +276,5 @@ td.times {
 	background-color: #ddd;
     color: black;
     border: 0px;
+    white-space: nowrap;
 }
