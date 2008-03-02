@@ -84,6 +84,46 @@ class REST_MakeBookingTest extends PHPUnit_Extensions_OutputTestCase
 		$enable_periods = true;
 		$periods = array('p1', 'p2', 'p3');
 	}
+	
+	/**
+	 * Remove all may-set super-global inputs
+	 *
+	 * @author Uwe L. Korn <uwelk@xhochy.org>
+	 */
+	public function cleanUpInputGlobals()
+	{
+		unset($_GET['day']);
+		unset($_POST['day']);
+		unset($_REQUEST['day']);
+		
+		unset($_GET['month']);
+		unset($_POST['month']);
+		unset($_REQUEST['month']);
+		
+		unset($_GET['year']);
+		unset($_POST['year']);
+		unset($_REQUEST['year']);
+		
+		unset($_GET['period']);
+		unset($_POST['period']);
+		unset($_REQUEST['period']);
+		
+		unset($_GET['room']);
+		unset($_POST['room']);
+		unset($_REQUEST['room']);
+		
+		unset($_GET['name']);
+		unset($_POST['name']);
+		unset($_REQUEST['name']);
+		
+		unset($_GET['description']);
+		unset($_POST['description']);
+		unset($_REQUEST['description']);
+		
+		unset($_GET['type']);
+		unset($_POST['type']);
+		unset($_REQUEST['type']);
+	}
 
 	/**
 	 * Test that we need to be authenticated
@@ -101,7 +141,7 @@ class REST_MakeBookingTest extends PHPUnit_Extensions_OutputTestCase
 		$this->expectOutputRegex('/(<rsp)[\s]+(stat="fail">)/');
 		$this->setExpectedException('Exception');
 		
-		$_SERVER['REDIRECT_URL'] = 'http://localhost/REST/makeBooking';
+		$_REQUEST['call'] = 'makeBooking';
 		SchoorbsREST::handleRequest();
 		
 		$_SERVER['PHP_AUTH_PW'] = $pw;
@@ -115,42 +155,12 @@ class REST_MakeBookingTest extends PHPUnit_Extensions_OutputTestCase
 	 */
 	public function testNoneGiven()
 	{
-		unset($_GET['day']);
-		unset($_POST['day']);
-		unset($_REQUEST['day']);
-		
-		unset($_GET['month']);
-		unset($_POST['month']);
-		unset($_REQUEST['month']);
-		
-		unset($_GET['year']);
-		unset($_POST['year']);
-		unset($_REQUEST['year']);
-		
-		unset($_GET['period']);
-		unset($_POST['period']);
-		unset($_REQUEST['period']);
-		
-		unset($_GET['room']);
-		unset($_POST['room']);
-		unset($_REQUEST['room']);
-		
-		unset($_GET['name']);
-		unset($_POST['name']);
-		unset($_REQUEST['name']);
-		
-		unset($_GET['description']);
-		unset($_POST['description']);
-		unset($_REQUEST['description']);
-		
-		unset($_GET['type']);
-		unset($_POST['type']);
-		unset($_REQUEST['type']);
+		$this->cleanUpInputGlobals();
 		
 		$this->expectOutputRegex('/(<rsp)[\s]+(stat="fail">)/');
 		$this->setExpectedException('Exception');
 		
-		$_SERVER['REDIRECT_URL'] = 'http://localhost/REST/makeBooking';
+		$_REQUEST['call'] = 'makeBooking';
 		SchoorbsREST::handleRequest();
 	}
 	
@@ -161,37 +171,7 @@ class REST_MakeBookingTest extends PHPUnit_Extensions_OutputTestCase
 	 */
 	public function testDatesGiven()
 	{
-		unset($_GET['day']);
-		unset($_POST['day']);
-		unset($_REQUEST['day']);
-		
-		unset($_GET['month']);
-		unset($_POST['month']);
-		unset($_REQUEST['month']);
-		
-		unset($_GET['year']);
-		unset($_POST['year']);
-		unset($_REQUEST['year']);
-		
-		unset($_GET['period']);
-		unset($_POST['period']);
-		unset($_REQUEST['period']);
-		
-		unset($_GET['room']);
-		unset($_POST['room']);
-		unset($_REQUEST['room']);
-		
-		unset($_GET['name']);
-		unset($_POST['name']);
-		unset($_REQUEST['name']);
-		
-		unset($_GET['description']);
-		unset($_POST['description']);
-		unset($_REQUEST['description']);
-		
-		unset($_GET['type']);
-		unset($_POST['type']);
-		unset($_REQUEST['type']);
+		$this->cleanUpInputGlobals();
 		
 		$_REQUEST['day'] = array($this->nBookingDay);
 		$_REQUEST['month'] = array($this->nBookingMonth);
@@ -200,7 +180,7 @@ class REST_MakeBookingTest extends PHPUnit_Extensions_OutputTestCase
 		$this->expectOutputRegex('/(<rsp)[\s]+(stat="fail">)/');
 		$this->setExpectedException('Exception');
 		
-		$_SERVER['REDIRECT_URL'] = 'http://localhost/REST/makeBooking';
+		$_REQUEST['call'] = 'makeBooking';
 		SchoorbsREST::handleRequest();
 	}
 	
@@ -211,37 +191,7 @@ class REST_MakeBookingTest extends PHPUnit_Extensions_OutputTestCase
 	 */
 	public function testFalseDatesGiven()
 	{
-		unset($_GET['day']);
-		unset($_POST['day']);
-		unset($_REQUEST['day']);
-		
-		unset($_GET['month']);
-		unset($_POST['month']);
-		unset($_REQUEST['month']);
-		
-		unset($_GET['year']);
-		unset($_POST['year']);
-		unset($_REQUEST['year']);
-		
-		unset($_GET['period']);
-		unset($_POST['period']);
-		unset($_REQUEST['period']);
-		
-		unset($_GET['room']);
-		unset($_POST['room']);
-		unset($_REQUEST['room']);
-		
-		unset($_GET['name']);
-		unset($_POST['name']);
-		unset($_REQUEST['name']);
-		
-		unset($_GET['description']);
-		unset($_POST['description']);
-		unset($_REQUEST['description']);
-		
-		unset($_GET['type']);
-		unset($_POST['type']);
-		unset($_REQUEST['type']);
+		$this->cleanUpInputGlobals();
 		
 		$_REQUEST['day'] = array($this->nBookingDay + 100);
 		$_REQUEST['month'] = array($this->nBookingMonth + 100);
@@ -250,7 +200,7 @@ class REST_MakeBookingTest extends PHPUnit_Extensions_OutputTestCase
 		$this->expectOutputRegex('/(<rsp)[\s]+(stat="fail">)/');
 		$this->setExpectedException('Exception');
 		
-		$_SERVER['REDIRECT_URL'] = 'http://localhost/REST/makeBooking';
+		$_REQUEST['call'] = 'makeBooking';
 		SchoorbsREST::handleRequest();
 	}
 	
@@ -261,37 +211,7 @@ class REST_MakeBookingTest extends PHPUnit_Extensions_OutputTestCase
 	 */
 	public function testDatesRoomGiven()
 	{
-		unset($_GET['day']);
-		unset($_POST['day']);
-		unset($_REQUEST['day']);
-		
-		unset($_GET['month']);
-		unset($_POST['month']);
-		unset($_REQUEST['month']);
-		
-		unset($_GET['year']);
-		unset($_POST['year']);
-		unset($_REQUEST['year']);
-		
-		unset($_GET['period']);
-		unset($_POST['period']);
-		unset($_REQUEST['period']);
-		
-		unset($_GET['room']);
-		unset($_POST['room']);
-		unset($_REQUEST['room']);
-		
-		unset($_GET['name']);
-		unset($_POST['name']);
-		unset($_REQUEST['name']);
-		
-		unset($_GET['description']);
-		unset($_POST['description']);
-		unset($_REQUEST['description']);
-		
-		unset($_GET['type']);
-		unset($_POST['type']);
-		unset($_REQUEST['type']);
+		$this->cleanUpInputGlobals();
 		
 		$_REQUEST['day'] = array($this->nBookingDay);
 		$_REQUEST['month'] = array($this->nBookingMonth);
@@ -301,7 +221,7 @@ class REST_MakeBookingTest extends PHPUnit_Extensions_OutputTestCase
 		$this->expectOutputRegex('/(<rsp)[\s]+(stat="fail">)/');
 		$this->setExpectedException('Exception');
 		
-		$_SERVER['REDIRECT_URL'] = 'http://localhost/REST/makeBooking';
+		$_REQUEST['call'] = 'makeBooking';
 		SchoorbsREST::handleRequest();
 	}
 	
@@ -312,37 +232,7 @@ class REST_MakeBookingTest extends PHPUnit_Extensions_OutputTestCase
 	 */
 	public function testDatesRoomPeriodGiven()
 	{
-		unset($_GET['day']);
-		unset($_POST['day']);
-		unset($_REQUEST['day']);
-		
-		unset($_GET['month']);
-		unset($_POST['month']);
-		unset($_REQUEST['month']);
-		
-		unset($_GET['year']);
-		unset($_POST['year']);
-		unset($_REQUEST['year']);
-		
-		unset($_GET['period']);
-		unset($_POST['period']);
-		unset($_REQUEST['period']);
-		
-		unset($_GET['room']);
-		unset($_POST['room']);
-		unset($_REQUEST['room']);
-		
-		unset($_GET['name']);
-		unset($_POST['name']);
-		unset($_REQUEST['name']);
-		
-		unset($_GET['description']);
-		unset($_POST['description']);
-		unset($_REQUEST['description']);
-		
-		unset($_GET['type']);
-		unset($_POST['type']);
-		unset($_REQUEST['type']);
+		$this->cleanUpInputGlobals();
 		
 		$_REQUEST['day'] = array($this->nBookingDay);
 		$_REQUEST['month'] = array($this->nBookingMonth);
@@ -353,7 +243,7 @@ class REST_MakeBookingTest extends PHPUnit_Extensions_OutputTestCase
 		$this->expectOutputRegex('/(<rsp)[\s]+(stat="fail">)/');
 		$this->setExpectedException('Exception');
 		
-		$_SERVER['REDIRECT_URL'] = 'http://localhost/REST/makeBooking';
+		$_REQUEST['call'] = 'makeBooking';
 		SchoorbsREST::handleRequest();
 	}
 	
@@ -364,37 +254,7 @@ class REST_MakeBookingTest extends PHPUnit_Extensions_OutputTestCase
 	 */
 	public function testDatesRoomPeriodEmptyNameGiven()
 	{
-		unset($_GET['day']);
-		unset($_POST['day']);
-		unset($_REQUEST['day']);
-		
-		unset($_GET['month']);
-		unset($_POST['month']);
-		unset($_REQUEST['month']);
-		
-		unset($_GET['year']);
-		unset($_POST['year']);
-		unset($_REQUEST['year']);
-		
-		unset($_GET['period']);
-		unset($_POST['period']);
-		unset($_REQUEST['period']);
-		
-		unset($_GET['room']);
-		unset($_POST['room']);
-		unset($_REQUEST['room']);
-		
-		unset($_GET['name']);
-		unset($_POST['name']);
-		unset($_REQUEST['name']);
-		
-		unset($_GET['description']);
-		unset($_POST['description']);
-		unset($_REQUEST['description']);
-		
-		unset($_GET['type']);
-		unset($_POST['type']);
-		unset($_REQUEST['type']);
+		$this->cleanUpInputGlobals();
 		
 		$_REQUEST['day'] = array($this->nBookingDay);
 		$_REQUEST['month'] = array($this->nBookingMonth);
@@ -406,7 +266,7 @@ class REST_MakeBookingTest extends PHPUnit_Extensions_OutputTestCase
 		$this->expectOutputRegex('/(<rsp)[\s]+(stat="fail">)/');
 		$this->setExpectedException('Exception');
 		
-		$_SERVER['REDIRECT_URL'] = 'http://localhost/REST/makeBooking';
+		$_REQUEST['call'] = 'makeBooking';
 		SchoorbsREST::handleRequest();
 	}
 	
@@ -417,37 +277,7 @@ class REST_MakeBookingTest extends PHPUnit_Extensions_OutputTestCase
 	 */
 	public function testDatesRoomPeriodNameGiven()
 	{
-		unset($_GET['day']);
-		unset($_POST['day']);
-		unset($_REQUEST['day']);
-		
-		unset($_GET['month']);
-		unset($_POST['month']);
-		unset($_REQUEST['month']);
-		
-		unset($_GET['year']);
-		unset($_POST['year']);
-		unset($_REQUEST['year']);
-		
-		unset($_GET['period']);
-		unset($_POST['period']);
-		unset($_REQUEST['period']);
-		
-		unset($_GET['room']);
-		unset($_POST['room']);
-		unset($_REQUEST['room']);
-		
-		unset($_GET['name']);
-		unset($_POST['name']);
-		unset($_REQUEST['name']);
-		
-		unset($_GET['description']);
-		unset($_POST['description']);
-		unset($_REQUEST['description']);
-		
-		unset($_GET['type']);
-		unset($_POST['type']);
-		unset($_REQUEST['type']);
+		$this->cleanUpInputGlobals();
 		
 		$_REQUEST['day'] = array($this->nBookingDay);
 		$_REQUEST['month'] = array($this->nBookingMonth);
@@ -459,7 +289,7 @@ class REST_MakeBookingTest extends PHPUnit_Extensions_OutputTestCase
 		$this->expectOutputRegex('/(<rsp)[\s]+(stat="fail">)/');
 		$this->setExpectedException('Exception');
 		
-		$_SERVER['REDIRECT_URL'] = 'http://localhost/REST/makeBooking';
+		$_REQUEST['call'] = 'makeBooking';
 		SchoorbsREST::handleRequest();
 	}
 	
@@ -470,37 +300,7 @@ class REST_MakeBookingTest extends PHPUnit_Extensions_OutputTestCase
 	 */
 	public function testDatesRoomPeriodNameDescriptionGiven()
 	{
-		unset($_GET['day']);
-		unset($_POST['day']);
-		unset($_REQUEST['day']);
-		
-		unset($_GET['month']);
-		unset($_POST['month']);
-		unset($_REQUEST['month']);
-		
-		unset($_GET['year']);
-		unset($_POST['year']);
-		unset($_REQUEST['year']);
-		
-		unset($_GET['period']);
-		unset($_POST['period']);
-		unset($_REQUEST['period']);
-		
-		unset($_GET['room']);
-		unset($_POST['room']);
-		unset($_REQUEST['room']);
-		
-		unset($_GET['name']);
-		unset($_POST['name']);
-		unset($_REQUEST['name']);
-		
-		unset($_GET['description']);
-		unset($_POST['description']);
-		unset($_REQUEST['description']);
-		
-		unset($_GET['type']);
-		unset($_POST['type']);
-		unset($_REQUEST['type']);
+		$this->cleanUpInputGlobals();
 		
 		$_REQUEST['day'] = array($this->nBookingDay);
 		$_REQUEST['month'] = array($this->nBookingMonth);
@@ -513,7 +313,7 @@ class REST_MakeBookingTest extends PHPUnit_Extensions_OutputTestCase
 		$this->expectOutputRegex('/(<rsp)[\s]+(stat="fail">)/');
 		$this->setExpectedException('Exception');
 		
-		$_SERVER['REDIRECT_URL'] = 'http://localhost/REST/makeBooking';
+		$_REQUEST['call'] = 'makeBooking';
 		SchoorbsREST::handleRequest();
 	}
 	
@@ -524,37 +324,7 @@ class REST_MakeBookingTest extends PHPUnit_Extensions_OutputTestCase
 	 */
 	public function testDatesRoomPeriodNameDescriptionEmptyTypeGiven()
 	{
-		unset($_GET['day']);
-		unset($_POST['day']);
-		unset($_REQUEST['day']);
-		
-		unset($_GET['month']);
-		unset($_POST['month']);
-		unset($_REQUEST['month']);
-		
-		unset($_GET['year']);
-		unset($_POST['year']);
-		unset($_REQUEST['year']);
-		
-		unset($_GET['period']);
-		unset($_POST['period']);
-		unset($_REQUEST['period']);
-		
-		unset($_GET['room']);
-		unset($_POST['room']);
-		unset($_REQUEST['room']);
-		
-		unset($_GET['name']);
-		unset($_POST['name']);
-		unset($_REQUEST['name']);
-		
-		unset($_GET['description']);
-		unset($_POST['description']);
-		unset($_REQUEST['description']);
-		
-		unset($_GET['type']);
-		unset($_POST['type']);
-		unset($_REQUEST['type']);
+		$this->cleanUpInputGlobals();
 		
 		$_REQUEST['day'] = array($this->nBookingDay);
 		$_REQUEST['month'] = array($this->nBookingMonth);
@@ -568,7 +338,7 @@ class REST_MakeBookingTest extends PHPUnit_Extensions_OutputTestCase
 		$this->expectOutputRegex('/(<rsp)[\s]+(stat="fail">)/');
 		$this->setExpectedException('Exception');
 		
-		$_SERVER['REDIRECT_URL'] = 'http://localhost/REST/makeBooking';
+		$_REQUEST['call'] = 'makeBooking';
 		SchoorbsREST::handleRequest();
 	}
 	
@@ -579,37 +349,7 @@ class REST_MakeBookingTest extends PHPUnit_Extensions_OutputTestCase
 	 */
 	public function testAllOk()
 	{
-		unset($_GET['day']);
-		unset($_POST['day']);
-		unset($_REQUEST['day']);
-		
-		unset($_GET['month']);
-		unset($_POST['month']);
-		unset($_REQUEST['month']);
-		
-		unset($_GET['year']);
-		unset($_POST['year']);
-		unset($_REQUEST['year']);
-		
-		unset($_GET['period']);
-		unset($_POST['period']);
-		unset($_REQUEST['period']);
-		
-		unset($_GET['room']);
-		unset($_POST['room']);
-		unset($_REQUEST['room']);
-		
-		unset($_GET['name']);
-		unset($_POST['name']);
-		unset($_REQUEST['name']);
-		
-		unset($_GET['description']);
-		unset($_POST['description']);
-		unset($_REQUEST['description']);
-		
-		unset($_GET['type']);
-		unset($_POST['type']);
-		unset($_REQUEST['type']);
+		$this->cleanUpInputGlobals();
 		
 		$_REQUEST['day'] = array($this->nBookingDay);
 		$_REQUEST['month'] = array($this->nBookingMonth);
@@ -622,7 +362,7 @@ class REST_MakeBookingTest extends PHPUnit_Extensions_OutputTestCase
 		
 		$this->expectOutputRegex('/<made_booking>true<\/made_booking>/');
 		
-		$_SERVER['REDIRECT_URL'] = 'http://localhost/REST/makeBooking';
+		$_REQUEST['call'] = 'makeBooking';
 		SchoorbsREST::handleRequest();
 	}
 	
@@ -633,37 +373,7 @@ class REST_MakeBookingTest extends PHPUnit_Extensions_OutputTestCase
 	 */
 	public function testConflictingBooking()
 	{
-		unset($_GET['day']);
-		unset($_POST['day']);
-		unset($_REQUEST['day']);
-		
-		unset($_GET['month']);
-		unset($_POST['month']);
-		unset($_REQUEST['month']);
-		
-		unset($_GET['year']);
-		unset($_POST['year']);
-		unset($_REQUEST['year']);
-		
-		unset($_GET['period']);
-		unset($_POST['period']);
-		unset($_REQUEST['period']);
-		
-		unset($_GET['room']);
-		unset($_POST['room']);
-		unset($_REQUEST['room']);
-		
-		unset($_GET['name']);
-		unset($_POST['name']);
-		unset($_REQUEST['name']);
-		
-		unset($_GET['description']);
-		unset($_POST['description']);
-		unset($_REQUEST['description']);
-		
-		unset($_GET['type']);
-		unset($_POST['type']);
-		unset($_REQUEST['type']);
+		$this->cleanUpInputGlobals();
 		
 		$_REQUEST['day'] = array($this->nBookingDay-10);
 		$_REQUEST['month'] = array($this->nBookingMonth);
@@ -681,7 +391,7 @@ class REST_MakeBookingTest extends PHPUnit_Extensions_OutputTestCase
 		
 		$this->expectOutputRegex('/<made_booking>false<\/made_booking>/');
 		
-		$_SERVER['REDIRECT_URL'] = 'http://localhost/REST/makeBooking';
+		$_REQUEST['call'] = 'makeBooking';
 		SchoorbsREST::handleRequest();
 	}
 }

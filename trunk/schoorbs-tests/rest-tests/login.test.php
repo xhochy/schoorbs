@@ -76,7 +76,7 @@ class REST_LoginTest extends PHPUnit_Extensions_OutputTestCase
 		$this->expectOutputRegex('/(<rsp)[\s]+(stat="fail">)/');
 		$this->setExpectedException('Exception');
 		
-		$_SERVER['REDIRECT_URL'] = 'http://localhost/REST/login';
+		$_REQUEST['call'] = 'login';
 		SchoorbsREST::handleRequest();
 		
 		$_SERVER['PHP_AUTH_PW'] = $pw;
@@ -93,7 +93,7 @@ class REST_LoginTest extends PHPUnit_Extensions_OutputTestCase
 		$this->expectOutputRegex('/(<username)[\s]+(value=")('.
 			$_SERVER['PHP_AUTH_USER'].')(")[\s]*\/>/');
 		
-		$_SERVER['REDIRECT_URL'] = 'http://localhost/REST/login';
+		$_REQUEST['call'] = 'login';
 		SchoorbsREST::handleRequest();
 	}
 }

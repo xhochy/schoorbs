@@ -10,6 +10,16 @@
  
 ## Includes ##
 
+/** The Configuration file */
+require_once dirname(__FILE__).'/../config.inc.php';
+/** The database wrapper */
+require_once dirname(__FILE__)."/../schoorbs-includes/database/$dbsys.php";
+/** The input checking/validation functions */
+require_once dirname(__FILE__).'/../schoorbs-includes/input.functions.php';
+/** The time related functions */
+require_once dirname(__FILE__).'/../schoorbs-includes/time.functions.php';
+
+
 // Use Smarty for REST Output
 if (file_exists(dirname(__FILE__).'/Smarty/libs/libs/Smarty.class.php')) {
 	// On Debian systems
@@ -64,9 +74,15 @@ class SchoorbsREST
 	 */
 	public static function isValidFunction($sFunctionName)
 	{
+		if (empty($sFunctionName)) {
+			return self::sendError('not a valid Schoorbs-REST-URL',1);
+		}
+		if (!ctype_alnum($sFunctionName)) {
+			return self::sendError('not a valid Schoorbs-REST-URL',1);
+		}		
 		if (function_exists('rest_function_'.$sFunctionName)) {
 			return true;
-		} 
+		}
 		
 		$sFile = dirname(__FILE__).'/rest-plugins/'.strtolower($sFunctionName).'.rest.php';
 		if (file_exists($sFile)) {
@@ -96,35 +112,11 @@ class SchoorbsREST
 	 */
 	public static function handleRequest() 
 	{
-		$sFunctionName = self::getFunctionName($_SERVER['REDIRECT_URL']);
+		$sFunctionName = unslashes($_REQUEST['call']);
 		if(!self::isValidFunction($sFunctionName)) {
 			return self::sendError('Function does not exist', 2);
 		}
 		self::call($sFunctionName);
-	}
-	
-	/**
-	 * Searches for the last occurrence of 'REST' 
-	 * and cuts the function name out of the url
-	 * 
-	 * @author Uwe L. Korn <uwelk@xhochy.org>
-	 * @param string $sURL the URL which was called(normally $_SERVER['REDIRECT_URL'])
-	 * @return string the name of the called function 
-	 */
-	public static function getFunctionName($sURL)
-	{
-		if (($nPos = strrpos($sURL, 'REST')) === false) {
-			return self::sendError('not a valid Schoorbs-REST-URL',1);
-		}
-		$sResult = substr($sURL, $nPos + 4);
-		$sResult = trim($sResult, '/');
-		if (empty($sResult)) {
-			return self::sendError('not a valid Schoorbs-REST-URL',1);
-		}
-		if (!ctype_alnum($sResult)) {
-			return self::sendError('not a valid Schoorbs-REST-URL',1);
-		}
-		return $sResult;
 	}
 	
 	/**

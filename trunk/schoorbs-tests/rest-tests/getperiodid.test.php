@@ -71,7 +71,7 @@ class REST_GetperiodidTest extends PHPUnit_Extensions_OutputTestCase
 		
 		$this->expectOutputRegex('/<period_id>1<\/period_id>/');
 		
-		$_SERVER['REDIRECT_URL'] = 'http://localhost/REST/getPeriodID';
+		$_REQUEST['call'] = 'getPeriodID';
 		SchoorbsREST::handleRequest();
     }
     
@@ -91,7 +91,7 @@ class REST_GetperiodidTest extends PHPUnit_Extensions_OutputTestCase
 		$this->expectOutputRegex('/(<rsp)[\s]+(stat="fail">)/');
 		$this->setExpectedException('Exception');
 		
-		$_SERVER['REDIRECT_URL'] = 'http://localhost/REST/getPeriodID';
+		$_REQUEST['call'] = 'getPeriodID';
 		SchoorbsREST::handleRequest();
     }
 }

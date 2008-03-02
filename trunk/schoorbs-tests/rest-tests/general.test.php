@@ -36,35 +36,21 @@ class REST_GeneralTest extends PHPUnit_Extensions_OutputTestCase
 		$this->expectOutputRegex('/(<rsp)[\s]+(stat="fail">)/');
 		$this->setExpectedException('Exception');
 				
-		$_SERVER['REDIRECT_URL'] = 'http://localhost/REST/nonexistfunction';
+		$_REQUEST['call'] = 'nonexistingfunction';
 		SchoorbsREST::handleRequest();
 	}
 	
 	/**
-	 * Test what happens if we call an url pointing not to the REST endpoint
+	 * Test what happens if we call an epmty url
 	 *
 	 * @author Uwe L. Korn <uwelk@xhochy.org>
 	 */
-	public function testCallNotRESTEndpoint() 
+	public function testCallEmpty() 
 	{
 		$this->expectOutputRegex('/(<rsp)[\s]+(stat="fail">)/');
 		$this->setExpectedException('Exception');
 				
-		$_SERVER['REDIRECT_URL'] = 'http://localhost/';
-		SchoorbsREST::handleRequest();
-	}
-	
-	/**
-	 * Test what happens if we call an url pointing only to the REST endpoint
-	 *
-	 * @author Uwe L. Korn <uwelk@xhochy.org>
-	 */
-	public function testCallOnlyRESTEndpoint() 
-	{
-		$this->expectOutputRegex('/(<rsp)[\s]+(stat="fail">)/');
-		$this->setExpectedException('Exception');
-				
-		$_SERVER['REDIRECT_URL'] = 'http://localhost/REST/';
+		$_REQUEST['call'] = '';
 		SchoorbsREST::handleRequest();
 	}
 	
@@ -78,7 +64,7 @@ class REST_GeneralTest extends PHPUnit_Extensions_OutputTestCase
 		$this->expectOutputRegex('/(<rsp)[\s]+(stat="fail">)/');
 		$this->setExpectedException('Exception');
 				
-		$_SERVER['REDIRECT_URL'] = 'http://localhost/REST/sas-sss';
+		$_REQUEST['call'] = 'sas-sas';
 		SchoorbsREST::handleRequest();
 	}
 }

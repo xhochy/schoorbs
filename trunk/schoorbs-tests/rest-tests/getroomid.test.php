@@ -75,7 +75,7 @@ class REST_GetroomidTest extends PHPUnit_Extensions_OutputTestCase
 		
 		$this->expectOutputRegex('/<room_id>'.$this->nRoom.'<\/room_id>/');
 		
-		$_SERVER['REDIRECT_URL'] = 'http://localhost/REST/getRoomID';
+		$_REQUEST['call'] = 'getRoomID';
 		SchoorbsREST::handleRequest();
     }
     
@@ -95,7 +95,7 @@ class REST_GetroomidTest extends PHPUnit_Extensions_OutputTestCase
 		$this->expectOutputRegex('/(<rsp)[\s]+(stat="fail">)/');
 		$this->setExpectedException('Exception');
 		
-		$_SERVER['REDIRECT_URL'] = 'http://localhost/REST/getRoomID';
+		$_REQUEST['call'] = 'getRoomID';
 		SchoorbsREST::handleRequest();
     }
 }

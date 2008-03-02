@@ -79,14 +79,14 @@ class REST_CheckfreeTest extends PHPUnit_Extensions_OutputTestCase
 		$enable_periods = true;
 		$periods = array('p1', 'p2', 'p3');
 	}
-
+	
 	/**
-	 * Test with nothing given
-	 * 
+	 * Remove all may-set super-global inputs
+	 *
 	 * @author Uwe L. Korn <uwelk@xhochy.org>
-	 */	
-    public function testNoneGiven()
-    {
+	 */
+	public function cleanUpInputGlobals()
+	{
 		unset($_GET['day']);
 		unset($_POST['day']);
 		unset($_REQUEST['day']);
@@ -106,11 +106,21 @@ class REST_CheckfreeTest extends PHPUnit_Extensions_OutputTestCase
 		unset($_GET['room']);
 		unset($_POST['room']);
 		unset($_REQUEST['room']);
+	}
+
+	/**
+	 * Test with nothing given
+	 * 
+	 * @author Uwe L. Korn <uwelk@xhochy.org>
+	 */	
+    public function testNoneGiven()
+    {
+		$this->cleanUpInputGlobals();
 		
 		$this->expectOutputRegex('/(<rsp)[\s]+(stat="fail">)/');
 		$this->setExpectedException('Exception');
 		
-		$_SERVER['REDIRECT_URL'] = 'http://localhost/REST/checkFree';
+		$_REQUEST['call'] = 'checkFree';
 		SchoorbsREST::handleRequest();
     }
     
@@ -121,25 +131,7 @@ class REST_CheckfreeTest extends PHPUnit_Extensions_OutputTestCase
 	 */	
     public function testDatesGiven()
     {
-		unset($_GET['day']);
-		unset($_POST['day']);
-		unset($_REQUEST['day']);
-		
-		unset($_GET['month']);
-		unset($_POST['month']);
-		unset($_REQUEST['month']);
-		
-		unset($_GET['year']);
-		unset($_POST['year']);
-		unset($_REQUEST['year']);
-		
-		unset($_GET['period']);
-		unset($_POST['period']);
-		unset($_REQUEST['period']);
-		
-		unset($_GET['room']);
-		unset($_POST['room']);
-		unset($_REQUEST['room']);
+		$this->cleanUpInputGlobals();
 		
 		$_REQUEST['day'] = array(1,2);
 		$_REQUEST['month'] = array(2,2);
@@ -148,7 +140,7 @@ class REST_CheckfreeTest extends PHPUnit_Extensions_OutputTestCase
 		$this->expectOutputRegex('/(<rsp)[\s]+(stat="fail">)/');
 		$this->setExpectedException('Exception');
 		
-		$_SERVER['REDIRECT_URL'] = 'http://localhost/REST/checkFree';
+		$_REQUEST['call'] = 'checkFree';
 		SchoorbsREST::handleRequest();
     }
     
@@ -159,25 +151,7 @@ class REST_CheckfreeTest extends PHPUnit_Extensions_OutputTestCase
 	 */	
     public function testDatesPeriodGiven()
     {
-		unset($_GET['day']);
-		unset($_POST['day']);
-		unset($_REQUEST['day']);
-		
-		unset($_GET['month']);
-		unset($_POST['month']);
-		unset($_REQUEST['month']);
-		
-		unset($_GET['year']);
-		unset($_POST['year']);
-		unset($_REQUEST['year']);
-		
-		unset($_GET['period']);
-		unset($_POST['period']);
-		unset($_REQUEST['period']);
-		
-		unset($_GET['room']);
-		unset($_POST['room']);
-		unset($_REQUEST['room']);
+		$this->cleanUpInputGlobals();
 		
 		$_REQUEST['day'] = array(1,2);
 		$_REQUEST['month'] = array(2,2);
@@ -187,7 +161,7 @@ class REST_CheckfreeTest extends PHPUnit_Extensions_OutputTestCase
 		$this->expectOutputRegex('/(<rsp)[\s]+(stat="fail">)/');
 		$this->setExpectedException('Exception');
 		
-		$_SERVER['REDIRECT_URL'] = 'http://localhost/REST/checkFree';
+		$_REQUEST['call'] = 'checkFree';
 		SchoorbsREST::handleRequest();
     }
     
@@ -198,25 +172,7 @@ class REST_CheckfreeTest extends PHPUnit_Extensions_OutputTestCase
 	 */	
     public function testFalseDateGiven()
     {
-		unset($_GET['day']);
-		unset($_POST['day']);
-		unset($_REQUEST['day']);
-		
-		unset($_GET['month']);
-		unset($_POST['month']);
-		unset($_REQUEST['month']);
-		
-		unset($_GET['year']);
-		unset($_POST['year']);
-		unset($_REQUEST['year']);
-		
-		unset($_GET['period']);
-		unset($_POST['period']);
-		unset($_REQUEST['period']);
-		
-		unset($_GET['room']);
-		unset($_POST['room']);
-		unset($_REQUEST['room']);
+		$this->cleanUpInputGlobals();
 		
 		$_REQUEST['day'] = array(1,3);
 		$_REQUEST['month'] = array(19,2);
@@ -227,7 +183,7 @@ class REST_CheckfreeTest extends PHPUnit_Extensions_OutputTestCase
 		$this->expectOutputRegex('/(<rsp)[\s]+(stat="fail">)/');
 		$this->setExpectedException('Exception');
 		
-		$_SERVER['REDIRECT_URL'] = 'http://localhost/REST/checkFree';
+		$_REQUEST['call'] = 'checkFree';
 		SchoorbsREST::handleRequest();
     }
     
@@ -238,25 +194,7 @@ class REST_CheckfreeTest extends PHPUnit_Extensions_OutputTestCase
 	 */	
     public function testAllGivenNotFree()
     {
-		unset($_GET['day']);
-		unset($_POST['day']);
-		unset($_REQUEST['day']);
-		
-		unset($_GET['month']);
-		unset($_POST['month']);
-		unset($_REQUEST['month']);
-		
-		unset($_GET['year']);
-		unset($_POST['year']);
-		unset($_REQUEST['year']);
-		
-		unset($_GET['period']);
-		unset($_POST['period']);
-		unset($_REQUEST['period']);
-		
-		unset($_GET['room']);
-		unset($_POST['room']);
-		unset($_REQUEST['room']);
+		$this->cleanUpInputGlobals();
 		
 		$_REQUEST['day'] = array($this->nBookingDay);
 		$_REQUEST['month'] = array($this->nBookingMonth);
@@ -266,7 +204,7 @@ class REST_CheckfreeTest extends PHPUnit_Extensions_OutputTestCase
 		
 		$this->expectOutputRegex('/<free>false<\/free>/');
 		
-		$_SERVER['REDIRECT_URL'] = 'http://localhost/REST/checkFree';
+		$_REQUEST['call'] = 'checkFree';
 		SchoorbsREST::handleRequest();
     }
     
@@ -277,25 +215,7 @@ class REST_CheckfreeTest extends PHPUnit_Extensions_OutputTestCase
 	 */	
     public function testAllGivenFree()
     {
-		unset($_GET['day']);
-		unset($_POST['day']);
-		unset($_REQUEST['day']);
-		
-		unset($_GET['month']);
-		unset($_POST['month']);
-		unset($_REQUEST['month']);
-		
-		unset($_GET['year']);
-		unset($_POST['year']);
-		unset($_REQUEST['year']);
-		
-		unset($_GET['period']);
-		unset($_POST['period']);
-		unset($_REQUEST['period']);
-		
-		unset($_GET['room']);
-		unset($_POST['room']);
-		unset($_REQUEST['room']);
+		$this->cleanUpInputGlobals();
 		
 		$_REQUEST['day'] = array($this->nBookingDay - 1);
 		$_REQUEST['month'] = array($this->nBookingMonth);
@@ -305,7 +225,7 @@ class REST_CheckfreeTest extends PHPUnit_Extensions_OutputTestCase
 		
 		$this->expectOutputRegex('/<free>true<\/free>/');
 		
-		$_SERVER['REDIRECT_URL'] = 'http://localhost/REST/checkFree';
+		$_REQUEST['call'] = 'checkFree';
 		SchoorbsREST::handleRequest();
     }
 }
