@@ -11,7 +11,7 @@
         Vor Beginn meiner Facharbeit war das Prozedere zur Reservierung eines
         Saales bzw. einer anderen Resource (z.B. Fernseher) sehr einfach 
         gelöst: Es gab eine Liste für die ganze Woche, in die man sich als Lehrer
-        eintragen musste, wenn man eben die jeweilige Ressource wollte. Dieses
+        eintragen musste, wenn man die jeweilige Ressource wollte. Diese
         simple Lösung besitzt jedoch einige Nachteile, weshalb die Nutzung
         eines elektronischen Buchungssystems in Erwägung gezogen werden kann.
         So gibt es diese Liste nur an einem Ort, d.h. spontane Buchungen einer
@@ -27,7 +27,7 @@
         Anforderungen anzupassen. Parallel dazu bzw. im Anschluss habe ich noch
         eine Dokumentation der Software verfasst, welche das System auf der 
         einen Seite für den normalen Anwender und auf der anderen für 
-        potentielle Entwickler bzw. technisch interessierte erklärt. 
+        potentielle Entwickler bzw. Technisch interessierte erklärt. 
       </p>
       <p>
         <strong>Hinweis:</strong> Im Folgenden benutze ich den Namen MRBS für 
