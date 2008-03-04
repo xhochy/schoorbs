@@ -9,36 +9,53 @@
       <title>Allgemein</title>
       <p>
         <!-- Wozu Logging ? -->
+        Mit der Weboberfläche von Schoorbs kann man sich immer den aktuellen 
+        Zustand der Buchungen angucken, jedoch nicht wann Buchungen gelöscht oder
+        geändert wurden. Auf den ersten Blick erscheinen diese Ereignisse 
+        unwichtig, jedoch kann man nur hiermit den Missbrauch der Software durch
+        bestimmte Nutzer nachweisen, so könnte z.B. ein Nutzer immer einen Saal
+        zu einer bestimmten Uhrzeit blockieren, aber immer kurz zuvor den Eintrag
+        wieder löschen, nur weil er z.B. nicht möchte, dass ein Kollege einen 
+        bestimmten Saal oft nutzt. Desweiteren könnte man hiermit auch einem
+        Administrator nachweisen, dass er bestimmte Einträge gelöscht hat, die 
+        nicht gelöscht werden sollten und somit sein Amt missbraucht hat.
+      </p>
+      <p>
         <!-- Was wird protokolliert? -->
+        Es werden zur Zeit nur das Erstellen/Ändern/Löschen eines Terims über
+        die Web-Oberfläche protokolliert, d.h. jegliche Nutzung der 
+        REST-Schnittstelle bleibt an sich unprotokolliert. Jedoch kann man bei
+        der REST-Schnittstelle die Weblogs zu Hilfe ziehen, da hier die gesamte
+        ausgeführte Aktion an Hand der URLs zu identifizieren ist.
+      </p>
+      <p>
         <!-- Wo richte ich es ein? -->
-        <!-- Was ist zu beachten (Datenschutz, Performance) ? -->
-        <!-- Welches Backend nutze ich am Besten? -->
-        ...
+        Die gesamte Konfiguration des Protokollierungssystems findet in der 
+        Datei <code>schoorbs-includes/logging.configuration.php</code> statt.
+        Um das System zu aktivieren, setzt man dort der Wert der Variable 
+        <code>active</code> auf <code>true</code>, möchtet man es hingegen 
+        abschalten, setzt man den Wert auf <code>false</code>. Bei der Variable
+        <code>backend</code> kann man einstellen, welches Plugin genutzt werden
+        soll um die Protokollierung abzuspeichern. Zur Zeit existiert als 
+        einzigstes Logging-Plugin nur das Modul <code>syslog</code>, welches 
+        das Linux-interne Logging-System nutzt, um die Ereignisse zu 
+        protokollieren.
+      </p>
+      <p>
+        <strong>Hinweis:</strong> Aktuell existiert nur das Modul syslog, da 
+        dies im Rahmen meiner Facharbeit erstellt wurde, das System ist jedoch
+        so modular programmiert, dass das Erstellen eines weiteren 
+        Protokollierungs-Plugins sehr simpel sein sollte.
       </p>
      </section>
      <section id="syslog">
       <title>Syslog</title>
       <p>
-        <!-- Welche Optionen gibt es? -->
-        <!-- Welche Software-Vorraussetzungen müssen erfüllt sein? -->
-        <!-- Muss ich noch woanders Einstellungen vornehmen? -->
-        ...
-      </p>
-    </section>
-    <section id="file">
-      <title>Datei</title>
-      <p>
-        <!-- Welche Optionen gibt es? -->
-        <!-- Welche Software-Vorraussetzungen müssen erfüllt sein? -->
-        <!-- Muss ich noch woanders Einstellungen vornehmen? -->
-        ...
-      </p>
-    </section>
-    <section id="database">
-      <title>Datenbank</title>
-      <p>
-        <!-- Welche Optionen gibt es? -->
-        <!-- Welche Software-Vorraussetzungen müssen erfüllt sein? -->
+        Das Syslog-Modul kann man nur unter Linux-Systemen nutzen, da unter 
+        anderen Systemen diese Funktionialität dort nicht vorhanden ist. Syslog
+        ist ein Programm, welches unter Linux/Unix, die Ereignissmeldungen 
+        verschiedener Programme entgegennimmt und diese dann auf verschiedene 
+        Log-Dateien verteilt.
         <!-- Muss ich noch woanders Einstellungen vornehmen? -->
         ...
       </p>
