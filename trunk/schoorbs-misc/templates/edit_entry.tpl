@@ -22,7 +22,7 @@ var enablePeriods = true;
 	{/if}
 </h2>
 
-<form name="main" id="main-form" action="edit_entry_handler.php" method="get">
+<form id="main-form" action="edit_entry_handler.php" method="get">
 	<table border="0">
 	<tr>
 		<td class="CR"><strong>{get_vocab text="namebooker"}</strong></td>
@@ -185,7 +185,9 @@ var enablePeriods = true;
 	<tr>
 		<td colspan="2" style="text-align: center">
 			<script type="text/javascript">
+				// <![CDATA[
 				document.writeln ( '<input id="main-save-button" type="button" name="save_button" value="{get_vocab text="save"}" onclick="validate_and_submit()" />' );
+				// ]]>
 			</script>
 			<noscript>
 				<div><input type="submit" value="{get_vocab text="save"}" /></div>
@@ -194,7 +196,7 @@ var enablePeriods = true;
 	</tr>
 	</table>
 	<div>
-	<input type="hidden" name="returl" value="{$smarty.server.HTTP_REFERER}" />
+	<input type="hidden" name="returl" value="{$smarty.server.HTTP_REFERER|escape:"html"}" />
 	<input type="hidden" name="create_by" value="{$create_by}" />
 	<input type="hidden" id="main-rep-id" name="rep_id" value="{$rep_id}" />
 	<input type="hidden" name="edit_type" value="{$edit_type}" />
