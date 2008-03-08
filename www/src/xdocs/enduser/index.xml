@@ -36,14 +36,14 @@
     <section id="license">
       <title>License</title>
       <p>
-        While Schoorbs is licensed under the GPL, the end-user documentation is licensed under the 
+        While Schoorbs is licensed under the GPLv2, the end-user documentation is licensed under the 
         "Creative Commons Attribution-ShareAlike 3.0 Unported"-license, which is not a strict 
-        copyleft license, but is more permissive than the GPL and it isn't a license that was made
+        copyleft license, but is more permissive than the GPLv2 and it isn't a license that was made
         for software cases only. All documentation included in the code of Schoorbs such as the
-        API-docs are licensed under the GPL. Some parts of the documentation maybe stripped out of
+        API-docs are licensed under the GPLv2. Some parts of the documentation maybe stripped out of
         the INSTALL, README ... files of MRBS the pages containing those texts do not have a 
-        CC-BY-SA-logo at the button and are licensed under the GPL. We want to replace all of the
-        GPL-documentation because a single license for the whole end-user documentation is more 
+        CC-BY-SA-logo at the button and are licensed under the GPLv2. We want to replace all of the
+        GPLv2-documentation because a single license for the whole end-user documentation is more 
         user-friendly and the old MRBS documentation could be already outdated, we just keep it, 
         to not have undocumented parts of software.
       </p>
