@@ -56,8 +56,22 @@
         ist ein Programm, welches unter Linux/Unix, die Ereignissmeldungen 
         verschiedener Programme entgegennimmt und diese dann auf verschiedene 
         Log-Dateien verteilt.
-        <!-- Muss ich noch woanders Einstellungen vornehmen? -->
-        ...
+      </p>
+      <p>
+        Um Syslog zu sagen, wo etwas hingeloggt werden soll, stellt man auf der 
+        Seite des Programms, welches  die Ergeinisse sendet, ein, welche 
+        Priorität die Nachrichten haben sollen. Als Priorität sollte man 
+        standardmäßig die Option <code>'syslog-priority'</code> auf 
+        <code>LOG_INFO</code>, da die Ereignisse, die von Schoorbs ausgelöst 
+        werden lediglich informativen Charakter haben, die Fehler werden direkt
+        im Web ausgegeben. Als <code>'syslog-facility'</code> ist standardmäßig
+        <code>LOG_USER</code> ausgewählt, hier könnte man aber auch 
+        <code>LOG_LOCAL0</code> bis <code>LOG_LOCAL7</code> benutzen. Die 
+        facility bestimmt das sog. Themengebiet des Ereignisses. Auf der Seite
+        das Syslog-Dienstes kann man nun einstellen, in welche Dateien diese
+        facility-priority-Kombination geschrieben wird, die Konfiguration 
+        zwischen den Syslog-Programmen sehr unterschiedlich, weshalb ich hier
+        nicht weiter daraufeingehen werde.
       </p>
     </section>
   </body>
