@@ -19,7 +19,7 @@ function allDayStartEndTime()
 	global $enable_periods, $periods, $morningstarts, $morningstarts_minutes,
 		$eveningends_minutes, $eveningends;
 	
-	list($day, $month, $year) = input_DayMonthYear();
+	list($day, $month, $year) = input_DayMonthYear('edit_');
 	$max_periods = count($periods);
 	
     if ($enable_periods) {
@@ -45,7 +45,7 @@ function commonStartEndTime($hour, $minute, $units, $duration)
 {
 	global $resolution;
 
-	list($day, $month, $year) = input_DayMonthYear();
+	list($day, $month, $year) = input_DayMonthYear('edit_');
 	
 	$starttime = mktime($hour, $minute, 0, $month, $day, $year, is_dst($month, $day, $year, $hour));
     $endtime   = mktime($hour, $minute, 0, $month, $day, $year, is_dst($month, $day, $year, $hour)) + ($units * $duration);

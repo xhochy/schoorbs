@@ -29,7 +29,9 @@ require_once 'schoorbs-includes/logging.functions.php';
 ## Input ##
 
 /** day, month, year */
-list($day, $month, $year) = input_DayMonthYear();
+list($day, $month, $year) = input_DayMonthYear('edit_');
+
+//var_dump($month);die();
 /** rep_end_ + (day, month, year) */
 list($rep_end_day, $rep_end_month, $rep_end_year) = input_DayMonthYear('rep_end_');
 // if really not set, unset them again
