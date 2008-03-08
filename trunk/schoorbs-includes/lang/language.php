@@ -24,11 +24,11 @@ require_once dirname(__FILE__).'/aix_utf8_converters.php';
 # Language token handling
 
 # Get a default set of language tokens, you can change this if you like
-include dirname(__FILE__)."/lang." . $default_language_tokens;
+include dirname(__FILE__).'/lang.'.$default_language_tokens.'.php';
 
 # Define the default locale here. For a list of supported
 # locales on your system do "locale -a"
-setlocale(LC_ALL,'C');
+setlocale(LC_ALL, 'C');
 
 # We attempt to make up a sensible locale from the HTTP_ACCEPT_LANGUAGE
 # environment variable.
@@ -70,7 +70,7 @@ if (!$disable_automatic_language_changing)
 
   foreach ($langs as $lang => $qual)
   {
-    $lang_file = dirname(__FILE__)."/lang." . strtolower($lang);
+    $lang_file = dirname(__FILE__).'/lang.'.strtolower($lang).'.php';
 
     if (file_exists($lang_file))
     {
@@ -88,7 +88,7 @@ if (!$disable_automatic_language_changing)
 
     foreach ($langs as $lang)
     {
-      $lang_file = "lang." . strtolower(substr($lang,0,2));
+      $lang_file =  dirname(__FILE__).'/lang.'.strtolower(substr($lang,0,2)).'.php';
 
       if (file_exists($lang_file))
       {
