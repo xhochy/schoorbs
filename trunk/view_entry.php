@@ -204,7 +204,7 @@ if($repeat_id || $series )
 
 $sRepeatAppend3 = "";
 if(!$series) {
-	$sRepeatAppend3.= "<a href=\"".ht("del_entry.php?id=${id}&series=0")."\" onClick=\"return confirm('"
+	$sRepeatAppend3.= "<a href=\"".ht("del_entry.php?id=${id}&series=0")."\" onclick=\"return confirm('"
         .get_vocab("confirmdel")."');\">".get_vocab("deleteentry")."</a>";
 }
 
@@ -213,7 +213,7 @@ if($repeat_id)
 
 if($repeat_id || $series ) {
 	$sRepeatAppend3.= "<a href=\"".ht("del_entry.php?id=${id}&series=1&day=${day}&month=${month}&year=${year}")
-        ."\" onClick=\"return confirm('".get_vocab("confirmdel")."');\">".get_vocab("deleteseries")."</a>";
+        ."\" onclick=\"return confirm('".get_vocab("confirmdel")."');\">".get_vocab("deleteseries")."</a>";
 }
 
 // Generate data for the micorformat
