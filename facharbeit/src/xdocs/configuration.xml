@@ -146,7 +146,7 @@ $weekstarts = 1;</source>
         (Variable: <code>$auth["session"]</code>). 
       </p>
       <p>
-        Der Bereich 'session' ist für
+        Der Bereich 'session' ist für die
         Schnittstelle verantwortlich, die vom Benutzer Nutzername und Passwort
         verlangt und dieses auch über mehrere HTTP-Requests hinweg speichert.
         Hier stehen die Module 'cookie' (Abfrage des Passworts per HTML-GUI, 
@@ -159,7 +159,7 @@ $weekstarts = 1;</source>
         (wie 'http', nur hier ist der Webserver für die HTTP-Authentikation
         zuständig).<br />
         <strong>Zusatz zu 'http':</strong> Den Titel der HTTP-Authentifikation
-        kann man mit der Variable <code>$auth["realm"]</code> setzen.<br />
+        kann man mit der Variable <code>$auth['realm']</code> setzen.<br />
         <strong>Zustatz zu 'remote_user':</strong> Man kann einen Link 
         spezifizieren, auf dem sich Nutzer ausloggen können: 
         <code>$auth['remote_user']['logout_link']</code><br />
