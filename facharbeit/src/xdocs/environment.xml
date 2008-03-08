@@ -39,7 +39,7 @@
           der gesamte Quellcode gelagert ist. 
         </li>
         <li>
-          <strong>xsltproc</strong> - Simpler XSLT-Prozessor, wird bei Paketieren
+          <strong>xsltproc</strong> - Simpler XSLT-Prozessor, wird beim Paketieren
           benötigt um aus der XML-Ausgabe von `svn log` eine Changelog-Datei zu 
           erzeugen.
         </li>
