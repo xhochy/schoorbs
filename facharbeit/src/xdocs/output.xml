@@ -9,11 +9,11 @@
       <title>Kritikpunkte</title>
       <p>
         Einer meiner persönlichen Hauptkritikpunkte an MRBS war die Ausgabe. 
-        Die Logik(⇒ Controller) und die Ausgabe(⇒ View) waren total vermischt, 
+        Die Logik(-> Controller) und die Ausgabe(-> View) waren total vermischt, 
         hat man z.B. die Uhrzeit berechnet kam in der nächsten Zeile sofort 
         eine <code>echo()</code>-Anweisung um dies als HTML auszugeben. Da ich 
         ein Freund der <em>MVC-Architektur</em> bin, vor allem wegen der 
-        besseren Übersichtlichkeit und der verbesserten Modularität habe ich 
+        besseren Übersichtlichkeit und der verbesserten Modularität, habe ich 
         die Ausgabe des HTML-Codes in Template-Dateien ausgelagert, welche vom 
         Template-System <a href="http://smarty.php.net">Smarty</a> geparst und 
         verwaltet werden. So kann man nun die Logik verändern ohne 
@@ -21,7 +21,7 @@
         kann nun auch verschiedene Designs für die GUI entwerfen. Man muss nur 
         noch die *.tpl-Dateien ersetzen, vorher musste man immer den Code 
         anpassen und man bekam enorme Probleme, wenn man auf eine neue 
-        Softwareversion updaten wollte.
+        Softwareversion updaten wollte und das Layout beibehalten wollte.
       </p>
       <p>
         HTML-Seiten werden auch dann angezeigt, wenn ihr Code nicht dem Standard 
@@ -60,7 +60,7 @@
       <p>
         Gleich zu Anfang möchte ich anmerken, dass ich Javascript nur als Hilfe 
         einsetze, alle Seiten funktionieren auch ohne Javascript einwandfrei. 
-        Die beiden Fälle, die ich hier beschreibe waren zwar auch schon in MRBS 
+        Die beiden Fälle, die ich hier beschreibe, waren zwar auch schon in MRBS 
         vorhanden, jedoch ist ihre Implementierung so veraltet und schlecht 
         programmiert, dass sie in nahezu keinem modernen Browser mehr 
         funktioniert hat. Ich habe auch noch die Javascript-Bibliothek 
@@ -82,7 +82,7 @@
          <code>onmousein</code>-Ereignis ausgelöst und die Funktion 
          <code>HighlightCell</code> aufgerufen. Zuerst wird geprüft, ob die 
          Eigenschaft <code>isActive</code>(eigene Erweiterung des DOM von mir) 
-         bei dieser Zelle gesetzt auf true ist, wenn nicht wird dies dann 
+         bei dieser Zelle gesetzt auf true ist, wenn nicht, wird dies dann 
          gemacht und nur dann wird der Zelle die CSS-Klasse <code>highlight</code>
          hinzugefügt. Da ich eine CSS-Klasse zum Objekt hinzufüge und nicht 
          z.B. die Hintergrungfarbe ändere, kann man immer variabel per CSS 
@@ -163,21 +163,21 @@
         Ordner mitteilen. 
       </p>
       <source>$smarty = new Smarty();
- 
-$smarty->template_dir = dirname(__FILE__).'/Smarty/templates';
-$smarty->compile_dir = dirname(__FILE__).'/Smarty/templates_c';
-$smarty->cache_dir = dirname(__FILE__).'/Smarty/cache';
-$smarty->config_dir = dirname(__FILE__).'/Smarty/configs';</source>
+
+$smarty->template_dir = dirname(__FILE__).'/../schoorbs-misc/templates/';
+$smarty->compile_dir = dirname(__FILE__).'/Smarty/templates_c/';
+$smarty->cache_dir = dirname(__FILE__).'/Smarty/cache/';
+$smarty->config_dir = dirname(__FILE__).'/Smarty/configs/';</source>
       <p>
         <strong>typische Anwendung</strong>
       </p>
       <p>
-        Wie man Smarty innerhalb eines PHP-Scripts möchte ich nun im Folgenden 
+        Wie man Smarty innerhalb eines PHP-Scripts benutzt möchte ich nun im Folgenden 
         an einem Ausschnitt von <code>day.php</code> zeigen, welcher sich über 
         die erste if-Abfrage des Main-Blocks erstreckt. Mit diesem Template soll 
         eine Liste aller verfügbaren Bereiche dargestellt werden. Templates 
         enthalten immer die Struktur des Dokuments und definieren an welche
-        Stellen die Daten eingefügt werden sollen. Die Daten die in das Template 
+        Stellen die Daten eingefügt werden sollen. Die Daten, die in das Template 
         eingefügt werden sollen, übermittelt man mit der Funktionen 
         <code>assign()</code>. Es gibt 2 Varianten diese Funktion aufzurufen, 
         entweder gibt man als ersten Parameter den Namen der Variable an und als 
@@ -211,7 +211,7 @@ $smarty->config_dir = dirname(__FILE__).'/Smarty/configs';</source>
       <p>
         Nachdem ich gerade eben die Arbeitsschritte des (Logik-)Programmiers 
         erklärt habe, komme ich nun zum Bereich, der für einen Layouter wichtig 
-        wäre, der Aufbau des Templates. Wie man auf den ersten Blick bei unterm 
+        wäre, dem Aufbau des Templates. Wie man auf den ersten Blick bei dem unterem 
         Beispiel erkennt, besteht ein Template entweder aus (X)HTML-Code oder in 
         geschweifte Klammern gesetzter Smarty-Code. Die erste Smarty-Anweisung 
         führt mein <code>get_vocab</code>-Plugin aus und holt sich damit die 
@@ -220,7 +220,7 @@ $smarty->config_dir = dirname(__FILE__).'/Smarty/configs';</source>
       <source>{get_vocab text="areas"}</source>
       <p>
         In der darauffolgenden Zeile steht eine if-Abfrage, die 
-        <code>$area_list_format</code> mit „select“ vergleicht(⇒ 'eq' 
+        <code>$area_list_format</code> mit „select“ vergleicht(-> 'eq' 
         entspricht '=='). Schreibt man in Smarty einfach nur den Namen einer 
         Variable in Klammern, so wird diese dort ausgeben. Foreach-Schleifen 
         funktionieren in Smarty genauso wie in normalen PHP. Bei dem Zugriff auf 
