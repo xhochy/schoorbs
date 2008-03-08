@@ -17,6 +17,7 @@
     <![endif]-->
 </head>
 <body>
+{if $pview neq 1}
 	<div id="menu_logo">
 		<span class="headerLink" style="color: #555;">{$mrbs_company}</span>
 	</div>
@@ -44,7 +45,7 @@
            		<input type="hidden" name="day" value="{$Day}" />
            		<input type="hidden" name="month" value="{$Month}" />
            		<input type="hidden" name="year" value="{$Year}" />
-           		{$pview}
+           		{$pviewecho}
         	</div>
     	</form>-->
 	</div>
@@ -64,3 +65,4 @@
            </div>
 		</form>
 	</div>
+{/if}

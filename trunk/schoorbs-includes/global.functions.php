@@ -94,7 +94,8 @@ function print_header()
 		'SearchStr' => $search_str,
 		'Day' => $day, 'Month' => $month, 'Year' => $year,
 		'mrbs_company' => $mrbs_company,
-		'pview' => $sPViewEcho,
+		'pviewecho' => $sPViewEcho,
+		'pview' => $pview,
 		'logonbox' => $sLogonBox
 		));
 	$smarty->display('head.tpl');
@@ -198,7 +199,12 @@ function time_date_string($t)
 # Display the entry-type color key. This has up to 2 rows, up to 5 columns.
 function show_colour_key()
 {
-	global $typel;
+	global $typel, $pview;
+	
+	// Do not display colour key when we are in the printing view
+	if ($pview == 1) return;
+	
+	// Make a list of colour keys
 	echo '<div id="schoorbs-colour-keys">';
 	$nct = 0;
 	for ($ct = "A"; $ct <= "Z"; $ct++) {

@@ -21,6 +21,7 @@ require_once "schoorbs-includes/database/$dbsys.php";
 
 ## Vars ##
 
+/** day, month, year */
 list($day, $month, $year) = input_DayMonthYear();
 
 ## Main ##
