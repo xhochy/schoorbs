@@ -23,11 +23,12 @@ require_once 'schoorbs-includes/authentication/schoorbs_auth.php';
 
 ## Var Init ##
 
-/** day, month, year */
-list($day, $month, $year) = input_DayMonthYear();
+/** type */
 $type = input_Type();
+/** name */
 $name = input_Name();
-	
+
+// If the type is a room we need to get the area, description and capacity too.	
 if ($type == 'room') {
 	$area = input_Area();
 	$description = input_Description();
@@ -36,6 +37,7 @@ if ($type == 'room') {
 
 ## Main ##
 
+// Only administrators should be able to create rooms and areas
 if (!getAuthorised(2)) showAccessDenied();
 
 /** we need to do different things depending on if it's a room or an area */
@@ -45,6 +47,7 @@ if ($type == "area") {
 		$tbl_area, sql_escape_arg($name)
 	);
 	if(sql_command($sQuery) < 0) fatal_error(true, sql_error());
+	// The id of the newly created area is the last id inserted into the database
     $area = sql_insert_id($tbl_area, "id");
 } else if ($type == "room") {
 	$sQuery = sprintf(
@@ -56,4 +59,6 @@ if ($type == "area") {
 	if (sql_command($sQuery) < 0) fatal_error(true, sql_error());
 }
 
+// After adding a room or an area return to the administration page of the 
+// new area or the area in which the new room is.
 header("Location: admin.php?area=$area");
