@@ -261,20 +261,24 @@ td.red a {
 	margin-left: 50px;
 }
 
-#colour-keys {
-	padding: 4px;
-	margin: 4px;
-	text-align: center;
-}
-
-#colour-keys span {
-	padding: 2px 8px;
-	border: 1px solid silver;
-}
-
 td.times {
 	background-color: #ddd;
     color: black;
     border: 0px;
     white-space: nowrap;
+}
+
+/** Style colours keys under the timetable */
+
+#schoorbs-colour-keys {
+	padding: 4px;
+	margin: 4px;
+	text-align: center;
+}
+
+#schoorbs-colour-keys a {
+	padding: 2px 8px;
+	border: 1px solid silver;
+	text-decoration: none;
+	color: black;
 }
