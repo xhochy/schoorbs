@@ -8,7 +8,7 @@
     <section id="all">
       <title>Aufbau</title>
       <p>
-        Die Authentifizierung bei MRBS ist sehr gut durchdachtes, modulares 
+        Die Authentifizierung bei MRBS ist ein sehr gut durchdachtes, modulares 
         System, das in 2 Bereiche aufgeteilt ist: Datenentgebennahme 
         (Session-Module) und Datenüberprüfung(Auth-Module). Ich habe im 
         folgenden UML-Diagram den Systemaufbau nachmodelliert, hierzu muss man 
@@ -25,14 +25,14 @@
         Am HSG wird die Authentifikation nicht von Schoorbs geregelt, sondern 
         eine Ebene höher vom Apache Webserver. Um Schoorbs mitzuteilen, dass es 
         nicht für die Authentifizierung zuständig ist, aktiviert man das Modul
-        Auth/None. Der Apache Webserver teilt uns den Nuternamen, bei
-        erfolgreicher Authentifikation, über die Umgebungsvariable REMOTE_USER 
+        Auth/None. Der Apache Webserver teilt uns den Nutzernamen bei
+        erfolgreicher Authentifikation über die Umgebungsvariable REMOTE_USER 
         mit.
       </p>
       <p><strong>Auth/None</strong></p>
       <p>
         Das Auth/None-Modul akzeptiert jeden Nutzernamen und jedes beliebige
-        Passwort dazu als gültige Kombination. Dieses ist nicht mehr als echte
+        Passwort als gültige Kombination. Dieses ist nicht mehr als echte
         Authentifizierung anzusehen, eher ist dieses Modul gedacht, Schoorbs
         vorzutäuschen, man würde die Authentifikation selbst erledigen, jedoch
         sind die Eingabewerte von einer höheren Ebene, in diesem Fall vom Apache
@@ -68,14 +68,14 @@
         wenn diese Kombination gültig ist, wird die HTTP-Anfrage an Schoorbs 
         weitergeleitet, d.h. Anfragen mit falscher Nutzername/Passwort-Kombination
         rufen überhaupt keinen Programm-Code auf, weshalb Angreifer nur aus dem 
-        Kreis der Nutzer mit Account kommen können, dritte ohne 
+        Kreis der Nutzer mit Account kommen können, Dritte ohne gültige
         Authentifizierungsdaten werden schon vom Apache abgewiesen. Weiterhin 
         wird auch nur der Nutzername, jedoch nicht das Passwort, an Schoorbs 
         weitergeleitet, so dass man auch nicht durch Modifizieren des Codes als z.B.
         Programmadminstrator, d.h. jemand der den Programmcode verändern kann, 
         die Passwörter ausspähen kann.
       </p>
-      <p>
+      <p class="pageBreakAfter">
         <!-- Technisch -->
         Ähnlich wie beim Auth/None-Modul beinhaltet das Session/Remote_User-Modul
         nahezu keine Logik. Die Funktion <code>getUserName</code> gibt z.B. den
