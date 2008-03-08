@@ -12,10 +12,7 @@
         Datenbank-Backend zu nutzen, für MySQL stehen sogar 2 Möglichkeiten zur 
         Kommunikation bereit, zum einen die alten mysql_*-Funktionen, die schon 
         seit PHP 4 existieren und die neuen, objektorientierten 
-        MySQLi-Funktionen von PHP5. Am HSG nutzen wir jedoch PostgreSQL, da es 
-        eher Fehler meldet, anstatt eine Lösung zu raten(häufiges Verhalten bei 
-        MySQL), um möglicherweise Probleme zu vermeiden, was aber eher Probleme 
-        erzeugt, da man so schlecht Fehler findet. Wie schon zuvor im Abschnitt 
+        MySQLi-Funktionen von PHP5. Wie schon zuvor im Abschnitt 
         „Eingabeverarbeitung“ erwähnt, waren anfangs noch SQL-Injections 
         möglich, was jedoch durch das Einführen und strikte Nutzen von 
         <code>sql_escape_arg()</code> jetzt nicht mehr möglich ist. Im Gegensatz
@@ -58,10 +55,13 @@
          (wiederholenden) Termin ignorieren. Hierzu werden per SQL-Query alle 
          Termine aus der Datenbank abgerufen, die nach der angebenen Startzeit 
          enden oder vor der angebenen Endzeit starten. Sollte es einen 
-         (oder mehrer) solchen Termin geben, so wird eine HTML-Liste mit den 
+         oder mehrere solcher Termine geben, so wird eine HTML-Liste mit den 
          möglichen Konflikten ausgegeben. Die Ausgaben als HTML ist vorteilhaft, 
          da man so nicht auf die Struktur der URLs achten muss, jedoch kann man 
-         die Informationen anderwärtig nicht nochmals benutzen. Eine weitere 
+         die Informationen anderwärtig nicht nochmals benutzen. 
+       </p>
+       <p>
+         Eine weitere 
          Hilfsfunktion ist <code>schoorbsDelEntry()</code>, welche einen oder 
          mehrere Einträge aus der Datenbank löscht. Als erster Schritt wird hier 
          ermittelt, ob der Termin zu einer sich wiederholenden Veranstaltung 
@@ -69,17 +69,17 @@
          jeweiligen ID gehöreden Termine werden dann aus der Datenbank geholt 
          und mithilfe einer for-Schleife durchlaufen (Hier ist ein Beispiel für 
          das oben genannte Problem mit <code>sql_row()</code>). Sollte der Nutzer 
-         keine Rechte den Termin zu löschen, so wird er direkt abgewiesen, ist 
+         keine Rechte haben um den Termin zu löschen, so wird er direkt abgewiesen, ist 
          festgelegt, dass nur unmodifizierte Einträge bei einer wiederholenden 
          Veranstaltung gelöscht werden sollen, so werden jetzt die modifizierten 
          übersprungen. Sollte der Termin jetzt noch nicht abgewiesen worden 
          sein, so wird er gelöscht.
        </p>
        <p>
-         Möchte man nur eine einzelnen Eintrag erstellen, so kann man die 
+         Möchte man nur einen einzelnen Eintrag erstellen, so kann man die 
          Hilfsfunktion <code>schoorbsCreateSingleEntry()</code> benutzen. Sie 
          überprüft lediglich, ob der Termin über eine positive Zeitspanne geht 
-         und sendet dann alle benötigten Daten an das DMBS. Sollte der SQL-Query 
+         und sendet dann alle benötigten Daten an das DBMS. Sollte der SQL-Query 
          erfolgreich ausgeführt worden sein, wird die ID des neuen Termins 
          zurückgegeben. Will man jedoch einen sich wiederholenden Eintrag 
          erstellen muss man die Funktion <code>mrbsCreateRepeatingEntrys()</code>
@@ -118,7 +118,10 @@
       <p>
         Insgesamt werden 4 Tabellen zur Speicherung der Termine genutzt. Im 
         Folgenden stelle ich alle 4 Tabellen vor, als Namen benutzte ich den 
-        Tabellenname ohne Präfix. In der Tabelle <code>area</code> sind die 
+        Tabellenname ohne Präfix. 
+      </p>
+      <p>
+        In der Tabelle <code>area</code> sind die 
         einzelnen Bereiche gespeichert, für welche es Räume gibt. Eine 
         Tabellenzeile besteht hier lediglich aus der ID des Bereichs, dem Namen 
         des Bereichs und der E-Mail des Bereichsadministrators. Die Tabelle ist 
@@ -153,8 +156,8 @@
         Die Spalte <code>repeat_id</code> werde ich zusammen mit der Tabelle 
         <code>repeat</code> erklären, bis dahin ignoriere ich sie. In der Spalte 
         <code>name</code> wird der Titel des Termins, in <code>description</code> 
-        die Beschreibung gespeichert. Der Typ des Termins(also 'Extern' → 'E', 
-        'normaler Unterricht' → 'B', usw …) wird in der Spalte <code>type</code> 
+        die Beschreibung gespeichert. Der Typ des Termins(also 'Extern' -> 'E', 
+        'normaler Unterricht' -> 'B', usw …) wird in der Spalte <code>type</code> 
         gespeichert, den Sinn der Spalte <code>entry_type</code> habe ich nicht 
         herrausbekommen. <code>timestamp</code> wird zur Speichernung der 
         letzten Änderung benutzt.
