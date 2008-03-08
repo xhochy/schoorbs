@@ -26,13 +26,13 @@
        einem Endprodukt beständig zu erhalten wäre der Einsatz eines 
        ausgereifeten Protokollierungssystem, was aber meist wieder die 
        Performance erheblich drückt. In MRBS war an vielen Stellen Debug-Code 
-       vorhanden, der keinen sinnvollen Nutzen hat, weshalb ich ihn entfernt 
+       vorhanden, der keinen sinnvollen Nutzen hatte, weshalb ich ihn entfernt 
        habe.
      </p>
      <p>
        Ein schlechter Programmierstil ist es, wenn man bestimmte Codeblöcke 
        einfach kopiert und danach nicht verändert, sondern die gleiche 
-       Funktionalität an zwei oder mehr Orten hat. Sollte man nun ein Fehler 
+       Funktionalität an zwei oder mehr Orten hat. Sollte nun ein Fehler 
        gefunden werden, muss man erst alle Orte suchen, an denen der Fehler 
        durch Copy&amp;Paste auch noch sein könnte. In MRBS kam die vor allem im 
        ersten Drittel eines Scripts vor, von dem ich jetzt viele Teile 
@@ -75,7 +75,7 @@
        weshalb ich die Abfloge von bestimmten Codeblöcken vertauscht habe. 
        Jetzt verfolgen alle Scripte den geleichen Prozess, zu erst werden allen 
        benötigten Dateien eingebunden, dann werden die Variabeln initialisiert, 
-       entweder als durch einen Defaultwert oder durch eine Eingaber per 
+       entweder als durch einen Defaultwert oder durch eine Eingabe per 
        <code>POST</code>/<code>GET</code>-Parameter, darauffolgt der Hauptteil 
        des Scripts. Im Hauptteil werden nacheinander alle wichtigen Werte zur 
        Anzeige eines Templates erzeugt und dann Template dann ausgegeben, pro 
@@ -92,7 +92,7 @@
        erzeugen, sie befindet sich dann im Verzeichnis 
        <code>'schoorbs-doc/'</code>.
      </p>
-     <p>
+     <p class="pageBreakAfter">
        Die ganzen Umstrukturierungen führen erfreulicherweise auch zu einem 
        kompakteren Code, teils durch die Auslagerung von doppelten Funktionen, 
        teils durch den Einsatz eines Templatesystems. Dies kann man sehr gut am 
