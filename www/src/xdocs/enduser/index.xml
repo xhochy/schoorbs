@@ -8,19 +8,16 @@
     <section id="download">
       <title>Where to download</title>
       <p>
-        At the moment there's no stable release of Schoorbs, but if you're interested in what's
-        coming you can check out the alpha-version. At the moment the latest version is "Schoorbs
-        1.0 Alpha 2". You can download it at <a href="http://code.google.com/p/schoorbs/downloads/list?can=2&amp;amp;q=Schoorbs+1.0+Alpha+2&amp;amp;colspec=Filename+Summary+Uploaded+Size+DownloadCount">
-        Google Code</a>:
+        You will find always the newest version of Schoorbs on our 
+        <a href="http://schoorbs.xhochy.com/releases.html">Releases</a> page.
+        If you want to use Schoorbs for productive environments, you should 
+        choose the latest available <strong>stable</strong> version. If you 
+        are interested in new/upcoming features in Schoorbs, but do not want to
+        use this installation for every-day-usage, you might want to check out
+        the latest unstable version. Please consider unstable version are likely
+        more buggy because they are untested, stable version have already been
+        tested a longer period, so that most bugs have already been fixed for them.
       </p>
-      <ul>
-        <li>
-          <a href="http://code.google.com/p/schoorbs/downloads/detail?name=schoorbs-1.0-alpha2.7z">schoorbs-1.0-alpha2.7z</a>
-        </li>
-        <li>
-          <a href="http://code.google.com/p/schoorbs/downloads/detail?name=schoorbs-1.0-alpha2.zip">schoorbs-1.0-alpha2.zip</a>
-        </li>
-      </ul>
     </section>
 
     <section id="help">
