@@ -199,8 +199,7 @@ function time_date_string($t)
 function show_colour_key()
 {
 	global $typel;
-	//echo "<table border=\"0\"><tr>\n";
-	echo '<div id="colour-keys">';
+	echo '<div id="schoorbs-colour-keys">';
 	$nct = 0;
 	for ($ct = "A"; $ct <= "Z"; $ct++) {
 		if (!empty($typel[$ct])) {
@@ -208,10 +207,9 @@ function show_colour_key()
 				$nct = 0;
 				echo '<br />';
 			}
-			printf('<span class="%s">%s</span>', $ct, $typel[$ct]);
+			printf('<a href="#" rel="tag" class="%s">%s</a>', $ct, $typel[$ct]);
 		}
 	}
-	//echo "</tr></table>\n";
 	echo "</div>\n";
 }
 
