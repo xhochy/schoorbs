@@ -8,7 +8,7 @@
     <section id="areas">
       <title>Bereiche</title>
       <figure alt="Bereichsadministration" src="images/bereichsadmin.jpg" />
-      <p>
+      <p class="pageBreakAfter">
         Bereiche sind für die Funktionsfähigkeits des Ressourcenbuchungsystems 
         unwichtig, jedoch helfen sie den Überblick über eine große Menge an 
         Ressourcen zu halten. Als Informationen zur Erstellung eines Bereiches 
@@ -17,15 +17,15 @@
         klickt man hinter dessen Namen auf „Löschen“, ist der Name des Bereichs 
         falsch geschrieben oder sollte er sich mal ändern, kann man dies mit 
         einem Klick auf „Bearbeiten“ korrigieren. Das Ändern des Namens hat 
-        keinen Einfluss auf die Ressourcen und deren Termine des Raumes.
+        keinen Einfluss auf die Ressourcen und deren Termine.
       </p>
     </section>
     <section id="rooms">
       <title>Ressourcen</title>
       <figure alt="Ressourcenadministration" src="images/raumadmin.jpg" />
       <p class="pageBreakAfter">
-        Räume sind zwar die Kerneinheiten des Raumbuchungssystem, jedoch lassen
-        sie ganz einfach administrieren. Im Gegensatz zu den Bereichen muss man 
+        Resourcen sind zwar die Kerneinheiten des Raumbuchungssystem, jedoch lassen
+        sie sich sehr einfach administrieren. Im Gegensatz zu den Bereichen muss man 
         hier außer des Namens auch noch die Kapazität des Raumes und eine kleine 
         Beschreibung angeben. Diese zusätzlichen Daten sind jedoch nur informativ 
         und werden nicht für irgendwelche Berechnungen benutzt. „Löschen“ und 
