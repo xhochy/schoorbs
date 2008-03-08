@@ -18,3 +18,4 @@
  * Announce on [http://groups.google.com/group/schoorbs-general-discussion Schoorbs general discussion]
  * Announce on [http://schoorbs.xhochy.com the Schoorbs Website]
  * Announce on Freshmeat and add this release
+ * Check data on [http://www.ohloh.net/projects/12616 Ohloh] (Announcements to this site are made via the Launchpad Announce Feed)
