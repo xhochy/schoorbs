@@ -27,22 +27,20 @@ list($day, $month, $year) = input_DayMonthYear();
 
 /** area **/
 $area = input_Area();
+// Get the name of the area we are working on out of the database
 $area_name = areaGetName($area);
 
 ## Main ##
 
-if(!getAuthorised(2)) {
-	showAccessDenied();
-}
+// Only administrators should be able to administrate Schoorbs
+if(!getAuthorised(2)) showAccessDenied();
 
+// Print out the (X)HTML-header
 print_header();
 
-# This cell has the areas
+// Collect all areas
 $res = sql_query("SELECT id, area_name FROM $tbl_area ORDER BY area_name");
-if(!$res) {
-	fatal_error(0, sql_error());
-}
-
+if(!$res) fatal_error(0, sql_error());
 $aAreas = array();
 if (sql_count($res) == 0) {
 	$noareas = 'true';
@@ -54,15 +52,15 @@ if (sql_count($res) == 0) {
 	$noareas = 'false';
 }
 
-# This one has the rooms
+// Collect all rooms in the choosen area
 $aRooms = array();
 if(isset($area)) {
 	$res = sql_query("SELECT id, room_name, description, capacity FROM $tbl_room where area_id = "
 		.sql_escape_arg($area)." ORDER BY room_name");
 	if (!$res) fatal_error(0, sql_error());
-	if (sql_count($res) == 0)
+	if (sql_count($res) == 0) {
 		$norooms = 'true';
-	else {
+	} else {
 		for ($i = 0; ($row = sql_row($res, $i)); $i++) {
 			$aRooms[] = array('id' => $row[0], 'name' => $row[1], 'description' => $row[2], 'capacity' => $row[3]);
         }
@@ -70,6 +68,7 @@ if(isset($area)) {
 	}
 }
 
+// Assign the variables for use in the template system
 $smarty->assign(array(
     'norooms' => $norooms,
     'rooms' => $aRooms,
@@ -78,7 +77,8 @@ $smarty->assign(array(
     'area' =>  $area,
     'area_name' => $area_name
 ));
+// Display the administration template
 $smarty->display('admin.tpl');
 
-/** The common Schoorbs footer **/
+/** The common Schoorbs footer */
 require_once 'schoorbs-includes/trailer.php';
