@@ -22,21 +22,23 @@ require_once 'schoorbs-includes/minicals.php';
 
 ## Var Init ##
 
+/** day, month, year */
 list($day, $month, $year) = input_DayMonthYear();
+/** area */
 $area = input_Area();
 
 $dst_change = is_dst($month,$day,$year);
 $am7 = am7($day, $month, $year);
 $pm7 = pm7($day, $month, $year);
 
-#y? are year, month and day of yesterday
+// y? are year, month and day of yesterday
 list($yd, $ym, $yy) = getYesterday($day, $month, $year);
-#t? are year, month and day of tomorrow
+// t? are year, month and day of tomorrow
 list($td, $tm, $ty) = getTomorrow($day, $month, $year);
 
 ## Main ##
 
-# print the page header
+// print the page header
 print_header();
 
 if ($pview != 1) {
@@ -181,9 +183,9 @@ if (sql_count($res) == 0) {
 	for (
 		$t = mktime($morningstarts, $morningstarts_minutes, 0, $month, $day+$j, $year);
 		$t <= mktime($eveningends, $eveningends_minutes, 0, $month, $day+$j, $year);
-		$t += $resolution, $row_class = ($row_class == "even_row")?"odd_row":"even_row"
+		$t += $resolution, $row_class = ($row_class == 'even_row') ? 'odd_row' : 'even_row'
 	) {
-		# convert timestamps to HHMM format without leading zeros
+		// convert timestamps to HHMM format without leading zeros
 		$time_t = date($format, $t);
 		
 		$cols = array();
@@ -200,16 +202,18 @@ if (sql_count($res) == 0) {
 				$aLoop['create_by'] = ht($today[$room][$time_t]["create_by"]);
 			}
 			
-			# $c is the colour of the cell that the browser sees. White normally,
-			# red if were hightlighting that line and a nice attractive green if the room is booked.
-			# We tell if its booked by $id having something in it
+			// $c is the colour of the cell that the browser sees. White normally,
+			// red if were hightlighting that line and a nice attractive green 
+			// if the room is booked.
+			// We tell if its booked by $id having something in it
 			if (isset($aLoop['id'])) {
 				$aLoop['css_class'] = $color;
 			} else {
-				$aLoop['css_class'] = $row_class; # Use the default color class for the row.
+				// Use the default color class for the row.
+				$aLoop['css_class'] = $row_class; 
 			}
 			
-			# If the room isnt booked then allow it to be booked
+			// If the room isnt booked then allow it to be booked
 			if (!isset($aLoop['id'])) {
 				$hour = date("H",$t);
 				$minute  = date("i",$t);
@@ -236,7 +240,9 @@ if (sql_count($res) == 0) {
 	}
 	
 	$smarty->assign('times', $times);
+	// Display the template for this apge
 	$smarty->display('day.tpl');
+	// Show the colur keys with the types of bookinhgs
 	show_colour_key();
 }
 
