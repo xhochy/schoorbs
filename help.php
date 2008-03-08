@@ -18,17 +18,22 @@ require_once "schoorbs-includes/database/$dbsys.php";
 /** The versio information of Schoorbs */
 require_once 'schoorbs-includes/version.php';
 
+// Print the header
 print_header();
 
-$smarty->assign('mrbs_version', get_schoorbs_version());
-$smarty->assign('sql_version', sql_version());
-$smarty->assign('php_uname', php_uname());
-$smarty->assign('phpversion', phpversion());
-$smarty->assign('schoorbs_admin_email', $mrbs_admin_email);
-$smarty->assign('schoorbs_admin', $mrbs_admin);
-
+// Assign all need variables for the template
+$smarty->assign(array(
+	'schoorbs_version' => get_schoorbs_version(),
+	'sql_version' => sql_version(),
+	'php_uname' => php_uname(),
+	'phpversion' => phpversion(),
+	'schoorbs_admin_email' => $mrbs_admin_email,
+	'schoorbs_admin' => $mrbs_admin
+));
+// Display the Help template
 $smarty->display('help.tpl'); 
 
+/** Include the translated Helpfile */
 require_once "schoorbs-includes/faq/site_faq${faqfilelang}.html";
-
+/** The common Schoorbs footer */
 require_once 'schoorbs-includes/trailer.php';
