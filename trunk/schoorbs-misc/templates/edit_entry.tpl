@@ -36,7 +36,7 @@ var enablePeriods = true;
   	</tr>
 	<tr>
 		<td class="CR"><strong>{get_vocab text="date"}</strong></td>
- 		<td class="CL">{genDateSelector prefix="" day=$start_day month=$start_month year=$start_year}</td>
+ 		<td class="CL">{genDateSelector prefix="edit_" day=$start_day month=$start_month year=$start_year}</td>
 	</tr>
 	{if $enable_periods neq "true"}
 		<tr>
