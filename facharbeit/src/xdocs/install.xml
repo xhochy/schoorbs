@@ -10,16 +10,13 @@
       <p>
         Im Gegensatz zur aktiven Entwicklung an Schoorbs, braucht man zur
         normalen Nutzung kaum Zusatzsoftware. Folgende Komponenten sollten
-        genügen:
+        zum Betrieb genügen:
       </p>
       <ul>
         <li>
-          Ein moderner Webserver, vorzugsweise Apache. Für die 
-          REST-Schnittstelle wird der Apache2 inklusive mod_rewirte benötigt.
-          Diese Schnittstelle wird in den meisten Fällen jedoch nicht genutzt, 
-          weshalb man hierauf nicht achten muss. Am HSG jedoch wird die
-          REST-Schnittstelle zum Einspielen des Stundenplans genutzt, weshalb
-          auch der Einsatz des Apache2 notwendig ist.
+          Ein moderner Webserver, bei der Entwicklung wurde hauptsächlich
+          der Apache HTTP Server 2.2 eingestetzt, jedoch sollte Schoorbs
+          ohne Probleme auch auf alternativen Webservern wie Lighty laufen.
         </li>
         <li>
           PHP >= 4.3 als Servermodul(SAPI) oder per Fast(CGI)
