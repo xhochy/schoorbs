@@ -32,11 +32,11 @@
          mit der voreingestellten max_execution_time[7] von 30s die CPU
          vollständig belastet. Würde jemand nun mehrere (>20) Anfragen alle 
          20-30s an den Server schicken, so wäre dieser überlastet, müsste 
-         andere Anfragen zurückstellen, was zu mehr Speicherverbruauch führt, 
+         andere Anfragen zurückstellen, was zu mehr Speicherverbrauch führt, 
          wobei der Server(z.B. Apache) irgendwann mehr Speicher bräuchte als 
-         man ihm zur Verfügung stellen könnte und daraufhin abstürtzt, vor 
+         man ihm zur Verfügung stellen könnte und daraufhin abstürzt, vor 
          allem auf älteren Windows-PCs(95 und 98) führte dies auch öfters zu 
-         einem Abstürtzen des Betriebsystems. Die Art von Sicherheitslücke 
+         einem Abstürzen des gesamten Betriebsystems. Die Art von Sicherheitslücke 
          hat an sich keinen eigenen Namen, die Methode sie auszunutzen wird 
          aber “DoS-Attacke“[8] genannt.
       </p>
@@ -54,9 +54,9 @@
     <section id="sql-injection">
       <title>SQL-Injection-Lösung</title>
       <p>
-        Zuerst werde ich, wie allen folgenden Lösungen, zeigen wie man die 
+        Zuerst werde ich, wie bei allen folgenden Lösungen, zeigen wie man die 
         Schwachstelle ausnutzt. Da wir uns mit Eingabeparametern beschäftigen, 
-        muss man nur eine spezielle geformte URL erstellen um die Schwachstelle 
+        muss man nur eine speziell geformte URL erstellen um die Schwachstelle 
         auszunutzen. Als Beispiel für den Angriff auf die Datenbank nehme ich mir:
       </p>
       <source>$sql = "SELECT $tbl_room.id, start_time, end_time, name, $tbl_entry.id,
@@ -74,12 +74,13 @@
         So nehmen wir als Wert für die <code>area_id</code>, die abgefragt werden 
         soll '1' und beenden den Befehl mit ';', da dies aber ein HTTP-Parameter 
         ist, muss ';' als '%3B' geschrieben werden, so haben wir schon 
-        <code>area=1%3B</code>. Als nächstes bauen wir uns den INSERT-Befehl, 
+        <code>area=1%3B</code>. Als nächstes bauen wir einen INSERT-Befehl, 
         da man normalerweise nicht weiß, wie die Tabellen bei der jeweiligen 
         MRBS Installation heißen, müsste man jetzt einfach raten, ich nehme 
         hier den Standardnamen 'mrbs_entry', meinen Benutzer habe ich '5' genannt,
         da ' von PHP automatisch maskiert werden und ich diese für Strings 
-        brauche(5 habe ich als Integer eingebaut), als Befehl nutze ich dann folgenden:
+        brauche(5 habe ich als Integer eingebaut), als Befehl nutze ich dann den
+        folgenden:
       </p>
       <source>INSERT INTO mrbs_entry (start_time, end_time, entry_type,
         repeat_id, room_id, create_by, name) VALUES (1165662420, 
@@ -93,7 +94,7 @@
 %2C%200%2C%200%2C%201%2C%205%2C%205%29%3B</source>
       <p>
         Nun müssen wir noch sicherstellen, dass der andere Teil des normalen 
-        Befehls richtig ausgeführt wird, so erzeugen wir kann simpel mit
+        Befehls richtig ausgeführt wird, dies erzeugen wir simpel mit
       </p>
       <source>SELECT * FROM mrbs_entry WHERE true 
 //... hier kommt dann der Rest des normalen Befehls ...</source>
@@ -152,10 +153,10 @@
         nicht auf die korrekte Initialisierung ihrer Variabeln achten. Um 
         solchen Programmierfehlern vorzubeugen wurde auch beschlossen, 
         register_globals vollständig aus PHP zu entfernen(in der kommenden 
-        Version 6). Zurück zu meinem Beispiel: Wir möchten nun also einen 
-        Link anzeigen lassen, um z.B. Besucher auf seine Homepage zu locken, 
+        Version 6). Zurück zu meinem Beispiel: Wir möchten nun einen 
+        Link anzeigen lassen, um z.B. Besucher auf meine Homepage zu locken, 
         zwar steht in diesem Fall immer noch „Benutzerliste“ als Linkname, 
-        jedoch die Adresse können wir frei bestimmen. Nehmen wir als Beispiel 
+        jedoch können wir die Adresse frei bestimmen. Nehmen wir als Beispiel 
         meine Homepage <code>http://xhochy.org</code> , wir maskieren diese für HTTP 
         <code>http%3A//xhochy.org</code> und hängen sie an die normale 
         URL an(als Wert für den Parameter <code>user_list_link</code>). So 
@@ -179,9 +180,9 @@
       <p>
         Bei DoS-Angriffen reicht normalerweise nie ein Seitenaufruf auf, da 
         Webserver eigentlich normalerweise ca. 100 Seitenaufrufe pro Sekunde 
-        verkraften sollten, wenn man jedoch mehrere gleichzeitig laufen lässt, 
+        verkraften sollten, wenn man jedoch mehrere Anfragen gleichzeitig laufen lässt, 
         die immer mehr Arbeitsspeicher brauchen und die CPU voll auslasten, 
-        bekommt der Webserver dann doch irgendwann Probleme die Anfragen zu 
+        bekommt der Webserver irgendwann Probleme die Anfragen zu 
         verwalten. Wird jetzt die Seite, die eine Endlosschleife beinhaltet 
         mehrmals aufgrufen, wird irgendwann so viel Speicher belegt sein, 
         dass der Webserver zum Verarbeiten der neuen Anfragen keinen 
@@ -191,7 +192,7 @@
         abstürzen zu lassen. Mein Windows-Apache-Testrechner brauchte ca. 3 min 
         bis er eingeforen war. Das Beheben dieser Sicherheitslücke ist leider 
         nicht sehr einfach, da man jeden Eingabeparameter zunächst überprüfen 
-        muss, ob er auch in einem Bereich ist, der von Parameter zu Parameter 
+        muss, ob er auch in einem gültigen Bereich ist, der von Parameter zu Parameter 
         variiert. Als Beispiel möchte ich hier zeigen, wie ich die Eingaben 
         von Tag, Monat und Jahr überprüft habe und wieso man sie überhaupt 
         überprüfen muss. MRBS prüft bei einenm Aufruf einer Seite automatisch, 
@@ -202,12 +203,12 @@
       intval($year)))
    $day--;</source>
       <p>
-        Sollte nun <code>$day</code> &lt; 1 sein, so würde es ca 2<sup>32</sup>-30 
+        Sollte nun <code>$day</code> &lt; 1 sein, so würde es ca (2^32)-30 
         Durchläufe brauchen, bis das Datum wieder richtig ist, da PHP aber auch 
         die Integervariable gegenbenfalls in eine float-Variable umwandelt 
         falls sie -INT_MAX unterschreitet, dauert dies noch deutlich länger 
         bzw wird irgenwann sinnlos, wenn der Unterschied zwischen der jetzigen 
-        und dann folgenden float-Zahl größer als 1 ist, woraufhin sich 
+        und der dann folgenden float-Zahl größer als 1 ist, woraufhin sich 
         <code>$day</code> nicht mehr verändert und eine Endlosschleife 
         entstanden ist. Ich habe nun für jede zu überprüfende Variable im 
         Ornder schoorbs-includes/input/ eine Datei mit einer 
