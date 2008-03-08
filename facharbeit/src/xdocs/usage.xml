@@ -9,8 +9,8 @@
       <title>Buchen einer Ressource</title>
       <p>
         Standardmäßig muss man auf das grüne Kreuz klicken um den 
-        „Bestellvorgang“ für einen Raum zu starten. Es ist hierbei jedoch nicht
-        wichtig welchen Termin man auswählt bzw. welchen Raum, man muss nur 
+        „Bestellvorgang“ für eine Resource zu starten. Es ist hierbei jedoch nicht
+        wichtig welchen Termin man auswählt bzw. welche Resource, man muss nur 
         achten, dass man im richtigen <strong>Bereich</strong> auf das Kreuz 
         klickt, alle anderen Parameter kann man auf der darauffolgenden Seite 
         noch ändern.
@@ -23,7 +23,9 @@
         zwingend nötig, sie ist aber bei Terminen, die von mehreren Lehrern 
         betreut werden sehr sinnvoll, da man so auch noch direkt relevante 
         Informationen mitteilen kann. Unter Period gibt man die Starteinheit
-        (am HSG: entweder eine Schulstunde oder eine Pause) ein.<br />
+        (am HSG: entweder eine Schulstunde oder eine Pause) ein.
+      </p>
+      <p>
         <strong>HSG-sepzifischer Zusatz:</strong><br /> 
         Pausen habe ich buchbar gemacht um Überschneidungen bei z.B. 
         Kursarbeiten vorzubeugen, bei denen 2 Lehrer beide während der Pause 
@@ -66,7 +68,7 @@
         vor jedem Löschen noch eine Ja/Nein-Abfrage per Javascript, bei der man
         nicht direkt auf 'Ja' klicken sollte, sondern erst noch mal nachdenken
         sollte, ob dieser Termin wirklich gelöscht werden soll, diese Aktion
-        ist <strong>nicht umkehrbar</strong>. 
+        ist <strong>nicht umkehrbar!</strong> 
       </p>
       <p class="pageBreakAfter">
         Hat man beim Bestellen einen Fehler gemacht und möchte den Termin nicht 
