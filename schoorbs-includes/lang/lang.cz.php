@@ -19,7 +19,7 @@ $vocab["mrbs"]               = "Schoorbs - Rezervační systém";
 $vocab["report"]             = "Výpis";
 $vocab["admin"]              = "Administrátor";
 $vocab["help"]               = "Pomoc";
-$vocab["search"]             = "Hledat:";
+$vocab["search"]             = "Hledat";
 $vocab["not_php3"]             = "<h1>UPOZORNĚNÍ: Toto zřejmě není funkční s PHP3</H1>";
 
 # Used in day.php

@@ -20,7 +20,7 @@ $vocab["mrbs"]               = "Vergaderruimte Boekingssysteem";
 $vocab["report"]             = "Rapportage";
 $vocab["admin"]              = "Admin";
 $vocab["help"]               = "Help";
-$vocab["search"]             = "Zoek:";
+$vocab["search"]             = "Zoek";
 $vocab["not_php3"]             = "<h1>Waarschuwing: Werkt waarschijnlijk niet met PHP3</H1>";
 
 # Used in day.php

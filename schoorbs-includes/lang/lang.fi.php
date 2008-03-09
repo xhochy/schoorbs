@@ -20,7 +20,7 @@ $vocab["mrbs"]               = "Huonetilojen varausjärjestelmä";
 $vocab["report"]             = "Raportit";
 $vocab["admin"]              = "Ylläpito";
 $vocab["help"]               = "Ohjeet";
-$vocab["search"]             = "Etsi:";
+$vocab["search"]             = "Etsi";
 $vocab["not_php3"]             = "Varoitus: Järjestelmä ei välttämättä toimi PHP3:lla.</H1>";
 
 # Used in day.php

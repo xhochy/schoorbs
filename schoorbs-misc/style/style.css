@@ -214,13 +214,7 @@ td.red a {
 	margin: 5px 0px;
 }
 
-#linkbar a {
-	color: white;
-	padding: 6px 8px;
-	margin: 0px;
-	border: 1px white solid;
-	border-top: 0px;
-}
+
 
 #linkbar a:hover {
 	color: #E3C888;
@@ -249,9 +243,10 @@ td.red a {
 }
 
 #poweredby a {
-	border-right: 0px;
-	border-top: 0px;
-	border-bottom: 0px;
+	color: white;
+	padding: 6px 8px;
+	margin: 0px;
+	border-left: 1px white solid;
 }
 
 #menu_selector {
@@ -268,6 +263,20 @@ td.times {
     white-space: nowrap;
 }
 
+/** Linkbar **/
+
+#schoorbs-linkbar-links {
+	float: left;
+	padding: 4px;
+}
+
+#schoorbs-linkbar-links a {
+	color: white;
+	padding: 6px 8px;
+	margin: 0px;
+	border-right: 1px white solid;
+}
+
 /** Style colours keys under the timetable */
 
 #schoorbs-colour-keys {
@@ -281,4 +290,74 @@ td.times {
 	border: 1px solid silver;
 	text-decoration: none;
 	color: black;
+}
+
+/** Search interface */
+
+#schoorbs-search-container ul.idTabs li {
+	float: left;
+	list-style: none;
+}
+
+#schoorbs-search-container ul.idTabs a {
+	display: block;
+	padding: 6px 10px;
+	text-decoration: none !important;
+	margin: 1px;
+	margin-left: 0px;
+	font: 10px Verdana;
+	color: #FFF;
+	background: #444;
+}
+
+#schoorbs-search-container {
+	color: #111;
+	border: 1px solid #222;
+	margin: 8px auto;
+}
+
+#schoorbs-search-container ul.idTabs a:hover {
+	color: #FFF;
+	background: #111;
+}
+
+#schoorbs-search-container ul.idTabs a.selected {
+	margin-bottom: 0px;
+	color: #000;
+	background: white;
+	border-bottom: 1px solid white;
+	cursor:default;
+}
+
+#schoorbs-search-container ul.idTabs a.selected:hover {
+	color: #FFF;
+	background: #111
+}
+
+#schoorbs-search-container div {
+  padding: 10px 10px 8px 10px;
+  clear: left;
+  background: white;
+  font: 10pt Georgia;
+}
+
+#schoorbs-search-container div a { 
+	color: #000; 
+	font-weight: bold; 
+}
+
+#schoorbs-search-container label {  
+	float: left;  
+	width: 10em;  
+	margin-right: 1em; 
+	text-align: right;
+}
+
+#schoorbs-search-container .submit {
+	margin-left: 11em;
+	display: block;
+}
+
+#schoorbs-search-container div ul li { 
+	list-style: none;
 }

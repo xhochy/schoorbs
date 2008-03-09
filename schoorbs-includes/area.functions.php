@@ -41,12 +41,12 @@ function getAreas()
 {
 	global $tbl_area;
 	
-	$sQuery = "SELECT id, area_name FROM $tbl_area ORDER BY area_name";
-   	$res = sql_query($sQuery);
+   	$res = sql_query(sprintf('SELECT id, area_name FROM %s', $tbl_area));
    	$rows = array();
-   	if ($res) for ($i = 0; ($row = sql_row($res, $i)); $i++)
-   	{
+   	if ($res) for ($i = 0; ($row = sql_row($res, $i)); $i++) {
    		$rows[] = array('id' => $row[0], 'area_name' => $row[1]);
+    } else {
+    	fatal_error(false, sql_error());
     }
     return $rows;
 }

@@ -20,7 +20,7 @@ $vocab["mrbs"]               = "회의실 예약 시스템";
 $vocab["report"]             = "보고서";
 $vocab["admin"]              = "관리자";
 $vocab["help"]               = "도움말";
-$vocab["search"]             = "검색:";
+$vocab["search"]             = "검색";
 $vocab["not_php3"]             = "<h1>주의: PHP3에서는 동작하지 않습니다.</H1>";
 
 # Used in day.php

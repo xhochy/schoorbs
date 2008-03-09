@@ -243,7 +243,7 @@ if ($res) for ($i = 0; ($row = sql_row($res, $i)); $i++) {
 
 $aTypes = array();
 for ($c = 'A'; $c <= 'Z'; $c++) {
-	if (!empty($typel[$c])) {
+	if (isset($typel[$c]) && (!empty($typel[$c]))) {
 		$aTypes[] = array('c' => $c, 'text' => $typel[$c]);
 	}
 }
