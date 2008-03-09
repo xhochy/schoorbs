@@ -19,7 +19,7 @@ $vocab["mrbs"]               = "Raumbuchungssystem Schoorbs";
 $vocab["report"]             = "Bericht";
 $vocab["admin"]              = "Admin";
 $vocab["help"]               = "Hilfe";
-$vocab["search"]             = "Suche:";
+$vocab["search"]             = "Suche";
 $vocab["not_php3"]           = "<h1>WARNUNG: Funktioniert warscheinlich nicht mit PHP3</h1>";
 
 # Used in day.php

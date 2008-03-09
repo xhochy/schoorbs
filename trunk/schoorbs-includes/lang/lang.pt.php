@@ -20,7 +20,7 @@ $vocab["mrbs"]               = "Horários de salas";
 $vocab["report"]             = "Relatório";
 $vocab["admin"]              = "Administração";
 $vocab["help"]               = "Ajuda";
-$vocab["search"]             = "Pesquisa:";
+$vocab["search"]             = "Pesquisa";
 $vocab["not_php3"]             = "<h1>AVISO: Isto provavelmente não funciona com php3</H1>";
 
 # Used in day.php

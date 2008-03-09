@@ -21,7 +21,7 @@ $vocab["mrbs"]               = "Møteromsbooking";
 $vocab["report"]             = "Rapport";
 $vocab["admin"]              = "Admin";
 $vocab["help"]               = "Hjelp";
-$vocab["search"]             = "Søk:";
+$vocab["search"]             = "Søk";
 $vocab["not_php3"]           = "<h1>NB: Dette virker sannsynligvis ikke med PHP3</H1>";
 
 # Used in day.php

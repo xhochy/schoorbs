@@ -20,7 +20,7 @@ $vocab["mrbs"]               = "Système de Réservation de Ressources";
 $vocab["report"]             = "Rapport";
 $vocab["admin"]              = "Gestion";
 $vocab["help"]               = "Aide";
-$vocab["search"]             = "Recherche:";
+$vocab["search"]             = "Recherche";
 $vocab["not_php3"]             = "<h1>ATTENTION: Cette application peut ne pas fonctionner correctement avec PHP3</H1>";
 
 # Used in day.php

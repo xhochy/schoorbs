@@ -20,7 +20,7 @@ $vocab["mrbs"]               = "X線発生装置予約システム";
 $vocab["report"]             = "報告";
 $vocab["admin"]              = "管理";
 $vocab["help"]               = "手引き";
-$vocab["search"]             = "検索:";
+$vocab["search"]             = "検索";
 $vocab["not_php3"]             = "<h1>警告: このスクリプトは、PHP3ではおそらく動作しません。</h1>";
 
 # Used in day.php
