@@ -1,5 +1,4 @@
 <script type="text/javascript" src="schoorbs-misc/js/jquery.idTabs.pack.js"></script>
-<script type="text/javascript" src="schoorbs-misc/js/search.js"></script>
 <div id="schoorbs-search-container">
   <ul class="idTabs">
     <li><a href="#fragment-1">{get_vocab text="search"}</a></li>
