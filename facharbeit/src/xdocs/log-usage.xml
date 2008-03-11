@@ -79,9 +79,28 @@
       <title>ein eingenes Backend programmieren</title>
       <p>
         <!-- Wozu? -->
+        Das Syslog-Logging-Backend ist zwar bei Linux Systemen sehr einfach 
+        einzusetzen, jedoch wird es in den meisten Fällen nicht dem Wunsch des
+        Endnutzers entsprechen, da man die Logfiles des Systems als z.B. 
+        Webhosting nicht lesen kann. Hier empfiehlt sich es z.B. das Logging in
+        der Datenbank abzuspeichern, wozu man selber ein eigenes, neues 
+        Logging-Backend schreiben muss. Für Schoorbs existiert zur Zeit jedoch 
+        nur das Syslog-Backend, da es im Rahmen meiner Facharbeit von mir 
+        erstellt wurde.
+      </p>
+      <p class="pageBreakAfter">
         <!-- Welche Funktionen muss ich implementieren? -->
-        <!-- Wie kann ich es Test(auch Unit-Tests einbauen!!) ? -->
-        ...
+        Um ein funktionierendes Logging-Backend zu Erstellen, muss man nur die 
+        Funktionen <code>schoorbsLogStart_Backend</code> und 
+        <code>schoorbsLogWriteLine_Backend</code> implementieren. In der ersten
+        Funktion sollte man alle Routinen unterbringen, die zur Initialisierung
+        des Loggings nötig sind, z.B. das Öffnen der Verbindung zum 
+        Syslog-Dienst. In der <code>WriteLine</code>-Funktion sollte dann der
+        Vorgang des Abspeichern der eingebenen Nachricht implementiert sein.
+        Nun muss der Code nur noch in einer Datei an der Position 
+        <code>schoorbs-includes/logging/&lt;name&gt;.php</code> abgespeichert 
+        werden und in <code>schoorbs-includes/logging.configuration.php</code>
+        durch Setzen des Eintrags 'backend' auf '&lt;name&gt;' aktiviert werden.
       </p>
     </section>
   </body>
