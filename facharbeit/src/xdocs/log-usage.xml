@@ -8,10 +8,72 @@
     <section id="tech-usage">
       <title>technische Anwendung</title>
       <p>
-        <!-- Wie spricht man die Logging-Schnittstelle an? -->
-        <!-- Wie kann ich selber an bestimmten Stellen in Schoorbs Logging einbauen? -->
-        ...
+        Technisch gesehen muss man die Logging-Schnittstelle nochmals in zwei
+        Schichten aufteilen. Zum einen gibt es das sog. Logging-Backend, welches
+        lediglich eine Statusmeldung entgegennimmt und abspeichert. Andererseits
+        gibt es noch den Logging-Wrapper(die Datei 
+        <code>schoorbs-includes/logging.functions.php</code>), welcher von den 
+        anderen Schoorbs-Funktionen einzelne Informationen, wie z.B. den 
+        Bearbeiter oder die Startzeit entgegennimmt und daraus eine 
+        Protokollnachricht macht.
       </p>
+      <p>
+        <!-- Wie spricht man die Logging-Schnittstelle an? -->
+        Möchte man nur von einer Funktion aus eine Protokollnachricht schreiben, 
+        so kann man eine der schon programmierten Wrapper-Funktionen nutzen, wie
+        z.B. <code>schoorbsLogDeletedEntry()</code>.  Möchte man jedoch ein 
+        Ereignis protokollieren, für welches noch keine Wrapper-Funktion 
+        vorhanden ist, so empfiehlt es sich, eine neue Wrapper-Funktion zu 
+        schreiben. Wrapper-Funktionen sind sinnvoll, denn sollte sich etwas an 
+        der Protokollierungslogik ändern, so brauch man nur diese Funktionen zu
+        bearbeiten. Mögliche Veränderungen in Zukunft wären z.B. dass man alle
+        Nachrichten internalitionalisiert, d.h. in mehere Sprachen übersetzt 
+        oder dass das Protokollieren in 2 Backends möglich wäre.
+      </p>
+      <p>
+        Wie man nun eine eigene Wrapper-Funktion programmiert, möchte ich am 
+        Beispiel von <code>schoorbsLogDeletedEntry</code> zeigen. Fast alle
+        Wrapper-Funktionen sind nach dem gleichen Prinzip aufgebaut. Zu erst 
+        wird ein Templatestring mit Werten gefüllt und danach wird die Nachricht 
+        an das Backend geschickt.<br />
+        Bevor man nun jedoch die Funktion in seinem ursprünglichen Code aufruft,
+        muss man zuerst mit man mit <code>$aEntryInfo = mrbsGetEntryInfo($nId);</code>
+        sich die nötigen Informationen zu dem Eintrag holen. Da man die 
+        Informationen in einem Array abgespeichert hat, empfiehlt sich folgendes
+        Vorgehen:
+      </p>
+      <ol>
+        <li>EntryInfo holen</li>
+        <li>Eintrag löschen</li>
+        <li>
+          Nur wenn der Eintrag erfolgreich gelöscht wurde, wird 
+          <code>schoorbsLogDeletedEntry()</code> aufrufen.
+        </li>
+      </ol>
+      <p>
+        In der Wrapperfunktion selbst füllst man mit sprintf und den 
+        Informationen zu dem Eintrag das Template für die Protokollnachricht. 
+        Ich möchte hier zwar nicht genauer auf die Funktionsweise von sprintf
+        eingehen, jedoch reicht es für die Programmierung einer Wrapper-Funktion 
+        eigentlich aus zu wissen, dass <code>%s</code> der Platzhalter für einen
+        String ist. Die Strings werden in der Folge für die Platzhalter 
+        eingesetzt, wie sie als Argumente bei dem Funktionsaufruf angegeben 
+        wurden.
+      </p>
+      <source>$sLine = sprintf(
+	'Entry "%s" in resource "%s" (%s -> %s) created by "%s" was deleted by '
+	.'"%s"',
+	$aEntryInfo['name'], schoorbsGetResourceName($aEntryInfo['room_id']), 
+	date('d M Y H:i:s', $aEntryInfo['start_time']),
+	date('d M Y H:i:s', $aEntryInfo['end_time']),
+	$aEntryInfo['create_by'], getUserName()
+);</source>
+      <p>
+        Im nächsten Schritt teilt man dem Backend nur noch mit, dass es eine 
+        neue Protokollnachricht speichern soll. Man selbst muss sich nun nicht
+        mehr drum kümmern wie und wo die Nachricht gespeichert wird.
+      </p>
+      <source>schoorbsLogWriteLine_Backend($sLine);</source>
     </section>
     <section id="tech-own">
       <title>eingenes Backend programmieren</title>
