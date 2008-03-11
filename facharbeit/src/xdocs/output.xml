@@ -288,7 +288,7 @@ $smarty->config_dir = dirname(__FILE__).'/Smarty/configs/';</source>
         Sollte alles gegeben sein, so rufe ich <code>get_vocab()</code> auf und 
         gebe deren Rückgabewert direkt wieder aus.
       </p>
-      <source>return get_vocab($params['text']);</source>
+      <source class="pageBreakAfter">return get_vocab($params['text']);</source>
     </section>
   </body>
 </document>
