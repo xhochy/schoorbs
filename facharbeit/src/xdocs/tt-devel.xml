@@ -18,7 +18,22 @@
       </p>
       <p>
         <!-- Warum nur Kommandozeile? -->
+        Ich habe mich beim SPP entschieden ein Kommandozeilenprogramm zu machen,
+        da dies die einfachste Variante ist, ein simples und sehr kleines Tool
+        zu schreiben und möglichst wenig Code und Arbeit für eine 
+        platformunabhänige GUI aufzuwenden. Bei Kommandozeilenprogrammen spricht
+        man jedoch nicht mehr von einer GUI, sondern von einem CLI(command line
+        interface).
+      </p>
+    </section>
+    <section id="storyline">
+      <title>Buchungsvorgang</title>
+      <p>
         <!-- Programmablauf -->
+        Die Buchung der einzelnen Einträge läuft in mehreren Schritten ab, die 
+        erst aus der Seite des Ruby-Programms erklären möchte. Im nächsten 
+        Abschnitt gehe ich auf die REST-Schnittstelle ein, die ich zur 
+        Kommunikation mit Schoorbs nutze.
         <!-- REST-Schnittstelle -->
         ...
       </p>
