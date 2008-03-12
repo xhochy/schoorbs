@@ -8,9 +8,18 @@
     <section id="short">
       <title>Grundlegendes</title>
       <p>
-        <!-- Warum in Ruby?? -->
-        <!-- Warum nur Kommandozeile?? -->
-        <!-- Warum doch nicht XUL?? -->
+        <!-- Warum in Ruby? -->
+        Zur Realisierung habe ich als Programmiersprache Ruby benutzt, da es
+        einige syntaktische Rafinessen besitzt, die sehr gut zu meinem 
+        Programmierstil passen. Desweiteren ist bei Ruby gut dokumentiert und
+        es existieren schon in Grundpaket viele Implementierungen nützlicher
+        Hilfsfunktionen. Im Gegensatz zu PHP ist die Objektorientierung in
+        Ruby strikt eingehalten worden, wirklich jede Sache ist ein Objekt.
+      </p>
+      <p>
+        <!-- Warum nur Kommandozeile? -->
+        <!-- Programmablauf -->
+        <!-- REST-Schnittstelle -->
         ...
       </p>
     </section>

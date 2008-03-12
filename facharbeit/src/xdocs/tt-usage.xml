@@ -8,11 +8,93 @@
     <section id="short">
       <title>Grundlegendes</title>
       <p>
-        <!--  Welche Befehle? -->
-        <!-- Welches Eingabeformat? -->
-        <!-- Was wird *genau* gemacht? -->
+        Zur Nutzung meines Stundenplanparsers(kurz: SPP) muss auf dem Computer, 
+        der zur Ausführung des SPP genutzt wird, Ruby 1.8 oder neuer installiert
+        sein, ältere Ruby-Versionen sollten zwar auch gehen, sind jedoch nicht 
+        getest und auch nicht mehr sehr verbreitet. Der SPP ist ein 
+        Kommandozeilenprogramm, d.h. heißt man muss ihn auch unter Windows 
+        über die Eingabeaufforderung nutzen.
+      </p>
+      <p>
+        Da es nicht möglich war, platformunabhängig auf der Kommandozeile eine 
+        Passworteingabe zu machen, bei der das Passwort nicht sichtbar ist, teilt
+        man dem SPP beim Start eine Datei mit, in der Nutzername, Passwort und
+        die URL der Schoorbs Installation stehen. Es ist empfehlenswert, diese
+        Datei auf einem verschlüsselten Datenträger mit sich zu führen oder
+        wenn man den SPP nutzt und keinen solchen Datenträger hat, sie möglichst
+        unauffällig zu erstellen, so dass kein Zuschauer das Passwort lesen kann
+        und sie direkt nach der Verwendung wieder zu löschen(Man sollte auch 
+        sicherstellen, dass sie auch nicht mehr im Papierkorb aufzufinden ist).
+        Diese Datei sollte folgendes Format haben, die Einhaltung der Leerzeichen
+        ist zwar nicht pflicht, kann aber möglichen Konflikten vorbeugen (Die
+        Anführungszeichen um die URL sollte man beibehalten):
+      </p>
+      <source>user: uwe
+password: geheim
+url: "http://schoorbs.hsg-kl.de"</source>
+      <p>
+        <!-- Befehl zum Starten des SPP -->
+        Möchte man nun den SPP starten, so geht man auf die Kommandozeile und
+        wechselt dort in das Verzeichnis des SPP. Zuvor muss man sich den
+        Pfad zum Stundenplan und zur Login-Datei besorgen. Gestart wird der SPP
+        dann einfach mit folgendem Befehl:
+      </p>
+      <source>ruby spp.rb &lt;Stundenplan-Datei&gt; &lt;Login-Datei&gt;</source>
+      <p>
+        Nach dem Start erscheint sofort ein Menü, wo man die Auswahl zwischen 
+        mehreren Aktionen hat. Man wählt eine der aufgeführten Aktionen aus, in
+        dem man ihre Nummer eintippt und dann [Enter] drückt, man sollte jedoch
+        nichts außer der Nummer eingeben. Die von Nutzer zu tätigenden Eingaben
+        sollten im Laufe des Programms verständlich präsentiert worden sein, so
+        dass ich hier nicht auf sie eingehe. Beim Eintragen des Stundenplans in
+        die Datenbank von Schoorbs ist jedoch zu beachten, dass Einträge, die
+        mit dem Stundenplan in Konflickt stehen ohne(!) Rückfrage gelöscht 
+        werden, d.h. man sollte vor jedem Einspielen des Stundenplans
+        ein Backup machen.
+      </p>
+    </section>
+    <section id="sp-txt">
+      <title>Aufbau der Stundenplan-Eingabe</title>
+      <p>
+        <!-- Wie soll Stundenplan.txt aufgebaut sein -->
+        Der Stundenplan ist eine Tabelle im SSV(semicolon separated values)-Format.
+        In der ersten Spalte befindet sich die ID-Nummer der Unterrichtseinheit,
+        wie sie von dem Programm vergeben wurde, dass den Stundenplan erstellt.
+        Sie wird vom SPP zwar beachtet, erfüllt aber keine Funktion. In der 
+        zweiten Spalte steht die Klasse, in der dritten der Lehrer, in der 
+        vierten das Fach und in der fünten der Saal. Die eben aufgezählten 
+        Spalten werden alle als String behandelt und können in Anführungszeichen
+        stehen, müssen aber nicht. In der sechsten Spalte befindet sich
+        der Wochentag, beginnend bei 1, welches dem Montag entspricht. In der
+        siebten und letzten Spalte trägt man die Unterrichtsstunde ein. Der Tag
+        und die Unterrichtsstunde sind beide eine Ganzzahl, welche nicht in 
+        Anführungszeichen stehen darf. Eine Zeile in der SSV-Datei entspricht
+        nicht zwangsläufig einer Unterrichtseinheit. Alle Zeilen mit gleicher
+        ID, Fach, Saal, Stunde und Wochentag werden zu einer Unterrichtseinheit
+        zusammengefasst, d.h. pro Unterrichtseinheit kann es mehrere Leher und 
+        Klassen geben. In Schoorbs wird jeweils der 1. Lehrer als Eigentümer
+        der Stunde eingetragen, d.h. möchten andere Lehrer, die diesen Unterricht
+        halten, Änderungen an diesem Eintrag in Schoorbs vornehmen, so müssen 
+        sie sich entweder an den Eigentumslehrer oder einen Administrator wenden.
+        Beispielweise kann eine Zeile folgendermaßen aussehen:
+      </p>
+      <source>525;"gts1";"Hw";"GTS";"051";2;8</source>
+    </section>
+    <section id="only-admins">
+      <title>Auschließliche Nutzung durch Administratoren</title>
+      <p>
         <!-- Warum dürfen es nur Administratoren? -->
-        ...
+        Der SPP kann nur von Personen genutzt werden, die bei Schoorbs als
+        Adminstrator eingetragen sind. Für diese Vorraussetzung gibt mehrere 
+        Gründe, zum einen wird beim Eintragen des Stundenplans jeder Termin in
+        Schoorbs gelöscht, der mit dem neuen Stundenplan in Konflikt steht.
+        Desweiteren werden die Unterrichtseinheiten in Schoorbs nicht unter
+        dem Nutzernamen des SPP-Anwenders, sondern unter dem Nutzernamen des
+        Lehrers, der den Unterricht hält, eingetragen. Für diese beiden Aktionen
+        braucht man in Schoorbs aus Sicherheitsgründen Administratorrechte, was
+        das Nutzen des SPP ohne Administratorrechte unmöglich macht. Die simple
+        Stundenplananzeige im SPP kann jedoch unabhängig von Schoorbs-Account
+        genutzt werden.
       </p>
     </section>
   </body>
