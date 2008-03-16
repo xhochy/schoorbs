@@ -22,12 +22,19 @@ require_once dirname(__FILE__).'/../schoorbs-includes/authentication/schoorbs_au
 
 ## Functions ##
 
-# 3-value compare: Returns result of compare as "< " "= " or "> ".
+/**
+ * Compare two values and return the fitting sign as string.
+ *
+ * @author Uwe L. Korn <uwelk@xhochy.org>
+ * @param int $a
+ * @param int %b
+ * @return string One of ['< ', '= ', '> ']
+ */
 function cmp3($a, $b)
 {
-    if ($a < $b) return "< ";
-    if ($a == $b) return "= ";
-    return "> ";
+    if ($a < $b) return '< ';
+    if ($a == $b) return '= ';
+    return '> ';
 }
 
 
@@ -48,9 +55,9 @@ function print_header()
 	if ($unicode_encoding) {
 		header('Content-Type: text/html; charset=utf-8');
 	} else {
-		# We use $vocab directly instead of get_vocab() because we have
-		# no requirement to convert the vocab text, we just output
-		# the charset
+		// We use $vocab directly instead of get_vocab() because we have
+		// no requirement to convert the vocab text, we just output
+		// the charset
 		header('Content-Type: text/html; charset='.$vocab['charset']);
 	}
 
@@ -102,11 +109,17 @@ function print_header()
 }
 
 
-# Error handler - this is used to display serious errors such as database
-# errors without sending incomplete HTML pages. This is only used for
-# errors which "should never happen", not those caused by bad inputs.
-# If $need_header!=0 output the top of the page too, else assume the
-# caller did that. Alway outputs the bottom of the page and exits.
+/**
+ * Error handler - this is used to display serious errors such as database
+ * errors without sending incomplete HTML pages. This is only used for
+ * errors which "should never happen", not those caused by bad inputs.
+ * If $need_header!=0 output the top of the page too, else assume the
+ * caller did that. Alway outputs the bottom of the page and exits.
+ *
+ * @param boolean $need_header
+ * @param string $message
+ * @author jberanek, Uwe L. Korn <uwelk@xhochy.org>
+ */
 function fatal_error($need_header, $message = '')
 {
 	if($need_header !== true && $need_header !== false)
@@ -144,12 +157,23 @@ function unslashes($s)
 	else return $s;
 }
 
-# Get the local day name based on language. Note 2000-01-02 is a Sunday.
+/**
+ * Get the local day name based on language. Note 2000-01-02 is a Sunday.
+ * 
+ * @param int $daynumber
+ * @return string
+ */
 function day_name($daynumber)
 {
 	return utf8_strftime('%A', mktime(0,0,0,1,2+$daynumber,2000));
 }
 
+/**
+ * Return the format string for displaying the hour and minute depending on if 
+ * we want to display the time in 24h-format or using PM/AM.
+ * 
+ * @return string
+ */
 function hour_min_format()
 {
     global $twentyfourhour_format;
@@ -169,8 +193,8 @@ function period_date_string($t, $mod_time=0)
     $p_num = $time['minutes'] + $mod_time;
     if( $p_num < 0 ) $p_num = 0;
     if( $p_num >= count($periods) - 1 ) $p_num = count($periods ) - 1;
-	# I have made the separater a ',' as a '-' leads to an ambiguious
-	# display in report.php when showing end times.
+	// I have made the separater a ',' as a '-' leads to an ambiguious
+	// display in report.php when showing end times.
     return array($p_num, $periods[$p_num] . utf8_strftime(', %A %d %B %Y', $t));
 }
 
@@ -196,7 +220,11 @@ function time_date_string($t)
 }
 
 
-# Display the entry-type color key. This has up to 2 rows, up to 5 columns.
+/**
+ * Display the entry-type color key. This has up to 2 rows, up to 5 columns.
+ *
+ * @author jberanek, Uwe L. Korn <uwelk@xhochy.org>
+ */
 function show_colour_key()
 {
 	global $typel, $pview;
@@ -219,14 +247,22 @@ function show_colour_key()
 	echo "</div>\n";
 }
 
-# Round time down to the nearest resolution
+/**
+ * Round time down to the nearest resolution
+ *
+ * @return int
+ */
 function round_t_down($t, $resolution, $am7)
 {
         return (int)$t - (int)abs(((int)$t-(int)$am7)
 				  % $resolution);
 }
 
-# Round time up to the nearest resolution
+/**
+ * Round time up to the nearest resolution
+ *
+ * @return int
+ */
 function round_t_up($t, $resolution, $am7)
 {
 	if (($t-$am7) % $resolution != 0) {
@@ -237,8 +273,17 @@ function round_t_up($t, $resolution, $am7)
 	}
 }
 
-# generates some html that can be used to select which area should be
-# displayed.
+/**
+ * generates some html that can be used to select which area should be
+ * displayed.
+ *
+ * @param string $link
+ * @param string $current
+ * @param int $year
+ * @param int $month
+ * @param int $day
+ * @return string
+ */
 function make_area_select_html( $link, $current, $year, $month, $day )
 {
 	global $tbl_area;
@@ -264,7 +309,7 @@ function make_area_select_html( $link, $current, $year, $month, $day )
 </form>\n";
 
 	return $out_html;
-} # end make_area_select_html
+}
 
 function make_room_select_html( $link, $area, $current, $year, $month, $day )
 {
@@ -291,10 +336,16 @@ function make_room_select_html( $link, $area, $current, $year, $month, $day )
 </form>\n";
 
 	return $out_html;
-} # end make_area_select_html
+} 
 
-# if crossing dst determine if you need to make a modification
-# of 3600 seconds (1 hour) in either direction
+/**
+ * If crossing dst determine if you need to make a modification
+ * of 3600 seconds (1 hour) in either direction.
+ *
+ * @param int $start
+ * @param int $end
+ * @return int
+ */
 function cross_dst ( $start, $end )
 {
 	
