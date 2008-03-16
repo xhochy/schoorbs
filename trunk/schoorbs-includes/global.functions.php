@@ -7,7 +7,7 @@
  * @license http://www.gnu.org/licenses/gpl.html GNU General Public License
  */
 
-## Includes ##
+/// Includes ///
 
 /** The Schoorbs configuration */
 require_once dirname(__FILE__).'/../config.inc.php';
@@ -20,7 +20,7 @@ require_once 'area.functions.php';
 /** The authetication wrappers */
 require_once dirname(__FILE__).'/../schoorbs-includes/authentication/schoorbs_auth.php';
 
-## Functions ##
+/// Functions ///
 
 /**
  * Compare two values and return the fitting sign as string.
@@ -185,6 +185,11 @@ function hour_min_format()
 	}
 }
 
+/**
+ *
+ * @param int $mod_time
+ * @return array
+ */
 function period_date_string($t, $mod_time=0)
 {
 	global $periods;
@@ -250,17 +255,22 @@ function show_colour_key()
 /**
  * Round time down to the nearest resolution
  *
+ * @param int $t
+ * @param int $resolution
+ * @param int $am7
  * @return int
  */
 function round_t_down($t, $resolution, $am7)
 {
-        return (int)$t - (int)abs(((int)$t-(int)$am7)
-				  % $resolution);
+        return (int)$t - (int)abs(((int)$t-(int)$am7)  % $resolution);
 }
 
 /**
  * Round time up to the nearest resolution
  *
+ * @param int $t
+ * @param int $resolution
+ * @param int $am7
  * @return int
  */
 function round_t_up($t, $resolution, $am7)
@@ -274,7 +284,7 @@ function round_t_up($t, $resolution, $am7)
 }
 
 /**
- * generates some html that can be used to select which area should be
+ * Generates some html that can be used to select which area should be
  * displayed.
  *
  * @param string $link
@@ -311,7 +321,19 @@ function make_area_select_html( $link, $current, $year, $month, $day )
 	return $out_html;
 }
 
-function make_room_select_html( $link, $area, $current, $year, $month, $day )
+/**
+ * Generates some html that can be used to select which room should be
+ * displayed.
+ *
+ * @param string $link
+ * @param int $area
+ * @param int $current
+ * @param int $year
+ * @param int $month
+ * @param int $day
+ * @return string
+ */
+function make_room_select_html( $link, $area, $current, $year, $month, $day)
 {
 	global $tbl_room;
 	$out_html = "
@@ -349,11 +371,11 @@ function make_room_select_html( $link, $area, $current, $year, $month, $day )
 function cross_dst ( $start, $end )
 {
 	
-	# entering DST
+	// entering DST
 	if( !date( "I", $start) &&  date( "I", $end))
 		$modification = -3600;
 
-	# leaving DST
+	// leaving DST
 	elseif(  date( "I", $start) && !date( "I", $end))
 		$modification = 3600;
 	else
