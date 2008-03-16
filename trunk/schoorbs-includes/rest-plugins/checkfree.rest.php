@@ -22,13 +22,17 @@ function rest_function_checkFree()
 	global $enable_periods;
 
 	if ($enable_periods) {
+		// The parameters 'day', 'year' and 'month' need to be arrays.
+	    // They need to have the same length.
 		if (is_array($_REQUEST['day'])) {
 			$aDays = array();
 			
 			for($i = 0; $i < count($_REQUEST['day']); $i++) {
+				// Convert all input parameters to integer values
 				$nMonth = intval($_REQUEST['month'][$i]);
 				$nDay = intval($_REQUEST['day'][$i]);
 				$nYear = intval($_REQUEST['year'][$i]);
+				// Check if the given date is a valid date
 				if (!checkdate($nMonth, $nDay, $nYear)) {
 					return SchoorbsREST::sendError('Only periods are supported at the moment!', -1);
 				}
@@ -39,9 +43,14 @@ function rest_function_checkFree()
 			return SchoorbsREST::sendError('The dates must be passed as an array!', -1);
 		}
 	} else {
+		/** @todo Only periods are supported at the moment */
 		return SchoorbsREST::sendError('Only periods are supported at the moment!', -1);
 	}
 	
+	// Always check if period is set, if not there will be an error at the 
+	// moment. When we add support for non-period calls on replaceBooking, we
+	// should only call this HTTP-paramter -> PHP-variable conversion if periods
+	// are enabled.
 	if (isset($_REQUEST['period'])) {
 		$nPeriodID = intval($_REQUEST['period']);
 	} else {
@@ -67,6 +76,9 @@ function rest_function_checkFree()
 		$nStartTime = mktime(12, $nPeriodID, 0, $aDay['month'],
 			$aDay['day'], $aDay['year']
 		);
+		// At the moment we are only using periods and we only support a booking
+		// length of 1 period, so the time between EndTime and StartTime is 
+		// always 60 seconds.
 		$nEndTime = $nStartTime + 60;
 	
 		if (schoorbsCheckFree($nRoomID, $nStartTime, $nEndTime, 0, 0) != null) {
@@ -74,7 +86,6 @@ function rest_function_checkFree()
 		}
 	}
 
-	SchoorbsREST::sendHeaders();
 	if ($bFree) {
 		SchoorbsREST::$oTPL->assign('free', 'true');
 	} else {

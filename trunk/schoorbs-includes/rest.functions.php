@@ -112,6 +112,7 @@ class SchoorbsREST
 	 */
 	public static function handleRequest() 
 	{
+		self::sendHeaders();
 		$sFunctionName = unslashes($_REQUEST['call']);
 		if(!self::isValidFunction($sFunctionName)) {
 			return self::sendError('Function does not exist', 2);
@@ -144,7 +145,6 @@ class SchoorbsREST
 	 */
 	public static function sendError($sMessage, $nCode)
 	{
-		self::sendHeaders();
 		self::$oTPL->assign('message', $sMessage);
 		self::$oTPL->assign('code', $nCode);
 		self::$oTPL->display('error.tpl');

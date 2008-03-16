@@ -1,6 +1,6 @@
 <?php
 /**
- * REST-Plugin 'checkFree'
+ * REST-Plugin 'replaceBooking'
  * 
  * @author Uwe L. Korn <uwelk@xhochy.org>
  * @package Schoorbs
@@ -12,12 +12,16 @@
 require_once dirname(__FILE__).'/../database/schoorbs_sql.php';
  
 /**
- * Make several bookings at a given time on several days
+ * Make several bookings at a given time on several days.
+ *
  * If there is a conflicting booking already only the one which conflicts will 
  * not be booked, all other will
  *
  * Equal to makeBooking, but if there is a conflicting booking, it will be 
- * deleted.
+ * deleted. In addition to makeBooking you are able to set an owner for the 
+ * booking. Due to this extra functionality, this function require 
+ * administration privilegs, in opposite, makeBooking could be called by a 
+ * normal user too.
  * 
  * @author Uwe L. Korn <uwelk@xhochy.org>
  */ 
@@ -25,18 +29,23 @@ function rest_function_replaceBooking()
 {
 	global $enable_periods;
 	
+	// Allow only admins
 	if(!getAuthorised(2)){
         return SchoorbsREST::sendError('Access Denied', 4);         
     }
 
 	if ($enable_periods) {
+	    // The parameters 'day', 'year' and 'month' need to be arrays.
+	    // They need to have the same length.
 		if (is_array($_REQUEST['day'])) {
 			$aDays = array();
 			
 			for($i = 0; $i < count($_REQUEST['day']); $i++) {
+				// Convert all input parameters to integer values
 				$nMonth = intval($_REQUEST['month'][$i]);
 				$nDay = intval($_REQUEST['day'][$i]);
 				$nYear = intval($_REQUEST['year'][$i]);
+				// Check if the given date is a valid date
 				if (!checkdate($nMonth, $nDay, $nYear)) {
 					return SchoorbsREST::sendError('Given date is invalid!', -1);
 				}
@@ -47,6 +56,7 @@ function rest_function_replaceBooking()
 			return SchoorbsREST::sendError('Only date arrays are supported at the moment!', -1);
 		}
 	} else {
+	    /** @todo Only periods are supported at the moment */
 		die('Only periods are supported at the moment!');
 	}
 	
@@ -60,6 +70,10 @@ function rest_function_replaceBooking()
 	} else {
 		return SchoorbsREST::sendError('Room not set!', -1);
 	}
+	// Always check if period is set, if not there will be an error at the 
+	// moment. When we add support for non-period calls on replaceBooking, we
+	// should only call this HTTP-paramter -> PHP-variable conversion if periods
+	// are enabled.
 	if (isset($_REQUEST['period'])) {
 		$nPeriodID = intval($_REQUEST['period']);
 	} else {
@@ -82,13 +96,16 @@ function rest_function_replaceBooking()
 	} else {
 		return SchoorbsREST::sendError('Description not set!', -1);
 	}
+	// The type of the booking. Should be one of ['A'..'Z'].
 	if (isset($_REQUEST['type'])) {
 		$sType = unslashes($_REQUEST['type']);
 		
+		// Empty types are not accepted
 		if (empty($sType)) {
 			return SchoorbsREST::sendError('Type is empty!', -1);
 		}
 	} else {
+		// Type must be set!
 		return SchoorbsREST::sendError('Type not set!', -1);
 	}	
 	
@@ -97,10 +114,13 @@ function rest_function_replaceBooking()
 	if (isset($_REQUEST['user'])) {
 		$sUsername = unslashes($_REQUEST['user']);
 		
+		// If an empty username is given, use the username of the function 
+		// caller.
 		if (empty($sUsername)) {
 			$sUsername = getUserName();
 		}
 	} else {
+		// If no username is given, use the username of the function caller.
 		$sUsername = getUserName();
 	}
 
@@ -109,6 +129,9 @@ function rest_function_replaceBooking()
 		$nStartTime = mktime(12, $nPeriodID, 0, $aDay['month'],
 			$aDay['day'], $aDay['year']
 		);
+		// At the moment we are only using periods and we only support a booking
+		// length of 1 period, so the time between EndTime and StartTime is 
+		// always 60 seconds.
 		$nEndTime = $nStartTime + 60;
 	
 		if (($sError = schoorbsCheckFree($nRoomID, $nStartTime, $nEndTime, -1, -1)) != null) {
@@ -121,8 +144,10 @@ function rest_function_replaceBooking()
 		schoorbsCreateSingleEntry($nStartTime, $nEndTime, 0, 0, $nRoomID, $sUsername, $sName, $sType, $sDescription);
 	}
 
-	SchoorbsREST::sendHeaders();
 	// always true, if something went wrong there will be an error
 	SchoorbsREST::$oTPL->assign('made_booking', 'true');
+	// use the makeBooking Template since replaceBooking is nearly the same as
+	// makeBooking, for a list of differences see the comment for this
+	// function.
 	SchoorbsREST::$oTPL->display('makebooking.tpl');
 }
