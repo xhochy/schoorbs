@@ -30,12 +30,65 @@
       <title>Buchungsvorgang</title>
       <p>
         <!-- Programmablauf -->
-        Die Buchung der einzelnen Einträge läuft in mehreren Schritten ab, die 
-        erst aus der Seite des Ruby-Programms erklären möchte. Im nächsten 
+        Die Buchung der einzelnen Einträge läuft in mehreren Schritten ab, die
+        ich erst aus der Seite des Ruby-Programms erklären möchte. Im nächsten 
         Abschnitt gehe ich auf die REST-Schnittstelle ein, die ich zur 
-        Kommunikation mit Schoorbs nutze.
+        Kommunikation mit Schoorbs nutze. Bevor ich überhaupt in Kontakt mit der
+        Schoorbs-Installation trete frage ich den Nutzer noch nach den Daten, 
+        zwischen denen der Stundenplan eingetragen werden soll. Das Datum sollte
+        so angeben sein, wie es im deutschen Sprachraum üblich ist, d.h. 1-2 
+        Zeichen für den Tag, 1-2 Zeichen für den Monat und 4 Zeichen für das Jahr
+        und alles jeweils durch einen Punkt getrennt(Bsp: 3.10.1989).
+      </p>
+      <p>
+        Nachdem nun vom Benzuter alle zur Buchung nötigen Daten eingeben wurden,
+        startet der SPP die Verbindung zur Schoorbsinstallation. Zuerst wird 
+        überprüft, ob die angegebenen Anmeldedaten stimmen, dann wird der 
+        Saalname zu der systeminternen Ressourcen-ID aufgelöst, da bei allen 
+        weiteren Anfragen nur diese ID benutzt werden kann. Hierbei wird 
+        gleichzeitig auch überprüft, ob dieser Saal überhaupt existiert. Nachdem
+        nun die ID für den Saal bestimmt wurde, frage ich noch die IDs für die
+        einzelnen Stunden ab. Die Titel einer Stundeneinheit sind fest 
+        einprogrammiert, die IDs nicht, da man so immer noch z.B. eine 
+        Buchungseinheit für z.B. die Zeit vor Unterrichtsbeginn anlegen könnte.
+      </p>
+      <p>
+        Da nun alle Daten bekannt sind, um die Stunden zu buchen, gehe ich nun 
+        an jedem Wochentag jede Stunde durch, schaue nach, ob dort Unterricht 
+        stattfindet und trage, falls vorhanden, ihn bei Schoorbs ein. Als 
+        Eigentümer des Eintrags gebe ich den unterrichtshaltenden Lehrer an.
+      </p>
+    </section>
+    <section id="rest-interface">
+      <title>REST-Schnittstelle</title>
+      <p>
         <!-- REST-Schnittstelle -->
-        ...
+        Um die Kommunikation zwischen Schoorbs und dem SPP zu regeln, habe ich 
+        mich entschieden, dies per Webservice zu machen. Für Webservices gibt
+        es 3 etablierte Standards: XML-RPC, SOAP und REST. Da die beiden 
+        ersteren sehr viel Overhead beim Programmieren und auch bei den Paketen
+        haben, habe ich mich entschieden die Schnittstelle über das REST-System
+        zu regeln. Die Besonderheit bei REST ist, dass man kein Standard hat, 
+        wie man die Anfragen und Antworten verpackt, sondern man legt von 
+        Anwendung zu Anwendung bei jeder REST-Funktion genau fest, wie die
+        Anfrage und die Antwort aussehen, d.h. bei jedem Softwareprojekt müssen
+        die Kommunikationswege detallierter beschrieben werden als wenn man 
+        z.B. SOAP benutzten würde. Der Overhead bei der Programmierung mit SOAP
+        wird bei REST also in einen Overhead bei der Dokumentation umgewandelt, 
+        was von der Arbeit an sich gleich bleibt, jedoch bei der Programmierung
+        einen klaren Vorteil verschafft, da der Code deutlich kompakter ist. Ein
+        REST-Aufruf wird durch seine URL einduutig identifiziert. Möchte man nun
+        z.B. bei Schoorbs überprüfen, ob seine Anmeldedaten stimmen, so ruft
+        man folgende URL auf:
+      </p>
+      <source>http://schoorbs.hsg-kl.de/rest.php?call=login</source>
+      <p class="pageBreakAfter">
+        In diesem Fall ist <code>http://schoorbs.hsg-kl.de/rest.php?call=</code>
+        der sogenannte REST-Endpoint, der Punkt unter dem alle Funktionen zu 
+        finden sind, oder auch der Teil der URL, der bei allen REST-Anfragen 
+        gleich ist. (Anmerkung zur URL: Die Authetifikation bei REST-Anfragen 
+        bei Schoorbs wird generell über das HTTP-Authentifikationsverfahren 
+        gelöst).
       </p>
     </section>
   </body>
