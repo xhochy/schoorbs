@@ -138,10 +138,9 @@ class Calendar
                         }
                     } elseif (preg_match("/month/i", $sCalledScript))
                         $loop_array['type'] = 'month';
-                    }
-                } else {
-                    $loop_array['empty'] = 'true';
-                }
+                    } else {
+		                $loop_array['empty'] = 'true';
+		            }
                 
                 $d++;
                 $loop2[] = $loop_array;
