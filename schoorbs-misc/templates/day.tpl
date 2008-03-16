@@ -50,11 +50,9 @@
 					&nbsp;
 				{/if}
 			{elseif $col.descr neq ""}
-				<div class="vevent">
-					<a class="url" href="view_entry.php?id={$col.id}&amp;area={$area}&amp;day={$day}&amp;month={$month}&amp;year={$year}" title="{$col.long_descr}">
-			 			<span class="summary">{$col.descr}</span> <span class="uid" style="font-weight: bold;">({$col.create_by})</span>
-					</a>
-				</div>
+				<a class="url" href="view_entry.php?id={$col.id}&amp;area={$area}&amp;day={$day}&amp;month={$month}&amp;year={$year}" title="{$col.long_descr}">
+			 			{$col.descr} <span class="uid" style="font-weight: bold;">({$col.create_by})</span>
+				</a>
 			{else}
 				&nbsp;"&nbsp;
 			{/if}
