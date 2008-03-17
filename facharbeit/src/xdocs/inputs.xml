@@ -15,7 +15,7 @@
       </note>
       <p>
          Die Eingabeverarbeitung ist die größte Schwachstelle vieler 
-         PHP-Programme, so auch von MRBS[1]. Oftmals werden Parameter direkt 
+         PHP-Programme, so auch von MRBS. Oftmals werden Parameter direkt 
          vom Benutzer unverändert in SQL-Befehle übernommen(siehe [2]), dies 
          wird SQL-Injection[3] genannt und kann genutzt werden um beliebige 
          Kommandos auf der Datenbank auszuführen. An manchen Stellen werden auch,
@@ -26,7 +26,7 @@
          durch die Nutzung von grab_globals.inc(wird später unter XSS-Lösung 
          beschrieben) verursacht, da so keine Trennung mehr von internen und 
          externen($_REQUEST, $_GET, …) Variabeln möglich ist. Diese Art von 
-         Sicherheitslücken ist heutzutage die Grundlage von Phishing-Attacken[6]. 
+         Sicherheitslücken ist heutzutage die Grundlage von Phishing-Attacken. 
          Für den Benutzer unsichtbar, aber für den stabilen Betrieb der Software
          sehr schädlich sind Endlosschleifen, bei der ein PHP-Script meistens 
          mit der voreingestellten max_execution_time[7] von 30s die CPU
@@ -370,10 +370,6 @@ $this->assertEquals(1970, $year);</source>
       <title>Literaturverweise</title>
       <ul>
         <li>
-          <strong>[1]</strong> <a href="http://mrbs.sourcforge.net/">Meeting Room 
-          Booking System</a>
-        </li>
-        <li>
           <strong>[2]</strong> MRBS-1.2.5-Quellcode → day.php, Z. 104-107
         </li>
         <li>
@@ -389,12 +385,6 @@ $this->assertEquals(1970, $year);</source>
           <strong>[5]</strong>
           <a href="http://de.wikipedia.org/wiki/Cross-Site_Scripting">
             Artikel Cross-Site Scripting. In: Wikipedia, Die freie Enzyklopädie.
-          </a>
-        </li>
-        <li>
-          <strong>[6]</strong>
-          <a href="http://de.wikipedia.org/wiki/Phishing">
-            Artikel Phishing. In: Wikipedia, Die freie Enzyklopädie.
           </a>
         </li>
         <li>
