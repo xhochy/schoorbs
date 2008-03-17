@@ -1,3 +1,12 @@
+schoorbs (1.0b2) unstable; urgency=low
+
+  * Rewritten Search interface
+  * Code cleanups
+  * Layout improvements
+  * Fixed some XHTML errors
+
+ -- Uwe L. Korn <packaging@xhochy.com>  Sun, 2 Mar 2008 01:09:16 +0100
+
 schoorbs (1.0b1) unstable; urgency=low
 
   * Rewritten REST interface (including unit tests)
