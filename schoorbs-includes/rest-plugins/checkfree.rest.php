@@ -34,17 +34,17 @@ function rest_function_checkFree()
 				$nYear = intval($_REQUEST['year'][$i]);
 				// Check if the given date is a valid date
 				if (!checkdate($nMonth, $nDay, $nYear)) {
-					return SchoorbsREST::sendError('Only periods are supported at the moment!', -1);
+					return SchoorbsREST::sendError('Given date is invalid!', 9);
 				}
 				$aDays[] = array('day' => $nDay, 'month' => $nMonth, 
 					'year' => $nYear);
 			}
 		} else {
-			return SchoorbsREST::sendError('The dates must be passed as an array!', -1);
+			return SchoorbsREST::sendError('The dates must be passed as an array!', 8);
 		}
 	} else {
 		/** @todo Only periods are supported at the moment */
-		return SchoorbsREST::sendError('Only periods are supported at the moment!', -1);
+		return SchoorbsREST::sendError('Only periods are supported at the moment!', 7);
 	}
 	
 	// Always check if period is set, if not there will be an error at the 
@@ -54,7 +54,7 @@ function rest_function_checkFree()
 	if (isset($_REQUEST['period'])) {
 		$nPeriodID = intval($_REQUEST['period']);
 	} else {
-		return SchoorbsREST::sendError('Period not set!', -1);
+		return SchoorbsREST::sendError('Period not set!', 10);
 	}
 	
 	// We don't use input_Room(); since if there is none defined, we want an error
@@ -65,7 +65,7 @@ function rest_function_checkFree()
 	if (isset($_REQUEST['room'])) {
 		$nRoomID = intval($_REQUEST['room']);
 	} else {
-		return SchoorbsREST::sendError('Period not set!', -1);
+		return SchoorbsREST::sendError('Room not set!', 11);
 	}
 	
 

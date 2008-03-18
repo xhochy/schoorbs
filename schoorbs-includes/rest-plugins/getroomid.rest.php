@@ -30,7 +30,7 @@ function rest_function_getRoomID()
 	// If we haven't found a fitting room, return an error. This case is either
 	// identified by an unset $nRoomID or an $nRoomID with the value of int(-1).
 	if (!isset($nRoomID) || ($nRoomID == -1)) {
-		return SchoorbsREST::sendError('Couldn\'t find a fitting room.', -1);
+		return SchoorbsREST::sendError('Couldn\'t find a fitting room.', 5);
 	}
 
 	// Return the room id

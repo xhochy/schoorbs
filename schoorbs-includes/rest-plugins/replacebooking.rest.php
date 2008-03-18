@@ -47,17 +47,17 @@ function rest_function_replaceBooking()
 				$nYear = intval($_REQUEST['year'][$i]);
 				// Check if the given date is a valid date
 				if (!checkdate($nMonth, $nDay, $nYear)) {
-					return SchoorbsREST::sendError('Given date is invalid!', -1);
+					return SchoorbsREST::sendError('Given date is invalid!', 9);
 				}
 				$aDays[] = array('day' => $nDay, 'month' => $nMonth, 
 					'year' => $nYear);
 			}
 		} else {
-			return SchoorbsREST::sendError('Only date arrays are supported at the moment!', -1);
+			return SchoorbsREST::sendError('Only date arrays are supported at the moment!', 8);
 		}
 	} else {
 	    /** @todo Only periods are supported at the moment */
-		die('Only periods are supported at the moment!');
+		return SchoorbsREST::sendError('Only periods are supported at the moment!', 7);
 	}
 	
 	// We don't use input_Room(); since if there is none defined, we want an error
@@ -68,7 +68,7 @@ function rest_function_replaceBooking()
 	if (isset($_REQUEST['room'])) {
 		$nRoomID = intval($_REQUEST['room']);
 	} else {
-		return SchoorbsREST::sendError('Room not set!', -1);
+		return SchoorbsREST::sendError('Room not set!', 11);
 	}
 	// Always check if period is set, if not there will be an error at the 
 	// moment. When we add support for non-period calls on replaceBooking, we
@@ -77,16 +77,16 @@ function rest_function_replaceBooking()
 	if (isset($_REQUEST['period'])) {
 		$nPeriodID = intval($_REQUEST['period']);
 	} else {
-		return SchoorbsREST::sendError('Period not set!', -1);
+		return SchoorbsREST::sendError('Period not set!', 10);
 	}
 	if (isset($_REQUEST['name'])) {
 		$sName = unslashes($_REQUEST['name']);
 		
 		if (empty($sName)) {
-			return SchoorbsREST::sendError('Name is empty!', -1);
+			return SchoorbsREST::sendError('Name is empty!', 12);
 		}
 	} else {
-		return SchoorbsREST::sendError('Name not set!', -1);
+		return SchoorbsREST::sendError('Name not set!', 12);
 	}
 	// Description could be empty, but the client should specify that explicitly
 	// Given a not-set description could be a failure by the client, there still
@@ -94,7 +94,7 @@ function rest_function_replaceBooking()
 	if (isset($_REQUEST['description'])) {
 		$sDescription = unslashes($_REQUEST['description']);
 	} else {
-		return SchoorbsREST::sendError('Description not set!', -1);
+		return SchoorbsREST::sendError('Description not set!', 13);
 	}
 	// The type of the booking. Should be one of ['A'..'Z'].
 	if (isset($_REQUEST['type'])) {
@@ -102,11 +102,11 @@ function rest_function_replaceBooking()
 		
 		// Empty types are not accepted
 		if (empty($sType)) {
-			return SchoorbsREST::sendError('Type is empty!', -1);
+			return SchoorbsREST::sendError('Type is empty!', 14);
 		}
 	} else {
 		// Type must be set!
-		return SchoorbsREST::sendError('Type not set!', -1);
+		return SchoorbsREST::sendError('Type not set!', 14);
 	}	
 	
 	// Support Bookings for different usernames since the user doing this 
@@ -136,7 +136,7 @@ function rest_function_replaceBooking()
 	
 		if (($sError = schoorbsCheckFree($nRoomID, $nStartTime, $nEndTime, -1, -1)) != null) {
 			if (!schoorbsDeleteConflicts($nRoomID, $nStartTime, $nEndTime, getUserName())) {
-				return SchoorbsREST::sendError('Couldn\'t delete conflicting bookings!', -1);
+				return SchoorbsREST::sendError('Couldn\'t delete conflicting bookings!', 15);
 			}
 		}
 		

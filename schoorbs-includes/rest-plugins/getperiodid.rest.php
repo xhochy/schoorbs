@@ -25,14 +25,13 @@ function rest_function_getPeriodID()
 	for ($i = 0; $i < count($periods); $i++) {
 		if ($periods[$i] == $sName) {
 			$nPeriodID = $i;
-			break;
 		}
 	}
 	
 	// An unset $nPeriodID variable means that we haven't found a fitting
 	// period.
 	if (!isset($nPeriodID)) {
-		return SchoorbsREST::sendError('Couldn\'t find a fitting period.', -1);
+		return SchoorbsREST::sendError('Couldn\'t find a fitting period.', 6);
 	}
 
 	SchoorbsREST::$oTPL->assign('period_id', $nPeriodID);
