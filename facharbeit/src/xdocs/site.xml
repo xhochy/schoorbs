@@ -40,6 +40,7 @@ See http://forrest.apache.org/docs/linking.html for more info
   <timetable label="Stundenplanparser">
     <tt-usage label="Nutzung" href="tt-usage.html" description="Nutzung" />
     <tt-devel label="Technisches" href="tt-devel.html" description="Technisches" />
+    <tt-funcs label="REST-Funktionen" href="tt-funcs.html" description="REST-Funktionen" />
   </timetable>
   <additional label="Anhang">
     <whole_site_pdf label="Alles als PDF" href="wholesite.pdf"/>

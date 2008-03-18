@@ -1,0 +1,223 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE document PUBLIC "-//APACHE//DTD Documentation V2.0//EN" "http://forrest.apache.org/dtd/document-v20.dtd">
+<document>
+  <header>
+    <title>REST-Funktionen</title>
+  </header>
+  <body>
+    <section id="short">
+      <title>Grundlegendes</title>
+      <p>
+        Da ich im vorherigen Kapitel erwähnt habe, dass die Dokumentation der 
+        REST-Schnittstelle sehr wichtig ist, da man kein einheitliches Protokoll
+        für Anfragen und Antworten hat, möchte ich in diesem Kapitel zu jeder
+        Funktion die Eingabeparameter und die Strucktur der Antwort erläutern.
+        Die sog. Eingabeparameter, sind Namen von Parametern, die entweder als
+        GET- oder POST-Parameter bei dem HTTP-Request mitgeschickt werden. Bei
+        der Bespielantwort gebe ich einfach das benutzte Smarty-Template an, da
+        man dort am Besten die Strucktur erkennen kann, da ich bis jetzt nur 
+        simple Antworten implementiert habe.
+      </p>
+      <p>
+        Antworten sind standardmäßig in XML und haben das Wurzeltag 
+        <code>rsp</code>, welches ein Attribut namens <code>stat</code> besitzt.
+        Ist der Wert von <code>stat</code> 'ok', so wurde die Anfrage 
+        erfolgreich ausgeführt, ist jedoch der Wert von <code>stat</code> 'fail',
+        so trat ein Fehler beim Abarbeiten der Anfrage auf und ein Fehler wird
+        ausgegeben. Ein normaler, erfolgreicher Aufruf liefert dann folgendes 
+        zurück:
+      </p>
+      <source>&lt;?xml version="1.0" encoding="utf-8" ?&gt;
+&lt;rsp stat="ok"&gt;
+	&lt;!-- Hier kommt die Antwort --&gt;
+&lt;/rsp&gt;</source>
+      <p>
+        Wenn ein Fehler auftritt, wird Folgendes zurückgegeben:
+      </p>
+      <source>&lt;?xml version="1.0" encoding="utf-8" ?&gt;
+&lt;rsp stat="fail"&gt;
+	&lt;err code="[error-code]" msg="[error-message]" /&gt;
+&lt;/rsp&gt;</source>
+      <p>
+        Eine REST-Funktion kann man bei Schoorbs über 2 verschiedene URLs 
+        aufrufen, zum einen gibt es die Möglichkeit über 
+        <code>http(s)://&lt;schoorbs&gt;/rest.php?call=&lt;Funktionsname&gt;</code>
+        die REST-Schnittstelle zu erreichen. Diese Möglichkeit ist auf jedem 
+        Server möglich, sieht aber nicht so schön aus. Hat man einen
+        Server mit installierten Apache 2+ und aktivierten mod_rewrite laufen, 
+        so die REST-Schnittstelle auch per
+        <code>http(s)://&lt;schoorbs&gt;/REST/&lt;Funktionsname&gt;</code> 
+        erreichen.
+      </p>
+      <p>
+        Ist bei einer REST-Funktion eine Authentifikation nötig, so wird dies 
+        über das Verfahren der <a href="http://de.wikipedia.org/wiki/Hypertext_Transfer_Protocol#HTTP-Authentifizierung">HTTP-Authentifikation</a>
+        geregelt. Systemintern heißt dies, dass unabhängig von welchem 
+        Session-Modul in <code>config.inc.php</code> eingestellt wurde, 
+        Session/HTTP benutzt wird. Ist jedoch Session/Remote_User eingestellt, 
+        so wird dieses benutzt, da dies auch die Authentifikation per HTTP-Auth
+        macht, jedoch anstatt Schoorbs hier der Webserver die Anmeldedaten 
+        überpüft.
+      </p>
+    </section>
+    <section id="rest-login">
+      <title>login</title>
+      <p>
+        <strong>nötige Authentifizierug:</strong> normaler Nutzer
+      </p>
+      <p>
+        <strong>Eingabeparameter:</strong> keine
+      </p>
+      <p>
+        <strong>Beispielantwort:</strong>
+      </p>
+      <source>&lt;?xml version="1.0" encoding="utf-8" ?&gt;
+&lt;rsp stat="ok"&gt;
+	&lt;username value="{$username}" /&gt;
+&lt;/rsp&gt;</source>
+      <p>
+        <strong>mögliche Fehler:</strong><br /><br />
+        (4) Zugriff verweigert
+      </p>
+    </section>
+    <section id="rest-getroomid">
+      <title>getRoomID</title>
+      <p>
+        <strong>nötige Authentifizierug:</strong> keine
+      </p>
+      <p>
+        <strong>Eingabeparameter:</strong><br /><br />
+        'name': Der Names des Raumes, zu welchem die ID bestimmt werden soll
+      </p>
+      <p>
+        <strong>Beispielantwort:</strong>
+      </p>
+      <source>&lt;?xml version="1.0" encoding="utf-8" ?&gt;
+&lt;rsp stat="ok"&gt;
+	&lt;room_id&gt;{$room_id}&lt;/room_id&gt;
+&lt;/rsp&gt;</source>
+      <p>
+        <strong>mögliche Fehler:</strong><br /><br />
+        (5) Keine passende Ressource gefunden
+      </p>
+    </section>
+    <section id="rest-getperiodid">
+      <title>getPeriodID</title>
+      <p>
+        <strong>nötige Authentifizierug:</strong> keine
+      </p>
+      <p>
+        <strong>Eingabeparameter:</strong><br /><br />
+        'name': Der Names der Zeiteinheit, zu welcher die ID bestimmt werden soll
+      </p>
+      <p>
+        <strong>Beispielantwort:</strong>
+      </p>
+      <source>&lt;?xml version="1.0" encoding="utf-8" ?&gt;
+&lt;rsp stat="ok"&gt;
+	&lt;period_id&gt;{$period_id}&lt;/period_id&gt;
+&lt;/rsp&gt;</source>
+      <p>
+        <strong>mögliche Fehler:</strong><br /><br />
+        (6) Keine passende Zeiteinheit gefunden
+      </p>
+    </section>
+    <section id="rest-checkfree">
+      <title>checkFree</title>
+      <p>
+        <strong>nötige Authentifizierug:</strong> keine
+      </p>
+      <p>
+        <strong>Eingabeparameter:</strong><br /><br />
+        'day', 'month', 'year': Arrays für die zu überprüfenden Tage<br />
+        'period': Zeiteinheit, welche überprüft wird<br />
+        'room': Ressource, welche überprüft wird
+      </p>
+      <p>
+        <strong>Beispielantwort:</strong>
+      </p>
+      <source>&lt;?xml version="1.0" encoding="utf-8" ?&gt;
+&lt;rsp stat="ok"&gt;
+	&lt;free&gt;{$free}&lt;/free&gt;
+&lt;/rsp&gt;</source>
+      <p>
+        <strong>mögliche Fehler:</strong><br /><br />
+        (7) Nur Zeiteinheiten, nicht pure Zeiten sind untersützt<br />
+        (8) Daten müssen als Array überliefert werden<br />
+        (9) Datum ist ungültig<br />
+        (10) Zeiteinheit ist nicht angegeben<br />
+        (11) Ressource ist nicht angegeben
+      </p>
+    </section>
+    <section id="rest-makebooking">
+      <title>makeBooking</title>
+      <p>
+        <strong>nötige Authentifizierug:</strong> normaler Nutzer
+      </p>
+      <p>
+        <strong>Eingabeparameter:</strong><br /><br />
+        'day', 'month', 'year': Arrays für die zu überprüfenden Tage<br />
+        'period': Zeiteinheit, welche überprüft wird<br />
+        'room': Ressource, welche überprüft wird<br />
+        'name': Der Titel der Buchung<br />
+        'description': Die Beschreibung der Buchung<br />
+        'type': Das Kürzel für die Veranstaltungsart
+      </p>
+      <p>
+        <strong>Beispielantwort:</strong>
+      </p>
+      <source>&lt;?xml version="1.0" encoding="utf-8" ?&gt;
+&lt;rsp stat="ok"&gt;
+	&lt;made_booking&gt;{$made_booking}&lt;/made_booking&gt;
+&lt;/rsp&gt;</source>
+      <p>
+        <strong>mögliche Fehler:</strong><br /><br />
+        (4) Zugriff verweigert<br />
+        (7) Nur Zeiteinheiten, nicht pure Zeiten sind untersützt<br />
+        (8) Daten müssen als Array überliefert werden<br />
+        (9) Datum ist ungültig<br />
+        (10) Zeiteinheit ist nicht angegeben<br />
+        (11) Ressource ist nicht angegeben<br />
+        (12) Der Titel der Buchung ist nicht gesetzt<br />
+        (13) Die Beschreibung der Buchung ist nicht gesetzt<br />
+        (14) Das Kürzel für die Veranstaltungsart ist nicht gesetzt
+      </p>
+    </section>
+    <section id="rest-replacebooking">
+      <title>replaceBooking</title>
+      <p>
+        <strong>nötige Authentifizierug:</strong> Administrator
+      </p>
+      <p>
+        <strong>Eingabeparameter:</strong><br /><br />
+        'day', 'month', 'year': Arrays für die zu überprüfenden Tage<br />
+        'period': Zeiteinheit, welche überprüft wird<br />
+        'room': Ressource, welche überprüft wird<br />
+        'name': Der Titel der Buchung<br />
+        'description': Die Beschreibung der Buchung<br />
+        'type': Das Kürzel für die Veranstaltungsart<br />
+        'user': Der Eigentümer der Buchung
+      </p>
+      <p>
+        <strong>Beispielantwort:</strong>
+      </p>
+      <source>&lt;?xml version="1.0" encoding="utf-8" ?&gt;
+&lt;rsp stat="ok"&gt;
+	&lt;made_booking&gt;{$made_booking}&lt;/made_booking&gt;
+&lt;/rsp&gt;</source>
+      <p>
+        <strong>mögliche Fehler:</strong><br /><br />
+        (4) Zugriff verweigert<br />
+        (7) Nur Zeiteinheiten, nicht pure Zeiten sind untersützt<br />
+        (8) Daten müssen als Array überliefert werden<br />
+        (9) Datum ist ungültig<br />
+        (10) Zeiteinheit ist nicht angegeben<br />
+        (11) Ressource ist nicht angegeben<br />
+        (12) Der Titel der Buchung ist nicht gesetzt<br />
+        (13) Die Beschreibung der Buchung ist nicht gesetzt<br />
+        (14) Das Kürzel für die Veranstaltungsart ist nicht gesetzt<br />
+        (15) Konnte eine konkurriende Buchung nicht löschen
+      </p>
+    </section>
+  </body>
+</document>

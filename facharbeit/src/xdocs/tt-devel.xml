@@ -82,7 +82,7 @@
         man folgende URL auf:
       </p>
       <source>http://schoorbs.hsg-kl.de/rest.php?call=login</source>
-      <p class="pageBreakAfter">
+      <p>
         In diesem Fall ist <code>http://schoorbs.hsg-kl.de/rest.php?call=</code>
         der sogenannte REST-Endpoint, der Punkt unter dem alle Funktionen zu 
         finden sind, oder auch der Teil der URL, der bei allen REST-Anfragen 
