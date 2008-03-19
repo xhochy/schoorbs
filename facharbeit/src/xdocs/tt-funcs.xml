@@ -205,7 +205,7 @@
 &lt;rsp stat="ok"&gt;
 	&lt;made_booking&gt;{$made_booking}&lt;/made_booking&gt;
 &lt;/rsp&gt;</source>
-      <p>
+      <p class="pageBreakAfter">
         <strong>mögliche Fehler:</strong><br /><br />
         (4) Zugriff verweigert<br />
         (7) Nur Zeiteinheiten, nicht pure Zeiten sind untersützt<br />

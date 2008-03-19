@@ -23,7 +23,9 @@
         zwingend nötig, sie ist aber bei Terminen, die von mehreren Lehrern 
         betreut werden sehr sinnvoll, da man so auch noch direkt relevante 
         Informationen mitteilen kann. Unter Period gibt man die Starteinheit
-        (am HSG: entweder eine Schulstunde oder eine Pause) ein.
+        (am HSG: entweder eine Schulstunde oder eine Pause) ein. Als Period wird
+        eine buchbare Zeitinheit bezeichnet, eine Pause oder eine Schulstunde 
+        sind am HSG eine Period.
       </p>
       <p>
         <strong>HSG-sepzifischer Zusatz:</strong><br /> 

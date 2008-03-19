@@ -43,6 +43,7 @@ See http://forrest.apache.org/docs/linking.html for more info
     <tt-funcs label="REST-Funktionen" href="tt-funcs.html" description="REST-Funktionen" />
   </timetable>
   <additional label="Anhang">
+    <anhang label="Inhalt" href="anhang.html" />
     <whole_site_pdf label="Alles als PDF" href="wholesite.pdf"/>
   </additional>
 <!--

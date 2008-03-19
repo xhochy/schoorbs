@@ -1,0 +1,47 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE document PUBLIC "-//APACHE//DTD Documentation V2.0//EN" "http://forrest.apache.org/dtd/document-v20.dtd">
+<document>
+  <header>
+    <title>Inhalt</title>
+  </header>
+  <body>
+    <section id="short">
+      <title>Dokumente in auftretender Reihenfolge</title>
+      <ol>
+        <li>Creative Commons Deed (Kurzbeschreibung der Lizenz)</li>
+        <li>
+          Lizenztext zur Lizenz "Creative Commons Namensnennung-Keine 
+          Bearbeitung 2.0 Deutschland"
+        </li>
+        <li>
+          Wikipedia-Artikel über "Abspaltung (Softwareentwicklung)", engl. Fork
+        </li>
+        <li>
+          Wikipedia-Artikel über "Cross-Site Scripting", kurz XSS
+        </li>
+        <li>
+          Wikipedia-Artikel über "Denial of Service", kurz DoS
+        </li>
+        <li>
+          Wikipedia-Artikel über "Hypertext Transfer Protocol", lediglich der
+          Abschnitt zur "HTTP-Authentifizierung"
+        </li>
+        <li>
+          Informationen von php.net über die "max_execution_time"
+        </li>
+        <li>
+          Ausschnitt aus dem PHP Handbuch zur Funktion "mysql_real_escape_string"
+        </li>
+        <li>
+          Ausschnitt aus dem PHP Handbuch zur Funktion "pg_escape_string"
+        </li>
+        <li>
+          Ausschnitt zu dem PostgreSQL Handbuch zu "Character Types"
+        </li>
+        <li>
+          Wikipedia-Artikel über "SQL-Injektion"
+        </li>
+      </ol>
+    </section>
+  </body>
+</document>

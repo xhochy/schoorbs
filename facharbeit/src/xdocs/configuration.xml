@@ -249,7 +249,7 @@ $typel["I"] = get_vocab("internal");
     <section id="misc">
       <title>Sontige Einstellungen</title>
       <p class="pageBreakAfter">
-        Sontige Konfigurationen sind z.B. die maximale Anzahl an Wiederholungen,
+        Sonstige Konfigurationen sind z.B. die maximale Anzahl an Wiederholungen,
         die ein regelmäßiger Termin haben kann(<code>$max_rep_entrys</code>). 
         Weiterhin kann man noch festlegen, ob auch auf der rechten Seite der 
         Tabelle die Uhrzeiten angezeigt werden sollen, was man durch das Setzen
