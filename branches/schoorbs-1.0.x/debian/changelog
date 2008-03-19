@@ -1,0 +1,44 @@
+schoorbs (1.0b2) unstable; urgency=low
+
+  * Rewritten Search interface
+  * Code cleanups
+  * Layout improvements
+  * Fixed some XHTML errors
+
+ -- Uwe L. Korn <packaging@xhochy.com>  Sun, 2 Mar 2008 01:09:16 +0100
+
+schoorbs (1.0b1) unstable; urgency=low
+
+  * Rewritten REST interface (including unit tests)
+  * Refreshed WebGUI layout
+  * Several small code cleanups
+  * Feature complete + interface freeze for Schoorbs 1.0
+
+ -- Uwe L. Korn <packaging@xhochy.com>  Sun, 2 Mar 2008 01:09:16 +0100
+
+schoorbs (1.0a5) unstable; urgency=low
+
+  * Removed grab_globals.php, which extracted all _GET, _POST and _COOKIE variables as global variables
+  * Rewritten edit_entry.php and edit_entry_handler.php to work without grab_globals.php
+  * Removed automated mails when booking a room
+  * Added logging system, at the moment only syslog is available as a backend
+  * Supporting Smarty 2.6.19
+  * Official(tested) Support now for 
+  * Ubuntu 7.10 "Gutsy Gibbon"
+  * Ubuntu 7.04 "Feisty Fawn"
+  * Debian 4.0 "Etch"
+
+ -- Uwe L. Korn <packaging@xhochy.com>  Sun, 17 Feb 2008 15:09:16 +0100
+
+schoorbs (1.0a4.1) unstable; urgency=low
+
+  * Files under /usr belong to root
+  * Smarty Cache will be stored in /var/cache/schoorbs
+
+ -- Uwe L. Korn <packaging@xhochy.com>  Sat, 2 Feb 2008 22:36:00 +0100
+
+schoorbs (1.0a4) unstable; urgency=low
+
+  * 1.0 Alpha 4 
+
+ -- Uwe L. Korn <packaging@xhochy.com>  Wed, 26 Jan 2008 17:43:06 +0100
