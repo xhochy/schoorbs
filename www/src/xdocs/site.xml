@@ -41,6 +41,7 @@ See http://forrest.apache.org/docs/linking.html for more info
   <endnutzer label="Dokumentation(DE)" href="endnutzer/" tab="endnutzer">
     <index label="Überblick" href="index.html"/>
     <installation label="Installation" href="install.html" />
+    <config label="Konfiguration" href="config.html" />
   </endnutzer>
   <all label="All">
     <whole_site_html label="Whole Site HTML" href="wholesite.html"/>

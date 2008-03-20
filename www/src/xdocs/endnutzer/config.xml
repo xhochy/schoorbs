@@ -1,0 +1,276 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE document PUBLIC "-//APACHE//DTD Documentation V2.0//EN" "http://forrest.apache.org/dtd/document-v20.dtd">
+<document>
+  <header>
+    <title>Konfiguration</title>
+  </header>
+  <body>
+    <section id="in-gerneral">
+      <title>Allgemein</title>
+      <p>
+        Jegliche Konfiguration des Ressourcenbuchungssystems findet in der Datei
+        <code>config.inc.php</code> statt. Bei einer neuen Installation existiert
+        diese Datei jedoch noch nicht, nur <code>config.inc.php-dist</code>, 
+        eine Beispielkonfiguration. Sie können diese Datei einfach nach 
+        <code>config.inc.php</code> kopieren und diese dann bearbeiten.
+      </p>
+      <p>
+        <strong>Achtung:</strong><br />
+        Nicht dokumentierte Variabeln haben zur Zeit keine Wirkung, da z.B. 
+        beim <a href="http://de.wikipedia.org/wiki/Abspaltung_(Softwareentwicklung)">Fork</a>
+        von MRBS einige Module, wie z.B. die Authentifizierung über LDAP, 
+        deaktiviert wurden, oder die Variabeln sind nur während der Entwicklung
+        bedeutent und sollten deshalb nicht verändert werden. <strong>Die 
+        deaktivierten Module sind zwar zur Zeit nicht verfügbar, werden aber
+        in nächster Zeit wieder bereitgestellt, da sie manuell auf Sicherheit
+        überprüft werden, sollten Sie eines dieser Module benötigen, so
+        wenden Sie sich bitte an die 
+        <a href="http://groups.google.com/group/schoorbs-general-discussion">Mailingliste</a>,
+        damit diese Modul, wenn möglich, bevorzugt überprüft wird.
+        </strong>
+      </p>
+    </section>
+    <section id="database">
+      <title>Datenbank</title>
+      <p>
+        Der erste Abschnitt der Konfiguration von Schoorbs in der Datei 
+        <code>config.inc.php</code> betrifft die Einstellungen zur Datenbank.
+        Wie schon im Kapitel zur Installation erwähnt, hat man bei Schoorbs nur
+        die Wahl zwischen MySQL und PostgreSQL. Jedoch gibt es für die Nutzung
+        von MySQL zwei unterschiedliche Module, ein Mal das Module 
+        <code>mysqli</code>, welches an sich nur für Syteme mit PHP 5+ und 
+        MySQL 5+ eignet, bei diesen aber sehr empfehlenswert ist. Für alle
+        anderen Systeme mit MySQL sollte man das Modul <code>mysql</code> 
+        nutzen. Für den Zugriff auf PostgreSQL steht nur das Modul
+        <code>pgsql</code> zur Verfügung. Das jeweils passende Modul schreiben
+        Sie als Wert zur Variable <code>$dbsys</code>. In die Variable
+        <code>$db_host</code> tragen sie den Namen des Computers ein, auf welchem
+        der Datenbankserver läuft, bei PostgreSQL können sie diesen Wert auch
+        leer lassen, wenn sie möchten, dass die Verbindung zur Datenbank anstatt
+        über TCP/IP per Unix Socket geschiet. Den Namen der Datenbank tragen
+        Sie bei der Variable <code>$db_database</code> ein. Nutzername und
+        Passwort gehören in die Variabeln <code>$db_login</code> und
+        <code>$db_password</code>. In <code>$db_tbl_prefix</code> tragen Sie
+        den während der Installation gewählten Tabellenpräfix ein, meistens ist
+        dies 'schoorbs_' oder 'mrbs_'. Als letzte Konfigurationsmöglichkeit
+        können Sie wählen, ob Sie peristente Datenbankverbindungen haben wollen.
+        Sie sollten diese jedoch nur nutzen, wenn Sie genau wissen, was Sie tun,
+        ansonsten empfiehlt sich das Deaktivieren von peristenten Verbindungen,
+        welches durch das Setzen von <code>$db_nopersist = 1;</code> bewirkt
+        wird.
+      </p>
+      <p>
+        <strong>Beispielkonfiguration (für eine Verbindung per MySQLi):</strong>
+      </p>
+      <source>$dbsys = "mysqli";
+$db_host = "localhost";
+$db_database = "schoorbs";
+$db_login = 'schoorbs';
+$db_password = 'geheimes_passwort';
+$db_tbl_prefix = "schoorbs_";
+$db_nopersist = 1;</source>
+    </section>
+    <section id="site-id">
+      <title>Seiteninformationen</title>
+      <p>
+        Als sogenannte Seiteninformationen kann man hier nur den Administrations-Kontakt
+        und den Titel der Seite festlegen. Den Namen des Administrators weist 
+        man der Variable <code>$mrbs_admin</code> zu, seine E-Mail trägt man in
+        <code>$mrbs_admin_email</code> ein. Den Titel der Seite legt man in der
+        Variable <code>$mrbs_company</code> fest, dieser Titel kann auch (X)HTML-Tags
+        wie z.b. <code>&lt;a&gt;</code> enthalten.
+      </p> 
+      <p>
+        <strong>Beispielkonfiguration:</strong>
+      </p>
+      <source>$mrbs_admin = "Uwe L. Korn";
+$mrbs_admin_email = "uwelk@xhochy.org";
+$mrbs_company = "Hohenstaufen Gymnasium Kaiserslautern";</source>
+    </section>
+    <section id="calendar">
+      <title>Kalender / Zeiteinheiten</title>
+      <p>
+        Bei Schoorbs gibt es 2 Möglichkeiten die Zeiteinheiten, welche gebucht
+        werden können festzulegen. Auf der einen Seite gibt es die Möglichkeit
+        eine feste Dauer(<code>$resolutuin</code>) in Sekunden anzugeben, die 
+        für jede Einheit gilt. Solche Einheiten kann man zwischen einem 
+        angebenen Tagesstart(<code>$morningstarts</code> (Stunde) und 
+        <code>$morningstarts_minutes</code> (Minuten)) und einem angebenen 
+        Tagesende(<code>$eveningends</code> (Stunde) und 
+        <code>$eveningends_minutes</code> (Minuten)) buchen. Hat man z.B. als 
+        Tagesstart 7:30 angeben, und als Auflösung 1800(-> 1/2 h) gewählt, so
+        kann man jeweils um 7:30, 8:00, 8:30, ... eine Einheit buchen.<br />
+        Möchte man nun aber Zeiteinheiten mit unterschiedlicher Länge bzw.
+        möchte man die Einheit überhaupt nicht über die Zeit, sondern über
+        einen spezifischen Namen bestimmen, so kann man einen Array(<code>$periods</code>)
+        angeben, welche Einheiten verfügbar sein sollen. Um diese Funktion
+        zu nutzen, muss man die Variable <code>$enable_periods</code> auf
+        <code>true</code> setzen.<br />
+        Allgemein gesehen kann man noch auswählen, ob der Wochenbeginn an einem
+        Sonntag(<code>$weekstarts = 0;</code>) oder an einem Montag
+        (<code>$weekstarts = 1;</code>) ist. 
+      </p>
+      <p>
+        <strong>Beispielkonfiguration mit festen Zeiteinheiten:</strong>
+      </p>
+      <source>$enable_periods = false;
+$resolution = 2700;
+$morningstarts = 8;
+$eveningends   = 17;
+$morningstarts_minutes = 0;
+$eveningends_minutes = 0;
+$periods[] = array();
+$weekstarts = 1;</source>
+      <p>
+        <strong>Beispielkonfiguration mit benannten Zeiteinheiten</strong>
+      </p>
+      <source>$enable_periods = true;
+$resolution = 2700;
+$morningstarts = 8;
+$eveningends   = 17;
+$morningstarts_minutes = 0;
+$eveningends_minutes = 0;
+$periods[] = "08:00-08:45";
+$periods[] = "08:45-09:30";
+$periods[] = "09:30-09:45";
+$periods[] = "09:45-10:30";
+$periods[] = "10:30-11:15";
+$periods[] = "11:15-11:30";
+$periods[] = "11:30-12:15";
+$periods[] = "12:15-13:00";
+$periods[] = "13:00-13:15";
+$periods[] = "13:15-14:00";
+$periods[] = "14:00-14:45";
+$periods[] = "14:45-15:30";
+$periods[] = "15:30-16:15";
+$weekstarts = 1;</source>
+    </section>
+    <section id="auth">
+      <title>Authentifizierung</title>
+      <p>
+        Bei der Authentifizierung bei Schoorbs gibt es 2 modulare Bereiche, 
+        'authentication' (Variable: <code>$auth["type"]</code>) und 'session'
+        (Variable: <code>$auth["session"]</code>). 
+      </p>
+      <p>
+        Der Bereich 'session' ist für die
+        Schnittstelle verantwortlich, die vom Benutzer Nutzername und Passwort
+        verlangt und dieses auch über mehrere HTTP-Requests hinweg speichert.
+        Hier stehen die Module 'cookie' (Abfrage des Passworts per HTML-GUI, 
+        speichern des Namens/Passworts in einem Cookie), 'host'(Der DNS-Hostname
+        des Nutzers ist der Nutzername, Passwörter gibt es nicht), 'http' 
+        (Name/Passwort werden über HTTP-Authentication nachgefragt), 'ip'
+        (Die IP des Nutzers ist der Nutzername, Passwörter gibt es nicht), 
+        'php' (Name/Passwort werden per HTML abgefragt, Name/Passwort werden
+        mit PHPs internem Session-Handling abgespeichert) und 'remote_user'
+        (wie 'http', nur hier ist der Webserver für die HTTP-Authentikation
+        zuständig).<br />
+        <strong>Zusatz zu 'http':</strong> Den Titel der HTTP-Authentifikation
+        kann man mit der Variable <code>$auth['realm']</code> setzen.<br />
+        <strong>Zustatz zu 'remote_user':</strong> Man kann einen Link 
+        spezifizieren, auf dem sich Nutzer ausloggen können: 
+        <code>$auth['remote_user']['logout_link']</code><br />
+      </p>
+      <p>
+        Die Überprüfung der Kombination von Nutzername und Passwort wird im
+        Bereich 'authentication' erledigt. Hier existieren 4 Module: 'config'
+        (Die zulässign Name/Passwort-Kombinationen werden in der 
+        <code>config.inc.php</code> fest abgespeichert), 'db' (Name und Passwort
+        werden in der Datenbank abgespeichert), 'ext' (Es wird ein Programm 
+        ausgeführt, welches die Kombination überprüft) und 'none' (Jegliche
+        Kombination von Name/Passwort wird als korrekt angesehen).<br />
+        <strong>Zusatz zu 'config':</strong> Die Name/Passwort-Kombinationen
+        werden im Array <code>$auth["user"]</code> gespeichert, z.b.:
+        <code>$auth["user"]["nutzername1"] = "password1";</code><br />
+        <strong>Zusatz zu 'ext':</strong> Das auszuführende Programm wird in
+        der Variable <code>$auth["prog"]</code> festgelegt, die Parameter für 
+        das Programm in <code>$auth["params"]</code>, wobei bei den Parametern
+        '#PASSWORD#' und '#USERNAME#' jeweils durch die zu überprüfende 
+        Kombination ersetzt wird. 
+      </p>
+      <p>
+        Die beiden Bereiche regeln zwar, wie und wer sich einloggen darf, 
+        jedoch legen sie noch nicht fest, welcher Benutzer Administratorrechte
+        hat. Einem Benutzer kann man Administratorrechte geben in dem man ihm
+        dem Array <code>$auth["admin"]</code> hinzufügt, z.B.:
+        <code>$auth["admin"][] = "nutzername1";</code>.<br />
+        Administratoren können neue Bereiche und Ressourcen erstellen und 
+        Einträge anderer Nutzer bearbeiten.
+      </p>
+      <p>
+        <strong>
+          Beispielkonfiguartion (mit 'session'='php' und 'type'='config'):
+        </strong>
+      </p>
+      <source>
+$auth["session"] = "php"; 
+$auth["type"] = "config"; 
+# The list of administrators (can modify other peoples settings)
+$auth["admin"][] = "nutzername1"; 
+# 'auth_config' user database
+$auth["user"]["nutzername1"] = "password1";
+$auth["user"]["nutzername2"] = "password2";</source>
+    </section>
+    <section id="language">
+      <title>Sprache</title>
+      <p>
+        Zur Sprache sind bei Schoorbs nicht viele Einstellungen notwendig.
+        Normalerweise wird alles per UTF-8 ausgeben, an einigen Stellen besteht
+        jedoch die Möglichkeit dies zu unterlassen, möchte man dies, so 
+        kommentiert man die Zeile <code>$unicode_encoding = 1;</code> aus.
+        Schoorbs versucht die Sprache des Nutzers automatisch zu ermitteln,
+        sollte dies jedoch mal nicht gelingen, so wird auf die Variable
+        <code>$default_language_tokens</code> zurürckgegriffen, welche einen
+        zweistelligen Sprachcode(kleine Buchstaben, z.B.: 'de') enthält.
+        Standardmäßig werden die häufig gestellten Fragen(FAQ) in Englisch
+        angezeigt, es existieren jedoch auch Versionen in Spanisch('_es'),
+        Deutsch('_de') und Französisch('_fr'), möchte man lieber eine dieser
+        Sprachen haben, so muss man die jeweilige Zeichenkette in die Variable
+        <code>$faqfilelang</code> eintragen.
+      </p>
+    </section>
+    <section id="cats">
+      <title>Kategorien</title>
+      <p>
+        Schoorbs bietet die Möglichkeit Buchungen in Kategorien einzuodnen und 
+        sie passend farblich zu hinterlegen. Dazu existieren die Arrayspalten 
+        'A' - 'J' des Arrays $typel. Jeder Buchstabe färbt den jeweiligen 
+        Eintrag anders, die Farbe wird per CSS 
+        (<code>schoorbs-misc/style/style.css</code>) festgelegt. Die Kategorien
+        'external' und 'internal' müssen hierbei jedoch immer erhalten bleiben.
+      </p>
+      <p>
+        <strong>Beispielkategorien (bei schulischer Nutzung):</strong> 
+      </p>
+      <source>$typel["A"] = "Referat";
+$typel["B"] = "normaler Unterricht";
+$typel["C"] = "Kursarbeit";
+# $typel["D"] = "D";
+$typel["E"] = get_vocab("external");
+# $typel["F"] = "F";
+# $typel["G"] = "G";
+# $typel["H"] = "H";
+$typel["I"] = get_vocab("internal");
+# $typel["J"] = "J";</source>
+    </section>
+    <section id="misc">
+      <title>Sontige Einstellungen</title>
+      <p class="pageBreakAfter">
+        Sonstige Konfigurationen sind z.B. die maximale Anzahl an Wiederholungen,
+        die ein regelmäßiger Termin haben kann(<code>$max_rep_entrys</code>). 
+        Weiterhin kann man noch festlegen, ob auch auf der rechten Seite der 
+        Tabelle die Uhrzeiten angezeigt werden sollen, was man durch das Setzen
+        von <code>$times_right_side</code> auf <code>true</code> bzw. 
+        <code>false</code> aktivieren bzw. deaktivieren kann. Mit 
+        <code>$javascript_cursor</code> kann man das farbliche Hervorheben der 
+        Tabellenspalte aktivieren, über die man gerade mit dem Mauszeiger geht, 
+        diese Funktion wäre zwar auch mit CSS implemtierbar, jedoch würde sie
+        dann nicht korrekt von allen Browser dargestellt werden, weshalb hier
+        die Javascript-Variante, die einzig verfügbare ist. Mit 
+        <code>$default_view</code> legt man fest, welche Ansicht normalerweise
+        benutzt wird, wenn der Nutzer im Browser die Index-Seite ansteuert, 
+        mögliche Ansichten sind: Tag('day'), Woche('week') oder Monat('month'). 
+      </p>
+    </section>
+  </body>
+</document>
