@@ -1,0 +1,71 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE document PUBLIC "-//APACHE//DTD Documentation V2.0//EN" "http://forrest.apache.org/dtd/document-v20.dtd">
+<document>
+  <header>
+    <title>Normaler Gebrauch</title>
+  </header>
+  <body>
+    <section id="booking">
+      <title>Buchen einer Ressource</title>
+      <p>
+        Standardmäßig muss man auf das grüne Kreuz klicken um den 
+        „Bestellvorgang“ für eine Resource zu starten. Es ist hierbei jedoch nicht
+        wichtig welchen Termin man auswählt bzw. welche Resource, man muss nur 
+        achten, dass man im richtigen <strong>Bereich</strong> auf das Kreuz 
+        klickt, alle anderen Parameter kann man auf der darauffolgenden Seite 
+        noch ändern.
+      </p>
+      <figure alt="Tabelle zur Raumbuchung" src="images/enduser-doku1.jpg" />
+      <p>
+        Hat man nun darauf geklickt wird man auf die Seite „Eintrag hinzufügen“
+        weitergeleitet. Unter Kurzbeschreibung sollte man das Unterrichtsfach 
+        und die Klassen eintragen. Eine vollständige Beschreibung ist nicht 
+        zwingend nötig, sie ist aber bei Terminen, die von mehreren Lehrern 
+        betreut werden sehr sinnvoll, da man so auch noch direkt relevante 
+        Informationen mitteilen kann. Unter Period gibt man die Starteinheit ein.
+      </p>
+      <figure alt="Tabelle zur Raumbuchung" src="images/enduser-doku2.jpg" />
+      <p>
+        Alles was ich bisher erklärt habe, muss man für alle Termine wissen, 
+        egal ob man sie für ein einziges Mal bucht oder ob sie häufiger 
+        vorkommen. Sollte letzteres der Fall sein, so sind die letzten drei 
+        Zeilen des Formulars interessant. Bei dem „Ende der Wiederholung“ legt 
+        man den letzten Tag fest, an dem nochmals der Termin auftreten dürfte, 
+        die anderen beiden Felder dürften selbsterklärend sein.<br />
+        Nach einen Klick auf Speichern bekommt man entweder den Kalender 
+        angezeigt, inklusive des neu gebuchten Termins oder eine Liste aller 
+        Termine, die mit dem Termin in Konflikt liegen, den man buchen wollte.
+      </p>
+    </section>
+    <section id="change">
+      <title>Ändern einer Buchung</title>
+      <p>
+        Sollte man eine Buchung doch nicht benötigen, kann man diese, sofern 
+        sie nicht in der Vergangenheit liegt, wieder abbestellen. Hierzu klickt 
+        man in der Kalenderübersicht einfach auf den Termin. Am unteren Ende 
+        der Informationen zu diesem Termin gibt es einen Link „Eintrag löschen“. 
+        Dieser löscht nur diesen Eintrag, egal ob es ein einzelner ist oder ob 
+        er zu einer wiederholenden Veranstaltung gehört. Sollte es eine 
+        wiederholende Veranstaltung sein, hat man auch noch die Möglichkeit auf 
+        den Link „Alle Einträge löschen“ zu klicken, was dann alle Einträge 
+        dieser Veranstaltung löschen würde. Zur Sicherheit macht Schoorbs aber 
+        vor jedem Löschen noch eine Ja/Nein-Abfrage per Javascript, bei der man
+        nicht direkt auf 'Ja' klicken sollte, sondern erst noch mal nachdenken
+        sollte, ob dieser Termin wirklich gelöscht werden soll, diese Aktion
+        ist <strong>nicht umkehrbar!</strong> 
+      </p>
+      <p class="pageBreakAfter">
+        Hat man beim Bestellen einen Fehler gemacht und möchte den Termin nicht 
+        erst löschen und dann wieder neu eingeben, kann man auf der 
+        Übersichtsseite des Termin auf „Eintrag ändern“ klicken und man kann 
+        dann dort alles wieder neu einstellen, genauso als würde man einen 
+        neuen Eintrag hinzufügen.
+      </p>
+    </section>
+    <p>
+      <a rel="license" href="http://creativecommons.org/licenses/by-sa/3.0/">
+        <img alt="Creative Commons License" style="border-width:0" src="http://i.creativecommons.org/l/by-sa/3.0/80x15.png" />
+      </a>
+    </p>
+  </body>
+</document>
