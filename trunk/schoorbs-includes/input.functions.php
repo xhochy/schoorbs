@@ -12,8 +12,6 @@
 
 /** The Configuration file */
 require_once dirname(__FILE__).'/../config.inc.php';
-/** The general functions */ 
-require_once 'global.functions.php';
 /** The database wrapper */
 require_once "database/$dbsys.php";
 
