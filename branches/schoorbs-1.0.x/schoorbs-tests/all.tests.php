@@ -34,6 +34,9 @@ require_once dirname(__FILE__).'/../config.inc.php';
 require_once 'configuration.helper.php';
 /** The Configuration for the Tests */
 require_once 'test.configuration.php';
+/** The general functions */ 
+require_once dirname(__FILE__).'/../schoorbs-includes/global.functions.php';
+
 
 /** Override session module, since some of them are not yet suitable for the unittests */
 $auth['session'] = 'http';
