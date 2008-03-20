@@ -44,6 +44,7 @@ See http://forrest.apache.org/docs/linking.html for more info
     <config label="Konfiguration" href="config.html" />
     <usage label="Normaler Gebrauch" href="usage.html" />
     <admin label="Administration" href="admin.html" />
+    <logging label="Logging" href="logging.html" />
   </endnutzer>
   <all label="All">
     <whole_site_html label="Whole Site HTML" href="wholesite.html"/>
