@@ -47,7 +47,7 @@ function print_header()
 {
 	global $mrbs_company, $search_str, $locale_warning, $pview;
 	global $smarty, $unicode_encoding, $vocab, $unicode_encoding;
-
+	
     list($day, $month, $year) = input_DayMonthYear();
     $area = input_Area();
 	if (empty($search_str)) $search_str = '';
