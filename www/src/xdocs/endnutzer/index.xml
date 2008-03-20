@@ -2,53 +2,55 @@
 <!DOCTYPE document PUBLIC "-//APACHE//DTD Documentation V2.0//EN" "http://forrest.apache.org/dtd/document-v20.dtd">
 <document>
   <header>
-    <title>Enduser documentation for Schoorbs</title>
+    <title>Endnutzer Dokumentation für Schoorbs</title>
   </header>
   <body>
     <section id="download">
-      <title>Where to download</title>
+      <title>Wo kann man es herunterladen?</title>
       <p>
-        At the moment there's no stable release of Schoorbs, but if you're interested in what's
-        coming you can check out the alpha-version. At the moment the latest version is "Schoorbs
-        1.0 Alpha 2". You can download it at <a href="http://code.google.com/p/schoorbs/downloads/list?can=2&amp;amp;q=Schoorbs+1.0+Alpha+2&amp;amp;colspec=Filename+Summary+Uploaded+Size+DownloadCount">
-        Google Code</a>:
+        Sie finden auf der <a href="http://schoorbs.xhochy.com/releases.html">Release</a>-Seite
+        immer die aktuellste Version zum Download. Zum täglichen Nutzen sollte
+        man die stabile(eng. stable) Ausgabe herunterladen, da diese ausgiebig
+        getestet wurde und auch möglichst schnell aktualisiert wird, wenn ein
+        Fehler gefunden wurde. Möchten Sie jedoch die Features zukünftiger
+        Schoorbs-Versionen ausprobieren, können Sie eine experimentelle Version
+        herunterladen, diese sollte jedoch keinesfalls(!) für produktive
+        Zwecke genutzt werden, da sie viele noch unbekannte Fehler beinhalten 
+        kann, da sie noch nicht ausreichend gut getestet wurde.
       </p>
-      <ul>
-        <li>
-          <a href="http://code.google.com/p/schoorbs/downloads/detail?name=schoorbs-1.0-alpha2.7z">schoorbs-1.0-alpha2.7z</a>
-        </li>
-        <li>
-          <a href="http://code.google.com/p/schoorbs/downloads/detail?name=schoorbs-1.0-alpha2.zip">schoorbs-1.0-alpha2.zip</a>
-        </li>
-      </ul>
     </section>
 
     <section id="help">
-      <title>Where to get help with problems</title>
+      <title>Wo bekommt man bei Problemen Hilfe?</title>
       <p>
-        If you get problems with Schoorbs (maybe while installing), it is the best to sent a mail to 
-        <a href="http://groups.google.com/group/schoorbs-general-discussion">the Schoorbs mailinglist</a>.
+        Wenn Sie Probleme oder Fragen bezüglich Schoorbs haben, aber auf dieser
+        Seite keine Hilfe finden, so wenden sie sich am Besten an unsere 
+        <a href="http://groups.google.com/group/schoorbs-general-discussion">Mailingliste</a>.
+        Standardmäßig sollte hier die Kommunikation auf Englisch erfolgen, fehlen 
+        Ihnen jedoch wichtige sprachliche Kenntnisse, können sie ruhig auch eine
+        E-Mail auf Deutsch schicken, da einige der Entwickler(auch der 
+        Projektinitiator) Deutsche sind bzw. Deutsch können.
       </p>
       <p>
-        If your problem is (or could be) a bug in Schoorbs, you should report it at our 
-        <a href="http://code.google.com/p/schoorbs/issues/list">Issuse Tracker @ Google Code</a>
-        <strong>too</strong>.
+        Finden Sie einen Fehler in Schoorbs, so melden Sie dies am Besten 
+        <strong>auch</strong> im
+        <a href="http://code.google.com/p/schoorbs/issues/list">Issuse Tracker @ Google Code</a>.
       </p>
     </section>
 
     <section id="license">
-      <title>License</title>
+      <title>Lizenz</title>
       <p>
-        While Schoorbs is licensed under the GPL, the end-user documentation is licensed under the 
-        "Creative Commons Attribution-ShareAlike 3.0 Unported"-license, which is not a strict 
-        copyleft license, but is more permissive than the GPL and it isn't a license that was made
-        for software cases only. All documentation included in the code of Schoorbs such as the
-        API-docs are licensed under the GPL. Some parts of the documentation maybe stripped out of
-        the INSTALL, README ... files of MRBS the pages containing those texts do not have a 
-        CC-BY-SA-logo at the button and are licensed under the GPL. We want to replace all of the
-        GPL-documentation because a single license for the whole end-user documentation is more 
-        user-friendly and the old MRBS documentation could be already outdated, we just keep it, 
-        to not have undocumented parts of software.
+        Während Schoorbs unter der GPLv2 lizensiert ist, ist die 
+        Endnutzerdokumentation unter der "Creative Commons Attribution-ShareAlike 
+        3.0 Unported"-Lizenz verfügbar, welche zwar nicht so frei wie die GPL
+        ist, jedoch den "Weitergebern" an anderer Stelle mehr Möglichkeiten gibt.
+        Normalerweise wird durch den CC-BY-SA Button am Ende der Seite angezeigt,
+        dass dieser Text unter CC-BY-SA-3.0-Lizenz steht, fehlt diese Button
+        jedoch und es wurde auf dieser Seite keine weitere Angabe zur Lizenz 
+        gemacht, so sollten Sie am Besten auf der Mailingliste eine kleine
+        Aufforderung schreiben, die Lizenz für die jeweiligen Seite 
+        klarzustellen.
       </p>
     </section>
 
