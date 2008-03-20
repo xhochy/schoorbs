@@ -1,0 +1,116 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE document PUBLIC "-//APACHE//DTD Documentation V2.0//EN" "http://forrest.apache.org/dtd/document-v20.dtd">
+<document>
+  <header>
+    <title>Installation</title>
+  </header>
+  <body>
+    <section id="requirements">
+      <title>Vorraussetzungen</title>
+      <p>
+        Im Gegensatz zur aktiven Entwicklung an Schoorbs, braucht man zur
+        normalen Nutzung kaum Zusatzsoftware. Folgende Komponenten sollten
+        zum Betrieb genügen:
+      </p>
+      <ul>
+        <li>
+          Ein moderner Webserver, bei der Entwicklung wurde hauptsächlich
+          der Apache HTTP Server 2.2 eingestetzt, jedoch sollte Schoorbs
+          ohne Probleme auch auf alternativen Webservern wie Lighty laufen.
+        </li>
+        <li>
+          PHP >= 4.3 als Servermodul(SAPI) oder per Fast(CGI)
+        </li>
+        <li>
+          Als Datenbank kann PosgtreSQL >= 7.x oder MySQL >= 4.x genutzt werden,
+          die jeweiligen PHP-Module zur Datenbank müssen auch installiert sein.
+        </li>
+      </ul>
+    </section>
+    <section id="long">
+      <title>Installationsanleitung</title>
+      <p>
+        <!-- Dateien -->
+        Beim Einsatz von Schoorbs sollte man die jeweils neueste Version
+        benutzen, da in dieser die meisten bekannten Fehler schon korrigiert
+        sind. Auf <a href="http://schoorbs.xhochy.com/">schoorbs.xhochy.com</a>
+        ist diese immer verlinkt, sie wird in 2 Editionen bereitgestellt, ein
+        Mal als Zip-Archiv und ein Mal als 7z-Archiv. Beide Archive enthalten
+        die gleichen Dateien, jedoch ist das Zip-Archiv deutlich größer, 
+        wobei aber auf nahezu jedem Computer heutzutage ein Programm zum 
+        Entpacken von Zip-Acrhiven vorhanden ist. Viele Nutzer haben dagegen
+        aber oftmals kein Programm installiert, um das deutlich kleinere 
+        7z-Archiv zu entpacken.<br />
+        Das jeweils gewählte Archiv sollte man nun in einem Verzeichnis
+        entpacken, auf welches der Webserver zugreifen kann, wie Sie dies
+        jeweils bei Ihrem Webserver einstellen, lesen Sie in dessen Dokumentation
+        nach. Zu beachten ist hierbei noch, dass die PHP-Dateien nicht direkt
+        ausgeliefert werden sollen, sondern zuerst noch von einem PHP-Interpreter
+        ausgewertet werden müssen, weil sonst der Nutzer anstatt der erwarteten
+        HTML-Seite nur den Quelltext der jeweiligen PHP-Datei zu sehen bekommt.
+      </p>
+      <p>
+        <!-- Installation Datenbank -->
+        Bei Schoorbs werden die gesamten Daten(z.B. Buchungen) in einer 
+        Datenbank gespeichert. Als mögliche Datenbanksoftware wird zur Zeit nur
+        MySQL oder PostgreSQL unterstützt. Da beide Systeme bei der 
+        Konfiguration und Installation der Tabellen gößtenteils unterschiedlich 
+        sind, sind für beide im Folgenden separate Anleitungen vorhanden. Im 
+        Verzeichnis <code>schoorbs-misc/install-sql</code> finden sich für beide
+        Datenbanksysteme SQL-Scripte, die bei der Installation hilfreich sind
+        und im nachfolgenden Absatz benutzt werden.
+      </p>
+      <p>        
+        <!-- Installation MySQL -->
+        <strong>datenbankbezogene Installation bei MySQL:</strong>
+      </p>
+      <p>
+        Um möglichst wenig Zusatzsoftware vorrauszusetzen, zeige ich die
+        Installation des MySQL-bezogenen Teils mit Hilfe der 
+        Kommandozeilenprogramme, welche direkt mit MySQL zusammen ausgeliefert
+        werden. Als Basis muss ein Datenbank-Nutzer existieren, der Schreibszugriff 
+        auf die Datenbank hat, in der die Tabellen für Schoorbs angelegt werden 
+        sollen. Es gibt zur Installation 2 vorgefertigte SQL-Scripte, 
+        <code>tables.my.sql</code> und <code>tables-legacy.my.sql</code>, 
+        ersteres erstellt dabei Datenbank-Tabellen für Schoorbs mit dem Präfix
+        'schoorbs_', die legacy-Variante hingegen erzeugt Tabllen mit dem 
+        Präfix 'mrbs_'. Möchte man einen anderen Präfix für die Tabellen haben,
+        so muss man eine dieser beiden Dateien manuell bearbeiten.<br />
+        Hat man sich nun für einen Präfix entschieden, kann man die Tabellen
+        in der Datenbank mit folgenden Kommandozeilenaufruf erzeugen:
+      </p>
+      <p>
+        <code>mysql -u &lt;Nutzer&gt; -p &lt;Datenbank&gt; &lt; tables.my.sql</code>
+      </p>
+      <p>  
+        <!-- Installation PostgreSQL -->
+        <strong>datenbankbezogene Installation bei PostgreSQL:</strong>
+      </p>
+      <p>
+        Möchte man PostreSQL benutzten, so muss man die Version der Software 
+        beachten. Da sich bei Version 7.3 einige Funktionen geändert haben, 
+        gibt es für diese und neuere Versionen separate SQL-Scripte zur 
+        Installation. Sie bekommen ihre aktuelle PostgreSQL-Version per
+        folgendem Kommando angezeigt:
+      </p>
+      <p>
+        <code>psql -V</code>
+      </p>
+      <p>
+        Abhängig von der vorhanden Version gibt es die SQL-Scripte
+        <code>tables.pg.73and_above.sql</code> und 
+        <code>tables-legacy.pg.73and_above.sql</code> bzw. 
+        <code>tables.pg.sql</code> und <code>tables-legacy.sql</code>. Die
+        ersten beiden Scripte sind angepasst für die Verwendung bei den neueren
+        PostgreSQL-Versionen. Die Scripte mit dem Zusatz 'legacy' erzeugen 
+        Tabellen mit dem Präfix 'mrbs_', die anderen beiden mit 'schoorbs_'.
+        Möchte man Tabellen mit einem alternativen Präfix, so muss man ein 
+        Script manuell bearbeiten. Zum Erzeugen der Tabellen in der Datenbank
+        reicht das Ausführen des folgenden Befehls auf der Kommandozeile:
+      </p>
+      <p class="pageBreakAfter">
+        <code>psql -a -f tables.pg.sql &lt;Datenbank&gt;</code>
+      </p>
+    </section>
+  </body>
+</document>
