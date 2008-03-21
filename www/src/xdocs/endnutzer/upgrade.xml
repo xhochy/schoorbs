@@ -1,0 +1,63 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE document PUBLIC "-//APACHE//DTD Documentation V2.0//EN" "http://forrest.apache.org/dtd/document-v20.dtd">
+<document>
+  <header>
+    <title>Upgrade von MRBS 1.2.x</title>
+  </header>
+  <body>
+    <section id="upgrade-mrbs">
+      <title>Upgrade von MRBS 1.2.x</title>
+      <p>
+        Sollten sie bereits eine alte MRBS Installation haben, sollten Sie zu 
+        erst ein Backup Ihrer alten Dateien(vor allem config.inc.php) und Ihrer 
+        Datenbank machen. Wenn Sie das Schoorbs Paket heruntergeladen haben, 
+        sollten Sie es an einer Stelle entpacken, wo ihr Webserver darauf 
+        zugreifen kann. Kopieren Sie danach die alte config.inc.php in das 
+        neue Schoorbs-Verzeichnis. Bereits nun sollten Sie eine laufende
+        Schoorbs-Version haben.
+      </p>
+      <p>
+        <strong>Beispiel-Upgrade-Vorgang von MRBS 1.2.x (getestet mit 1.2.6 und 
+        1.2.5) unter einem Linux/Unix System:</strong>
+      </p>
+      <p>
+        Als erstes machen wir ein Backup der alten MRBS installation in ein 
+        tar.gz-Archiv:
+        <code>$ tar zcf mrbs-backup.tar.gz mrbs/</code><br /><br />
+        Nun fertigen wir noch ein Backup der Datenbank an, entweder MySQL
+        oder PostgreSQL:<br />
+        <code>$ mysqldump mrbs --password=.... --user=mrbs --host=localhost > mrbs.sql</code>
+        oder
+        <code>$ pg_dump mrbs  > mbrs.sql</code><br /><br />
+        Nun, nachdem alle Daten gebackupped wurden, laden wir eine neue Version
+        von Schoorbs herunter und entpacken sie in dem selben Verzeichnis, wo
+        sich auch mrbs/ befindet. Z.B. wenn wir ein 7z-Archiv heruntergeladen
+        haben, entpacken wir es mit<br />
+        <code>$ 7zr x schoorbs.7z</code><br />
+        Nachdem das Archiv entpackt wurde, haben nun einen neuen Ordner names
+        schoorbs. In diesen Ordner kopieren wird die alte config.inc.php, um die
+        Einstellungen der alten MRBS Installation zu nutzen. Da sich die 
+        Datenbankstruktur von MRBS zu Schoorbs nicht geändert hat, muss dort 
+        auch keine Veränderung mehr vorgenommen werden.<br />
+        <code>$ cp mrbs/config.inc.php schoorbs/</code><br /><br />
+        Wir haben nun eine neue, laufende Schoorbs Installation, aber an einer
+        anderen Position, wie die vorherige MRBS Installation. Damit man Schoorbs
+        auch über die URL von MRBS erreicht, löschen wir zu erst das 
+        MRBS-Verzeichnis, von welchem wir ein Backup haben und erstellen dann 
+        einen symbolischen Link von mrbs nach schoorbs/:<br />
+        <code>$ rm -rf mrbs/</code><br />
+        <code>$ ln -s mrbs schoorbs/</code><br /><br />
+        Das Raum &amp; Resourcenbuchungsysstem ist nun auf Schoorbs aktualisiert, 
+        möchten Sie die neunen Features von Schoorbs nutzten, z.B. das Logging,
+        so können Sie diese nun konfigurieren.
+      </p>
+    </section>
+
+    <p>
+      <a rel="license" href="http://creativecommons.org/licenses/by-sa/3.0/">
+        <img alt="Creative Commons License" style="border-width:0" src="http://i.creativecommons.org/l/by-sa/3.0/80x15.png" />
+      </a>
+    </p>
+
+  </body>
+</document>
