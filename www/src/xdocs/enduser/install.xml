@@ -5,267 +5,109 @@
     <title>Installation</title>
   </header>
   <body>
-
-    <section id="prerequests">
+    <section id="requirements">
       <title>Prerequests</title>
-      <table>
-        <tr>
-          <th>Component</th>
-          <th>Version</th>
-        </tr>
-        <tr>
-          <td>Apache HTTPD (+ mod_rewrite for REST-Interface)</td>
-          <td>all should work</td>
-        </tr>
-        <tr>
-          <td>PHP as Apache module</td>
-          <td>4.3.x/4.4.x/5.x</td>
-        </tr>
-        <tr>
-          <td>MySQL or PostgreSQL</td>
-          <td>4.x/5.x(My) or 7.x/8.x(Postgre)</td>
-        </tr>
-      </table>
-    </section>
-
-    <section id="freshinstall">
-      <title>Fresh Installation</title>
       <p>
-        For a new, fresh installation we need to download a 7z-/Zip-archive of Schoorbs. To make 
-        Schoorbs accessible from the web we need to extract the archive into a directory, which the
-        webserver can access. In the most common cases on Linux, you use /var/www.<br />
-        <code>$ cd /var/www</code><br />
-        <code>$ 7zr x schoorbs.7z</code>
-        or
-        <code>$ unzip schoorbs.zip</code><br /><br />
-        After we have extract all the files, we need to copy config.inc.php-dist to config.inc.php
-        we will later set all configuration options. <br />
-        <code>$ cd schoorbs</code><br />
-        <code>$ cp config.inc.php-dist config.inc.php</code><br /><br />
-        Now all files need for Schoorbs are in the right place and should be accessbile by the 
-        wevserver, for the storage of the data of the bookings and available rooms, we need to
-        setup the database.
-      </p>
-    </section>
-
-    <section id="database">
-      <title>Database setup</title>
-      <p>
-        If you're making a new installation of Schoorbs, you have to generate the database 
-        environment for it. There are some differences between MySQL and PostgreSQL which are
-        explained in the following paragraphs.
-      </p>
-      <section id="database-mysql">
-        <title>MySQL</title>
-        <p>
-          First, we connect to the database as root, if you have set a password for root, you need to
-          the option --password at the end of this command.<br />  
-          <code>$ mysql --user=root mysql</code><br /><br />
-
-          If you do not already have a database were we could create the tables for schoorbs, then we
-          need to create one, we name it schoorbs in this example.<br />
-          <code>mysql&gt; CREATE DATABASE schoorbs;</code><br /><br />
-
-          For access to the database we need a valid combination of username and password, in the best 
-          (most secure) case, it just has access to the database in which we store the data for 
-          Schoorbs. If already one exists, skip this step.<br />
-          <code>mysql&gt; GRANT ALL PRIVILEGES ON schoorbs.* TO 'schoorbs'@'localhost' IDENTIFIED BY 'test';</code> 
-          generates a user schoorbs with password test and full access to the database schoorbs.<br /><br /> 
-        
-          In the next step we need to create the tables. With the given file 
-          <a href="tables.my.sql">tables.my.sql</a> you create all the needed tables with the prefix
-          'schoorbs_', if you want another prefix, you have to change it at each command. For legacy/
-          backward-compability-cases, it's a <a href="tables-legacy.my.sql">tables-legacy.my.sql</a>
-          available, where all commands start with 'mrbs_'. The following command should execute the 
-          sql-commands from the file in the file: <br />
-          <code>$ mysql schoorbs --user=schoorbs --password=test &lt; tables.my.sql</code>
-        </p>
-      </section>
-      <section id="database-postgresql">
-        <title>PostgreSQL</title>
-        <p>
-          For the installation tasks related to PostgreSQL, we must me loged in as the user postgres.<br />
-          <code>$ sudo su - postgres</code><br /><br />
-          If you do not have a user, except the administration-account, that could be used to access
-          the database(which we might need to create later on) for Schoorbs, we need to create a new 
-          one. With the following command we create a user that has no super-rights (-S option) neither
-          is allowed to create databases (-D) or roles (-R), but is able to log in (-l). PostgreSQL
-          should prompt for a password (-P) and save it encrypted (-E) in the database.<br /> 
-          <code>$ createuser -S -D -R -l -P -E  schoorbs</code><br /><br /> 
-          If there isn't already a database for schoorbs available, we create a new, utf-8 encoded
-          database, that belongs to the user schoorbs and is named schoorbs too.<br />
-          <code>$ createdb --owner=schoorbs --encoding=utf-8 schoorbs</code><br /><br />
-          In opposite to MySQL where we have one SQL-file for all versions, with PostgreSQL, we have 
-          to seperate between the server-versions before 7.3 and 7.3+. For the old school database 
-          users we have <a href="tables.pg.sql">tables.pg.sql</a> with 'schoorbs_' as the command 
-          prefix, for legacy cases there is a <a href="tables-legacy.pg.sql">tables-legacy.pg.sql</a>
-          with 'mrbs_'-prefix available too. The modern 7.3+ users should use 
-          <a href="tables.pg.73and_above.sql">tables.pg.73and_above.sql</a>('schoorbs_')
-          or <a href="tables-legacy.pg.73and_above.sql">tables-legacy.pg.73and_above.sql</a>
-          ('mrbs_'), because there are some differences in the SQL-syntax between those generations.
-          You can apply those SQL-commands to your database with<br />
-          <code>$ psql -a -f tables.pg.sql schoorbs</code>
-        </p>
-      </section>
-      <section id="database-schoorbs-config">
-        <title>Databaseconfiguration in Schoorbs</title>
-        <p>
-          After we have done the above steps we should have a working database structure, but Schoorbs
-          still doesn't know how to access it. Everything of the database configuration is done in the
-          head of config.inc.php. Before telling anything connection settings to the software, we need
-          to define which database driver to use. If you use PostgreSQL, you have to use the 
-          'psql'-driver. Users of MySQL as database system have choice between the 'mysql' and the 
-          'mysql<strong>i</strong>'-driver. If you're using PHP 4, you must use the 'mysql'-driver 
-          because the 'mysqli'-driver is only available for PHP 5 or newer. For users of newer PHP
-          versions it is recommended to use the 'mysqli'-driver because  it is optimized to work better
-          with newer versions of PHP and MySQL, but it might be not as stable as the 'mysql'-driver.<br />
-          <strong>PostgreSQL</strong><br />
-          <code>$dbsys = 'psql';</code><br />
-          <strong>MySQL (PHP 4 + 5)</strong><br />
-          <code>$dbsys = 'mysql';</code><br />
-          <strong>MySQL (PHP 5+)</strong><br />
-          <code>$dbsys = 'mysqli';</code><br /><br />
-        </p> 
-        <p>
-          With <code>$db_host</code> we tell Schoorbs where the database server is running, in most cases
-          'localhost' is the best choice. In <code>$db_database</code> we set the database where the tables
-          are stored, the table prefix is defined in <code>$db_tbl_prefix</code>, which is commonly 'mrbs_' 
-          or 'schoorbs_'. <code>$db_login</code> and <code>$db_password</code> are the places to store the 
-          authentication details. If you do not want to use peristent (pooled) connection, you have to set 
-          <code>$db_nopersist</code> to true, (Attention: you should only use this feature, if you really 
-          know what you are doing.) An example configuration could be:<br />
-          <code>$db_host = 'localhost';</code><br />
-          <code>$db_database = 'schoorbs';</code><br />
-          <code>$db_tbl_prefix = 'schoorbs_';</code><br />
-          <code>$db_login = 'schoorbs';</code><br />
-          <code>$db_password = 'test';</code><br />
-          <code>$db_noperistent = true;</code>
-        </p>
-      </section> 
-    </section>
-
-    <section id="calendar-setup">
-      <title>Calendar settings</title>
-      <p>
-        In Schoorbs there are two ways to setup the calendar, the first one is the clock-based. It lets you
-        define when the days starts and when it ends. In this timespan, it is always possible to book the 
-        room/resource but only in fixed timespan, e.g. all 45 minutes. The other way is the period-based.
-        Here you define timespans by giving them a name rather than setting up a fixed time unit, these
-        names could be times too, but they all will be handled as strings. You choose your favourite system
-        by setting <code>$enable_periods</code> either to true or to false.  
-      </p>
-
-      <section id="period-calendar">
-        <title>Setting up a period-based calendar</title>
-        <p>
-           Creating a period-based calendar is very simple. You just define in the configurationfile how
-           your timespand are named and add them to the the <code>$period</code>-array. E.g.:
-        </p>
-        <p>
-          <code>$periods[] = "08:00-08:45";</code>
-        </p>
-      </section>
-
-      <section id="clock-calendar">
-        <title>Setting up a clock-based calendar</title>
-        <p>
-          A clock-based calendar may not be as simple as a period-based calendar, but it could save 
-          you the work of naming each time unit. At first we have to define in <code>$resolution</code>
-          how long a timespan is, the length is defined in seconds, so a time unit of half an hour 
-          would be <code>$resolution = 1800;</code>. With <code>$morningstarts</code> you set the 
-          hour when a day starts, with <code>$morningstarts_minutes</code> you do it with the minutes.
-          <code>$eveningends</code> and <code>$eveningends_minutes</code> do the same for the end of 
-          the day. For people who care about the beginning of the week, could set this with 
-          <code>$weekstarts</code> either to sunday(set to 0) or monday(set to 1). In some countries
-          it is common to have the da in front of the month, in others there's the month in front of 
-          the day. Schoorbs takes care of this difference with <code>$dateformat</code>, with a value
-          of '0' the month is in front, with 1 it's the day. Another difference is the hour format, 
-          mostly english contries have 1-12pm/am, the others have 0-23/24, for the first case you
-          have to set <code>$twentyfourhour_format</code> to 0, for the other case to 1.   
-        </p>
-      </section>
-    </section>
-
-    <section id="auth">
-      <title>Authentication</title>
-      <p>
-        For installation instructions concerning authentication, please read the special page about
-        it.
-      </p>
-    </section>
-
-    <section id="misc-setup">
-      <title>Miscellaneous settings</title>
-      <p>
-        Excluding the site identification settings there are a lot more simple settings. In the 
-        configuration file, they are all metioned by small comment each.<br />
-        These settings control:
+        In opposite to the active development on Schoorbs, for the normal usage
+        you only need few dependencies. The following software should be 
+        sufficent:
       </p>
       <ul>
         <li>
-          the maximum number of repeat entries which can be created at once (a safety feature)
+          A modern HTTP server, e.g. Apache or Lighty
         </li>
         <li>
-          the default report time period
+          PHP >= 4.3 as servermodul(SAPI) or via Fast(CGI)
         </li>
         <li>
-          the number of search results to return per page
-        </li>
-        <li>
-         the page refresh rate
-        </li>
-        <li>
-          the way area/rooms are selected (html list or a drop-down select box)
-        </li>
-        <li>
-          the way entries are displayed in monthly view (start/end slot, brief description or both)
-        </li>
-        <li>
-          the way weeks are displayed in the bottom of the page (as week numbers (ie.
-          42) instead of 'first day of the week' (13 Oct))
-        </li>
-        <li>
-          display of times on right and left side in day and week view
-        </li>
-        <li>
-          display of horizontal stripes on the day view
-        </li>
-        <li>
-          cells highlighting options
-        </li>
-        <li>
-          the default starting view (month, week or day)
-        </li>
-        <li>
-          the default room to start with
+          Considering the database, we support at the moment PosgtreSQL >= 7.x 
+          and MySQL >= 4.x. The fitting PHP-module for the database must be
+          installed too.
         </li>
       </ul>
-      <section id="site-id-setup">
-        <title>Site identification information</title>
-        <p>
-          With the variables <code>$mrbs_admin</code> and <code>$mrbs_admin_email</code> you define who your 
-          administration contact is and under which mail he is contactable. This information is shown on the
-          help-page. If you want to change the branding in the left top, you have to edit <code>$mrbs_company</code>.
-          Please take special care of this variable, because the content of it is send directly to the user, which
-          makes it possible to insert (X)HTML-Code in it. When Schoorbs is running behind a proxy, it sometimes
-          may happen that the URLs are broken, to override the used URL-base you just need to set <code>$url_base</code>
-          to a valid adress. 
-        </p>
-      </section>
-      <section id="mail">
-        <title>E-Mail support</title>
-        <p>
-          At the moment mail support is not considered as stable since we had to switch to a other 
-          mail-protocol-wrapper library through legal issues.  For experimental/hopeful users, please
-          refer to our copy of the old MRBS documentation (the mail-wrapper is still backwards compatible). 
-        </p>
-      </section>
+    </section>
+    <section id="long">
+      <title>How to install</title>
+      <p>
+        If you use Schoorbs, you should always take care that your running
+        version is up to date, because only the latest version has the most 
+        security because nearly all known bugs are fixed in it, you should check
+        periodically if there is a new one. The latest Schoorbs version could
+        always be found on <a href="http://schoorbs.xhochy.com/">schoorbs.xhochy.com</a>,
+        where it is provided in 2 versions, a ZIP-archive and a 7z-archive.
+        Both include the same files, but the 7z-archive is due the higher 
+        compression rate of the LZMA algorithm a lot smaller. Although 7z
+        offers better compression, not on every computer there is are program
+        which could extract them, so you could alternatetivly download the 
+        ZIP-archive.<br />
+        The choosen archive should be extracted in a directory which could be
+        accessed by the webserver. 
+      </p>
+      <p>
+        <!-- Installation Datenbank -->
+        Schoorbs saves all his data(e.g. meetings) in a database. At the moment
+        only MySQL and PostgreSQL are supported. Since those two systems differ
+        in the way how you create the initial database structure, in the 
+        following I will provide seperate explanations for both.
+        You can find in the directory <code>schoorbs-misc/install-sql</code> for
+        both database systems SQL-scripts that will help you during the process.
+        Those scripts will be used and explained in the next paragraphs.
+      </p>
+      <p>        
+        <!-- Installation MySQL -->
+        <strong>MySQL based database installation:</strong>
+      </p>
+      <p>
+        To require no additional software, I will explain the MySQL based way
+        using the command line utilities that ship with MySQL. As a prerequest
+        there must exist a database user who has write permissions to the 
+        database in which Schoorbs should store its data. There are 2 prewritten
+        scripts for MySQL available: <code>tables.my.sql</code> and 
+        <code>tables-legacy.my.sql</code>. The first one create database tables
+        with the prefix 'schoorbs_', the second one creates legacy tables with
+        the prefix 'mrbs_'. If you want an other prefix for your tables, you 
+        have to edit one of this files and replace all occurences of 'schoorbs_'
+        or 'mrbs_' with your own prefix.<br />
+        After you have decided which prefiy you want to use, you insert the table 
+        structure with the following command line into the database:
+      </p>
+      <p>
+        <code>mysql -u &lt;User&gt; -p &lt;Database&gt; &lt; tables.my.sql</code>
+      </p>
+      <p>  
+        <!-- Installation PostgreSQL -->
+        <strong>PostgreSQL based database installation:</strong>
+      </p>
+      <p>
+        If you want to use PostgreSQL, you have to take care which version, you
+        are using since there have been some significant changes, that require 
+        to other table creation code for newer versions(>= 7.3). You can check 
+        your PostgreSQL version with:
+      </p>
+      <p>
+        <code>psql -V</code>
+      </p>
+      <p>
+        Depending on your version of PostgreSQL there exist the SQL-scripts
+        <code>tables.pg.73and_above.sql</code> and 
+        <code>tables-legacy.pg.73and_above.sql</code> or 
+        <code>tables.pg.sql</code> and <code>tables-legacy.sql</code>. 
+        The first two apply for the PostgreSQL versions 7.3 and following, the 
+        other two for older versions. The scripts with 'legacy' in their name
+        create tables with the prefix 'mrbs_', the other ones with 'schoorbs_'.
+        If you want to have an other prefix you have to edit one of those files
+        manually.<br />
+        After you have decided which prefiy you want to use, you insert the table 
+        structure with the following command line into the database:
+      </p>
+      <p class="pageBreakAfter">
+        <code>psql -a -f tables.pg.sql &lt;Database&gt;</code>
+      </p>
     </section>
     <p>
       <a rel="license" href="http://creativecommons.org/licenses/by-sa/3.0/">
         <img alt="Creative Commons License" style="border-width:0" src="http://i.creativecommons.org/l/by-sa/3.0/80x15.png" />
       </a>
     </p>
-
   </body>
 </document>
