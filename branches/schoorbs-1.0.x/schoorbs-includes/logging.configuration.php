@@ -15,7 +15,7 @@ if (!isset($_SCHOORBS)) $_SCHOORBS = array();
 
 /** Configuration of the logging system */
 $_SCHOORBS['logging'] = array(
-    'active' => true,
+    'active' => false,
 	'backend' => 'syslog',
 	'syslog-priority' => LOG_INFO,
 	'syslog-facility' => LOG_USER
