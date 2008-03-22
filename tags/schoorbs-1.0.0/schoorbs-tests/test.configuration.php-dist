@@ -1,0 +1,26 @@
+<?php
+/**
+ * Configuration of the testing system
+ * 
+ * @author Uwe L. Korn <uwelk@xhochy.org>
+ * @package Schoorbs-Test
+ * @license http://www.gnu.org/licenses/gpl.html GNU General Public License
+ */
+ 
+## Configuration ##
+
+/**
+ * Test configuration as a static class
+ *
+ * @author Uwe L. Korn <uwelk@xhochy.org>
+ * @package Schoorbs-Test
+ */
+class TestConfiguration
+{
+	public static $sSyslogLocation = '/var/log/syslog';
+	
+	/** Database **/
+	// Attention !! Tables will be dropped an recreated during the tests
+
+	public static $sDatabaseTablePrefix = 'schoorbs_devel_';
+}
