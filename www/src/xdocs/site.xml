@@ -33,6 +33,7 @@ See http://forrest.apache.org/docs/linking.html for more info
   <enduser label="Documentation(EN)" href="enduser/" tab="enduser">
     <index label="Overview" href="index.html"/>
     <install label="Installation" href="install.html"/>
+    <config label="Configuration" href="config.html" />
     <upgrade_mrbs label="Upgrade from MRBS 1.2.x" href="upgrade_mrbs.html" />
   </enduser>
   <endnutzer label="Dokumentation(DE)" href="endnutzer/" tab="endnutzer">

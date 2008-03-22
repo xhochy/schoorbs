@@ -83,9 +83,9 @@ $db_nopersist = 1;</source>
       <p>
         <strong>Beispielkonfiguration:</strong>
       </p>
-      <source>$mrbs_admin = "Uwe L. Korn";
-$mrbs_admin_email = "uwelk@xhochy.org";
-$mrbs_company = "Hohenstaufen Gymnasium Kaiserslautern";</source>
+      <source>$mrbs_admin = "Herr Mustermann";
+$mrbs_admin_email = "mail@example.org";
+$mrbs_company = "Die Example Firma";</source>
     </section>
     <section id="calendar">
       <title>Kalender / Zeiteinheiten</title>

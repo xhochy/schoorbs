@@ -1,0 +1,254 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE document PUBLIC "-//APACHE//DTD Documentation V2.0//EN" "http://forrest.apache.org/dtd/document-v20.dtd">
+<document>
+  <header>
+    <title>Configuration</title>
+  </header>
+  <body>
+    <section id="in-gerneral">
+      <title>General</title>
+      <p>
+        All configuration of Schoorbs is done in the file <code>config.inc.php</code>.
+        If you have a new installation, this file doesn't exist, the best way is
+        to copy it from <code>config.inc.php-dist</code>, an example 
+        configuration.
+      </p>
+      <p>
+        <strong>Attention:</strong><br />
+        Undocumented variables may have at the moment no effect, since some 
+        modules were deactivated during the Fork from MRBS, e.g. the LDAP 
+        authentication, or they are only used during development.
+        <strong>The deactivated modules are not usable at the moment because
+        they require a security review, but if you need one of these modules, you
+        write a short message to the 
+        <a href="http://groups.google.com/group/schoorbs-general-discussion">mailinglist</a>,
+        so that the developers know which modules require attention. If you stay
+        in contact with them, then it is likely that the module will be ready in
+        a short time period.
+        </strong>
+      </p>
+    </section>
+    <section id="database">
+      <title>Database</title>
+      <p>
+        The first paragraph in the configuration file of Schoorbs is considering
+        the database connection. As already said in the chapter 'installation', 
+        you have at the moment the choice between MySQL and PostgreSQL. Altough
+        there are two options for MySQL considering the database driver, PHP 
+        offers the interfaces <code>mysqli</code> which should be used for 
+        systems with PHP 5+ and MySQL 5+, and <code>mysql</code> which should be
+        used an all older systems. For PostgreSQL users only the module 
+        <code>pgsql</code> is available. The name of the selected database driver
+        should be set as the value of the variable <code>$dbsys</code>. The value 
+        of the variable <code>$db_host</code> should be set to the host on which
+        your database server is running, in most cases <code>localhost</code>
+        will be sufficent. The name of your database should be set in 
+        <code>$db_database</code>. Username and password go into the variables
+        <code>$db_login</code> and <code>$db_password</code>. The value of
+        <code>$db_tbl_prefix</code> should correspond to the database prefix
+        you have choosen during the installation.
+      </p>
+      <p>
+        <strong>Example configuration (connection via MySQLi):</strong>
+      </p>
+      <source>$dbsys = "mysqli";
+$db_host = "localhost";
+$db_database = "schoorbs";
+$db_login = 'schoorbs';
+$db_password = 'secret_password';
+$db_tbl_prefix = "schoorbs_";
+$db_nopersist = 1;</source>
+    </section>
+    <section id="site-id">
+      <title>Site identifictaion</title>
+      <p>
+        As site identification, only the name of the administrator(<code>$mrbs_admin</code>),
+        his e-mail(<code>$mrbs_admin_email</code>) and the name of the 
+        company/organization(<code>$mrbs_company</code>) using Schoorbs could be
+        set, this should be enough to let the user know on whoms page he is and
+        he has to contact with problems.
+      </p> 
+      <p>
+        <strong>Example configuration:</strong>
+      </p>
+      <source>$mrbs_admin = "Mister Musterman";
+$mrbs_admin_email = "mail@example.org";
+$mrbs_company = "Example Company";</source>
+    </section>
+    <section id="calendar">
+      <title>Calendar / Periods</title>
+      <p>
+        Schoorbs offers two possibilities t adjust the bookable time units. On
+        the one hand you could specify a fixed time span(<code>$resolution</code>)
+        in seconds apply for all units and crop the times when you can book a 
+        room by the start in hours(<code>$morningstarts</code>) and 
+        minutes(<code>$morningstarts_minutes</code>) and an end time in 
+        hours(<code>$eveningends</code>) and 
+        minutes(<code>$eveningends_minutes</code>). If you have choosen a day 
+        start of 7:30 and a resolution of 1800(-> 1/2h), so your clients are 
+        able too book units beginning at 7:30, 8:00, 8:30, ...<br />
+        If your booking units do not have the same length, you should use named
+        time units, called periods. These bookings are identified by their name, 
+        not by the time they start. The names of these units are stored in the
+        array <code>$periods</code>. If you want to use this timing system instead
+        of the first possiblity you have to set <code>$enable_periods</code> to
+        <code>true</code>.<br />
+        In general you could now addtionally choose, if a week stats on 
+        sunday(<code>$weekstarts = 0;</code>) or on
+        monday(<code>$weekstarts = 1;</code>).
+      </p>
+      <p>
+        <strong>Example configuration with fixed time units:</strong>
+      </p>
+      <source>$enable_periods = false;
+$resolution = 2700;
+$morningstarts = 8;
+$eveningends   = 17;
+$morningstarts_minutes = 0;
+$eveningends_minutes = 0;
+$periods[] = array();
+$weekstarts = 1;</source>
+      <p>
+        <strong>Example configuration with named time units(periods):</strong>
+      </p>
+      <source>$enable_periods = true;
+$resolution = 2700;
+$morningstarts = 8;
+$eveningends   = 17;
+$morningstarts_minutes = 0;
+$eveningends_minutes = 0;
+$periods[] = "08:00-08:45";
+$periods[] = "08:45-09:30";
+$periods[] = "09:30-09:45";
+$periods[] = "09:45-10:30";
+$periods[] = "10:30-11:15";
+$periods[] = "11:15-11:30";
+$periods[] = "11:30-12:15";
+$periods[] = "12:15-13:00";
+$periods[] = "13:00-13:15";
+$periods[] = "13:15-14:00";
+$periods[] = "14:00-14:45";
+$periods[] = "14:45-15:30";
+$periods[] = "15:30-16:15";
+$weekstarts = 1;</source>
+    </section>
+    <section id="auth">
+      <title>Authentication</title>
+      <p>
+        The authentication is divided into two modular sections: 'authentication' 
+        (variable: <code>$auth["type"]</code>) and 'session'
+        (variable: <code>$auth["session"]</code>). 
+      </p>
+      <p>
+        The section 'session' provides the interface, which require the username
+        and password from the client und saves it alongs several HTTP-requests.
+        Availa are the moudles 'cookie' (Request of the password via HTML-GUI,
+        saving username and password in a cookie), 'host' (the username is the
+        hostname of the connected user, empty password), 'http' (username and
+        password are requested via HTTP-authentication), 'ip' (the username is
+        the ip of the connected user, empty password), 'php' (request of 
+        password/username via HTML-GUI, saves it with php's 
+        <code>session_*</code>-functions) and 'remote_user' (like 'http', but
+        the authentication is done via the webserver, only the username will be
+        submitted to Schoorbs).<br />
+        <strong>Addition to 'http':</strong> The title of the HTTP-authentication
+        could be set via the variable <code>$auth['realm']</code>.<br />
+        <strong>Addition to 'remote_user':</strong> You could specify a link 
+        where the users could log themselves out:
+        <code>$auth['remote_user']['logout_link']</code><br />
+      </p>
+      <p>
+        The validation of the combination of username and password is done by
+        the module used in the section 'authentictation'. There are 4 modules 
+        available: 'config' (The username/password combination is stored in
+        <code>config.inc.php</code>), 'db' (the combination will be stored in a 
+        database), 'ext' (a program will be executed to check the combination).
+        <br />
+        <strong>Addition to 'config':</strong> The username/password combination
+        will be stored in the array <code>$auth["user"]</code>, e.g.:
+        <code>$auth["user"]["nutzername1"] = "password1";</code><br />
+        <strong>Addtition to 'ext':</strong> The executed programm is defined in 
+        the varibale <code>$auth["prog"]</code>, the parameters are specified
+        in <code>$auth["params"]</code>, '#PASSWORD#' and '#USERNAME#' are 
+        placeholders.
+      </p>
+      <p>
+        The both sections control who could login, but they do not define who
+        has adminstration privilegs and who not. People who should have those
+        rights are listed in the array <code>$auth["admin"]</code>, e.g.
+        <code>$auth["admin"][] = "nutzername1";</code>.<br />
+        Administrators are able to create new areas and rooms and could modify
+        entries by other users.
+      </p>
+      <p>
+        <strong>
+          Example configuartion ('session'='php' and 'type'='config'):
+        </strong>
+      </p>
+      <source>
+$auth["session"] = "php"; 
+$auth["type"] = "config"; 
+# The list of administrators (can modify other peoples settings)
+$auth["admin"][] = "nutzername1"; 
+# 'auth_config' user database
+$auth["user"]["nutzername1"] = "password1";
+$auth["user"]["nutzername2"] = "password2";</source>
+    </section>
+    <section id="language">
+      <title>Language</title>
+      <p>
+        In Schoorbs there not many language specific settings. In the common
+        case documents will be delivered in UTF-8, at some place there is the
+        possiblity to retract this via <code>$unicode_encoding = 1;</code>.
+        Schoorbs tries to automatecally detect the language of the users, if 
+        this may fail, the language specified in 
+        <code>$default_language_tokens</code> which contains a two character
+        language code(e.g. 'en'). By default the frequently asked questions will
+        be displayed in English, but there are versions in Spain('_es'),
+        German('_de') and French('_fr'), if you prefer one of these languages
+        you should fill <code>$faqfilelang</code> with the fitting string.
+      </p>
+    </section>
+    <section id="cats">
+      <title>Categories</title>
+      <p>
+        Schoorbs gives you the choice to categorize your bookings. Herefor you
+        have to the fill the array <code>$typel</code> with the description as
+        the values and a uppercase letter between 'A' - 'J' as the index. Each
+        letter colors the entry in a different style which defined via 
+        CSS(<code>schoorbs-misc/style/style.css</code>).
+      </p>
+      <p>
+        <strong>Example categories (with german scholar usage):</strong> 
+      </p>
+      <source>$typel["A"] = "Referat";
+$typel["B"] = "normaler Unterricht";
+$typel["C"] = "Kursarbeit";
+# $typel["D"] = "D";
+$typel["E"] = get_vocab("external");
+# $typel["F"] = "F";
+# $typel["G"] = "G";
+# $typel["H"] = "H";
+$typel["I"] = get_vocab("internal");
+# $typel["J"] = "J";</source>
+    </section>
+    <section id="misc">
+      <title>Miscellaneous settings</title>
+      <p>
+        Other configurations are e.g. the maximum number of repetetions
+        is specified in (<code>$max_rep_entrys</code>). Additionally you could
+        turn on the display of the times on the right side of the timetable
+        with <code>$times_right_side = true</code>. With 
+        <code>$javascript_cursor</code> you could activate the highlighting of
+        the current cell where the mouse is pointing at. When the user is 
+        accessing the index.php of Schoorbs he will see the timetable view 
+        defined in <code>$default_view</code>, either 'day', 'week' or 'month'.
+      </p>
+    </section>
+    <p>
+      <a rel="license" href="http://creativecommons.org/licenses/by-sa/3.0/">
+        <img alt="Creative Commons License" style="border-width:0" src="http://i.creativecommons.org/l/by-sa/3.0/80x15.png" />
+      </a>
+    </p>
+  </body>
+</document>
