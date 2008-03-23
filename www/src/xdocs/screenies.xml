@@ -1,0 +1,72 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE document PUBLIC "-//APACHE//DTD Documentation V2.0//EN" "http://forrest.apache.org/dtd/document-v20.dtd">
+<document>
+  <header>
+    <title>Schoorbs Screenshots</title>
+  </header>
+  <body>
+    <section id="what">
+      <title>Hint</title>
+      <p>
+        These screenshots are taken on Ubuntu Linux using Firefox 2.0 and
+        Schoorbs 1.0.0. Click on the images to enlarge them.
+      </p>
+    </section>
+    <section id="day-view">
+      <title>Day view</title>
+      <p>
+        <a href="images/screenshots/schoorbs-100-1.png">
+          <img alt="Day view" src="images/screenshots/schoorbs-100-1.thumb.png" />
+        </a>
+      </p>
+    </section>
+    <section id="week-view">
+      <title>Week view</title>
+      <p>
+        <a href="images/screenshots/schoorbs-100-2.png">
+          <img alt="Week view" src="images/screenshots/schoorbs-100-2.thumb.png" />
+        </a>
+      </p>
+    </section>
+    <section id="month-view">
+      <title>Month view</title>
+      <p>
+        <a href="images/screenshots/schoorbs-100-3.png">
+          <img alt="Month view" src="images/screenshots/schoorbs-100-3.thumb.png" />
+        </a>
+      </p>
+    </section>
+    <section id="admin-view">
+      <title>Admininistration</title>
+      <p>
+        <a href="images/screenshots/schoorbs-100-4.png">
+          <img alt="Admin view" src="images/screenshots/schoorbs-100-4.thumb.png" />
+        </a>
+      </p>
+    </section>
+    <section id="help-view">
+      <title>Help / FAQ</title>
+      <p>
+        <a href="images/screenshots/schoorbs-100-5.png">
+          <img alt="Help view" src="images/screenshots/schoorbs-100-5.thumb.png" />
+        </a>
+      </p>
+    </section>
+    <section id="asearch-view">
+      <title>Advanced search</title>
+      <p>
+        <a href="images/screenshots/schoorbs-100-6.png">
+          <img alt="Advanced search view" src="images/screenshots/schoorbs-100-6.thumb.png" />
+        </a>
+      </p>
+    </section>
+    <section id="ssearch-view">
+      <title>Simple search + results</title>
+      <p>
+        <a href="images/screenshots/schoorbs-100-7.png">
+          <img alt="Simple search view" src="images/screenshots/schoorbs-100-7.thumb.png" />
+        </a>
+      </p>
+    </section>
+  </body>
+</document>

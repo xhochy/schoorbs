@@ -24,6 +24,7 @@ See http://forrest.apache.org/docs/linking.html for more info
   tab="">
   <about label="About">
     <index label="Index" href="index.html" description="Welcome to Schoorbs"/>
+    <screenies label="Screenshots" href="screenies.html" />
     <demo label="Demo" href="demo.html" description="Schoorbs demo" />
     <links label="Links" href="links.html" description="Links related to Schoorbs" />
     <license label="License" href="license.html" description="License of Schoorbs(GPL)" />
