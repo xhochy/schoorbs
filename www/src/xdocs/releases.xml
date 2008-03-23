@@ -8,15 +8,25 @@
     <section id="status">
       <title>Overview</title>
       <p>
-        At the moment we only release beta versions of Schoorbs which are
-        not supposed for productive usage, only to evaluate Schoorbs or make 
-        "smoke tests" until we think it's time to release the final Schoorbs 1.0.
+        At the moment the stable relases have the version number 1.0.x, the 
+        unstable versions are only kept at the moment for historical reasons, you
+        shouldn't use them.
       </p>
     </section>
     <section id="schoorbs-1.0">
 		<title>Schoorbs 1.0</title>
 		<ul>
-			<li><strong>Stable</strong></li>
+			<li>
+			  <strong>Stable</strong>
+			  <ul>
+			    <li>
+			      <em>Schoorbs 1.0.0</em>
+			      <a href="http://xhochy.org/en/2008/03/23/schoorbs-100-released/">Announcement</a>,
+			      <a href="http://static.xhochy.com/software/schoorbs/1.0/schoorbs-1.0.0/schoorbs-1.0.0.7z">schoorbs-1.0.0.7z</a>,
+			      <a href="http://static.xhochy.com/software/schoorbs/1.0/schoorbs-1.0.0/schoorbs-1.0.0.zip">schoorbs-1.0.0zip</a>
+			    </li>
+			  </ul>
+			</li>
 			<li>
 				<strong>Unstable</strong>
 				<ul>

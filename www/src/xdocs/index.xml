@@ -9,13 +9,11 @@
       <title>What is Schoorbs</title>
       <p>
         Schoorbs is a free room/resource booking system licensed under the GPLv2
-        which is served as a web application using PHP and MySQL/PostgreSQL. At 
-        the moment there is no stable release of Schoorbs, but you could test the
-        pre-release versions if you want to get an impression how Schoorbs is like.        
+        which is served as a web application using PHP and MySQL/PostgreSQL.         
       </p>
       <ul>
-        <li><a href="http://static.xhochy.com/software/schoorbs/1.0/schoorbs-1.0-beta2/schoorbs-1.0-beta2.7z">schoorbs-1.0-beta2.7z</a></li>
-        <li><a href="http://static.xhochy.com/software/schoorbs/1.0/schoorbs-1.0-beta2/schoorbs-1.0-beta2.zip">schoorbs-1.0-beta2.zip</a></li>
+        <li><a href="http://static.xhochy.com/software/schoorbs/1.0/schoorbs-1.0.0/schoorbs-1.0.0.7z">schoorbs-1.0.0.7z</a></li>
+        <li><a href="http://static.xhochy.com/software/schoorbs/1.0/schoorbs-1.0.0/schoorbs-1.0.0.zip">schoorbs-1.0.0.zip</a></li>
       </ul>
     </section>
     <section id="features">
