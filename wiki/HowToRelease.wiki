@@ -18,4 +18,5 @@
  * Announce on [http://groups.google.com/group/schoorbs-general-discussion Schoorbs general discussion]
  * Announce on [http://schoorbs.xhochy.com the Schoorbs Website]
  * Announce on [http://freshmeat.net/projects/schoorbs Freshmeat] and add this release
+ * Update the [http://www.hotscripts.com/Detailed/78727.html Hotscripts listing]
  * Check data on [http://www.ohloh.net/projects/12616 Ohloh] (Announcements to this site are made via the Launchpad Announce Feed)
