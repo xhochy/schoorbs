@@ -144,10 +144,8 @@ function rest_function_replaceBooking()
 		schoorbsCreateSingleEntry($nStartTime, $nEndTime, 0, 0, $nRoomID, $sUsername, $sName, $sType, $sDescription);
 	}
 
+	$oXML = new SimpleXMLElement('<rsp stat="ok" />');
 	// always true, if something went wrong there will be an error
-	SchoorbsREST::$oTPL->assign('made_booking', 'true');
-	// use the makeBooking Template since replaceBooking is nearly the same as
-	// makeBooking, for a list of differences see the comment for this
-	// function.
-	SchoorbsREST::$oTPL->display('makebooking.tpl');
+	$oXML->addChild('made_booking', 'true');
+	echo $oXML->asXML();
 }
