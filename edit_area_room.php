@@ -54,7 +54,7 @@ if (isset($_REQUEST['change_done'])) {
 	$sAreaName = unslashes($_REQUEST['area_name']);
 
 	$sQuery = sprintf(
-		'UPDATE %S SET area_name = \'%s\' WHERE id = %d', 
+		'UPDATE %s SET area_name = \'%s\' WHERE id = %d', 
 		$tbl_area, sql_escape_arg($sAreaName), sql_escape_arg($area)
 	);
 	sql_query($sQuery);
