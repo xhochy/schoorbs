@@ -85,12 +85,12 @@ function rest_function_checkFree()
 			$bFree = false;
 		}
 	}
-
-	if ($bFree) {
-		SchoorbsREST::$oTPL->assign('free', 'true');
-	} else {
-		SchoorbsREST::$oTPL->assign('free', 'false');
-	}
 	
-	SchoorbsREST::$oTPL->display('checkfree.tpl');
+	$oXML = new SimpleXMLElement('<rsp stat="ok" />');
+	if ($bFree) {
+		$oXML->addChild('free', 'true');
+	} else {
+		$oXML->addChild('free', 'false');
+	}
+	echo $oXML->asXML();
 }

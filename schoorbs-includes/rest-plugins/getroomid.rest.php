@@ -34,6 +34,7 @@ function rest_function_getRoomID()
 	}
 
 	// Return the room id
-	SchoorbsREST::$oTPL->assign('room_id', $nRoomID);
-	SchoorbsREST::$oTPL->display('getroomid.tpl');
+	$oXML = new SimpleXMLElement('<rsp stat="ok" />');
+	$oXML->addChild('room_id', $nRoomID);
+	echo $oXML->asXML();
 }

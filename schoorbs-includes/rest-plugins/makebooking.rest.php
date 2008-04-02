@@ -121,11 +121,11 @@ function rest_function_makeBooking()
 		schoorbsCreateSingleEntry($nStartTime, $nEndTime, 0, 0, $nRoomID, getUserName(), $sName, $sType, $sDescription);
 	}
 
+	$oXML = new SimpleXMLElement('<rsp stat="ok" />');
 	if ($bMade) {
-		SchoorbsREST::$oTPL->assign('made_booking', 'true');
+		$oXML->addChild('made_booking', 'true');
 	} else {
-		SchoorbsREST::$oTPL->assign('made_booking', 'false');
+		$oXML->addChild('made_booking', 'false');
 	}
-	
-	SchoorbsREST::$oTPL->display('makebooking.tpl');
+	echo $oXML->asXML();
 }
