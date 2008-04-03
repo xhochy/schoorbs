@@ -18,15 +18,6 @@ if (!defined('PHPUnit_MAIN_METHOD')) {
     define('PHPUnit_MAIN_METHOD', 'Input_AllTests::main');
 }
 
-## Defines ##
-
-/**
- * Define that we are running Schoorbs without a GUI
- * 
- * @ignore
- */
-define('SCHOORBS_NOGUI',true);
-
 ## Main Schoorbs Code Includes ##
 
 require_once dirname(__FILE__).'/../schoorbs-includes/input.functions.php';

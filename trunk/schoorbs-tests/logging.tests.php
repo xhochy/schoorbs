@@ -18,17 +18,6 @@ if (!defined('PHPUnit_MAIN_METHOD')) {
     define('PHPUnit_MAIN_METHOD', 'Logging_AllTests::main');
 }
 
-## Defines ##
-
-/**
- * Define that we are running Schoorbs without a GUI
- * 
- * @ignore
- */
-define('SCHOORBS_NOGUI', true);
-
-## Main Schoorbs Code Includes ##
-
 ## PHPUnit Includes ##
  
 require_once 'PHPUnit/Framework.php';

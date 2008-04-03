@@ -30,7 +30,7 @@ function rest_function_makeBooking()
 	if ($enable_periods) {
 		// The parameters 'day', 'year' and 'month' need to be arrays.
 	    // They need to have the same length.
-		if (is_array($_REQUEST['day'])) {
+		if (isset($_REQUEST['day']) && is_array($_REQUEST['day'])) {
 			$aDays = array();
 			
 			for($i = 0; $i < count($_REQUEST['day']); $i++) {

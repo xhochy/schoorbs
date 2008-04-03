@@ -21,16 +21,16 @@ if (!defined('PHPUnit_MAIN_METHOD')) {
 ## Defines ##
 
 /**
- * Define that we are running Schoorbs without a GUI
- * 
- * @ignore
- */
-define('SCHOORBS_NOGUI', true);
-
-/**
  * Define that no HTTP headers should be sent when outputting a REST-result
  */
 define('REST_TESTING', true);
+
+/**
+ * Define that no HTTP headers should be sent when outputting a REST-result
+ *
+ * @ignore
+ */
+define('REST_NO_HEADERS', true);
 
 ## Main Schoorbs Code Includes ##
 
