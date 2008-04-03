@@ -21,6 +21,8 @@
  */
 function schoobsLogStart_Backend()
 {
+	global $_SCHOORBS;
+	
 	openlog('Schoorbs', LOG_ODELAY | LOG_PID, 
 		$_SCHOORBS['logging']['syslog-facility']);
 }

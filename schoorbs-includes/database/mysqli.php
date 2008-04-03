@@ -53,7 +53,7 @@ function sql_query1 ($sql)
     if (! $r) return -1;
     if (($r->num_rows != 1) || ($r->field_count != 1) ||
         (($row = $r->fetch_row()) == NULL)) {
-        $result = -1;
+        return -1;
     }
     $r->close();
     return $row[0];
