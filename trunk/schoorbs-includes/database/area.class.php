@@ -188,6 +188,13 @@ class Area {
 			}
 		} else {
 			// already existing object
+			$oStatement = $this->oDB->getConnection()->prepareStatement(
+				'UPDATE '.$this->oDB->getTableName('area').' SET area_name = ? '
+				.'AND area_admin_email = ? WHERE id = ?'
+			);
+			$oStatement->setString(1, $this->sName);
+			$oStatement->setString(2, $this->sAdminEmail);
+			$oStatement->setInt(3, $this->nId);
 		}
 		// We have commited all current changes, so there are no changes left in 
 		// this object.
