@@ -20,6 +20,8 @@ require_once 'schoorbs-includes/global.functions.php';
 require_once "schoorbs-includes/database/$dbsys.php";
 /** The authetication wrappers */
 require_once 'schoorbs-includes/authentication/schoorbs_auth.php';
+/** The modern ORM databse layer */
+require_once 'schoorbs-includes/database/schoorbsdb.class.php';
 
 ## Var Init ##
 
@@ -42,13 +44,7 @@ if (!getAuthorised(2)) showAccessDenied();
 
 /** we need to do different things depending on if it's a room or an area */
 if ($type == "area") {
-	$sQuery = sprintf(
-		'INSERT INTO %s (area_name) VALUES (\'%s\')', 
-		$tbl_area, sql_escape_arg($name)
-	);
-	if(sql_command($sQuery) < 0) fatal_error(true, sql_error());
-	// The id of the newly created area is the last id inserted into the database
-    $area = sql_insert_id($tbl_area, "id");
+	$area = Area::create($name);
 } else if ($type == "room") {
 	$sQuery = sprintf(
 		'INSERT INTO %s (room_name, area_id, description, capacity)'
