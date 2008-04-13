@@ -32,7 +32,7 @@ class Area {
 	 */
 	public static function create($sName, $sAdminMail = '')
 	{
-		if (self::getByName($sName)) {
+		if (self::getByName($sName) !== null) {
 			throw new Exception('Area with name "'.$sName.'" already exists.');
 		}
 		$oArea = new Area();
@@ -40,7 +40,7 @@ class Area {
 		$oArea->setAdminEmail($sAdminMail);
 		$oArea->commit();
 		
-		return $oArea->getId();
+		return $oArea;
 	}
 
 	/**
@@ -57,7 +57,50 @@ class Area {
 			.$oDB->getTableName('area').' WHERE area_name = ?');
 		$oStatement->setString(1, $sName);
 		$oResult = $oStatement->executeQuery();
-		return $oResult->next();
+		if ($oResult->next()) {
+			return self::fetchArea($oResult);
+		} else {
+			return null;
+		}
+	}
+	
+	/**
+	 * Create a single Area object from an Creole ResultSet
+	 *
+	 * Remark: This function will not call ResultSet->next()
+	 *
+	 * @param $oResult ResultSet
+	 * @return Area
+	 * @author Uwe L. Korn <uwelk@xhochy.org>
+	 */
+	public static function fetchArea($oResult)
+	{
+		$oArea = new Area();
+		$oArea->nId = $oResult->getInt('id');
+		$oArea->sName = $oResult->getString('area_name');
+		$oArea->sAdminEmail = $oResult->getString('area_admin_email');
+		return $oArea;
+	}
+	
+	/**
+	 * Get an area by its id.
+	 *
+	 * @param $nId int
+	 * @return Area
+	 * @author Uwe L. Korn <uwelk@xhochy.org>
+	 */
+	public static function getById($nId)
+	{
+		$oDB = SchoorbsDB::getInstance();
+		$oStatement = $oDB->getConnection()->prepareStatement('SELECT * FROM '
+			.$oDB->getTableName('area').' WHERE id = ?');
+		$oStatement->setInt(1, $nId);
+		$oResult = $oStatement->executeQuery();
+		if ($oResult->next()) {
+			return self::fetchArea($oResult);
+		} else {
+			return null;
+		}
 	}
 	
 	/// instance variables ///
@@ -150,7 +193,7 @@ class Area {
 	 * @author Uwe L. Korn <uwelk@xhochy.org>
 	 * @param $sAdminMail string
 	 */
-	public function setAdminEmail($sName)
+	public function setAdminEmail($sAdminMail)
 	{
 		$this->bChanged = true;
 		$this->sAdminEmail = $sAdminMail;
