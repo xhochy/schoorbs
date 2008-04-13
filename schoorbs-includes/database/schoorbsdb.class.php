@@ -19,6 +19,8 @@ require_once dirname(__FILE__).'/creole/Creole.php';
 
 /** The area class */
 require_once dirname(__FILE__).'/area.class.php';
+/** The room class */
+require_once dirname(__FILE__).'/room.class.php';
 
 /// Main database class ///
 

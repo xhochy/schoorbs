@@ -8,7 +8,7 @@
  * @license http://www.gnu.org/licenses/gpl.html GNU General Public License
  */
 
-## Includes ##
+/// Includes ///
 
 /** The Configuration file */
 require_once 'config.inc.php';
@@ -23,7 +23,7 @@ require_once 'schoorbs-includes/authentication/schoorbs_auth.php';
 /** The modern ORM databse layer */
 require_once 'schoorbs-includes/database/schoorbsdb.class.php';
 
-## Var Init ##
+/// Var Init ///
 
 /** type */
 $type = input_Type();
@@ -37,22 +37,17 @@ if ($type == 'room') {
 	$capacity = input_Capacity();	
 }
 
-## Main ##
+/// Main ///
 
 // Only administrators should be able to create rooms and areas
 if (!getAuthorised(2)) showAccessDenied();
 
-/** we need to do different things depending on if it's a room or an area */
-if ($type == "area") {
-	$area = Area::create($name);
-} else if ($type == "room") {
-	$sQuery = sprintf(
-		'INSERT INTO %s (room_name, area_id, description, capacity)'
-		.' VALUES (\'%s\', %d, \'%s\', %d)', 
-        $tbl_room, sql_escape_arg($name), $area, sql_escape_arg($description), 
-        $capacity
-    );
-	if (sql_command($sQuery) < 0) fatal_error(true, sql_error());
+// we need to do different things depending on if it's a room or an area
+if ($type == 'area') {
+	$area = Area::create($name)->getId();
+} else if ($type == 'room') {
+	$oArea = Area::getById($area);
+	Room::create($oArea, $name, $description, $capacity);
 }
 
 // After adding a room or an area return to the administration page of the 
