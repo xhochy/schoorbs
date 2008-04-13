@@ -285,7 +285,7 @@ class Area {
 	 * This is the main string, which will be displayed to the user.
 	 *
 	 * @author Uwe L. Korn <uwelk@xhochy.org>
-	 * @return int
+	 * @return string
 	 */
 	public function getName()
 	{

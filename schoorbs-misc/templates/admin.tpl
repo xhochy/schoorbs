@@ -40,9 +40,9 @@
 					<ul>
 						{foreach from=$rooms item=rooms_item}
 							<li>
-								{$rooms_item.name|escape:"html"} ({$rooms_item.description|escape:"html"}, {$rooms_item.capacity})
-								(<a href="edit_area_room.php?room={$rooms_item.id}">{get_vocab text="edit"}</a>)
-								(<a href="del.php?type=room&amp;room={$rooms_item.id}">{get_vocab text="delete"}</a>)
+								{$rooms_item->getName()|escape:"html"} ({$rooms_item->getDescription()|escape:"html"}, {$rooms_item->getCapacity()})
+								(<a href="edit_area_room.php?room={$rooms_item->getId()}">{get_vocab text="edit"}</a>)
+								(<a href="del.php?type=room&amp;room={$rooms_item->getId()}">{get_vocab text="delete"}</a>)
 							</li>
 						{/foreach}
 					</ul>
@@ -98,7 +98,4 @@
 	</td>
 </tr>
 </table>
-<div class="browserlang">
-	<br />
-	{get_vocab text="browserlang"} {$smarty.server.HTTP_ACCEPT_LANGUAGE} {get_vocab text="postbrowserlang"}
-</div>
+<div><br /></div>

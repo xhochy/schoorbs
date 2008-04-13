@@ -91,6 +91,30 @@ class Room {
 		}
 	}
 	
+	/**
+	 * Get all rooms of a specified area
+	 *
+	 * This function will return an empty array, if there are no rooms available
+	 * in this area.
+	 *
+	 * @param $oArea Area
+	 * @return Room
+	 * @author Uwe L. Korn <uwelk@xhochy.org>
+	 */
+	public static function getRooms($oArea)
+	{
+		$aRooms = array();
+		$oDB = SchoorbsDB::getInstance();
+		$oStatement = $oDB->getConnection()->prepareStatement('SELECT * FROM '
+			.$oDB->getTableName('room').' WHERE area_id = ?');
+		$oStatement->setInt(1, $oArea->getId());
+		$oResult = $oStatement->executeQuery();
+		while ($oResult->next()) {
+			$aRooms[] = self::fetchRoom($oResult);
+		}
+		return $aRooms;
+	}
+	
 	/// instance variables ///
 	
 	/**
@@ -306,5 +330,53 @@ class Room {
 		// We have commited all current changes, so there are no changes left in 
 		// this object.
 		$this->bChanged = false;
+	}
+	
+	/**
+	 * Return the database-Id of this room.
+	 *
+	 * This is the primary key in the database, our unique identifier for rooms.
+	 *
+	 * @author Uwe L. Korn <uwelk@xhochy.org>
+	 * @return int
+	 */
+	public function getId()
+	{
+		return $this->nId;
+	}
+	
+	/**
+	 * Return the name of this room.
+	 *
+	 * This is the main string, which will be displayed to the user.
+	 *
+	 * @author Uwe L. Korn <uwelk@xhochy.org>
+	 * @return string
+	 */
+	public function getName()
+	{
+		return $this->sName;
+	}
+	
+	/**
+	 * Return the description of this room.
+	 *
+	 * @author Uwe L. Korn <uwelk@xhochy.org>
+	 * @return string
+	 */
+	public function getDescription()
+	{
+		return $this->sDescription;
+	}
+	
+	/**
+	 * Return the capacity of this room.
+	 *
+	 * @author Uwe L. Korn <uwelk@xhochy.org>
+	 * @return int
+	 */
+	public function getCapacity()
+	{
+		return $this->nCapacity;
 	}
 }
