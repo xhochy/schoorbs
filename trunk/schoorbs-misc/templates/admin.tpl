@@ -22,11 +22,11 @@
 			<ul>
 				{foreach from=$areas item=areas_item}
 					<li>
-						<a href="admin.php?area={$areas_item.id}" style="{if $area eq $areas_item.id}color: red;{/if}">
-							{$areas_item.name|escape:"html"}
+						<a href="admin.php?area={$areas_item->getId()}" style="{if $area eq $areas_item->getId()}color: red;{/if}">
+							{$areas_item->getName()|escape:"html"}
 						</a>
-						(<a href="edit_area_room.php?area={$areas_item.id}">{get_vocab text="edit"}</a>)
-						(<a href="del.php?type=area&amp;area={$areas_item.id}">{get_vocab text="delete"}</a>)
+						(<a href="edit_area_room.php?area={$areas_item->getId()}">{get_vocab text="edit"}</a>)
+						(<a href="del.php?type=area&amp;area={$areas_item->getId()}">{get_vocab text="delete"}</a>)
 					</li>
 				{/foreach}
 			</ul>
