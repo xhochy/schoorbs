@@ -103,6 +103,28 @@ class Area {
 		}
 	}
 	
+	/**
+	 * Get all available areas.
+	 *
+	 * If no area exists, an empty array will be returned.
+	 * 
+	 * @return array
+	 * @author Uwe L. Korn <uwelk@xhochy.org>
+	 */
+	public static function getAreas()
+	{
+		$aAreas = array();
+		$oDB = SchoorbsDB::getInstance();
+		$oStatement = $oDB->getConnection()->prepareStatement('SELECT * FROM '
+			.$oDB->getTableName('area'));
+		$oResult = $oStatement->executeQuery();
+		while ($oResult->next()) {
+			$aAreas[] = self::fetchArea($oResult);
+		}
+		
+		return $aAreas;
+	}
+	
 	/// instance variables ///
 	
 	/**
@@ -255,5 +277,18 @@ class Area {
 	public function getId()
 	{
 		return $this->nId;
+	}
+	
+	/**
+	 * Return the name of this area.
+	 *
+	 * This is the main string, which will be displayed to the user.
+	 *
+	 * @author Uwe L. Korn <uwelk@xhochy.org>
+	 * @return int
+	 */
+	public function getName()
+	{
+		return $this->sName;
 	}
 }

@@ -19,6 +19,8 @@ require_once 'schoorbs-includes/global.functions.php';
 require_once "schoorbs-includes/database/$dbsys.php";
 /** The authentication layer */
 require_once 'schoorbs-includes/authentication/schoorbs_auth.php';
+/** The modern ORM databse layer */
+require_once 'schoorbs-includes/database/schoorbsdb.class.php';
 
 ## Var Init ##
 
@@ -39,17 +41,14 @@ if(!getAuthorised(2)) showAccessDenied();
 print_header();
 
 // Collect all areas
-$res = sql_query("SELECT id, area_name FROM $tbl_area ORDER BY area_name");
-if(!$res) fatal_error(0, sql_error());
-$aAreas = array();
-if (sql_count($res) == 0) {
-	$noareas = 'true';
+//
+// $bNoAreas will determinate in the template if we should show a list of areas
+// or a remark that there is no area available at the moment.
+$aAreas = Area::getAreas();
+if (count($aAreas) === 0) {
+	$bNoAreas = 'true';
 } else {
-	for ($i = 0; ($row = sql_row($res, $i)); $i++) {
-		$aAreas[] = array('name' => $row[1], 'id' => $row[0]);
-	}
-
-	$noareas = 'false';
+	$bNoAreas = 'false';
 }
 
 // Collect all rooms in the choosen area
@@ -73,7 +72,7 @@ $smarty->assign(array(
     'norooms' => $norooms,
     'rooms' => $aRooms,
     'areas' => $aAreas,
-    'noareas' => $noareas,
+    'noareas' => $bNoAreas,
     'area' =>  $area,
     'area_name' => $area_name
 ));
