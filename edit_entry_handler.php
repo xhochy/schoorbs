@@ -7,7 +7,7 @@
  * @license http://www.gnu.org/licenses/gpl.html GNU General Public License
  */
  
-## Includes ##
+/// Includes ///
 
 /** The Configuration file */
 require_once 'config.inc.php';
@@ -26,7 +26,7 @@ require_once 'schoorbs-includes/edit_entry_handler.functions.php';
 /** The logging wrapper */
 require_once 'schoorbs-includes/logging.functions.php';
 
-## Input ##
+/// Input ///
 
 /** day, month, year */
 list($day, $month, $year) = input_DayMonthYear('edit_');
@@ -163,18 +163,18 @@ if (($rep_type != 0) && isset($rep_end_month) && isset($rep_end_day) && isset($r
     $rep_type = 0;
 }
 
-# For weekly repeat(2), build string of weekdays to repeat on:
+// For weekly repeat(2), build string of weekdays to repeat on:
 $rep_opt = '';
 if ($rep_type == 2) {
     for ($i = 0; $i < 7; $i++) $rep_opt .= empty($rep_day[$i]) ? '0' : '1';
 }
 
-# Expand a series into a list of start times:
+// Expand a series into a list of start times:
 if ($rep_type != 0)
     $reps = mrbsGetRepeatEntryList($starttime, isset($rep_enddate) ? $rep_enddate : 0,
         $rep_type, $rep_opt, $max_rep_entrys, $rep_num_weeks);
 
-# When checking for overlaps, for Edit (not New), ignore this entry and series:
+// When checking for overlaps, for Edit (not New), ignore this entry and series:
 if ($id != -1) {
     $ignore_id = $id;
     $repeat_id = sql_query1(sprintf(
@@ -187,19 +187,19 @@ if ($id != -1) {
     $repeat_id = 0;
 }
 
-# Acquire mutex to lock out others trying to book the same slot(s).
+// Acquire mutex to lock out others trying to book the same slot(s).
 if (!sql_mutex_lock($tbl_entry)) fatal_error(true, get_vocab("failed_to_acquire"));
     
-# Check for any schedule conflicts in each room we're going to try and
-# book in
+// Check for any schedule conflicts in each room we're going to try and
+// book in
 $err = '';
 foreach ($rooms as $room_id) {
 	$room_id = intval($room_id);
 	if ($rep_type != 0 && !empty($reps)) {
     	if(count($reps) < $max_rep_entrys) {
     	    for($i = 0; $i < count($reps); $i++) {
-			    # calculate diff each time and correct where events
-			    # cross DST
+			    // calculate diff each time and correct where events
+			    // cross DST
     	        $diff = $endtime - $starttime;
     	        $diff += cross_dst($reps[$i], $reps[$i] + $diff);
     	
@@ -213,7 +213,7 @@ foreach ($rooms as $room_id) {
 		}
   } else
     $err.= schoorbsCheckFree($room_id, $starttime, $endtime-1, $ignore_id, 0);
-} # end foreach rooms
+} // end foreach rooms
 
 
 
@@ -244,9 +244,10 @@ if (empty($err)) {
         } else { // Add
         	schoorbsLogAddEntry($aNewEntryInfo);
         }
-    } # end foreach $rooms
+    } 
+    // end foreach $rooms
 
-    # Delete the original entry
+    // Delete the original entry
     if($id != -1) {
         schoorbsDelEntry(getUserName(), $id, ($edit_type == "series"), 1);
     }
@@ -255,12 +256,12 @@ if (empty($err)) {
     
     $area = mrbsGetRoomArea($room_id);
     
-    # Now its all done go back to the day view
+    // Now its all done go back to the day view
     header("Location: day.php?year=$year&month=$month&day=$day&area=$area");
     exit(0);
 }
 
-# The room was not free.
+// The room was not free.
 sql_mutex_unlock($tbl_entry);
 
 print_header();
