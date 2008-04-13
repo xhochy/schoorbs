@@ -19,14 +19,14 @@ require_once "schoorbs-includes/database/$dbsys.php";
 /** The authetication wrappers */
 require_once 'schoorbs-includes/authentication/schoorbs_auth.php';
 
-## Var Init ##
+/// Var Init ///
 
 /** day, month, year */
 list($day, $month, $year) = input_DayMonthYear();
 if (isset($_REQUEST['confirm'])) $confirm = true;
 $type = input_Type();
 
-## Main ##
+/// Main ///
 
 // This is gonna blast away something. We want them to be really
 // really sure that this is what they want to do.
