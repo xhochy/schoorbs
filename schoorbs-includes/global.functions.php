@@ -390,7 +390,7 @@ function cross_dst ( $start, $end )
  * @param int $nQuoteStyle
  * @param string $sCharset
  */
-function ht($sCode, $nQuoteStyle = ENT_COMPAT, $sCharset = 'ISO-8859-1')
+function ht($sCode, $nQuoteStyle = ENT_COMPAT, $sCharset = 'UTF-8')
 {
 	return htmlentities($sCode, $nQuoteStyle, $sCharset);
 }
