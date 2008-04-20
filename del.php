@@ -19,7 +19,7 @@ require_once "schoorbs-includes/database/$dbsys.php";
 /** The authetication wrappers */
 require_once 'schoorbs-includes/authentication/schoorbs_auth.php';
 
-/// Var Init ///
+## Var Init ##
 
 /** day, month, year */
 list($day, $month, $year) = input_DayMonthYear();
@@ -28,15 +28,16 @@ $type = input_Type();
 $area = input_Area();
 $room = input_Room();
 
-/// Main ///
+## Main ##
 
 // This is gonna blast away something. We want them to be really
 // really sure that this is what they want to do.
 
-if($type == "room")
+if($type == 'room')
 {
 	// We are supposed to delete a room
 	if (isset($confirm)) {
+		
 		// They have confirmed it already, so go blast!
 		sql_begin();
 		// First take out all appointments for this room

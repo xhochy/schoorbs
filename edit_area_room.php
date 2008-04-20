@@ -19,7 +19,7 @@ require_once "schoorbs-includes/database/$dbsys.php";
 /** The authetication wrappers */
 require_once 'schoorbs-includes/authentication/schoorbs_auth.php';
 
-/// Var Init ///
+## Var Init ##
 
 /** day, month, year */
 list($day, $month, $year) = input_DayMonthYear();
@@ -27,7 +27,7 @@ list($day, $month, $year) = input_DayMonthYear();
 if (isset($_REQUEST['room'])) $room = input_Room();
 elseif (isset($_REQUEST['area'])) $area = input_Area();
 
-/// Main ///
+## Main ##
 
 if (!getAuthorised(2)) showAccessDenied();
 
@@ -51,7 +51,7 @@ if (isset($_REQUEST['change_done'])) {
 	);
 	sql_query($sQuery);
 } elseif (isset($_REQUEST['change_area'])) {
-    $sAreaName = unslashes($_REQUEST['area_name']);
+	$sAreaName = unslashes($_REQUEST['area_name']);
 
 	$sQuery = sprintf(
 		'UPDATE %s SET area_name = \'%s\' WHERE id = %d', 

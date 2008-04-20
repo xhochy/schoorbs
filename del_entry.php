@@ -7,7 +7,7 @@
  * @license http://www.gnu.org/licenses/gpl.html GNU General Public License
  */
 
-/// Includes ///
+## Includes ##
 
 /** The Configuration file */
 require_once 'config.inc.php';
@@ -24,12 +24,12 @@ require_once 'schoorbs-includes/database/schoorbs_sql.php';
 /** The logging wrapper */
 require_once 'schoorbs-includes/logging.functions.php';
 
-/// Var Init ///
+## Var Init ##
 
 if (isset($_REQUEST['id'])) $id = intval($_REQUEST['id']);
 if (isset($_REQUEST['series'])) $series = intval($_REQUEST['series']);
 
-/// Main ///
+## Main ##
 
 // Check only if the user is logged in, if he has enough rights to delete
 // will be checked later on in schoorbsDelEntry()

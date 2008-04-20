@@ -24,7 +24,7 @@ function rest_function_checkFree()
 	if ($enable_periods) {
 		// The parameters 'day', 'year' and 'month' need to be arrays.
 	    // They need to have the same length.
-		if (isset($_REQUEST['day']) && is_array($_REQUEST['day'])) {
+		if (is_array($_REQUEST['day'])) {
 			$aDays = array();
 			
 			for($i = 0; $i < count($_REQUEST['day']); $i++) {
@@ -85,12 +85,12 @@ function rest_function_checkFree()
 			$bFree = false;
 		}
 	}
-	
-	$oXML = new SimpleXMLElement('<rsp stat="ok" />');
+
 	if ($bFree) {
-		$oXML->addChild('free', 'true');
+		SchoorbsREST::$oTPL->assign('free', 'true');
 	} else {
-		$oXML->addChild('free', 'false');
+		SchoorbsREST::$oTPL->assign('free', 'false');
 	}
-	echo $oXML->asXML();
+	
+	SchoorbsREST::$oTPL->display('checkfree.tpl');
 }

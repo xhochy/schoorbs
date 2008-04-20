@@ -30,7 +30,7 @@ function rest_function_makeBooking()
 	if ($enable_periods) {
 		// The parameters 'day', 'year' and 'month' need to be arrays.
 	    // They need to have the same length.
-		if (isset($_REQUEST['day']) && is_array($_REQUEST['day'])) {
+		if (is_array($_REQUEST['day'])) {
 			$aDays = array();
 			
 			for($i = 0; $i < count($_REQUEST['day']); $i++) {
@@ -121,11 +121,11 @@ function rest_function_makeBooking()
 		schoorbsCreateSingleEntry($nStartTime, $nEndTime, 0, 0, $nRoomID, getUserName(), $sName, $sType, $sDescription);
 	}
 
-	$oXML = new SimpleXMLElement('<rsp stat="ok" />');
 	if ($bMade) {
-		$oXML->addChild('made_booking', 'true');
+		SchoorbsREST::$oTPL->assign('made_booking', 'true');
 	} else {
-		$oXML->addChild('made_booking', 'false');
+		SchoorbsREST::$oTPL->assign('made_booking', 'false');
 	}
-	echo $oXML->asXML();
+	
+	SchoorbsREST::$oTPL->display('makebooking.tpl');
 }
