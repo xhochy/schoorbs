@@ -25,7 +25,8 @@ require_once 'schoorbs-includes/authentication/schoorbs_auth.php';
 list($day, $month, $year) = input_DayMonthYear();
 if (isset($_REQUEST['confirm'])) $confirm = true;
 $type = input_Type();
-$room = intval($_REQUEST['room']);
+$area = input_Area();
+$room = input_Room();
 
 ## Main ##
 
