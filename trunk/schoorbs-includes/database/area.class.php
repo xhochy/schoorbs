@@ -55,6 +55,8 @@ class Area {
 	public static function getByName($sName)
 	{
 		$oDB = SchoorbsDB::getInstance();
+		// Example query:
+		//   SELECT * FROM schoorbs_area WHERE area_name = 'Area1'
 		$oStatement = $oDB->getConnection()->prepareStatement('SELECT * FROM '
 			.$oDB->getTableName('area').' WHERE area_name = ?');
 		$oStatement->setString(1, $sName);
@@ -94,6 +96,8 @@ class Area {
 	public static function getById($nId)
 	{
 		$oDB = SchoorbsDB::getInstance();
+		// Example query:
+		//   SELECT * FROM schoorbs_area WHERE id = 3
 		$oStatement = $oDB->getConnection()->prepareStatement('SELECT * FROM '
 			.$oDB->getTableName('area').' WHERE id = ?');
 		$oStatement->setInt(1, $nId);
@@ -117,6 +121,8 @@ class Area {
 	{
 		$aAreas = array();
 		$oDB = SchoorbsDB::getInstance();
+		// Example query:
+		//   SELECT * FROM schoorbs_area
 		$oStatement = $oDB->getConnection()->prepareStatement('SELECT * FROM '
 			.$oDB->getTableName('area'));
 		$oResult = $oStatement->executeQuery();
@@ -237,6 +243,10 @@ class Area {
 			// new object, so we will insert it as a new row
 			$oIdgen = $this->oDB->getConnection()->getIdGenerator();
 			// prepare the INSERT startement which will be the same in both cases
+			//
+			// Example query:
+			//   INSERT INTO schoorbs_area (area_name, area_admin_email) VALUES
+			//   ('Area1', 'mail@example.com')
 			$oStatement = $this->oDB->getConnection()->prepareStatement(
 				'INSERT INTO '.$this->oDB->getTableName('area').' (area_name, '
 				.'area_admin_email) VALUES (?, ?)'
@@ -254,7 +264,11 @@ class Area {
 			   $this->nId = $oIdgen->getId();
 			}
 		} else {
-			// already existing object
+			// Update an already existing object
+			//
+			// Example query:
+			//   UPDATE schoorbs_area SET area_name = 'Area2' AND 
+			//   area_admin_email = 'mail@example.org' WHERE id = 2
 			$oStatement = $this->oDB->getConnection()->prepareStatement(
 				'UPDATE '.$this->oDB->getTableName('area').' SET area_name = ? '
 				.'AND area_admin_email = ? WHERE id = ?'
