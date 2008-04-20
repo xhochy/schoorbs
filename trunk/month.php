@@ -372,7 +372,6 @@ $smarty->assign('year',$year);
 $smarty->assign('month',$month);
 $smarty->assign('morningstarts',$morningstarts);
 $smarty->assign('javascript_cursor',($javascript_cursor ? 'true' : 'false'));
-$smarty->assign('show_plus_link',($show_plus_link ? 'true' : 'false'));
 $smarty->assign('times_right_side',($times_right_side ? 'true' : 'false'));
 $smarty->assign('enable_periods',($enable_periods ? 'true' : 'false'));
 $smarty->assign('daynames', $aDaynames);

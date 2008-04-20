@@ -293,8 +293,6 @@ $times_right_side = false;
 // Change to false if clients have old browsers
 // incompatible with JavaScript.
 $javascript_cursor = true; 
-// Change to true to always show the (+) link.
-$show_plus_link = true;  
 
 // Define default starting view (month, week or day)
 // Default is day

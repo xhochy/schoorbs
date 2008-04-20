@@ -271,7 +271,6 @@ $smarty->assign(array(
     'ty' => $ty, 'tm' => $tm, 'td' => $td,
     'area' => $area, 'room' => $room,
     'javascript_cursor' => ($javascript_cursor ? 'true' : 'false'),
-    'show_plus_link' => ($show_plus_link ? 'true' : 'false'),
     'times_right_side' => ($times_right_side ? 'true' : 'false'),
     'enable_periods' => ($enable_periods ? 'true' : 'false'),
     'days' => $aDays
