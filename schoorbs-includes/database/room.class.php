@@ -6,6 +6,7 @@
  * @package Schoorbs
  * @subpackage DB
  * @license http://www.gnu.org/licenses/gpl.html GNU General Public License
+ * @license http://opensource.org/licenses/mit-license.php MIT-style license
  */
 
 /**
@@ -15,6 +16,7 @@
  * @package Schoorbs
  * @subpackage DB
  * @license http://www.gnu.org/licenses/gpl.html GNU General Public License
+ * @license http://opensource.org/licenses/mit-license.php MIT-style license
  */
 class Room {
 	
