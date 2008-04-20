@@ -1,3 +1,11 @@
+schoorbs (1.0.1) unstable; urgency=low
+
+  * Fixed bugs:
+    - Area couldn't be deleted
+    - Rooms couldn't be deleted
+    - Area name couldn't be changed
+
+
 schoorbs (1.0.0) unstable; urgency=low
 
   * Final release of Schoorbs 1.0
