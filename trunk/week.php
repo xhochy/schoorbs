@@ -273,7 +273,6 @@ $smarty->assign(array(
     'javascript_cursor' => ($javascript_cursor ? 'true' : 'false'),
     'show_plus_link' => ($show_plus_link ? 'true' : 'false'),
     'times_right_side' => ($times_right_side ? 'true' : 'false'),
-    'highlight_method' => $highlight_method,
     'enable_periods' => ($enable_periods ? 'true' : 'false'),
     'days' => $aDays
 ));
