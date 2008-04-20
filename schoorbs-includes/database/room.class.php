@@ -81,10 +81,35 @@ class Room {
 	public static function getByName($oArea, $sName)
 	{
 		$oDB = SchoorbsDB::getInstance();
+		// Example Query
+		//  SELECT * FROM schoorbs_rootm WHERE area_id = 1 AND room_name = 'Hi'
 		$oStatement = $oDB->getConnection()->prepareStatement('SELECT * FROM '
 			.$oDB->getTableName('room').' WHERE area_id = ? AND room_name = ?');
 		$oStatement->setInt(1, $oArea->getId());
 		$oStatement->setString(2, $sName);
+		$oResult = $oStatement->executeQuery();
+		if ($oResult->next()) {
+			return self::fetchRoom($oResult);
+		} else {
+			return null;
+		}
+	}
+	
+	/**
+	 * Get an room by its id.
+	 *
+	 * @param $nId int
+	 * @return Room
+	 * @author Uwe L. Korn <uwelk@xhochy.org>
+	 */
+	public static function getById($nId)
+	{
+		$oDB = SchoorbsDB::getInstance();
+		// Example Query:
+		//   SELECT * FROM schoorbs_room WHERE id = 5
+		$oStatement = $oDB->getConnection()->prepareStatement('SELECT * FROM '
+			.$oDB->getTableName('room').' WHERE id = ?');
+		$oStatement->setInt(1, $nId);
 		$oResult = $oStatement->executeQuery();
 		if ($oResult->next()) {
 			return self::fetchRoom($oResult);
@@ -107,6 +132,8 @@ class Room {
 	{
 		$aRooms = array();
 		$oDB = SchoorbsDB::getInstance();
+		// Example Query:
+		//  SELECT * FROM schoorbs_room WHERE area_id = 2
 		$oStatement = $oDB->getConnection()->prepareStatement('SELECT * FROM '
 			.$oDB->getTableName('room').' WHERE area_id = ?');
 		$oStatement->setInt(1, $oArea->getId());
@@ -294,6 +321,11 @@ class Room {
 			// new object, so we will insert it as a new row
 			$oIdgen = $this->oDB->getConnection()->getIdGenerator();
 			// prepare the INSERT startement which will be the same in both cases
+			//
+			// Example query:
+			//   INSERT INTO schoorbs_room (room_name, area_id, description, 
+			//   capacity, room_admin_email) VALUES ('Room1', 1, 'example room',
+			//   12, 'mail@example.com')
 			$oStatement = $this->oDB->getConnection()->prepareStatement(
 				'INSERT INTO '.$this->oDB->getTableName('room').' (room_name, '
 				.'area_id, description, capacity, room_admin_email) VALUES (?,'
@@ -316,9 +348,14 @@ class Room {
 			   $this->nId = $oIdgen->getId();
 			}
 		} else {
-			// already existing object
+			// Update the already existing object
+			// 
+			// Example query:
+			//   UPDATE schoorbs_room SET room_name = 'Room2' AND area_id = 6
+			//   AND description = 'another room' AND capacity = 40 AND
+			//   room_admin_email = 'mail@example.org' WHERE id = 23
 			$oStatement = $this->oDB->getConnection()->prepareStatement(
-				'UPDATE '.$this->oDB->getTableName('area').' SET room_name = ? '
+				'UPDATE '.$this->oDB->getTableName('room').' SET room_name = ? '
 				.'AND area_id = ? AND description = ? AND capacity = ? AND '
 				.'room_admin_email = ? WHERE id = ?'
 			);
