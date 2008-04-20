@@ -25,16 +25,18 @@ require_once 'schoorbs-includes/authentication/schoorbs_auth.php';
 list($day, $month, $year) = input_DayMonthYear();
 if (isset($_REQUEST['confirm'])) $confirm = true;
 $type = input_Type();
+$room = intval($_REQUEST['room']);
 
 ## Main ##
 
 // This is gonna blast away something. We want them to be really
 // really sure that this is what they want to do.
 
-if($type == "room")
+if($type == 'room')
 {
 	// We are supposed to delete a room
 	if (isset($confirm)) {
+		
 		// They have confirmed it already, so go blast!
 		sql_begin();
 		// First take out all appointments for this room
