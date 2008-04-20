@@ -5,6 +5,7 @@ schoorbs (1.0.1) unstable; urgency=low
     - Rooms couldn't be deleted
     - Area name couldn't be changed
 
+ -- Uwe L. Korn <packaging@xhochy.com>  Sun, 20 Apr 2008 14:19:51 +0100
 
 schoorbs (1.0.0) unstable; urgency=low
 
