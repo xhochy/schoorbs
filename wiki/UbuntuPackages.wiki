@@ -2,7 +2,16 @@
 #labels Phase-Deploy
 = About =
 
-At the moment we are able to serve packages for Ubuntu 7.10 and Ubuntu 7.04.
+At the moment we are able to serve packages for Ubuntu 8.04, 7.10 and 7.04.
+
+= Ubuntu 8.04 Hardy Heron =
+
+If you want to get up-to-date Packages add this repository to your `/etc/apt/sources.list` :
+
+{{{
+deb http://static.xhochy.com/ubuntu/ hardy schoorbs
+deb-src http://static.xhochy.com/ubuntu/ hardy schoorbs
+}}}
 
 = Ubuntu 7.10 Gutsy Gibbon =
 
