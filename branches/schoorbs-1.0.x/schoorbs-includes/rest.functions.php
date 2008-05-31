@@ -18,6 +18,8 @@ require_once dirname(__FILE__)."/../schoorbs-includes/database/$dbsys.php";
 require_once dirname(__FILE__).'/../schoorbs-includes/input.functions.php';
 /** The time related functions */
 require_once dirname(__FILE__).'/../schoorbs-includes/time.functions.php';
+/** The general functions */
+require_once dirname(__FILE__).'/../schoorbs-includes/general.functions.php';
 
 
 // Use Smarty for REST Output
