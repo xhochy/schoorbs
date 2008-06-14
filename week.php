@@ -258,15 +258,21 @@ for (
  	
 	}
 
+	if($enable_periods) {
+                $sTitle = $periods[preg_replace( "/^0/", "", $time_t)];
+        } else {
+                $sTitle = utf8_strftime(hour_min_format(), $t);
+        }
 	$aTimes[] = array('time_t' => $time_t, 'WeekDays' => $aWeekDays,
-		'time' => ($enable_periods ? $periods[preg_replace("/^0/", "", $time_t)] : $periods[$time_t_stripped]));
+		'time' => $sTitle);
 	
 }
 
 $smarty->assign(array(
     'this_area_name' => $this_area_name,
     'this_room_name' => $this_room_name,
-    'pview' => $pview, 'times' => $aTimes,
+    'pview' => $pview, 
+    'times' => $aTimes,
     'yy' => $yy, 'ym' => $ym, 'yd' => $yd,
     'ty' => $ty, 'tm' => $tm, 'td' => $td,
     'area' => $area, 'room' => $room,
