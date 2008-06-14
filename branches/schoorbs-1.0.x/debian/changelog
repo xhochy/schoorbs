@@ -1,3 +1,12 @@
+schoorbs (1.0.2) unstable; urgency=low
+
+  * Fixed bugs:
+    - Fixed incompability problems with PHP4
+    - Time wasn't shown in week.php
+
+ -- Uwe L. Korn <packaging@xhochy.com>  Sun, 14 Jun 2008 14:19:51 +0100
+
+
 schoorbs (1.0.1) unstable; urgency=low
 
   * Fixed bugs:
