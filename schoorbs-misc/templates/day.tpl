@@ -14,48 +14,48 @@
     </tr>
     </table>
 {/if}
-<script type="text/javascript">
-	InitCellManagement({$times_right_side});
-</script>
+{if $javascript_cursor eq "true"}
+	<script type="text/javascript">
+		InitCellManagement({$times_right_side});
+	</script>
+{/if}
 <table cellspacing="0" border="1" width="100%">
 <tr>
-	<th style="width: 10px;">
-		{if $enable_periods eq "true"}{get_vocab text="period"}{else}{get_vocab text="time"}{/if}
-	</th>
+	<th style="width: 1%;">{$period_title}</th>
 {foreach from=$rooms item=room}
-	<th>
-		<a href="week.php?year={$year}&amp;month={$month}&amp;day={$day}&amp;area={$area}&amp;room={$room->getId()}" title="{get_vocab text="viewweek"}: {$room->getDescription()}">
-            {$room->getName()|escape:"html"}({$room->getCapacity()})
+	<th style="width: {$room_column_width}%;">
+		<a href="week.php?year={$year}&amp;month={$month}&amp;day={$day}&amp;area={$area}&amp;room={$room.id}" title="{get_vocab text="viewweek"}: {$room.description}">
+            {$room.title|escape:"html"}({$room.capacity})
         </a>
 	</th>
 {/foreach}
 {if $times_right_side eq "true"}
- 	<th style="width: 10px;">
-		{if $enable_periods eq "true"}{get_vocab text="period"}{else}{get_vocab text="time"}{/if}
-	</th>
+ 	<th style="width: 1%;">{$period_title}</th>
 {/if}
 </tr>	
-{foreach from=$entries item=entry_row}
+{foreach from=$times item=time}
 	<tr>
-		<td class="times">{$entry_row.timestring|escape:"html"}</td>
-		{foreach from=$entry_row.entries item=entry}
-			<td {if $entry.entry neq null}class="{$entry.entry->getType()}" {/if}style="text-align: center" onmouseover="HighlightCell(this);" onmouseout="UnHighlightCell(this);">
-				{if $entry.entry neq null}
-					{if $entry.entry->getStartTime() eq $entry_row.time}
-						<a class="url" href="view_entry.php?id={$entry.entry->getId()}&amp;area={$area}&amp;day={$day}&amp;month={$month}&amp;year={$year}" title="{$entry.entry->getDescription()|escape:"html"}">
-				 			{$entry.entry->getName()} <span class="uid" style="font-weight: bold;">({$entry.entry->getCreateBy()})</span>
-						</a>
-					{else}
-						"
-					{/if}
+		<td class="times">{$time.title}</td>
+		{foreach from=$time.cols item=col}
+			<td class="{$col.css_class}" style="text-align: center"
+				{if $javascript_cursor eq "true"}
+					onmouseover="HighlightCell(this);"
+					onmouseout="UnHighlightCell(this);"
+				{/if}>
+			{if $col.id eq ""}
+				{if $pview neq 1}
+					<a href="edit_entry.php?area={$area}&amp;room={$col.room}&amp;year={$year}&amp;month={$month}&amp;day={$day}{$col.period_param}">
+					<img alt="schoorbs-misc/gfx/list-add-small.png" src="schoorbs-misc/gfx/list-add-small.png" style="width: 10px; height: 10px; border: 0px" /></a>
 				{else}
-					{if $pview neq 1}
-						<a href="edit_entry.php?area={$area}&amp;room={$entry.room->getId()}&amp;year={$year}&amp;month={$month}&amp;day={$day}{$entry_row.urlparams}">
-						<img alt="schoorbs-misc/gfx/list-add-small.png" src="schoorbs-misc/gfx/list-add-small.png" style="width: 10px; height: 10px; border: 0px" /></a>
-					{else}
-						&nbsp;
-					{/if}
+					&nbsp;
 				{/if}
+			{elseif $col.descr neq ""}
+				<a class="url" href="view_entry.php?id={$col.id}&amp;area={$area}&amp;day={$day}&amp;month={$month}&amp;year={$year}" title="{$col.long_descr}">
+			 			{$col.descr} <span class="uid" style="font-weight: bold;">({$col.create_by})</span>
+				</a>
+			{else}
+				&nbsp;"&nbsp;
+			{/if}
 			</td>
 		{/foreach}
 		{if $times_right_side eq "true"}

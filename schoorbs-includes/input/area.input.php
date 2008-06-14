@@ -34,12 +34,17 @@ function get_default_area()
  */ 
 function input_Area()
 {
-	if(isset($_REQUEST['area']))
-	    if(empty($_REQUEST['area']))
+	if(isset($_REQUEST['area'])) {
+	    if (empty($_REQUEST['area'])) {
 	        $area = get_default_area();
-	    else
+	    } else {
 	        $area = intval($_REQUEST['area']);
-	else
+		if (strval($area) !== $_REQUEST['area']) {
+                     $area = get_default_area();
+                }
+            }
+	} else {
 	    $area = get_default_area();
+        }
 	return $area;
 }

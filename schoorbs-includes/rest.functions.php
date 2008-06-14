@@ -18,8 +18,18 @@ require_once dirname(__FILE__)."/../schoorbs-includes/database/$dbsys.php";
 require_once dirname(__FILE__).'/../schoorbs-includes/input.functions.php';
 /** The time related functions */
 require_once dirname(__FILE__).'/../schoorbs-includes/time.functions.php';
-/** The global functions */
+/** The general functions */
 require_once dirname(__FILE__).'/../schoorbs-includes/global.functions.php';
+
+
+// Use Smarty for REST Output
+if (file_exists(dirname(__FILE__).'/Smarty/libs/libs/Smarty.class.php')) {
+	// On Debian systems
+	require_once dirname(__FILE__).'/Smarty/libs/libs/Smarty.class.php';
+} else {
+    // On other systems (including Ubuntu)
+	require_once dirname(__FILE__).'/Smarty/libs/Smarty.class.php';
+}
 
 // Session/Remote_User could be used for REST calls too, but else use 
 // Session/HTTP
@@ -41,6 +51,22 @@ require_once dirname(__FILE__).'/authentication/schoorbs_auth.php';
  */
 class SchoorbsREST
 {
+	public static $oTPL;
+	
+	/** 
+	 * Initialize the REST-interface, e.g. the template system
+	 *
+	 * @author Uwe L. Korn <uwelk@xhochy.org>
+	 */
+	public static function init()
+	{
+		self::$oTPL = new Smarty();
+		self::$oTPL->template_dir = dirname(__FILE__).'/../schoorbs-misc/templates/REST';
+		self::$oTPL->compile_dir = dirname(__FILE__).'/Smarty/templates_c';
+		self::$oTPL->cache_dir = dirname(__FILE__).'/Smarty/cache';
+		self::$oTPL->config_dir = dirname(__FILE__).'/Smarty/configs';
+	}
+	
 	/**
 	 * Checks if the REST-functions exists
 	 * 
@@ -121,11 +147,9 @@ class SchoorbsREST
 	 */
 	public static function sendError($sMessage, $nCode)
 	{
-		$oXML = new SimpleXMLElement('<rsp stat="fail" />');
-		$oError = $oXML->addChild('err');
-		$oError->addAttribute('code', $nCode);
-		$oError->addAttribute('message', $sMessage);
-		echo $oXML->asXML();
+		self::$oTPL->assign('message', $sMessage);
+		self::$oTPL->assign('code', $nCode);
+		self::$oTPL->display('error.tpl');
 	
 		if (defined('REST_TESTING')) {
 			throw new Exception('REST Exception' + $sMessage);
@@ -134,3 +158,6 @@ class SchoorbsREST
 		}
 	}
 }
+
+// Automatically start up the REST-interface if it's included
+SchoorbsREST::init();

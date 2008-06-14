@@ -7,7 +7,7 @@
  * @license http://www.gnu.org/licenses/gpl.html GNU General Public License
  */
 
-/// Includes ///
+## Includes ##
 
 /** The Configuration file */
 require_once 'config.inc.php';
@@ -22,7 +22,7 @@ require_once 'schoorbs-includes/authentication/schoorbs_auth.php';
 /** The 3 minicalendars */
 require_once 'schoorbs-includes/minicals.php';
 
-/// Var Init ///
+## Var Init ##
 
 /** day, month, year **/
 list($day, $month, $year) = input_DayMonthYear();
@@ -34,17 +34,17 @@ $area = input_Area();
 /** room **/
 $room = input_Room();
 
-/// Main ///
+## Main ##
 
-// print the page header
+# print the page header
 print_header();
 
-// Month view start time. This ignores morningstarts/eveningends because it
-// doesn't make sense to not show all entries for the day, and it messes
-// things up when entries cross midnight.
+# Month view start time. This ignores morningstarts/eveningends because it
+# doesn't make sense to not show all entries for the day, and it messes
+# things up when entries cross midnight.
 $month_start = mktime(0, 0, 0, $month, 1, $year);
 
-// What column the month starts in: 0 means $weekstarts weekday.
+# What column the month starts in: 0 means $weekstarts weekday.
 $weekday_start = (date("w", $month_start) - $weekstarts + 7) % 7;
 
 $days_in_month = date("t", $month_start);
@@ -59,39 +59,45 @@ if( $enable_periods ) {
 }
 
 
-// Define the start and end of each day of the month in a way which is not
-// affected by daylight saving...
+# Define the start and end of each day of the month in a way which is not
+# affected by daylight saving...
 for ($j = 1; $j<=$days_in_month; $j++) {
-	// are we entering or leaving daylight saving
-	// dst_change:
-	// -1 => no change
-	//  0 => entering DST
-	//  1 => leaving DST
+	# are we entering or leaving daylight saving
+	# dst_change:
+	# -1 => no change
+	#  0 => entering DST
+	#  1 => leaving DST
 	$dst_change[$j] = is_dst($month,$j,$year);
-    if(empty( $enable_periods )){
+        if(empty( $enable_periods )){
 		$midnight[$j]=mktime(0,0,0,$month,$j,$year, is_dst($month,$j,$year, 0));
 		$midnight_tonight[$j]=mktime(23,59,59,$month,$j,$year, is_dst($month,$j,$year, 23));
-	} else {
+	}
+        else {
 		$midnight[$j]=mktime(12,0,0,$month,$j,$year, is_dst($month,$j,$year, 0));
 		$midnight_tonight[$j]=mktime(12,count($periods),59,$month,$j,$year, is_dst($month,$j,$year, 23));
-	}
+        }
 }
 
-if($pview != 1) {
- 	// need to show either a select box or a normal html list,
-    // depending on the settings in config.inc.php
-    if ($area_list_format == "select") {
+if($pview != 1)
+{
+    # need to show either a select box or a normal html list,
+    # depending on the settings in config.inc.php
+    if ($area_list_format == "select") 
+    {
 	    $smarty->assign('area_select_list',make_area_select_html('month.php', $area, $year, $month, $day)); # from functions.inc
 	    $this_area_name = sql_query1("SELECT area_name FROM $tbl_area WHERE id = $area");
 		$this_room_name = sql_query1("SELECT room_name FROM $tbl_room WHERE id = $room");
-    } else {
+    }
+    else
+    {
     	# show the standard html list
 	    $sQuery = "SELECT id, area_name FROM $tbl_area ORDER BY area_name";
    	    $res = sql_query($sQuery);
    	    $rows = array();
    	    if ($res) for ($i = 0; ($row = sql_row($res, $i)); $i++)
    	    {
-   	    	if ($row[0] == $area) {
+   	    	if ($row[0] == $area)
+			{
 				$this_area_name = htmlspecialchars($row[1]);
 			}	
    	        $rows[] = array('id' => $row[0], 'area_name' => $row[1]);
@@ -108,9 +114,10 @@ if($pview != 1) {
     $smarty->display('area_list.tpl');
     
     // Show the list of rooms
-    if ($area_list_format == "select") {
+    if ($area_list_format == "select") 
 		$smarty->assign('room_list_select',make_room_select_html('month.php', $area, $room, $year, $month, $day));
-   	} else {
+   	else 
+   	{
    		$sQuery = "SELECT id, room_name, description FROM $tbl_room WHERE area_id = $area ORDER BY room_name";
 		$res = sql_query($sQuery);
 		$aRooms = array();
@@ -128,21 +135,22 @@ if($pview != 1) {
    	$smarty->assign('room',$room);
     $smarty->display('room_list.tpl');
     
-    // Draw the three month calendars
+    #Draw the three month calendars
     minicals($year, $month, $day, $area, '', 'day');
     echo "</tr></table>\n";
 }
 
-// Don't continue if this area has no rooms:
-if ($room <= 0) {
+# Don't continue if this area has no rooms:
+if ($room <= 0)
+{
     echo "<h1>".get_vocab("no_rooms_for_area")."</h1>";
     require_once 'schoorbs-includes/trailer.php';
     exit;
 }
 
-// Show Go to month before and after links
-// y? are year and month of the previous month.
-// t? are year and month of the next month.
+# Show Go to month before and after links
+#y? are year and month of the previous month.
+#t? are year and month of the next month.
 
 $i= mktime(12,0,0,$month-1,1,$year);
 $yy = date("Y",$i);
@@ -152,14 +160,14 @@ $i= mktime(12,0,0,$month+1,1,$year);
 $ty = date("Y",$i);
 $tm = date("n",$i);
 
-// Used below: localized "all day" text but with non-breaking spaces:
+# Used below: localized "all day" text but with non-breaking spaces:
 $all_day = ereg_replace(" ", "&nbsp;", get_vocab("all_day"));
 
-// Get all meetings for this month in the room that we care about
-//  row[0] = Start time
-//  row[1] = End time
-//  row[2] = Entry ID
-// This data will be retrieved day-by-day fo the whole month
+#Get all meetings for this month in the room that we care about
+# row[0] = Start time
+# row[1] = End time
+# row[2] = Entry ID
+# This data will be retrieved day-by-day fo the whole month
 for ($day_num = 1; $day_num<=$days_in_month; $day_num++) {
 	$sql = "SELECT start_time, end_time, id, name
 	   FROM $tbl_entry
@@ -167,10 +175,10 @@ for ($day_num = 1; $day_num<=$days_in_month; $day_num++) {
 	   AND start_time <= $midnight_tonight[$day_num] AND end_time > $midnight[$day_num]
 	   ORDER by 1";
 
-	// Build an array of information about each day in the month.
-	// The information is stored as:
-	//  d[monthday]["id"][] = ID of each entry, for linking.
-	//  d[monthday]["data"][] = "start-stop" times or "name" of each entry.
+	# Build an array of information about each day in the month.
+	# The information is stored as:
+	#  d[monthday]["id"][] = ID of each entry, for linking.
+	#  d[monthday]["data"][] = "start-stop" times or "name" of each entry.
 
 	$res = sql_query($sql);
 	if (! $res) echo sql_error();
@@ -179,88 +187,72 @@ for ($day_num = 1; $day_num<=$days_in_month; $day_num++) {
 	        $d[$day_num]["id"][] = $row[2];
             $d[$day_num]["shortdescrip"][] = $row[3];
 
-            // Describe the start and end time, accounting for "all day"
-            // and for entries starting before/ending after today.
-            // There are 9 cases, for start time < = or > midnight this morning,
-            // and end time < = or > midnight tonight.
-            // Use ~ (not -) to separate the start and stop times, because MSIE
-            // will incorrectly line break after a -.
+            # Describe the start and end time, accounting for "all day"
+            # and for entries starting before/ending after today.
+            # There are 9 cases, for start time < = or > midnight this morning,
+            # and end time < = or > midnight tonight.
+            # Use ~ (not -) to separate the start and stop times, because MSIE
+            # will incorrectly line break after a -.
 
             if(empty( $enable_periods ) ){
 		        switch (cmp3($row[0], $midnight[$day_num]) . cmp3($row[1], $midnight_tonight[$day_num] + 1))
 		        {
-		        // Starts after midnight, ends before midnight
-		    	case "> < ":         
-		    	// Starts at midnight, ends before midnight
-		    	case "= < ":         
+		    	case "> < ":         # Starts after midnight, ends before midnight
+		    	case "= < ":         # Starts at midnight, ends before midnight
 		                $d[$day_num]["data"][] = utf8_strftime(hour_min_format(), $row[0]) . "~" . utf8_strftime(hour_min_format(), $row[1]);
 		                break;
-		        // Starts after midnight, ends at midnight
-		    	case "> = ":         
+		    	case "> = ":         # Starts after midnight, ends at midnight
 		                $d[$day_num]["data"][] = utf8_strftime(hour_min_format(), $row[0]) . "~24:00";
 		                break;
-		    	// Starts after midnight, continues tomorrow
-		    	case "> > ":         
+		    	case "> > ":         # Starts after midnight, continues tomorrow
 		                $d[$day_num]["data"][] = utf8_strftime(hour_min_format(), $row[0]) . "~====>";
 		                break;
-		        // Starts at midnight, ends at midnight
-		    	case "= = ":         
+		    	case "= = ":         # Starts at midnight, ends at midnight
 		                $d[$day_num]["data"][] = $all_day;
 		                break;
-		        // Starts at midnight, continues tomorrow
-		    	case "= > ":         
+		    	case "= > ":         # Starts at midnight, continues tomorrow
 		                $d[$day_num]["data"][] = $all_day . "====>";
 		                break;
-		        // Starts before today, ends before midnight
-		    	case "< < ":         
+		    	case "< < ":         # Starts before today, ends before midnight
 		                $d[$day_num]["data"][] = "<====~" . utf8_strftime(hour_min_format(), $row[1]);
 		                break;
-		        // Starts before today, ends at midnight
-		    	case "< = ":         
+		    	case "< = ":         # Starts before today, ends at midnight
 		                $d[$day_num]["data"][] = "<====" . $all_day;
 		                break;
-		        // Starts before today, continues tomorrow
-		    	case "< > ":         
+		    	case "< > ":         # Starts before today, continues tomorrow
 		                $d[$day_num]["data"][] = "<====" . $all_day . "====>";
 		                break;
 		        }
-	    	} else {
+	    	}
+            else
+            {
 	            $start_str = ereg_replace(" ", "&nbsp;", period_time_string($row[0]));
 	            $end_str   = ereg_replace(" ", "&nbsp;", period_time_string($row[1], -1));
 	            switch (cmp3($row[0], $midnight[$day_num]) . cmp3($row[1], $midnight_tonight[$day_num] + 1))
 	            {
-	            // Starts after midnight, ends before midnight
-	        	case "> < ":         
-	        	// Starts at midnight, ends before midnight
-	        	case "= < ":         
+	        	case "> < ":         # Starts after midnight, ends before midnight
+	        	case "= < ":         # Starts at midnight, ends before midnight
 	                    $d[$day_num]["data"][] = $start_str . "~" . $end_str;
 	                    break;
-	            // Starts after midnight, ends at midnight
-	        	case "> = ":         
+	        	case "> = ":         # Starts after midnight, ends at midnight
 	                    $d[$day_num]["data"][] = $start_str . "~24:00";
 	                    break;
-	            // Starts after midnight, continues tomorrow
-	        	case "> > ":         
+	        	case "> > ":         # Starts after midnight, continues tomorrow
 	                    $d[$day_num]["data"][] = $start_str . "~====>";
 	                    break;
-	            // Starts at midnight, ends at midnight
-	        	case "= = ":         
+	        	case "= = ":         # Starts at midnight, ends at midnight
 	                    $d[$day_num]["data"][] = $all_day;
 	                    break;
-	           	// Starts at midnight, continues tomorrow
-	        	case "= > ":         
+	        	case "= > ":         # Starts at midnight, continues tomorrow
 	                    $d[$day_num]["data"][] = $all_day . "====>";
 	                    break;
-	            // Starts before today, ends before midnight
-	        	case "< < ":         
+	        	case "< < ":         # Starts before today, ends before midnight
 	                    $d[$day_num]["data"][] = "<====~" . $end_str;
 	                    break;
-	            // Starts before today, ends at midnight
-	        	case "< = ":         
+	        	case "< = ":         # Starts before today, ends at midnight
 	                    $d[$day_num]["data"][] = "<====" . $all_day;
 	                    break;
-	            // Starts before today, continues tomorrow
-	        	case "< > ":         
+	        	case "< > ":         # Starts before today, continues tomorrow
 	                    $d[$day_num]["data"][] = "<====" . $all_day . "====>";
 	                    break;
 	            }
@@ -271,15 +263,15 @@ for ($day_num = 1; $day_num<=$days_in_month; $day_num++) {
 }
 
 $aDaynames = array();
-// Weekday name header row:
+# Weekday name header row:
 for ($weekcol = 0; $weekcol < 7; $weekcol++)
 	$aDaynames[] = day_name(($weekcol + $weekstarts)%7);
 $aSkipdays = array();
-// Skip days in week before start of month:
+# Skip days in week before start of month:
 for ($weekcol = 0; $weekcol < $weekday_start; $weekcol++)
 	$aSkipdays[] = '';
 
-// Draw the days of the month:
+# Draw the days of the month:
 $aDays = array();
 for ($cday = 1; $cday <= $days_in_month; $cday++)
 {
@@ -288,11 +280,12 @@ for ($cday = 1; $cday <= $days_in_month; $cday++)
     else 
     	$bBreakLine = 'false';
     
-    // Anything to display for this day?
-    if (isset($d[$cday]["id"][0])) {
+    # Anything to display for this day?
+    if (isset($d[$cday]["id"][0]))
+    {
         $n = count($d[$cday]["id"]);
-		// Show the start/stop times, 2 per line, linked to view_entry.
-        // If there are 12 or fewer, show them, else show 11 and "...".
+        # Show the start/stop times, 2 per line, linked to view_entry.
+        # If there are 12 or fewer, show them, else show 11 and "...".
         for ($i = 0; $i < $n; $i++)
         {
             if ( ($i == 11 && $n > 12 && $monthly_view_entries_details != "both") or
@@ -305,7 +298,9 @@ for ($cday = 1; $cday <= $days_in_month; $cday++)
                 ($monthly_view_entries_details == "both"  && $i > 0) )
             {
                 $sOut = "<br />";
-            } else {
+            }
+            else
+            {
                 $sOut = " ";
             }
             switch ($monthly_view_entries_details)
@@ -342,7 +337,9 @@ for ($cday = 1; $cday <= $days_in_month; $cday++)
             }
         }
         $defined = 'true';
-    } else {
+    }
+    else
+    {
     	$defined = 'false';
     	$sOut = '';
     }
@@ -353,7 +350,7 @@ for ($cday = 1; $cday <= $days_in_month; $cday++)
 }
 
 $aSkipdays2 = array();
-// Skip days in week before start of month:
+# Skip days in week before start of month:
 if ($weekcol > 0) for (; $weekcol < 7; $weekcol++)
 	$aSkipdays2[] = '';
 
@@ -372,7 +369,9 @@ $smarty->assign('year',$year);
 $smarty->assign('month',$month);
 $smarty->assign('morningstarts',$morningstarts);
 $smarty->assign('javascript_cursor',($javascript_cursor ? 'true' : 'false'));
+$smarty->assign('show_plus_link',($show_plus_link ? 'true' : 'false'));
 $smarty->assign('times_right_side',($times_right_side ? 'true' : 'false'));
+$smarty->assign('highlight_method',$highlight_method);
 $smarty->assign('enable_periods',($enable_periods ? 'true' : 'false'));
 $smarty->assign('daynames', $aDaynames);
 $smarty->assign('skipdays', $aSkipdays);

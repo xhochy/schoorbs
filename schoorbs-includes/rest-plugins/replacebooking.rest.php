@@ -37,7 +37,7 @@ function rest_function_replaceBooking()
 	if ($enable_periods) {
 	    // The parameters 'day', 'year' and 'month' need to be arrays.
 	    // They need to have the same length.
-		if (isset($_REQUEST['day']) && is_array($_REQUEST['day'])) {
+		if (is_array($_REQUEST['day'])) {
 			$aDays = array();
 			
 			for($i = 0; $i < count($_REQUEST['day']); $i++) {
@@ -144,8 +144,10 @@ function rest_function_replaceBooking()
 		schoorbsCreateSingleEntry($nStartTime, $nEndTime, 0, 0, $nRoomID, $sUsername, $sName, $sType, $sDescription);
 	}
 
-	$oXML = new SimpleXMLElement('<rsp stat="ok" />');
 	// always true, if something went wrong there will be an error
-	$oXML->addChild('made_booking', 'true');
-	echo $oXML->asXML();
+	SchoorbsREST::$oTPL->assign('made_booking', 'true');
+	// use the makeBooking Template since replaceBooking is nearly the same as
+	// makeBooking, for a list of differences see the comment for this
+	// function.
+	SchoorbsREST::$oTPL->display('makebooking.tpl');
 }
