@@ -34,7 +34,7 @@ if (!getAuthorised(2)) showAccessDenied();
 // Done changing area or room information?
 if (isset($_REQUEST['change_done'])) {
 	if (isset($room)) { // Get the area the room is in
-		$area = sql_query1("SELECT area_id from $tbl_room where id = ".sql_escape_arg($room));
+		$area = sql_query1("SELECT area_id from $tbl_room where id = ".intval($room));
 	}
 	header("Location: admin.php?day=$day&month=$month&year=$year&area=$area");
 	exit();
@@ -64,7 +64,7 @@ print_header();
 
 if(isset($room)) {
 	
-	$res = sql_query("SELECT * FROM $tbl_room WHERE id = ".sql_escape_arg($room));
+	$res = sql_query("SELECT * FROM $tbl_room WHERE id = ".intval($room));
 	if (!$res) {
 		$sMessage = get_vocab("error_room").$room.get_vocab("not_found");
 		fatal_error(0, $sMessage);
@@ -76,7 +76,7 @@ if(isset($room)) {
 	$smarty->assign('room', $room);
 } elseif(isset($area)) {
 
-    $res = sql_query("SELECT * FROM $tbl_area WHERE id = ".sql_escape_arg($area));
+    $res = sql_query("SELECT * FROM $tbl_area WHERE id = ".intval($area));
 	if (!$res) {
 		$sMessage = get_vocab("error_area").$area.get_vocab("not_found");
 		fatal_error(0, $sMessage);
