@@ -7,7 +7,16 @@
  * @subpackage Input
  * @license http://www.gnu.org/licenses/gpl.html GNU General Public License
  */
- 
+
+## Defines ##
+
+/**
+ * Define that we are running Schoorbs without a GUI
+ * 
+ * @ignore
+ */
+define('SCHOORBS_NOGUI',true);
+
 ## Main Schoorbs Code Includes ##
 
 require_once dirname(__FILE__).'/../../schoorbs-includes/input.functions.php';

@@ -6,7 +6,7 @@
 ## Load version number ##
 
 File.open(File.join('schoorbs-includes', 'version.txt'), 'r') do |f|
-  SCHOORBS_VERSION = f.read()
+  SCHOORBS_VERSION = f.read().chop
 end
 
 ## Configuration ##
@@ -29,7 +29,7 @@ CLEAN.include RELEASE_DIST_DIR
 
 ## Task dependencies ##
 
-task :release => [:clean, :doc, :test, directory(RELEASE_DIST_DIR), :pre_release]
+task :release => [:clean, :doc, directory(RELEASE_DIST_DIR), :pre_release]
 task :pre_release => [directory(RELEASE_TMP_DIR), directory(File.join(RELEASE_TMP_DIR, 'schoorbs')), 'LICENSE', 'ChangeLog']
 
 ## Tasks ##

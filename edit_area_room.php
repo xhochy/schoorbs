@@ -19,7 +19,7 @@ require_once "schoorbs-includes/database/$dbsys.php";
 /** The authetication wrappers */
 require_once 'schoorbs-includes/authentication/schoorbs_auth.php';
 
-/// Var Init ///
+## Var Init ##
 
 /** day, month, year */
 list($day, $month, $year) = input_DayMonthYear();
@@ -27,14 +27,14 @@ list($day, $month, $year) = input_DayMonthYear();
 if (isset($_REQUEST['room'])) $room = input_Room();
 elseif (isset($_REQUEST['area'])) $area = input_Area();
 
-/// Main ///
+## Main ##
 
 if (!getAuthorised(2)) showAccessDenied();
 
 // Done changing area or room information?
 if (isset($_REQUEST['change_done'])) {
 	if (isset($room)) { // Get the area the room is in
-		$area = sql_query1("SELECT area_id from $tbl_room where id = ".sql_escape_arg($room));
+		$area = sql_query1("SELECT area_id from $tbl_room where id = ".intval($room));
 	}
 	header("Location: admin.php?day=$day&month=$month&year=$year&area=$area");
 	exit();
@@ -51,7 +51,7 @@ if (isset($_REQUEST['change_done'])) {
 	);
 	sql_query($sQuery);
 } elseif (isset($_REQUEST['change_area'])) {
-    $sAreaName = unslashes($_REQUEST['area_name']);
+	$sAreaName = unslashes($_REQUEST['area_name']);
 
 	$sQuery = sprintf(
 		'UPDATE %s SET area_name = \'%s\' WHERE id = %d', 
@@ -64,7 +64,7 @@ print_header();
 
 if(isset($room)) {
 	
-	$res = sql_query("SELECT * FROM $tbl_room WHERE id = ".sql_escape_arg($room));
+	$res = sql_query("SELECT * FROM $tbl_room WHERE id = ".intval($room));
 	if (!$res) {
 		$sMessage = get_vocab("error_room").$room.get_vocab("not_found");
 		fatal_error(0, $sMessage);
@@ -76,7 +76,7 @@ if(isset($room)) {
 	$smarty->assign('room', $room);
 } elseif(isset($area)) {
 
-    $res = sql_query("SELECT * FROM $tbl_area WHERE id = ".sql_escape_arg($area));
+    $res = sql_query("SELECT * FROM $tbl_area WHERE id = ".intval($area));
 	if (!$res) {
 		$sMessage = get_vocab("error_area").$area.get_vocab("not_found");
 		fatal_error(0, $sMessage);

@@ -17,6 +17,8 @@ require_once 'smarty.functions.php';
 require_once 'time.functions.php';
 /** Functions for area handling */
 require_once 'area.functions.php';
+/** The authetication wrappers */
+require_once dirname(__FILE__).'/../schoorbs-includes/authentication/schoorbs_auth.php';
 
 /// Functions ///
 
@@ -129,7 +131,7 @@ function fatal_error($need_header, $message = '')
 		if(version_compare('5.0.0',PHP_VERSION,'>') === true) {
 			trigger_error('Schoorbs Fatal Error: '.$message, E_USER_ERROR);
 		} else {
-			throw new Exception($message);
+			eval('throw new Exception($message);');
 		}
 	} else {
 		if ($need_header) print_header();
