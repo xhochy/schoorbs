@@ -1,0 +1,65 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE document PUBLIC "-//APACHE//DTD Documentation V2.0//EN" "http://forrest.apache.org/dtd/document-v20.dtd">
+<document>
+  <header>
+    <title>Common usage</title>
+  </header>
+  <body>
+    <section id="booking">
+      <title>Booking a  ressource</title>
+      <p>
+	By default you start a booking process by clicking on a green cross in
+	the timetable. It doesn't matter which room or time you click on, it's
+	only important that you click in the right <strong>area</strong> on a cross, all other
+	parameters could be changed on the following page.
+      </p>
+      <figure alt="Tabelle zur Raumbuchung" src="images/enduser-doku1.jpg" />
+      <p>
+        After you clicked on a cross, you will be redirect to the page "Add Entry".
+        In brief description you should give a short title for this booking, a
+        full description is optional but provides all other users a more detailed
+        information what this booking is about. If you are using periods in your
+        Schoorbs installation, you only have to choose the start periods and how
+        long it will last, users with time-based calendars choose the start time, 
+        the duration and the unit of the duration, e.g. hours.
+      </p>
+      <figure alt="Tabelle zur Raumbuchung" src="images/enduser-doku3.jpg" />
+      <p>
+      	Everything explained until yet is important for all types of entries, 
+      	single or repeated ones. If you want to add a reoccuring/repeated entry
+      	the last lines of this form are interesting for you. The "Repeat End Date"
+      	specifies the day of the last entry of this repeated booking. Above this
+      	field you could choose the type of the repeating, for n-weekly, you could
+      	choose below the dayes when the entry is repeated. After a click on "Save"
+      	either the day view with the new entry added or a list of conflicting 
+      	bookings will be shown.
+      </p>
+    </section>
+    <section id="change">
+      <title>Changing a booking</title>
+      <p>
+        Is a booking not anymore required, than you could delete is as long as
+        its start time isn't already in the past. By clicking on the entry in 
+        the timetable you will be redirected to a page with information about 
+        this entry. At the bottom of this page there is a link "Delete Entry".
+        Using this link you will only delete the current entry, if you want to 
+        delete a whole series, you could click on "Delete series", but remember
+        that this action could not be done in reverse, so please think carefully
+        about what you are doing.
+      </p>
+      <p>
+        If you have made a mistake during the creation of the enty, you do not 
+        need to delete the entry and create a new one (like in some other 
+        software). On the page with the detailed information about an entry you 
+        could click on "Edit entry" and change everything exactly like when you
+        are creating a new entry. If you want to edit a whole series, you should 
+        use "Edit series".
+      </p>
+    </section>
+    <p>
+      <a rel="license" href="http://creativecommons.org/licenses/by-sa/3.0/">
+        <img alt="Creative Commons License" style="border-width:0" src="http://i.creativecommons.org/l/by-sa/3.0/80x15.png" />
+      </a>
+    </p>
+  </body>
+</document>
