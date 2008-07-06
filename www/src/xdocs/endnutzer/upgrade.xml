@@ -1,0 +1,51 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE document PUBLIC "-//APACHE//DTD Documentation V2.0//EN" "http://forrest.apache.org/dtd/document-v20.dtd">
+<document>
+  <header>
+    <title>Upgrade von Schoorbs</title>
+  </header>
+  <body>
+    <section id="upgrade-simple">
+      <title>Upgrade von Schoorbs</title>
+      <p>
+      	<strong>
+      	  Bitte machen Sie zuvor eine Sicherheitskopie von allen Schoorbs-Daten
+      	  (Dateien und Datenbank)!
+      	</strong>
+      </p>
+      <ol>
+      	<li>Wir haben eine Schoorbs Installation in ..../schoorbs</li>
+      	<li>
+      	  Kopieren Sie den Ordner ihrer alten Schoorbs Installation an eine 
+      	  andere Stelle, z.b. schoorbs-old.
+      	</li>
+      	<li>
+      	  Laden Sie die neueste Schoorbs Version herunter.
+      	</li>
+      	<li>
+      	  Entpacken Sie diese Version an die Stelle, wo sich Ihre bisherige 
+      	  Installation befand.
+      	</li>
+      	<li>
+      	  Kopieren Sie folgende Dateien von der alten zur neuen Installation:
+      	  <ul>
+      	    <li>config.inc.php</li>
+      	    <li>schoorbs-includes/logging.configuration.php</li>
+      	  </ul>
+      	</li>
+      	<li>
+      	 Hiermit ist auch schon der Upgrade-Vorgang abgeschlossen, wenn Sie die
+      	 alte Version nicht mehr behalten möchten, können Sie diese jetzt 
+      	 löschen, in dem Sie den Ordner schoorbs-old löschen. 
+      	</li>
+      </ol>
+    </section>
+
+    <p>
+      <a rel="license" href="http://creativecommons.org/licenses/by-sa/3.0/">
+        <img alt="Creative Commons License" style="border-width:0" src="http://i.creativecommons.org/l/by-sa/3.0/80x15.png" />
+      </a>
+    </p>
+
+  </body>
+</document>
