@@ -47,7 +47,8 @@ See http://forrest.apache.org/docs/linking.html for more info
     <usage label="Normaler Gebrauch" href="usage.html" />
     <admin label="Administration" href="admin.html" />
     <logging label="Logging" href="logging.html" />
-    <upgrade label="Upgrade von MRBS 1.2.x" href="upgrade.html" />
+    <upgrade label="Upgrade von Schoorbs" href="upgrade.html" />
+    <upgrade label="Upgrade von MRBS 1.2.x" href="upgrade_mrbs.html" />
   </endnutzer>
   <all label="All">
     <whole_site_html label="Whole Site HTML" href="wholesite.html"/>
