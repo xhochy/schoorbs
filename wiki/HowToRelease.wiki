@@ -5,7 +5,7 @@
 
   * Make sure that there are no open bugs for the upcoming release
   * Make sure all unit-tests run without a problem
-  * *_Schoorbs 1.1+_* 
+  * *_Schoorbs 1.1 and newer:_* 
     * Get [https://translations.launchpad.net/schoorbs/trunk/+pots/schoorbs latest translations]
 
 = Things to do while releasing =
