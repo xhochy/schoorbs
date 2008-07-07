@@ -9,10 +9,11 @@ require 'rake/clean'
 require 'schoorbs-contrib/rake-fixes.rb'
 require 'schoorbs-contrib/release.rb'
 require 'schoorbs-contrib/debian-package.rb'
+require 'schoorbs-contrib/lang.rb'
 
 ## Tasks ##
 
-task :default => [:clean, :doc]
+task :default => [:clean, :langfiles]
 
 ## CLI Tasks ##
 

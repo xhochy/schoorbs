@@ -13,7 +13,7 @@ namespace :debian do
   task :source do 
     sh '/usr/bin/debuild -S -I.svn -us -uc'
   end
-  task :source => [:clean, 'ChangeLog']
+  task :source => [:clean, :langfiles,  'ChangeLog']
   
   namespace :binary do
 
