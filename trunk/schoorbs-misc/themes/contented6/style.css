@@ -1,0 +1,104 @@
+.schoorbs-week-matrix {
+	text-align: center;
+	margin-left:auto; 
+	margin-right:auto;
+}
+.schoorbs-week-matrix-free a {
+	background-color: #0d0;
+	display: block;
+	min-width: 35px;
+}
+.schoorbs-week-matrix-free a:hover {
+	background-color: #0f0;
+}
+.schoorbs-week-matrix-booked a:hover {
+	background-color: #f00;
+}
+.schoorbs-week-matrix-booked a {
+	background-color: #d00;
+	display: block;
+	min-width: 35px;
+}
+.schoorbs-week-matrix-time {
+	min-width: 40px;
+}
+
+#schoorbs-loginbox {
+	float: right;
+	background-color:#6699FF;
+	font-size: 50%;
+	margin: 0px 2px 0px 0px;
+	padding: 4px 10px 4px 10px;
+	color: #FFFFFF;
+	background-color:#6699FF;
+	font-weight: normal;
+	text-decoration: none;
+}
+
+#schoorbs-loginbox input {
+	border: 1px solid #3366CC;
+	font-size: 85%;
+}
+
+/** Administration accordion **/
+
+#schoorbs-administration-accordion .ui-accordion-primary-list {
+	list-style: none;
+	margin: 0px;
+}
+
+#schoorbs-administration-accordion .ui-accordion-link {
+	display: block;
+	background-color: blue;
+	color: #FFFFFF;
+	font-weight: bold;
+	margin: 0px;
+	padding: 5px 10px 5px 10px;
+	background-color: #6699FF;
+	border: 2px solid #3366CC;
+}
+
+#schoorbs-administration-accordion .ui-accordion-link:hover {
+	background-color:#3366CC;
+	border: 2px solid #6699FF;
+}
+
+#schoorbs-administration-accordion .ui-accordion-data {
+	font-family:Arial, sans-serif;
+	color: #333333;
+	background:#E6ECFF;
+	padding:5px 10px 10px 10px;
+	margin:15px 0px 15px 0px;
+	margin: 0px;
+	border: #0066CC solid thin;
+}
+
+#schoorbs-administration-accordion .ui-accordion-data a {
+	background:#E6ECFF;	
+}
+
+#schoorbs-administration-add-area .head {
+	display: block;
+	background-color: blue;
+	color: #FFFFFF;
+	font-weight: bold;
+	margin: 0px;
+	padding: 5px 10px 5px 10px;
+	background-color: #6699FF;
+	border: 2px solid #3366CC;
+}
+
+#schoorbs-administration-add-area .head:hover {
+	background-color:#3366CC;
+	border: 2px solid #6699FF;
+}
+
+#schoorbs-administration-add-area .form {
+	font-family:Arial, sans-serif;
+	color: #333333;
+	background:#E6ECFF;
+	padding:5px 10px 10px 10px;
+	margin:15px 0px 15px 0px;
+	margin: 0px;
+	border: #0066CC solid thin;
+}

@@ -35,8 +35,11 @@ if(!getAuthorised(2)) showAccessDenied();
 
 // Get the area as an ORM instance
 $oArea = Area::getById($area);
-// Get the name of the area we are working on out of the database
-$area_name = $oArea->getName();
+// If an Area exists
+if ($oArea !== null) {
+	// Get the name of the area we are working on out of the database
+        $area_name = $oArea->getName();
+}
 
 // Print out the (X)HTML-header
 print_header();
@@ -48,19 +51,20 @@ print_header();
 $aAreas = Area::getAreas();
 if (count($aAreas) === 0) {
 	$bNoAreas = 'true';
-} else {
-	$bNoAreas = 'false';
-}
-
-// Collect all rooms in the choosen area
-//
-// $bNoRooms will determinate in the template if we should show a list of rooms
-// or a remark that there are no rooms available at the moment.
-$aRooms = Room::getRooms($oArea);
-if (count($aRooms) === 0) {
 	$bNoRooms = 'true';
 } else {
-	$bNoRooms = 'false';
+	$bNoAreas = 'false';
+	
+	// Collect all rooms in the choosen area
+	//
+	// $bNoRooms will determinate in the template if we should show a list of rooms
+	// or a remark that there are no rooms available at the moment.
+	$aRooms = Room::getRooms($oArea);
+	if (count($aRooms) === 0) {
+	        $bNoRooms = 'true';
+	} else {
+	        $bNoRooms = 'false';
+	}
 }
 
 // Assign the variables for use in the template system
