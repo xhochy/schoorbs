@@ -79,6 +79,10 @@ $smarty->assign(array(
 
 // Get the area as an ORM instance
 $oArea = Area::getById($area);
+// No Area exists
+if ($oArea == null) {
+	fatal_error(false, "No area exists in the database!");
+}
 // Get the name of the area we are working on out of the database
 $area_name = $oArea->getName();
 // Collect all rooms in the choosen area
@@ -128,8 +132,8 @@ if (count($aRooms) === 0) {
 			// Use utf8_strftime to support multilingual date output
 			$aEntries[$t]['timestring'] = utf8_strftime(hour_min_format(), $t);
 			// Make up the URL-parameters for this time
-			$aEntries[$t]['urlparams'] = htmlentities('&hour='.$hour
-				.'&minute='.$minute);
+			/*$aEntries[$t]['urlparams'] = htmlentities('&hour='.$hour
+				.'&minute='.$minute);*/
 		}		
 	}
 	foreach ($aRooms as $oRoom) {
