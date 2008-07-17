@@ -73,3 +73,27 @@ msgstr ""
 msgid "December"
 msgstr ""
 
+msgid "Time"
+msgstr ""
+
+msgid "Sun"
+msgstr ""
+
+msgid "Mon"
+msgstr ""
+
+msgid "Tue"
+msgstr ""
+
+msgid "Wed"
+msgstr ""
+
+msgid "Thu"
+msgstr ""
+
+msgid "Fri"
+msgstr ""
+
+msgid "Sat"
+msgstr ""
+

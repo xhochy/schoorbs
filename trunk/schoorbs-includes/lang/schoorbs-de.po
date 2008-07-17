@@ -8,13 +8,13 @@ msgstr ""
 "Project-Id-Version: schoorbs\n"
 "Report-Msgid-Bugs-To: FULL NAME <EMAIL@ADDRESS>\n"
 "POT-Creation-Date: 2008-01-05 15:06+0100\n"
-"PO-Revision-Date: 2008-07-07 13:32+0000\n"
+"PO-Revision-Date: 2008-07-08 18:27+0000\n"
 "Last-Translator: Uwe L. Korn <uwelk@xhochy.org>\n"
 "Language-Team: German <de@li.org>\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"X-Launchpad-Export-Date: 2008-07-07 14:56+0000\n"
+"X-Launchpad-Export-Date: 2008-07-08 18:40+0000\n"
 "X-Generator: Launchpad (build Unknown)\n"
 
 msgid "Sunday"
@@ -73,3 +73,27 @@ msgstr "November"
 
 msgid "December"
 msgstr "Dezember"
+
+msgid "Time"
+msgstr "Zeit"
+
+msgid "Sun"
+msgstr "Son"
+
+msgid "Mon"
+msgstr "Mon"
+
+msgid "Tue"
+msgstr "Die"
+
+msgid "Wed"
+msgstr "Mit"
+
+msgid "Thu"
+msgstr "Don"
+
+msgid "Fri"
+msgstr "Fre"
+
+msgid "Sat"
+msgstr "Sam"
