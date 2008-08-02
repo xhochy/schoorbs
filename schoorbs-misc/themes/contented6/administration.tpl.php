@@ -34,7 +34,7 @@ foreach ($aAreas as $oArea) {
             foreach ($aRooms as $oRoom) {
             ?>
               <li>
-              	<?php echo $oRoom->getName(); ?>: 
+              	<strong><?php echo $oRoom->getName(); ?></strong>(<?php echo $oRoom->getCapacity(); ?>): 
               	<a href="<?php echo self::makeInternalUrl('edit-room.php', array('area' => $oArea->getId(), 'room' => $oRoom->getId())); ?>">
               	  <?php echo get_vocab('edit'); ?>
               	</a>
