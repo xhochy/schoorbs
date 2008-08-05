@@ -23,6 +23,21 @@ require_once 'schoorbs-includes/authentication/schoorbs_auth.php';
 require_once 'schoorbs-includes/schoorbstpl.class.php';
 
 // Only administrators should be able to create rooms and areas
-if (!getAuthorised(2)) showAccessDenied();
+if (!getAuthorised(2)) {
+	showAccessDenied();
+}
 
-SchoorbsTPL::renderPage('administration');
+if (!isset($_REQUEST['area-name'])) {
+	SchoorbsTPL::error(Lang::_('No name for the area was provided!'));
+	exit();
+}
+
+if (empty($_REQUEST['area-name'])) {
+	SchoorbsTPL::error(Lang::_('No name for the area was provided!'));
+	exit();
+}
+
+// add the new area to the database
+$nArea = Area::create($_REQUEST['area-name'])->getId();
+// redirect to adminisrat..php?area=<id>
+header(sprintf('Location: administration.php?id=%d', $nArea));

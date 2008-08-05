@@ -262,6 +262,21 @@ class SchoorbsTPL {
 	}
 	
 	/**
+	 * Display a error
+	 *
+	 * Remark: This function will only display the error page but will not
+	 *         exit the script, you have to do this manually. This gives you
+	 *         the possiblity to return a specific exit code.
+	 *
+	 * @param $sErrorText string
+	 * @author Uwe L. Korn <uwelk@xhochy.org>
+	 */
+	public static function error($sErrorText) {
+		self::populateVar('SCHOORBS_ERROR', $sErrorText);
+		self::renderPage('error');
+	}
+	
+	/**
 	 * Build an Url for internal links
 	 *
 	 * Adds all Parameters found in $_GET and inserts $aParameters in it
