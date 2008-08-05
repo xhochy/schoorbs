@@ -4,7 +4,7 @@ $(document).ready(function() {
 		autoHeight: false
 	});
 	$("#schoorbs-administration-add-area .form").hide();
-	$("#schoorbs-administration-add-area").click(function() {
+	$("#schoorbs-administration-add-area a.head").click(function() {
 		$("#schoorbs-administration-add-area .form").slideToggle();
 		//$(this).slideToggle('slow');
 	});

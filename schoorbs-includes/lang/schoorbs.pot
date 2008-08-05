@@ -97,3 +97,8 @@ msgstr ""
 msgid "Sat"
 msgstr ""
 
+msgid "No name for the area was provided!"
+msgstr ""
+
+msgid "An error occured"
+msgstr ""
