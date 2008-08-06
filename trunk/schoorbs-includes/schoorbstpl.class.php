@@ -300,4 +300,17 @@ class SchoorbsTPL {
 			return $sPath.'?'.implode('&', $aParams2);
 		}
 	}
+	
+	/**
+	 * Build an url that leads the user to a yes/no-desicion
+	 *
+	 * @param $sQuestion string
+	 * @param $sReferTo string
+	 * @param $sReturnTo string
+	 * @author Uwe L. Korn <uwelk@xhochy.org>
+	 */
+	public static function makeYesNoUrl($sQuestion, $sReferTo, $sReturnTo) {
+		return 'yes-no.php?question='.urlencode($sQuestion).'&referto='
+			.urlencode($sReferTo).'&returnto='.urlencode($sReturnTo);
+	}
 }
