@@ -23,10 +23,28 @@ require_once 'schoorbs-includes/authentication/schoorbs_auth.php';
 require_once 'schoorbs-includes/schoorbstpl.class.php';
 
 // Only administrators should be able to create rooms and areas
-if (!getAuthorised(2)) showAccessDenied();
+if (!getAuthorised(2)) {
+	showAccessDenied();
+}
 
-/**
- * @todo Switch accordion to the area choosen by $_REQUEST['area']
- */
+if (!isset($_REQUEST['area'])) {
+	SchoorbsTPL::error(Lang::_('No valid area(-id) for deletion was provided!'));
+	exit();
+}
 
-SchoorbsTPL::renderPage('administration');
+if (empty($_REQUEST['area'])) {
+	SchoorbsTPL::error(Lang::_('No valid area(-id) for deletion was provided!'));
+	exit();
+}
+
+$nArea = intval($_REQUEST['area']);
+
+if ($nArea != $_REQUEST['area']) {
+	SchoorbsTPL::error(Lang::_('No valid area(-id) for deletion was provided!'));
+	exit();
+}
+
+// delete the area in the database
+Area::delete($nArea);
+// redirect to adminisrat..php?area=<id>
+header('Location: administration.php');

@@ -116,3 +116,31 @@
 	font-weight: bold;
 	font-size: 1.2em;
 }
+
+#schoorbs-yes-no-box {
+	border: 1px solid #aaa;
+	margin: 50px auto;
+	width: 420px;
+	padding: 4px;
+	background-color: #f0f0f0;
+	color: #000;
+	text-align: center;
+}
+
+#schoorbs-yes-no-box .question {
+	font-weight: bold;
+	font-size: 1em;
+}
+
+#schoorbs-yes-no-box .yes-no {
+	border: 1px solid #aaa;
+	background-color: #f0f0f0;
+	text-align: center;
+	color: #000;
+	padding: 0 20px;
+}
+
+#schoorbs-yes-no-box .yes-no:hover {
+	border: 1px solid #000;
+	background-color: #fff;
+}

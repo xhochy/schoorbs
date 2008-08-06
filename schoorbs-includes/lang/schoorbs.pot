@@ -102,3 +102,27 @@ msgstr ""
 
 msgid "An error occured"
 msgstr ""
+
+msgid "No question to ask was provided!"
+msgstr ""
+
+msgid "No url to refer was provided!"
+msgstr ""
+
+msgid "No url to refer to was provided!"
+msgstr ""
+
+msgid "No url to return to after a negative answer was provided!"
+msgstr ""
+
+msgid "No url to return to after a negative answer was provided!"
+msgstr ""
+
+msgid "Do you want to delete the area '%s'?"
+msgstr ""
+
+msgid "Do you want to delete the room '%s' in the area '%s'?"
+msgstr ""
+
+msgid "No valid area(-id) for deletion was provided!"
+msgstr ""

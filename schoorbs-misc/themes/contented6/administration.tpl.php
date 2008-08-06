@@ -25,7 +25,12 @@ foreach ($aAreas as $oArea) {
               </a>
             </li>
             <li>
-              <a href="<?php echo self::makeInternalUrl('delete-area.php', array('area' => $oArea->getId())); ?>">
+              <a href="<?php echo 
+                self::makeYesNoUrl(sprintf(Lang::_('Do you want to delete the area \'%s\'?'), $oArea->getName()),
+                  self::makeInternalUrl('del-area.php', array('area' => $oArea->getId())),
+                  self::makeInternalUrl('administration.php', array('area' => $oArea->getId()))
+                );
+              ?>">
                 <?php echo get_vocab('delete'); ?>
               </a>
             </li>
@@ -38,7 +43,12 @@ foreach ($aAreas as $oArea) {
               	<a href="<?php echo self::makeInternalUrl('edit-room.php', array('area' => $oArea->getId(), 'room' => $oRoom->getId())); ?>">
               	  <?php echo get_vocab('edit'); ?>
               	</a>
-              	<a href="<?php echo self::makeInternalUrl('delete-room.php', array('area' => $oArea->getId(), 'room' => $oRoom->getId())); ?>">
+              	<a href="<?php echo 
+              	  self::makeYesNoUrl(sprintf(Lang::_('Do you want to delete the room \'%s\' in the area \'%s\'?'), $oRoom->getName(), $oArea->getName()),
+              	    self::makeInternalUrl('del-room.php', array('area' => $oArea->getId(), 'room' => $oRoom->getId())),
+              	    self::makeInternalUrl('administration.php', array('area' => $oArea->getId()))
+              	  );
+              	?>">
               	  <?php echo get_vocab('delete'); ?>
               	</a>
               </li>

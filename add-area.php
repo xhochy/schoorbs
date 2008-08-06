@@ -40,4 +40,4 @@ if (empty($_REQUEST['area-name'])) {
 // add the new area to the database
 $nArea = Area::create($_REQUEST['area-name'])->getId();
 // redirect to adminisrat..php?area=<id>
-header(sprintf('Location: administration.php?id=%d', $nArea));
+header(sprintf('Location: administration.php?area=%d', $nArea));
