@@ -103,7 +103,7 @@
 	border: #0066CC solid thin;
 }
 
-#schoorbs-errorbox {
+#schoorbs-centeredbox {
 	border: 1px solid #aaa;
 	margin: 50px auto;
 	width: 420px;
@@ -112,9 +112,13 @@
 	color: #000;
 }
 
-#schoorbs-errorbox .headline {
+#schoorbs-centeredbox .headline {
 	font-weight: bold;
 	font-size: 1.2em;
+}
+
+#schoorbs-centeredbox .form {
+	text-align: center;
 }
 
 #schoorbs-yes-no-box {

@@ -1,6 +1,6 @@
 <?php
 /**
- * Delete an area
+ * Edit an area
  * 
  * @author Uwe L. Korn <uwelk@xhochy.org>
  * @package Schoorbs
@@ -44,7 +44,16 @@ if ($nArea != $_REQUEST['area']) {
 	exit();
 }
 
-// delete the area in the database
-Area::delete($nArea);
-// redirect to adminisrat..php?area=<id>
-header('Location: administration.php');
+/** @todo report if an empty string was submitted **/
+if (isset($_REQUEST['area-name']) && !empty($_REQUEST['area-name'])) {
+	// Update! and redirect
+	$oArea = Area::getById($nArea);
+	$oArea->setName(unslashes($_REQUEST['area-name']));
+	// destruct to save it
+	$oArea = null;
+	header(sprintf('Location: administration.php?area=%d', $nArea));
+} else {
+	// Edit!
+	SchoorbsTPL::populateVar('area', Area::getById($nArea));
+	SchoorbsTPL::renderPage('edit-area');
+}

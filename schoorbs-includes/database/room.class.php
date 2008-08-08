@@ -356,7 +356,7 @@ class Room {
 			//   room_admin_email = 'mail@example.org' WHERE id = 23
 			$oStatement = $this->oDB->getConnection()->prepareStatement(
 				'UPDATE '.$this->oDB->getTableName('room').' SET room_name = ? '
-				.'AND area_id = ? AND description = ? AND capacity = ? AND '
+				.', area_id = ? AND description = ? , capacity = ? , '
 				.'room_admin_email = ? WHERE id = ?'
 			);
 			$oStatement->setString(1, $this->sName);
