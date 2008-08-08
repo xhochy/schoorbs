@@ -34,6 +34,11 @@ foreach ($aAreas as $oArea) {
                 <?php echo get_vocab('delete'); ?>
               </a>
             </li>
+            <li>
+              <a href="<?php echo self::makeInternalUrl('add-room.php', array('area' => $oArea->getId())); ?>">
+                <?php echo get_vocab('addroom'); ?>
+              </a>
+            </li>
             <?php 
             $aRooms = Room::getRooms($oArea);
             foreach ($aRooms as $oRoom) {
