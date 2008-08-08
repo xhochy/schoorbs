@@ -1,6 +1,6 @@
 <?php
 /**
- * The administration interface
+ * Add a room
  * 
  * @author Uwe L. Korn <uwelk@xhochy.org>
  * @package Schoorbs
