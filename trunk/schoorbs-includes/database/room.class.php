@@ -365,6 +365,7 @@ class Room {
 			$oStatement->setInt(4, $this->nCapacity);
 			$oStatement->setString(5, $this->sAdminEmail);
 			$oStatement->setInt(6, $this->nId);
+			$oStatement->executeUpdate();
 		}
 		// We have commited all current changes, so there are no changes left in 
 		// this object.
@@ -417,5 +418,16 @@ class Room {
 	public function getCapacity()
 	{
 		return $this->nCapacity;
+	}
+	
+	/**
+	 * Return the area to which this room assigned
+	 *
+	 * @author Uwe L. Korn <uwelk@xhochy.org>
+	 * @retun Area
+	 */
+	public function getArea()
+	{
+		return $this->oArea;
 	}
 }

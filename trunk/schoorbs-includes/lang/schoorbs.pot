@@ -126,3 +126,12 @@ msgstr ""
 
 msgid "No valid area(-id) for deletion was provided!"
 msgstr ""
+
+msgid "No valid room(-id) for deletion was provided!"
+msgstr ""
+
+msgid "No valid area(-id) was provided!"
+msgstr ""
+
+msgid "No valid room(-id) was provided!"
+msgstr ""

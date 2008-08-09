@@ -28,19 +28,19 @@ if (!getAuthorised(2)) {
 }
 
 if (!isset($_REQUEST['area'])) {
-	SchoorbsTPL::error(Lang::_('No valid area(-id) for deletion was provided!'));
+	SchoorbsTPL::error(Lang::_('No valid area(-id) was provided!'));
 	exit();
 }
 
 if (empty($_REQUEST['area'])) {
-	SchoorbsTPL::error(Lang::_('No valid area(-id) for deletion was provided!'));
+	SchoorbsTPL::error(Lang::_('No valid area(-id) was provided!'));
 	exit();
 }
 
 $nArea = intval($_REQUEST['area']);
 
 if ($nArea != $_REQUEST['area']) {
-	SchoorbsTPL::error(Lang::_('No valid area(-id) for deletion was provided!'));
+	SchoorbsTPL::error(Lang::_('No valid area(-id) was provided!'));
 	exit();
 }
 
