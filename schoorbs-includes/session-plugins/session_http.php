@@ -82,7 +82,7 @@ function PrintLogonBox()
 			</div>
 		</form>
 		<?php if (isset($user_list_link)) { ?>
-			<a href="<?php echo $user_list_link"><?php echo get_vocab('user_list'); ?></a>
+			<a href="<?php echo $user_list_link; ?>"><?php echo get_vocab('user_list'); ?></a>
 		<?php } ?>
 	<?php
 	}
