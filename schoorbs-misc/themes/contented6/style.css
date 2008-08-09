@@ -35,6 +35,18 @@
 	text-decoration: none;
 }
 
+#schoorbs-loginbox-button {
+	display: inline;
+}
+
+#schoorbs-loginbox-username {
+	display: inline;
+}
+
+#schoorbs-loginbox form {
+	display: inline;
+}
+
 #schoorbs-loginbox input {
 	border: 1px solid #3366CC;
 	font-size: 85%;
