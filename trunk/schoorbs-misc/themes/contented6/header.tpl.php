@@ -1,11 +1,13 @@
 <div id="header">
   <div id="title">
+    <?php 
+    // For session protocols that define their own logon box...
+    if (function_exists('PrintLogonBox')) {
+    ?>     
     <div id="schoorbs-loginbox">
-      <strong>*TODO*</strong>
-      Username: <input type="text" size="5" /> 
-      Password: <input type="password" size="5" />
-      <input type="submit" />
+      <?php echo PrintLogonBox(); ?>
     </div>
+    <?php } ?>
     <?php echo SchoorbsConfig::getOption('company'); ?>
   </div>
   <ul id="nav">
