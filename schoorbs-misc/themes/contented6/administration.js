@@ -3,9 +3,7 @@ $(document).ready(function() {
 		header: '.ui-accordion-link',
 		autoHeight: false
 	});
-	$("#schoorbs-administration-add-area .form").hide();
 	$("#schoorbs-administration-add-area a.head").click(function() {
 		$("#schoorbs-administration-add-area .form").slideToggle();
-		//$(this).slideToggle('slow');
 	});
 });
