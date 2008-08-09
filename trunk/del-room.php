@@ -1,6 +1,6 @@
 <?php
 /**
- * Edit a room
+ * Delete a room
  * 
  * @author Uwe L. Korn <uwelk@xhochy.org>
  * @package Schoorbs
@@ -28,35 +28,27 @@ if (!getAuthorised(2)) {
 }
 
 if (!isset($_REQUEST['room'])) {
-	SchoorbsTPL::error(Lang::_('No valid room(-id) was provided!'));
+	SchoorbsTPL::error(Lang::_('No valid room(-id) for deletion was provided!'));
 	exit();
 }
 
 if (empty($_REQUEST['room'])) {
-	SchoorbsTPL::error(Lang::_('No valid room(-id) was provided!'));
+	SchoorbsTPL::error(Lang::_('No valid room(-id) for deletion was provided!'));
 	exit();
 }
 
 $nRoom = intval($_REQUEST['room']);
 
 if ($nRoom != $_REQUEST['room']) {
-	SchoorbsTPL::error(Lang::_('No valid room(-id) was provided!'));
+	SchoorbsTPL::error(Lang::_('No valid room(-id) for deletion was provided!'));
 	exit();
 }
 
-/** @todo report if an empty string was submitted **/
-if (isset($_REQUEST['room-name']) && !empty($_REQUEST['room-name'])) {
-	// Update! and redirect
-	$oRoom = Room::getById($nRoom);
-	$oRoom->setName(unslashes($_REQUEST['room-name']));
-	$oRoom->setCapacity(intval($_REQUEST['capacity']));
-	$oRoom->setDescription(unslashes($_REQUEST['description']));
-	$nArea = $oRoom->getArea()->getId();
-	// destruct to save it
-	$oRoom = null;
-	header(sprintf('Location: administration.php?area=%d', $nArea));
-} else {
-	// Edit!
-	SchoorbsTPL::populateVar('room', Room::getById($nRoom));
-	SchoorbsTPL::renderPage('edit-room');
-}
+$oRoom = Room::getById($nRoom);
+$nArea = $oRoom->getArea()->getId();
+// There should be any instance of the room before its deletion
+$oRoom = null;
+// delete the room in the database
+Room::delete($nRoom);
+// redirect to adminisrat..php?area=<id>
+header(sprintf('Location: administration.php?area=%d', $nArea));

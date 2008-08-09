@@ -144,6 +144,21 @@ class Room {
 		return $aRooms;
 	}
 	
+	/**
+	 * Delete a specific room from the database.
+	 *
+	 * @author Uwe L. Korn <uwelk@xhochy.org>
+	 * @param $nId int
+	 */
+	public static function delete($nId) {
+		$oDB = SchoorbsDB::getInstance();
+		$oStatement = $oDB->getConnection()->prepareStatement(
+			'DELETE FROM '.$oDB->getTableName('room')
+			.' WHERE id = ?');
+		$oStatement->setInt(1, $nId);
+		$oStatement->executeUpdate();
+	}
+	
 	/// instance variables ///
 	
 	/**
