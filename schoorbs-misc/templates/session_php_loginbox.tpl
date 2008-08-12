@@ -1,6 +1,6 @@
 {if $user neq ""}
         <div id="schoorbs-loginbox-username">{get_vocab text="you_are"} {$user}</div>
-        <form method="post" action="admin.php">
+        <form method="post" action="administration.php">
             <div id="schoorbs-loginbox-button">
 	        <input type="hidden" name="TargetURL" value="{$TargetURL|escape:"htmlall"}" />
 	        <input type="hidden" name="Action" value="SetName" />
@@ -9,7 +9,7 @@
 	        <input type="submit" value="{get_vocab text="logoff"}" />
 {else}
         <div id="schoorbs-loginbox-username">{get_vocab text="unknown_user"}</div>
-        <form method="post" action="admin.php">
+        <form method="post" action="administration.php">
             <div id="schoorbs-loginbox-button">
             <input type="hidden" name="TargetURL" value="{$TargetURL|escape:"htmlall"}" />
             <input type="hidden" name="Action" value="QueryName" />
