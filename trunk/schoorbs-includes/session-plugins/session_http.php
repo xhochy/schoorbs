@@ -74,7 +74,7 @@ function PrintLogonBox()
 		<?php }; ?>
 	<?php } else { ?>
 	<div id="schoorbs-loginbox-username"><?php echo get_vocab('unknown_user'); ?></div>
-	        <form method="post" action="admin.php">
+	        <form method="post" action="administration.php">
 	        	<div id="schoorbs-loginbox-button">
 			    <input type="hidden" name="TargetURL" value="<?php echo $TargetURL ?>" />
 			    <input type="hidden" name="Action" value="QueryName" />
