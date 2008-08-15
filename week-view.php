@@ -98,6 +98,9 @@ for ($nDay = 0; $nDay < 7; $nDay++) {
 	}
 }
 
+// We want an array sorted chronologically
+ksort($aUniqueEntry);
+
 SchoorbsTPL::populateVar('nStartTime', $nStartTime);
 SchoorbsTPL::populateVar('nEndTime', $nEndTime);	
 SchoorbsTPL::populateVar('uniqueEntries', $aUniqueEntry);
