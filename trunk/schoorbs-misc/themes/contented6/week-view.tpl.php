@@ -24,7 +24,7 @@ foreach($entries as $sDay=>$aEntries) {
       <?php for ($nDay = 0; $nDay < 7; $nDay++) { ?>
         <?php if ($entries[$nDay][$sTime] !== -1) { ?>
           <td class="schoorbs-week-matrix-booked">
-          <a href="view_entry.php?id=<?php echo ht($entries[$nDay][$sTime]->getId()); ?>">
+          <a href="view_entry.php?id=<?php echo $entries[$nDay][$sTime]->getId(); ?>">
         <?php } else { ?>
           <td class="schoorbs-week-matrix-free">
           <a href="#">
@@ -41,31 +41,23 @@ foreach($entries as $sDay=>$aEntries) {
 </table>
 
 <ul>
-  <li>
-    <a href="#">Kurzbeschreibung der Buchung</a>
-    (12.05.2007 13:00 - 13.05.2007 14:00) 
-    <p>
-      Duis autem vel eum iriure dolor in hendrerit in vulputate velit esse molestie consequat, vel illum dolore eu feugiat nulla facilisis at vero eros et accumsan et iusto 
-      <a href="#more">...</a>
-      <br /><em>Booked by <strong>qwe</strong></em>
-    </p>
-  </li>
-  <li>
-    <a href="#">Kurzbeschreibung der Buchung</a>
-    (12.05.2007 13:00 - 13.05.2007 14:00) 
-    <p>
-      Duis autem vel eum iriure dolor in hendrerit in vulputate velit esse molestie consequat, vel illum dolore eu feugiat nulla facilisis at vero eros et accumsan et iusto
-      <a href="#more">...</a>
-      <br /><em>Booked by <strong>qwe</strong></em>
-    </p>
-  </li>
-  <li>
-    <a href="#">Kurzbeschreibung der Buchung</a>
-    (12.05.2007 13:00 - 13.05.2007 14:00) 
-    <p>
-      Duis autem vel eum iriure dolor in hendrerit in vulputate velit esse molestie consequat, vel illum dolore eu feugiat nulla facilisis at vero eros et accumsan et iusto
-      <a href="#more">...</a>
-      <br /><em>Booked by <strong>qwe</strong></em>
-    </p>
-  </li>
+  <?php foreach($uniqueEntries as $oEntry) { ?>
+    <li>
+      <a href="view_entry.php?id=<?php echo $oEntry->getId(); ?>">
+        <?php echo $oEntry->getName(); ?>
+      </a>
+      (<?php echo date('d', $oEntry->getStartTime()).' '
+                  .Lang::_(date('F', $oEntry->getStartTime())).' '
+                  .date('Y H:i', $oEntry->getStartTime()); ?>
+      -
+      <?php echo date('d', $oEntry->getEndTime()).' '
+                  .Lang::_(date('F', $oEntry->getEndTime())).' '
+                  .date('Y H:i', $oEntry->getEndTime()); ?>) 
+      <p>
+      	<?php $aOut = str_split($oEntry->getDescription(), 100); echo ht($aOut[0]); ?>
+        <a href="view_entry.php?id=<?php echo $oEntry->getId(); ?>">...</a>
+        <br /><em><?php echo Lang::_('Booked by'); ?> <strong><?php echo ht($oEntry->getCreateBy()); ?></strong></em>
+      </p>
+    </li>
+  <?php } ?>
 </ul>
