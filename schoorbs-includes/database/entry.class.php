@@ -42,8 +42,8 @@ class Entry {
 			.$oDB->getTableName('entry').' WHERE room_id = ? AND start_time <= '
 			.'? AND end_time > ?');
 		$oStatement->setInt(1, $oRoom->getId());
-		$oStatement->setInt(2, $nStartTime);
-		$oStatement->setInt(3, $nEndTime);
+		$oStatement->setInt(2, $nEndTime);
+		$oStatement->setInt(3, $nStartTime);
 		
 		$oResult = $oStatement->executeQuery();
 		while ($oResult->next()) {
@@ -117,70 +117,78 @@ class Entry {
 	private $nStartTime = 0;
 	
 	/** 
-     * The time where this entry ends.
-     *
-     * @var int
-     */
-    private $nEndTime = 0;
+	 * The time where this entry ends.
+	 *
+     	 * @var int
+         */
+    	private $nEndTime = 0;
     
-    /**
-     * entry_type?
-     *
-     * @var int
-     */
-    private $nEntryType = 0;
+    	/**
+	 * entry_type?
+	 *
+	 * @var int
+	 */
+	private $nEntryType = 0;
+	
+	/**
+	 * True, if this entry was changed, so that we need to commit it to the
+	 * database.
+	 * 
+	 * @var bool
+	 */
+	private $bChanged = false;
     
-    /**
-     * The id of the repeation information.
-     *
-     * 0 means that this is a single, stand-alone entry which will be not 
-     * repeated.
-     *
-     * @var int
-     */
-    private $nRepeatId = 0;
+    	/**
+    	 * The id of the repeation information.
+    	 *
+    	 * 0 means that this is a single, stand-alone entry which will be not 
+    	 * repeated.
+    	 *
+    	 * @var int
+    	 */
+    	private $nRepeatId = 0;
     
-    /**
-     * The creator of this entry.
-     *
-     * @var string
-     */
-    private $sCreateBy = '';
+    	/**
+    	 * The creator of this entry.
+    	 *
+    	 * @var string
+    	 */
+    	private $sCreateBy = '';
     
-    /**
-     * This timestamps identifies the time where this entry was changed the last
-     * time. On every UPDATE-query the database-system should update this 
-     * timestamp automatoically. For exmaple in MySQL this is done by setting 
-     * attribute of this column to 'ON UPDATE CURRENT_TIMESTAMP'
-     *
-     * Attention: This variable should be considered as read-only.
-     *
-     * @var int
-     */
-    private $nTimestamp = 0;
+    	/**
+    	 * This timestamps identifies the time where this entry was changed the last
+    	 * time. On every UPDATE-query the database-system should update this 
+    	 * timestamp automatoically. For exmaple in MySQL this is done by setting 
+    	 * attribute of this column to 'ON UPDATE CURRENT_TIMESTAMP'
+    	 *
+    	 * Attention: This variable should be considered as read-only.
+    	 *
+    	 * @var int
+    	 */
+    	private $nTimestamp = 0;
+    	
+    	/**
+    	 * The name/title of this entry.
+    	 *
+    	 * @var string
+    	 */
+    	private $sName = '';
+    	
+    	/**
+    	 * The category of this entry.
+    	 *
+    	 * This should be a letter out of 'A'..'Z'
+    	 *
+    	 * @var string
+    	 */
+    	private $sType = 'I';
     
-    /**
-     * The name/title of this entry.
-     *
-     * @var string
-     */
-    private $sName = '';
-    
-    /**
-     * The category of this entry.
-     *
-     * This should be a letter out of 'A'..'Z'
-     *
-     * @var string
-     */
-    private $sType = 'I';
-    
-    /**
-     * A long description of this entry.
-     *
-     * @var string
-     */
-    private $sDescription = '';
+    	/**
+    	 * A long description of this entry.
+    	 *
+    	 * @var string
+    	 */
+    	private $sDescription = '';
 	
 	/// instance functions ///
 

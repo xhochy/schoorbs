@@ -16,50 +16,28 @@
   <th><?php echo Lang::_('Fri'); ?></th>
   <th><?php echo Lang::_('Sat'); ?></th>
 </tr>
-<!-- TODO -->
-<tr>
-  <td colspan="4"><strong>TODO</strong></td>
-</tr>
-<tr>
-  <td class="schoorbs-week-matrix-time">8:00</td>
-  <td class="schoorbs-week-matrix-free"><a href="#">&nbsp;</a></td>
-  <td class="schoorbs-week-matrix-free"><a href="#">&nbsp;</a></td>
-  <td class="schoorbs-week-matrix-free"><a href="#">&nbsp;</a></td>
-  <td class="schoorbs-week-matrix-free"><a href="#">&nbsp;</a></td>
-  <td class="schoorbs-week-matrix-free"><a href="#">&nbsp;</a></td>
-  <td class="schoorbs-week-matrix-free"><a href="#">&nbsp;</a></td>
-  <td class="schoorbs-week-matrix-booked"><a href="#">&nbsp;</a></td>
-</tr>
-<tr>
-  <td class="schoorbs-week-matrix-time">9:00</td>
-  <td class="schoorbs-week-matrix-free"><a href="#">&nbsp;</a></td>
-  <td class="schoorbs-week-matrix-free"><a href="#">&nbsp;</a></td>
-  <td class="schoorbs-week-matrix-free"><a href="#">&nbsp;</a></td>
-  <td class="schoorbs-week-matrix-booked"><a href="#">&nbsp;</a></td>
-  <td class="schoorbs-week-matrix-free"><a href="#">&nbsp;</a></td>
-  <td class="schoorbs-week-matrix-free"><a href="#">&nbsp;</a></td>
-  <td class="schoorbs-week-matrix-free"><a href="#">&nbsp;</a></td>
-</tr>
-<tr>
-  <td class="schoorbs-week-matrix-time">10:00</td>
-  <td class="schoorbs-week-matrix-free"><a href="#">&nbsp;</a></td>
-  <td class="schoorbs-week-matrix-booked"><a href="#">&nbsp;</a></td>
-  <td class="schoorbs-week-matrix-free"><a href="#">&nbsp;</a></td>
-  <td class="schoorbs-week-matrix-booked"><a href="#">&nbsp;</a></td>
-  <td class="schoorbs-week-matrix-free"><a href="#">&nbsp;</a></td>
-  <td class="schoorbs-week-matrix-free"><a href="#">&nbsp;</a></td>
-  <td class="schoorbs-week-matrix-free"><a href="#">&nbsp;</a></td>
-</tr>
-<tr>
-  <td class="schoorbs-week-matrix-time">11:00</td>
-  <td class="schoorbs-week-matrix-free"><a href="#">&nbsp;</a></td>
-  <td class="schoorbs-week-matrix-booked"><a href="#">&nbsp;</a></td>
-  <td class="schoorbs-week-matrix-free"><a href="#">&nbsp;</a></td>
-  <td class="schoorbs-week-matrix-free"><a href="#">&nbsp;</a></td>
-  <td class="schoorbs-week-matrix-booked"><a href="#">&nbsp;</a></td>
-  <td class="schoorbs-week-matrix-free"><a href="#">&nbsp;</a></td>
-  <td class="schoorbs-week-matrix-free"><a href="#">&nbsp;</a></td>
-</tr>
+<?php 
+foreach($entries as $sDay=>$aEntries) {
+  foreach($aEntries as $sTime=>$null) { ?>
+    <tr>
+      <td class="schoorbs-week-matrix-time"><?php echo $sTime; ?></td>
+      <?php for ($nDay = 0; $nDay < 7; $nDay++) { ?>
+        <?php if ($entries[$nDay][$sTime] !== -1) { ?>
+          <td class="schoorbs-week-matrix-booked">
+          <a href="view_entry.php?id=<?php echo ht($entries[$nDay][$sTime]->getId()); ?>">
+        <?php } else { ?>
+          <td class="schoorbs-week-matrix-free">
+          <a href="#">
+        <?php } ?>
+        &nbsp;</a>
+        </td>
+      <?php } ?>
+    </tr>
+<?php 
+  }
+  break;
+} 
+?>
 </table>
 
 <ul>
