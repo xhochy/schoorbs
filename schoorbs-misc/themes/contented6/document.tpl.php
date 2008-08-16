@@ -4,6 +4,7 @@
   <title><?php echo SchoorbsConfig::getOption('company'); ?> - Schoorbs</title>
   <?php SchoorbsTPL::includeCSS('contented6.css'); ?>
   <?php SchoorbsTPL::includeCSS('style.css'); ?>
+  <?php SchoorbsTPL::includeCSS('yui-2.5.2/build/calendar/assets/skins/sam/calendar.css'); ?>
   <?php SchoorbsTPL::includeJS('jquery-1.2.6.pack.js'); ?>
   <?php SchoorbsTPL::includeJS('jquery-ui-personalized-1.5.2.packed.js'); ?>
 </head>

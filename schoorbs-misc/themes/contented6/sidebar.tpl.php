@@ -1,8 +1,34 @@
 <!-- include needed JavaScript -->
-<?php SchoorbsTPL::includeCSS('yui-2.5.2/build/calendar/assets/skins/sam/calendar.css'); ?>
 <?php SchoorbsTPL::includeJS('yui-2.5.2/build/yahoo-dom-event/yahoo-dom-event.js'); ?>
 <?php SchoorbsTPL::includeJS('yui-2.5.2/build/calendar/calendar-min.js'); ?>
-<?php SchoorbsTPL::includeJS('sidebar.js.php'); ?>
+<?php SchoorbsTPL::includeJS('sidebar.js'); ?>
+
+<script type="text/javascript">
+var sidebarMonthsLong = [
+	"<?php echo Lang::_('January'); ?>",
+	"<?php echo Lang::_('February'); ?>",
+	"<?php echo Lang::_('March'); ?>",
+	"<?php echo Lang::_('April'); ?>",
+	"<?php echo Lang::_('May'); ?>",
+	"<?php echo Lang::_('June'); ?>",
+	"<?php echo Lang::_('July'); ?>",
+	"<?php echo Lang::_('August'); ?>",
+	"<?php echo Lang::_('September'); ?>",
+	"<?php echo Lang::_('October'); ?>",
+	"<?php echo Lang::_('November'); ?>",
+	"<?php echo Lang::_('December'); ?>"
+];
+
+var sidebarDaysShort = [
+	"<?php echo Lang::_('Su'); ?>",
+	"<?php echo Lang::_('Mo'); ?>",
+	"<?php echo Lang::_('Tu'); ?>",
+	"<?php echo Lang::_('We'); ?>",
+	"<?php echo Lang::_('Th'); ?>", 
+	"<?php echo Lang::_('Fr'); ?>",
+	"<?php echo Lang::_('Sa'); ?>"
+];
+</script>
 
 <h2><?php echo get_vocab('areas'); ?></h2>
 <?php 
