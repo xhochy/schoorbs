@@ -28,6 +28,13 @@ list($day, $month, $year) = input_DayMonthYear();
 /** Get the room we should display */
 $oRoom = Room::getById(input_Room());
 
+// Check we have a room for this area
+if ($oRoom === null) {
+	$oArea = Area::getById(input_Area());
+	SchoorbsTPL::error(Lang::_(sprintf('The area \'%s\' has no rooms.', $oArea->getName())));
+	exit(1);
+}
+
 /// Main ///
 
 // Set the date back to the previous $weekstarts day (Sunday, if 0):
@@ -77,8 +84,6 @@ for ($nDay = 0; $nDay < 7; $nDay++) {
 		
 		/** @todo Only query once for the whole week **/
 		$aEntries = Entry::getBetween($oRoom, $nTime, $nTime + $resolution);
-		/**----error---todo: go on
-		entry suchen, id finden**/
 		
 		if ($enable_periods) {
 			$sTime = $periods[$nUnit];

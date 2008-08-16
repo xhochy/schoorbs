@@ -22,26 +22,32 @@ require_once 'schoorbs-includes/schoorbstpl.class.php';
 
 if (!isset($_REQUEST['question'])) {
 	SchoorbsTPL::error(Lang::_('No question to ask was provided!'));
+	exit(1);
 }
 
 if (empty($_REQUEST['question'])) {
 	SchoorbsTPL::error(Lang::_('No question to ask was provided!'));
+	exit(1);
 }
 
 if (!isset($_REQUEST['referto'])) {
-	SchoorbsTPL::error(Lang::_('No url to refer was provided!'));
+	SchoorbsTPL::error(Lang::_('No url to refer to was provided!'));
+	exit(1);
 }
 
 if (empty($_REQUEST['referto'])) {
 	SchoorbsTPL::error(Lang::_('No url to refer to was provided!'));
+	exit(1);
 }
 
 if (!isset($_REQUEST['returnto'])) {
 	SchoorbsTPL::error(Lang::_('No url to return to after a negative answer was provided!'));
+	exit(1);
 }
 
 if (empty($_REQUEST['returnto'])) {
 	SchoorbsTPL::error(Lang::_('No url to return to after a negative answer was provided!'));
+	exit(1);
 }
 
 SchoorbsTPL::populateVar('question', unslashes($_REQUEST['question']));
