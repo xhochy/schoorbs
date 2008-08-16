@@ -11,7 +11,7 @@
 # This file is PHP code. Treat it as such.
 
 # The charset to use in "Content-type" header
-$vocab["charset"]            = "iso-8859-1";
+$vocab["charset"]            = "utf-8";
 
 # Used in style.inc
 $vocab["mrbs"]               = "Vergaderruimte Boekingssysteem";
@@ -198,7 +198,7 @@ $vocab["monthafter"]         = "Ga naar volgende maand";
 $vocab["gotothismonth"]      = "Ga naar deze maand";
 
 # Used in {day week month}.php
-$vocab["no_rooms_for_area"]  = "Nog geen kamers gedefiniëerd voor dit gebouw";
+$vocab["no_rooms_for_area"]  = "Nog geen kamers gedefiniÃ«erd voor dit gebouw";
 
 # Used in admin.php
 $vocab["edit"]               = "Wijzig";

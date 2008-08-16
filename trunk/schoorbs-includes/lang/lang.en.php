@@ -11,7 +11,7 @@
 # This file is PHP code. Treat it as such.
 
 # The charset to use in "Content-type" header
-$vocab["charset"]            = "iso-8859-1";
+$vocab["charset"]            = "utf-8";
 
 # Used in style.inc
 $vocab["mrbs"]               = "Schoorbs - Room Booking System";
