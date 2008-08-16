@@ -2,7 +2,7 @@
 <?php SchoorbsTPL::includeCSS('yui-2.5.2/build/calendar/assets/skins/sam/calendar.css'); ?>
 <?php SchoorbsTPL::includeJS('yui-2.5.2/build/yahoo-dom-event/yahoo-dom-event.js'); ?>
 <?php SchoorbsTPL::includeJS('yui-2.5.2/build/calendar/calendar-min.js'); ?>
-<?php SchoorbsTPL::includeJS('sidebar.js'); ?>
+<?php SchoorbsTPL::includeJS('sidebar.js.php'); ?>
 
 <h2><?php echo get_vocab('areas'); ?></h2>
 <?php 
