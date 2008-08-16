@@ -97,6 +97,27 @@ msgstr ""
 msgid "Sat"
 msgstr ""
 
+msgid "Su"
+msgstr ""
+
+msgid "Mo"
+msgstr ""
+
+msgid "Tu"
+msgstr ""
+
+msgid "We"
+msgstr ""
+
+msgid "Th"
+msgstr ""
+
+msgid "Fr"
+msgstr ""
+
+msgid "Sa"
+msgstr ""
+
 msgid "No name for the area was provided!"
 msgstr ""
 
