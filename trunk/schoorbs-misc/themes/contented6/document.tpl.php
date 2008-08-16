@@ -2,6 +2,7 @@
 <html xmlns="http://www.w3.org/1999/xhtml">
 <head>
   <title><?php echo SchoorbsConfig::getOption('company'); ?> - Schoorbs</title>
+  <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
   <?php SchoorbsTPL::includeCSS('contented6.css'); ?>
   <?php SchoorbsTPL::includeCSS('style.css'); ?>
   <?php SchoorbsTPL::includeCSS('yui-2.5.2/build/calendar/assets/skins/sam/calendar.css'); ?>
