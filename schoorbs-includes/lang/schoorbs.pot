@@ -106,13 +106,7 @@ msgstr ""
 msgid "No question to ask was provided!"
 msgstr ""
 
-msgid "No url to refer was provided!"
-msgstr ""
-
 msgid "No url to refer to was provided!"
-msgstr ""
-
-msgid "No url to return to after a negative answer was provided!"
 msgstr ""
 
 msgid "No url to return to after a negative answer was provided!"
@@ -137,4 +131,7 @@ msgid "No valid room(-id) was provided!"
 msgstr ""
 
 msgid "Booked by"
+msgstr ""
+
+msgid "The area '%s' has no rooms."
 msgstr ""

@@ -7,14 +7,14 @@
 <h2><?php echo get_vocab('areas'); ?></h2>
 <?php 
 $aAreas = Area::getAreas(); 
-$oActiveArea = Area::getById(input_Area());
 $oActiveRoom = Room::getById(input_Room());
+$oActiveArea = $oActiveRoom->getArea();
 
 if (count($aAreas) > 0) { ?>
 <ul>
   <?php foreach($aAreas as $oArea) { ?>
     <li>
-      <a <?php if ($oArea->getId() == $oActiveArea->getId()) echo 'style="color: red"'; ?> class="schoorbs" href="#">
+      <a <?php if ($oArea->getId() == $oActiveArea->getId()) echo 'style="color: red"'; ?> class="schoorbs" href="?area=<?php echo $oArea->getId(); ?>">
         <?php echo $oArea->getName(); ?>
       </a>
     </li>
@@ -32,7 +32,7 @@ if (count($aRooms) > 0) { ?>
 <ul>
   <?php foreach ($aRooms as $oRoom) { ?>
     <li>
-      <a <?php if ($oRoom->getId() == $oActiveRoom->getId()) echo 'style="color: red"'; ?> class="schoorbs" href="#">
+      <a <?php if ($oRoom->getId() == $oActiveRoom->getId()) echo 'style="color: red"'; ?> class="schoorbs" href="?room=<?php echo $oRoom->getId(); ?>">
         <?php echo $oRoom->getName(); ?>
       </a>
     </li>
