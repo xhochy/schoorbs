@@ -226,25 +226,6 @@ function sql_syntax_timestamp_to_unix($fieldname)
 }
 
 /**
- * Generate non-standard SQL to match a string anywhere in a field's value
- * in a case insensitive manner. $s is the un-escaped/un-slashed string.
- * In MySQL, REGEXP seems to be case sensitive, so use LIKE instead. But this
- * requires quoting of % and _ in addition to the usual.
- * 
- * @return string 
- * @param $fieldname string
- * @param $s string
- */
-function sql_syntax_caseless_contains($fieldname, $s)
-{
-	$s = str_replace("\\", "\\\\", $s);
-	$s = str_replace("%", "\\%", $s);
-	$s = str_replace("_", "\\_", $s);
-	$s = str_replace("'", "''", $s);
-	return " $fieldname LIKE '%$s%' ";
-}
-
-/**
  * Escapes an SQL parameter
  * 
  * @author Uwe L. Korn <uwelk@xhochy.org>

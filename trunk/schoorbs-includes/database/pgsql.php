@@ -264,24 +264,6 @@ function sql_syntax_timestamp_to_unix($fieldname)
 }
 
 /**
- * Generate non-standard SQL to match a string anywhere in a field's value
- * in a case insensitive manner. $s is the un-escaped/un-slashed string.
- * In PostgreSQL, we can do case insensitive regexp with ~*, but not case
- * insensitive LIKE matching.
- * Quotemeta escapes everything we need except for single quotes.
- * 
- * @param string $fieldname
- * @param string $s
- * @return string
- */
-function sql_syntax_caseless_contains($fieldname, $s)
-{
-	$s = quotemeta($s);
-	$s = str_replace("'", "''", $s);
-	return " $fieldname ~* '$s' ";
-}
-
-/**
  * Escapes an SQL parameter
  * 
  * @param string $sArg
