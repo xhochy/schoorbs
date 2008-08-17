@@ -1,9 +1,6 @@
 <h3>{get_vocab text="about_mrbs"}</h3>
 <p>
 	<a href="http://schoorbs.xhochy.com">{get_vocab text="mrbs"}</a> - {$schoorbs_version}
-	<br />{get_vocab text="database"} {$sql_version}
-	<br />{get_vocab text="system"} {$php_uname}
-	<br />PHP: {$phpversion}
 </p>
 <h3>{get_vocab text="help"}</h3>
 <p>

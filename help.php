@@ -13,8 +13,6 @@ require_once 'config.inc.php';
 require_once 'schoorbs-includes/global.web.php';
 /** The general functions */ 
 require_once 'schoorbs-includes/global.functions.php';
-/** The database wrapper */
-require_once "schoorbs-includes/database/$dbsys.php";
 /** The versio information of Schoorbs */
 require_once 'schoorbs-includes/version.php';
 
@@ -24,9 +22,6 @@ print_header();
 // Assign all need variables for the template
 $smarty->assign(array(
 	'schoorbs_version' => get_schoorbs_version(),
-	'sql_version' => sql_version(),
-	'php_uname' => php_uname(),
-	'phpversion' => phpversion(),
 	'schoorbs_admin_email' => $mrbs_admin_email,
 	'schoorbs_admin' => $mrbs_admin
 ));
