@@ -112,12 +112,12 @@ if($pview != 1)
     
     #Draw the three month calendars
     minicals($year, $month, $day, $area, '', 'day');
-    puts('</tr></table>');
+    echo '</tr></table>';
 }
 
 # Don't continue if this area has no rooms:
 if ($room <= 0) {
-	puts('<h1>'.get_vocab('no_rooms_for_area').'</h1>');
+	echo '<h1>'.get_vocab('no_rooms_for_area').'</h1>';
         /** The page footer */
 	require_once 'schoorbs-includes/trailer.php';
 	exit();

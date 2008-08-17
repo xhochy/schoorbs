@@ -9,25 +9,6 @@
  */
 
 /**
- * Get the name of a room/resource
- *
- * @author Uwe L. Korn <uwelk@xhochy.org>
- * @param $nResourceID int
- * @return string
- */
-function schoorbsGetResourceName($nResourceID)
-{
-	global $tbl_room;
-	
-	$sQuery = sprintf(
-		'SELECT room_name FROM %s WHERE id = %d',
-		$tbl_room, $nResourceID
-	);
-	
-	return sql_query1($sQuery);
-}
-
-/**
  * Delete all bookings that conflict with the given room-time combination
  *
  * @author Uwe L. Korn <uwelk@xhochy.org>
@@ -465,47 +446,6 @@ function mrbsCreateRepeatingEntrys($starttime, $endtime, $rep_type, $rep_enddate
 		}
 	}
 	return $ent;
-}
-
-/**
- * Get the booking's entrys
- * 
- * $id = The ID for which to get the info for.
- * 
- * Returns:
- *    nothing = The ID does not exist
- *    array   = The bookings info
- */
-function mrbsGetEntryInfo($id)
-{
-	global $tbl_entry;
-
-	$sql = "SELECT start_time, end_time, entry_type, repeat_id, room_id,
-	               timestamp, create_by, name, type, description
-                FROM $tbl_entry WHERE (ID = $id)";
-	
-	$res = sql_query($sql);
-	if (! $res) return;
-	
-	$ret = array();
-	if(sql_count($res) > 0)
-	{
-		$row = sql_row($res, 0);
-		
-		$ret["start_time"]  = $row[0];
-		$ret["end_time"]    = $row[1];
-		$ret["entry_type"]  = $row[2];
-		$ret["repeat_id"]   = $row[3];
-		$ret["room_id"]     = $row[4];
-		$ret["timestamp"]   = $row[5];
-		$ret['create_by']   = $row[6];
-		$ret['name']        = $row[7];
-		$ret["type"]        = $row[8];
-		$ret["description"] = $row[9];
-	}
-	sql_free($res);
-	
-	return $ret;
 }
 
 function mrbsGetRoomArea($id)

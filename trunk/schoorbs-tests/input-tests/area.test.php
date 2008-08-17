@@ -47,47 +47,47 @@ class Input_AreaTest extends PHPUnit_Framework_TestCase
  	 * 
  	 * @author Uwe L. Korn <uwelk@xhochy.org>
  	 */
-    public function testGetDefaultArea_Empty()
-    {
+    	public function testGetDefaultArea_Empty()
+    	{
 		$_GET['area'] = '';
-        $_POST['area'] = '';
-        $_COOKIE['area'] = '';
-        $_REQUEST['area'] = ''; 
+        	$_POST['area'] = '';
+	        $_COOKIE['area'] = '';
+        	$_REQUEST['area'] = ''; 
  
-        $this->assertEquals(get_default_area(), input_Area());
-    }
+        	$this->assertEquals(get_default_area(), input_Area());
+	}
     
-    /**
-     * The area should be extracted out of REQUEST, so we are able to get it from all GPC-Arrays
-     * 
-     * @author Uwe L. Korn <uwelk@xhochy.org>
-     */
-    public function testGetArea_OutOf_REQUEST()
-    {
-    	unset($_GET['area']);
-        unset($_POST['area']);
-        unset($_COOKIE['area']);
-        unset($_REQUEST['area']);
+    	/**
+    	 * The area should be extracted out of REQUEST, so we are able to get it from all GPC-Arrays
+    	 * 
+    	 * @author Uwe L. Korn <uwelk@xhochy.org>
+    	 */
+	public function testGetArea_OutOf_REQUEST()
+    	{
+    		unset($_GET['area']);
+        	unset($_POST['area']);
+        	unset($_COOKIE['area']);
+        	unset($_REQUEST['area']);
         
-        $_REQUEST['area'] = get_default_area();
+        	$_REQUEST['area'] = get_default_area();
         
-        $this->assertEquals(get_default_area(), input_Area());
-    }
+        	$this->assertEquals(get_default_area(), input_Area());
+    	}
     
-    /**
-     * Test, if the default area is returned, when inserting a string into the area field
-     * 
-     * @author Uwe L. Korn <uwelk@xhochy.org>
-     */
-    public function testGetArea_String()
-    {
-    	unset($_GET['area']);
-        unset($_POST['area']);
-        unset($_COOKIE['area']);
-        unset($_REQUEST['area']);
+    	/**
+     	 * Test, if the default area is returned, when inserting a string into the area field
+     	 * 
+    	 * @author Uwe L. Korn <uwelk@xhochy.org>
+     	 */
+    	public function testGetArea_String()
+    	{
+    		unset($_GET['area']);
+        	unset($_POST['area']);
+        	unset($_COOKIE['area']);
+        	unset($_REQUEST['area']);
         
-        $_REQUEST['area'] = 'sss';
+        	$_REQUEST['area'] = 'sss';
         
-        $this->assertEquals(get_default_area(), input_Area());
-    }
+        	$this->assertEquals(get_default_area(), input_Area());
+    	}
 }

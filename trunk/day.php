@@ -63,7 +63,7 @@ if ($pview != 1) {
     
     // Draw the three month calendars
     minicals($year, $month, $day, $area, '', 'day');
-    puts('</tr></table>');
+    echo '</tr></table>';
 }
 
 // Initialize some common Smarty variable values

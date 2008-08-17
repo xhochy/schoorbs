@@ -293,4 +293,15 @@ class Entry {
 	{
 		return $this->sType;
 	}
+	
+	/**
+	 * Return the room to which this entry belongs.
+	 *
+	 * @author Uwe L. Korn <uwelk@xhochy.org>
+	 * @return Room
+	 */
+	public function getRoom()
+	{
+		return $this->oRoom;
+	}
 }
