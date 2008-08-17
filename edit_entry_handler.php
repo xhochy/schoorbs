@@ -237,9 +237,21 @@ if (empty($err)) {
             	$repeat_id, $room_id, $create_by, $name, $type, $description);
         }
 
-        $aNewEntryInfo = mrbsGetEntryInfo($new_id);
+        $oNewEntry = Entry::getById($new_id);
+        $aNewEntryInfo = array();
+	$aNewEntryInfo['name'] = $oNewEntry->getName();
+	$aNewEntryInfo['room_id'] = $oNewEntry->getRoom()->getId();
+	$aNewEntryInfo['start_time'] = $oNewEntry->getStartTime();
+	$aNewEntryInfo['end_time'] = $oNewEntry->getEndTime();
+	$aNewEntryInfo['create_by'] = $oNewEntry->getCreateBy();
         if ($id != -1) { // Edit
-        	$aOldEntryInfo = mrbsGetEntryInfo($id);
+		$oOldEntry = Entry::getById($id);
+		$aOldEntryInfo = array();
+		$aOldEntryInfo['name'] = $oOldEntry->getName();
+		$aOldEntryInfo['room_id'] = $oOldEntry->getRoom()->getId();
+		$aOldEntryInfo['start_time'] = $oOldEntry->getStartTime();
+		$aOldEntryInfo['end_time'] = $oOldEntry->getEndTime();
+		$aOldEntryInfo['create_by'] = $oOldEntry->getCreateBy();
         	schoorbsLogEditEntry($aOldEntryInfo, $aNewEntryInfo);
         } else { // Add
         	schoorbsLogAddEntry($aNewEntryInfo);

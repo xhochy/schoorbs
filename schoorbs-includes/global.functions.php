@@ -394,17 +394,3 @@ function ht($sCode, $nQuoteStyle = ENT_COMPAT, $sCharset = 'UTF-8')
 {
 	return htmlentities($sCode, $nQuoteStyle, $sCharset);
 }
-
-/**
- * Output a string and append a linebreak
- *
- * Should make the code clearer through avoiding unessacary double-quotes
- * or ."\n"
- *
- * @author Uwe L. Korn <uwelk@xhochy.org>
- * @param string $sText
- */
-function puts($sText)
-{
-	echo $sText."\n";
-}

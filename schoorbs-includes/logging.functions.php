@@ -13,6 +13,8 @@
 
 /** The configuration of the logging system */
 require_once dirname(__FILE__).'/logging.configuration.php';
+/** The modern ORM databse layer */
+require_once dirname(__FILE__).'/database/schoorbsdb.class.php';
 
 // only load configured backend, if logging is active, else choose null-backend
 if ($_SCHOORBS['logging']['active']) {
@@ -37,7 +39,7 @@ function schoorbsLogDeletedEntry($aEntryInfo)
 	$sLine = sprintf(
 		'Entry "%s" in resource "%s" (%s -> %s) created by "%s" was deleted by '
 		.'"%s"',
-		$aEntryInfo['name'], schoorbsGetResourceName($aEntryInfo['room_id']), 
+		$aEntryInfo['name'], Room::getById($aEntryInfo['room_id'])->getName(), 
 		date('d M Y H:i:s', $aEntryInfo['start_time']),
 		date('d M Y H:i:s', $aEntryInfo['end_time']),
 		$aEntryInfo['create_by'], getUserName()
@@ -57,11 +59,11 @@ function schoorbsLogEditEntry($aOldEntryInfo, $aNewEntryInfo) {
 	$sLine = sprintf('User "%s" modified entry "%s" in resource "%s" (%s -> %s)'
 		.' created by "%s": (name => "%s", resource => "%s", (%s -> %s))',
 		getUserName(), $aOldEntryInfo['name'], 
-		schoorbsGetResourceName($aOldEntryInfo['room_id']),		
+		Room::getById($aOldEntryInfo['room_id'])->getName(),		
 		date('d M Y H:i:s', $aOldEntryInfo['start_time']),
 		date('d M Y H:i:s', $aOldEntryInfo['end_time']),
 		$aOldEntryInfo['create_by'], $aNewEntryInfo['name'],
-		schoorbsGetResourceName($aNewEntryInfo['room_id']),
+		Room::getById($aNewEntryInfo['room_id'])->getName(),
 		date('d M Y H:i:s', $aNewEntryInfo['start_time']),
 		date('d M Y H:i:s', $aNewEntryInfo['end_time'])
 	);
@@ -81,7 +83,7 @@ function schoorbsLogAddEntry($aNewEntryInfo){
 		getUserName(), $aNewEntryInfo['name'],
 		date('d M Y H:i:s', $aNewEntryInfo['start_time']),
 		date('d M Y H:i:s', $aNewEntryInfo['end_time']),
-		schoorbsGetResourceName($aNewEntryInfo['room_id'])
+		Room::getById($aNewEntryInfo['room_id'])->getId()
 	);
 	schoorbsLogWriteLine_Backend($sLine);
 }

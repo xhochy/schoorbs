@@ -34,12 +34,18 @@ function get_default_area()
  */ 
 function input_Area()
 {
-	if(isset($_REQUEST['area']))
-	    if(empty($_REQUEST['area']))
-	        $area = get_default_area();
-	    else
-	        $area = intval($_REQUEST['area']);
-	else
-	    $area = get_default_area();
-	return $area;
+	if(isset($_REQUEST['area'])) {
+	    if(empty($_REQUEST['area'])) {
+	        $nArea = get_default_area();
+	    } else {
+	        $nArea = intval($_REQUEST['area']);
+	        // Maybe the submitted area-id wasn't an int
+	        if (strval($nArea) !== $_REQUEST['area']) {
+	        	$nArea = get_default_area();
+	        }
+	    }
+	} else {
+	    $nArea = get_default_area();
+	}
+	return $nArea;
 }
