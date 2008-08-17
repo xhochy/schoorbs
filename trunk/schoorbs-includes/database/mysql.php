@@ -15,8 +15,8 @@
  */
 
 /**
- * Free a results handle. You need not call this if you call sql_row or
- * sql_row_keyed until the row returns 0, since sql_row frees the results
+ * Free a results handle. You need not call this if you call sql_row
+ * until the row returns 0, since sql_row frees the results
  * handle when you finish reading the rows.
  * 
  * @param $r MySQL-Result
@@ -95,29 +95,6 @@ function sql_row ($r, $i)
 	}
 	mysql_data_seek($r, $i);
 	return mysql_fetch_row($r);
-}
-
-/**
- * Return a row from a result as an associative array keyed by field name.
- * The first row is 0.
- * This is actually upward compatible with sql_row since the underlying
- * routing also stores the data under number indexes.
- * When called with i >= number of rows in the result, cleans up from
- * the query and returns 0.
- * 
- * @return array 
- * @param $r MySQL-Rrsult
- * @param $i int
- */
-function sql_row_keyed ($r, $i)
-{
-	if ($i >= mysql_num_rows($r))
-	{
-		mysql_free_result($r);
-		return 0;
-	}
-	mysql_data_seek($r, $i);
-	return mysql_fetch_array($r);
 }
 
 /**
@@ -226,20 +203,6 @@ function sql_mutex_cleanup()
 
 
 /**
- * Return a string identifying the database version:
- * 
- * @return string 
- */
-function sql_version()
-{
-	$r = sql_query("select version()");
-	$v = sql_row($r, 0);
-	sql_free($r);
-	return "MySQL $v[0]";
-}
-
-
-/**
  * Generate non-standard SQL for LIMIT clauses:
  * 
  * @return string 
@@ -279,41 +242,6 @@ function sql_syntax_caseless_contains($fieldname, $s)
 	$s = str_replace("_", "\\_", $s);
 	$s = str_replace("'", "''", $s);
 	return " $fieldname LIKE '%$s%' ";
-}
-
-/**
- * Returns the name of a field.
- * 
- * @return string 
- * @param $result MySQL-Result
- * @param $index int
- */
-function sql_field_name($result, $index)
-{
-	return mysql_field_name($result, $index);
-}
-
-/**
- * Returns the type of a field. (one of "int", "real", "string", "blob", etc...)
- * 
- * @return string 
- * @param $result MySQL-Result
- * @param $index int
- */
-function sql_field_type($result, $index)
-{
-	return mysql_field_type($result, $index);
-}
-
-/**
- * Returns the number of fields in a result.
- * 
- * @return int 
- * @param $result MySQL-Result
- */
-function sql_num_fields($result)
-{
-	return mysql_num_fields($result);
 }
 
 /**
