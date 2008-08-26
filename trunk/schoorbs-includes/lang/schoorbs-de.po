@@ -8,13 +8,13 @@ msgstr ""
 "Project-Id-Version: schoorbs\n"
 "Report-Msgid-Bugs-To: FULL NAME <EMAIL@ADDRESS>\n"
 "POT-Creation-Date: 2008-01-05 15:06+0100\n"
-"PO-Revision-Date: 2008-07-08 18:27+0000\n"
+"PO-Revision-Date: 2008-08-19 14:36+0000\n"
 "Last-Translator: Uwe L. Korn <uwelk@xhochy.org>\n"
 "Language-Team: German <de@li.org>\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"X-Launchpad-Export-Date: 2008-07-08 18:40+0000\n"
+"X-Launchpad-Export-Date: 2008-08-19 15:08+0000\n"
 "X-Generator: Launchpad (build Unknown)\n"
 
 msgid "Sunday"
@@ -97,3 +97,665 @@ msgstr "Fre"
 
 msgid "Sat"
 msgstr "Sam"
+
+msgid "Su"
+msgstr "So"
+
+msgid "Mo"
+msgstr "Mo"
+
+msgid "Tu"
+msgstr "Di"
+
+msgid "We"
+msgstr "Mi"
+
+msgid "Th"
+msgstr "Do"
+
+msgid "Fr"
+msgstr "Fr"
+
+msgid "Sa"
+msgstr "Sa"
+
+msgid "No name for the area was provided!"
+msgstr "Kein Name für den Bereich wurde angegeben!"
+
+msgid "An error occured"
+msgstr "Es ist ein Fehler aufgetreten"
+
+msgid "No question to ask was provided!"
+msgstr "Keine Frage zum beantworten wurde angegeben!"
+
+msgid "No url to refer to was provided!"
+msgstr "Keine Url zum Weiterleiten wurde angegeben!"
+
+msgid "No url to return to after a negative answer was provided!"
+msgstr "Keine Url zum zum Zurückgehen wurde angegeben!"
+
+msgid "Do you want to delete the area '%s'?"
+msgstr "Möchten Sie den Bereich '%s' löschen?"
+
+msgid "Do you want to delete the room '%s' in the area '%s'?"
+msgstr "Möchten Sie den Raum '%s' in dem Bereich '%s' löschen?"
+
+msgid "No valid area(-id) for deletion was provided!"
+msgstr "Keine gültige Bereichs(-id) zum Löschen wurde angegeben!"
+
+msgid "No valid room(-id) for deletion was provided!"
+msgstr "Keine gültige Raum(-id) zum Löschen wurde angegeben!"
+
+msgid "No valid area(-id) was provided!"
+msgstr "Keine gültige Bereichs(-id) wurde angegeben!"
+
+msgid "No valid room(-id) was provided!"
+msgstr "Keine gültige Raum(-id) wurde angegeben!"
+
+msgid "Booked by"
+msgstr "Gebucht von"
+
+msgid "The area '%s' has no rooms."
+msgstr "Der Bereich '%s' hat keine Räume."
+
+msgid "Schoorbs - Room Booking System"
+msgstr "Raumbuchungssystem Schoorbs"
+
+msgid "Report"
+msgstr "Bericht"
+
+msgid "Admin"
+msgstr "Admin"
+
+msgid "Help"
+msgstr "Hilfe"
+
+msgid "Search"
+msgstr "Suche"
+
+msgid "<h1>WARNING: This probably doesn't work with PHP3</h1>"
+msgstr "<h1>WARNUNG: Funktioniert warscheinlich nicht mit PHP3</h1>"
+
+msgid "Bookings for"
+msgstr "Einträge für"
+
+msgid "Areas"
+msgstr "Bereiche"
+
+msgid "Go To Day Before"
+msgstr "gehe zum vorherigen Tag"
+
+msgid "Go To Day After"
+msgstr "gehe zum nächsten Tag"
+
+msgid "Go To Today"
+msgstr "gehe zum heutigen Tag"
+
+msgid "goto"
+msgstr "Start"
+
+msgid "Highlight this line"
+msgstr "Markieren Sie diese Zeile"
+
+msgid "Click on the cell to make a reservation."
+msgstr "Click on the cell to make a reservation."
+
+msgid "View Day"
+msgstr "Zeige Tag"
+
+msgid "View Week"
+msgstr "Zeige Woche"
+
+msgid "View Month"
+msgstr "Zeige Monat"
+
+msgid "Print Preview"
+msgstr "Druckansicht"
+
+msgid "Add Entry"
+msgstr "Eintrag hinzufügen"
+
+msgid "Edit Entry"
+msgstr "Eintrag ändern"
+
+msgid "Edit Series"
+msgstr "Alle Einträge ändern"
+
+msgid "Brief Description:"
+msgstr "Kurzbeschreibung"
+
+msgid ""
+"Full Description:<br />&nbsp;&nbsp;(Number of people,<br "
+"/>&nbsp;&nbsp;Internal/External etc)"
+msgstr ""
+"Vollständige Beschreibung:<br />&nbsp;&nbsp;(Anzahl der Teilnehmer etc;)"
+
+msgid "Date:"
+msgstr "Tag:"
+
+msgid "Start Time:"
+msgstr "Anfangsdatum:"
+
+msgid "End Time:"
+msgstr "Enddatum:"
+
+msgid "Time:"
+msgstr "Zeit:"
+
+msgid "Period:"
+msgstr "Period:"
+
+msgid "Duration:"
+msgstr "Dauer:"
+
+msgid "seconds"
+msgstr "Sekunden"
+
+msgid "minutes"
+msgstr "Minuten"
+
+msgid "hours"
+msgstr "Stunden"
+
+msgid "days"
+msgstr "Tage"
+
+msgid "weeks"
+msgstr "Wochen"
+
+msgid "years"
+msgstr "Jahre"
+
+msgid "periods"
+msgstr "periods"
+
+msgid "All day"
+msgstr "Ganztägig"
+
+msgid "Type:"
+msgstr "Art:"
+
+msgid "Internal"
+msgstr "Intern"
+
+msgid "External"
+msgstr "Extern"
+
+msgid "Save"
+msgstr "Speichern"
+
+msgid "Repeat Type:"
+msgstr "Art der Wiederholung:"
+
+msgid "None"
+msgstr "Keine"
+
+msgid "Daily"
+msgstr "täglich"
+
+msgid "Weekly"
+msgstr "wöchentlich"
+
+msgid "Monthly"
+msgstr "monatlich"
+
+msgid "Yearly"
+msgstr "jährlich"
+
+msgid "Monthly, corresponding day"
+msgstr "monatlich, entsprechender Tag"
+
+msgid "n-Weekly"
+msgstr "n-Wöchentlich"
+
+msgid "Repeat End Date:"
+msgstr "Ende der Wiederholung:"
+
+msgid "Repeat Day:"
+msgstr "Tag der Wiederholung:"
+
+msgid "(for (n-)weekly)"
+msgstr "(für wöchentlich)"
+
+msgid "Frequency:"
+msgstr "Häufigkeit:"
+
+msgid "Number of weeks"
+msgstr "Anzahl Wochen"
+
+msgid "(for n-weekly)"
+msgstr "(für n-te Woche)"
+
+msgid "Use Control-Click to select more than one room"
+msgstr "Strg-Click um mehr als einen Raum auszuwählen"
+
+msgid "Entry ID "
+msgstr "Entry ID "
+
+msgid "Repeat ID "
+msgstr "Repeat ID "
+
+msgid "You have not entered a"
+msgstr "Sie haben folgendes Feld nicht ausgefüllt :"
+
+msgid "You have not selected a"
+msgstr "You have not selected a"
+
+msgid "room."
+msgstr "room."
+
+msgid "valid time of day."
+msgstr "Gültige Uhrzeit."
+
+msgid "Brief Description."
+msgstr "Kurzbeschreibung."
+
+msgid "useful n-weekly value."
+msgstr "useful n-weekly value."
+
+msgid "Description:"
+msgstr "Beschreibung:"
+
+msgid "Room"
+msgstr "Raum"
+
+msgid "Created By:"
+msgstr "Erstellt von:"
+
+msgid "Last Updated:"
+msgstr "Letzte Änderung:"
+
+msgid "Delete Entry"
+msgstr "Eintrag löschen"
+
+msgid "Delete Series"
+msgstr "Alle Einträge löschen"
+
+msgid ""
+"Are you sure\n"
+"you want to\n"
+"delete this entry?\n"
+"\n"
+msgstr ""
+"Sind Sie sicher,\n"
+"dass Sie diesen Eintrag\n"
+"löschen wollen?\n"
+"\n"
+
+msgid "Return to previous page"
+msgstr "Zurück zur vorigen Seite"
+
+msgid "Invalid entry id."
+msgstr "Invalid entry id."
+
+msgid "Invalid series id."
+msgstr "Invalid series id."
+
+msgid "Error"
+msgstr "Fehler"
+
+msgid "Scheduling Conflict"
+msgstr "Konflikt in der Planung"
+
+msgid "The new booking will conflict with the following entry(s):"
+msgstr "Der neue Eintrag hat einen Konflikt mit folgenden Einträgen:"
+
+msgid ""
+"The selected options will create too many entries.<BR>Please use different "
+"options!"
+msgstr ""
+"Die gewählten Optionen würden zu viele Einträge erzeugen.<BR>Ändern Sie "
+"bitte die Optionen!"
+
+msgid "Return to calendar view"
+msgstr "Zurück zur Kalenderansicht"
+
+msgid "Failed to acquire exclusive database access"
+msgstr "Konnte nicht exclusiv auf die Datenbank zugreifen"
+
+msgid "Invalid booking"
+msgstr "Ungültige Buchung"
+
+msgid ""
+"You must set a brief description for the booking. Please go back and enter "
+"one."
+msgstr ""
+"Sie müssen eine kurze Beschreibung für die Buchung angeben. Bitte gehen Sie "
+"zurück und geben Sie eine ein."
+
+msgid "Access Denied"
+msgstr "Zugang verweigert"
+
+msgid "You do not have access rights to modify this item."
+msgstr "Sie haben keine Berechtigung, diesen Eintrag zu ändern"
+
+msgid "Please log in"
+msgstr "Bitte einloggen"
+
+msgid "Name"
+msgstr "Name"
+
+msgid "Password"
+msgstr "Passwort"
+
+msgid "Unknown user"
+msgstr "Unbekannter Benutzer"
+
+msgid "You are"
+msgstr "Sie sind"
+
+msgid "Log in"
+msgstr "Einloggen"
+
+msgid "Log Off"
+msgstr "Ausloggen"
+
+msgid "User list"
+msgstr "Benutzerliste"
+
+msgid "Edit user"
+msgstr "Bearbeite Benutzer"
+
+msgid "Delete this user"
+msgstr "Lösche diesen Benutzer"
+
+msgid "Email address"
+msgstr "Email Addresse"
+
+msgid ""
+"If you wish to change the password, please type the new password twice"
+msgstr ""
+"Falls Sie Ihr Passwort ändern wollen, geben Sie das neue Passwort zwei mal "
+"ein."
+
+msgid "Error: The passwords do not match."
+msgstr "Fehler: Die Passwörter stimmen nicht überein."
+
+msgid "Add a new user"
+msgstr "Benutzer hinzufügen"
+
+msgid "Rights"
+msgstr "Rechte"
+
+msgid "Action"
+msgstr "Action"
+
+msgid "User"
+msgstr "Benutzer"
+
+msgid "Administrator"
+msgstr "Administrator"
+
+msgid "Unknown"
+msgstr "Unbekannt"
+
+msgid "OK"
+msgstr "OK"
+
+msgid "Click to display all my upcoming entries"
+msgstr "Click to display all my upcoming entries"
+
+msgid "No users in database, allowing initial user creation"
+msgstr ""
+"Keine Nutzer in der Datenbank vorhanden, erstmalige Nutzererstellung erlaubt"
+
+msgid ""
+"Create a user configured as administrator and then you can log in and create "
+"more users."
+msgstr ""
+"Erstellen Sie einen Nutzer als Administrator und dann können Sie sich "
+"anmelden um weitere Nutzer hinzuzufügen."
+
+msgid "Empty or invalid search string."
+msgstr "Leerer oder ungültiger Suchbegriff."
+
+msgid "Search Results for:"
+msgstr "Suchergebnis für:"
+
+msgid "No matching entries found."
+msgstr "Keine passenden Suchergebnisse gefunden."
+
+msgid "Records "
+msgstr "Ergebnisse "
+
+msgid " through "
+msgstr " bis "
+
+msgid " of "
+msgstr " von "
+
+msgid "Previous"
+msgstr "Vorige"
+
+msgid "Next"
+msgstr "Nächste"
+
+msgid "Entry"
+msgstr "Eintrag"
+
+msgid "View"
+msgstr "Öffnen"
+
+msgid "Advanced search"
+msgstr "Erweiterte Suche"
+
+msgid "Search For"
+msgstr "Suche nach"
+
+msgid "From"
+msgstr "Von"
+
+msgid "Report on Meetings:"
+msgstr "Bericht über Termine:"
+
+msgid "Report start date:"
+msgstr "Bericht Beginn:"
+
+msgid "Report end date:"
+msgstr "Bericht Ende:"
+
+msgid "Match area:"
+msgstr "Suche Bereich:"
+
+msgid "Match room:"
+msgstr "Suche Raum:"
+
+msgid "Match type:"
+msgstr "Nach typ:"
+
+msgid "Use Control-Click to select more than one type"
+msgstr "Strg-Click um mehr als einen Typus auszuwählen"
+
+msgid "Match brief description:"
+msgstr "Suche Kurzbeschreibung:"
+
+msgid "Match full description:"
+msgstr "Suche Beschreibung:"
+
+msgid "Include:"
+msgstr "Generiere:"
+
+msgid "Report only"
+msgstr "nur Bericht"
+
+msgid "Summary only"
+msgstr "nur Zusammenfassung"
+
+msgid "Report and Summary"
+msgstr "Bericht und Zusammenfassung"
+
+msgid "Summarize by:"
+msgstr "Zusammenfassung nach:"
+
+msgid "Brief description"
+msgstr "Kurzbeschreibung"
+
+msgid "Creator"
+msgstr "Ersteller"
+
+msgid "entry found"
+msgstr "Eintrag gefunden"
+
+msgid "entries found"
+msgstr "Einträge gefunden"
+
+msgid "Summary of (Entries) Hours"
+msgstr "Stundenzusammenfassung der Einträge"
+
+msgid "Summary of (Entries) Periods"
+msgstr "Summary of (Entries) Periods"
+
+msgid "Total"
+msgstr "Gesamt"
+
+msgid "Run Report"
+msgstr "Bericht erstellen"
+
+msgid "Sort Report by:"
+msgstr "Sortiere Report nach:"
+
+msgid "Start Date/Time"
+msgstr "Startzeit/Datum"
+
+msgid "Display in report:"
+msgstr "zeige im Report:"
+
+msgid "Duration"
+msgstr "Dauer"
+
+msgid "End Time"
+msgstr "Endzeit"
+
+msgid "Go To Week Before"
+msgstr "gehe zur vorigen Woche"
+
+msgid "Go To Week After"
+msgstr "gehe zur nächsten Woche"
+
+msgid "Go To This Week"
+msgstr "gehe zu dieser Woche"
+
+msgid "Go To Month Before"
+msgstr "gehe zum vorigen Monat"
+
+msgid "Go To Month After"
+msgstr "gehe zum nächsten Monat"
+
+msgid "Go To This Month"
+msgstr "gehe zu diesen Monat"
+
+msgid "No rooms defined for this area"
+msgstr "Der Bereich enthält keinen Raum"
+
+msgid "Edit"
+msgstr "Bearbeiten"
+
+msgid "Delete"
+msgstr "Löschen"
+
+msgid "Rooms"
+msgstr "Räume"
+
+msgid "in"
+msgstr "in"
+
+msgid "No Areas"
+msgstr "Keine Bereiche"
+
+msgid "Add Area"
+msgstr "Bereich hinzufügen"
+
+msgid "No area selected"
+msgstr "Kein Bereich ausgewählt"
+
+msgid "Your browser is set to use"
+msgstr "Die Spracheinstellung Ihres Browsers ist"
+
+msgid "language."
+msgstr "."
+
+msgid "Add Room"
+msgstr "Raum hinzufügen"
+
+msgid "Capacity"
+msgstr "Kapazität"
+
+msgid "No rooms."
+msgstr "Keine Räume vorhanden."
+
+msgid "Administration"
+msgstr "Administration"
+
+msgid "Edit Area"
+msgstr "Bereich bearbeiten"
+
+msgid "Change"
+msgstr "Ändern"
+
+msgid "Back to Admin"
+msgstr "Zurück zu Admin"
+
+msgid "Edit Area or Room Description"
+msgstr "Raum- oder Bereichsbeschreibung bearbeiten"
+
+msgid "Edit Room"
+msgstr "Raum bearbeiten"
+
+msgid "Update room failed: "
+msgstr "Raum aktualisieren gescheitert: "
+
+msgid "Error: room "
+msgstr "Error: Raum "
+
+msgid " not found"
+msgstr " nicht gefunden"
+
+msgid "Update area failed: "
+msgstr "Update area failed: "
+
+msgid "Error: area "
+msgstr "Fehler: Bereich "
+
+msgid "Room admin email:"
+msgstr "E-mail des Raumadministrators"
+
+msgid "Area admin email:"
+msgstr "E-mail des Bereichsadministrators"
+
+msgid "Invalid email!"
+msgstr "Ungültige e-mail Adresse !"
+
+msgid "This will delete the following bookings"
+msgstr "Dadurch werden die folgenden Einträge gelöscht"
+
+msgid "Are you sure?"
+msgstr "Sind Sie sicher?"
+
+msgid "YES"
+msgstr "JA"
+
+msgid "NO"
+msgstr "NEIN"
+
+msgid "You must delete all rooms in this area before you can delete it<p>"
+msgstr ""
+"Sie müssen alle Räume dieses Bereiches löschen, damit Sie den Bereich "
+"löschen können<p>"
+
+msgid "About Schoorbs"
+msgstr "Über Schoorbs"
+
+msgid "Database: "
+msgstr "Datenbank: "
+
+msgid "System: "
+msgstr "System: "
+
+msgid "Please contact "
+msgstr "Bitte kontaktieren Sie "
+
+msgid "for any questions that aren't answered here."
+msgstr "für Fragen die hier nicht beantwortet sind."
+
+msgid "Fatal Error: Failed to connect to database"
+msgstr "Fataler Fehler: Kann nicht an Datenbank anbinden"

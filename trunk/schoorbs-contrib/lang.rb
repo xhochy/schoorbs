@@ -5,6 +5,7 @@
 
 require 'gettext/rgettext'
 require 'gettext/poparser'
+require 'cgi'
 
 CLEAN.include 'schoorbs-includes/lang/*.po-xml'
 
@@ -34,7 +35,7 @@ rule '.po-xml' => '.po' do |t|
   
   data.each do |string, trans|
     next if string == ''
-    file.puts '  <string id="' + string + '" translated="' + trans + '" />'
+    file.puts '  <string id="' + CGI.escapeHTML(string) + '" translated="' + CGI.escapeHTML(trans) + '" />'
   end
   
   # Print the file footer

@@ -7,7 +7,7 @@
  * @author Claes Bolvig Pedersen (cp@dhi.dk), Uwe L. Korn <uwelk@xhochy.org>, jberanek
  * @package Schoorbs
  * @subpackage Language
- */.
+ */
 
 # The charset to use in "Content-type" header
 $vocab["charset"]            = "utf-8";
