@@ -1,0 +1,583 @@
+msgid ""
+msgstr ""
+"Project-Id-Version: schoorbs\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+
+msgid "Schoorbs - Room Booking System"
+msgstr "Bookning af møderum, Schoorbs"
+
+msgid "Report"
+msgstr "Rapport"
+
+msgid "Admin"
+msgstr "Admin"
+
+msgid "Help"
+msgstr "Hjælp"
+
+msgid "Search"
+msgstr "Søg"
+
+msgid "<h1>WARNING: This probably doesn't work with PHP3</h1>"
+msgstr "<h1>WARNING: This probably doesn't work with PHP3</H1>"
+
+msgid "Bookings for"
+msgstr "Booking for"
+
+msgid ""
+msgstr ""
+
+msgid "Areas"
+msgstr "Område"
+
+msgid "Go To Day Before"
+msgstr "Gå til forrige dag"
+
+msgid "Go To Day After"
+msgstr "Gå til næste dag"
+
+msgid "Go To Today"
+msgstr "Gå til idag"
+
+msgid "goto"
+msgstr "gå til"
+
+msgid "Highlight this line"
+msgstr "Highlight this line"
+
+msgid "Click on the cell to make a reservation."
+msgstr "Click on the cell to make a reservation."
+
+msgid "View Day"
+msgstr "Vis dag"
+
+msgid "View Week"
+msgstr "Vis Uge"
+
+msgid "View Month"
+msgstr "Vis Måned"
+
+msgid "Print Preview"
+msgstr "Forhåndsvisning"
+
+msgid "Add Entry"
+msgstr "Booking"
+
+msgid "Edit Entry"
+msgstr "Ændre booking"
+
+msgid "Edit Series"
+msgstr "Ændre serie"
+
+msgid "Brief Description:"
+msgstr "Kort beskrivelse:"
+
+msgid "Full Description:<br />&nbsp;&nbsp;(Number of people,<br />&nbsp;&nbsp;Internal/External etc)"
+msgstr "Lang beskrivelse:<br />&nbsp;&nbsp;(Antal personer,<br />&nbsp;&nbsp;Internt/Eksternt osv)"
+
+msgid "Date:"
+msgstr "Dato:"
+
+msgid "Start Time:"
+msgstr "Starttid:"
+
+msgid "End Time:"
+msgstr "Sluttid:"
+
+msgid "Time:"
+msgstr "Tid:"
+
+msgid "Period:"
+msgstr "Period:"
+
+msgid "Duration:"
+msgstr "Længde:"
+
+msgid "seconds"
+msgstr "sekunder"
+
+msgid "minutes"
+msgstr "minutter"
+
+msgid "hours"
+msgstr "timer"
+
+msgid "days"
+msgstr "dage"
+
+msgid "weeks"
+msgstr "uger"
+
+msgid "years"
+msgstr "år"
+
+msgid "periods"
+msgstr "periods"
+
+msgid "All day"
+msgstr "hele dagen"
+
+msgid "Type:"
+msgstr "Type:"
+
+msgid "Internal"
+msgstr "Internt"
+
+msgid "External"
+msgstr "Eksternt"
+
+msgid "Save"
+msgstr "Gem"
+
+msgid "Repeat Type:"
+msgstr "Repetitionstype:"
+
+msgid "None"
+msgstr "ingen"
+
+msgid "Daily"
+msgstr "daglig"
+
+msgid "Weekly"
+msgstr "ugentlig"
+
+msgid "Monthly"
+msgstr "månedlig"
+
+msgid "Yearly"
+msgstr "årlig"
+
+msgid "Monthly, corresponding day"
+msgstr "Månedlig, samme dag"
+
+msgid "n-Weekly"
+msgstr "n-ugentlig"
+
+msgid "Repeat End Date:"
+msgstr "Repetitionsslutdato:"
+
+msgid "Repeat Day:"
+msgstr "Repetitionsdag:"
+
+msgid "(for (n-)weekly)"
+msgstr "(ved hver uge)"
+
+msgid "Frequency:"
+msgstr "Frekvens:"
+
+msgid "Number of weeks"
+msgstr "Antal uger"
+
+msgid "(for n-weekly)"
+msgstr "(for n-uger)"
+
+msgid "Use Control-Click to select more than one room"
+msgstr "Hold kontroltasten nede for at vælge mere end et rum"
+
+msgid "Entry ID "
+msgstr "Entry ID "
+
+msgid "Repeat ID "
+msgstr "Repeat ID "
+
+msgid "You have not entered a"
+msgstr "Du har ikke indtastet et"
+
+msgid "You have not selected a"
+msgstr "You have not selected a"
+
+msgid "room."
+msgstr "room."
+
+msgid "valid time of day."
+msgstr "validt tidspunkt."
+
+msgid "Brief Description."
+msgstr "Kort beskrivelse."
+
+msgid "useful n-weekly value."
+msgstr "nyttig n-ugentlig værdi."
+
+msgid "Description:"
+msgstr "Beskrivelse:"
+
+msgid "Room"
+msgstr "Rum"
+
+msgid "Created By:"
+msgstr "Gemt af:"
+
+msgid "Last Updated:"
+msgstr "Senest opdateret:"
+
+msgid "Delete Entry"
+msgstr "Slet bookning"
+
+msgid "Delete Series"
+msgstr "Slet serie"
+
+msgid "Are you sure\nyou want to\ndelete this entry?\n\n"
+msgstr "Er du sikker på at\ndu vil slette bookningen?\n\n"
+
+msgid "Return to previous page"
+msgstr "Tilbage til forrige side"
+
+msgid "Invalid entry id."
+msgstr "Invalid entry id."
+
+msgid "Invalid series id."
+msgstr "Invalid series id."
+
+msgid "Error"
+msgstr "Fejl"
+
+msgid "Scheduling Conflict"
+msgstr "Bookningskonflikt"
+
+msgid "The new booking will conflict with the following entry(s):"
+msgstr "Bookningen er i konflikt med følgende bookning(er):"
+
+msgid "The selected options will create too many entries.<BR>Please use different options!"
+msgstr "De valgte instillinger skaber for mange bookninger.<br />Brug venligst andre indstillinger!"
+
+msgid "Return to calendar view"
+msgstr "Tilbage til kalender"
+
+msgid "Failed to acquire exclusive database access"
+msgstr "Failed to acquire exclusive database access"
+
+msgid "Invalid booking"
+msgstr ""
+
+msgid "You must set a brief description for the booking. Please go back and enter one."
+msgstr ""
+
+msgid "Access Denied"
+msgstr "Ingen adgang"
+
+msgid "You do not have access rights to modify this item."
+msgstr "Du har ingen rettighed til at ændre bookningen."
+
+msgid "Please log in"
+msgstr "Please log in"
+
+msgid "Name"
+msgstr "Navn"
+
+msgid "Password"
+msgstr "Password"
+
+msgid "Unknown user"
+msgstr "Unknown user"
+
+msgid "You are"
+msgstr "You are"
+
+msgid "Log in"
+msgstr "Log in"
+
+msgid "Log Off"
+msgstr "Log Off"
+
+msgid "User list"
+msgstr "User list"
+
+msgid "Edit user"
+msgstr "Edit user"
+
+msgid "Delete this user"
+msgstr "Delete this user"
+
+msgid "Email address"
+msgstr "Email address"
+
+msgid "If you wish to change the password, please type the new password twice"
+msgstr "If you wish to change the password, please type the new password twice"
+
+msgid "Error: The passwords do not match."
+msgstr "Error: The passwords do not match."
+
+msgid "Add a new user"
+msgstr "Add a new user"
+
+msgid "Rights"
+msgstr "Rights"
+
+msgid "Action"
+msgstr "Action"
+
+msgid "User"
+msgstr "User"
+
+msgid "Administrator"
+msgstr "Administrator"
+
+msgid "Unknown"
+msgstr "Unknown"
+
+msgid "OK"
+msgstr "OK"
+
+msgid "Click to display all my upcoming entries"
+msgstr "Click to display all my upcoming entries"
+
+msgid "No users in database, allowing initial user creation"
+msgstr ""
+
+msgid "Create a user configured as administrator and then you can log in and create more users."
+msgstr ""
+
+msgid "Empty or invalid search string."
+msgstr "Tom eller ugyldig søgestreng."
+
+msgid "Search Results for:"
+msgstr "Søgeresultat for:"
+
+msgid "No matching entries found."
+msgstr "Ingen poster blev fundet."
+
+msgid "Records "
+msgstr "Bookning "
+
+msgid " through "
+msgstr " til "
+
+msgid " of "
+msgstr " af "
+
+msgid "Previous"
+msgstr "Forrige"
+
+msgid "Next"
+msgstr "Næste"
+
+msgid "Entry"
+msgstr "Post"
+
+msgid "View"
+msgstr "Vis"
+
+msgid "Advanced search"
+msgstr "Avanceret søgning"
+
+msgid "Search For"
+msgstr "Søg efter"
+
+msgid "From"
+msgstr "Fra"
+
+msgid "Report on Meetings:"
+msgstr "Rapport:"
+
+msgid "Report start date:"
+msgstr "Start dato:"
+
+msgid "Report end date:"
+msgstr "Slut dato:"
+
+msgid "Match area:"
+msgstr "Område:"
+
+msgid "Match room:"
+msgstr "Rum:"
+
+msgid "Match type:"
+msgstr "Match type:"
+
+msgid "Use Control-Click to select more than one type"
+msgstr "Use Control-Click to select more than one type"
+
+msgid "Match brief description:"
+msgstr "Kort beskrivelse:"
+
+msgid "Match full description:"
+msgstr "Lang beskrivelse:"
+
+msgid "Include:"
+msgstr "Skal indeholde:"
+
+msgid "Report only"
+msgstr "Kun rapport"
+
+msgid "Summary only"
+msgstr "Opsummering"
+
+msgid "Report and Summary"
+msgstr "Rapport og opsummering"
+
+msgid "Summarize by:"
+msgstr "Opsummering efter:"
+
+msgid "Brief description"
+msgstr "Kort beskrivelse"
+
+msgid "Creator"
+msgstr "Hvem der har booket"
+
+msgid "entry found"
+msgstr "post fundet"
+
+msgid "entries found"
+msgstr "poster fundet"
+
+msgid "Summary of (Entries) Hours"
+msgstr "Sum timer"
+
+msgid "Summary of (Entries) Periods"
+msgstr "Summary of (Entries) Periods"
+
+msgid "Total"
+msgstr "Total"
+
+msgid "Run Report"
+msgstr "Kør rapport"
+
+msgid "Sort Report by:"
+msgstr "Sort Report by:"
+
+msgid "Start Date/Time"
+msgstr "Start Date/Time"
+
+msgid "Display in report:"
+msgstr "Display in report:"
+
+msgid "Duration"
+msgstr "Duration"
+
+msgid "End Time"
+msgstr "End Time"
+
+msgid "Go To Week Before"
+msgstr "Gå til ugen før"
+
+msgid "Go To Week After"
+msgstr "Gå til ugen efter"
+
+msgid "Go To This Week"
+msgstr "Gå til denne uge"
+
+msgid "Go To Month Before"
+msgstr "Gå til forrige måned"
+
+msgid "Go To Month After"
+msgstr "Gå til næste måned"
+
+msgid "Go To This Month"
+msgstr "Gå til denne måned"
+
+msgid "No rooms defined for this area"
+msgstr "Ingen rum er defineret for dette område"
+
+msgid "Edit"
+msgstr "Ændre"
+
+msgid "Delete"
+msgstr "Slet"
+
+msgid "Rooms"
+msgstr "Rum"
+
+msgid "in"
+msgstr "i"
+
+msgid "No Areas"
+msgstr "Ingen områder"
+
+msgid "Add Area"
+msgstr "Tilføj område"
+
+msgid "No area selected"
+msgstr "Område ikke valgt"
+
+msgid "Your browser is set to use"
+msgstr "Din browser er indstillet til at bruge følgende sprog:"
+
+msgid "language."
+msgstr ""
+
+msgid "Add Room"
+msgstr "Tilføj rom"
+
+msgid "Capacity"
+msgstr "Kapacitet"
+
+msgid "No rooms."
+msgstr "Ingen rum."
+
+msgid "Administration"
+msgstr "Administration"
+
+msgid "Edit Area"
+msgstr "Ændre område"
+
+msgid "Change"
+msgstr "Ændre"
+
+msgid "Back to Admin"
+msgstr "Tilbage til admin"
+
+msgid "Edit Area or Room Description"
+msgstr "Ændre område- eller rumbeskrivelse"
+
+msgid "Edit Room"
+msgstr "Ændre rom"
+
+msgid "Update room failed: "
+msgstr "Updater rum fejlet: "
+
+msgid "Error: room "
+msgstr "Fejl: rum "
+
+msgid " not found"
+msgstr " ikke fundet"
+
+msgid "Update area failed: "
+msgstr "Opdater område fejlet: "
+
+msgid "Error: area "
+msgstr "Fejl: område "
+
+msgid "Room admin email:"
+msgstr "Room admin email:"
+
+msgid "Area admin email:"
+msgstr "Area admin email:"
+
+msgid "Invalid email!"
+msgstr "Invalid email!"
+
+msgid "This will delete the following bookings"
+msgstr "Dette vil slette følgende bookninger"
+
+msgid "Are you sure?"
+msgstr "Er du sikker?"
+
+msgid "YES"
+msgstr "JA"
+
+msgid "NO"
+msgstr "NEJ"
+
+msgid "You must delete all rooms in this area before you can delete it<p>"
+msgstr "Du skal fjerne alle rum i dette område før du kan slette det<p>"
+
+msgid "About Schoorbs"
+msgstr "Om Schoorbs"
+
+msgid "Database: "
+msgstr "Database: "
+
+msgid "System: "
+msgstr "System: "
+
+msgid "Please contact "
+msgstr "Kontakt "
+
+msgid "for any questions that aren't answered here."
+msgstr "for spørgsmål der ikke er besvaret her."
+
+msgid "Fatal Error: Failed to connect to database"
+msgstr "Fatal Error: Failed to connect to database"
+

@@ -1,11 +1,8 @@
-# Schoorbs Translation templare
-# Copyright (C) 2008
-# This file is distributed under a MIT-style license.
-#
 #, fuzzy
 msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
+"Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2008-01-05 15:06+0100\n"
 "PO-Revision-Date: 2008-01-05 15:06+0100\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
@@ -13,8 +10,8 @@ msgstr ""
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"Plural-Forms: nplurals=INTEGER; plural=EXPRESSION;\n"
-
+"X-Launchpad-Export-Date: 2008-08-19 15:08+0000\n"
+"X-Generator: Launchpad (build Unknown)\n"
 
 msgid "Sunday"
 msgstr ""
@@ -156,6 +153,7 @@ msgstr ""
 
 msgid "The area '%s' has no rooms."
 msgstr ""
+
 msgid "Schoorbs - Room Booking System"
 msgstr ""
 
@@ -175,9 +173,6 @@ msgid "<h1>WARNING: This probably doesn't work with PHP3</h1>"
 msgstr ""
 
 msgid "Bookings for"
-msgstr ""
-
-msgid ""
 msgstr ""
 
 msgid "Areas"
@@ -225,7 +220,9 @@ msgstr ""
 msgid "Brief Description:"
 msgstr ""
 
-msgid "Full Description:<br />&nbsp;&nbsp;(Number of people,<br />&nbsp;&nbsp;Internal/External etc)"
+msgid ""
+"Full Description:<br />&nbsp;&nbsp;(Number of people,<br "
+"/>&nbsp;&nbsp;Internal/External etc)"
 msgstr ""
 
 msgid "Date:"
@@ -369,7 +366,11 @@ msgstr ""
 msgid "Delete Series"
 msgstr ""
 
-msgid "Are you sure\nyou want to\ndelete this entry?\n\n"
+msgid ""
+"Are you sure\n"
+"you want to\n"
+"delete this entry?\n"
+"\n"
 msgstr ""
 
 msgid "Return to previous page"
@@ -390,7 +391,9 @@ msgstr ""
 msgid "The new booking will conflict with the following entry(s):"
 msgstr ""
 
-msgid "The selected options will create too many entries.<BR>Please use different options!"
+msgid ""
+"The selected options will create too many entries.<BR>Please use different "
+"options!"
 msgstr ""
 
 msgid "Return to calendar view"
@@ -402,7 +405,9 @@ msgstr ""
 msgid "Invalid booking"
 msgstr ""
 
-msgid "You must set a brief description for the booking. Please go back and enter one."
+msgid ""
+"You must set a brief description for the booking. Please go back and enter "
+"one."
 msgstr ""
 
 msgid "Access Denied"
@@ -444,7 +449,8 @@ msgstr ""
 msgid "Email address"
 msgstr ""
 
-msgid "If you wish to change the password, please type the new password twice"
+msgid ""
+"If you wish to change the password, please type the new password twice"
 msgstr ""
 
 msgid "Error: The passwords do not match."
@@ -477,7 +483,9 @@ msgstr ""
 msgid "No users in database, allowing initial user creation"
 msgstr ""
 
-msgid "Create a user configured as administrator and then you can log in and create more users."
+msgid ""
+"Create a user configured as administrator and then you can log in and create "
+"more users."
 msgstr ""
 
 msgid "Empty or invalid search string."
@@ -511,9 +519,6 @@ msgid "View"
 msgstr ""
 
 msgid "Advanced search"
-msgstr ""
-
-msgid "Search"
 msgstr ""
 
 msgid "Search For"
@@ -642,9 +647,6 @@ msgstr ""
 msgid "Add Area"
 msgstr ""
 
-msgid "Name"
-msgstr ""
-
 msgid "No area selected"
 msgstr ""
 
@@ -737,4 +739,3 @@ msgstr ""
 
 msgid "Fatal Error: Failed to connect to database"
 msgstr ""
-

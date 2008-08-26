@@ -11,7 +11,12 @@ $vocab = null;
 $sInFile = $_SERVER['argv'][1];
 require $sInFile;
 
+$aOut = array();
 foreach ($aEnglish as $sKey=>$sId) {
+	$aOut[$sId] = $vocab[$sKey];
+}
+
+foreach ($aOut as $sId=>$sStr) {
 	echo "msgid \"$sId\"\n";
-	echo "msgstr \"${vocab[$sKey]}\"\n\n";
+	echo "msgstr \"$sStr\"\n\n";
 }
