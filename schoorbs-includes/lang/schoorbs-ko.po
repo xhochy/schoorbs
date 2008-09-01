@@ -1,9 +1,163 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: schoorbs\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2008-01-05 15:06+0100\n"
+"PO-Revision-Date: 2008-09-01 13:11+0000\n"
+"Last-Translator: Uwe L. Korn <uwelk@xhochy.org>\n"
+"Language-Team: LANGUAGE <LL@li.org>\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
+"X-Launchpad-Export-Date: 2008-09-01 17:08+0000\n"
+"X-Generator: Launchpad (build Unknown)\n"
+
+#~ msgid ""
+#~ "Are you sure\n"
+#~ "you want to\n"
+#~ "delete this entry?"
+#~ msgstr "예약을 취소하시겠습니까?"
+
+msgid "Sunday"
+msgstr ""
+
+msgid "Monday"
+msgstr ""
+
+msgid "Tuesday"
+msgstr ""
+
+msgid "Wednesday"
+msgstr ""
+
+msgid "Thursday"
+msgstr ""
+
+msgid "Friday"
+msgstr ""
+
+msgid "Saturday"
+msgstr ""
+
+msgid "January"
+msgstr ""
+
+msgid "February"
+msgstr ""
+
+msgid "March"
+msgstr ""
+
+msgid "April"
+msgstr ""
+
+msgid "May"
+msgstr ""
+
+msgid "June"
+msgstr ""
+
+msgid "July"
+msgstr ""
+
+msgid "August"
+msgstr ""
+
+msgid "September"
+msgstr ""
+
+msgid "October"
+msgstr ""
+
+msgid "November"
+msgstr ""
+
+msgid "December"
+msgstr ""
+
+msgid "Time"
+msgstr ""
+
+msgid "Sun"
+msgstr ""
+
+msgid "Mon"
+msgstr ""
+
+msgid "Tue"
+msgstr ""
+
+msgid "Wed"
+msgstr ""
+
+msgid "Thu"
+msgstr ""
+
+msgid "Fri"
+msgstr ""
+
+msgid "Sat"
+msgstr ""
+
+msgid "Su"
+msgstr ""
+
+msgid "Mo"
+msgstr ""
+
+msgid "Tu"
+msgstr ""
+
+msgid "We"
+msgstr ""
+
+msgid "Th"
+msgstr ""
+
+msgid "Fr"
+msgstr ""
+
+msgid "Sa"
+msgstr ""
+
+msgid "No name for the area was provided!"
+msgstr ""
+
+msgid "An error occured"
+msgstr ""
+
+msgid "No question to ask was provided!"
+msgstr ""
+
+msgid "No url to refer to was provided!"
+msgstr ""
+
+msgid "No url to return to after a negative answer was provided!"
+msgstr ""
+
+msgid "Do you want to delete the area '%s'?"
+msgstr ""
+
+msgid "Do you want to delete the room '%s' in the area '%s'?"
+msgstr ""
+
+msgid "No valid area(-id) for deletion was provided!"
+msgstr ""
+
+msgid "No valid room(-id) for deletion was provided!"
+msgstr ""
+
+msgid "No valid area(-id) was provided!"
+msgstr ""
+
+msgid "No valid room(-id) was provided!"
+msgstr ""
+
+msgid "Booked by"
+msgstr ""
+
+msgid "The area '%s' has no rooms."
+msgstr ""
 
 msgid "Schoorbs - Room Booking System"
 msgstr "회의실 예약 시스템"
@@ -71,7 +225,9 @@ msgstr "예약(Series) 수정"
 msgid "Brief Description:"
 msgstr "예약자명:"
 
-msgid "Full Description:<br />&nbsp;&nbsp;(Number of people,<br />&nbsp;&nbsp;Internal/External etc)"
+msgid ""
+"Full Description:<br />&nbsp;&nbsp;(Number of people,<br "
+"/>&nbsp;&nbsp;Internal/External etc)"
 msgstr "상세정보(인원,내부/외부회의 등):"
 
 msgid "Date:"
@@ -215,8 +371,12 @@ msgstr "예약 취소"
 msgid "Delete Series"
 msgstr "예약(Series) 취소"
 
-msgid "Are you sure\nyou want to\ndelete this entry?"
-msgstr "예약을 취소하시겠습니까?"
+msgid ""
+"Are you sure\n"
+"you want to\n"
+"delete this entry?\n"
+"\n"
+msgstr ""
 
 msgid "Return to previous page"
 msgstr "이전 페이지로"
@@ -236,7 +396,9 @@ msgstr "스케쥴 중복"
 msgid "The new booking will conflict with the following entry(s):"
 msgstr "이미 다른 예약이 되어있습니다."
 
-msgid "The selected options will create too many entries.<BR>Please use different options!"
+msgid ""
+"The selected options will create too many entries.<BR>Please use different "
+"options!"
 msgstr "선택한 옵션은 너무 많은 엔트리를 작성하게 됩니다.<BR>다른 옵션을 선택해 주세요."
 
 msgid "Return to calendar view"
@@ -248,7 +410,9 @@ msgstr "데이타베이스 접근에 실패하였습니다."
 msgid "Invalid booking"
 msgstr ""
 
-msgid "You must set a brief description for the booking. Please go back and enter one."
+msgid ""
+"You must set a brief description for the booking. Please go back and enter "
+"one."
 msgstr ""
 
 msgid "Access Denied"
@@ -270,7 +434,7 @@ msgid "Unknown user"
 msgstr "권한없는 사용자"
 
 msgid "You are"
-msgstr "아이디: "
+msgstr "아이디:"
 
 msgid "Log in"
 msgstr "로그인"
@@ -290,7 +454,8 @@ msgstr "사용자 삭제"
 msgid "Email address"
 msgstr "메일 주소"
 
-msgid "If you wish to change the password, please type the new password twice"
+msgid ""
+"If you wish to change the password, please type the new password twice"
 msgstr "비밀번호를 변경하시려면, 새로운 비밀번호를 2회 입력하세요."
 
 msgid "Error: The passwords do not match."
@@ -323,7 +488,9 @@ msgstr "Click to display all my upcoming entries"
 msgid "No users in database, allowing initial user creation"
 msgstr ""
 
-msgid "Create a user configured as administrator and then you can log in and create more users."
+msgid ""
+"Create a user configured as administrator and then you can log in and create "
+"more users."
 msgstr ""
 
 msgid "Empty or invalid search string."
@@ -489,7 +656,7 @@ msgid "No area selected"
 msgstr "지역이 선택되지 않았음"
 
 msgid "Your browser is set to use"
-msgstr "당신의 브라우저는 다음 언어를 사용하도록 설정되어 있음: "
+msgstr "당신의 브라우저는 다음 언어를 사용하도록 설정되어 있음:"
 
 msgid "language."
 msgstr ""
@@ -525,16 +692,16 @@ msgid "Update room failed: "
 msgstr "회의실 수정 실패: "
 
 msgid "Error: room "
-msgstr "에러: 회의실  "
+msgstr "에러: 회의실 "
 
 msgid " not found"
-msgstr "이(가) 발견되지 않음"
+msgstr " 이(가) 발견되지 않음"
 
 msgid "Update area failed: "
 msgstr "지역 수정 실패: "
 
 msgid "Error: area "
-msgstr "에러: 지역  "
+msgstr "에러: 지역 "
 
 msgid "Room admin email:"
 msgstr "회의실 관리자 메일주소:"
@@ -573,8 +740,7 @@ msgid "Please contact "
 msgstr "자세한 사항은 다음 관리자에게 연락주십시오: "
 
 msgid "for any questions that aren't answered here."
-msgstr " "
+msgstr ""
 
 msgid "Fatal Error: Failed to connect to database"
 msgstr "심각한 에러: 데이터베이스에 접속할 수 없습니다."
-

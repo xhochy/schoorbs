@@ -1,9 +1,157 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: schoorbs\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2008-01-05 15:06+0100\n"
+"PO-Revision-Date: 2008-09-01 17:03+0000\n"
+"Last-Translator: Uwe L. Korn <uwelk@xhochy.org>\n"
+"Language-Team: LANGUAGE <LL@li.org>\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
+"X-Launchpad-Export-Date: 2008-09-01 17:08+0000\n"
+"X-Generator: Launchpad (build Unknown)\n"
+
+msgid "Sunday"
+msgstr "Domingo"
+
+msgid "Monday"
+msgstr "Segunda"
+
+msgid "Tuesday"
+msgstr "Terça"
+
+msgid "Wednesday"
+msgstr "Quarta"
+
+msgid "Thursday"
+msgstr "Quinta"
+
+msgid "Friday"
+msgstr "Sexta"
+
+msgid "Saturday"
+msgstr "Sábado"
+
+msgid "January"
+msgstr "Janeiro"
+
+msgid "February"
+msgstr "Fevereiro"
+
+msgid "March"
+msgstr "Março"
+
+msgid "April"
+msgstr "Abril"
+
+msgid "May"
+msgstr "Maio"
+
+msgid "June"
+msgstr "Junho"
+
+msgid "July"
+msgstr "Julho"
+
+msgid "August"
+msgstr "Agosto"
+
+msgid "September"
+msgstr "Setembro"
+
+msgid "October"
+msgstr "Outubro"
+
+msgid "November"
+msgstr "Novembro"
+
+msgid "December"
+msgstr "Dezembro"
+
+msgid "Time"
+msgstr "Hora"
+
+msgid "Sun"
+msgstr "Dom"
+
+msgid "Mon"
+msgstr "Seg"
+
+msgid "Tue"
+msgstr "Ter"
+
+msgid "Wed"
+msgstr "Qua"
+
+msgid "Thu"
+msgstr "Qui"
+
+msgid "Fri"
+msgstr "Sex"
+
+msgid "Sat"
+msgstr "Sáb"
+
+msgid "Su"
+msgstr "Do"
+
+msgid "Mo"
+msgstr "Sg"
+
+msgid "Tu"
+msgstr "Te"
+
+msgid "We"
+msgstr "Qa"
+
+msgid "Th"
+msgstr "Qi"
+
+msgid "Fr"
+msgstr "Sx"
+
+msgid "Sa"
+msgstr "Sá"
+
+msgid "No name for the area was provided!"
+msgstr ""
+
+msgid "An error occured"
+msgstr ""
+
+msgid "No question to ask was provided!"
+msgstr ""
+
+msgid "No url to refer to was provided!"
+msgstr ""
+
+msgid "No url to return to after a negative answer was provided!"
+msgstr ""
+
+msgid "Do you want to delete the area '%s'?"
+msgstr ""
+
+msgid "Do you want to delete the room '%s' in the area '%s'?"
+msgstr ""
+
+msgid "No valid area(-id) for deletion was provided!"
+msgstr ""
+
+msgid "No valid room(-id) for deletion was provided!"
+msgstr ""
+
+msgid "No valid area(-id) was provided!"
+msgstr ""
+
+msgid "No valid room(-id) was provided!"
+msgstr ""
+
+msgid "Booked by"
+msgstr ""
+
+msgid "The area '%s' has no rooms."
+msgstr ""
 
 msgid "Schoorbs - Room Booking System"
 msgstr "Horários de salas"
@@ -71,8 +219,12 @@ msgstr "Editar Serie"
 msgid "Brief Description:"
 msgstr "Descição breve:"
 
-msgid "Full Description:<br />&nbsp;&nbsp;(Number of people,<br />&nbsp;&nbsp;Internal/External etc)"
-msgstr "Descrição completa:<br />&nbsp;&nbsp;(Numero de Pessoas,<br />&nbsp;&nbsp;Internas/Externas etc)"
+msgid ""
+"Full Description:<br />&nbsp;&nbsp;(Number of people,<br "
+"/>&nbsp;&nbsp;Internal/External etc)"
+msgstr ""
+"Descrição completa:<br />&nbsp;&nbsp;(Numero de Pessoas,<br "
+"/>&nbsp;&nbsp;Internas/Externas etc)"
 
 msgid "Date:"
 msgstr "Data:"
@@ -174,7 +326,7 @@ msgid "Use Control-Click to select more than one room"
 msgstr "Carregue Control-Click para seleccionar mais de uma sala"
 
 msgid "Entry ID "
-msgstr "ID de entrada"
+msgstr "ID de entrada "
 
 msgid "Repeat ID "
 msgstr "Repetir ID "
@@ -215,8 +367,16 @@ msgstr "Apagar entrada"
 msgid "Delete Series"
 msgstr "Apagar Series"
 
-msgid "Are you sure\nyou want to\ndelete this entry?\n\n"
-msgstr "Tem a certeza\nque quer\napagar esta entrada?\n\n"
+msgid ""
+"Are you sure\n"
+"you want to\n"
+"delete this entry?\n"
+"\n"
+msgstr ""
+"Tem a certeza\n"
+"que quer\n"
+"apagar esta entrada?\n"
+"\n"
 
 msgid "Return to previous page"
 msgstr "Voltar à Página anterior"
@@ -236,8 +396,12 @@ msgstr "Conflito de marcações"
 msgid "The new booking will conflict with the following entry(s):"
 msgstr "A nova marcação entra em confito com as seguintes entrada(s):"
 
-msgid "The selected options will create too many entries.<BR>Please use different options!"
-msgstr "A opção selecionada criará demasiadas entradas.<BR>Use outras opções por favor!"
+msgid ""
+"The selected options will create too many entries.<BR>Please use different "
+"options!"
+msgstr ""
+"A opção selecionada criará demasiadas entradas.<BR>Use outras opções por "
+"favor!"
 
 msgid "Return to calendar view"
 msgstr "Voltar à vista de Calendário"
@@ -248,7 +412,9 @@ msgstr "A tentativa de adquirir acesso exclusivo à base de dados falhou!"
 msgid "Invalid booking"
 msgstr ""
 
-msgid "You must set a brief description for the booking. Please go back and enter one."
+msgid ""
+"You must set a brief description for the booking. Please go back and enter "
+"one."
 msgstr ""
 
 msgid "Access Denied"
@@ -290,8 +456,10 @@ msgstr "Delete this user"
 msgid "Email address"
 msgstr "Email address"
 
-msgid "If you wish to change the password, please type the new password twice"
-msgstr "If you wish to change the password, please type the new password twice"
+msgid ""
+"If you wish to change the password, please type the new password twice"
+msgstr ""
+"If you wish to change the password, please type the new password twice"
 
 msgid "Error: The passwords do not match."
 msgstr "Error: The passwords do not match."
@@ -323,7 +491,9 @@ msgstr "Click to display all my upcoming entries"
 msgid "No users in database, allowing initial user creation"
 msgstr ""
 
-msgid "Create a user configured as administrator and then you can log in and create more users."
+msgid ""
+"Create a user configured as administrator and then you can log in and create "
+"more users."
 msgstr ""
 
 msgid "Empty or invalid search string."
@@ -577,4 +747,3 @@ msgstr "for any questions that aren't answered here."
 
 msgid "Fatal Error: Failed to connect to database"
 msgstr "Erro: Failha ao ligar à base de dados"
-

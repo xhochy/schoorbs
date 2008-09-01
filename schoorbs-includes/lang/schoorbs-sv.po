@@ -1,9 +1,157 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: schoorbs\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2008-01-05 15:06+0100\n"
+"PO-Revision-Date: 2008-09-01 17:03+0000\n"
+"Last-Translator: Uwe L. Korn <uwelk@xhochy.org>\n"
+"Language-Team: LANGUAGE <LL@li.org>\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
+"X-Launchpad-Export-Date: 2008-09-01 17:08+0000\n"
+"X-Generator: Launchpad (build Unknown)\n"
+
+msgid "Sunday"
+msgstr "Söndag"
+
+msgid "Monday"
+msgstr "Måndag"
+
+msgid "Tuesday"
+msgstr "Tisdag"
+
+msgid "Wednesday"
+msgstr "Onsdag"
+
+msgid "Thursday"
+msgstr "Torsdag"
+
+msgid "Friday"
+msgstr "Fredag"
+
+msgid "Saturday"
+msgstr "Lördag"
+
+msgid "January"
+msgstr "Januari"
+
+msgid "February"
+msgstr "Februari"
+
+msgid "March"
+msgstr "Mars"
+
+msgid "April"
+msgstr "April"
+
+msgid "May"
+msgstr "Maj"
+
+msgid "June"
+msgstr "Juni"
+
+msgid "July"
+msgstr "Juli"
+
+msgid "August"
+msgstr "Augusti"
+
+msgid "September"
+msgstr "September"
+
+msgid "October"
+msgstr "Oktober"
+
+msgid "November"
+msgstr "November"
+
+msgid "December"
+msgstr "December"
+
+msgid "Time"
+msgstr "Tid"
+
+msgid "Sun"
+msgstr "Sön"
+
+msgid "Mon"
+msgstr "Mån"
+
+msgid "Tue"
+msgstr "Tis"
+
+msgid "Wed"
+msgstr "Ons"
+
+msgid "Thu"
+msgstr "Tor"
+
+msgid "Fri"
+msgstr "Fre"
+
+msgid "Sat"
+msgstr "Lör"
+
+msgid "Su"
+msgstr "Sö"
+
+msgid "Mo"
+msgstr "Må"
+
+msgid "Tu"
+msgstr "Tu"
+
+msgid "We"
+msgstr "On"
+
+msgid "Th"
+msgstr "To"
+
+msgid "Fr"
+msgstr "Fr"
+
+msgid "Sa"
+msgstr "Sa"
+
+msgid "No name for the area was provided!"
+msgstr ""
+
+msgid "An error occured"
+msgstr "Ett fel inträffade"
+
+msgid "No question to ask was provided!"
+msgstr ""
+
+msgid "No url to refer to was provided!"
+msgstr ""
+
+msgid "No url to return to after a negative answer was provided!"
+msgstr ""
+
+msgid "Do you want to delete the area '%s'?"
+msgstr ""
+
+msgid "Do you want to delete the room '%s' in the area '%s'?"
+msgstr ""
+
+msgid "No valid area(-id) for deletion was provided!"
+msgstr ""
+
+msgid "No valid room(-id) for deletion was provided!"
+msgstr ""
+
+msgid "No valid area(-id) was provided!"
+msgstr ""
+
+msgid "No valid room(-id) was provided!"
+msgstr ""
+
+msgid "Booked by"
+msgstr ""
+
+msgid "The area '%s' has no rooms."
+msgstr ""
 
 msgid "Schoorbs - Room Booking System"
 msgstr "MRBS - MötesRumsBokningsSystem"
@@ -71,7 +219,9 @@ msgstr "Ändra serie"
 msgid "Brief Description:"
 msgstr "Kort beskrivning:"
 
-msgid "Full Description:<br />&nbsp;&nbsp;(Number of people,<br />&nbsp;&nbsp;Internal/External etc)"
+msgid ""
+"Full Description:<br />&nbsp;&nbsp;(Number of people,<br "
+"/>&nbsp;&nbsp;Internal/External etc)"
 msgstr "Fullständig beskrivning:"
 
 msgid "Date:"
@@ -171,7 +321,8 @@ msgid "(for n-weekly)"
 msgstr "(För x-veckor)"
 
 msgid "Use Control-Click to select more than one room"
-msgstr "Håll ner tangenten <I>Ctrl</I> och klicka för att välja mer än ett rum"
+msgstr ""
+"Håll ner tangenten <I>Ctrl</I> och klicka för att välja mer än ett rum"
 
 msgid "Entry ID "
 msgstr "Boknings-ID "
@@ -215,8 +366,16 @@ msgstr "Radera bokningen"
 msgid "Delete Series"
 msgstr "Radera serie"
 
-msgid "Are you sure\nyou want to\ndelete this entry?\n\n"
-msgstr "Är du säker att\ndu vill radera\nden här bokningen?\n\n"
+msgid ""
+"Are you sure\n"
+"you want to\n"
+"delete this entry?\n"
+"\n"
+msgstr ""
+"Är du säker att\n"
+"du vill radera\n"
+"den här bokningen?\n"
+"\n"
 
 msgid "Return to previous page"
 msgstr "Åter till föregående sida"
@@ -236,8 +395,12 @@ msgstr "Bokningskonflikt"
 msgid "The new booking will conflict with the following entry(s):"
 msgstr "Den nya bokningen krockar med följande bokning(ar):"
 
-msgid "The selected options will create too many entries.<BR>Please use different options!"
-msgstr "De valda inställningarna skapar för många bokningar.<BR>V.g. använd andra inställningar!"
+msgid ""
+"The selected options will create too many entries.<BR>Please use different "
+"options!"
+msgstr ""
+"De valda inställningarna skapar för många bokningar.<BR>V.g. använd andra "
+"inställningar!"
 
 msgid "Return to calendar view"
 msgstr "Återgå till kalendervy"
@@ -248,8 +411,12 @@ msgstr "Kunde ej få exklusiv databasåtkomst"
 msgid "Invalid booking"
 msgstr "Ogiltig bokning"
 
-msgid "You must set a brief description for the booking. Please go back and enter one."
-msgstr "Du måste ange en kort beskrivning för bokningen. Vänligen gå tillbaka och korrigera detta."
+msgid ""
+"You must set a brief description for the booking. Please go back and enter "
+"one."
+msgstr ""
+"Du måste ange en kort beskrivning för bokningen. Vänligen gå tillbaka och "
+"korrigera detta."
 
 msgid "Access Denied"
 msgstr "Åtkomst nekad"
@@ -290,7 +457,8 @@ msgstr "Radera denna användare"
 msgid "Email address"
 msgstr "E-postadress"
 
-msgid "If you wish to change the password, please type the new password twice"
+msgid ""
+"If you wish to change the password, please type the new password twice"
 msgstr "Om du vill ändra ditt lösenord, vänligen mata in detta två gånger"
 
 msgid "Error: The passwords do not match."
@@ -321,10 +489,15 @@ msgid "Click to display all my upcoming entries"
 msgstr "Klicka för att visa alla dina aktuella bokningar"
 
 msgid "No users in database, allowing initial user creation"
-msgstr "Inga användare finns i databasen. Tillåter initialt skapande av användare."
+msgstr ""
+"Inga användare finns i databasen. Tillåter initialt skapande av användare."
 
-msgid "Create a user configured as administrator and then you can log in and create more users."
-msgstr "Skapa en administrativ användare först. Därefter kan du logga in och skapa fler användare."
+msgid ""
+"Create a user configured as administrator and then you can log in and create "
+"more users."
+msgstr ""
+"Skapa en administrativ användare först. Därefter kan du logga in och skapa "
+"fler användare."
 
 msgid "Empty or invalid search string."
 msgstr "Tom eller ogiltig söksträng."
@@ -384,7 +557,8 @@ msgid "Match type:"
 msgstr "Sök på bokningstyp:"
 
 msgid "Use Control-Click to select more than one type"
-msgstr "Håll ner tangenten <I>Ctrl</I> och klicka för att välja fler än en typ"
+msgstr ""
+"Håll ner tangenten <I>Ctrl</I> och klicka för att välja fler än en typ"
 
 msgid "Match brief description:"
 msgstr "Sök på kort beskrivning:"
@@ -534,7 +708,7 @@ msgid "Update area failed: "
 msgstr "Uppdatering av område misslyckades: "
 
 msgid "Error: area "
-msgstr "Fel: område"
+msgstr "Fel: område "
 
 msgid "Room admin email:"
 msgstr "E-postadress till rumsansvarig:"
@@ -558,7 +732,8 @@ msgid "NO"
 msgstr "NEJ"
 
 msgid "You must delete all rooms in this area before you can delete it<p>"
-msgstr "Du måste ta bort alla rum i detta område innan du kan ta bort området!<p>"
+msgstr ""
+"Du måste ta bort alla rum i detta område innan du kan ta bort området!<p>"
 
 msgid "About Schoorbs"
 msgstr "Om MRBS"
@@ -577,4 +752,3 @@ msgstr "för eventuella frågor som ej besvaras här."
 
 msgid "Fatal Error: Failed to connect to database"
 msgstr "Fatalt fel: Kunde ej ansluta till databasen!"
-

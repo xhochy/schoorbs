@@ -1,9 +1,157 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: schoorbs\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2008-01-05 15:06+0100\n"
+"PO-Revision-Date: 2008-09-01 13:46+0000\n"
+"Last-Translator: Uwe L. Korn <uwelk@xhochy.org>\n"
+"Language-Team: LANGUAGE <LL@li.org>\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
+"X-Launchpad-Export-Date: 2008-09-01 17:08+0000\n"
+"X-Generator: Launchpad (build Unknown)\n"
+
+msgid "Sunday"
+msgstr ""
+
+msgid "Monday"
+msgstr ""
+
+msgid "Tuesday"
+msgstr ""
+
+msgid "Wednesday"
+msgstr ""
+
+msgid "Thursday"
+msgstr ""
+
+msgid "Friday"
+msgstr ""
+
+msgid "Saturday"
+msgstr ""
+
+msgid "January"
+msgstr ""
+
+msgid "February"
+msgstr ""
+
+msgid "March"
+msgstr ""
+
+msgid "April"
+msgstr ""
+
+msgid "May"
+msgstr ""
+
+msgid "June"
+msgstr ""
+
+msgid "July"
+msgstr ""
+
+msgid "August"
+msgstr ""
+
+msgid "September"
+msgstr ""
+
+msgid "October"
+msgstr ""
+
+msgid "November"
+msgstr ""
+
+msgid "December"
+msgstr ""
+
+msgid "Time"
+msgstr ""
+
+msgid "Sun"
+msgstr ""
+
+msgid "Mon"
+msgstr ""
+
+msgid "Tue"
+msgstr ""
+
+msgid "Wed"
+msgstr ""
+
+msgid "Thu"
+msgstr ""
+
+msgid "Fri"
+msgstr ""
+
+msgid "Sat"
+msgstr ""
+
+msgid "Su"
+msgstr ""
+
+msgid "Mo"
+msgstr ""
+
+msgid "Tu"
+msgstr ""
+
+msgid "We"
+msgstr ""
+
+msgid "Th"
+msgstr ""
+
+msgid "Fr"
+msgstr ""
+
+msgid "Sa"
+msgstr ""
+
+msgid "No name for the area was provided!"
+msgstr ""
+
+msgid "An error occured"
+msgstr ""
+
+msgid "No question to ask was provided!"
+msgstr ""
+
+msgid "No url to refer to was provided!"
+msgstr ""
+
+msgid "No url to return to after a negative answer was provided!"
+msgstr ""
+
+msgid "Do you want to delete the area '%s'?"
+msgstr ""
+
+msgid "Do you want to delete the room '%s' in the area '%s'?"
+msgstr ""
+
+msgid "No valid area(-id) for deletion was provided!"
+msgstr ""
+
+msgid "No valid room(-id) for deletion was provided!"
+msgstr ""
+
+msgid "No valid area(-id) was provided!"
+msgstr ""
+
+msgid "No valid room(-id) was provided!"
+msgstr ""
+
+msgid "Booked by"
+msgstr ""
+
+msgid "The area '%s' has no rooms."
+msgstr ""
 
 msgid "Schoorbs - Room Booking System"
 msgstr "會議室預約系統"
@@ -48,7 +196,7 @@ msgid "Click on the cell to make a reservation."
 msgstr "點選格子進行預約登記"
 
 msgid "View Day"
-msgstr "查看日期 "
+msgstr "查看日期"
 
 msgid "View Week"
 msgstr "週顯示"
@@ -71,7 +219,9 @@ msgstr "整批修改"
 msgid "Brief Description:"
 msgstr "預約人姓名:"
 
-msgid "Full Description:<br />&nbsp;&nbsp;(Number of people,<br />&nbsp;&nbsp;Internal/External etc)"
+msgid ""
+"Full Description:<br />&nbsp;&nbsp;(Number of people,<br "
+"/>&nbsp;&nbsp;Internal/External etc)"
 msgstr "說明:<br />&nbsp;&nbsp;(聯約電話,部門,,<br />&nbsp;&nbsp;會議主題 等)"
 
 msgid "Date:"
@@ -215,8 +365,14 @@ msgstr "刪除"
 msgid "Delete Series"
 msgstr "整批刪除"
 
-msgid "Are you sure\nyou want to\ndelete this entry?\n\n"
-msgstr "你確定要刪除此記錄??\n"
+msgid ""
+"Are you sure\n"
+"you want to\n"
+"delete this entry?\n"
+"\n"
+msgstr ""
+"你確定要刪除此記錄??\n"
+"\n"
 
 msgid "Return to previous page"
 msgstr "回前一頁"
@@ -236,7 +392,9 @@ msgstr "時段衝突"
 msgid "The new booking will conflict with the following entry(s):"
 msgstr "此時段已被預約"
 
-msgid "The selected options will create too many entries.<BR>Please use different options!"
+msgid ""
+"The selected options will create too many entries.<BR>Please use different "
+"options!"
 msgstr "這個選擇造成太多輸入.<BR>請重新選擇!"
 
 msgid "Return to calendar view"
@@ -248,7 +406,9 @@ msgstr "無法存取資料庫"
 msgid "Invalid booking"
 msgstr ""
 
-msgid "You must set a brief description for the booking. Please go back and enter one."
+msgid ""
+"You must set a brief description for the booking. Please go back and enter "
+"one."
 msgstr ""
 
 msgid "Access Denied"
@@ -290,8 +450,10 @@ msgstr "刪除使用者"
 msgid "Email address"
 msgstr "Email address"
 
-msgid "If you wish to change the password, please type the new password twice"
-msgstr "If you wish to change the password, please type the new password twice"
+msgid ""
+"If you wish to change the password, please type the new password twice"
+msgstr ""
+"If you wish to change the password, please type the new password twice"
 
 msgid "Error: The passwords do not match."
 msgstr "Error: The passwords do not match."
@@ -323,7 +485,9 @@ msgstr "顯示全部我的預約"
 msgid "No users in database, allowing initial user creation"
 msgstr ""
 
-msgid "Create a user configured as administrator and then you can log in and create more users."
+msgid ""
+"Create a user configured as administrator and then you can log in and create "
+"more users."
 msgstr ""
 
 msgid "Empty or invalid search string."
@@ -336,10 +500,10 @@ msgid "No matching entries found."
 msgstr "找不到."
 
 msgid "Records "
-msgstr "紀錄"
+msgstr "紀錄 "
 
 msgid " through "
-msgstr "經由"
+msgstr " 經由 "
 
 msgid " of "
 msgstr " of "
@@ -528,7 +692,7 @@ msgid "Error: room "
 msgstr "錯誤: 會議室/設備 "
 
 msgid " not found"
-msgstr "找不到"
+msgstr " 找不到"
 
 msgid "Update area failed: "
 msgstr "更新區域失敗: "
@@ -570,11 +734,10 @@ msgid "System: "
 msgstr "系統: "
 
 msgid "Please contact "
-msgstr "請聯絡"
+msgstr "請聯絡 "
 
 msgid "for any questions that aren't answered here."
 msgstr ",關於任何在這裡找不到答案的問題."
 
 msgid "Fatal Error: Failed to connect to database"
 msgstr "Fatal Error: 無法連上資料庫"
-

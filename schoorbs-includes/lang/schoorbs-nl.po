@@ -1,9 +1,157 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: schoorbs\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2008-01-05 15:06+0100\n"
+"PO-Revision-Date: 2008-09-01 14:00+0000\n"
+"Last-Translator: Uwe L. Korn <uwelk@xhochy.org>\n"
+"Language-Team: LANGUAGE <LL@li.org>\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
+"X-Launchpad-Export-Date: 2008-09-01 17:08+0000\n"
+"X-Generator: Launchpad (build Unknown)\n"
+
+msgid "Sunday"
+msgstr "Zondag"
+
+msgid "Monday"
+msgstr "Maandag"
+
+msgid "Tuesday"
+msgstr "Dinsdag"
+
+msgid "Wednesday"
+msgstr "Woensdag"
+
+msgid "Thursday"
+msgstr "Donderdag"
+
+msgid "Friday"
+msgstr "Vrijdag"
+
+msgid "Saturday"
+msgstr "Zaterdag"
+
+msgid "January"
+msgstr "Januari"
+
+msgid "February"
+msgstr "Februari"
+
+msgid "March"
+msgstr "Maart"
+
+msgid "April"
+msgstr "April"
+
+msgid "May"
+msgstr "Mei"
+
+msgid "June"
+msgstr "Juni"
+
+msgid "July"
+msgstr "Juli"
+
+msgid "August"
+msgstr "Augustus"
+
+msgid "September"
+msgstr "September"
+
+msgid "October"
+msgstr "Oktober"
+
+msgid "November"
+msgstr "November"
+
+msgid "December"
+msgstr "December"
+
+msgid "Time"
+msgstr "Tijd"
+
+msgid "Sun"
+msgstr "Zon"
+
+msgid "Mon"
+msgstr "Maa"
+
+msgid "Tue"
+msgstr "Din"
+
+msgid "Wed"
+msgstr "Woe"
+
+msgid "Thu"
+msgstr "Don"
+
+msgid "Fri"
+msgstr "Vri"
+
+msgid "Sat"
+msgstr "Zat"
+
+msgid "Su"
+msgstr "Zo"
+
+msgid "Mo"
+msgstr "Ma"
+
+msgid "Tu"
+msgstr "Di"
+
+msgid "We"
+msgstr "Wo"
+
+msgid "Th"
+msgstr "Do"
+
+msgid "Fr"
+msgstr "Vr"
+
+msgid "Sa"
+msgstr "Za"
+
+msgid "No name for the area was provided!"
+msgstr ""
+
+msgid "An error occured"
+msgstr "Er is een fout opgetreden"
+
+msgid "No question to ask was provided!"
+msgstr ""
+
+msgid "No url to refer to was provided!"
+msgstr ""
+
+msgid "No url to return to after a negative answer was provided!"
+msgstr ""
+
+msgid "Do you want to delete the area '%s'?"
+msgstr ""
+
+msgid "Do you want to delete the room '%s' in the area '%s'?"
+msgstr ""
+
+msgid "No valid area(-id) for deletion was provided!"
+msgstr ""
+
+msgid "No valid room(-id) for deletion was provided!"
+msgstr ""
+
+msgid "No valid area(-id) was provided!"
+msgstr ""
+
+msgid "No valid room(-id) was provided!"
+msgstr ""
+
+msgid "Booked by"
+msgstr ""
+
+msgid "The area '%s' has no rooms."
+msgstr ""
 
 msgid "Schoorbs - Room Booking System"
 msgstr "Vergaderruimte Boekingssysteem"
@@ -71,8 +219,12 @@ msgstr "Wijzig Reeks"
 msgid "Brief Description:"
 msgstr "Korte Omschrijving:"
 
-msgid "Full Description:<br />&nbsp;&nbsp;(Number of people,<br />&nbsp;&nbsp;Internal/External etc)"
-msgstr "Volledige Omschrijving:<br />&nbsp;&nbsp;(Aantal mensen,<br />&nbsp;&nbsp;Intern/Extern etc)"
+msgid ""
+"Full Description:<br />&nbsp;&nbsp;(Number of people,<br "
+"/>&nbsp;&nbsp;Internal/External etc)"
+msgstr ""
+"Volledige Omschrijving:<br />&nbsp;&nbsp;(Aantal mensen,<br "
+"/>&nbsp;&nbsp;Intern/Extern etc)"
 
 msgid "Date:"
 msgstr "Datum:"
@@ -180,10 +332,10 @@ msgid "Repeat ID "
 msgstr "Herhalings-ID "
 
 msgid "You have not entered a"
-msgstr "U heeft het volgende niet ingevoerd : "
+msgstr "U heeft het volgende niet ingevoerd :"
 
 msgid "You have not selected a"
-msgstr "U heeft het volgende niet geselecteerd : "
+msgstr "U heeft het volgende niet geselecteerd :"
 
 msgid "room."
 msgstr "kamer."
@@ -215,8 +367,16 @@ msgstr "Boeking verwijderen"
 msgid "Delete Series"
 msgstr "Herhalingen verwijderen"
 
-msgid "Are you sure\nyou want to\ndelete this entry?\n\n"
-msgstr "Weet U zeker\ndat U deze\nBoeking wilt verwijderen?\n\n"
+msgid ""
+"Are you sure\n"
+"you want to\n"
+"delete this entry?\n"
+"\n"
+msgstr ""
+"Weet U zeker\n"
+"dat U deze\n"
+"Boeking wilt verwijderen?\n"
+"\n"
 
 msgid "Return to previous page"
 msgstr "Terug naar vorige pagina"
@@ -236,19 +396,26 @@ msgstr "Overlappende Boeking"
 msgid "The new booking will conflict with the following entry(s):"
 msgstr "De nieuwe boeking overlapt de volgende boeking(en):"
 
-msgid "The selected options will create too many entries.<BR>Please use different options!"
-msgstr "De door U geselecteerde opties zullen teveel boekingen genereren.<BR>Pas A.U.B. uw opties aan !"
+msgid ""
+"The selected options will create too many entries.<BR>Please use different "
+"options!"
+msgstr ""
+"De door U geselecteerde opties zullen teveel boekingen genereren.<BR>Pas "
+"A.U.B. uw opties aan !"
 
 msgid "Return to calendar view"
 msgstr "Terug naar kalender overzicht"
 
 msgid "Failed to acquire exclusive database access"
-msgstr "Het is niet gelukt om exclusive toegang tot de database te verkrijgen"
+msgstr ""
+"Het is niet gelukt om exclusive toegang tot de database te verkrijgen"
 
 msgid "Invalid booking"
 msgstr ""
 
-msgid "You must set a brief description for the booking. Please go back and enter one."
+msgid ""
+"You must set a brief description for the booking. Please go back and enter "
+"one."
 msgstr ""
 
 msgid "Access Denied"
@@ -290,8 +457,11 @@ msgstr "Deze gebruiker verwijderen"
 msgid "Email address"
 msgstr "Email adres"
 
-msgid "If you wish to change the password, please type the new password twice"
-msgstr "Als u het wachtwoord wilt wijzigen dient u het nieuwe wachtwoord tweemaal in te voeren."
+msgid ""
+"If you wish to change the password, please type the new password twice"
+msgstr ""
+"Als u het wachtwoord wilt wijzigen dient u het nieuwe wachtwoord tweemaal in "
+"te voeren."
 
 msgid "Error: The passwords do not match."
 msgstr "Fout: De wachtwoorden komen niet overeen."
@@ -323,7 +493,9 @@ msgstr "Klikken om al mijn aankomende boekingen te tonen."
 msgid "No users in database, allowing initial user creation"
 msgstr ""
 
-msgid "Create a user configured as administrator and then you can log in and create more users."
+msgid ""
+"Create a user configured as administrator and then you can log in and create "
+"more users."
 msgstr ""
 
 msgid "Empty or invalid search string."
@@ -489,7 +661,7 @@ msgid "No area selected"
 msgstr "Geen gebouw geselecteerd"
 
 msgid "Your browser is set to use"
-msgstr "Uw browser is ingesteld op "
+msgstr "Uw browser is ingesteld op"
 
 msgid "language."
 msgstr "Nederlands."
@@ -558,7 +730,9 @@ msgid "NO"
 msgstr "NEE"
 
 msgid "You must delete all rooms in this area before you can delete it<p>"
-msgstr "U moet alle kamers in dit gebouw verwijderen voordat U het kunt verwijderen<p>"
+msgstr ""
+"U moet alle kamers in dit gebouw verwijderen voordat U het kunt "
+"verwijderen<p>"
 
 msgid "About Schoorbs"
 msgstr "Over MRBS"
@@ -577,4 +751,3 @@ msgstr "Voor alle vragen die hier niet worden beantwoord."
 
 msgid "Fatal Error: Failed to connect to database"
 msgstr "Fatale Fout: Verbinding naar database server mislukt"
-
