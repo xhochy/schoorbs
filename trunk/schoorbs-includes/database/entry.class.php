@@ -53,6 +53,29 @@ class Entry {
 	}
 	
 	/**
+	 * Get an entry by its id.
+	 *
+	 * @param $nId int
+	 * @return Entry
+	 * @author Uwe L. Korn <uwelk@xhochy.org>
+	 */
+	public static function getById($nId)
+	{
+		$oDB = SchoorbsDB::getInstance();
+		// Example Query:
+		//   SELECT * FROM schoorbs_entry WHERE id = 5
+		$oStatement = $oDB->getConnection()->prepareStatement('SELECT * FROM '
+			.$oDB->getTableName('entry').' WHERE id = ?');
+		$oStatement->setInt(1, $nId);
+		$oResult = $oStatement->executeQuery();
+		if ($oResult->next()) {
+			return self::fetchEntry($oResult);
+		} else {
+			return null;
+		}
+	}
+	
+	/**
 	 * Create a single Entry object from an Creole ResultSet
 	 *
 	 * Remark: This function will not call ResultSet->next()
@@ -78,9 +101,19 @@ class Entry {
 		 */
 		$oEntry->nStartTime = $oResult->getInt('start_time');
 		$oEntry->nEndTime = $oResult->getInt('end_time');
-		$oEntry->nTimestamp = $oResult->getTimestamp('timestamp');		
+		$oEntry->nTimestamp = intval($oResult->getTimestamp('timestamp', 'U'));
 
 		return $oEntry;
+	}
+	
+	/**
+	 * Provides a wrapper to determinate if we are using periods or simple timestamps
+	 *
+	 * @author Uwe L. Korn <uwelk@xhochy.org>
+	 * @return bool
+	 */
+	public static function perioded() {
+		return $GLOBALS['enable_periods'] == true;
 	}
 	
 	/// instance variables ///
@@ -303,5 +336,67 @@ class Entry {
 	public function getRoom()
 	{
 		return $this->oRoom;
+	}
+	
+	/**
+	 * Return the time of the last modification
+	 *
+	 * @author Uwe L. Korn <uwelk@xhochy.org>
+	 * @return int
+	 */
+	public function getTimestamp()
+	{
+		return $this->nTimestamp;
+	}
+	
+	/**
+	 * Return the periodString of the startTime of this booking.
+	 * 
+	 * Only senseful if periods are enabled.
+	 *
+	 * @return string
+	 * @author Uwe L. Korn <uwelk@xhochy.org>
+	 */
+	public function getStartPeriodString()
+	{
+		global $periods;
+		
+		$aTime = getdate($this->nStartTime);
+    		$nPnum = $aTime['minutes'];
+		if($nPnum < 0 ) $nPnum = 0;
+		if($nPnum >= count($periods) - 1) $nPnum = count($periods) - 1;
+		return $periods[$nPnum];
+	}
+	
+	/**
+	 * Return the periodString of the endTime this booking.
+	 * 
+	 * Only senseful if periods are enabled.
+	 *
+	 * @return string
+	 * @author Uwe L. Korn <uwelk@xhochy.org>
+	 */
+	public function getEndPeriodString()
+	{
+		global $periods;
+		
+		$aTime = getdate($this->nEndTime);
+    		$nPnum = $aTime['minutes'];
+		if($nPnum < 0 ) $nPnum = 0;
+		if($nPnum >= count($periods) - 1) $nPnum = count($periods) - 1;
+		return $periods[$nPnum];
+	}	 
+	
+	/**
+	 * Return the duration of this entry as nice formatted string.
+	 *
+	 * @author Uwe L. Korn <uwelk@xhochy.org>
+	 * @return string
+	 */
+	public function getDurationString()
+	{
+		if (self::perioded()) {
+		} else {
+		}
 	}
 }

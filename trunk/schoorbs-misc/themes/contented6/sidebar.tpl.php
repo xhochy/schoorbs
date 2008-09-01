@@ -40,7 +40,7 @@ if (count($aAreas) > 0) { ?>
 <ul>
   <?php foreach($aAreas as $oArea) { ?>
     <li>
-      <a <?php if ($oArea->getId() == $oActiveArea->getId()) echo 'style="color: red"'; ?> class="schoorbs" href="?area=<?php echo $oArea->getId(); ?>">
+      <a <?php if ($oArea->getId() == $oActiveArea->getId()) echo 'style="color: red"'; ?> class="schoorbs" href="<?php echo self::makeInternalUrl('', array('area' => $oArea->getId(), 'room' => null)); ?>">
         <?php echo $oArea->getName(); ?>
       </a>
     </li>
@@ -58,7 +58,7 @@ if (count($aRooms) > 0) { ?>
 <ul>
   <?php foreach ($aRooms as $oRoom) { ?>
     <li>
-      <a <?php if ($oRoom->getId() == $oActiveRoom->getId()) echo 'style="color: red"'; ?> class="schoorbs" href="?room=<?php echo $oRoom->getId(); ?>">
+      <a <?php if ($oRoom->getId() == $oActiveRoom->getId()) echo 'style="color: red"'; ?> class="schoorbs" href="<?php echo self::makeInternalUrl('', array('room' => $oRoom->getId())); ?>">
         <?php echo $oRoom->getName(); ?>
       </a>
     </li>
