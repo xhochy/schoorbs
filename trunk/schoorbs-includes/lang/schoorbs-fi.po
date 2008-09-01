@@ -1,9 +1,157 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: schoorbs\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2008-01-05 15:06+0100\n"
+"PO-Revision-Date: 2008-08-30 08:41+0000\n"
+"Last-Translator: Uwe L. Korn <uwelk@xhochy.org>\n"
+"Language-Team: LANGUAGE <LL@li.org>\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
+"X-Launchpad-Export-Date: 2008-09-01 17:08+0000\n"
+"X-Generator: Launchpad (build Unknown)\n"
+
+msgid "Sunday"
+msgstr "Sunnuntai"
+
+msgid "Monday"
+msgstr "Maanantai"
+
+msgid "Tuesday"
+msgstr "Tiistai"
+
+msgid "Wednesday"
+msgstr "Keskiviikko"
+
+msgid "Thursday"
+msgstr "Torstai"
+
+msgid "Friday"
+msgstr "Perjantai"
+
+msgid "Saturday"
+msgstr "Lauantai"
+
+msgid "January"
+msgstr "Tammikuu"
+
+msgid "February"
+msgstr "Helmikuu"
+
+msgid "March"
+msgstr "Maaliskuu"
+
+msgid "April"
+msgstr "Huhtikuu"
+
+msgid "May"
+msgstr "Toukokuu"
+
+msgid "June"
+msgstr "Kesäkuu"
+
+msgid "July"
+msgstr "Heinäkuu"
+
+msgid "August"
+msgstr "Elokuu"
+
+msgid "September"
+msgstr "Syyskuu"
+
+msgid "October"
+msgstr "Lokakuu"
+
+msgid "November"
+msgstr "Marraskuu"
+
+msgid "December"
+msgstr "Joulukuu"
+
+msgid "Time"
+msgstr ""
+
+msgid "Sun"
+msgstr ""
+
+msgid "Mon"
+msgstr ""
+
+msgid "Tue"
+msgstr "Tii"
+
+msgid "Wed"
+msgstr ""
+
+msgid "Thu"
+msgstr ""
+
+msgid "Fri"
+msgstr ""
+
+msgid "Sat"
+msgstr ""
+
+msgid "Su"
+msgstr "Su"
+
+msgid "Mo"
+msgstr "Ma"
+
+msgid "Tu"
+msgstr "Ti"
+
+msgid "We"
+msgstr "Ke"
+
+msgid "Th"
+msgstr "To"
+
+msgid "Fr"
+msgstr "Pe"
+
+msgid "Sa"
+msgstr "La"
+
+msgid "No name for the area was provided!"
+msgstr ""
+
+msgid "An error occured"
+msgstr "Tapahtui virhe"
+
+msgid "No question to ask was provided!"
+msgstr ""
+
+msgid "No url to refer to was provided!"
+msgstr ""
+
+msgid "No url to return to after a negative answer was provided!"
+msgstr ""
+
+msgid "Do you want to delete the area '%s'?"
+msgstr ""
+
+msgid "Do you want to delete the room '%s' in the area '%s'?"
+msgstr ""
+
+msgid "No valid area(-id) for deletion was provided!"
+msgstr ""
+
+msgid "No valid room(-id) for deletion was provided!"
+msgstr ""
+
+msgid "No valid area(-id) was provided!"
+msgstr ""
+
+msgid "No valid room(-id) was provided!"
+msgstr ""
+
+msgid "Booked by"
+msgstr ""
+
+msgid "The area '%s' has no rooms."
+msgstr ""
 
 msgid "Schoorbs - Room Booking System"
 msgstr "Huonetilojen varausjärjestelmä"
@@ -71,8 +219,12 @@ msgstr "Muokkaa varaussarjaa"
 msgid "Brief Description:"
 msgstr "Lyhyt kuvaus:"
 
-msgid "Full Description:<br />&nbsp;&nbsp;(Number of people,<br />&nbsp;&nbsp;Internal/External etc)"
-msgstr "Täydellinen kuvaus:<br />&nbsp;&nbsp;(Montako ihmistä,<br />&nbsp;&nbsp;sisäinen/ulkoinen jne)"
+msgid ""
+"Full Description:<br />&nbsp;&nbsp;(Number of people,<br "
+"/>&nbsp;&nbsp;Internal/External etc)"
+msgstr ""
+"Täydellinen kuvaus:<br />&nbsp;&nbsp;(Montako ihmistä,<br "
+"/>&nbsp;&nbsp;sisäinen/ulkoinen jne)"
 
 msgid "Date:"
 msgstr "Päivämäärä:"
@@ -215,8 +367,15 @@ msgstr "Poista varaus"
 msgid "Delete Series"
 msgstr "Poista varaussarja"
 
-msgid "Are you sure\nyou want to\ndelete this entry?\n\n"
-msgstr "Oletko varma että haluat poistaa\ntämän varauksen?\n\n"
+msgid ""
+"Are you sure\n"
+"you want to\n"
+"delete this entry?\n"
+"\n"
+msgstr ""
+"Oletko varma että haluat poistaa\n"
+"tämän varauksen?\n"
+"\n"
 
 msgid "Return to previous page"
 msgstr "Takaisin edelliselle sivulle"
@@ -236,8 +395,12 @@ msgstr "Päällekkäinen varaus"
 msgid "The new booking will conflict with the following entry(s):"
 msgstr "Uusi varaus menee päällekkäin seuraavien varausten kanssa:"
 
-msgid "The selected options will create too many entries.<BR>Please use different options!"
-msgstr "Valituilla ehdoilla tulisi liian monta varausta.<br />Valittuja ehtoja on muutettava."
+msgid ""
+"The selected options will create too many entries.<BR>Please use different "
+"options!"
+msgstr ""
+"Valituilla ehdoilla tulisi liian monta varausta.<br />Valittuja ehtoja on "
+"muutettava."
 
 msgid "Return to calendar view"
 msgstr "Paluu kalenterinäkymään"
@@ -248,14 +411,17 @@ msgstr "Tietokantaan ei saatu (varauksetonta) yhteyttä."
 msgid "Invalid booking"
 msgstr ""
 
-msgid "You must set a brief description for the booking. Please go back and enter one."
+msgid ""
+"You must set a brief description for the booking. Please go back and enter "
+"one."
 msgstr ""
 
 msgid "Access Denied"
 msgstr "Pääsy kielletty"
 
 msgid "You do not have access rights to modify this item."
-msgstr "Sinulla ei ole riittävästi oikeuksia yrittämäsi toiminnon suorittamiseen."
+msgstr ""
+"Sinulla ei ole riittävästi oikeuksia yrittämäsi toiminnon suorittamiseen."
 
 msgid "Please log in"
 msgstr "Ole hyvä ja kirjaudu sisään"
@@ -290,8 +456,10 @@ msgstr "Poista tämä käyttäjä"
 msgid "Email address"
 msgstr "Sähköpostiosoite"
 
-msgid "If you wish to change the password, please type the new password twice"
-msgstr "Jos haluat vaihtaa salasanan, ole hyvä ja anna uusi salasana kahdesti"
+msgid ""
+"If you wish to change the password, please type the new password twice"
+msgstr ""
+"Jos haluat vaihtaa salasanan, ole hyvä ja anna uusi salasana kahdesti"
 
 msgid "Error: The passwords do not match."
 msgstr "Virhe: Salasanat eivät täsmää."
@@ -323,7 +491,9 @@ msgstr "Click to display all my upcoming entries"
 msgid "No users in database, allowing initial user creation"
 msgstr ""
 
-msgid "Create a user configured as administrator and then you can log in and create more users."
+msgid ""
+"Create a user configured as administrator and then you can log in and create "
+"more users."
 msgstr ""
 
 msgid "Empty or invalid search string."
@@ -333,7 +503,7 @@ msgid "Search Results for:"
 msgstr "Hakutulokset:"
 
 msgid "No matching entries found."
-msgstr "Yhtään varausta ei löytynyt antamillasi ehdoilla. "
+msgstr "Yhtään varausta ei löytynyt antamillasi ehdoilla."
 
 msgid "Records "
 msgstr "Tulokset "
@@ -558,7 +728,9 @@ msgid "NO"
 msgstr "EN"
 
 msgid "You must delete all rooms in this area before you can delete it<p>"
-msgstr "Sinun täytyy poistaa kaikki alueen huoneet ennnen kuin voit poistaa alueen.<p>"
+msgstr ""
+"Sinun täytyy poistaa kaikki alueen huoneet ennnen kuin voit poistaa "
+"alueen.<p>"
 
 msgid "About Schoorbs"
 msgstr "Tietoja varausjärjestelmästä"
@@ -573,8 +745,8 @@ msgid "Please contact "
 msgstr "Järjestelmän yhteyshenkilö "
 
 msgid "for any questions that aren't answered here."
-msgstr "antaa lisätietoja mikäli et löydä vastausta kysymykseesi näistä ohjeista."
+msgstr ""
+"antaa lisätietoja mikäli et löydä vastausta kysymykseesi näistä ohjeista."
 
 msgid "Fatal Error: Failed to connect to database"
 msgstr "Järjestelmävirhe: Tietokantayhteyden avaaminen ei onnistu."
-

@@ -8,13 +8,13 @@ msgstr ""
 "Project-Id-Version: schoorbs\n"
 "Report-Msgid-Bugs-To: FULL NAME <EMAIL@ADDRESS>\n"
 "POT-Creation-Date: 2008-01-05 15:06+0100\n"
-"PO-Revision-Date: 2008-07-08 16:53+0000\n"
+"PO-Revision-Date: 2008-08-29 14:11+0000\n"
 "Last-Translator: Ricardo Varas Santana <rvaras81@yahoo.com>\n"
 "Language-Team: Spanish <es@li.org>\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"X-Launchpad-Export-Date: 2008-07-08 18:40+0000\n"
+"X-Launchpad-Export-Date: 2008-09-01 17:08+0000\n"
 "X-Generator: Launchpad (build Unknown)\n"
 
 msgid "Sunday"
@@ -97,6 +97,67 @@ msgstr "Vie"
 
 msgid "Sat"
 msgstr "Sab"
+
+msgid "Su"
+msgstr ""
+
+msgid "Mo"
+msgstr ""
+
+msgid "Tu"
+msgstr ""
+
+msgid "We"
+msgstr ""
+
+msgid "Th"
+msgstr ""
+
+msgid "Fr"
+msgstr ""
+
+msgid "Sa"
+msgstr ""
+
+msgid "No name for the area was provided!"
+msgstr ""
+
+msgid "An error occured"
+msgstr "Ocurrió un error"
+
+msgid "No question to ask was provided!"
+msgstr ""
+
+msgid "No url to refer to was provided!"
+msgstr ""
+
+msgid "No url to return to after a negative answer was provided!"
+msgstr ""
+
+msgid "Do you want to delete the area '%s'?"
+msgstr ""
+
+msgid "Do you want to delete the room '%s' in the area '%s'?"
+msgstr ""
+
+msgid "No valid area(-id) for deletion was provided!"
+msgstr ""
+
+msgid "No valid room(-id) for deletion was provided!"
+msgstr ""
+
+msgid "No valid area(-id) was provided!"
+msgstr ""
+
+msgid "No valid room(-id) was provided!"
+msgstr ""
+
+msgid "Booked by"
+msgstr ""
+
+msgid "The area '%s' has no rooms."
+msgstr ""
+
 msgid "Schoorbs - Room Booking System"
 msgstr "Sistema de Reservas de Salas de Reuni&oacute;n"
 
@@ -163,7 +224,9 @@ msgstr "Editar Serie"
 msgid "Brief Description:"
 msgstr "Nombre:"
 
-msgid "Full Description:<br />&nbsp;&nbsp;(Number of people,<br />&nbsp;&nbsp;Internal/External etc)"
+msgid ""
+"Full Description:<br />&nbsp;&nbsp;(Number of people,<br "
+"/>&nbsp;&nbsp;Internal/External etc)"
 msgstr "Descripci&oacute;n Completa:"
 
 msgid "Date:"
@@ -307,8 +370,14 @@ msgstr "Borrar Reserva"
 msgid "Delete Series"
 msgstr "Borrar Serie"
 
-msgid "Are you sure\nyou want to\ndelete this entry?\n\n"
-msgstr "Seguro que desea borrar esta reserva?\n"
+msgid ""
+"Are you sure\n"
+"you want to\n"
+"delete this entry?\n"
+"\n"
+msgstr ""
+"Seguro que desea borrar esta reserva?\n"
+"\n"
 
 msgid "Return to previous page"
 msgstr "Volver a P&aacute;gina Anterior"
@@ -326,10 +395,15 @@ msgid "Scheduling Conflict"
 msgstr "Conflicto de Planificaci&oacute;n"
 
 msgid "The new booking will conflict with the following entry(s):"
-msgstr "La nueva reserva entra en conflicto con la(s) siguiente(s) entrada(s):"
+msgstr ""
+"La nueva reserva entra en conflicto con la(s) siguiente(s) entrada(s):"
 
-msgid "The selected options will create too many entries.<BR>Please use different options!"
-msgstr "Las opciones seleccionadas crear&aacute;n demasiadas entradas.<BR>Por favor, revise las opciones"
+msgid ""
+"The selected options will create too many entries.<BR>Please use different "
+"options!"
+msgstr ""
+"Las opciones seleccionadas crear&aacute;n demasiadas entradas.<BR>Por favor, "
+"revise las opciones"
 
 msgid "Return to calendar view"
 msgstr "Volver a Vista de Calendario"
@@ -340,7 +414,9 @@ msgstr "Error al obtener acceso a la Base de Datos"
 msgid "Invalid booking"
 msgstr ""
 
-msgid "You must set a brief description for the booking. Please go back and enter one."
+msgid ""
+"You must set a brief description for the booking. Please go back and enter "
+"one."
 msgstr ""
 
 msgid "Access Denied"
@@ -382,8 +458,10 @@ msgstr "Borrar este Usuario"
 msgid "Email address"
 msgstr "Direcci&oacute;n de Correo Electr&oacute;nico"
 
-msgid "If you wish to change the password, please type the new password twice"
-msgstr "Si quieres cambiar la contrase&ntilde;a, por favor teclee la nueva dos veces"
+msgid ""
+"If you wish to change the password, please type the new password twice"
+msgstr ""
+"Si quieres cambiar la contrase&ntilde;a, por favor teclee la nueva dos veces"
 
 msgid "Error: The passwords do not match."
 msgstr "Error: Las contrase&ntilde;as no son iguales."
@@ -415,7 +493,9 @@ msgstr "Click para mostrar todos mis eventos futuros"
 msgid "No users in database, allowing initial user creation"
 msgstr ""
 
-msgid "Create a user configured as administrator and then you can log in and create more users."
+msgid ""
+"Create a user configured as administrator and then you can log in and create "
+"more users."
 msgstr ""
 
 msgid "Empty or invalid search string."
@@ -581,7 +661,9 @@ msgid "No area selected"
 msgstr "No se seleccion&oacute; Edificio"
 
 msgid "Your browser is set to use"
-msgstr "Su navegador est&aacute; configurado para usar los siguientes juegos de caracteres:"
+msgstr ""
+"Su navegador est&aacute; configurado para usar los siguientes juegos de "
+"caracteres:"
 
 msgid "language."
 msgstr "."
@@ -669,4 +751,3 @@ msgstr "para cualquier duda."
 
 msgid "Fatal Error: Failed to connect to database"
 msgstr "Error: No se pudo conectar a la Base de Datos"
-

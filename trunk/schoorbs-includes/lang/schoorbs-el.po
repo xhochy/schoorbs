@@ -1,9 +1,157 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: schoorbs\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2008-01-05 15:06+0100\n"
+"PO-Revision-Date: 2008-08-26 18:55+0000\n"
+"Last-Translator: Uwe L. Korn <uwelk@xhochy.org>\n"
+"Language-Team: LANGUAGE <LL@li.org>\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
+"X-Launchpad-Export-Date: 2008-09-01 17:08+0000\n"
+"X-Generator: Launchpad (build Unknown)\n"
+
+msgid "Sunday"
+msgstr "Κυριακή"
+
+msgid "Monday"
+msgstr "Δευτέρα"
+
+msgid "Tuesday"
+msgstr "Τρίτη"
+
+msgid "Wednesday"
+msgstr "Τετάρτη"
+
+msgid "Thursday"
+msgstr "Πέμπτη"
+
+msgid "Friday"
+msgstr "Παρασκευή"
+
+msgid "Saturday"
+msgstr "Σάββατο"
+
+msgid "January"
+msgstr "Ιανουάριος"
+
+msgid "February"
+msgstr "Φεβρουάριος"
+
+msgid "March"
+msgstr "Μάρτιος"
+
+msgid "April"
+msgstr "Απρίλιος"
+
+msgid "May"
+msgstr "Μάιος"
+
+msgid "June"
+msgstr "Ιούνιος"
+
+msgid "July"
+msgstr "Ιούλιος"
+
+msgid "August"
+msgstr "Αύγουστος"
+
+msgid "September"
+msgstr "Σεπτέμβριος"
+
+msgid "October"
+msgstr "Οκτώβριος"
+
+msgid "November"
+msgstr "Νοέμβριος"
+
+msgid "December"
+msgstr "Δεκέμβριος"
+
+msgid "Time"
+msgstr "Ώρα"
+
+msgid "Sun"
+msgstr "Κυρ"
+
+msgid "Mon"
+msgstr "Δευτ"
+
+msgid "Tue"
+msgstr "Τρι"
+
+msgid "Wed"
+msgstr "Τετ"
+
+msgid "Thu"
+msgstr "Πεμ"
+
+msgid "Fri"
+msgstr "Παρ"
+
+msgid "Sat"
+msgstr "Σαβ"
+
+msgid "Su"
+msgstr "Κυ"
+
+msgid "Mo"
+msgstr "Δε"
+
+msgid "Tu"
+msgstr "Τρ"
+
+msgid "We"
+msgstr "Τε"
+
+msgid "Th"
+msgstr "Πε"
+
+msgid "Fr"
+msgstr "Πα"
+
+msgid "Sa"
+msgstr "Σα"
+
+msgid "No name for the area was provided!"
+msgstr ""
+
+msgid "An error occured"
+msgstr ""
+
+msgid "No question to ask was provided!"
+msgstr ""
+
+msgid "No url to refer to was provided!"
+msgstr ""
+
+msgid "No url to return to after a negative answer was provided!"
+msgstr ""
+
+msgid "Do you want to delete the area '%s'?"
+msgstr ""
+
+msgid "Do you want to delete the room '%s' in the area '%s'?"
+msgstr ""
+
+msgid "No valid area(-id) for deletion was provided!"
+msgstr ""
+
+msgid "No valid room(-id) for deletion was provided!"
+msgstr ""
+
+msgid "No valid area(-id) was provided!"
+msgstr ""
+
+msgid "No valid room(-id) was provided!"
+msgstr ""
+
+msgid "Booked by"
+msgstr ""
+
+msgid "The area '%s' has no rooms."
+msgstr ""
 
 msgid "Schoorbs - Room Booking System"
 msgstr "Σύστημα Κρατήσεων Αιθουσών (Schoorbs)"
@@ -25,9 +173,6 @@ msgstr "<h1>Προσοχή: Αυτή η σελίδα δεν δουλεύει μ�
 
 msgid "Bookings for"
 msgstr "Κρατήσεις για"
-
-msgid ""
-msgstr ""
 
 msgid "Areas"
 msgstr "Περιοχές:"
@@ -74,8 +219,12 @@ msgstr "Τροποποίηση σειράς"
 msgid "Brief Description:"
 msgstr "Σύντομη περιγραφή:"
 
-msgid "Full Description:<br />&nbsp;&nbsp;(Number of people,<br />&nbsp;&nbsp;Internal/External etc)"
-msgstr "Πλήρης περιγραφή:<br />&nbsp;&nbsp;(Αριθμός θέσεων,<br />&nbsp;&nbsp;Εσωτερική/Εξωτερική κλπ.)"
+msgid ""
+"Full Description:<br />&nbsp;&nbsp;(Number of people,<br "
+"/>&nbsp;&nbsp;Internal/External etc)"
+msgstr ""
+"Πλήρης περιγραφή:<br />&nbsp;&nbsp;(Αριθμός θέσεων,<br "
+"/>&nbsp;&nbsp;Εσωτερική/Εξωτερική κλπ.)"
 
 msgid "Date:"
 msgstr "Ημερομηνία:"
@@ -174,7 +323,8 @@ msgid "(for n-weekly)"
 msgstr "(για n-εβδομαδιαία)"
 
 msgid "Use Control-Click to select more than one room"
-msgstr "Χρησιμοποιήστε Control-Click για να επιλέξετε περισσότερες από μία αίθουσες"
+msgstr ""
+"Χρησιμοποιήστε Control-Click για να επιλέξετε περισσότερες από μία αίθουσες"
 
 msgid "Entry ID "
 msgstr "Αναγνωριστικός αριθμός εγγραφής "
@@ -218,8 +368,16 @@ msgstr "Διαγραφή εγγραφής"
 msgid "Delete Series"
 msgstr "Διαγραφή σειράς επανάληψης"
 
-msgid "Are you sure\nyou want to\ndelete this entry?\n\n"
-msgstr "Είστε βέβαιοι\nότι θέλετε να\nδιαγράψετε αυτή την εγγραφή;\n\n"
+msgid ""
+"Are you sure\n"
+"you want to\n"
+"delete this entry?\n"
+"\n"
+msgstr ""
+"Είστε βέβαιοι\n"
+"ότι θέλετε να\n"
+"διαγράψετε αυτή την εγγραφή;\n"
+"\n"
 
 msgid "Return to previous page"
 msgstr "Επιστροφή στην προηγούμενη σελίδα"
@@ -239,8 +397,12 @@ msgstr "Αντικρουόμενος Προγραμματισμός"
 msgid "The new booking will conflict with the following entry(s):"
 msgstr "Η νέα κράτηση αντικρούει με τις ακόλουθες εγγραφές:"
 
-msgid "The selected options will create too many entries.<BR>Please use different options!"
-msgstr "Οι επιλογές θα δημιουργήσουν υπερβολικό αριθμό εγγραφών.<BR>Παρακαλώ χρησιμοποιείστε διαφορετικές επιλογές!"
+msgid ""
+"The selected options will create too many entries.<BR>Please use different "
+"options!"
+msgstr ""
+"Οι επιλογές θα δημιουργήσουν υπερβολικό αριθμό εγγραφών.<BR>Παρακαλώ "
+"χρησιμοποιείστε διαφορετικές επιλογές!"
 
 msgid "Return to calendar view"
 msgstr "Επιστροφή σε προβολή ημερολογίου"
@@ -251,14 +413,17 @@ msgstr "Αποτυχία εξασφάλισης αποκλειστικής πρ�
 msgid "Invalid booking"
 msgstr ""
 
-msgid "You must set a brief description for the booking. Please go back and enter one."
+msgid ""
+"You must set a brief description for the booking. Please go back and enter "
+"one."
 msgstr ""
 
 msgid "Access Denied"
 msgstr "Απαγορεύεται η πρόσβαση"
 
 msgid "You do not have access rights to modify this item."
-msgstr "Δεν έχετε δικαιώματα πρόσβασης για να τροποποιήσετε αυτό το αντικείμενο."
+msgstr ""
+"Δεν έχετε δικαιώματα πρόσβασης για να τροποποιήσετε αυτό το αντικείμενο."
 
 msgid "Please log in"
 msgstr "Παρακαλώ κάνετε εισαγωγή (log in)"
@@ -293,8 +458,10 @@ msgstr "Delete this user"
 msgid "Email address"
 msgstr "Email address"
 
-msgid "If you wish to change the password, please type the new password twice"
-msgstr "If you wish to change the password, please type the new password twice"
+msgid ""
+"If you wish to change the password, please type the new password twice"
+msgstr ""
+"If you wish to change the password, please type the new password twice"
 
 msgid "Error: The passwords do not match."
 msgstr "Error: The passwords do not match."
@@ -326,7 +493,9 @@ msgstr "Click to display all my upcoming entries"
 msgid "No users in database, allowing initial user creation"
 msgstr ""
 
-msgid "Create a user configured as administrator and then you can log in and create more users."
+msgid ""
+"Create a user configured as administrator and then you can log in and create "
+"more users."
 msgstr ""
 
 msgid "Empty or invalid search string."
@@ -561,7 +730,9 @@ msgid "NO"
 msgstr "ΟΧΙ"
 
 msgid "You must delete all rooms in this area before you can delete it<p>"
-msgstr "Πρέπει να διαγράψετε όλες τις αίθουσες σε αυτή τη περιοχή για να μπορέσετε να την διαγράψετε<p>"
+msgstr ""
+"Πρέπει να διαγράψετε όλες τις αίθουσες σε αυτή τη περιοχή για να μπορέσετε "
+"να την διαγράψετε<p>"
 
 msgid "About Schoorbs"
 msgstr "Σχετικά με το MRBS"
@@ -580,4 +751,3 @@ msgstr "για όσες ερωτήσεις δεν απαντώνται εδώ."
 
 msgid "Fatal Error: Failed to connect to database"
 msgstr "Κρίσιμο σφάλμα: Αποτυχία σύνδεσης στη βάση δεδομένων"
-
