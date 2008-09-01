@@ -1,5 +1,5 @@
 <h1>
-  <em><?php echo get_vocab('viewweek'); ?>:</em>
+  <em><?php echo Lang::_('View Week'); ?>:</em>
   <?php echo date('d', $nStartTime).' '.Lang::_(date('F', $nStartTime)).' '.date('Y', $nStartTime); ?>
   &#8594; 
   <?php echo date('d', $nEndTime).' '.Lang::_(date('F', $nEndTime)).' '.date('Y', $nEndTime); ?>
@@ -27,7 +27,16 @@ foreach($entries as $sDay=>$aEntries) {
           <a href="view_entry.php?id=<?php echo $entries[$nDay][$sTime]->getId(); ?>">
         <?php } else { ?>
           <td class="schoorbs-week-matrix-free">
-          <a href="#">
+          <a href="edit_entry.php?room=<?php echo $room->getId(); 
+            ?>&amp;day=<?php echo date('d', $entryTime[$nDay][$sTime]); 
+            ?>&amp;month=<?php echo date('n', $entryTime[$nDay][$sTime]); 
+            ?>&amp;year=<?php echo date('Y', $entryTime[$nDay][$sTime]);
+            if (Entry::perioded()) {
+            	echo '&amp;period='.preg_replace('/^0/', '', date('i', $entryTime[$nDay][$sTime]));
+            } else {
+            	echo '&amp;hour='.date('g', $entryTime[$nDay][$sTime]).'&amp;minute='.date('i', $entryTime[$nDay][$sTime]);
+            }
+            ?>">
         <?php } ?>
         &nbsp;</a>
         </td>
@@ -39,6 +48,20 @@ foreach($entries as $sDay=>$aEntries) {
 } 
 ?>
 </table>
+
+<br />
+
+<div id="schoorbs-goto-next-week">
+  <a href="<?php echo self::makeInternalUrl('week-view.php', array('day' => $nextWeek[0], 'month' => $nextWeek[1], 'year' => $nextWeek[2])); ?>">
+    <?php echo get_vocab('weekafter'); ?> &gt;&gt;
+  </a>
+</div>
+<div id="schoorbs-goto-last-week">
+  <a href="<?php echo self::makeInternalUrl('week-view.php', array('day' => $lastWeek[0], 'month' => $lastWeek[1], 'year' => $lastWeek[2])); ?>">
+    &lt;&lt; <?php echo get_vocab('weekbefore'); ?>
+  </a>
+</div>
+
 
 <ul>
   <?php foreach($uniqueEntries as $oEntry) { ?>
