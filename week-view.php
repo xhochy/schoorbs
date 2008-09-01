@@ -24,6 +24,10 @@ require_once 'schoorbs-includes/schoorbstpl.class.php';
 
 /** day, month, year */
 list($day, $month, $year) = input_DayMonthYear();
+/** day, month, year of the last week */
+list($nLastWeekDay, $nLastWeekMonth, $nLastWeekYear) = getLastWeek($day, $month, $year);
+/** day, month, year of the next week */
+list($nNextWeekDay, $nNextWeekMonth, $nNextWeekYear) = getNextWeek($day, $month, $year);
 
 /** Get the room we should display */
 $oRoom = Room::getById(input_Room());
@@ -71,11 +75,13 @@ $nUnitsPerDay = intval($nUnitsPerDay);
 // null since null is equal to unset($aEntry[..][..]), but we want a full 
 // timetable matrix.
 $aEntry = array();
+$aEntryTime = array();
 $aUniqueEntry = array();
 
 // iterate through the days
 for ($nDay = 0; $nDay < 7; $nDay++) {
 	$aEntry[$nDay] = array();
+	$aEntryTime[$nDay] = array();
 	// Iterate through the single uints
 	for ($nUnit = 0; $nUnit < $nUnitsPerDay; $nUnit++) {
 		$nTime = mktime($morningstarts, $morningstarts_minutes, 0, $month, $day + $nDay, $year);
@@ -100,15 +106,20 @@ for ($nDay = 0; $nDay < 7; $nDay++) {
 		} else {
 			$aEntry[$nDay][$sTime] = -1;
 		}
+		$aEntryTime[$nDay][$sTime] = $nTime;
 	}
 }
 
 // We want an array sorted chronologically
 ksort($aUniqueEntry);
 
+SchoorbsTPL::populateVar('nextWeek', array($nNextWeekDay, $nNextWeekMonth, $nNextWeekYear));
+SchoorbsTPL::populateVar('lastWeek', array($nLastWeekDay, $nLastWeekMonth, $nLastWeekYear));
 SchoorbsTPL::populateVar('nStartTime', $nStartTime);
 SchoorbsTPL::populateVar('nEndTime', $nEndTime);	
 SchoorbsTPL::populateVar('uniqueEntries', $aUniqueEntry);
 SchoorbsTPL::populateVar('entries', $aEntry);
+SchoorbsTPL::populateVar('entryTime', $aEntryTime);
+SchoorbsTPL::populateVar('room', $oRoom);
 SchoorbsTPL::renderPage('week-view');
 
