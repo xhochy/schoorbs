@@ -395,8 +395,61 @@ class Entry {
 	 */
 	public function getDurationString()
 	{
+		$nDuration = $this->nEndTime - $this->nStartTime;
 		if (self::perioded()) {
+			$nStartPeriod = intval(date('i', $this->nStartTime));
+			$nMaxPeriods = count($GLOBALS['periods']);
+			$nDuration /= 60;
+		    	if (($nDuration >= $nMaxPeriods) || ($nStartPeriod == 0)) {
+				if (($nStartPeriod == 0) && ($nDuration == $nMaxPeriods)) {
+					$sUnits = Lang::_('days');
+					$nDuration = 1;
+					return sprintf('%d %s', $nDuration, $sUnits);
+				}
+
+				$nDuration /= 60;
+				if (($nDuration >= 24) && is_int($nDuration)) {
+					$nDuration /= 24;
+					$sUnits = Lang::_('days');
+					return sprintf('%d %s', $nDuration, $sUnits);
+				} else {
+					$nDuration *= 60;
+					$nDuration = ($nDuration % $nMaxPeriods) + floor($nDuration/(24*60)) * $nMaxPeriods;
+					$sUnits = Lang::_('periods');
+					return sprintf('%d %s', $nDuration, $sUnits);
+				}
+			} else { 
+				$sUnits = get_vocab('periods');
+			}
 		} else {
+			if ($nDuration >= 60) {
+				$nDuration /= 60;
+				if ($nDuration >= 60) {
+					$nDuration /= 60;
+					if (($nDuration >= 24) && ($nDuration % 24 == 0)) {
+						$nDuration /= 24;
+						if (($nDuration >= 7) && ($nDuration % 7 == 0)) {
+							$nDuration /= 7;
+							if (($nDuration >= 52) && ($nDuration % 52 == 0)) {
+								$nDuration  /= 52;
+								$sUnits = Lang::_('years');
+							} else {
+								$sUnits = Lang::_('weeks');
+							}
+						} else {
+							$sUnits = Lang::_('days');
+						}
+					} else {
+						$sUnits = Lang::_('hours');
+					}
+				} else {
+					$sUnits = Lang::_('minutes');
+				}
+			} else {
+				$sUnits = Lang::_('seconds');
+			}
 		}
+		
+		return sprintf('%d %s', $nDuration, $sUnits);
 	}
 }
