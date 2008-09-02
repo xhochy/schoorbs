@@ -50,6 +50,23 @@
         HTML-Seite nur den Quelltext der jeweiligen PHP-Datei zu sehen bekommt.
       </p>
       <p>
+        Da aktuell noch die Templateenigne <a href="http://www.smarty.net/">Smarty</a>
+        genutzt wird und diese ihre Templates zwischenspeichern muss, muss man ihr
+        Schreibrechte auf dem Ordner <code>schoorbs-includes/Smarty/templates_c</code>.
+        Dies kann man unter Linux mit folgendem Befehl machen:
+      </p>
+      <p>
+        <code>chmod a+rw -R schoorbs-includes/Smarty/templates_c</code>
+      </p>
+      <p>
+        Da auf den meisten Linux-Systemen der Webserver unter dem Nutzer www-data
+        läuft, kann man, wenn man selbst die jeweiligen Rechte hat, diesen Nutzer
+        als Eigentümer dieses Ordners eintragen, was deutlich sicherer ist:
+      </p>
+      <p>
+        <code>chown -R www-data:www-data schoorbs-includes/Smarty/templates_c</code>
+      </p>
+      <p>
         <!-- Installation Datenbank -->
         Bei Schoorbs werden die gesamten Daten(z.B. Buchungen) in einer 
         Datenbank gespeichert. Als mögliche Datenbanksoftware wird zur Zeit nur

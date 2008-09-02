@@ -10,7 +10,7 @@
       <p>
         In opposite to the active development on Schoorbs, for the normal usage
         you only need few dependencies. The following software should be 
-        sufficent:
+        sufficient:
       </p>
       <ul>
         <li>
@@ -38,10 +38,28 @@
         Both include the same files, but the 7z-archive is due the higher 
         compression rate of the LZMA algorithm a lot smaller. Although 7z
         offers better compression, not on every computer there is are program
-        which could extract them, so you could alternatetivly download the 
+        which could extract them, so you could alternately download the 
         ZIP-archive.<br />
-        The choosen archive should be extracted in a directory which could be
-        accessed by the webserver. 
+        The chosen archive should be extracted in a directory which could be
+        accessed by the web server. 
+      </p>
+      <p>
+      	At the moment we use the template engine <a href="http://www.smarty.net/">Smarty</a>
+      	which needs to have write-rights on the folder
+      	<code>schoorbs-includes/Smarty/templates_c</code> to temproraly store the
+      	page. If you are using Linux you could apply these right via the following
+      	command:
+      </p>
+      <p>
+        <code>chmod a+rw -R schoorbs-includes/Smarty/templates_c</code>
+      </p>
+      <p>
+        Since on most Linux systems the web server runs as user www-data you could
+        set the owner of that folder to this user which is the more secure way,
+        but therefore you may need additional rights.
+      </p>
+      <p>
+        <code>chown -R www-data:www-data schoorbs-includes/Smarty/templates_c</code>
       </p>
       <p>
         <!-- Installation Datenbank -->
