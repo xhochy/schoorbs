@@ -328,6 +328,25 @@ class Entry {
 	}
 	
 	/**
+	 * Return the type/category of this entry. This function returns the
+	 * whole string which was configured.
+	 *
+	 * @author Uwe L. Korn <uwelk@xhochy.org>
+	 * @return string
+	 */
+	public function getTypeLong()
+	{
+		if ($this->sType == 'I') {
+			return Lang::_('Internal');
+		} else if ($this->sType == 'E') {
+			return Lang::_('External');
+		} else {
+			return $GLOBALS['typel'][$this->sType];
+		}
+	}
+	
+	
+	/**
 	 * Return the room to which this entry belongs.
 	 *
 	 * @author Uwe L. Korn <uwelk@xhochy.org>
