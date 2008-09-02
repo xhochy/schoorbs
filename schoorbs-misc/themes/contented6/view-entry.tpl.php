@@ -61,7 +61,7 @@
      </tr>
      <tr>
        <td><strong><?php echo get_vocab('rep_type'); ?></strong></td>
-       <td>{$repeat_key}</td>
+       <td><?php echo $entry->getRepetitionString(); ?></td>
      </tr>
   </table>
   <br />

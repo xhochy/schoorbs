@@ -345,6 +345,16 @@ class Entry {
 		}
 	}
 	
+	/**
+	 * Return the type of repeating as a nice string
+	 *
+	 * @author Uwe L. Korn <uwelk@xhochy.org>
+	 * @return string
+	 */
+	public function getRepetitionString() {
+		return eval('sdghdsgfdsj....ssss');
+	}
+	
 	
 	/**
 	 * Return the room to which this entry belongs.
