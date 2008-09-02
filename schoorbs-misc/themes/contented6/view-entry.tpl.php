@@ -49,7 +49,7 @@
      </tr>
      <tr>
        <td><strong><?php echo get_vocab('type'); ?></strong></td>
-       <td><span class="class">{$typelabel}</span></td>
+       <td><span class="class"><?php echo $entry->getTypeLong(); ?></span></td>
      </tr>
      <tr>
        <td><strong><?php echo get_vocab('createdby'); ?></strong></td>
@@ -63,7 +63,6 @@
        <td><strong><?php echo get_vocab('rep_type'); ?></strong></td>
        <td>{$repeat_key}</td>
      </tr>
-    {$repeatAppend}
   </table>
   <br />
 </div>
