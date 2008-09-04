@@ -46,7 +46,6 @@ function parseThingsOutOfUrl() {
 	} else {
 		month = (new Date()).getMonth();
 	}
-	alert(month);
 	regexp = /[&?]day=([\d]+)/i
 	day = regexp.exec(location.href);
 	if (day !== null) {
@@ -58,11 +57,31 @@ function parseThingsOutOfUrl() {
 
 $(document).ready(function() {
 	parseThingsOutOfUrl();
+	var cPselected
+	if (page == 'week-view') {
+		// Get sunday before
+		sunday = new Date();
+		sunday.setDate(day);
+		sunday.setMonth(month - 1);
+		sunday.setYear(year);
+		sunday.setDate(sunday.getDate() - sunday.getDay());
+		// Get saturday after
+		saturday = new Date();
+		saturday.setDate(day);
+		saturday.setMonth(month - 1);
+		saturday.setYear(year);
+		saturday.setDate(saturday.getDate() + (6 - saturday.getDay()));
+		cPselected = (sunday.getMonth() + 1) + '/' + sunday.getDate() + '/'
+			+ sunday.getFullYear() + '-' + (saturday.getMonth() + 1) + '/'
+			+ saturday.getDate() + '/' + saturday.getFullYear();
+	} else {
+		cPselected = month.toString() + '/' + day.toString() + '/' + year.toString();
+	}
 	// Display the calendarPicker in the sidebar
 	var calendarPickerOptions = { 
 		navigator: true, 
 		pagedate: month.toString() + '/' + year.toString(), 
-		selected:"5/13/2007-5/19/2007"
+		selected: cPselected
 	};
 	var calendarPicker = new YAHOO.widget.Calendar("calendarPicker", "calendarPicker", calendarPickerOptions);
 	calendarPicker.cfg.setProperty("MONTHS_LONG", sidebarMonthsLong);
