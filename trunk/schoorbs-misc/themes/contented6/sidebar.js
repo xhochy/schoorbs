@@ -2,12 +2,13 @@ var page = '';
 var documentRoot = '';
 var area = null;
 var room = null;
+var year = null, month = null, day = null;
 
 function calendarPickerHandleSelect(type,args,obj) {
 	var dates = args[0]; 
 	var date = dates[0];
-	var year = date[0], month = date[1], day = date[2];
-	var params = ['month=' + month.toString(), 'day=' + day.toString(), 'year=' + year.toString()];
+	var cPyear = date[0], cPmonth = date[1], cPday = date[2];
+	var params = ['month=' + cPmonth.toString(), 'day=' + cPday.toString(), 'year=' + cPyear.toString()];
 	if (area != null) {
 		params.push('area=' + area);
 	}
@@ -17,9 +18,53 @@ function calendarPickerHandleSelect(type,args,obj) {
 	location.href = documentRoot + page + '.php?' + params.join('&');
 }
 
+function parseThingsOutOfUrl() {
+	var regexp = /([^/]+)\.php\?[^?]*$/i
+	documentRoot = location.href.replace(regexp, '');
+	page = regexp.exec(location.href)[1];
+	regexp = /[&?]room=([\d]+)/i
+	room = regexp.exec(location.href);
+	if (room !== null) {
+		room = room[1];
+	}
+	regexp = /[&?]area=([\d]+)/i
+	area = regexp.exec(location.href);
+	if (area !== null) {
+		area = area[1];
+	}
+	regexp = /[&?]year=([\d]+)/i
+	year = regexp.exec(location.href);
+	if (year !== null) {
+		year = year[1];
+	} else {
+		year = (new Date()).getFullYear();
+	}
+	regexp = /[&?]month=([\d]+)/i
+	month = regexp.exec(location.href);
+	if (month !== null) {
+		month = month[1];
+	} else {
+		month = (new Date()).getMonth();
+	}
+	alert(month);
+	regexp = /[&?]day=([\d]+)/i
+	day = regexp.exec(location.href);
+	if (day !== null) {
+		day = day[1];
+	} else {
+		day = (new Date()).getDate();
+	}
+}
+
 $(document).ready(function() {
+	parseThingsOutOfUrl();
 	// Display the calendarPicker in the sidebar
-	var calendarPicker = new YAHOO.widget.Calendar("calendarPicker", "calendarPicker", { navigator: true, pagedate:"5/2007", selected:"5/13/2007-5/19/2007"});
+	var calendarPickerOptions = { 
+		navigator: true, 
+		pagedate: month.toString() + '/' + year.toString(), 
+		selected:"5/13/2007-5/19/2007"
+	};
+	var calendarPicker = new YAHOO.widget.Calendar("calendarPicker", "calendarPicker", calendarPickerOptions);
 	calendarPicker.cfg.setProperty("MONTHS_LONG", sidebarMonthsLong);
 	calendarPicker.cfg.setProperty("LOCALE_MONTHS", "long");
 	calendarPicker.cfg.setProperty("WEEKDAYS_SHORT", sidebarDaysShort);
@@ -27,18 +72,5 @@ $(document).ready(function() {
 	calendarPicker.selectEvent.subscribe(calendarPickerHandleSelect, calendarPicker, true);
 	calendarPicker.render();
 	
-	regexp = /([^/]+)\.php\?[^?]*$/i
-	documentRoot = location.href.replace(regexp, '');
-	page = regexp.exec(location.href)[1];
-	regexp = /([&?]room=[\d]+)/i
-	room = regexp.exec(location.href);
-	if (room !== null) {
-		room = room[1];
-	}
-	regexp = /([&?]area=[\d]+)/i
-	area = regexp.exec(location.href);
-	if (area !== null) {
-		area = area[1];
-	}
 });
 
