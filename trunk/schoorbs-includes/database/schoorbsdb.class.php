@@ -25,6 +25,8 @@ require_once dirname(__FILE__).'/area.class.php';
 require_once dirname(__FILE__).'/room.class.php';
 /** The entry class */
 require_once dirname(__FILE__).'/entry.class.php';
+/** The repeat class */
+require_once dirname(__FILE__).'/repeat.class.php';
 
 /// Main database class ///
 
@@ -52,8 +54,7 @@ class SchoorbsDB {
 	 * @author Uwe L. Korn <uwelk@xhochy.org>
 	 * @return SchoorbsDB
 	 */
-	public static function getInstance()
-	{
+	public static function getInstance() {
 		// If the object does not yet exist, create a new instance of it.
 		if (self::$db == null) {
 			// Build up the DSN parameters
@@ -97,8 +98,7 @@ class SchoorbsDB {
 	 * @param $aDSN array The connection parameters
 	 * @param $sPrefix string
 	 */
-	private function __construct($aDSN, $sPrefix = '') 
-	{
+	private function __construct($aDSN, $sPrefix = '') {
 		$this->oConnection = Creole::getConnection($aDSN, Creole::COMPAT_ASSOC_LOWER);
 		$this->sPrefix = $sPrefix;
 	}
@@ -109,8 +109,7 @@ class SchoorbsDB {
 	 * @return Creole
 	 * @author Uwe L. Korn <uwelk@xhochy.org>
 	 */
-	public function getConnection()
-	{
+	public function getConnection() {
 		return $this->oConnection;
 	}
 	
@@ -123,8 +122,7 @@ class SchoorbsDB {
 	 * @return string
 	 * @param $sTableName string
 	 */
-	public function getTableName($sTable)
-	{
+	public function getTableName($sTable) {
 		return $this->sPrefix.$sTable;
 	}
 }

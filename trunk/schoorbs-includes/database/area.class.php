@@ -32,8 +32,7 @@ class Area {
 	 * @return Area
 	 * @author Uwe L. Korn <uwelk@xhochy.org>
 	 */
-	public static function create($sName, $sAdminMail = '')
-	{
+	public static function create($sName, $sAdminMail = '') {
 		if (self::getByName($sName) !== null) {
 			throw new Exception('Area with name "'.$sName.'" already exists.');
 		}
@@ -52,8 +51,7 @@ class Area {
 	 * @return Area
 	 * @author Uwe L. Korn <uwelk@xhochy.org>
 	 */
-	public static function getByName($sName)
-	{
+	public static function getByName($sName) {
 		$oDB = SchoorbsDB::getInstance();
 		// Example query:
 		//   SELECT * FROM schoorbs_area WHERE area_name = 'Area1'
@@ -77,8 +75,7 @@ class Area {
 	 * @return Area
 	 * @author Uwe L. Korn <uwelk@xhochy.org>
 	 */
-	public static function fetchArea($oResult)
-	{
+	public static function fetchArea($oResult) {
 		$oArea = new Area();
 		$oArea->nId = $oResult->getInt('id');
 		$oArea->sName = $oResult->getString('area_name');
@@ -93,8 +90,7 @@ class Area {
 	 * @return Area
 	 * @author Uwe L. Korn <uwelk@xhochy.org>
 	 */
-	public static function getById($nId)
-	{
+	public static function getById($nId) {
 		$oDB = SchoorbsDB::getInstance();
 		// Example query:
 		//   SELECT * FROM schoorbs_area WHERE id = 3
@@ -117,8 +113,7 @@ class Area {
 	 * @return array
 	 * @author Uwe L. Korn <uwelk@xhochy.org>
 	 */
-	public static function getAreas()
-	{
+	public static function getAreas() {
 		$aAreas = array();
 		$oDB = SchoorbsDB::getInstance();
 		// Example query:
@@ -195,8 +190,7 @@ class Area {
 	 *
 	 * @author Uwe L. Korn <uwelk@xhochy.org>
 	 */
-	private function __construct()
-	{
+	private function __construct() {
 		$this->oDB = SchoorbsDB::getInstance();
 	}
 	
@@ -207,8 +201,7 @@ class Area {
 	 *
 	 * @author Uwe L. Korn <uwelk@xhochy.org>
 	 */
-	function __destruct() 
-	{
+	function __destruct() {
 		if (($this->nId == -1) || ($this->bChanged == true)) {
 			$this->commit();
 		}
@@ -223,8 +216,7 @@ class Area {
 	 * @author Uwe L. Korn <uwelk@xhochy.org>
 	 * @param $sName string
 	 */
-	public function setName($sName)
-	{
+	public function setName($sName) {
 		$this->bChanged = true;
 		$this->sName = $sName;
 	}
@@ -238,8 +230,7 @@ class Area {
 	 * @author Uwe L. Korn <uwelk@xhochy.org>
 	 * @param $sAdminMail string
 	 */
-	public function setAdminEmail($sAdminMail)
-	{
+	public function setAdminEmail($sAdminMail) {
 		$this->bChanged = true;
 		$this->sAdminEmail = $sAdminMail;
 	}
@@ -252,8 +243,7 @@ class Area {
 	 *
 	 * @author Uwe L. Korn <uwelk@xhochy.org>
 	 */
-	public function commit()
-	{
+	public function commit() {
 		if ($this->nId == -1) {
 			// new object, so we will insert it as a new row
 			$oIdgen = $this->oDB->getConnection()->getIdGenerator();
@@ -306,8 +296,7 @@ class Area {
 	 * @author Uwe L. Korn <uwelk@xhochy.org>
 	 * @return int
 	 */
-	public function getId()
-	{
+	public function getId() {
 		return $this->nId;
 	}
 	
@@ -319,8 +308,7 @@ class Area {
 	 * @author Uwe L. Korn <uwelk@xhochy.org>
 	 * @return string
 	 */
-	public function getName()
-	{
+	public function getName() {
 		return $this->sName;
 	}
 }
