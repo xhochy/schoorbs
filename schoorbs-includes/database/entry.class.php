@@ -180,6 +180,15 @@ class Entry {
     	 * @var int
     	 */
     	private $nRepeatId = 0;
+    	
+    	/**
+    	 * The repetition information.
+    	 *
+    	 * This is only fetched on demand. On single entries this stays on null.
+    	 *
+    	 * @var Repeat
+    	 */
+    	private $oRepetition = null;
     
     	/**
     	 * The creator of this entry.
@@ -230,8 +239,7 @@ class Entry {
 	 *
 	 * @author Uwe L. Korn <uwelk@xhochy.org>
 	 */
-	private function __construct()
-	{
+	private function __construct() {
 		$this->oDB = SchoorbsDB::getInstance();
 	}
 	
@@ -242,8 +250,7 @@ class Entry {
 	 *
 	 * @author Uwe L. Korn <uwelk@xhochy.org>
 	 */
-	function __destruct() 
-	{
+	function __destruct() {
 		if (($this->nId == -1) || ($this->bChanged == true)) {
 			$this->commit();
 		}
@@ -255,8 +262,7 @@ class Entry {
 	 * @author Uwe L. Korn <uwelk@xhochy.org>
 	 * @return int Unix Timestamp
 	 */
-	public function getStartTime() 
-	{
+	public function getStartTime() {
 		return $this->nStartTime;
 	}
 	
@@ -266,8 +272,7 @@ class Entry {
 	 * @author Uwe L. Korn <uwelk@xhochy.org>
 	 * @return int Unix Timestamp
 	 */
-	public function getEndTime() 
-	{
+	public function getEndTime() {
 		return $this->nEndTime;
 	}
 	
@@ -277,8 +282,7 @@ class Entry {
 	 * @author Uwe L. Korn <uwelk@xhochy.org>
 	 * @return int
 	 */
-	public function getId()
-	{
+	public function getId() {
 		return $this->nId;
 	}
 	
@@ -288,8 +292,7 @@ class Entry {
 	 * @author Uwe L. Korn <uwelk@xhochy.org>
 	 * @return string
 	 */
-	public function getDescription()
-	{
+	public function getDescription() {
 		return $this->sDescription;
 	}
 	
@@ -299,8 +302,7 @@ class Entry {
 	 * @author Uwe L. Korn <uwelk@xhochy.org>
 	 * @return string
 	 */
-	public function getName()
-	{
+	public function getName() {
 		return $this->sName;
 	}
 	
@@ -310,8 +312,7 @@ class Entry {
 	 * @author Uwe L. Korn <uwelk@xhochy.org>
 	 * @return string
 	 */
-	public function getCreateBy()
-	{
+	public function getCreateBy() {
 		return $this->sCreateBy;
 	}
 	
@@ -322,8 +323,7 @@ class Entry {
 	 * @author Uwe L. Korn <uwelk@xhochy.org>
 	 * @return string
 	 */
-	public function getType()
-	{
+	public function getType() {
 		return $this->sType;
 	}
 	
@@ -334,8 +334,7 @@ class Entry {
 	 * @author Uwe L. Korn <uwelk@xhochy.org>
 	 * @return string
 	 */
-	public function getTypeLong()
-	{
+	public function getTypeLong() {
 		if ($this->sType == 'I') {
 			return Lang::_('Internal');
 		} else if ($this->sType == 'E') {
@@ -346,13 +345,50 @@ class Entry {
 	}
 	
 	/**
+	 * Return the repetion information associated to this entry.
+	 *
+	 * Will return null, if this entry is never repeated
+	 *
+	 * @author Uwe L. Korn <uwelk@xhochy.org>
+	 * @return Repeat
+	 */
+	public function getRepetiton() {
+		if ($this->nRepeatId != 0) {
+			if ($this->oRepetition == null) {
+				$this->oRepetition = Repeat::getById($this->nRepeatId);
+			}
+			return $this->oRepetition;
+		} else {
+			return null;
+		}
+	}
+	
+	/**
 	 * Return the type of repeating as a nice string
 	 *
 	 * @author Uwe L. Korn <uwelk@xhochy.org>
 	 * @return string
 	 */
 	public function getRepetitionString() {
-		return eval('sdghdsgfdsj....ssss');
+		if ($this->nRepeatId != 0) {
+			$nRepType = $this->getRepetiton()->getRepType();
+			if ($nRepType == 1) {
+				return Lang::_('Daily');
+			} else if ($nRepType == 2) {
+				return Lang::_('Weekly');
+			} else if ($nRepType == 3) {
+				return Lang::_('Monthly');
+			} else if ($nRepType == 4) {
+				return Lang::_('Yearly');
+			} else if ($nRepType == 5) {
+				return Lang::_('Monthly, corresponding day');
+			} else {
+				// $nRepType == 6
+				return Lang::_('n-Weekly');
+			}
+		} else {
+			return Lang::_('None');
+		}
 	}
 	
 	
@@ -362,8 +398,7 @@ class Entry {
 	 * @author Uwe L. Korn <uwelk@xhochy.org>
 	 * @return Room
 	 */
-	public function getRoom()
-	{
+	public function getRoom() {
 		return $this->oRoom;
 	}
 	
@@ -373,8 +408,7 @@ class Entry {
 	 * @author Uwe L. Korn <uwelk@xhochy.org>
 	 * @return int
 	 */
-	public function getTimestamp()
-	{
+	public function getTimestamp() {
 		return $this->nTimestamp;
 	}
 	
@@ -386,8 +420,7 @@ class Entry {
 	 * @return string
 	 * @author Uwe L. Korn <uwelk@xhochy.org>
 	 */
-	public function getStartPeriodString()
-	{
+	public function getStartPeriodString() {
 		global $periods;
 		
 		$aTime = getdate($this->nStartTime);
@@ -405,13 +438,12 @@ class Entry {
 	 * @return string
 	 * @author Uwe L. Korn <uwelk@xhochy.org>
 	 */
-	public function getEndPeriodString()
-	{
+	public function getEndPeriodString() {
 		global $periods;
 		
 		$aTime = getdate($this->nEndTime);
     		$nPnum = $aTime['minutes'];
-		if($nPnum < 0 ) $nPnum = 0;
+		if($nPnum < 0) $nPnum = 0;
 		if($nPnum >= count($periods) - 1) $nPnum = count($periods) - 1;
 		return $periods[$nPnum];
 	}	 
@@ -422,8 +454,7 @@ class Entry {
 	 * @author Uwe L. Korn <uwelk@xhochy.org>
 	 * @return string
 	 */
-	public function getDurationString()
-	{
+	public function getDurationString() {
 		$nDuration = $this->nEndTime - $this->nStartTime;
 		if (self::perioded()) {
 			$nStartPeriod = intval(date('i', $this->nStartTime));

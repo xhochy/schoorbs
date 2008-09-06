@@ -32,8 +32,7 @@ class Room {
 	 * @param $nCapacity int
 	 * @return Room
 	 */
-	public static function create($oArea, $sName, $sDescription, $nCapacity)
-	{
+	public static function create($oArea, $sName, $sDescription, $nCapacity) {
 		if (self::getByName($oArea, $sName) !== null) {
 			throw new Exception('Room with name "'.$sName
 				.'" already exists in this area.');
@@ -58,8 +57,7 @@ class Room {
 	 * @return Room
 	 * @author Uwe L. Korn <uwelk@xhochy.org>
 	 */
-	public static function fetchRoom($oResult)
-	{
+	public static function fetchRoom($oResult) {
 		$oRoom = new Room();
 		$oRoom->nId = $oResult->getInt('id');
 		$oRoom->sName = $oResult->getString('room_name');
@@ -78,8 +76,7 @@ class Room {
 	 * @return Room
 	 * @author Uwe L. Korn <uwelk@xhochy.org>
 	 */
-	public static function getByName($oArea, $sName)
-	{
+	public static function getByName($oArea, $sName) {
 		$oDB = SchoorbsDB::getInstance();
 		// Example Query
 		//  SELECT * FROM schoorbs_rootm WHERE area_id = 1 AND room_name = 'Hi'
@@ -102,8 +99,7 @@ class Room {
 	 * @return Room
 	 * @author Uwe L. Korn <uwelk@xhochy.org>
 	 */
-	public static function getById($nId)
-	{
+	public static function getById($nId) {
 		$oDB = SchoorbsDB::getInstance();
 		// Example Query:
 		//   SELECT * FROM schoorbs_room WHERE id = 5
@@ -128,8 +124,7 @@ class Room {
 	 * @return Room
 	 * @author Uwe L. Korn <uwelk@xhochy.org>
 	 */
-	public static function getRooms($oArea)
-	{
+	public static function getRooms($oArea) {
 		$aRooms = array();
 		$oDB = SchoorbsDB::getInstance();
 		// Example Query:
@@ -227,8 +222,7 @@ class Room {
 	 *
 	 * @author Uwe L. Korn <uwelk@xhochy.org>
 	 */
-	private function __construct()
-	{
+	private function __construct() {
 		$this->oDB = SchoorbsDB::getInstance();
 	}
 	
@@ -239,8 +233,7 @@ class Room {
 	 *
 	 * @author Uwe L. Korn <uwelk@xhochy.org>
 	 */
-	function __destruct() 
-	{
+	function __destruct() {
 		if (($this->nId == -1) || ($this->bChanged == true)) {
 			$this->commit();
 		}
@@ -255,8 +248,7 @@ class Room {
 	 * @author Uwe L. Korn <uwelk@xhochy.org>
 	 * @param $sName string
 	 */
-	public function setName($sName)
-	{
+	public function setName($sName) {
 		$this->bChanged = true;
 		$this->sName = $sName;
 	}
@@ -270,8 +262,7 @@ class Room {
 	 * @author Uwe L. Korn <uwelk@xhochy.org>
 	 * @param $sAdminMail string
 	 */
-	public function setAdminEmail($sAdminMail)
-	{
+	public function setAdminEmail($sAdminMail) {
 		$this->bChanged = true;
 		$this->sAdminEmail = $sAdminMail;
 	}
@@ -285,8 +276,7 @@ class Room {
 	 * @author Uwe L. Korn <uwelk@xhochy.org>
 	 * @param $oArea Area
 	 */
-	public function setArea($oArea)
-	{
+	public function setArea($oArea) {
 		$this->bChanged = true;
 		$this->oArea = $oArea;
 	}
@@ -300,8 +290,7 @@ class Room {
 	 * @author Uwe L. Korn <uwelk@xhochy.org>
 	 * @param $sDescription string
 	 */
-	public function setDescription($sDescription)
-	{
+	public function setDescription($sDescription) {
 		$this->bChanged = true;
 		$this->sDescription = $sDescription;
 	}
@@ -315,8 +304,7 @@ class Room {
 	 * @author Uwe L. Korn <uwelk@xhochy.org>
 	 * @param $nCapacity int
 	 */
-	public function setCapacity($nCapacity)
-	{
+	public function setCapacity($nCapacity) {
 		$this->bChanged = true;
 		$this->nCapacity = $nCapacity;
 	}
@@ -330,8 +318,7 @@ class Room {
 	 *
 	 * @author Uwe L. Korn <uwelk@xhochy.org>
 	 */
-	public function commit()
-	{
+	public function commit() {
 		if ($this->nId == -1) {
 			// new object, so we will insert it as a new row
 			$oIdgen = $this->oDB->getConnection()->getIdGenerator();
@@ -395,8 +382,7 @@ class Room {
 	 * @author Uwe L. Korn <uwelk@xhochy.org>
 	 * @return int
 	 */
-	public function getId()
-	{
+	public function getId() {
 		return $this->nId;
 	}
 	
@@ -408,8 +394,7 @@ class Room {
 	 * @author Uwe L. Korn <uwelk@xhochy.org>
 	 * @return string
 	 */
-	public function getName()
-	{
+	public function getName() {
 		return $this->sName;
 	}
 	
@@ -419,8 +404,7 @@ class Room {
 	 * @author Uwe L. Korn <uwelk@xhochy.org>
 	 * @return string
 	 */
-	public function getDescription()
-	{
+	public function getDescription() {
 		return $this->sDescription;
 	}
 	
@@ -430,8 +414,7 @@ class Room {
 	 * @author Uwe L. Korn <uwelk@xhochy.org>
 	 * @return int
 	 */
-	public function getCapacity()
-	{
+	public function getCapacity() {
 		return $this->nCapacity;
 	}
 	
@@ -441,8 +424,7 @@ class Room {
 	 * @author Uwe L. Korn <uwelk@xhochy.org>
 	 * @retun Area
 	 */
-	public function getArea()
-	{
+	public function getArea() {
 		return $this->oArea;
 	}
 }
