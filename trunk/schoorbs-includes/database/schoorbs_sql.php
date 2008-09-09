@@ -91,7 +91,7 @@ function schoorbsCheckFree($room_id, $starttime, $endtime, $ignore, $repignore)
 		else
         	$startstr = utf8_strftime('%A %d %B %Y %H:%M:%S', $row[2]);
 
-        $err .= "<li><a href=\"view_entry.php?id=$row[0]\">$row[1]</a>"
+        $err .= "<li><a href=\"view-entry.php?id=$row[0]\">$row[1]</a>"
 		. " ( " . $startstr . ") "
 		. "(<a href=\"day.php?$param_ymd\">".get_vocab("viewday")."</a>"
 		. " | <a href=\"week-view.php?room=$room_id&$param_ymd\">".get_vocab("viewweek")."</a>"

@@ -63,6 +63,52 @@
        <td><strong><?php echo get_vocab('rep_type'); ?></strong></td>
        <td><?php echo $entry->getRepetitionString(); ?></td>
      </tr>
+     <?php if ($entry->isRepeated()) { ?>
+       <tr>
+         <td><strong><?php echo Lang::_('Repeat End Date:'); ?></strong></td>
+         <td>
+           <?php echo date('Y-m-d', $entry->getRepetition()->getEndDate()); ?>
+           <?php  
+           if (Entry::perioded()) {
+             echo Entry::formatTimePeriodString($entry->getRepetition()->getEndDate());
+           } else {
+             echo date('H:i', $entry->getRepetition()->getEndDate());
+           }
+           ?>
+         </td>
+       </tr>
+       <?php if ($entry->getRepetition()->getRepType() == 6) { ?>
+         <tr>
+           <td><strong><?php echo Lang::_('Number of weeks').Lang::_('(for (n-)weekly)'); ?></strong></td>
+           <td><?php echo $entry->getRepetiton->getRepNumWeeks(); ?></td>
+         </tr>
+       <?php } ?>
+       <?php if (($entry->getRepetition()->getRepType() == 6) || ($entry->getRepetition()->getRepType() == 2)) { ?>
+         <tr>
+           <td><strong><?php echo Lang::_('Repeat Day:'); ?></strong></td>
+           <td><?php echo $entry->getRepetition()->getRepeatDayString(); ?></td>
+         </tr>
+       <?php } ?>
+     <?php } ?>
   </table>
   <br />
 </div>
+
+<a href="edit_entry.php?id=<?php echo $entry->getId(); ?>">
+  <?php echo Lang::_('Edit Entry'); ?>
+</a>
+<?php if ($entry->isRepeated()) { ?>
+  &nbsp;-&nbsp;
+  <a href="edit_entry.php?id=<?php echo $entry->getId(); ?>&amp;edit_type=series"><?php echo Lang::_('Edit Series'); ?></a>
+<?php } ?>
+<br />
+
+<a href="del_entry.php?id=<?php echo $entry->getId(); ?>&amp;series=0" onclick="return confirm('<?php echo Lang::_('Are you sure\\nyou want to\\ndelete this entry?\\n\\n'); ?>');">
+  <?php echo Lang::_('Delete Entry'); ?>
+</a>
+<?php if ($entry->isRepeated()) { ?>
+  &nbsp;-&nbsp;
+  <a href="del_entry.php?id=<?php echo $entry->getId(); ?>&amp;series=1" onclick="return confirm('<?php echo Lang::_('Are you sure\\nyou want to\\ndelete this entry?\\n\\n'); ?>');">
+    <?php echo Lang::_('Delete Series'); ?>
+  </a>
+<?php } ?>

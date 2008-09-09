@@ -69,8 +69,8 @@ class Repeat {
 		$oRepetition->sName = $oResult->getString('name');
 		$oRepetition->sDescription = $oResult->getString('description');
 		$oRepetition->nRepNumWeeks = $oResult->getInt('rep_num_weeks');
-		$oRepetition->nRepType = $oResult->getInt('rep_num_weeks');
-		$oRepetition->nRepOpt = $oResult->getInt('rep_opt');
+		$oRepetition->nRepType = $oResult->getInt('rep_type');
+		$oRepetition->sRepOpt = $oResult->getString('rep_opt');
 		$oRepetition->nEndDate = $oResult->getInt('end_date');
 
 		return $oRepetition;
@@ -152,11 +152,13 @@ class Repeat {
 	private $nEntryType = 0;
 	
 	/**
-	 * rep_opt?
+	 * Place to store specific options for a repeat type
 	 *
-	 * @var int
+	 * (n-)weekly repeating: Used to store the days of repeating
+	 *
+	 * @var string
 	 */
-	private $nRepOpt = 0;
+	private $sRepOpt = 0;
 	
 	/**
 	 * True, if this entry was changed, so that we need to commit it to the
@@ -230,6 +232,55 @@ class Repeat {
 		if (($this->nId == -1) || ($this->bChanged == true)) {
 			$this->commit();
 		}
+	}
+	
+	/**
+	 * Return the type of repetition.
+	 *
+	 * @author Uwe L. Korn <uwelk@xhochy.org>
+	 * @return int
+	 */
+	public function getRepType() {
+		return $this->nRepType;
+	}
+	
+	/**
+	 * Return the date where this repetition ends.
+	 *
+	 * @author Uwe L. Korn <uwelk@xhochy.org>
+	 * @return int
+	 */
+	public function getEndDate() {
+		return $this->nEndDate;
+	}
+	
+	/**
+	 * Return the number of weeks when repeated n-weekly
+	 *
+	 * @author Uwe L. Korn <uwelk@xhochy.org>
+	 * @return int
+	 */
+	public function getRepNumWeeks() {
+		return $this->nRepNumWeeks;
+	}
+	
+	/**
+	 * Format rep_opt nicely when using (n-)weekly repeat
+	 *
+	 * The returned string is already translated.
+	 *
+	 * @author Uwe L. Korn <uwelk@xhochy.org>
+	 * @return string
+	 */
+	public function getRepeatDayString() {
+		$sResult = '';
+		for ($i = 0; $i < 7; $i++) {
+			$nDayNum = ($i + $GLOBALS['weekstarts']) % 7;
+			if ($this->sRepOpt[$nDayNum]) {
+				$sResult .= Lang::_(strftime('%A', mktime(0,0,0,1,2+$nDayNum,2000))).' ';
+			}
+		}
+		return $sReuslt;
 	}
 }
 
