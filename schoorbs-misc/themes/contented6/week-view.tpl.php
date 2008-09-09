@@ -24,7 +24,7 @@ foreach($entries as $sDay=>$aEntries) {
       <?php for ($nDay = 0; $nDay < 7; $nDay++) { ?>
         <?php if ($entries[$nDay][$sTime] !== -1) { ?>
           <td class="schoorbs-week-matrix-booked">
-          <a href="view_entry.php?id=<?php echo $entries[$nDay][$sTime]->getId(); ?>">
+          <a href="view-entry.php?id=<?php echo $entries[$nDay][$sTime]->getId(); ?>">
         <?php } else { ?>
           <td class="schoorbs-week-matrix-free">
           <a href="edit_entry.php?room=<?php echo $room->getId(); 
@@ -66,7 +66,7 @@ foreach($entries as $sDay=>$aEntries) {
 <ul>
   <?php foreach($uniqueEntries as $oEntry) { ?>
     <li>
-      <a href="view_entry.php?id=<?php echo $oEntry->getId(); ?>">
+      <a href="view-entry.php?id=<?php echo $oEntry->getId(); ?>">
         <?php echo $oEntry->getName(); ?>
       </a>
       (<?php echo date('d', $oEntry->getStartTime()).' '
@@ -78,7 +78,7 @@ foreach($entries as $sDay=>$aEntries) {
                   .date('Y H:i', $oEntry->getEndTime()); ?>) 
       <p>
       	<?php $aOut = str_split($oEntry->getDescription(), 100); echo ht($aOut[0]); ?>
-        <a href="view_entry.php?id=<?php echo $oEntry->getId(); ?>">...</a>
+        <a href="view-entry.php?id=<?php echo $oEntry->getId(); ?>">...</a>
         <br /><em><?php echo Lang::_('Booked by'); ?> <strong><?php echo ht($oEntry->getCreateBy()); ?></strong></em>
       </p>
     </li>

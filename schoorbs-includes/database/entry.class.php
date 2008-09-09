@@ -116,6 +116,25 @@ class Entry {
 		return $GLOBALS['enable_periods'] == true;
 	}
 	
+	/**
+	 * Format a time fitting for the current period setting
+	 *
+	 * Only senseful if periods are enabled.
+	 *
+	 * @return string
+	 * @author Uwe L. Korn <uwelk@xhochy.org>
+	 * @param $nTime int
+	 */
+	public static function formatTimePeriodString($nTime) {
+		global $periods;
+		
+		$aTime = getdate($nTime);
+    		$nPnum = $aTime['minutes'];
+		if($nPnum < 0 ) $nPnum = 0;
+		if($nPnum >= count($periods) - 1) $nPnum = count($periods) - 1;
+		return $periods[$nPnum];
+	}
+	
 	/// instance variables ///
 	
 	/**
@@ -352,8 +371,8 @@ class Entry {
 	 * @author Uwe L. Korn <uwelk@xhochy.org>
 	 * @return Repeat
 	 */
-	public function getRepetiton() {
-		if ($this->nRepeatId != 0) {
+	public function getRepetition() {
+		if ($this->isRepeated()) {
 			if ($this->oRepetition == null) {
 				$this->oRepetition = Repeat::getById($this->nRepeatId);
 			}
@@ -364,14 +383,26 @@ class Entry {
 	}
 	
 	/**
+	 * Determinate if this entry is repeated at another time
+	 *
+	 * At the moment an entry is repeated if its RepeatId is not zero.
+	 *
+	 * @author Uwe L. Korn <uwelk@xhochy.org>
+	 * @return bool
+	 */
+	public function isRepeated() {
+		return ($this->nRepeatId != 0);
+	}
+	
+	/**
 	 * Return the type of repeating as a nice string
 	 *
 	 * @author Uwe L. Korn <uwelk@xhochy.org>
 	 * @return string
 	 */
 	public function getRepetitionString() {
-		if ($this->nRepeatId != 0) {
-			$nRepType = $this->getRepetiton()->getRepType();
+		if ($this->isRepeated()) {
+			$nRepType = $this->getRepetition()->getRepType();
 			if ($nRepType == 1) {
 				return Lang::_('Daily');
 			} else if ($nRepType == 2) {
@@ -421,13 +452,7 @@ class Entry {
 	 * @author Uwe L. Korn <uwelk@xhochy.org>
 	 */
 	public function getStartPeriodString() {
-		global $periods;
-		
-		$aTime = getdate($this->nStartTime);
-    		$nPnum = $aTime['minutes'];
-		if($nPnum < 0 ) $nPnum = 0;
-		if($nPnum >= count($periods) - 1) $nPnum = count($periods) - 1;
-		return $periods[$nPnum];
+		return self::formatTimePeriodString($this->nStartTime);
 	}
 	
 	/**
@@ -439,13 +464,7 @@ class Entry {
 	 * @author Uwe L. Korn <uwelk@xhochy.org>
 	 */
 	public function getEndPeriodString() {
-		global $periods;
-		
-		$aTime = getdate($this->nEndTime);
-    		$nPnum = $aTime['minutes'];
-		if($nPnum < 0) $nPnum = 0;
-		if($nPnum >= count($periods) - 1) $nPnum = count($periods) - 1;
-		return $periods[$nPnum];
+		return self::formatTimePeriodString($this->nEndTime);
 	}	 
 	
 	/**
