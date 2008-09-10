@@ -31,7 +31,7 @@ case "month":
     $redirect_str = "month.php?year=$year&month=$month";
     break;
 case "week":
-    $redirect_str = "week.php?year=$year&month=$month&day=$day";
+    $redirect_str = "week-view.php?year=$year&month=$month&day=$day";
     break;
 default:
     $redirect_str = "day.php?day=$day&month=$month&year=$year";
