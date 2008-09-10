@@ -75,7 +75,11 @@ $nUnitsPerDay = intval($nUnitsPerDay);
 // null since null is equal to unset($aEntry[..][..]), but we want a full 
 // timetable matrix.
 $aEntry = array();
+// $aEntryTime carries the timestamp for beginning of each booking unit. It is 
+// accessd via $aEntry[$nDay][$sTime]
 $aEntryTime = array();
+// $aUniqueEntry carries all entries sorted by time. In contrast to $aEntry its
+// index is the time when the bookings start and no entry will appear twice.
 $aUniqueEntry = array();
 
 // iterate through the days
