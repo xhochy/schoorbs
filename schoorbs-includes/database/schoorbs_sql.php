@@ -241,7 +241,8 @@ function schoorbsCreateRepeatEntry($starttime, $endtime, $rep_type, $rep_enddate
         // Mandatory things:
 	$sql_coln[] = 'start_time'; 	$sql_val[] = $starttime;
 	$sql_coln[] = 'end_time'; 	$sql_val[] = $endtime;
-	$sql_coln[] = 'rep_type'; 	$sql_val[] = $rep_type;
+	$sql_coln[] = 'rep_type'; 	var_dump($day, $cur_day, $start_day, $week_num, $rep_opt); 
+					$sql_val[] = $rep_type;
 	$sql_coln[] = 'end_date';	$sql_val[] = $rep_enddate;
 	$sql_coln[] = 'room_id';	$sql_val[] = $room_id;
 	$sql_coln[] = 'create_by';	$sql_val[] = '\''.$owner.'\'';
@@ -401,6 +402,7 @@ function mrbsGetRepeatEntryList($time, $enddate, $rep_type, $rep_opt, $max_ittr,
 					{
 						break;
 					}
+					
 				}
 
 				break;	

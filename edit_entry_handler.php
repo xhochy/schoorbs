@@ -91,14 +91,14 @@ if (isset($_REQUEST['ampm'])) {
 if (isset($_REQUEST['reptype'])) {
 	$rep_type = intval($_REQUEST['reptype']);
 	if ($rep_type < 0) $rep_type = 0;
-	if ($rep_type > 5) {
-		fatal_error(true, 'Internal error: reptype of >5 not supported');
+	if ($rep_type > 6) {
+		fatal_error(true, 'Internal error: reptype of >6 is not supported');
 	}
 } else {
 	$rep_type = 0;
 }
 
-if (isset($_REQUEST['rep_day']) && is_array($_REQUEST['rep_day'])) {
+if (isset($_REQUEST['rep_day']) && ($_REQUEST['rep_day'])) {
 	$rep_day = $_REQUEST['rep_day'];
 } else {
 	$rep_day = array();
@@ -165,7 +165,7 @@ if (($rep_type != 0) && isset($rep_end_month) && isset($rep_end_day) && isset($r
 
 # For weekly repeat(2), build string of weekdays to repeat on:
 $rep_opt = '';
-if ($rep_type == 2) {
+if (($rep_type == 2) || ($rep_type == 6)) {
     for ($i = 0; $i < 7; $i++) $rep_opt .= empty($rep_day[$i]) ? '0' : '1';
 }
 
