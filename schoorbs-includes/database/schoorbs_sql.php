@@ -93,7 +93,7 @@ function schoorbsCheckFree($room_id, $starttime, $endtime, $ignore, $repignore)
 
         $err .= "<li><a href=\"view-entry.php?id=$row[0]\">$row[1]</a>"
 		. " ( " . $startstr . ") "
-		. "(<a href=\"day.php?$param_ymd\">".get_vocab("viewday")."</a>"
+		. "(<a href=\"day-view.php?$param_ymd\">".get_vocab("viewday")."</a>"
 		. " | <a href=\"week-view.php?room=$room_id&$param_ymd\">".get_vocab("viewweek")."</a>"
 		. " | <a href=\"month.php?room=$room_id&$param_ym\">".get_vocab("viewmonth")."</a>)</li>";
 	}

@@ -46,7 +46,7 @@
 		onmouseout="UnHighlightCell(this);"
 	{/if}>
 		<div class="monthday">
-			<a href="day.php?year={$year}&amp;month={$month}&amp;day={$days_item.cday}&amp;area={$area}">
+			<a href="day-view.php?year={$year}&amp;month={$month}&amp;day={$days_item.cday}&amp;area={$area}">
 				{$days_item.cday}
 			</a>
 			&nbsp;

@@ -264,14 +264,31 @@ class SchoorbsTPL {
 	/**
 	 * Display a error
 	 *
+	 * All variables given in $aParams will be populated to the template. 
+	 * You can use this feature if you maybe want to display a sidebar on 
+	 * some page where an error occurs, but not on all.
+	 *
 	 * Remark: This function will only display the error page but will not
 	 *         exit the script, you have to do this manually. This gives you
 	 *         the possiblity to return a specific exit code.
 	 *
 	 * @param $sErrorText string
+	 * @param $aParams array
 	 * @author Uwe L. Korn <uwelk@xhochy.org>
 	 */
-	public static function error($sErrorText) {
+	public static function error($sErrorText, $aParams = null) {
+		// If there were any parameters passed, we will populate them
+		// here.
+		if ($aParams !== null) {
+			foreach ($aParams as $sKey=>$mValue) {
+				// For perfomance improvements we could use 
+				// at this place directly the self::$aVariables
+				// Array but maybe in future the variable 
+				// handling might change, so then we still will
+				// only need to change it at one position.
+				self::populateVar($sKey, $mValue);
+			}
+		}
 		self::populateVar('SCHOORBS_ERROR', $sErrorText);
 		self::renderPage('error');
 	}

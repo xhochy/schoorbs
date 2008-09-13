@@ -15,6 +15,12 @@ require_once 'schoorbs-includes/global.web.php';
 require_once 'schoorbs-includes/global.functions.php';
 /** The versio information of Schoorbs */
 require_once 'schoorbs-includes/version.php';
+/** The modern ORM databse layer */
+require_once 'schoorbs-includes/database/schoorbsdb.class.php';
+/** The template system */
+require_once 'schoorbs-includes/schoorbstpl.class.php';
+
+SchoorbsTPL::renderPage('help');
 
 // Print the header
 print_header();

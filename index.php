@@ -34,7 +34,7 @@ case "week":
     $redirect_str = "week-view.php?year=$year&month=$month&day=$day";
     break;
 default:
-    $redirect_str = "day.php?day=$day&month=$month&year=$year";
+    $redirect_str = "day-view.php?day=$day&month=$month&year=$year";
 }
 
 if(!empty($default_room)) {

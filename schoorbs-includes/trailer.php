@@ -33,7 +33,7 @@ if ( $pview != 1 ) {
 		$cday   = date("d", $ctime);
 		if ($i != -6) echo " | ";
 		if ($i == 0) echo '<strong>[ ';
-		echo "<a href=\"day.php?year=$cyear&amp;month=$cmonth&amp;day=$cday$params\">$str</a>\n";
+		echo "<a href=\"day-view.php?year=$cyear&amp;month=$cmonth&amp;day=$cday$params\">$str</a>\n";
 		if ($i == 0) echo ']</strong> ';
 	}
 
@@ -60,7 +60,7 @@ if ( $pview != 1 ) {
 			$str = utf8_strftime(empty($dateformat)? "%b %d" : "%d %b", $ctime);
 		}
 		if ($i == 0) echo '<strong>[ ';
-		echo "<a href=\"week.php?year=$cyear&amp;month=$cmonth&amp;day=$cday$params\">$str</a>\n";
+		echo "<a href=\"week-view.php?year=$cyear&amp;month=$cmonth&amp;day=$cday$params\">$str</a>\n";
 		if ($i == 0) echo ']</strong> ';
 	}
 
