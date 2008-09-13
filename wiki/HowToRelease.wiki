@@ -12,6 +12,7 @@
  
  * Build a zip- and a 7z-archive of Schoorbs -> `rake release`
  * Upload these files to http://static.xhochy.com and https://www.ohloh.net/projects/schoorbs/packages
+ * Add a new release and upload the files to https://launchpad.net/schoorbs/trunk/+addrelease
  * Build Debian and Ubuntu Packages of Schoorbs -> `rake debian:binary:fakeroot`
  * Upload those packages to http://static.xhochy.com
  * Announce on [http://twitter.com/xhochy]
