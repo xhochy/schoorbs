@@ -15,7 +15,7 @@
     <div id="maincontent">
       <?php SchoorbsTPL::renderBody(); ?>
     </div> <!-- end maincontent -->
-    <?php if ((self::$sPage == 'week-view') || (self::$sPage == 'day-view') || (self::$sPage == 'month-view')) { ?>
+    <?php if ((self::$sPage == 'week-view') || (self::$sPage == 'day-view') || (self::$sPage == 'month-view') || (self::$sPage == 'error')) { ?>
       <div id="sidecontent">
         <?php SchoorbsTPL::render('sidebar'); ?>
       </div> <!-- end sidecontent -->

@@ -269,7 +269,7 @@ if (empty($err)) {
     $area = mrbsGetRoomArea($room_id);
     
     // Now its all done go back to the day view
-    header("Location: day.php?year=$year&month=$month&day=$day&area=$area");
+    header("Location: day-view.php?year=$year&month=$month&day=$day&area=$area");
     exit(0);
 }
 

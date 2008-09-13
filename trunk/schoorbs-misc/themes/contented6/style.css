@@ -1,3 +1,5 @@
+/** week-matrix **/
+
 .schoorbs-week-matrix {
 	text-align: center;
 	margin-left:auto; 
@@ -22,6 +24,40 @@
 .schoorbs-week-matrix-time {
 	min-width: 40px;
 }
+
+/** day-matrix **/
+
+.schoorbs-day-matrix {
+	text-align: center;
+	margin-left:10px; 
+	margin-right:10px;
+	width: 100%;
+}
+
+.schoorbs-day-matrix-time {
+	min-width: 10px;
+	width: 10px;
+}
+
+.schoorbs-day-matrix-free a {
+	background-color: #0d0;
+	display: block;
+}
+.schoorbs-day-matrix-free a:hover {
+	background-color: #0f0;
+}
+.schoorbs-day-matrix-booked a:hover {
+	background-color: #f00;
+	color: white;
+}
+.schoorbs-day-matrix-booked a {
+	background-color: #d00;
+	display: block;
+	color: white;
+}
+
+
+/** misc **/
 
 #schoorbs-loginbox {
 	float: right;

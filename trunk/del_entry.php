@@ -65,7 +65,7 @@ if (getAuthorised(1) && ($oEntry = Entry::getById($id))) {
 		// Log deletion of an entry
         	schoorbsLogDeletedEntry($aEntryInfo);
         	// Return to the day where we deleted that entry
-        	header("Location: day.php?day=$day&month=$month&year=$year&area=$area");
+        	header("Location: day-view.php?day=$day&month=$month&year=$year&area=$area");
 		exit();
 	}
 }

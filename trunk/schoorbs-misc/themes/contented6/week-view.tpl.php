@@ -1,9 +1,12 @@
 <h1>
+  <?php echo $room->getArea()->getName(); ?> &#8594; <?php echo $room->getName(); ?>
+</h1>
+<h3>
   <em><?php echo Lang::_('View Week'); ?>:</em>
   <?php echo date('d', $nStartTime).' '.Lang::_(date('F', $nStartTime)).' '.date('Y', $nStartTime); ?>
   &#8594; 
   <?php echo date('d', $nEndTime).' '.Lang::_(date('F', $nEndTime)).' '.date('Y', $nEndTime); ?>
-</h1>
+</h3>
 
 <table class="schoorbs-week-matrix">
 <tr>
@@ -34,7 +37,7 @@ foreach($entries as $sDay=>$aEntries) {
             if (Entry::perioded()) {
             	echo '&amp;period='.preg_replace('/^0/', '', date('i', $entryTime[$nDay][$sTime]));
             } else {
-            	echo '&amp;hour='.date('g', $entryTime[$nDay][$sTime]).'&amp;minute='.date('i', $entryTime[$nDay][$sTime]);
+            	echo '&amp;hour='.date('H', $entryTime[$nDay][$sTime]).'&amp;minute='.date('i', $entryTime[$nDay][$sTime]);
             }
             ?>">
         <?php } ?>

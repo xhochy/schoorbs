@@ -91,13 +91,22 @@ class Lang {
 			// Get the best available language
 			foreach ($aLangs as $sLang=>$nPriority) {
 				if (self::languageExists($sLang)) {
-					return self::getLanguage($sLang);
+					$oLang = self::getLanguage($sLang);
+					return $oLang;
+				}
+				// If we have an xx_XX-Langcode, try xx too
+				if (preg_match('/([a-z]+)_([A-Z]+)/', $sLang, $aMatches)) {
+					if (self::languageExists($aMatches[1])) {
+						$oLang = self::getLanguage($aMatches[1]);
+						return $oLang;
+					} 
 				}
 			}
 		} 
 		
 		// In the case we haven't found a fitting language, use english.
-		return self::getLanguage('en');
+		$oLang = self::getLanguage('en');
+		return $oLang;
 	}
 	
 	public static function getLanguage($sLang) {
