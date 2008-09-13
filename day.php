@@ -1,13 +1,13 @@
 <?php
 /**
- * The view of one day.
+ * The view of one day
  * 
  * @author gwalker, Uwe L. Korn <uwelk@xhochy.org>
  * @package Schoorbs
  * @license http://www.gnu.org/licenses/gpl.html GNU General Public License
  */
 
-/// Includes ///
+## Includes ##
 
 /** The Configuration file */
 require_once 'config.inc.php';
@@ -15,22 +15,20 @@ require_once 'config.inc.php';
 require_once 'schoorbs-includes/global.web.php';
 /** The general functions */ 
 require_once 'schoorbs-includes/global.functions.php';
+/** The database wrapper */
+require_once "schoorbs-includes/database/$dbsys.php";
 /** The 3 minicalendars */
 require_once 'schoorbs-includes/minicals.php';
-/** The modern ORM databse layer */
-require_once 'schoorbs-includes/database/schoorbsdb.class.php';
 
-/// Var Init ///
+## Var Init ##
 
 /** day, month, year */
 list($day, $month, $year) = input_DayMonthYear();
 /** area */
 $area = input_Area();
-// determinate, if today we have day saving time
+
 $dst_change = is_dst($month,$day,$year);
-// The time of the first possibile entry
 $am7 = am7($day, $month, $year);
-// The end-time of the last possibile entry
 $pm7 = pm7($day, $month, $year);
 
 // y? are year, month and day of yesterday
@@ -38,20 +36,19 @@ list($yd, $ym, $yy) = getYesterday($day, $month, $year);
 // t? are year, month and day of tomorrow
 list($td, $tm, $ty) = getTomorrow($day, $month, $year);
 
-/// Main ///
+## Main ##
 
 // print the page header
 print_header();
 
 if ($pview != 1) {
-    // We need to show either a select box or a normal html list,
-    // depending on the settings in config.inc.php
+    # need to show either a select box or a normal html list,
+    # depending on the settings in config.inc.php
     if ($area_list_format == 'select') {
     	$smarty->assign('area_select_list', 
     		make_area_select_html('day.php', $area, $year, $month, $day));
     } else {
-    	// show the standard html list
-    	$smarty->assign('areas', getAreas()); 
+    	$smarty->assign('areas', getAreas()); // show the standard html list
     }
    
     $smarty->assign(array(
@@ -61,123 +58,189 @@ if ($pview != 1) {
     ));
     $smarty->display('area_list.tpl');
     
-    // Draw the three month calendars
+    # Draw the three month calendars
     minicals($year, $month, $day, $area, '', 'day');
-    echo '</tr></table>';
+    puts('</tr></table>');
 }
 
-// Initialize some common Smarty variable values
-$smarty->assign(array(
-	'am7' => utf8_strftime("%A %d %B %Y", $am7),
-	'pview' => $pview, 'area' => $area,
-	'yy' => $yy, 'ym' => $ym, 'yd' => $yd,
-	'ty' => $ty, 'tm' => $tm, 'td' => $td,
-	'year' => $year, 'day' => $day, 'month' => $month,
-	'times_right_side' => ($times_right_side ? 'true' : 'false'),
-	'enable_periods' => ($enable_periods ? 'true' : 'false')
-));
+# We want to build an array containing all the data we want to show
+# and then spit it out. 
 
-// Get the area as an ORM instance
-$oArea = Area::getById($area);
-// No Area exists
-if ($oArea == null) {
-	fatal_error(false, "No area exists in the database!");
+# Get all appointments for today in the area that we care about
+# Note: The predicate clause 'start_time <= ...' is an equivalent but simpler
+# form of the original which had 3 BETWEEN parts. It selects all entries which
+# occur on or cross the current day.
+$sQuery = "SELECT $tbl_room.id, start_time, end_time, name, $tbl_entry.id, type,
+        $tbl_entry.description, $tbl_entry.create_by
+   FROM $tbl_entry, $tbl_room WHERE $tbl_entry.room_id = $tbl_room.id
+   AND area_id = ".sql_escape_arg($area)
+   ." AND start_time <= $pm7 AND end_time > $am7";
+
+$res = sql_query($sQuery);
+if (!$res) fatal_error(0, sql_error());
+for ($i = 0; ($row = sql_row($res, $i)); $i++) {
+	# Each row weve got here is an appointment.
+	#Row[0] = Room ID
+	#row[1] = start time
+	#row[2] = end time
+	#row[3] = short description
+	#row[4] = id of this booking
+	#row[5] = type (internal/external)
+	#row[6] = description
+	#row[7] = creator
+
+	# $today is a map of the screen that will be displayed
+	# It looks like:
+	#     $today[Room ID][Time][id]
+	#                          [color]
+	#                          [data]
+	#                          [long_descr]
+
+	# Fill in the map for this meeting. Start at the meeting start time,
+	# or the day start time, whichever is later. End one slot before the
+	# meeting end time (since the next slot is for meetings which start then),
+	# or at the last slot in the day, whichever is earlier.
+	# Time is of the format HHMM without leading zeros.
+	#
+	# Note: int casts on database rows for max may be needed for PHP3.
+	# Adjust the starting and ending times so that bookings which don't
+	# start or end at a recognized time still appear.
+	$start_t = max(round_t_down($row[1], $resolution, $am7), $am7);
+	$end_t = min(round_t_up($row[2], $resolution, $am7) - $resolution, $pm7);
+	for ($t = $start_t; $t <= $end_t; $t += $resolution) {
+		$today[$row[0]][date($format,$t)]["id"]    = $row[4];
+		$today[$row[0]][date($format,$t)]["color"] = $row[5];
+		$today[$row[0]][date($format,$t)]["data"]  = "";
+		$today[$row[0]][date($format,$t)]["long_descr"]  = "";
+		$today[$row[0]][date($format,$t)]['create_by'] = $row[7];
+	}
+
+	# Show the name of the booker in the first segment that the booking
+	# happens in, or at the start of the day if it started before today.
+	if ($row[1] < $am7) {
+		$today[$row[0]][date($format,$am7)]["data"] = $row[3];
+		$today[$row[0]][date($format,$am7)]["long_descr"] = $row[6];
+	} else {
+		$today[$row[0]][date($format,$start_t)]["data"] = $row[3];
+		$today[$row[0]][date($format,$start_t)]["long_descr"] = $row[6];
+	}
 }
-// Get the name of the area we are working on out of the database
-$area_name = $oArea->getName();
-// Collect all rooms in the choosen area
-$aRooms = Room::getRooms($oArea);
-// If there are no rooms in this area, there won't be any entries to display.
-// In this case display a message, which should be seens as a remark and not
-// as an error. There could exist areas without rooms as placeholders for
-// future times.
-if (count($aRooms) === 0) {
-	echo '<h1>'.get_vocab('no_rooms_for_area').'</h1>';
+
+# We need to know what all the rooms area called, so we can show them all
+# pull the data from the db and store it. Convienently we can print the room
+# headings and capacities at the same time
+
+$sQuery = "SELECT room_name, capacity, id, description FROM $tbl_room WHERE area_id = "
+	.sql_escape_arg($area)." ORDER BY 1";
+$res = sql_query($sQuery);
+
+# It might be that there are no rooms defined for this area.
+# If there are none then show an error and dont bother doing anything
+# else
+if (! $res) fatal_error(0, sql_error());
+if (sql_count($res) == 0) {
+	echo "<h1>".get_vocab("no_rooms_for_area")."</h1>";
+	sql_free($res);
 } else {
-	// Get all appointments for today in the area that we care about
-	// 
-	// The entries will be stored in a specific array, so that we could use it
-	// with Smarty more easily. Some things might occur stupid, but they help us
-	// with things in the templates. The array has the following structure:
-	//
-	// $aEntries 
-	//   --> [Timestamp of row]
-	//     --> ['entries']
-	//       --> [Room-id]
-	//         --> ['entry'] => Entry-Object 
-	//         --> ['room'] => Room-Obeject
-	//     --> ['timestring'] => Time formatted as a nice string
-	//     --> ['time'] => Unix timestamp of the starttime of this row
-	//     --> ['urlparams'] => The URL-parameters which should be added to 
-	//                          the links to identify the time of the row.
-	$aEntries = array();
-	// Fill up the array with empty time rows
-	for ($t = $am7; $t < $pm7; $t += $resolution) {
-		$aEntries[$t] = array('entries' => array());
-		// Save the time of this line, need for comparisons, if an entry
-		// starts in this row or a proceeding one
-		$aEntries[$t]['time'] = $t;
-		
-		// Depending on which time system we have, we generate the formatted
-		// time string
-		if($enable_periods) {
-			// Get the number of the period => minute of the hour
-			$time_t = preg_replace("/^0/", "", date('i', $t));
-			// Get the name/title of the period out of the configuration array
-			// $period
-			$aEntries[$t]['timestring'] = $periods[$time_t];
-			// Make up the URL-parameters for this period
-			$aEntries[$t]['urlparams'] = htmlentities('&period='.$time_t);
-		} else {
-			// Use utf8_strftime to support multilingual date output
-			$aEntries[$t]['timestring'] = utf8_strftime(hour_min_format(), $t);
-			// Make up the URL-parameters for this time
-			/*$aEntries[$t]['urlparams'] = htmlentities('&hour='.$hour
-				.'&minute='.$minute);*/
-		}		
-	}
-	foreach ($aRooms as $oRoom) {
-		for ($t = $am7; $t < $pm7; $t += $resolution) {
-			// Fill $aEntries subarray with default values. Always include the
-			// room-object, so that we can make up the links. If entry is null
-			// the room is free at this time, otherwise it is filled with the 
-			// fitting booking. One could determinate if this is the first time
-			// an entry occurs by comparing <entry>->getStartTime() and
-			// $aEntries[$t]['time'].
-			$aEntries[$t]['entries'][$oRoom->getId()] = array(
-				'entry' => null, 'room' => $oRoom);
-		}
-		// Go through each entry and save it in teh $aEntries array
-		foreach (Entry::getBetween($oRoom, $pm7, $am7) as $oEntry) {
-			// Fill in the map for this meeting. Start at the meeting start time,
-			// end one slot before the meeting end time (since the next slot is 
-			// for meetings which start then), or at the last slot in the day, 
-			// whichever is earlier.
-			//
-			// Start either at morning or the start of the booking, we choose 
-			// the later one.
-			$start_t = max($oEntry->getStartTime(), $am7);
-			// End $resolution before the endtime of the booking or, if earlier,
-			// at the end of the day.
-			$end_t = min(($oEntry->getEndTime() - $resolution), $pm7);
-			for ($t = $start_t; $t <= $end_t; $t += $resolution) {
-				$aEntries[$t]['entries'][$oRoom->getId()]['entry'] = $oEntry;
-			}
-		}
-	}
+	$room_column_width = (int)(95 / sql_count($res));
 	
-	// Sort the array, sorting should be done via looking in the keys.
-	ksort($aEntries);
-	// Remove the keys, so we could use simply foreach in Smarty
-	$aEntries = array_values($aEntries);
-	
-	// Assign all remaining variable values for Smarty
 	$smarty->assign(array(
-		'rooms' => $aRooms,
-		'entries' => $aEntries
+		'am7' => utf8_strftime("%A %d %B %Y", $am7),
+		'pview' => $pview, 'area' => $area,
+		'yy' => $yy, 'ym' => $ym, 'yd' => $yd,
+		'ty' => $ty, 'tm' => $tm, 'td' => $td,
+		'year' => $year, 'day' => $day, 'month' => $month,
+		'javascript_cursor' => ($javascript_cursor ? 'true' : 'false'),
+		'show_plus_link' => ($show_plus_link ? 'true' : 'false'),
+		'times_right_side' => ($times_right_side ? 'true' : 'false'),
+		'enable_periods' => ($enable_periods ? 'true' : 'false'),
+		'highlight_method' => $highlight_method,
+		'period_title' => ($enable_periods ? get_vocab("period") : get_vocab("time")),
+		'room_column_width' => $room_column_width
 	));
 	
-	// Display the template for the timetable-day-view
+	
+	$aRooms = array();
+	for ($i = 0; ($row = sql_row($res, $i)); $i++) {
+	    $rooms[] = $row[2];
+	    $aRooms[] = array(
+	    	'title' => $row[0], 'capacity' => $row[1], 
+	    	'id' => $row[2], 'description' => $row[3]
+	    );
+	}
+	$smarty->assign('rooms', $aRooms);
+	
+	# This is the main bit of the display
+	# We loop through time and then the rooms we just got
+
+	# if the today is a day which includes a DST change then use
+	# the day after to generate timesteps through the day as this
+	# will ensure a constant time step
+	$j = (($dst_change != -1) ? 1 : 0);
+	
+	$times = array();
+	$row_class = "even_row";
+	for (
+		$t = mktime($morningstarts, $morningstarts_minutes, 0, $month, $day+$j, $year);
+		$t <= mktime($eveningends, $eveningends_minutes, 0, $month, $day+$j, $year);
+		$t += $resolution, $row_class = ($row_class == 'even_row') ? 'odd_row' : 'even_row'
+	) {
+		// convert timestamps to HHMM format without leading zeros
+		$time_t = date($format, $t);
+		
+		$cols = array();
+		// Loop through the list of rooms we have for this area
+		foreach($rooms as $key => $room) {
+			// Array used to temporarly store the vars that will be sent to Smarty
+			$aLoop = array();
+			
+			if(isset($today[$room][$time_t]['id'])) {
+				$aLoop['id'] = $today[$room][$time_t]["id"];
+				$color = $today[$room][$time_t]["color"];
+				$aLoop['descr'] = ht($today[$room][$time_t]["data"]);
+				$aLoop['long_descr'] = ht($today[$room][$time_t]["long_descr"]);
+				$aLoop['create_by'] = ht($today[$room][$time_t]["create_by"]);
+			}
+			
+			// $c is the colour of the cell that the browser sees. White normally,
+			// red if were hightlighting that line and a nice attractive green 
+			// if the room is booked.
+			// We tell if its booked by $id having something in it
+			if (isset($aLoop['id'])) {
+				$aLoop['css_class'] = $color;
+			} else {
+				// Use the default color class for the row.
+				$aLoop['css_class'] = $row_class; 
+			}
+			
+			// If the room isnt booked then allow it to be booked
+			if (!isset($aLoop['id'])) {
+				$hour = date("H",$t);
+				$minute  = date("i",$t);
+				
+				if ($pview != 1) {
+					if ($enable_periods) {
+						$time_t_stripped = preg_replace( "/^0/", "", $time_t ); 
+						$aLoop['period_param'] = ht("&period=$time_t_stripped");
+					} else {
+						$aLoop['period_param'] = ht("&hour=$hour&minute=$minute");
+					}
+				}
+			}
+			$aLoop['room'] = $room;
+			$cols[] = $aLoop;
+		}
+      	
+		if($enable_periods) {
+			$sTitle = $periods[preg_replace( "/^0/", "", $time_t)];
+		} else {
+			$sTitle = utf8_strftime(hour_min_format(), $t);
+		}
+		$times[] = array('time' => $time_t, 'cols' => $cols, 'title' => $sTitle);
+	}
+	
+	$smarty->assign('times', $times);
+	// Display the template for this apge
 	$smarty->display('day.tpl');
 	// Show the colur keys with the types of bookinhgs
 	show_colour_key();

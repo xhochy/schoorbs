@@ -15,8 +15,8 @@
  */
 
 /**
- * Free a results handle. You need not call this if you call sql_row
- * until the row returns 0, since sql_row frees the results
+ * Free a results handle. You need not call this if you call sql_row or
+ * sql_row_keyed until the row returns 0, since sql_row frees the results
  * handle when you finish reading the rows.
  * 
  * @param $r MySQLi-Result The MySQLi-Result to be freed 
@@ -53,7 +53,7 @@ function sql_query1 ($sql)
     if (! $r) return -1;
     if (($r->num_rows != 1) || ($r->field_count != 1) ||
         (($row = $r->fetch_row()) == NULL)) {
-        return -1;
+        $result = -1;
     }
     $r->close();
     return $row[0];
@@ -93,6 +93,27 @@ function sql_row ($r, $i)
     }
     $r->data_seek($i);
     return $r->fetch_row();
+}
+
+/**
+ * Return a row from a result as an associative array keyed by field name.
+ * The first row is 0.
+ * This is actually upward compatible with sql_row since the underlying
+ * routing also stores the data under number indexes.
+ * When called with i >= number of rows in the result, cleans up from
+ * the query and returns 0.
+ * @return array 
+ * @param $r MySQLi-Result
+ * @param $i int
+ */
+function sql_row_keyed ($r, $i)
+{
+    if ($i >= $r->num_rows) {
+        $r->close();
+        return 0;
+    }
+    $r->data_seek($i);
+    return $r->fetch_array();
 }
 
 /**
@@ -200,6 +221,19 @@ function sql_mutex_cleanup()
 
 
 /**
+ * Return a string identifying the database version:
+ * @return string 
+ */
+function sql_version()
+{
+    $r = sql_query("select version()");
+    $v = sql_row($r, 0);
+    sql_free($r);
+    return "MySQL $v[0]";
+}
+
+
+/**
  * Generate non-standard SQL for LIMIT clauses:
  *
  * @return string 
@@ -221,6 +255,63 @@ function sql_syntax_timestamp_to_unix($fieldname)
 {
     return " UNIX_TIMESTAMP($fieldname) ";
 }
+
+/**
+ * Generate non-standard SQL to match a string anywhere in a field's value
+ * in a case insensitive manner. $s is the un-escaped/un-slashed string.
+ * In MySQL, REGEXP seems to be case sensitive, so use LIKE instead. But this
+ * requires quoting of % and _ in addition to the usual.
+ * 
+ * @return string 
+ * @param $fieldname string
+ * @param $s string
+ */
+function sql_syntax_caseless_contains($fieldname, $s)
+{
+    $s = str_replace("\\", "\\\\", $s);
+    $s = str_replace("%", "\\%", $s);
+    $s = str_replace("_", "\\_", $s);
+    $s = str_replace("'", "''", $s);
+    return " $fieldname LIKE '%$s%' ";
+}
+
+/**
+ * Returns the name of a field.
+ * 
+ * @return string
+ * @param $result MySQLi-Result
+ * @param $index int
+ */
+function sql_field_name($result, $index)
+{
+    $finfo = $result->fetch_field_direct($index);
+    return $finfo->name;
+}
+
+/**
+ * Returns the type of a field. (one of "int", "real", "string", "blob", etc...)
+ * 
+ * @return string 
+ * @param $result MySQLi-Result
+ * @param $index int
+ */
+function sql_field_type($result, $index)
+{
+    $finfo = $result->fetch_field_direct($index);
+    return $finfo->type;
+}
+
+/**
+ * Returns the number of fields in a result.
+ *
+ * @return int 
+ * @param $result MySQLi-Result
+ */
+function sql_num_fields($result)
+{
+    return $result->field_count;
+}
+
 
 /**
  * Escapes a string for use as a SQL parameter

@@ -35,14 +35,12 @@ function get_default_room($nArea)
  */ 
 function input_Room()
 {
-	if (isset($_REQUEST['room'])) {
-	    if (empty($_REQUEST['room'])) {
+	if(isset($_REQUEST['room']))
+	    if(empty($_REQUEST['room']))
 	        $room = get_default_room(input_Area());
-	    } else {
-	        $room = unslashes($_REQUEST['room']);
-	    }
-	} else {
+	    else
+	        $room = intval(unslashes($_REQUEST['room']));
+	else
 	    $room = get_default_room(input_Area());
-	}
 	return $room;
 }

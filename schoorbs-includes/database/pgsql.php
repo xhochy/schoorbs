@@ -22,8 +22,8 @@ require_once dirname(__FILE__).'/../../config.inc.php';
 ## Functions ##
 
 /**
- * Free a results handle. You need not call this if you call sql_row
- * until the row returns 0, since sql_row frees the results
+ * Free a results handle. You need not call this if you call sql_row or
+ * sql_row_keyed until the row returns 0, since sql_row frees the results
  * handle when you finish reading the rows.
  * 
  * @param PostgreSQL-Result $r
@@ -121,6 +121,28 @@ function sql_row ($r, $i)
 		return 0;
 	}
 	return pg_fetch_row($r, $i);
+}
+
+/**
+ * Return a row from a result as an associative array keyed by field name.
+ * The first row is 0.
+ * This is actually upward compatible with sql_row since the underlying
+ * routing also stores the data under number indexes.
+ * When called with i >= number of rows in the result, cleans up from
+ * the query and returns 0.
+ * 
+ * @param PostgreSQL-Result-Handle $r
+ * @param int $i The number of the row to fetch
+ * @return array
+ */
+function sql_row_keyed ($r, $i)
+{
+	if ($i >= pg_num_rows($r))
+	{
+		pg_free_result($r);
+		return 0;
+	}
+	return pg_fetch_array($r, $i);
 }
 
 /**
@@ -239,6 +261,19 @@ function sql_mutex_cleanup()
 	}
 }
 
+/**
+ * Return a string identifying the database version.
+ * 
+ * @return string The version of PostgreSQL that is used
+ */
+function sql_version()
+{
+	$r = sql_query("SELECT version()");
+	$v = sql_row($r, 0);
+	sql_free($r);
+	return $v[0];
+}
+
 // 
 /**
  * Generate non-standard SQL for LIMIT clauses.
@@ -261,6 +296,60 @@ function sql_syntax_limit($count, $offset)
 function sql_syntax_timestamp_to_unix($fieldname)
 {
 	return " DATE_PART('epoch', $fieldname) ";
+}
+
+/**
+ * Generate non-standard SQL to match a string anywhere in a field's value
+ * in a case insensitive manner. $s is the un-escaped/un-slashed string.
+ * In PostgreSQL, we can do case insensitive regexp with ~*, but not case
+ * insensitive LIKE matching.
+ * Quotemeta escapes everything we need except for single quotes.
+ * 
+ * @param string $fieldname
+ * @param string $s
+ * @return string
+ */
+function sql_syntax_caseless_contains($fieldname, $s)
+{
+	$s = quotemeta($s);
+	$s = str_replace("'", "''", $s);
+	return " $fieldname ~* '$s' ";
+}
+
+/**
+ * Returns the name of a field.
+ * 
+ * @param PostgreSQL-Result-Handle $result
+ * @param int $index
+ * @return string
+ */
+function sql_field_name($result, $index)
+{
+	return pg_field_name($result, $index);
+}
+
+
+/**
+ * Returns the type of a field. (one of "int", "real", "string", "blob", etc...)
+ * 
+ * @param PostgreSQL-Result-Handle $result
+ * @param int $index
+ * @return string
+ */
+function sql_field_type($result, $index)
+{
+	return pg_field_type($result, $index);
+}
+
+/**
+ * Returns the number of fields in a result.
+ * 
+ * @param PostgreSQL-Result-Handle $result
+ * @return int
+ */ 
+function sql_num_fields($result)
+{
+	return pg_num_fields($result);
 }
 
 /**

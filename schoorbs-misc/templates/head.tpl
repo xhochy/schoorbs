@@ -37,7 +37,7 @@
 	<div id="linkbar">
 		<span id="poweredby" class="vcard"><a class="url" href="http://schoorbs.xhochy.com">Powered by <span class="fn org">Schoorbs</span></a></span>
 		<span id="schoorbs-linkbar-links">
-			<a class="menu_link" href="administration.php">{get_vocab text="admin"}</a>
+			<a class="menu_link" href="admin.php">{get_vocab text="admin"}</a>
 			<a class="menu_link" href="help.php">{get_vocab text="help"}</a>
 			<a class="menu_link" href="search.php">{get_vocab text="search"}</a>
 		</span>

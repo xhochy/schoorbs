@@ -7,7 +7,7 @@
  * @license http://www.gnu.org/licenses/gpl.html GNU General Public License
  */
 
-/// Includes ///
+## Includes ##
 
 /** The Configuration file */
 require_once 'config.inc.php';
@@ -23,49 +23,39 @@ require_once 'schoorbs-includes/authentication/schoorbs_auth.php';
 require_once 'schoorbs-includes/database/schoorbs_sql.php';
 /** The logging wrapper */
 require_once 'schoorbs-includes/logging.functions.php';
-/** The modern ORM databse layer */
-require_once 'schoorbs-includes/database/schoorbsdb.class.php';
 
-/// Var Init ///
+## Var Init ##
 
 if (isset($_REQUEST['id'])) $id = intval($_REQUEST['id']);
 if (isset($_REQUEST['series'])) $series = intval($_REQUEST['series']);
 
-/// Main ///
+## Main ##
 
 // Check only if the user is logged in, if he has enough rights to delete
 // will be checked later on in schoorbsDelEntry()
-if (getAuthorised(1) && ($oEntry = Entry::getById($id))) {
+if (getAuthorised(1) && ($info = mrbsGetEntryInfo($id))) {
 	// Get day, month and year of the booking which should be deleted
-	$day   = date('d', $oEntry->getStartTime());
-	$month = date('m', $oEntry->getStartTime());
-	$year  = date('Y', $oEntry->getStartTime());
-	$area  = $oEntry->getRoom()->getArea()->getId();
+	$day   = date('d', $info['start_time']);
+	$month = date('m', $info['start_time']);
+	$year  = date('Y', $info['start_time']);
+	$area  = mrbsGetRoomArea($info['room_id']);
 
 	// Do not delete entries which are already in progress or have happened in
 	// the past. This should prohibit abuse when using the room and resource
 	// booking system.
-    	if ($oEntry->getStartTime() <= time()) {
-        	/** @todo Translate this */
-        	fatal_error(true, 'Start time in Past, could not delete entry!');
-    	}
+    if ($info['start_time'] <= time()) {
+        /** @todo Translate this */
+        fatal_error(true, 'Start time in Past, could not delete entry!');
+    }
 
-	$aEntryInfo = array();
-	$aEntryInfo['name'] = $oEntry->getName();
-	$aEntryInfo['room_id'] = $oEntry->getRoom()->getId();
-	$aEntryInfo['start_time'] = $oEntry->getStartTime();
-	$aEntryInfo['end_time'] = $oEntry->getEndTime();
-	$aEntryInfo['create_by'] = $oEntry->getCreateBy();
-
-	$oEntry = null;
-    	sql_begin();
+    sql_begin();
 	$result = schoorbsDelEntry(getUserName(), $id, $series, 1);
 	sql_commit();
 	if ($result) {
-		// Log deletion of an entry
-        	schoorbsLogDeletedEntry($aEntryInfo);
-        	// Return to the day where we deleted that entry
-        	header("Location: day.php?day=$day&month=$month&year=$year&area=$area");
+        // Log deletion of an entry
+        schoorbsLogDeletedEntry($info);
+        // Return to the day where we deleted that entry
+        header("Location: day.php?day=$day&month=$month&year=$year&area=$area");
 		exit();
 	}
 }

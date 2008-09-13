@@ -207,20 +207,20 @@ function minicals($year, $month, $day, $area, $room, $dmy)
 	$nextmonth = mktime(12, 0, 0, $month+1, 1, $year);
 	
 	// Display the calendar for the previous month
-    	echo '<td style="width: 100%">&nbsp;</td>';
-	echo '<td class="calendar-wrapper">';
+    puts('<td style="width: 100%">&nbsp;</td>');
+	puts('<td class="calendar-wrapper">');
 	$cal = new Calendar(date("d",$lastmonth), date("m",$lastmonth), date("Y",$lastmonth), 0, $area, $room, $dmy);
 	echo $cal->getHTML();
 	echo "</td>";
 	
 	// Display the calendar for the current month
-	echo '<td class="calendar-wrapper">';
+	puts('<td class="calendar-wrapper">');
 	$cal = new Calendar(date("d",$thismonth), date("m",$thismonth), date("Y",$thismonth), 1, $area, $room, $dmy);
 	echo $cal->getHTML();
 	echo "</td>";
 	
 	// Display the calendar for the upcoming month
-	echo '<td class="calendar-wrapper">';
+	puts('<td class="calendar-wrapper">');
 	$cal = new Calendar(date("d",$nextmonth), date("m",$nextmonth), date("Y",$nextmonth), 0, $area, $room, $dmy);
 	echo $cal->getHTML();
 	echo "</td>";

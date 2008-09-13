@@ -11,10 +11,14 @@
 
 /** The Schoorbs configuration */
 require_once dirname(__FILE__).'/../config.inc.php';
+/** Smarty Template Engine */
+require_once 'smarty.functions.php';
 /** Funtions for time handling */
 require_once 'time.functions.php';
 /** Functions for area handling */
 require_once 'area.functions.php';
+/** The authetication wrappers */
+require_once dirname(__FILE__).'/../schoorbs-includes/authentication/schoorbs_auth.php';
 
 /// Functions ///
 
@@ -32,6 +36,78 @@ function cmp3($a, $b)
     if ($a == $b) return '= ';
     return '> ';
 }
+
+
+/**
+ * Prints the Header of the XHTML page
+ *
+ * @author jberanek, Uwe L. Korn <uwelk@xhochy.org>
+ */
+function print_header()
+{
+	global $mrbs_company, $search_str, $locale_warning, $pview;
+	global $smarty, $unicode_encoding, $vocab, $unicode_encoding;
+	
+    list($day, $month, $year) = input_DayMonthYear();
+    $area = input_Area();
+	if (empty($search_str)) $search_str = '';
+
+	if ($unicode_encoding) {
+		header('Content-Type: text/html; charset=utf-8');
+	} else {
+		// We use $vocab directly instead of get_vocab() because we have
+		// no requirement to convert the vocab text, we just output
+		// the charset
+		header('Content-Type: text/html; charset='.$vocab['charset']);
+	}
+
+	header('Pragma: no-cache');                          // HTTP 1.0
+	header('Expires: Mon, 26 Jul 1997 05:00:00 GMT');    // Date in the past
+	
+	/** day, month, year selector **/
+	// months
+	$months = array();
+	for($i = 1; $i <= 12; $i++)
+		$months[] = array('string' => utf8_strftime("%b", mktime(0, 0, 0, $i, 1, $year)),
+		    'id' => $i);
+	// years
+	$min = min($year, date("Y")) - 5;
+	$max = max($year, date("Y")) + 5;
+	$years = array();
+	for($i = $min; $i <= $max; $i++)
+		$years[] = $i;
+	
+	$sPViewEcho = ''; $sLogonBox = '';
+	if($pview != 1) {
+        if (!empty($locale_warning)) {
+            $sPViewEcho.= '[Warning: '.$locale_warning.']';
+        }
+
+        $sPViewEcho.= '<input type="hidden" name="area" value="'.$area.'" />';
+
+        // For session protocols that define their own logon box...
+        if (function_exists('PrintLogonBox')) {
+   	        ob_start();
+   	        PrintLogonBox();
+   	        $sLogonBox = ob_get_contents();
+   	        ob_end_clean();
+       	}        
+    }
+    
+    $smarty->assign(array(
+		'months' => $months, 'years' => $years,
+		'prefix' => '',
+		'Area' => $area,
+		'SearchStr' => $search_str,
+		'Day' => $day, 'Month' => $month, 'Year' => $year,
+		'mrbs_company' => $mrbs_company,
+		'pviewecho' => $sPViewEcho,
+		'pview' => $pview,
+		'logonbox' => $sLogonBox
+		));
+	$smarty->display('head.tpl');
+}
+
 
 /**
  * Error handler - this is used to display serious errors such as database
@@ -55,7 +131,7 @@ function fatal_error($need_header, $message = '')
 		if(version_compare('5.0.0',PHP_VERSION,'>') === true) {
 			trigger_error('Schoorbs Fatal Error: '.$message, E_USER_ERROR);
 		} else {
-			throw new Exception($message);
+			eval('throw new Exception($message);');
 		}
 	} else {
 		if ($need_header) print_header();
@@ -319,4 +395,18 @@ function cross_dst ( $start, $end )
 function ht($sCode, $nQuoteStyle = ENT_COMPAT, $sCharset = 'UTF-8')
 {
 	return htmlentities($sCode, $nQuoteStyle, $sCharset);
+}
+
+/**
+ * Output a string and append a linebreak
+ *
+ * Should make the code clearer through avoiding unessacary double-quotes
+ * or ."\n"
+ *
+ * @author Uwe L. Korn <uwelk@xhochy.org>
+ * @param string $sText
+ */
+function puts($sText)
+{
+	echo $sText."\n";
 }

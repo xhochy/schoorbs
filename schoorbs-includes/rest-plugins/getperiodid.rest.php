@@ -34,7 +34,6 @@ function rest_function_getPeriodID()
 		return SchoorbsREST::sendError('Couldn\'t find a fitting period.', 6);
 	}
 
-	$oXML = new SimpleXMLElement('<rsp stat="ok" />');
-	$oXML->addChild('period_id', $nPeriodID);
-	echo $oXML->asXML();
+	SchoorbsREST::$oTPL->assign('period_id', $nPeriodID);
+	SchoorbsREST::$oTPL->display('getperiodid.tpl');
 }

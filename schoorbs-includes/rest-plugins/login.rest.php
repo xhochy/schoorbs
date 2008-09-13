@@ -25,8 +25,6 @@ function rest_function_login()
 	}		
 	
 	// send the username as a verification reply
-	$oXML = new SimpleXMLElement('<rsp stat="ok" />');
-	$oUsername = $oXML->addChild('username');
-	$oUsername->addAttribute('value', getUserName());
-	echo $oXML->asXML();
+	SchoorbsREST::$oTPL->assign('username', getUserName());
+	SchoorbsREST::$oTPL->display('login.tpl');
 }

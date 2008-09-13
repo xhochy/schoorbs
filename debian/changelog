@@ -1,3 +1,41 @@
+schoorbs (1.0.4) unstable; urgency=low
+
+  * Fixed n-weekly repeating
+
+ -- Uwe L. Korn <packaging@xhochy.com>  Mon, 13 Sep 2008 10:19:51 +0100
+
+schoorbs (1.0.3) unstable; urgency=low
+
+  * Fixed SQL injection vulnerability in edit_area_room.php
+  * Added Mail-logging-backend
+
+ -- Uwe L. Korn <packaging@xhochy.com>  Mon, 30 Jun 2008 14:19:51 +0100
+
+
+schoorbs (1.0.2) unstable; urgency=low
+
+  * Fixed bugs:
+    - Fixed incompability problems with PHP4
+    - Time wasn't shown in week.php
+
+ -- Uwe L. Korn <packaging@xhochy.com>  Sun, 14 Jun 2008 14:19:51 +0100
+
+
+schoorbs (1.0.1) unstable; urgency=low
+
+  * Fixed bugs:
+    - Area couldn't be deleted
+    - Rooms couldn't be deleted
+    - Area name couldn't be changed
+
+ -- Uwe L. Korn <packaging@xhochy.com>  Sun, 20 Apr 2008 14:19:51 +0100
+
+schoorbs (1.0.0) unstable; urgency=low
+
+  * Final release of Schoorbs 1.0
+
+ -- Uwe L. Korn <packaging@xhochy.com>  Sun, 23 Mar 2008 01:09:16 +0100
+
 schoorbs (1.0b2) unstable; urgency=low
 
   * Rewritten Search interface
@@ -5,7 +43,7 @@ schoorbs (1.0b2) unstable; urgency=low
   * Layout improvements
   * Fixed some XHTML errors
 
- -- Uwe L. Korn <packaging@xhochy.com>  Sun, 2 Mar 2008 01:09:16 +0100
+ -- Uwe L. Korn <packaging@xhochy.com>  Sun, 14 Mar 2008 01:09:16 +0100
 
 schoorbs (1.0b1) unstable; urgency=low
 

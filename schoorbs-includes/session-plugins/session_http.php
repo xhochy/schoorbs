@@ -66,24 +66,29 @@ function PrintLogonBox()
 	$user = getUserName();
 
 	if (isset($user))
-	{ 
-		?>
-		<div id="schoorbs-loginbox-username"><?php echo get_vocab('you_are').' '.$user ?></div>
-		<?php if (isset($user_list_link)) { ?>
-			<div id="schoorbs-loginbox-button"><a href="<?php echo $user_list_link; ?>"><?php echo get_vocab('user_list'); ?></a>
-		<?php }; ?>
-	<?php } else { ?>
-	<div id="schoorbs-loginbox-username"><?php echo get_vocab('unknown_user'); ?></div>
-	        <form method="post" action="administration.php">
-	        	<div id="schoorbs-loginbox-button">
-			    <input type="hidden" name="TargetURL" value="<?php echo $TargetURL ?>" />
-			    <input type="hidden" name="Action" value="QueryName" />
-			    <input type="submit" value=" <?php echo get_vocab('login') ?> " />
-			</div>
-		</form>
-		<?php if (isset($user_list_link)) { ?>
-			<a href="<?php echo $user_list_link; ?>"><?php echo get_vocab('user_list'); ?></a>
-		<?php } ?>
-	<?php
-	}
+	{
+    ?><td class="banner" style="background-color:#c0e0ff; text-align:center;">
+      <?php echo get_vocab('you_are').' '.$user ?><br />
+<?php if (isset($user_list_link)) print "	  <br />\n	  " .
+	    "<a href='$user_list_link'>" . get_vocab('user_list') . "</a><br />\n" ;
+?>
+    </td>
+<?php
+    }
+    else
+    {
+?>
+    <td class="banner" style="background-color:#c0e0ff; text-align:center;">
+       <a id="logonBox" href=""><?php echo get_vocab('unknown_user'); ?></a><br />
+          <form method="post" action="admin.php"><div>
+	    <input type="hidden" name="TargetURL" value="<?php echo $TargetURL ?>" />
+	    <input type="hidden" name="Action" value="QueryName" />
+	    <input type="submit" value=" <?php echo get_vocab('login') ?> " />
+	  </div></form>
+<?php if (isset($user_list_link)) print "	  <br />\n	  " .
+	    "<a href=\"$user_list_link\">" . get_vocab('user_list') . "</a><br />\n" ;
+?>
+	</td>
+<?php
+    }
 }

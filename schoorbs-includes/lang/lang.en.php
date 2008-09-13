@@ -11,7 +11,7 @@
 # This file is PHP code. Treat it as such.
 
 # The charset to use in "Content-type" header
-$vocab["charset"]            = "utf-8";
+$vocab["charset"]            = "iso-8859-1";
 
 # Used in style.inc
 $vocab["mrbs"]               = "Schoorbs - Room Booking System";
@@ -21,7 +21,7 @@ $vocab["report"]             = "Report";
 $vocab["admin"]              = "Admin";
 $vocab["help"]               = "Help";
 $vocab["search"]             = "Search";
-$vocab["not_php3"]             = "<h1>WARNING: This probably doesn't work with PHP3</h1>";
+$vocab["not_php3"]             = "<h1>WARNING: This probably doesn't work with PHP3</H1>";
 
 # Used in day.php
 $vocab["bookingsfor"]        = "Bookings for";
@@ -109,6 +109,11 @@ $vocab["returncal"]          = "Return to calendar view";
 $vocab["failed_to_acquire"]  = "Failed to acquire exclusive database access";
 $vocab["invalid_booking"]    = "Invalid booking";
 $vocab["must_set_description"] = "You must set a brief description for the booking. Please go back and enter one.";
+$vocab["mail_subject_entry"] = $mail["subject"];
+$vocab["mail_body_new_entry"] = $mail["new_entry"];
+$vocab["mail_body_del_entry"] = $mail["deleted_entry"];
+$vocab["mail_body_changed_entry"] = $mail["changed_entry"];
+$vocab["mail_subject_delete"] = $mail["subject_delete"];
 
 # Authentication stuff
 $vocab["accessdenied"]       = "Access Denied";

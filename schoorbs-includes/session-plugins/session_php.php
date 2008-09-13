@@ -146,6 +146,19 @@ function PrintLogonBox()
     
     $smarty->assign('TargetURL', $TargetURL);
     $smarty->assign('user_list_link', $user_list_link);
+    
+    if(isset($user) && !empty($user))
+    {
+        // words 'you are xxxx' becomes a link to the
+        // report page with only entries created by xxx. Past entries are not
+        // displayed but this can be changed
+       	$search_string = "report.php?From_day=$day&amp;From_month=$month&amp;".
+          "From_year=$year&amp;To_day=1&amp;To_month=12&amp;To_year=2030&amp;areamatch=&amp;".
+          "roommatch=&amp;namematch=&amp;descrmatch=&amp;summarize=1&amp;sortby=r&amp;display=d&amp;".
+          "sumby=d&amp;creatormatch=$user";
+        $smarty->assign('search_string', $search_string);
+    }
+    
     $smarty->assign('user',$user);
     $smarty->display('session_php_loginbox.tpl');
 }

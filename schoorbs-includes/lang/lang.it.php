@@ -11,7 +11,7 @@
 # This file is PHP code. Treat it as such.
 
 # The charset to use in "Content-type" header
-$vocab["charset"]            = "utf-8";
+$vocab["charset"]            = "iso-8859-1";
 
 # Used in style.inc
 $vocab["mrbs"]               = "Sistema di Prenotazione Sale";
@@ -103,8 +103,8 @@ $vocab["invalid_series_id"]  = "Invalid series id.";
 # Used in edit_entry_handler.php
 $vocab["error"]              = "Errore";
 $vocab["sched_conflict"]     = "Conflitto di Prenotazione";
-$vocab["conflict"]           = "La nuova prenotazione sar√† in conflitto con questa(e):";
-$vocab["too_may_entrys"]     = "L'opzione selezionata crea troppe entit√†.<BR>Per favore usa una opzione differente!";
+$vocab["conflict"]           = "La nuova prenotazione sar‡ in conflitto con questa(e):";
+$vocab["too_may_entrys"]     = "L'opzione selezionata crea troppe entit‡.<BR>Per favore usa una opzione differente!";
 $vocab["returncal"]          = "Ritorna al calendario";
 $vocab["failed_to_acquire"]  = "Failed to acquire exclusive database access"; 
 $vocab["mail_subject_entry"] = $mail["subject"];

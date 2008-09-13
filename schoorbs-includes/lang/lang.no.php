@@ -6,40 +6,40 @@
 # specific file will overwrite the default. This is the Norwegian file.
 #
 # Translations provided by: Rune Johansen (rune.johansen@finedamer.com)
-# Further translated by: Emil StÃ¸a (emil@consider.no)
+# Further translated by: Emil Støa (emil@consider.no)
 #
 #
 # This file is PHP code. Treat it as such.
 
 # The charset to use in "Content-type" header
-$vocab["charset"]            = "utf-8";
+$vocab["charset"]            = "iso-8859-1";
 
 # Used in style.inc
-$vocab["mrbs"]               = "MÃ¸teromsbooking";
+$vocab["mrbs"]               = "Møteromsbooking";
 
 # Used in functions.inc
 $vocab["report"]             = "Rapport";
 $vocab["admin"]              = "Admin";
 $vocab["help"]               = "Hjelp";
-$vocab["search"]             = "SÃ¸k";
+$vocab["search"]             = "Søk";
 $vocab["not_php3"]           = "<h1>NB: Dette virker sannsynligvis ikke med PHP3</H1>";
 
 # Used in day.php
 $vocab["bookingsfor"]        = "Booking for";
 $vocab["bookingsforpost"]    = "";
-$vocab["areas"]              = "OmrÃ¥de";
-$vocab["daybefore"]          = "GÃ¥ til forrige dag";
-$vocab["dayafter"]           = "GÃ¥ til neste dag";
-$vocab["gototoday"]          = "GÃ¥ til idag";
-$vocab["goto"]               = "gÃ¥ til";
+$vocab["areas"]              = "Område";
+$vocab["daybefore"]          = "Gå til forrige dag";
+$vocab["dayafter"]           = "Gå til neste dag";
+$vocab["gototoday"]          = "Gå til idag";
+$vocab["goto"]               = "gå til";
 $vocab["highlight_line"]     = "Merk denne linjen";
-$vocab["click_to_reserve"]   = "Trykk i cellen for Ã¥ reservere.";
+$vocab["click_to_reserve"]   = "Trykk i cellen for å reservere.";
 
 # Used in trailer.inc
 $vocab["viewday"]            = "Vis dag";
 $vocab["viewweek"]           = "Vis Uke";
-$vocab["viewmonth"]          = "Vis MÃ¥ned";
-$vocab["ppreview"]           = "ForhÃ¥ndsvisning";
+$vocab["viewmonth"]          = "Vis Måned";
+$vocab["ppreview"]           = "Forhåndsvisning";
 
 # Used in edit_entry.php
 $vocab["addentry"]           = "Booking";
@@ -58,7 +58,7 @@ $vocab["minutes"]            = "minutter";
 $vocab["hours"]              = "timer";
 $vocab["days"]               = "dager";
 $vocab["weeks"]              = "uker";
-$vocab["years"]              = "Ã¥r";
+$vocab["years"]              = "år";
 $vocab["periods"]            = "periods";
 $vocab["all_day"]            = "hele dagen";
 $vocab["type"]               = "Type:";
@@ -69,9 +69,9 @@ $vocab["rep_type"]           = "Repetisjonstype:";
 $vocab["rep_type_0"]         = "ingen";
 $vocab["rep_type_1"]         = "daglig";
 $vocab["rep_type_2"]         = "ukentlig";
-$vocab["rep_type_3"]         = "mÃ¥nedlig";
-$vocab["rep_type_4"]         = "Ã¥rlig";
-$vocab["rep_type_5"]         = "MÃ¥nedlig, samme dag";
+$vocab["rep_type_3"]         = "månedlig";
+$vocab["rep_type_4"]         = "årlig";
+$vocab["rep_type_5"]         = "Månedlig, samme dag";
 $vocab["rep_type_6"]         = "n-ukentlig";
 $vocab["rep_end_date"]       = "Repetisjon sluttdato:";
 $vocab["rep_rep_day"]        = "Repetisjonsdag:";
@@ -79,7 +79,7 @@ $vocab["rep_for_weekly"]     = "(ved hver uke)";
 $vocab["rep_freq"]           = "Frekvens:";
 $vocab["rep_num_weeks"]      = "Antall uker";
 $vocab["rep_for_nweekly"]    = "(for n-uker)";
-$vocab["ctrl_click"]         = "Hold inne kontrolltasten for Ã¥ velge mer enn ett rom";
+$vocab["ctrl_click"]         = "Hold inne kontrolltasten for å velge mer enn ett rom";
 $vocab["entryid"]            = "Booking ID ";
 $vocab["repeat_id"]          = "Repetisjons ID "; 
 $vocab["you_have_not_entered"] = "Du har ikke angitt";
@@ -96,7 +96,7 @@ $vocab["createdby"]          = "Laget av:";
 $vocab["lastupdate"]         = "Senest oppdatert:";
 $vocab["deleteentry"]        = "Slett booking";
 $vocab["deleteseries"]       = "Slett serie";
-$vocab["confirmdel"]         = "Er du sikker pÃ¥ at\\ndu vil slette bookingen?\\n\\n";
+$vocab["confirmdel"]         = "Er du sikker på at\\ndu vil slette bookingen?\\n\\n";
 $vocab["returnprev"]         = "Tilbake til forrige side";
 $vocab["invalid_entry_id"]   = "Ugyldig booking-ID.";
 $vocab["invalid_series_id"]  = "Ugyldig serie-ID.";
@@ -104,10 +104,10 @@ $vocab["invalid_series_id"]  = "Ugyldig serie-ID.";
 # Used in edit_entry_handler.php
 $vocab["error"]              = "Feil";
 $vocab["sched_conflict"]     = "Bookingkonflikt";
-$vocab["conflict"]           = "Bookingen er i konflikt med fÃ¸lgende booking(er):";
+$vocab["conflict"]           = "Bookingen er i konflikt med følgende booking(er):";
 $vocab["too_may_entrys"]     = "De valgte instillinger skaper for mange bookinger.<BR>Vennligst bruk andre instillinger!";
 $vocab["returncal"]          = "Tilbake til kalender";
-$vocab["failed_to_acquire"]  = "Kunne ikke oppnÃ¥ eksklusiv databasetilgang"; 
+$vocab["failed_to_acquire"]  = "Kunne ikke oppnå eksklusiv databasetilgang"; 
 $vocab["mail_subject_entry"] = $mail["subject"];
 $vocab["mail_body_new_entry"] = $mail["new_entry"];
 $vocab["mail_body_del_entry"] = $mail["deleted_entry"];
@@ -116,7 +116,7 @@ $vocab["mail_subject_delete"] = $mail["subject_delete"];
 
 # Authentication stuff
 $vocab["accessdenied"]       = "Ingen adgang";
-$vocab["norights"]           = "Du har ingen rettigheter til Ã¥ endre bookingen.";
+$vocab["norights"]           = "Du har ingen rettigheter til å endre bookingen.";
 $vocab["please_login"]       = "Vennligst logg inn";
 $vocab["user_name"]          = "Navn";
 $vocab["user_password"]      = "Passord";
@@ -141,11 +141,11 @@ $vocab["user"]               = "Bruker";
 $vocab["administrator"]      = "Administrator";
 $vocab["unknown"]            = "Ukjent";
 $vocab["ok"]                 = "OK";
-$vocab["show_my_entries"]    = "Trykk for Ã¥ vise kommende innlegg";
+$vocab["show_my_entries"]    = "Trykk for å vise kommende innlegg";
 
 # Used in search.php
-$vocab["invalid_search"]     = "Tom eller ugyldig sÃ¸kestreng.";
-$vocab["search_results"]     = "SÃ¸keresultat for:";
+$vocab["invalid_search"]     = "Tom eller ugyldig søkestreng.";
+$vocab["search_results"]     = "Søkeresultat for:";
 $vocab["nothing_found"]      = "Ingen poster ble funnet.";
 $vocab["records"]            = "Booking ";
 $vocab["through"]            = " til ";
@@ -154,19 +154,19 @@ $vocab["previous"]           = "Forrige";
 $vocab["next"]               = "Neste";
 $vocab["entry"]              = "Post";
 $vocab["view"]               = "Vis";
-$vocab["advanced_search"]    = "Avansert sÃ¸k";
-$vocab["search_button"]      = "SÃ¸k";
-$vocab["search_for"]         = "SÃ¸k etter";
+$vocab["advanced_search"]    = "Avansert søk";
+$vocab["search_button"]      = "Søk";
+$vocab["search_for"]         = "Søk etter";
 $vocab["from"]               = "Fra";
 
 # Used in report.php
 $vocab["report_on"]          = "Rapport:";
 $vocab["report_start"]       = "Start dato:";
 $vocab["report_end"]         = "Slutt dato:";
-$vocab["match_area"]         = "OmrÃ¥de:";
+$vocab["match_area"]         = "Område:";
 $vocab["match_room"]         = "Rom:";
 $vocab["match_type"]         = "Velg type:";
-$vocab["ctrl_click_type"]    = "Bruk CTRL-tasten for Ã¥ velge fler enn en type";
+$vocab["ctrl_click_type"]    = "Bruk CTRL-tasten for å velge fler enn en type";
 $vocab["match_entry"]        = "Kort beskrivelse:";
 $vocab["match_descr"]        = "Lang beskrivelse:";
 $vocab["include"]            = "Skal inneholde:";
@@ -181,7 +181,7 @@ $vocab["entries_found"]      = "poster funnet";
 $vocab["summary_header"]     = "Sum timer";
 $vocab["summary_header_per"] = "Summary of (Entries) Periods";
 $vocab["total"]              = "Totalt";
-$vocab["submitquery"]        = "KjÃ¸r rapport";
+$vocab["submitquery"]        = "Kjør rapport";
 $vocab["sort_rep"]           = "Sorter rapport etter:";
 $vocab["sort_rep_time"]      = "Dato/Tid";
 $vocab["rep_dsp"]            = "Vis i rapport:";
@@ -189,28 +189,28 @@ $vocab["rep_dsp_dur"]        = "Varighet";
 $vocab["rep_dsp_end"]        = "Slutt-tid";
 
 # Used in week.php
-$vocab["weekbefore"]         = "GÃ¥ til uken fÃ¸r";
-$vocab["weekafter"]          = "GÃ¥ til uken etter";
-$vocab["gotothisweek"]       = "GÃ¥ til denne uken";
+$vocab["weekbefore"]         = "Gå til uken før";
+$vocab["weekafter"]          = "Gå til uken etter";
+$vocab["gotothisweek"]       = "Gå til denne uken";
 
 # Used in month.php
-$vocab["monthbefore"]        = "GÃ¥ til forrige mÃ¥ned";
-$vocab["monthafter"]         = "GÃ¥ til neste mÃ¥ned";
-$vocab["gotothismonth"]      = "GÃ¥ til denne mÃ¥neden";
+$vocab["monthbefore"]        = "Gå til forrige måned";
+$vocab["monthafter"]         = "Gå til neste måned";
+$vocab["gotothismonth"]      = "Gå til denne måneden";
 
 # Used in {day week month}.php
-$vocab["no_rooms_for_area"]  = "Ingen rom definert for dette omrÃ¥det";
+$vocab["no_rooms_for_area"]  = "Ingen rom definert for dette området";
 
 # Used in admin.php
 $vocab["edit"]               = "Endre";
 $vocab["delete"]             = "Slett";
 $vocab["rooms"]              = "Rom";
 $vocab["in"]                 = "i";
-$vocab["noareas"]            = "Ingen omrÃ¥der";
-$vocab["addarea"]            = "Legg til omrÃ¥de";
+$vocab["noareas"]            = "Ingen områder";
+$vocab["addarea"]            = "Legg til område";
 $vocab["name"]               = "Navn";
-$vocab["noarea"]             = "OmrÃ¥de ikke valgt";
-$vocab["browserlang"]        = "Din nettleser er satt opp til Ã¥ bruke fÃ¸lgende sprÃ¥k:";
+$vocab["noarea"]             = "Område ikke valgt";
+$vocab["browserlang"]        = "Din nettleser er satt opp til å bruke følgende språk:";
 $vocab["postbrowserlang"]    = "";
 $vocab["addroom"]            = "Legg til rom";
 $vocab["capacity"]           = "Kapasitet";
@@ -218,33 +218,33 @@ $vocab["norooms"]            = "Ingen rom.";
 $vocab["administration"]     = "Administration";
 
 # Used in edit_area_room.php
-$vocab["editarea"]           = "Endre omrÃ¥de";
+$vocab["editarea"]           = "Endre område";
 $vocab["change"]             = "Endre";
 $vocab["backadmin"]          = "Tilbake til admin";
-$vocab["editroomarea"]       = "Endre omrÃ¥de- eller rombeskrivelse";
+$vocab["editroomarea"]       = "Endre område- eller rombeskrivelse";
 $vocab["editroom"]           = "Endre rom";
 $vocab["update_room_failed"] = "Oppdatering av rom feilet: ";
 $vocab["error_room"]         = "Feil: rom ";
 $vocab["not_found"]          = " ble ikke funnet";
-$vocab["update_area_failed"] = "Oppdatering av omrÃ¥de feilet: ";
-$vocab["error_area"]         = "Feil: omrÃ¥de ";
+$vocab["update_area_failed"] = "Oppdatering av område feilet: ";
+$vocab["error_area"]         = "Feil: område ";
 $vocab["room_admin_email"]   = "Rom-administrators E-post:";
-$vocab["area_admin_email"]   = "OmrÃ¥de-administrators E-post:";
+$vocab["area_admin_email"]   = "Område-administrators E-post:";
 $vocab["invalid_email"]      = "Ugyldig E-post!";
 
 # Used in del.php
-$vocab["deletefollowing"]    = "Dette vil slette fÃ¸lgende bookinger";
+$vocab["deletefollowing"]    = "Dette vil slette følgende bookinger";
 $vocab["sure"]               = "Er du sikker?";
 $vocab["YES"]                = "JA";
 $vocab["NO"]                 = "NEI";
-$vocab["delarea"]            = "Du mÃ¥ slette alle rommene i dette omrÃ¥det fÃ¸r du kan slette det<p>";
+$vocab["delarea"]            = "Du må slette alle rommene i dette området før du kan slette det<p>";
 
 # Used in help.php
 $vocab["about_mrbs"]         = "Om MRBS";
 $vocab["database"]           = "Database: ";
 $vocab["system"]             = "System: ";
 $vocab["please_contact"]     = "Vennligst ta kontakt med ";
-$vocab["for_any_questions"]  = "for spÃ¸rsmÃ¥l som ikke er besvart her.";
+$vocab["for_any_questions"]  = "for spørsmål som ikke er besvart her.";
 
 # Used in mysql.inc AND pgsql.inc
 $vocab["failed_connect_db"]  = "Alvorlig feil: Kunne ikke koble til database";
