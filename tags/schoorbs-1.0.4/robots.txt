@@ -1,0 +1,4 @@
+#Allow none
+User-agent:  *
+Disallow: /
+Allow: /help.php
