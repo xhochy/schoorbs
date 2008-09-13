@@ -5,14 +5,15 @@
 
   * Make sure that there are no open bugs for the upcoming release
   * Make sure all unit-tests run without a problem
-  * *_Schoorbs 1.1 and newer:_* 
+  * *_Schoorbs 2.0 and newer:_* 
     * Get [https://translations.launchpad.net/schoorbs/trunk/+pots/schoorbs latest translations]
 
 = Things to do while releasing =
  
  * Build a zip- and a 7z-archive of Schoorbs -> `rake release`
+ * Upload these files to http://static.xhochy.com and https://www.ohloh.net/projects/schoorbs/packages
  * Build Debian and Ubuntu Packages of Schoorbs -> `rake debian:binary:fakeroot`
- * Upload those packages
+ * Upload those packages to http://static.xhochy.com
  * Announce on [http://xhochy.org/en xhochy.org/en]
  * Announce on [http://xhochy.com xhochy.com]
  * Announce on [https://launchpad.net/schoorbs/+announce Launchpad]
