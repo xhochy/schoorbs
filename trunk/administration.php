@@ -17,8 +17,6 @@ require_once 'schoorbs-includes/global.web.php';
 require_once 'schoorbs-includes/global.functions.php';
 /** The modern ORM databse layer */
 require_once 'schoorbs-includes/database/schoorbsdb.class.php';
-/** The authetication wrappers */
-require_once 'schoorbs-includes/authentication/schoorbs_auth.php';
 /** The template system */
 require_once 'schoorbs-includes/schoorbstpl.class.php';
 

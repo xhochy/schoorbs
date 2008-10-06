@@ -13,6 +13,8 @@
 require_once 'smarty.functions.php';
 /** The input getting & validating functions */
 require_once 'input.functions.php';
+/** The authetication wrappers */
+require_once 'schoorbs-includes/authentication/schoorbs_auth.php';
  
 ## Var Inits ##
 
