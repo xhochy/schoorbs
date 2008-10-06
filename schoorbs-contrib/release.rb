@@ -6,7 +6,7 @@
 ## Load version number ##
 
 File.open(File.join('schoorbs-includes', 'version.txt'), 'r') do |f|
-  SCHOORBS_VERSION = f.read()
+  SCHOORBS_VERSION = f.read().chop
 end
 
 ## Configuration ##
