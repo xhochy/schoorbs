@@ -67,25 +67,25 @@
 <hr />
 
 <p>
-<a name="repeating_delete"><b>How do I delete one instance recurring meeting?</b></a>
-<menu>
-Select the day/room/time that you want to delete and select <b>Delete Entry</b>.
-</menu>
-<a href="#top">Top</a><hr>
+  <h4><a name="repeating_delete"><strong><?php echo Lang::_('How do I delete one instance of a recurring meeting?'); ?></strong></a></h4>
+  <?php echo Lang::_('Select the day/room/time that you want to delete and select <em>Delete Entry</em>.'); ?>
 </p>
+<p>
+  <a href="#top">Top</a>
+</p>
+<hr />
 
 <p>
-<a name="multiple_sites"><b>How do I schedule rooms at different sites?</b></a>
-<menu>
-You don't.  Presently the system cannot book 2 different rooms simultaneously.
-You must schedule each one separately.  Make sure that the time you want
-is available at both sites before making a booking.
-</menu>
-<a href="#top">Top</a><hr>
+  <h4><a name="multiple_sites"><strong><?php echo Lang::_('How do I schedule rooms at different sites?'); ?></strong></a></h4>
+  <?php echo Lang::_('You don\'t.  Presently the system cannot book two different rooms simultaneously. You must schedule each one separately.  Make sure that the time you want is available at both sites before making a booking.'); ?>
 </p>
+<p>
+  <a href="#top">Top</a>
+</p>
+<hr />
 
 <p>
-<a name="too_many"><b>My meeting failed to be created because of "<i>too many entries</i>"!</b></a>
+  <h4><a name="too_many"><strong><?php echo Lang::_('My meeting failed to be created because of <em>too many entries</em>!'); ?></strong></a></h4>
 <menu>
 Any meeting cannot create more than 365 entries.  There needs to be some limit on the
 number of meetings created.  This number can be increased if necessary.

@@ -115,7 +115,6 @@ class Lang {
 		} else {
 			$oLang = new Lang();
 			$oLang->feedXml(simplexml_load_file(self::getLanguageFilename($sLang)));
-			var_dump($oLang);
 			return $oLang;
 		}
 	}
