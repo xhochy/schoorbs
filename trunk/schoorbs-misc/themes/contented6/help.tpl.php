@@ -86,82 +86,53 @@
 
 <p>
   <h4><a name="too_many"><strong><?php echo Lang::_('My meeting failed to be created because of <em>too many entries</em>!'); ?></strong></a></h4>
-<menu>
-Any meeting cannot create more than 365 entries.  There needs to be some limit on the
-number of meetings created.  This number can be increased if necessary.
-</menu>
-<a href="#top">Top</a><hr>
+  <?php echo Lang::_('No meeting can create more than 365 entries. There needs to be some limit on the number of meetings created. This number can be increased if necessary.'); ?>
 </p>
-
 <p>
-<a name="multiple_users"><b>What happens if multiple people schedule the same meeting?</b></a>
-<menu>
- The short answer is: The first person to click on
-the <b>Submit</b> button wins.<br />
-Behind the scenes, the system is using a proper multi-user, multi-threaded
-relational database than can handle many thousands of simultaneous users.
-</menu>
-<a href="#top">Top</a><hr>
+  <a href="#top">Top</a>
 </p>
+<hr />
 
 <p>
-<a name="internal_external"><b>What is the difference between "Internal" and "External"</b></a>
-<menu>
-By default, MRBS defines two meeting types. <b>"Internal"</b> means that the
-meeting will only be attended by employees.  An <b>"External"</b> meeting
-might also be attended by customers, vendors, investors, etc. Your site
-can define up to a total of 10 meeting types, according to your needs.
-Meetings are highlighted in the main calendar view with a color corresponding
-to their type, and a color key of all defined types is shown at the bottom
-of the main calendar view.
-</menu>
-<a href="#top">Top</a><hr>
+  <h4><a name="multiple_users"><strong><?php echo Lang::_('What happens if multiple people schedule the same meeting?'); ?></strong></a></h4>
+  <?php echo Lang::_('The short answer is: The first person to click on the <em>Submit</em> button wins. Behind the scenes, the system is using a proper multi-user, multi-threaded relational database than can handle many thousands of simultaneous users.'); ?>
 </p>
-
 <p>
-<a name="how_much"><b>How much did the system cost?</b></a>
-<menu>
-Nothing.  See the next section for more information.
-</menu>
-<a href="#top">Top</a><hr>
+  <a href="#top">Top</a>
 </p>
+<hr />
 
 <p>
-<a name=about><b>How does the system work and who wrote it?</b></a>
-<menu>
-The <a href="http://sourceforge.net/project/?group_id=5113">Meeting Room Booking System</a>
-is open source software that is distributed under the Gnu Public License(GPL).
-This means that software is free to use, distribute, and modify.  
-<p>
-The system is written mostly in <a href="http://www.php.net">PHP</a>, 
-which is an open source programming language that can be embedded in web 
-pages similar in concept to Microsoft active server pages.  PHP is especially 
-good at accessing databases.
-<p>  
-The database used for the system is either
-<a href="http://www.mysql.com">MySQL</a>
-or <a href="http://www.postgresql.org">PostgreSQL</a>.
-MySQL is a very fast, multi-threaded, multi-user and robust 
-SQL (Structured Query Language) database server that is also GPL.
-PostgreSQL is a full-featured multi-user open source Object Relational SQL
-database server.
-<p> 
-The system will run on multiple platforms, including the PC architecture
-using the <a href="http://www.linux.com">Linux</a> operating system.
-Linux, is a free, open source, unix-like operating system.
-<p>
-The web server being used is yet another piece of free, open source
-software.  The <a href="http://www.apache.org">Apache</a> web server is
-the world's most popular web server.
-<p>
-The bottom line is:<br />
-<b>Every piece of this system, from the operating system to the application,
-is completely free - source code and all</b>.
-
-
-</menu>
-<a href="#top">Top</a><hr>
+  <h4><a name="internal_external"><strong><?php echo Lang::_('What is the difference between <em>Internal</em> and <em>External</em>?'); ?></strong></a></h4>
+  <?php echo Lang::_('By default, MRBS defines two meeting types. <em>Internal</em> means that the meeting will only be attended by employees. An <em>External</em> meeting might also be attended by customers, vendors, investors, etc. Your site can define up to a total of 10 meeting types, according to your needs. Meetings are highlighted in the main calendar view with a color corresponding to their type, and a color key of all defined types is shown at the bottom of the main calendar view.'); ?>
 </p>
+<p>
+  <a href="#top">Top</a>
+</p>
+<hr />
 
+<p>
+  <h4><a name="how_much"><strong><?php echo Lang::_('How much did the system cost?'); ?></strong></a></h4>
+  <?php echo Lang::_('Nothing.  See the next section for more information.'); ?>
+</p>
+<p>
+  <a href="#top">Top</a>
+</p>
+<hr />
 
-
+<p>
+  <h4><a name="about"><strong><?php echo Lang::_('How does the system work and who wrote it?'); ?></strong></a></h4>
+  <?php echo Lang::_('<a href="http://schoorbs.xhochy.com/">Schoorbs</a> is open source software that is distributed under the Gnu Public License(GPLv2). This means that software is free to use, distribute, and modify.'); ?>
+  <br /><br />
+  <?php echo Lang::_('The system is written mostly in <a href="http://www.php.net">PHP</a>, which is an open source programming language that can be embedded in web pages similar in concept to Microsoft active server pages.  PHP is especially good at accessing databases.'); ?>
+  <br /><br />
+  <?php echo Lang::_('The database used for the system is either <a href="http://www.mysql.com/">MySQL</a> or <a href="http://www.postgresql.org/">PostgreSQL</a>. MySQL is a very fast, multi-threaded, multi-user and robust SQL (Structured Query Language) database server that is also GPL. PostgreSQL is a full-featured multi-user open source Object Relational SQL database server.'); ?>
+  <br /><br />
+  <?php echo Lang::_('The system will run on multiple platforms, including the PC architecture using the <a href="http://www.linux.com/">Linux</a> operating system. Linux, is a free, open source, unix-like operating system.'); ?>
+  <br /><br />
+  <?php echo Lang::_('The web server being used is yet another piece of free, open source software.  The <a href="http://www.apache.org/">Apache</a> web server is the world\'s most popular web server.'); ?>
+  <br /><br />
+  <?php echo Lang::_('The bottom line is: <strong>every piece of this system, from the operating system to the application, is completely free - source code and all</strong>.'); ?></p>
+<p>
+  <a href="#top">Top</a>
+</p>
