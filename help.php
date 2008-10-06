@@ -20,21 +20,13 @@ require_once 'schoorbs-includes/database/schoorbsdb.class.php';
 /** The template system */
 require_once 'schoorbs-includes/schoorbstpl.class.php';
 
+// Obfuscate Admin-E-Mail
+$sAdminMail = '';
+for ($i = 0; $i < strlen($mrbs_admin_email); $i++) {
+	$sAdminMail .= '&#x'. sprintf("%x",ord($mrbs_admin_email[$i])).';';
+}
+
+SchoorbsTPL::populateVar('admin', $mrbs_admin);
+SchoorbsTPL::populateVar('adminMail', $sAdminMail);
+SchoorbsTPL::populateVar('version', get_schoorbs_version());
 SchoorbsTPL::renderPage('help');
-
-// Print the header
-print_header();
-
-// Assign all need variables for the template
-$smarty->assign(array(
-	'schoorbs_version' => get_schoorbs_version(),
-	'schoorbs_admin_email' => $mrbs_admin_email,
-	'schoorbs_admin' => $mrbs_admin
-));
-// Display the Help template
-$smarty->display('help.tpl'); 
-
-/** Include the translated Helpfile */
-require_once "schoorbs-includes/faq/site_faq${faqfilelang}.html";
-/** The common Schoorbs footer */
-require_once 'schoorbs-includes/trailer.php';

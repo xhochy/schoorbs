@@ -8,13 +8,13 @@ msgstr ""
 "Project-Id-Version: schoorbs\n"
 "Report-Msgid-Bugs-To: FULL NAME <EMAIL@ADDRESS>\n"
 "POT-Creation-Date: 2008-01-05 15:06+0100\n"
-"PO-Revision-Date: 2008-08-19 14:36+0000\n"
+"PO-Revision-Date: 2008-09-13 10:35+0000\n"
 "Last-Translator: Uwe L. Korn <uwelk@xhochy.org>\n"
 "Language-Team: German <de@li.org>\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"X-Launchpad-Export-Date: 2008-09-01 17:08+0000\n"
+"X-Launchpad-Export-Date: 2008-10-06 18:04+0000\n"
 "X-Generator: Launchpad (build Unknown)\n"
 
 msgid "Sunday"
@@ -759,3 +759,288 @@ msgstr "für Fragen die hier nicht beantwortet sind."
 
 msgid "Fatal Error: Failed to connect to database"
 msgstr "Fataler Fehler: Kann nicht an Datenbank anbinden"
+
+msgid "Authentication"
+msgstr "Authentifizierung"
+
+msgid "How do I login?"
+msgstr "Wie melde ich mich an?"
+
+msgid "Why can't I delete/alter a meeting?"
+msgstr "Warum kann ich eine Buchung nicht ändern/löschen?"
+
+msgid "Making/Altering Meetings"
+msgstr "Anlegen / Ändern von Besprechungen"
+
+msgid "How do I make a recurring meeting?"
+msgstr "Wie kann ich eine (periodisch) wiederkehrende Buchung anlegen?"
+
+msgid "How do I delete one instance of a recurring meeting?"
+msgstr ""
+"Wie kann ich eine Buchung innerhalb einer Reihe von periodisch "
+"wiederkehrenden Buchungen löschen?"
+
+msgid "How do I schedule rooms at different sites?"
+msgstr "Wie kann ich Raeume an verschiedenen Standorten einplanen?"
+
+msgid "My meeting failed to be created because of <em>too many entries</em>!"
+msgstr ""
+"Meine Besprechung konnte nicht angelegt werden, da es <em>zu viele "
+"Einträge</em> gab!"
+
+msgid "What happens if multiple people schedule the same meeting?"
+msgstr ""
+"Was passiert, wenn mehrere Benutzer die gleiche Besprechung einplanen?"
+
+msgid "Miscellaneous"
+msgstr "Verschiedenes"
+
+msgid ""
+"What is the difference between <em>Internal</em> and <em>External</em>?"
+msgstr ""
+"Was ist der Unterschied zwischen <em>Intern</em> und <em>Extern</em>?"
+
+msgid "How much did the system cost?"
+msgstr "Wie viel hat das System gekostet?"
+
+msgid "How does the system work and who wrote it?"
+msgstr "Wie arbeitet das System und wer hat es geschrieben?"
+
+msgid ""
+"The system can be configured to use one of several methods of "
+"authentication, including LDAP, Netware, and SMB. See your system "
+"administrator if you are having trouble logging in. Some functions are "
+"restricted to certain users, and other users will get the message <em>You do "
+"not have access rights to modify this item</em>. See your system "
+"administrator if this is not working correctly for you. If the system is "
+"configured to use LDAP authentication, this means that you login with the "
+"same username and password as you use for getting email e.g. <em>Mark "
+"Belanger</em> and <em>MyPassword</em>."
+msgstr ""
+"Das System kann mit verschiedenen Authentifizierungsmethoden konfiguriert "
+"werden, dazu \n"
+"gehören LDAP,Netware und SMB. Wenden Sie sich bitte an ihren "
+"Systemadministrator, wenn Sie\n"
+" Schwierigkeiten bei der Anmeldung haben.\n"
+" Einige Systemfunktionen können auf bestimmte Benutzer beschränkt sein, "
+"und\n"
+" daher werden die übrigen Benutzer die Meldung: <em>Sie haben keine "
+"Berechtigung, diesen \n"
+"Eintrag zu ändern</em> erhalten. Wenden Sie sich bitte an Ihren\n"
+" Systemadministratoren, wenn ihre Benutzerberechtigungen nicht korrekt\n"
+" für Sie eingestellt sind.\n"
+" Wenn das System auf der Grundlage der Authentifizierungsmethode LDAP\n"
+" eingerichtet ist, dann bedeutet dies, dass sie Zugang zu dem System mit\n"
+" dem gleichen Benutzernamen und Passwort z.B. <em>Mark Belanger</em> "
+"<em>MyPassword</em>\n"
+" wie zu Ihrem E-Mail System haben."
+
+msgid "Top"
+msgstr "Top"
+
+msgid ""
+"In order to delete or alter a meeting, you must be logged in as the same "
+"person that made the meeting.  Contact one of the meeting room "
+"administrators or the person who initially made the meeting to have it "
+"deleted or changed."
+msgstr ""
+"Nur die Person, die die Besprechung im System angelegt hat, kann diese "
+"auch\n"
+" löschen bzw. abändern. Nehmen Sie Kontakt mit einem der Administratoren "
+"der\n"
+" Besprechungszimmer oder mit der Person, die die Besprechung ursprünglich\n"
+" angelegt hat, auf um diese löschen bzw. ändern zu lassen."
+
+msgid ""
+"Clicking on the desired time brings you into the booking screen. Select the "
+"appropriate <em>Repeat Type</em>. The room will be scheduled at the same "
+"time, until the <em>Repeat End Date</em>, on the days determined by the "
+"Repeat Type."
+msgstr ""
+"Wenn sie auf die gewünschte Besprechungszeit klicken, kommen Sie auf den\n"
+" Bildschirm zum Anlegen einer Besprechung.\n"
+" Nach Eingabe einer <em>Kurzbeschreibung</em> und evtl. einer optionalen \n"
+"<em>Vollständigen Beschreibung</em>, sowie von <em>Tag</em>, <em>Dauer</em>, "
+"\n"
+"<em>Bereiche</em>, <em>Räume</em> (halten Sie die [STRG]-Taste beim Klicken "
+"\n"
+"gedrückt um mehrere zu selektieren), wählen Sie die geeignete Art der\n"
+" Wiederholung aus. Der Raum wird für die gleiche Uhrzeit an den Tagen,\n"
+" die durch Ihren Wiederholungsschlüssel (Art der Wiederholung)\n"
+"  festgelegt sind, bis zum Endtermin (Ende der Wiederholung)\n"
+" eingeplant."
+
+msgid "A <em>Daily</em> repeat schedules every day."
+msgstr "<em>Täglich</em> bedeutet eine Einplanung für jeden Tag."
+
+msgid ""
+"A <em>Weekly</em> repeat schedules those days of the week that you check "
+"under <em>Repeat Day</em>. For example, use Weekly repeat to schedule the "
+"room every Monday, Tuesday, and Thursday; check those days under Repeat Day. "
+"If you check no days under Repeat Day, the schedule will repeat on the same "
+"day of each week as the first scheduled day."
+msgstr ""
+"<em>Wöchentlich</em> nimmt die Einplanungen an den Wochentagen vor, die Sie "
+"unter Tag der Wiederholung ausgewählt haben."
+
+msgid ""
+"A <em>Monthly</em> repeat schedules the same day of each month, for example "
+"the 15th of the month."
+msgstr ""
+"<em>Monatlich</em> wiederholt den Eintrag immer am gleichen Tag in jedem "
+"Monat, z.B. am 15. des Monats."
+
+msgid ""
+"A <em>Yearly</em> repeat schedules the same month and day of the month, for "
+"example every March 15th."
+msgstr ""
+"<em>Jährlich</em> wiederholt einen Eintrag am gleichen Tag im gleichen Monat "
+"ein Mal pro Jahr, z.b. am 15. März."
+
+msgid ""
+"Finally, a <em>Monthly, corresponding day</em> repeat schedules one day each "
+"month, the same weekday and ordinal position within the month. Use this "
+"repeat type to schedule the first Monday, second Tuesday, or fourth Friday "
+"of each month, for example. Do not use this repeat type after the 28th day "
+"of the month."
+msgstr ""
+"Abschließend <em>monatlich, entsprechender Tag</em> wiederholt einen Eintrag "
+"ein Mal pro Monat am gleichen Wochentag in der gleichen Position im Monat, "
+"z.b. am ersten Montag oder zweiten Freitag jeden Monats. Verwenden Sie diese "
+"Wiederholungsart nicht nach dem 28. des Monats."
+
+msgid ""
+"Select the day/room/time that you want to delete and select <em>Delete "
+"Entry</em>."
+msgstr ""
+"Wählen Sie den entsprechenden Besprechungstermin aus und gehen Sie danach "
+"auf\n"
+" die Auswahl <em>Eintrag löschen</em>."
+
+msgid ""
+"You don't.  Presently the system cannot book two different rooms "
+"simultaneously. You must schedule each one separately.  Make sure that the "
+"time you want is available at both sites before making a booking."
+msgstr ""
+"Das ist nicht möglich. Gegenwärtig kann das System nicht mehrere Räume\n"
+" gleichzeitig einplanen. Sie müssen jeden Raum separat einplanen. Stellen "
+"Sie bitte\n"
+" sicher, dass die Räume an den verschiedenen Orten zu der gewünschten Zeit\n"
+" verfügbar sind, bevor sie eine Belegung vornehmen."
+
+msgid ""
+"No meeting can create more than 365 entries. There needs to be some limit on "
+"the number of meetings created. This number can be increased if necessary."
+msgstr ""
+"Die Obergrenze für die Anzahl der Wiederholungseinträge eines\n"
+" Besprechungseintrags liegt im System bei 365. Die Zahl kann aber bei\n"
+" Bedarf erhöht werden. Bitte informieren Sie den Buchungsadministrator."
+
+msgid ""
+"The short answer is: The first person to click on the <em>Submit</em> button "
+"wins. Behind the scenes, the system is using a proper multi-user, multi-"
+"threaded relational database than can handle many thousands of simultaneous "
+"users."
+msgstr ""
+"Die einfache Antwort ist: der Erste, der den Button <em>Speichern</em> "
+"drückt,\n"
+" macht das Rennen. Hinter den Kulissen benutzt das System eine einwandfrei\n"
+" arbeitende für mehrere Benutzer und gleichzeitige Verarbeitung mehrerer "
+"Anforderungen \n"
+"ausgerichtete relationale Datenbank, die viele Tausende von gleichzeitigen "
+"Benutzern bedienen kann."
+
+msgid ""
+"By default, MRBS defines two meeting types. <em>Internal</em> means that the "
+"meeting will only be attended by employees. An <em>External</em> meeting "
+"might also be attended by customers, vendors, investors, etc. Your site can "
+"define up to a total of 10 meeting types, according to your needs. Meetings "
+"are highlighted in the main calendar view with a color corresponding to "
+"their type, and a color key of all defined types is shown at the bottom of "
+"the main calendar view."
+msgstr ""
+"Standardmäßig gibt es im System Schoorbs zwei Besprechungsarten. "
+"<em>Intern</em>\n"
+" bedeutet, dass an der Besprechung nur Firmenangestellte teilnehmen. "
+"<em>Extern</em> heißt,\n"
+" dass als Teilnehmer auch Kunden, Lieferanten, Geldanleger, usw. vorgesehen "
+"sind. Sie können für ihren Standort bis zu 10 Besprechungsarten nach ihren "
+"eigenen \n"
+"Bedürfnissen definieren. Jeder Besprechungsart ist eine Farbe zugeordnet und "
+"die Besprechung\n"
+" werden in der Kalenderübersicht entsprechend farblich unterlegt. Eine "
+"Übersicht\n"
+" über die Besprechungsarten und ihre farbliche Darstellung befindet sich am "
+"Fuß der Kalenderübersicht."
+
+msgid "Nothing.  See the next section for more information."
+msgstr ""
+"Nichts. Weitere Informationen entnehmen Sie bitte dem naechsten Abschnitt."
+
+msgid ""
+"<a href=\"http://schoorbs.xhochy.com/\">Schoorbs</a> is open source software "
+"that is distributed under the Gnu Public License(GPLv2). This means that "
+"software is free to use, distribute, and modify."
+msgstr ""
+"<a href=\"http://schoorbs.xhochy.com/\">Schoorbs</a> ist eine Open Source\n"
+" Software, die unter GNU Public License (GPL) vertrieben wird. Das bedeutet, "
+"die\n"
+" Software kann unentgeltlich benutzt, vertrieben und geändert werden."
+
+msgid ""
+"The system is written mostly in <a href=\"http://www.php.net\">PHP</a>, "
+"which is an open source programming language that can be embedded in web "
+"pages similar in concept to Microsoft active server pages.  PHP is "
+"especially good at accessing databases."
+msgstr ""
+"Der größte Teil des Systems ist in <a href=\"http://www.php.net\">PHP</a>, "
+"geschrieben, dies ist eine Open Source Programmiersprache, die in Webseiten "
+"eingebettet werden kann, vergleichbar den\n"
+" Microsoft Active Server Pages. PHP eignet sich besonders gut für den "
+"Zugriff auf Datenbanken."
+
+msgid ""
+"The database used for the system is either <a "
+"href=\"http://www.mysql.com/\">MySQL</a> or <a "
+"href=\"http://www.postgresql.org/\">PostgreSQL</a>. MySQL is a very fast, "
+"multi-threaded, multi-user and robust SQL (Structured Query Language) "
+"database server that is also GPL. PostgreSQL is a full-featured multi-user "
+"open source Object Relational SQL database server."
+msgstr ""
+"Das Datenbanksystem, das dem Anwendungssystem zugrunde liegt, ist entweder "
+"<a href=\"http://www.mysql.com\">MySQL</a>\n"
+" oder <a href=\"http://www.postgresql.org\">PostgreSQL</a>. MySQL ist ein "
+"sehr schneller, für mehrere\n"
+" Benutzer und parallele Verarbeitung verschiedener Benutzeranforderungen "
+"ausgerichteter,\n"
+" leistungsfähiger SQL (Structured Query Language) Datenbankserver. "
+"PostgreSQL ist ein Multi User, Open Source und SQL Datenbankserver mit allen "
+"\n"
+"Leistungsmerkmalen."
+
+msgid ""
+"The system will run on multiple platforms, including the PC architecture "
+"using the <a href=\"http://www.linux.com/\">Linux</a> operating system. "
+"Linux, is a free, open source, unix-like operating system."
+msgstr ""
+"Das System läuft auf vielen Plattformen, auch auf einer PC-Architektur mit "
+"einem <a ref=\"http://www.linux.com\">Linux</a>\n"
+"-Betriebssystem. Linux ist eine kostenloses, Open Source und UNIX-ähnliches "
+"Betriebssystem."
+
+msgid ""
+"The web server being used is yet another piece of free, open source "
+"software.  The <a href=\"http://www.apache.org/\">Apache</a> web server is "
+"the world's most popular web server."
+msgstr ""
+"Auch der eingesetzte Webserver ist eine kostenlose Open Source Software. Der "
+"<a href=\"http://www.apache.org\">Apache</a>\n"
+" Webserver ist der weitverbreiteste Webserver."
+
+msgid ""
+"The bottom line is: <strong>every piece of this system, from the operating "
+"system to the application, is completely free - source code and all</strong>."
+msgstr ""
+"Die Quintessenz lautet: <strong>Jeder Bestandteil des Systems vom "
+"Betriebssystem bis zur Anwendungssoftware\n"
+"ist vollkommen kostenloser Quellcode.</strong>"
