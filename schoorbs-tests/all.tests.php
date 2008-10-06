@@ -76,7 +76,7 @@ class AllTests
         $suite = new PHPUnit_Framework_TestSuite('PHPUnit');
  
         $suite->addTest(Input_AllTests::suite());
-        $suite->addTest(Logging_AllTests::suite());
+        //$suite->addTest(Logging_AllTests::suite());
         $suite->addTest(Time_AllTests::suite());
         $suite->addTest(REST_AllTests::suite());
         $suite->addTest(Database_AllTests::suite());
