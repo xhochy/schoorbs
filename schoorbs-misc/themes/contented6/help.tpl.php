@@ -32,6 +32,7 @@
   </ul>
 </p>
 <hr />
+
 <p>
   <h4><a name="authenticate"><strong><?php echo Lang::_('How do I login?'); ?></strong></a></h4>
   <?php echo Lang::_('The system can be configured to use one of several methods of authentication, including LDAP, Netware, and SMB. See your system administrator if you are having trouble logging in. Some functions are restricted to certain users, and other users will get the message <em>You do not have access rights to modify this item</em>. See your system administrator if this is not working correctly for you. If the system is configured to use LDAP authentication, this means that you login with the same username and password as you use for getting email e.g. <em>Mark Belanger</em> and <em>MyPassword</em>.'); ?>
@@ -40,6 +41,7 @@
   <a href="#top">Top</a>
 </p>
 <hr />
+
 <p>
   <h4><a name="meeting_delete"><strong><?php echo Lang::_('Why can\'t I delete/alter a meeting?'); ?></strong></a></h4>  <?php echo Lang::_('In order to delete or alter a meeting, you must be logged in as the same person that made the meeting.  Contact one of the meeting room administrators or the person who initially made the meeting to have it deleted or changed.'); ?>
 </p>
@@ -47,33 +49,22 @@
   <a href="#top">Top</a>
 </p>
 <hr />
+
 <p>
-<a name=repeating><b>How do I make a recurring meeting?</b></a>
-<menu>
-Clicking on the desired time brings you into the booking screen.
-Select the appropriate <b>Repeat Type</b>. The room will be scheduled
-at the same time, until the <b>Repeat End Date</b>, on the days
-determined by the <b>Repeat Type</b>.
-<p>
-A <i>Daily</i> repeat schedules every day.
-A <i>Weekly</i> repeat schedules those days of the week that you
-check under <b>Repeat Day</b>. For example, use Weekly repeat
-to schedule the room every Monday, Tuesday, and Thursday; check
-those days under Repeat Day. If you check no days under Repeat Day,
-the schedule will repeat on the same day of each week as the first
-scheduled day.
-A <i>Monthly</i> repeat schedules the same day of each month,
-for example the 15th of the month.
-A <i>Yearly</i> repeat schedules the same month and day of the month,
-for example every March 15th.
-Finally, a <i>Monthly, corresponding day</i> repeat schedules one day
-each month, the same weekday and ordinal position within the month.
-Use this repeat type to schedule the first Monday, second Tuesday,
-or fourth Friday of each month, for example.
-Do not use this repeat type after the 28th day of the month.
-</menu>
-<a href="#top">Top</a><hr>
+  <h4><a name="repeating"><strong><?php echo Lang::_('How do I make a recurring meeting?'); ?></strong></a></h4>
+  <?php echo Lang::_('Clicking on the desired time brings you into the booking screen. Select the appropriate <em>Repeat Type</em>. The room will be scheduled at the same time, until the <em>Repeat End Date</em>, on the days determined by the Repeat Type.'); ?>
+  <ul>
+    <li><?php echo Lang::_('<em>Täglich</em> bedeutet eine Einplanung für jeden Tag.'); ?></li>
+    <li><?php echo Lang::_('A <em>Weekly</em> repeat schedules those days of the week that you check under <em>Repeat Day</em>. For example, use Weekly repeat to schedule the room every Monday, Tuesday, and Thursday; check those days under Repeat Day. If you check no days under Repeat Day, the schedule will repeat on the same day of each week as the first scheduled day.'); ?></li>
+    <li><?php echo Lang::_('A <em>Monthly</em> repeat schedules the same day of each month, for example the 15th of the month.'); ?></li>
+    <li><?php echo Lang::_('A <em>Yearly</em> repeat schedules the same month and day of the month, for example every March 15th.'); ?></li>
+    <li><?php echo Lang::_('Finally, a <em>Monthly, corresponding day</em> repeat schedules one day each month, the same weekday and ordinal position within the month. Use this repeat type to schedule the first Monday, second Tuesday, or fourth Friday of each month, for example. Do not use this repeat type after the 28th day of the month.'); ?></li>
+  </ul>
 </p>
+<p>
+  <a href="#top">Top</a>
+</p>
+<hr />
 
 <p>
 <a name="repeating_delete"><b>How do I delete one instance recurring meeting?</b></a>

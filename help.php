@@ -23,6 +23,7 @@ require_once 'schoorbs-includes/schoorbstpl.class.php';
 // Obfuscate Admin-E-Mail
 $sAdminMail = '';
 for ($i = 0; $i < strlen($mrbs_admin_email); $i++) {
+	// Use hex character representation since its shorter than decimal
 	$sAdminMail .= '&#x'. sprintf("%x",ord($mrbs_admin_email[$i])).';';
 }
 
