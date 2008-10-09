@@ -139,20 +139,24 @@ $(document).ready(function() {
 	var cPselected
 	if (page == 'week-view') {
 		// Get sunday before
-		sunday = new Date();
-		sunday.setDate(day);
-		sunday.setMonth(month - 1);
-		sunday.setYear(year);
+		sunday = new Date(year, month - 1, day);
 		sunday.setDate(sunday.getDate() - sunday.getDay());
 		// Get saturday after
-		saturday = new Date();
-		saturday.setDate(day);
-		saturday.setMonth(month - 1);
-		saturday.setYear(year);
+		saturday = new Date(year, month - 1, day);
 		saturday.setDate(saturday.getDate() + (6 - saturday.getDay()));
 		cPselected = (sunday.getMonth() + 1) + '/' + sunday.getDate() + '/'
 			+ sunday.getFullYear() + '-' + (saturday.getMonth() + 1) + '/'
 			+ saturday.getDate() + '/' + saturday.getFullYear();
+	} else if (page == 'month-view') {
+		startDay = new Date(year, month - 1, 1);
+		// To get 10/31/2008, we just set the date to 11/0/2008 and let
+		// it make up on its own what's the last day of the previous 
+		// month.
+		endDay = new Date(year, month, 0);
+		cPselected = (startDay.getMonth() + 1) + '/' + startDay.getDate() + '/'
+			+ startDay.getFullYear() + '-' + (endDay.getMonth() + 1) + '/'
+			+ endDay.getDate() + '/' + endDay.getFullYear();
+
 	} else {
 		cPselected = month.toString() + '/' + day.toString() + '/' + year.toString();
 	}
