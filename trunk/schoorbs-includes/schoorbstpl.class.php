@@ -219,7 +219,7 @@ class SchoorbsTPL {
 		if ($aDayMonthYear === null) $aDayMonthYear = input_DayMonthYear();
 		
 		return sprintf(
-			'month.php?area=%d&amp;room=%d&amp;day=%d&amp;'
+			'month-view.php?area=%d&amp;room=%d&amp;day=%d&amp;'
 			.'month=%d&amp;year=%d', 
 			$nArea, $nRoom, $aDayMonthYear[0], $aDayMonthYear[1],
 			$aDayMonthYear[2]

@@ -8,6 +8,19 @@
   <?php echo date('d', $nEndTime).' '.Lang::_(date('F', $nEndTime)).' '.date('Y', $nEndTime); ?>
 </h3>
 
+<div id="schoorbs-goto-next-week">
+  <a href="<?php echo self::makeInternalUrl('week-view.php', array('day' => $nextWeek[0], 'month' => $nextWeek[1], 'year' => $nextWeek[2])); ?>">
+    <?php echo get_vocab('weekafter'); ?> &gt;&gt;
+  </a>
+</div>
+<div id="schoorbs-goto-last-week">
+  <a href="<?php echo self::makeInternalUrl('week-view.php', array('day' => $lastWeek[0], 'month' => $lastWeek[1], 'year' => $lastWeek[2])); ?>">
+    &lt;&lt; <?php echo get_vocab('weekbefore'); ?>
+  </a>
+</div>
+
+<br />
+
 <table class="schoorbs-week-matrix">
 <tr>
   <th><?php echo Lang::_('Time'); ?></th>
@@ -53,18 +66,6 @@ foreach($entries as $sDay=>$aEntries) {
 </table>
 
 <br />
-
-<div id="schoorbs-goto-next-week">
-  <a href="<?php echo self::makeInternalUrl('week-view.php', array('day' => $nextWeek[0], 'month' => $nextWeek[1], 'year' => $nextWeek[2])); ?>">
-    <?php echo get_vocab('weekafter'); ?> &gt;&gt;
-  </a>
-</div>
-<div id="schoorbs-goto-last-week">
-  <a href="<?php echo self::makeInternalUrl('week-view.php', array('day' => $lastWeek[0], 'month' => $lastWeek[1], 'year' => $lastWeek[2])); ?>">
-    &lt;&lt; <?php echo get_vocab('weekbefore'); ?>
-  </a>
-</div>
-
 
 <ul>
   <?php foreach($uniqueEntries as $oEntry) { ?>

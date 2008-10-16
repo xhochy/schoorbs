@@ -43,7 +43,7 @@ if ($oRoom === null) {
 
 // Set the date back to the previous $weekstarts day (Sunday, if 0):
 $time = mktime(12, 0, 0, $month, $day, $year);
-if (($weekday = (date('w', $time) - $weekstarts + 7) % 7) > 0) {
+if (($weekday = intval(date('w', $time))) > 0) {
 	$time -= $weekday * 86400;
 	$day   = date('d', $time);
 	$month = date('m', $time);
