@@ -77,7 +77,7 @@ for ($nUnit = 0; $nUnit < $nUnitsPerDay; $nUnit++) {
 	$nTime = mktime($morningstarts, $morningstarts_minutes, 0, $month, $day, $year);
 	$nTime+= $nUnit * $resolution;
 	
-	$aEntries = Entry::getBetween($oRoom, $nTime, $nTime + $resolution);
+	$aEntries = Entry::getBetween($oRoom, $nTime, $nTime + $resolution - 1);
 		
 	if ($enable_periods) {
 		$sTime = $periods[$nUnit];
