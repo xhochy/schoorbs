@@ -93,7 +93,7 @@ for ($nDay = 0; $nDay < 7; $nDay++) {
 		
 		
 		/** @todo Only query once for the whole week **/
-		$aEntries = Entry::getBetween($oRoom, $nTime, $nTime + $resolution);
+		$aEntries = Entry::getBetween($oRoom, $nTime, $nTime + $resolution - 1);
 		
 		if ($enable_periods) {
 			$sTime = $periods[$nUnit];
