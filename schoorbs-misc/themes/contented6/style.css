@@ -1,3 +1,45 @@
+/** month-matrix **/
+
+.schoorbs-month-matrix-ignored a:hover {
+	background-color: #ccc;
+}
+.schoorbs-month-matrix-ignored a {
+	background-color: #ddd;
+	display: block;
+	min-width: 70px;
+	font-size: 20px;
+}
+
+.schoorbs-month-matrix-free a {
+	background-color: #0d0;
+	display: block;
+	min-width: 70px;
+	font-size: 20px;
+}
+.schoorbs-month-matrix-free a:hover {
+	background-color: #0f0;
+}
+.schoorbs-month-matrix-booked a:hover {
+	background-color: #f00;
+}
+.schoorbs-month-matrix-booked a {
+	background-color: #d00;
+	display: block;
+	min-width: 70px;
+	font-size: 20px;
+}
+.schoorbs-month-matrix-partly a:hover {
+	background-color: #ff0;
+}
+.schoorbs-month-matrix-partly a {
+	background-color: #dd0;
+	display: block;
+	min-width: 70px;
+	font-size: 20px;
+}
+
+
+
 /** week-matrix **/
 
 .schoorbs-week-matrix {

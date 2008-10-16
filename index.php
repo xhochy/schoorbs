@@ -28,7 +28,7 @@ list($day, $month, $year) = input_DayMonthYear();
 
 switch ($default_view) {
 case "month":
-    $redirect_str = "month.php?year=$year&month=$month";
+    $redirect_str = "month-view.php?year=$year&month=$month";
     break;
 case "week":
     $redirect_str = "week-view.php?year=$year&month=$month&day=$day";
