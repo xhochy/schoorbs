@@ -20,12 +20,6 @@ require_once 'schoorbs-includes/database/schoorbsdb.class.php';
 /** The template system */
 require_once 'schoorbs-includes/schoorbstpl.class.php';
 
-
-/** The database wrapper */
-require_once "schoorbs-includes/database/$dbsys.php";
-/** The 3 minicalendars */
-require_once 'schoorbs-includes/minicals.php';
-
 /// Var Init ///
 
 /** day, month, year **/
