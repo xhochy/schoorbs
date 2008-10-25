@@ -39,39 +39,6 @@ function is_dst ( $month, $day, $year, $hour="-1" )
 		return -1;
 }
 
-/**
- * Make up the time of morning
- * 
- * @param int $month
- * @param int $day
- * @param int $year
- * @return int
- * @author Uwe L. Korn <uwelk@xhochy.org>
- */
-function am7($day, $month, $year)
-{
-	global $morningstarts, $morningstarts_minutes;
-
-	return mktime($morningstarts,$morningstarts_minutes,0,$month,$day,$year,
-		is_dst($month,$day,$year,$morningstarts));
-}
-
-/**
- * Make up the time of evening
- * 
- * @param int $month
- * @param int $day
- * @param int $year
- * @return int
- * @author Uwe L. Korn <uwelk@xhochy.org>
- */
-function pm7($day, $month, $year)
-{
-	global $eveningends, $eveningends_minutes;
-
-	return mktime($eveningends,$eveningends_minutes,0,$month,$day,$year,
-		is_dst($month,$day,$year,$eveningends));
-}
 
 /**
  * Returns the Day+Month+Year of yesterday

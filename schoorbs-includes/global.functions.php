@@ -13,25 +13,8 @@
 require_once dirname(__FILE__).'/../config.inc.php';
 /** Funtions for time handling */
 require_once 'time.functions.php';
-/** Functions for area handling */
-require_once 'area.functions.php';
 
 /// Functions ///
-
-/**
- * Compare two values and return the fitting sign as string.
- *
- * @author Uwe L. Korn <uwelk@xhochy.org>
- * @param int $a
- * @param int %b
- * @return string One of ['< ', '= ', '> ']
- */
-function cmp3($a, $b)
-{
-    if ($a < $b) return '< ';
-    if ($a == $b) return '= ';
-    return '> ';
-}
 
 /**
  * Error handler - this is used to display serious errors such as database
@@ -52,16 +35,14 @@ function fatal_error($need_header, $message = '')
 		// REMOVE IT IN FUTURE !!!
 	
 	if(defined('SCHOORBS_NOGUI')) {
-		if(version_compare('5.0.0',PHP_VERSION,'>') === true) {
-			trigger_error('Schoorbs Fatal Error: '.$message, E_USER_ERROR);
-		} else {
-			throw new Exception($message);
-		}
+		throw new Exception($message);
 	} else {
+		// @codeCoverageIgnoreStart
 		if ($need_header) print_header();
 		echo $message;
 		require_once 'trailer.php';
 		exit(1);
+		// @codeCoverageIgnoreEnd
 	}
 }
 
@@ -93,23 +74,6 @@ function day_name($daynumber)
 }
 
 /**
- * Return the format string for displaying the hour and minute depending on if 
- * we want to display the time in 24h-format or using PM/AM.
- * 
- * @return string
- */
-function hour_min_format()
-{
-    global $twentyfourhour_format;
-    
-    if ($twentyfourhour_format) {
-		return '%H:%M';
-	} else {
-		return '%I:%M%p';
-	}
-}
-
-/**
  *
  * @param int $mod_time
  * @return array
@@ -127,17 +91,6 @@ function period_date_string($t, $mod_time=0)
     return array($p_num, $periods[$p_num] . utf8_strftime(', %A %d %B %Y', $t));
 }
 
-function period_time_string($t, $mod_time=0)
-{
-	global $periods;
-
-	$time = getdate($t);
-    $p_num = $time['minutes'] + $mod_time;
-    if( $p_num < 0 ) $p_num = 0;
-    if( $p_num >= count($periods) - 1 ) $p_num = count($periods ) - 1;
-    return $periods[$p_num];
-}
-
 function time_date_string($t)
 {
     global $twentyfourhour_format;
@@ -148,141 +101,6 @@ function time_date_string($t)
 	        return utf8_strftime("%I:%M:%S%p - %A %d %B %Y",$t);
 }
 
-
-/**
- * Display the entry-type color key. This has up to 2 rows, up to 5 columns.
- *
- * @author jberanek, Uwe L. Korn <uwelk@xhochy.org>
- */
-function show_colour_key()
-{
-	global $typel, $pview;
-	
-	// Do not display colour key when we are in the printing view
-	if ($pview == 1) return;
-	
-	// Make a list of colour keys
-	echo '<div id="schoorbs-colour-keys">';
-	$nct = 0;
-	for ($ct = "A"; $ct <= "Z"; $ct++) {
-		if (!empty($typel[$ct])) {
-			if (++$nct > 5) {
-				$nct = 0;
-				echo '<br />';
-			}
-			printf('<a href="#" rel="tag" class="%s">%s</a>', $ct, $typel[$ct]);
-		}
-	}
-	echo "</div>\n";
-}
-
-/**
- * Round time down to the nearest resolution
- *
- * @param int $t
- * @param int $resolution
- * @param int $am7
- * @return int
- */
-function round_t_down($t, $resolution, $am7)
-{
-        return (int)$t - (int)abs(((int)$t-(int)$am7)  % $resolution);
-}
-
-/**
- * Round time up to the nearest resolution
- *
- * @param int $t
- * @param int $resolution
- * @param int $am7
- * @return int
- */
-function round_t_up($t, $resolution, $am7)
-{
-	if (($t-$am7) % $resolution != 0) {
-		return $t + $resolution - abs(((int)$t-(int)
-					       $am7) % $resolution);
-	} else {
-		return $t;
-	}
-}
-
-/**
- * Generates some html that can be used to select which area should be
- * displayed.
- *
- * @param string $link
- * @param string $current
- * @param int $year
- * @param int $month
- * @param int $day
- * @return string
- */
-function make_area_select_html( $link, $current, $year, $month, $day )
-{
-	global $tbl_area;
-	$out_html = "
-<form name=\"areaChangeForm\" method=get action=\"$link\">
-  <select name=\"area\" onChange=\"document.areaChangeForm.submit()\">";
-
-	$sql = "select id, area_name from $tbl_area order by area_name";
-   	$res = sql_query($sql);
-   	if ($res) for ($i = 0; ($row = sql_row($res, $i)); $i++)
-   	{
-		$selected = ($row[0] == $current) ? "selected" : "";
-		$out_html .= "
-    <option $selected value=\"".$row[0]."\">" . htmlspecialchars($row[1]);
-   	}
-	$out_html .= "
-  </select>
-
-  <input type=\"hidden\" name=\"day\"        value=\"$day\">
-  <input type=\"hidden\" name=\"month\"      value=\"$month\">
-  <input type=\"hidden\" name=\"year\"       value=\"$year\">
-  <input type=\"submit\" value=\"".get_vocab("change")."\">
-</form>\n";
-
-	return $out_html;
-}
-
-/**
- * Generates some html that can be used to select which room should be
- * displayed.
- *
- * @param string $link
- * @param int $area
- * @param int $current
- * @param int $year
- * @param int $month
- * @param int $day
- * @return string
- */
-function make_room_select_html( $link, $area, $current, $year, $month, $day)
-{
-	global $tbl_room;
-	$out_html = "
-<form name=\"roomChangeForm\" method=get action=\"$link\">
-  <select name=\"room\" onChange=\"document.roomChangeForm.submit()\">";
-
-	$sql = "select id, room_name from $tbl_room where area_id=$area order by room_name";
-   	$res = sql_query($sql);
-   	if ($res) for ($i = 0; ($row = sql_row($res, $i)); $i++)
-   	{
-		$selected = ($row[0] == $current) ? "selected" : "";
-		$out_html .= "
-    <option $selected value=\"".$row[0]."\">" . htmlspecialchars($row[1]);
-   	}
-	$out_html .= "
-  </select>
-  <input type=\"hidden\" name=\"day\"        value=\"$day\"        >
-  <input type=\"hidden\" name=\"month\"      value=\"$month\"        >
-  <input type=\"hidden\" name=\"year\"       value=\"$year\"      >
-  <input type=\"hidden\" name=\"area\"       value=\"$area\"         >
-  <input type=submit value=\"".get_vocab("change")."\">
-</form>\n";
-
-	return $out_html;
-} 
 
 /**
  * If crossing dst determine if you need to make a modification
