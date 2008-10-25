@@ -105,11 +105,15 @@ class SchoorbsREST
 	{
 		// Send no headers while we are in unit tests
 		if (defined('REST_TESTING')) return;
+		// @codeCoverageIgnoreStart
 		header('Content-type: text/xml; charset=utf-8');
 	
 		// REST-Answers should never be chached!
-		header('Cache-Control: no-cache, must-revalidate'); // HTTP/1.1
-		header('Expires: Mon, 26 Jul 1997 05:00:00 GMT'); // Date in the past
+		// HTTP/1.1
+		header('Cache-Control: no-cache, must-revalidate'); 
+		// Date in the past
+		header('Expires: Mon, 26 Jul 1997 05:00:00 GMT'); 
+		// @codeCoverageIgnoreEnd
 	}
 	
 	/**
@@ -130,7 +134,9 @@ class SchoorbsREST
 		if (defined('REST_TESTING')) {
 			throw new Exception('REST Exception' + $sMessage);
 		} else {
+			// @codeCoverageIgnoreStart
 			exit($nCode);
+			// @codeCoverageIgnoreEnd
 		}
 	}
 }

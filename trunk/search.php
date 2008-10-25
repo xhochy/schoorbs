@@ -15,13 +15,16 @@ require_once 'config.inc.php';
 require_once 'schoorbs-includes/global.web.php';
 /** The general functions */ 
 require_once 'schoorbs-includes/global.functions.php';
+/** The modern ORM databse layer */
+require_once 'schoorbs-includes/database/schoorbsdb.class.php';
+/** The template system */
+require_once 'schoorbs-includes/schoorbstpl.class.php';
+
+
 /** The database wrapper */
 require_once "schoorbs-includes/database/$dbsys.php";
 
 ## Main ##
-
-// print the page header
-print_header();
 
 // Get all booking types 
 $aTypes = array();
@@ -31,26 +34,8 @@ for ($c = 'A'; $c <= 'Z'; $c++) {
 	}
 }
 
-// Get all areas
-$aAreas = getAreas();
-// Get all rooms for each area
-$aRooms = array();
-$hResult = sql_query(sprintf('SELECT id, area_id, room_name FROM %s', $tbl_room));
-if ($hResult) for ($i = 0; ($row = sql_row($hResult, $i)); $i++) {
-	$aRooms[$row[1]][] = array('id' => $row[0], 'name' => $row[2]);
-} else {
-	fatal_error(false, sql_error());
-}
-
-// Assign variables used by the template
-$smarty->assign(array(
-	'types' => $aTypes,
-	'areas' => $aAreas,
-	'rooms' => $aRooms
-));
-
-// Display the Search template
-$smarty->display('search.tpl');
+SchoorbsTPL::populateVar('types', $aTypes);
+SchoorbsTPL::renderPage('search');
 
 if (isset($_REQUEST['searchtype'])) {
 	unset($hResult);
@@ -107,6 +92,3 @@ if (isset($_REQUEST['searchtype'])) {
 		$smarty->display('search-results.tpl');
 	}
 }
-
-/** The footer of the HTML Page */
-require_once 'schoorbs-includes/trailer.php';
