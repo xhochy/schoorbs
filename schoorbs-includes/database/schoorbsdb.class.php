@@ -104,6 +104,15 @@ class SchoorbsDB {
 	}
 	
 	/**
+	 * Close the database connection when cleaning up
+	 *
+	 * @author Uwe L. Korn <uwelk@xhochy.org>
+	 */
+	function __destruct() {
+		$this->oConnection->close();
+	}
+	
+	/**
 	 * Get the Creole connection.
 	 *
 	 * @return Creole
@@ -124,5 +133,17 @@ class SchoorbsDB {
 	 */
 	public function getTableName($sTable) {
 		return $this->sPrefix.$sTable;
+	}
+	
+	/**
+	 * Change the prefix for the tables in the database
+	 *
+	 * This is only used for the unit tests
+	 * 
+	 * @param $sPrefix string
+	 * @author Uwe L. Korn <uwelk@xhochy.org>
+	 */
+	public function setPrefix($sPrefix) {
+		$this->sPrefix = $sPrefix;
 	}
 }
