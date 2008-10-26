@@ -74,35 +74,6 @@ function day_name($daynumber)
 }
 
 /**
- *
- * @param int $mod_time
- * @return array
- */
-function period_date_string($t, $mod_time=0)
-{
-	global $periods;
-
-	$time = getdate($t);
-    $p_num = $time['minutes'] + $mod_time;
-    if( $p_num < 0 ) $p_num = 0;
-    if( $p_num >= count($periods) - 1 ) $p_num = count($periods ) - 1;
-	// I have made the separater a ',' as a '-' leads to an ambiguious
-	// display in report.php when showing end times.
-    return array($p_num, $periods[$p_num] . utf8_strftime(', %A %d %B %Y', $t));
-}
-
-function time_date_string($t)
-{
-    global $twentyfourhour_format;
-
-    if ($twentyfourhour_format)
-  	        return utf8_strftime("%H:%M:%S - %A %d %B %Y",$t);
-	else
-	        return utf8_strftime("%I:%M:%S%p - %A %d %B %Y",$t);
-}
-
-
-/**
  * If crossing dst determine if you need to make a modification
  * of 3600 seconds (1 hour) in either direction.
  *

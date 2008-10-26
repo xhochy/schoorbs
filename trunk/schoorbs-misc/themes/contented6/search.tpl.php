@@ -59,3 +59,29 @@
     </form>
   </div>
 </div>
+
+
+<?php if (count($result) > 0) { ?>
+  <h3>Search results:</h3>
+  <ul>
+    <?php foreach($result as $oEntry) { ?>
+      <li>
+        <a href="view-entry.php?id=<?php echo $oEntry->getId(); ?>">
+          <?php echo $oEntry->getName(); ?>
+        </a>
+        (<?php echo date('d', $oEntry->getStartTime()).' '
+                    .Lang::_(date('F', $oEntry->getStartTime())).' '
+                    .date('Y H:i', $oEntry->getStartTime()); ?>
+        -
+        <?php echo date('d', $oEntry->getEndTime()).' '
+                    .Lang::_(date('F', $oEntry->getEndTime())).' '
+                    .date('Y H:i', $oEntry->getEndTime()); ?>) 
+        <p>
+          <?php $aOut = str_split($oEntry->getDescription(), 100); echo ht($aOut[0]); ?>
+          <a href="view-entry.php?id=<?php echo $oEntry->getId(); ?>">...</a>
+          <br /><em><?php echo Lang::_('Booked by'); ?> <strong><?php echo ht($oEntry->getCreateBy()); ?></strong></em>
+        </p>
+      </li>
+    <?php } ?>
+  </ul>
+<?php } ?>  

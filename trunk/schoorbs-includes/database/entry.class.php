@@ -31,8 +31,7 @@ class Entry {
 	 * @param $nEndTime int
 	 * @return array
 	 */
-	public function getBetween($oRoom, $nStartTime, $nEndTime)
-	{
+	public function getBetween($oRoom, $nStartTime, $nEndTime) {
 		$aEntries = array();
 		$oDB = SchoorbsDB::getInstance();
 		// Example query:
@@ -59,8 +58,7 @@ class Entry {
 	 * @return Entry
 	 * @author Uwe L. Korn <uwelk@xhochy.org>
 	 */
-	public static function getById($nId)
-	{
+	public static function getById($nId) {
 		$oDB = SchoorbsDB::getInstance();
 		// Example Query:
 		//   SELECT * FROM schoorbs_entry WHERE id = 5
@@ -84,8 +82,7 @@ class Entry {
 	 * @return Entry
 	 * @author Uwe L. Korn <uwelk@xhochy.org>
 	 */
-	public static function fetchEntry($oResult)
-	{
+	public static function fetchEntry($oResult) {
 		$oEntry = new Entry();
 		$oEntry->nId = $oResult->getInt('id');
 		$oEntry->oRoom = Room::getById($oResult->getInt('room_id'));
@@ -104,6 +101,64 @@ class Entry {
 		$oEntry->nTimestamp = intval($oResult->getTimestamp('timestamp', 'U'));
 
 		return $oEntry;
+	}
+	
+	/**
+	 * Search in all text-based columns for an occurence of $sText
+	 *
+	 * @author Uwe L. Korn <uwelk@xhochy.org>
+	 * @param $sText string The string we are searching for
+	 * @return Array
+	 */
+	public static function simpleSearch($sText) {
+		$oDB = SchoorbsDB::getInstance();
+		
+		// Example query:
+		//   SELECT * FROM entry WHERE name LIKE '%test%' OR
+		//     description LIKE '%test%' OR created_by LIKE '%test%'
+		$oStatement = $oDB->getConnection()->prepareStatement('SELECT * FROM '
+			.$oDB->getTableName('entry').' WHERE name LIKE ? OR '
+			.' description LIKE ? OR create_by LIKE ?');
+			
+		// Add % for searching to things likes $sText.'sss' too
+		$oStatement->setString(1, '%'.$sText.'%');
+		$oStatement->setString(2, '%'.$sText.'%');
+		$oStatement->setString(3, '%'.$sText.'%');
+		
+		$aEntries = array();
+		$oResult = $oStatement->executeQuery();
+		while ($oResult->next()) {
+			$aEntries[] = self::fetchEntry($oResult);
+		}
+		return $aEntries;
+	}
+	
+	public static function advancedSearch($sText, $sCreatedBy, $oRoom, $sType) {
+		$oDB = SchoorbsDB::getInstance();
+		
+		// Example query:
+		//   SELECT * FROM entry WHERE name LIKE '%test%' OR
+		//     description LIKE '%test%' OR created_by LIKE '%test%'
+		$sQuery = 'SELECT * FROM '.$oDB->getTableName('entry')
+			.' WHERE (name LIKE ? OR description LIKE ?) AND '
+			.' create_by LIKE ? AND type LIKE ?';
+		if ($oRoom != null) $sQuery.= ' AND room_id = ?';
+		$oStatement = $oDB->getConnection()->prepareStatement($sQuery);
+			
+		// Add % for searching to things likes $sText.'sss' too
+		$oStatement->setString(1, '%'.$sText.'%');
+		$oStatement->setString(2, '%'.$sText.'%');
+		$oStatement->setString(3, '%'.$sCreatedBy.'%');
+		$oStatement->setString(4, '%'.$sType.'%');
+		if ($oRoom != null) $oStatement->setInt(5, $oRoom->getId());
+		
+		
+		$aEntries = array();
+		$oResult = $oStatement->executeQuery();
+		while ($oResult->next()) {
+			$aEntries[] = self::fetchEntry($oResult);
+		}
+		return $aEntries;
 	}
 	
 	/**

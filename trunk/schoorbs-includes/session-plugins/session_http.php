@@ -19,10 +19,12 @@ function authGet()
 {
     global $auth;
     
+    // @codeCoverageIgnoreStart
     if(!defined('SCHOORBS_NOGUI')) {
-	    header("WWW-Authenticate: Basic realm=\"$auth[realm]\"");
+	header("WWW-Authenticate: Basic realm=\"$auth[realm]\"");
     	header("HTTP/1.0 401 Unauthorized");
     }
+    // @codeCoverageIgnoreEnd
 }
 
 function getAuthPassword()
