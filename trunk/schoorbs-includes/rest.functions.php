@@ -12,6 +12,8 @@
 
 /** The Configuration file */
 require_once dirname(__FILE__).'/../config.inc.php';
+/** The modern ORM databse layer */
+require_once dirname(__FILE__).'/../schoorbs-includes/database/schoorbsdb.class.php';
 /** The database wrapper */
 require_once dirname(__FILE__)."/../schoorbs-includes/database/$dbsys.php";
 /** The input checking/validation functions */

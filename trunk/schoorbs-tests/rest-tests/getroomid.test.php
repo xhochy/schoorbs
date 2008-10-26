@@ -38,6 +38,7 @@ class REST_GetroomidTest extends PHPUnit_Extensions_OutputTestCase
 		DatabaseHelper::removeTestTables();
 		DatabaseHelper::createTestTables();
 		DatabaseHelper::flavourTblGlobals();
+		SchoorbsDB::getInstance()->setPrefix(TestConfiguration::$sDatabaseTablePrefix);
 		$this->nArea = DatabaseHelper::addArea('test1');
 		$this->sRoom = 'Test1';
 		$this->sNonRoom = 'Test0';
@@ -49,27 +50,26 @@ class REST_GetroomidTest extends PHPUnit_Extensions_OutputTestCase
 	 * 
 	 * @author Uwe L. Korn <uwelk@xhochy.org>
 	 */	
-    public function testRoomExist()
-    {
+	public function testRoomExist()
+	{
 		unset($_GET['name']);
 		unset($_POST['name']);
 		unset($_REQUEST['name']);
 		
 		$_REQUEST['name'] = $this->sRoom;
-		
 		$this->expectOutputRegex('/<room_id>'.$this->nRoom.'<\/room_id>/');
 		
 		$_REQUEST['call'] = 'getRoomID';
 		SchoorbsREST::handleRequest();
-    }
+	}
     
-    /**
+	/*
 	 * Test with an non-existing room
 	 * 
 	 * @author Uwe L. Korn <uwelk@xhochy.org>
 	 */	
-    public function testRoomNonExist()
-    {
+	public function testRoomNonExist()
+	{
 		unset($_GET['name']);
 		unset($_POST['name']);
 		unset($_REQUEST['name']);
@@ -81,5 +81,5 @@ class REST_GetroomidTest extends PHPUnit_Extensions_OutputTestCase
 		
 		$_REQUEST['call'] = 'getRoomID';
 		SchoorbsREST::handleRequest();
-    }
+	}
 }

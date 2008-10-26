@@ -33,7 +33,7 @@ class Room {
 	 * @return Room
 	 */
 	public static function create($oArea, $sName, $sDescription, $nCapacity) {
-		if (self::getByName($oArea, $sName) !== null) {
+		if (self::getByName($sName, $oArea) !== null) {
 			throw new Exception('Room with name "'.$sName
 				.'" already exists in this area.');
 		}
@@ -76,14 +76,16 @@ class Room {
 	 * @return Room
 	 * @author Uwe L. Korn <uwelk@xhochy.org>
 	 */
-	public static function getByName($oArea, $sName) {
+	public static function getByName($sName, $oArea = null) {
 		$oDB = SchoorbsDB::getInstance();
 		// Example Query
 		//  SELECT * FROM schoorbs_rootm WHERE area_id = 1 AND room_name = 'Hi'
-		$oStatement = $oDB->getConnection()->prepareStatement('SELECT * FROM '
-			.$oDB->getTableName('room').' WHERE area_id = ? AND room_name = ?');
-		$oStatement->setInt(1, $oArea->getId());
-		$oStatement->setString(2, $sName);
+		$sQuery = 'SELECT * FROM '.$oDB->getTableName('room')
+			.' WHERE room_name = ?';
+		if ($oArea != null)  $sQuery.= ' AND area_id = ?';
+		$oStatement = $oDB->getConnection()->prepareStatement($sQuery);
+		$oStatement->setString(1, $sName);
+		if ($oArea != null) $oStatement->setInt(2, $oArea->getId());
 		$oResult = $oStatement->executeQuery();
 		if ($oResult->next()) {
 			return self::fetchRoom($oResult);

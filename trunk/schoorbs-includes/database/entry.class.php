@@ -127,6 +127,7 @@ class Entry {
 		
 		$aEntries = array();
 		$oResult = $oStatement->executeQuery();
+		var_dump($oStatement);
 		while ($oResult->next()) {
 			$aEntries[] = self::fetchEntry($oResult);
 		}
