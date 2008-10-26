@@ -20,10 +20,6 @@ require_once 'schoorbs-includes/database/schoorbsdb.class.php';
 /** The template system */
 require_once 'schoorbs-includes/schoorbstpl.class.php';
 
-
-/** The database wrapper */
-require_once "schoorbs-includes/database/$dbsys.php";
-
 ## Main ##
 
 // Get all booking types 
@@ -34,61 +30,25 @@ for ($c = 'A'; $c <= 'Z'; $c++) {
 	}
 }
 
-SchoorbsTPL::populateVar('types', $aTypes);
-SchoorbsTPL::renderPage('search');
-
+$aResult = array();
 if (isset($_REQUEST['searchtype'])) {
-	unset($hResult);
-	
-	if ($_REQUEST['searchtype'] == 'simple') {
-		$sText = sql_escape_arg(unslashes($_REQUEST['search-for']));
-		$hResult = sql_query(sprintf(
-			'SELECT id, start_time, end_time, name, description FROM %s WHERE '
-			.'name LIKE \'%%%s%%\' OR description LIKE \'%%%s%%\' OR create_by '
-			.'LIKE \'%%%s%%\'',
-			$tbl_entry, $sText, $sText, $sText
-		));
-	} elseif ($_REQUEST['searchtype'] == 'advanced') {
-		$sText = sql_escape_arg(unslashes($_REQUEST['description']));
-		$sCreateBy = sql_escape_arg(unslashes($_REQUEST['create_by']));
-		$sQuery = sprintf(
-			'SELECT id, start_time, end_time, name, description FROM %s WHERE '
-			.'(name LIKE \'%%%s%%\' OR description LIKE \'%%%s%%\') AND create_by '
-			.'LIKE \'%%%s%%\'',
-			$tbl_entry, $sText, $sText, $sCreateBy
-		);
-		$sType = sql_escape_arg(unslashes($_REQUEST['type']));
-		if ($sType != '-ignore-') {
-			$sQuery.= ' AND type = \''.$sType.'\'';
-		}
-		$nRoom = intval(input_Room());
-		if ($nRoom != -1) {
-			$sQuery.= ' AND room_id = '.$nRoom;
-		}
-		$hResult = sql_query($sQuery);
-	}
-	
-	if (isset($hResult)) {
-		$aBookings = array();
-		for ($i = 0; ($row = sql_row($hResult, $i)); $i++) {
-			if ($enable_periods) {
-				list( , $start_date) =  period_date_string($row[1]);
-				list( , $end_date) =  period_date_string($row[2], -1);
-			} else {
-				$start_date = time_date_string($row[1]);
-				$end_date = time_date_string($row[2]);
-			}
 
-			$aBookings[] = array(
-				'id' => $row[0],
-				'start_time' => $start_date,
-				'end_time' => $end_date,
-				'name' => $row[3],
-				'description' => $row[4]
-			);
+	if ($_REQUEST['searchtype'] == 'simple') {
+		$sText = unslashes($_REQUEST['search-for']);
+		$aResult = Entry::simpleSearch($sText);
+	} elseif ($_REQUEST['searchtype'] == 'advanced') {
+		$sText = unslashes($_REQUEST['description']);
+		$sCreateBy = unslashes($_REQUEST['create_by']);
+		$oRoom = Room::getById(input_Room());
+		$sType = unslashes($_REQUEST['type']);
+		if ($sType == '-ignore-') {
+			$sType = '';
 		}
-		
-		$smarty->assign('bookings', $aBookings);
-		$smarty->display('search-results.tpl');
+		$aResult = Entry::advancedSearch($sText, $sCreateBy, $oRoom,
+			$sType);
 	}
 }
+
+SchoorbsTPL::populateVar('result', $aResult);
+SchoorbsTPL::populateVar('types', $aTypes);
+SchoorbsTPL::renderPage('search');
