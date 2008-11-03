@@ -8,13 +8,6 @@
 
     <script type="text/javascript" src="schoorbs-misc/js/jquery.pack.js"></script>
     <script type="text/javascript" src="schoorbs-misc/js/schoorbs.js"></script>
-    <!-- compliance patch for microsoft browsers -->
-    <!--[if lt IE 7]>
-    <script type="text/javascript">
-        IE7_PNG_SUFFIX = ".png";
-    </script>
-    <script src="schoorbs-misc/js/ie7/ie7-standard-p.js" type="text/javascript"></script>
-    <![endif]-->
 </head>
 <body>
 {if $pview neq 1}
