@@ -333,7 +333,15 @@ class Entry {
 	
 	/**
 	 * Return the starttime of this entry
-	 *
+	 *public static function formatTimePeriodString($nTime) {
+		global $periods;
+		
+		$aTime = getdate($nTime);
+    		$nPnum = $aTime['minutes'];
+		if($nPnum < 0 ) $nPnum = 0;
+		if($nPnum >= count($periods) - 1) $nPnum = count($periods) - 1;
+		return $periods[$nPnum];
+	}
 	 * @author Uwe L. Korn <uwelk@xhochy.org>
 	 * @return int Unix Timestamp
 	 */
@@ -586,5 +594,22 @@ class Entry {
 		}
 		
 		return sprintf('%d %s', $nDuration, $sUnits);
+	}
+	
+	/**
+	 * Get the starting period of this entry.
+	 *
+	 * Returns an integer from 0..(count(periods)-1), if 
+	 * the value is higher than count(periods)-1 then
+	 * count(periods)-1 is returned.
+	 *
+	 * @return int
+	 * @author Uwe L. Korn <uwelk@xhochy.org>
+	 */
+	public function getStartPeriod() {
+		$aTime = getdate($this->nStartTime);
+    		$nPnum = $aTime['minutes'];
+		if($nPnum >= count($periods) - 1) $nPnum = count($periods) - 1;
+		return $nPnum;
 	}
 }

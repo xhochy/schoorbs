@@ -31,7 +31,7 @@
             <?php echo $mEntry->getName(); ?>
       <?php } else { ?>
         <td class="schoorbs-day-matrix-free">
-          <a href="edit_entry.php?room=<?php echo $room->getId(); 
+          <a href="edit-entry.php?room=<?php echo $room->getId(); 
             ?>&amp;day=<?php echo date('d', $entryTime[$sTime]); 
             ?>&amp;month=<?php echo date('n', $entryTime[$sTime]); 
             ?>&amp;year=<?php echo date('Y', $entryTime[$sTime]);

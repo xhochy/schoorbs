@@ -43,7 +43,7 @@ foreach($entries as $sDay=>$aEntries) {
           <a href="view-entry.php?id=<?php echo $entries[$nDay][$sTime]->getId(); ?>">
         <?php } else { ?>
           <td class="schoorbs-week-matrix-free">
-          <a href="edit_entry.php?room=<?php echo $room->getId(); 
+          <a href="edit-entry.php?room=<?php echo $room->getId(); 
             ?>&amp;day=<?php echo date('d', $entryTime[$nDay][$sTime]); 
             ?>&amp;month=<?php echo date('n', $entryTime[$nDay][$sTime]); 
             ?>&amp;year=<?php echo date('Y', $entryTime[$nDay][$sTime]);

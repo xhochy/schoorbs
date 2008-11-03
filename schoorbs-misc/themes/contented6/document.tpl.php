@@ -8,6 +8,7 @@
   <?php SchoorbsTPL::includeCSS('yui-2.5.2/build/calendar/assets/skins/sam/calendar.css'); ?>
   <?php SchoorbsTPL::includeJS('jquery-1.2.6.pack.js'); ?>
   <?php SchoorbsTPL::includeJS('jquery-ui-personalized-1.5.2.packed.js'); ?>
+  <?php SchoorbsTPL::includeJS('contented6.js'); ?>
 </head>
 <body class="yui-skin-sam">
   <?php SchoorbsTPL::render('header'); ?>

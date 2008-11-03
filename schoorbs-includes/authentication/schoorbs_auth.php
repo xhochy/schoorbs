@@ -74,9 +74,6 @@ function getWritable($creator, $user)
  */
 function showAccessDenied()
 {
-	global $smarty;
-
-    print_header();
-    $smarty->display('accessdenied.tpl');
-	exit();
+	SchoorbsTPL::error(Lang::_('Access Denied').' - '
+		.Lang::_('You do not have access rights to modify this item.'));
 }

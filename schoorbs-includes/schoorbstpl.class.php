@@ -330,4 +330,57 @@ class SchoorbsTPL {
 		return 'yes-no.php?question='.urlencode($sQuestion).'&referto='
 			.urlencode($sReferTo).'&returnto='.urlencode($sReturnTo);
 	}
+	
+	/**
+	 * Generates a Date selector with 3 select elements.
+	 * 
+	 * The select elements will have the following names/ids:
+	 *  - <prefix>day
+	 *  - <prefix>month
+	 *  - <prefix>year
+	 *
+	 * @author Uwe L. Korn <uwelk@xhochy.com>
+	 * @param $sPrefix string
+	 * @param $nDate int
+	 * @return string
+	 */
+	public static function generateDateSelector($sPrefix, $nDate) {
+		// Get seperate Day, Month, Year values
+		$nDay = intval(date('j', $nDate));
+		$nMonth = intval(date('n', $nDate));
+		$nYear = intval(date('Y', $nDate));
+		
+		// Make the day select element
+		// 
+		// Make 31 always day-options, let JavaScript fit it always to
+		// right amount. If there is no JavaScript available, this 
+		// ensures that there are always enough days to select.
+		$sOut = '<select class="schoorbstpl-dateselector-day" name="'.$sPrefix.'day" id="'.$sPrefix.'day">';
+		for ($i = 1; $i <= 31; $i++) {
+			$sOut.= '<option'.($i == $nDay ? ' selected="selected"' : '').'>'.$i.'</option>';
+		}
+		$sOut.= '</select>';
+		
+		// Make the month select element
+		$sOut.= '<select class="schoorbstpl-dateselector-month" name="'.$sPrefix.'month" id="'.$sPrefix.'month">';
+		for ($i = 1; $i <= 12; $i++) {
+			$sMonth = Lang::_(date('M', mktime(12, 0, 0, $i, 1, 2000)));
+			$sOut.= '<option value="'.$i.'"'.($i == $nMonth ? ' selected="selected"' : '').'>'.$sMonth.'</option>';
+		}
+		$sOut.= '</select>';
+		
+		// Start from the lower of (Today, StartTime) - 5 years
+		$nMinYear = min($nYear, date('Y')) - 5;
+		// to the upper of (Today, EndTime) + 5 years)
+		$nMaxYear = max($nYear, date('Y')) + 5;
+	
+		// Make the year select element
+		$sOut.= '<select class="schoorbstpl-dateselector-year" name="'.$sPrefix.'year" id="'.$sPrefix.'year">';
+		for($i = $nMinYear; $i <= $nMaxYear; $i++) {
+			$sOut.= '<option value="'.$i.'"'.($i == $nYear ? ' selected="selected"' : '').'>'.$i.'</option>';
+		}
+		$sOut.= '</select>';
+		
+		return $sOut;
+	}
 }
