@@ -55,7 +55,6 @@ class Time_AllTests
         $suite->addTestSuite('Time_GetTomorrowTest');
         $suite->addTestSuite('Time_GetNextWeekTest');
         $suite->addTestSuite('Time_GetLastWeekTest');
-        $suite->addTestSuite('Time_ToTimeStringTest');
         $suite->addTestSuite('Time_ToPeriodStringTest');
         
         return $suite;
