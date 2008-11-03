@@ -94,12 +94,12 @@
   <br />
 </div>
 
-<a href="edit_entry.php?id=<?php echo $entry->getId(); ?>">
+<a href="edit-entry.php?id=<?php echo $entry->getId(); ?>">
   <?php echo Lang::_('Edit Entry'); ?>
 </a>
 <?php if ($entry->isRepeated()) { ?>
   &nbsp;-&nbsp;
-  <a href="edit_entry.php?id=<?php echo $entry->getId(); ?>&amp;edit_type=series"><?php echo Lang::_('Edit Series'); ?></a>
+  <a href="edit-entry.php?id=<?php echo $entry->getId(); ?>&amp;edit_type=series"><?php echo Lang::_('Edit Series'); ?></a>
 <?php } ?>
 <br />
 

@@ -216,6 +216,30 @@
 	width: 100px;
 }
 
+
+#schoorbs-largecenteredbox {
+	border: 1px solid #aaa;
+	margin: 50px auto;
+	width: 470px;
+	padding: 4px;
+	background-color: #f0f0f0;
+	color: #000;
+}
+
+#schoorbs-largecenteredbox .headline {
+	font-weight: bold;
+	font-size: 1.2em;
+}
+
+#schoorbs-largecenteredbox .form {
+	text-align: center;
+}
+
+#schoorbs-largecenteredbox label {
+	display: inline-block;
+	width: 150px;
+}
+
 #schoorbs-yes-no-box {
 	border: 1px solid #aaa;
 	margin: 50px auto;
