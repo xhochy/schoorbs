@@ -17,7 +17,6 @@ require_once 'config.inc.php';
 /** The global include for webscripts */
 require_once 'schoorbs-includes/global.web.php';
 
-
 ## Vars ##
 
 /** day, month, year */
@@ -26,14 +25,12 @@ list($day, $month, $year) = input_DayMonthYear();
 ## Main ##
 
 switch ($default_view) {
-case "month":
-    $redirect_str = "month-view.php?year=$year&month=$month";
+case 'month':
+    header('Location: month-view.php?year='.$year.'&month='.$month);
     break;
-case "week":
-    $redirect_str = "week-view.php?year=$year&month=$month&day=$day";
+case 'week':
+    header('Location: week-view.php?year='.$year.'&month='.$month.'&day='.$day);
     break;
 default:
-    $redirect_str = "day-view.php?day=$day&month=$month&year=$year";
+    header('Location: day-view.php?day='.$day.'&month='.$month.'&year='.$year);
 }
-
-header("Location: $redirect_str");
