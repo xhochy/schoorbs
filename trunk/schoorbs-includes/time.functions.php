@@ -117,34 +117,6 @@ function getLastWeek($day, $month, $year)
 }
 
 /**
- * Format the duration as nice time-string
- * 
- * @param $dur int
- * @param $units string
- * @author Uwe L. Korn <uwelk@xhochy.org>
- */
-function toTimeString(&$dur, &$units)
-{
-	if ($dur >= 60) {
-		$dur /= 60;
-		if ($dur >= 60) {
-			$dur /= 60;
-			if (($dur >= 24) && ($dur % 24 == 0)) {
-				$dur /= 24;
-				if (($dur >= 7) && ($dur % 7 == 0)) {
-					$dur /= 7;
-					if (($dur >= 52) && ($dur % 52 == 0)) {
-						$dur  /= 52;
-						$units = get_vocab('years');
-					} else $units = get_vocab('weeks');
-				} else $units = get_vocab('days');
-			} else $units = get_vocab('hours');
-		} else $units = get_vocab('minutes');
-	} else $units = get_vocab('seconds');
-}
-
-
-/**
  * Format the duration as a nice period-string
  *
  * @param $start_period int
