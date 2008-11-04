@@ -1,3 +1,4 @@
+<?xml version="1.0" encoding="UTF-8"?>
 <!--
 This is the main configuration file for Schoorbs 2.0, it replaces the old 
 config.inc.php of Schoorbs 1.x/MRBS 1.x. Doing everything with XML Syntax,
@@ -12,7 +13,6 @@ configuration to the database would make the work in multisite support a lot
 easier and backups more efficent, since there will only be one file which 
 assigns a certain database connection to a certain URL.
 -->
-<?xml version="1.0" encoding="UTF-8"?>
 <config>
 	<!-- Your company name -->
 	<option key="company" value="XhochY" />
