@@ -32,6 +32,9 @@ require_once 'PHPUnit/TextUI/TestRunner.php';
 
 require_once 'database.helper.php';
 
+// Ignore Creole code in the code coverage report.
+PHPUnit_Util_Filter::addDirectoryToFilter(realpath(dirname(__FILE__).'/../schoorbs-includes/database/creole'));
+
 ## The Database Tests ##
 
 //require_once 'rest-tests/getroomid.test.php';
