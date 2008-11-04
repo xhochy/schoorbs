@@ -1,5 +1,23 @@
+<!--
+This is the main configuration file for Schoorbs 2.0, it replaces the old 
+config.inc.php of Schoorbs 1.x/MRBS 1.x. Doing everything with XML Syntax,
+we could parse this file with other languages than PHP too which makes the
+development of helper tools for Schoorbs in an other language a lot more easier.
+
+Since in the initial Schoorbs 2.0.0 there shouldn't be a change in the database
+format in relation to Schoorbs 1.x/MRBS 1.x and its good and open 
+standardization, we used XML. In future releases (Schoorbs 3+) the configuration
+will likely move to the database, where all other data is stored. Moving the
+configuration to the database would make the work in multisite support a lot
+easier and backups more efficent, since there will only be one file which 
+assigns a certain database connection to a certain URL.
+-->
 <?xml version="1.0" encoding="UTF-8"?>
 <config>
-	<option key="theme-name" value="contented6" />
+	<!-- Your company name -->
 	<option key="company" value="XhochY" />
+	
+	<!-- THEME OPTIONS -->
+	<!-- themes are stored at schoorbs-misc/themes/<name> -->
+	<option key="theme-name" value="contented6" />
 </config>

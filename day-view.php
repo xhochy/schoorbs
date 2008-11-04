@@ -15,10 +15,6 @@ require_once 'config.inc.php';
 require_once 'schoorbs-includes/global.web.php';
 /** The general functions */ 
 require_once 'schoorbs-includes/global.functions.php';
-/** The modern ORM databse layer */
-require_once 'schoorbs-includes/database/schoorbsdb.class.php';
-/** The template system */
-require_once 'schoorbs-includes/schoorbstpl.class.php';
 
 /// Var Init ///
 
@@ -32,7 +28,8 @@ list($nNextDayDay, $nNextDayMonth, $nNextDayYear) = getTomorrow($day, $month, $y
 /** Get the room we should display */
 $oRoom = Room::getById(input_Room());
 
-// Check if we have a room for this area
+// Check if we have a room for this area, if there's none, we will inform the
+// user the selected are (or the default, if no area was selected) has no rooms.
 if ($oRoom === null) {
 	$oArea = Area::getById(input_Area());
 	SchoorbsTPL::error(Lang::_(sprintf('The area \'%s\' has no rooms.', $oArea->getName())));
@@ -41,8 +38,10 @@ if ($oRoom === null) {
 
 // Main //
 
+// The time where the first unit of the day starts.
 $nStartTime = mktime($morningstarts, $morningstarts_minutes, 0, $month, $day, 
 	$year, is_dst($month, $day, $year, $morningstarts));
+// The time where the last unit of the day *ends*.
 $nEndTime = mktime($eveningends, $eveningends_minutes, 0, $month, $day, 
 	$year, is_dst($month, $day, $year, $eveningends));
 
@@ -79,27 +78,47 @@ for ($nUnit = 0; $nUnit < $nUnitsPerDay; $nUnit++) {
 	
 	$aEntries = Entry::getBetween($oRoom, $nTime, $nTime + $resolution - 1);
 		
+	// If periods is enabled, so display the label of that period otherwise
+	// display the hour and minute when the certain unit starts. We always
+	// use here the twentyfour-hour-format to keep code small. The usage
+	// of PM/AM would lead to more code (we want to keep Schoorbs as small
+	// as possible) and wider columns in timetables. Since this is used as
+	// a standard index in the data provided to the theme, we need a 
+	// strict convention how the indexes of the array over the units of one
+	// day is named.
+	//
+	// If you still want to have AM/PM times displayed in Schoorbs, you 
+	// should take care of this in your themes. This internal code shouldn't
+	// be getting fatter through this optical thing.
 	if ($enable_periods) {
 		$sTime = $periods[$nUnit];
 	} else {
 		$sTime = date('H:i', $nTime);
 	}
 
+	// If there is a booking for this unit, so add it to the array of 
+	// today's units and add it to the array of unique entries of this day.
 	if (count($aEntries) > 0) {
-		//var_dump($aEntries);die();
-		//entry per id laden
-		$oEntry = $aEntries[0];
-		$aEntry[$sTime] = $oEntry;
-		$aUniqueEntry[$oEntry->getStartTime()] = $oEntry;
+		$aEntry[$sTime] = $aEntries[0];
+		$aUniqueEntry[$oEntry->getStartTime()] = $aEntries[0];
 	} else {
+		// If there is no entry, set this cell to -1
+		// This indicates that this unit is free and bookable. The theme
+		// should provide a link to add an entry for this unit.
 		$aEntry[$sTime] = -1;
 	}
+	
+	// Provide the starting time of this unit, so that the template may 
+	// construct a link to add a new entry starting exactly in this unit.
+	// (This is just a helping information during the theming process, it
+	// may not be needed).
 	$aEntryTime[$sTime] = $nTime;
 }
 
 // We want an array sorted chronologically
 ksort($aUniqueEntry);
 
+// Pass the variables to the theming engine and display the day-view template.
 SchoorbsTPL::populateVar('uniqueEntries', $aUniqueEntry);
 SchoorbsTPL::populateVar('entries', $aEntry);
 SchoorbsTPL::populateVar('entryTime', $aEntryTime);
