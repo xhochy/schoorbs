@@ -7,16 +7,20 @@
  * @license http://www.gnu.org/licenses/gpl.html GNU General Public License
  */
 
-## Includes ##
+/// Includes ///
 
 /** Smarty Template Engine */
 require_once 'smarty.functions.php';
 /** The input getting & validating functions */
 require_once 'input.functions.php';
+/** The modern ORM databse layer */
+require_once 'schoorbs-includes/database/schoorbsdb.class.php';
+/** The template system */
+require_once 'schoorbs-includes/schoorbstpl.class.php';
 /** The authetication wrappers */
 require_once 'schoorbs-includes/authentication/schoorbs_auth.php';
  
-## Var Inits ##
+/// Var Inits ///
 
 $pview = input_PView();
 
