@@ -1,8 +1,8 @@
 <?php
 /**
- * The view of one month
+ * The view of one month.
  * 
- * @author gwalker, Uwe L. Korn <uwelk@xhochy.org>
+ * @author Uwe L. Korn <uwelk@xhochy.org>
  * @package Schoorbs
  * @license http://www.gnu.org/licenses/gpl.html GNU General Public License
  */
@@ -15,15 +15,13 @@ require_once 'config.inc.php';
 require_once 'schoorbs-includes/global.web.php';
 /** The general functions */ 
 require_once 'schoorbs-includes/global.functions.php';
-/** The modern ORM databse layer */
-require_once 'schoorbs-includes/database/schoorbsdb.class.php';
-/** The template system */
-require_once 'schoorbs-includes/schoorbstpl.class.php';
 
 /// Var Init ///
 
 /** day, month, year **/
 list($day, $month, $year) = input_DayMonthYear();
+// Set day to 1, so that today is the first day of the month which should be 
+// displayed.
 $day = 1;
 
 /** area **/
@@ -37,7 +35,8 @@ $room = input_Room();
 /** Get the room we should display */
 $oRoom = Room::getById(input_Room());
 
-// Check if we have a room for this area
+// Check if we have a room for this area, if there's none, we will inform the
+// user the selected are (or the default, if no area was selected) has no rooms
 if ($oRoom === null) {
 	$oArea = Area::getById(input_Area());
 	SchoorbsTPL::error(Lang::_(sprintf('The area \'%s\' has no rooms.', $oArea->getName())));
@@ -87,6 +86,7 @@ for ($i = 0; $i < $nDaysInMonth; $i++) {
 	}
 }
 
+// Populate the data to the themeing system and display the month-view template
 SchoorbsTPL::populateVar('numberOfBookings', $aNumberOfBookings);
 SchoorbsTPL::populateVar('daysInMonth', $nDaysInMonth);
 SchoorbsTPL::populateVar('nextMonth', $nNextMonth);
