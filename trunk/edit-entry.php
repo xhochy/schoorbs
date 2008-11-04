@@ -15,16 +15,6 @@ require_once 'config.inc.php';
 require_once 'schoorbs-includes/global.web.php';
 /** The general functions */ 
 require_once 'schoorbs-includes/global.functions.php';
-/** The modern ORM databse layer */
-require_once 'schoorbs-includes/database/schoorbsdb.class.php';
-/** The template system */
-require_once 'schoorbs-includes/schoorbstpl.class.php';
-
-/** The database wrapper */
-require_once "schoorbs-includes/database/$dbsys.php";
-/** Database helper functions */
-require_once 'schoorbs-includes/database/schoorbs_sql.php';
-
 
 /// Var Init ///
 
@@ -38,7 +28,10 @@ if(isset($_REQUEST['id'])) {
 
 /// Main ///
 
-if (!getAuthorised(1)) showAccessDenied();
+// Only allow loged-in users to create a new entry.
+if (!getAuthorised(1)) {
+	showAccessDenied();
+}
 
 if (isset($nId)) {
 	$oEntry = Entry::getById($nId);
