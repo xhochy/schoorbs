@@ -100,7 +100,7 @@ for ($nUnit = 0; $nUnit < $nUnitsPerDay; $nUnit++) {
 	// today's units and add it to the array of unique entries of this day.
 	if (count($aEntries) > 0) {
 		$aEntry[$sTime] = $aEntries[0];
-		$aUniqueEntry[$oEntry->getStartTime()] = $aEntries[0];
+		$aUniqueEntry[$aEntries[0]->getStartTime()] = $aEntries[0];
 	} else {
 		// If there is no entry, set this cell to -1
 		// This indicates that this unit is free and bookable. The theme

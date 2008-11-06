@@ -912,3 +912,6 @@ msgid ""
 "The bottom line is: <strong>every piece of this system, from the operating "
 "system to the application, is completely free - source code and all</strong>."
 msgstr ""
+
+msgid "No entry id for editing was provided!"
+msgstr ""
