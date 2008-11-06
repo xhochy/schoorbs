@@ -9,6 +9,8 @@
 
 /// Includes ///
 
+/** The general functions */ 
+require_once 'schoorbs-includes/global.functions.php';
 /** Smarty Template Engine */
 require_once 'smarty.functions.php';
 /** The input getting & validating functions */
