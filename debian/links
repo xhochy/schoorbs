@@ -1,5 +1,0 @@
-var/cache/schoorbs/cache usr/share/schoorbs/schoorbs-includes/Smarty/cache
-var/cache/schoorbs/templates_c usr/share/schoorbs/schoorbs-includes/Smarty/templates_c
-usr/share/php/smarty usr/share/schoorbs/schoorbs-includes/Smarty/libs
-usr/share/php/libphp-phpmailer usr/share/schoorbs/schoorbs-includes/mail
-etc/schoorbs/logging.configuration.php usr/share/schoorbs/schoorbs-includes/logging.configuration.php
