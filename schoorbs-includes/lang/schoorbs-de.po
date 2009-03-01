@@ -8,13 +8,13 @@ msgstr ""
 "Project-Id-Version: schoorbs\n"
 "Report-Msgid-Bugs-To: FULL NAME <EMAIL@ADDRESS>\n"
 "POT-Creation-Date: 2008-01-05 15:06+0100\n"
-"PO-Revision-Date: 2008-09-13 10:35+0000\n"
+"PO-Revision-Date: 2009-03-01 15:26+0000\n"
 "Last-Translator: Uwe L. Korn <uwelk@xhochy.org>\n"
 "Language-Team: German <de@li.org>\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"X-Launchpad-Export-Date: 2008-10-06 18:04+0000\n"
+"X-Launchpad-Export-Date: 2009-03-01 15:32+0000\n"
 "X-Generator: Launchpad (build Unknown)\n"
 
 msgid "Sunday"
@@ -227,8 +227,7 @@ msgstr "Kurzbeschreibung"
 msgid ""
 "Full Description:<br />&nbsp;&nbsp;(Number of people,<br "
 "/>&nbsp;&nbsp;Internal/External etc)"
-msgstr ""
-"Vollständige Beschreibung:<br />&nbsp;&nbsp;(Anzahl der Teilnehmer etc;)"
+msgstr "Vollständige Beschreibung (Anzahl der Teilnehmer etc.):"
 
 msgid "Date:"
 msgstr "Tag:"
@@ -818,21 +817,21 @@ msgid ""
 "Belanger</em> and <em>MyPassword</em>."
 msgstr ""
 "Das System kann mit verschiedenen Authentifizierungsmethoden konfiguriert "
-"werden, dazu \n"
+"werden, dazu \r\n"
 "gehören LDAP,Netware und SMB. Wenden Sie sich bitte an ihren "
-"Systemadministrator, wenn Sie\n"
-" Schwierigkeiten bei der Anmeldung haben.\n"
+"Systemadministrator, wenn Sie\r\n"
+" Schwierigkeiten bei der Anmeldung haben.\r\n"
 " Einige Systemfunktionen können auf bestimmte Benutzer beschränkt sein, "
-"und\n"
+"und\r\n"
 " daher werden die übrigen Benutzer die Meldung: <em>Sie haben keine "
-"Berechtigung, diesen \n"
-"Eintrag zu ändern</em> erhalten. Wenden Sie sich bitte an Ihren\n"
-" Systemadministratoren, wenn ihre Benutzerberechtigungen nicht korrekt\n"
-" für Sie eingestellt sind.\n"
-" Wenn das System auf der Grundlage der Authentifizierungsmethode LDAP\n"
-" eingerichtet ist, dann bedeutet dies, dass sie Zugang zu dem System mit\n"
+"Berechtigung, diesen \r\n"
+"Eintrag zu ändern</em> erhalten. Wenden Sie sich bitte an Ihren\r\n"
+" Systemadministratoren, wenn ihre Benutzerberechtigungen nicht korrekt\r\n"
+" für Sie eingestellt sind.\r\n"
+" Wenn das System auf der Grundlage der Authentifizierungsmethode LDAP\r\n"
+" eingerichtet ist, dann bedeutet dies, dass sie Zugang zu dem System mit\r\n"
 " dem gleichen Benutzernamen und Passwort z.B. <em>Mark Belanger</em> "
-"<em>MyPassword</em>\n"
+"<em>MyPassword</em>\r\n"
 " wie zu Ihrem E-Mail System haben."
 
 msgid "Top"
@@ -845,10 +844,10 @@ msgid ""
 "deleted or changed."
 msgstr ""
 "Nur die Person, die die Besprechung im System angelegt hat, kann diese "
-"auch\n"
+"auch\r\n"
 " löschen bzw. abändern. Nehmen Sie Kontakt mit einem der Administratoren "
-"der\n"
-" Besprechungszimmer oder mit der Person, die die Besprechung ursprünglich\n"
+"der\r\n"
+" Besprechungszimmer oder mit der Person, die die Besprechung ursprünglich\r\n"
 " angelegt hat, auf um diese löschen bzw. ändern zu lassen."
 
 msgid ""
@@ -857,17 +856,17 @@ msgid ""
 "time, until the <em>Repeat End Date</em>, on the days determined by the "
 "Repeat Type."
 msgstr ""
-"Wenn sie auf die gewünschte Besprechungszeit klicken, kommen Sie auf den\n"
-" Bildschirm zum Anlegen einer Besprechung.\n"
-" Nach Eingabe einer <em>Kurzbeschreibung</em> und evtl. einer optionalen \n"
+"Wenn sie auf die gewünschte Besprechungszeit klicken, kommen Sie auf den\r\n"
+" Bildschirm zum Anlegen einer Besprechung.\r\n"
+" Nach Eingabe einer <em>Kurzbeschreibung</em> und evtl. einer optionalen \r\n"
 "<em>Vollständigen Beschreibung</em>, sowie von <em>Tag</em>, <em>Dauer</em>, "
-"\n"
+"\r\n"
 "<em>Bereiche</em>, <em>Räume</em> (halten Sie die [STRG]-Taste beim Klicken "
-"\n"
-"gedrückt um mehrere zu selektieren), wählen Sie die geeignete Art der\n"
-" Wiederholung aus. Der Raum wird für die gleiche Uhrzeit an den Tagen,\n"
-" die durch Ihren Wiederholungsschlüssel (Art der Wiederholung)\n"
-"  festgelegt sind, bis zum Endtermin (Ende der Wiederholung)\n"
+"\r\n"
+"gedrückt um mehrere zu selektieren), wählen Sie die geeignete Art der\r\n"
+" Wiederholung aus. Der Raum wird für die gleiche Uhrzeit an den Tagen,\r\n"
+" die durch Ihren Wiederholungsschlüssel (Art der Wiederholung)\r\n"
+"  festgelegt sind, bis zum Endtermin (Ende der Wiederholung)\r\n"
 " eingeplant."
 
 msgid "A <em>Daily</em> repeat schedules every day."
@@ -914,7 +913,7 @@ msgid ""
 "Entry</em>."
 msgstr ""
 "Wählen Sie den entsprechenden Besprechungstermin aus und gehen Sie danach "
-"auf\n"
+"auf\r\n"
 " die Auswahl <em>Eintrag löschen</em>."
 
 msgid ""
@@ -922,18 +921,19 @@ msgid ""
 "simultaneously. You must schedule each one separately.  Make sure that the "
 "time you want is available at both sites before making a booking."
 msgstr ""
-"Das ist nicht möglich. Gegenwärtig kann das System nicht mehrere Räume\n"
+"Das ist nicht möglich. Gegenwärtig kann das System nicht mehrere Räume\r\n"
 " gleichzeitig einplanen. Sie müssen jeden Raum separat einplanen. Stellen "
-"Sie bitte\n"
-" sicher, dass die Räume an den verschiedenen Orten zu der gewünschten Zeit\n"
+"Sie bitte\r\n"
+" sicher, dass die Räume an den verschiedenen Orten zu der gewünschten "
+"Zeit\r\n"
 " verfügbar sind, bevor sie eine Belegung vornehmen."
 
 msgid ""
 "No meeting can create more than 365 entries. There needs to be some limit on "
 "the number of meetings created. This number can be increased if necessary."
 msgstr ""
-"Die Obergrenze für die Anzahl der Wiederholungseinträge eines\n"
-" Besprechungseintrags liegt im System bei 365. Die Zahl kann aber bei\n"
+"Die Obergrenze für die Anzahl der Wiederholungseinträge eines\r\n"
+" Besprechungseintrags liegt im System bei 365. Die Zahl kann aber bei\r\n"
 " Bedarf erhöht werden. Bitte informieren Sie den Buchungsadministrator."
 
 msgid ""
@@ -943,10 +943,11 @@ msgid ""
 "users."
 msgstr ""
 "Die einfache Antwort ist: der Erste, der den Button <em>Speichern</em> "
-"drückt,\n"
-" macht das Rennen. Hinter den Kulissen benutzt das System eine einwandfrei\n"
+"drückt,\r\n"
+" macht das Rennen. Hinter den Kulissen benutzt das System eine "
+"einwandfrei\r\n"
 " arbeitende für mehrere Benutzer und gleichzeitige Verarbeitung mehrerer "
-"Anforderungen \n"
+"Anforderungen \r\n"
 "ausgerichtete relationale Datenbank, die viele Tausende von gleichzeitigen "
 "Benutzern bedienen kann."
 
@@ -960,16 +961,16 @@ msgid ""
 "the main calendar view."
 msgstr ""
 "Standardmäßig gibt es im System Schoorbs zwei Besprechungsarten. "
-"<em>Intern</em>\n"
+"<em>Intern</em>\r\n"
 " bedeutet, dass an der Besprechung nur Firmenangestellte teilnehmen. "
-"<em>Extern</em> heißt,\n"
+"<em>Extern</em> heißt,\r\n"
 " dass als Teilnehmer auch Kunden, Lieferanten, Geldanleger, usw. vorgesehen "
 "sind. Sie können für ihren Standort bis zu 10 Besprechungsarten nach ihren "
-"eigenen \n"
+"eigenen \r\n"
 "Bedürfnissen definieren. Jeder Besprechungsart ist eine Farbe zugeordnet und "
-"die Besprechung\n"
+"die Besprechung\r\n"
 " werden in der Kalenderübersicht entsprechend farblich unterlegt. Eine "
-"Übersicht\n"
+"Übersicht\r\n"
 " über die Besprechungsarten und ihre farbliche Darstellung befindet sich am "
 "Fuß der Kalenderübersicht."
 
@@ -982,9 +983,9 @@ msgid ""
 "that is distributed under the Gnu Public License(GPLv2). This means that "
 "software is free to use, distribute, and modify."
 msgstr ""
-"<a href=\"http://schoorbs.xhochy.com/\">Schoorbs</a> ist eine Open Source\n"
+"<a href=\"http://schoorbs.xhochy.com/\">Schoorbs</a> ist eine Open Source\r\n"
 " Software, die unter GNU Public License (GPL) vertrieben wird. Das bedeutet, "
-"die\n"
+"die\r\n"
 " Software kann unentgeltlich benutzt, vertrieben und geändert werden."
 
 msgid ""
@@ -995,7 +996,7 @@ msgid ""
 msgstr ""
 "Der größte Teil des Systems ist in <a href=\"http://www.php.net\">PHP</a>, "
 "geschrieben, dies ist eine Open Source Programmiersprache, die in Webseiten "
-"eingebettet werden kann, vergleichbar den\n"
+"eingebettet werden kann, vergleichbar den\r\n"
 " Microsoft Active Server Pages. PHP eignet sich besonders gut für den "
 "Zugriff auf Datenbanken."
 
@@ -1008,14 +1009,14 @@ msgid ""
 "open source Object Relational SQL database server."
 msgstr ""
 "Das Datenbanksystem, das dem Anwendungssystem zugrunde liegt, ist entweder "
-"<a href=\"http://www.mysql.com\">MySQL</a>\n"
+"<a href=\"http://www.mysql.com\">MySQL</a>\r\n"
 " oder <a href=\"http://www.postgresql.org\">PostgreSQL</a>. MySQL ist ein "
-"sehr schneller, für mehrere\n"
+"sehr schneller, für mehrere\r\n"
 " Benutzer und parallele Verarbeitung verschiedener Benutzeranforderungen "
-"ausgerichteter,\n"
+"ausgerichteter,\r\n"
 " leistungsfähiger SQL (Structured Query Language) Datenbankserver. "
 "PostgreSQL ist ein Multi User, Open Source und SQL Datenbankserver mit allen "
-"\n"
+"\r\n"
 "Leistungsmerkmalen."
 
 msgid ""
@@ -1024,7 +1025,7 @@ msgid ""
 "Linux, is a free, open source, unix-like operating system."
 msgstr ""
 "Das System läuft auf vielen Plattformen, auch auf einer PC-Architektur mit "
-"einem <a ref=\"http://www.linux.com\">Linux</a>\n"
+"einem <a ref=\"http://www.linux.com\">Linux</a>\r\n"
 "-Betriebssystem. Linux ist eine kostenloses, Open Source und UNIX-ähnliches "
 "Betriebssystem."
 
@@ -1034,7 +1035,7 @@ msgid ""
 "the world's most popular web server."
 msgstr ""
 "Auch der eingesetzte Webserver ist eine kostenlose Open Source Software. Der "
-"<a href=\"http://www.apache.org\">Apache</a>\n"
+"<a href=\"http://www.apache.org\">Apache</a>\r\n"
 " Webserver ist der weitverbreiteste Webserver."
 
 msgid ""
@@ -1042,5 +1043,8 @@ msgid ""
 "system to the application, is completely free - source code and all</strong>."
 msgstr ""
 "Die Quintessenz lautet: <strong>Jeder Bestandteil des Systems vom "
-"Betriebssystem bis zur Anwendungssoftware\n"
+"Betriebssystem bis zur Anwendungssoftware\r\n"
 "ist vollkommen kostenloser Quellcode.</strong>"
+
+msgid "No entry id for editing was provided!"
+msgstr "Keine Eintrags id zum bearbeiten wurde angegeben!"

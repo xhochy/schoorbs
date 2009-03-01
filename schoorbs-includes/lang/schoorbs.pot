@@ -915,3 +915,21 @@ msgstr ""
 
 msgid "No entry id for editing was provided!"
 msgstr ""
+
+msgid "Not all needed components(hour, minute) for the time were set."
+msgstr ""
+
+msgid "A starting period was not supplied."
+msgstr ""
+
+msgid "Supplied value for the period is not valid."
+msgstr ""
+
+msgid "Supplied value for the hour is not valid."
+msgstr ""
+
+msgid "Supplied value for the minute is not valid."
+msgstr ""
+
+msgid "Supplied value for the duration unit is not valid."
+msgstr ""

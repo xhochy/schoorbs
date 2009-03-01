@@ -20,7 +20,7 @@ RELEASE_SRC_FILES = Dir['*'] - ['schoorbs-contrib', 'schoorbs-tests', 'schoorbs-
 
 require 'fileutils'
 require File.join(File.dirname(__FILE__), 'packr', '/packr.rb')
-require File.join(File.dirname(__FILE__), 'rainpress', '/packer.rb')
+require File.join(File.dirname(__FILE__), 'rainpress', '/rainpress.rb')
 
 ## CLEAN targets ##
 

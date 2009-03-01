@@ -8,13 +8,13 @@ msgstr ""
 "Project-Id-Version: schoorbs\n"
 "Report-Msgid-Bugs-To: FULL NAME <EMAIL@ADDRESS>\n"
 "POT-Creation-Date: 2008-01-05 15:06+0100\n"
-"PO-Revision-Date: 2008-08-29 14:11+0000\n"
-"Last-Translator: Ricardo Varas Santana <rvaras81@yahoo.com>\n"
+"PO-Revision-Date: 2009-03-01 15:28+0000\n"
+"Last-Translator: Uwe L. Korn <uwelk@xhochy.org>\n"
 "Language-Team: Spanish <es@li.org>\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"X-Launchpad-Export-Date: 2008-10-06 18:04+0000\n"
+"X-Launchpad-Export-Date: 2009-03-01 15:32+0000\n"
 "X-Generator: Launchpad (build Unknown)\n"
 
 msgid "Sunday"
@@ -99,34 +99,34 @@ msgid "Sat"
 msgstr "Sab"
 
 msgid "Su"
-msgstr ""
+msgstr "Do"
 
 msgid "Mo"
-msgstr ""
+msgstr "Lu"
 
 msgid "Tu"
-msgstr ""
+msgstr "Ma"
 
 msgid "We"
-msgstr ""
+msgstr "Mi"
 
 msgid "Th"
-msgstr ""
+msgstr "Ju"
 
 msgid "Fr"
-msgstr ""
+msgstr "Vi"
 
 msgid "Sa"
-msgstr ""
+msgstr "Sa"
 
 msgid "No name for the area was provided!"
-msgstr ""
+msgstr "¡No se entregó nombre de área!"
 
 msgid "An error occured"
 msgstr "Ocurrió un error"
 
 msgid "No question to ask was provided!"
-msgstr ""
+msgstr "¡No se entregó ninguna pregunta!"
 
 msgid "No url to refer to was provided!"
 msgstr ""
@@ -135,10 +135,10 @@ msgid "No url to return to after a negative answer was provided!"
 msgstr ""
 
 msgid "Do you want to delete the area '%s'?"
-msgstr ""
+msgstr "¿Deséa eliminar el área '%s'?"
 
 msgid "Do you want to delete the room '%s' in the area '%s'?"
-msgstr ""
+msgstr "¿Deséa eliminar la sala '%s' en el área '%s'?"
 
 msgid "No valid area(-id) for deletion was provided!"
 msgstr ""
@@ -153,10 +153,10 @@ msgid "No valid room(-id) was provided!"
 msgstr ""
 
 msgid "Booked by"
-msgstr ""
+msgstr "Reservado por"
 
 msgid "The area '%s' has no rooms."
-msgstr ""
+msgstr "El área '%s' no tiene salas."
 
 msgid "Schoorbs - Room Booking System"
 msgstr "Sistema de Reservas de Salas de Reuni&oacute;n"
@@ -412,12 +412,14 @@ msgid "Failed to acquire exclusive database access"
 msgstr "Error al obtener acceso a la Base de Datos"
 
 msgid "Invalid booking"
-msgstr ""
+msgstr "Reserva inválida"
 
 msgid ""
 "You must set a brief description for the booking. Please go back and enter "
 "one."
 msgstr ""
+"Usted debe ingresar una descripción breve de la reserva. Por favor, regrese "
+"e ingrese una."
 
 msgid "Access Denied"
 msgstr "Acceso Denegado"
@@ -492,6 +494,8 @@ msgstr "Click para mostrar todos mis eventos futuros"
 
 msgid "No users in database, allowing initial user creation"
 msgstr ""
+"No existen usuarios en la base de datos, permitiendo creación de usuario "
+"inicial"
 
 msgid ""
 "Create a user configured as administrator and then you can log in and create "
@@ -753,7 +757,7 @@ msgid "Fatal Error: Failed to connect to database"
 msgstr "Error: No se pudo conectar a la Base de Datos"
 
 msgid "Authentication"
-msgstr ""
+msgstr "Autentificación"
 
 msgid "How do I login?"
 msgstr ""
@@ -784,13 +788,13 @@ msgstr ""
 
 msgid ""
 "What is the difference between <em>Internal</em> and <em>External</em>?"
-msgstr ""
+msgstr "¿Cuál es la diferencia entre <em>Interno</em> y <em>Externo</em>?"
 
 msgid "How much did the system cost?"
-msgstr ""
+msgstr "¿Cuánto costó el sistema?"
 
 msgid "How does the system work and who wrote it?"
-msgstr ""
+msgstr "¿Cómo funciona el sistema y quién lo escribió?"
 
 msgid ""
 "The system can be configured to use one of several methods of "
@@ -805,7 +809,7 @@ msgid ""
 msgstr ""
 
 msgid "Top"
-msgstr ""
+msgstr "Arriba"
 
 msgid ""
 "In order to delete or alter a meeting, you must be logged in as the same "
@@ -854,6 +858,8 @@ msgid ""
 "Select the day/room/time that you want to delete and select <em>Delete "
 "Entry</em>."
 msgstr ""
+"Seleccione el día/sala/hora que desea eliminar y seleccione <em>Eliminar "
+"Entrada</em>."
 
 msgid ""
 "You don't.  Presently the system cannot book two different rooms "
@@ -884,7 +890,7 @@ msgid ""
 msgstr ""
 
 msgid "Nothing.  See the next section for more information."
-msgstr ""
+msgstr "Nada. Véa la siguiente sección para más información."
 
 msgid ""
 "<a href=\"http://schoorbs.xhochy.com/\">Schoorbs</a> is open source software "
@@ -923,4 +929,7 @@ msgstr ""
 msgid ""
 "The bottom line is: <strong>every piece of this system, from the operating "
 "system to the application, is completely free - source code and all</strong>."
+msgstr ""
+
+msgid "No entry id for editing was provided!"
 msgstr ""
