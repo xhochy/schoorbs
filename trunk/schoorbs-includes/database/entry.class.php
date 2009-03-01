@@ -205,8 +205,14 @@ class Entry {
 	 *
 	 * If this field is = -1 then this object was newly created and never 
 	 * checked into the database.
+	 *
+	 * This is a readonly property since the id is generated with the 
+	 * creation of the database row for this entry and will never be 
+	 * changed, so that not depend on any other property this booking 
+	 * could uniquely be referenced by its id.
 	 * 
 	 * @var int
+	 * @see Entry::getId()
 	 */
 	private $nId = -1;
 	
@@ -214,6 +220,8 @@ class Entry {
 	 * The room in which this entry will take place.
 	 *
 	 * @var Room
+	 * @see Entry::getRoom()
+	 * @see Entry::setRoom()
 	 */
 	private $oRoom = null;
 	
@@ -221,6 +229,8 @@ class Entry {
 	 * The time, where this entry starts.
 	 *
 	 * @var int
+	 * @see Entry::getStartTime()
+	 * @see Entry::setStartTime()
 	 */
 	private $nStartTime = 0;
 	
@@ -228,6 +238,8 @@ class Entry {
 	 * The time where this entry ends.
 	 *
      	 * @var int
+     	 * @see Entry::getEndTime()
+     	 * @see Entry::setEndTime()
          */
     	private $nEndTime = 0;
     
@@ -235,6 +247,8 @@ class Entry {
 	 * entry_type?
 	 *
 	 * @var int
+	 * @see Entry::getEntryType()
+	 * @see Entry::setEntryType()
 	 */
 	private $nEntryType = 0;
 	
@@ -253,6 +267,7 @@ class Entry {
     	 * repeated.
     	 *
     	 * @var int
+    	 * @see Entry::$oRepetition
     	 */
     	private $nRepeatId = 0;
     	
@@ -262,6 +277,8 @@ class Entry {
     	 * This is only fetched on demand. On single entries this stays on null.
     	 *
     	 * @var Repeat
+    	 * @see Entry::getRepetition()
+    	 * @see Entry::isRepeated()
     	 */
     	private $oRepetition = null;
     
@@ -269,6 +286,8 @@ class Entry {
     	 * The creator of this entry.
     	 *
     	 * @var string
+    	 * @see Entry::getCreateBy()
+    	 * @see Entry::setCreateBy()
     	 */
     	private $sCreateBy = '';
     
@@ -281,6 +300,7 @@ class Entry {
     	 * Attention: This variable should be considered as read-only.
     	 *
     	 * @var int
+    	 * @see Entry::getTimestamp()
     	 */
     	private $nTimestamp = 0;
     	
@@ -288,6 +308,8 @@ class Entry {
     	 * The name/title of this entry.
     	 *
     	 * @var string
+    	 * @see Entry::getName()
+    	 * @see Entry::setName()
     	 */
     	private $sName = '';
     	
@@ -297,6 +319,8 @@ class Entry {
     	 * This should be a letter out of 'A'..'Z'
     	 *
     	 * @var string
+    	 * @see Entry::setType()
+    	 * @see Entry::getType()
     	 */
     	private $sType = 'I';
     
@@ -304,6 +328,8 @@ class Entry {
     	 * A long description of this entry.
     	 *
     	 * @var string
+    	 * @see Entry::getDescription()
+    	 * @see Entry::setDescription()
     	 */
     	private $sDescription = '';
 	
@@ -333,15 +359,7 @@ class Entry {
 	
 	/**
 	 * Return the starttime of this entry
-	 *public static function formatTimePeriodString($nTime) {
-		global $periods;
-		
-		$aTime = getdate($nTime);
-    		$nPnum = $aTime['minutes'];
-		if($nPnum < 0 ) $nPnum = 0;
-		if($nPnum >= count($periods) - 1) $nPnum = count($periods) - 1;
-		return $periods[$nPnum];
-	}
+	 *
 	 * @author Uwe L. Korn <uwelk@xhochy.org>
 	 * @return int Unix Timestamp
 	 */

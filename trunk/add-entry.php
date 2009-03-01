@@ -1,6 +1,6 @@
 <?php
 /**
- * This page will either add or modify a booking
+ * Add a new booking.
  * 
  * @author jberanek, Uwe L. Korn <uwelk@xhochy.org>
  * @package Schoorbs
@@ -13,8 +13,6 @@
 require_once 'config.inc.php';
 /** The general 'things' when viewing Schoorbs on the web */
 require_once 'schoorbs-includes/global.web.php';
-/** The general functions */ 
-require_once 'schoorbs-includes/global.functions.php';
 
 /// Var Init ///
 

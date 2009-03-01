@@ -48,9 +48,8 @@
           <option value="weeks"<?php echo (Lang::_('weeks') == $sDurationUnit ? ' selected="selected"' : '') ?>><?php echo Lang::_('weeks'); ?></option>
         <?php } ?>
       </select><br />
-      <label for="main-all-day"><?php echo Lang::_('All day'); ?>:</label> <input name="all_day" id="main-all-day" type="checkbox" value="yes" /><br />
-      <label for="main-rooms"><?php echo Lang::_('Rooms'); ?>:</label><br />
-      <select name="rooms[]" id="main-rooms" multiple="multiple" size="5" style="width: 300px;">
+      <label for="main-rooms"><?php echo Lang::_('Room'); ?>:</label>
+      <select name="room" id="main-rooms" style="width: 150px;">
         <?php $nActiveRoom = $entry->getRoom()->getId(); ?>
         <?php foreach (Area::getAreas() as $oArea) { ?>
           <optgroup label="<?php echo $oArea->getName(); ?>">
@@ -60,7 +59,6 @@
           </optgroup>
         <?php } ?>
       </select><br />
-      <label for="main-minute" style="width: 400px;"><?php echo Lang::_('Use Control-Click to select more than one type'); ?></label><br />
       <label for="main-type"><?php echo Lang::_('Type:'); ?></label> 
       <select id="main-type" name="type">
         <?php foreach ($types as $aType) { ?>
@@ -70,9 +68,7 @@
       <?php if (isset($_SERVER['HTTP_REFERER'])) { ?>
         <input type="hidden" name="returl" value="<?php echo htmlentities($_SERVER['HTTP_REFERER']); ?>" />
       <?php } ?>
-      <?php if ($entry != null) { ?>
-        <input type="hidden" id="main-id" name="id" value="<?php echo $entry->getId(); ?>" />
-      <?php } ?>
+      <input type="hidden" id="main-id" name="id" value="<?php echo $entry->getId(); ?>" />
       <input type="submit"value="<?php echo Lang::_('Save'); ?>" />
     </form>
   </div>
