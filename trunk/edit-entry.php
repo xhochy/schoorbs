@@ -121,15 +121,18 @@ if (!isset($_REQUEST['name'])) {
 		// is in the range 0..count(periods)-1
 		if (!isset($_REQUEST['period'])) {
 			SchoorbsTPL::error(Lang::_('A starting period was not supplied.'));
+			exit(1);
 		}
 		
 		$nPeriod = intval($_REQUEST['period']);
 		if (($nPeriod >= count($GLOBALS['periods'])) || ($nPeriod < 0)) {
 			SchoorbsTPL::error(Lang::_('Supplied value for the period is not valid.'));
+			exit(1);
 		}
 		
 		if (!in_array($_REQUEST['dur_units'], array('periods', 'days'))) {
 			SchoorbsTPL::error(Lang::_('Supplied value for the duration unit is not valid.'));
+			exit(1);
 		}
 	} else {
 		// If the system runs on a non-perioded basis, check if the 
@@ -143,13 +146,40 @@ if (!isset($_REQUEST['name'])) {
 		$nMinute = intval($_REQUEST['minute']);
 		if (($nHour < 0) || ($nHour > 23)) {
 			SchoorbsTPL::error(Lang::_('Supplied value for the hour is not valid.'));
+			exit(1);
 		}
 		if (($nMinute < 0) || ($nHour > 59)) {
 			SchoorbsTPL::error(Lang::_('Supplied value for the minute is not valid.'));
+			exit(1);
 		}
 		
 		if (!in_array($_REQUEST['dur_units'], array('periods', 'days', 'minutes', 'hours', 'weeks'))) {
 			SchoorbsTPL::error(Lang::_('Supplied value for the duration unit is not valid.'));
+			exit(1);
 		}
 	}
+	
+	if (!isset($_REQUEST['room'])) {
+		SchoorbsTPL::error(Lang::_('The room for the edited entry was not supplied.'));
+		exit(1);
+	}
+	
+	$oRoom = Room::getById(intval($_REQUEST['room']));
+	if ($oRoom === null) {
+		SchoorbsTPL::error(Lang::_('The specified room does not exist.'));
+		exit(1);
+	}
+	
+	if (!isset($_REQUEST['type'])) {
+		SchoorbsTPL::error(Lang::_('The type for edited entry was not supplied.'));
+		exit(1);
+	}
+	if (preg_match('/^[A-Z]$/', $_REQUEST['type']) != 1) {
+		SchoorbsTPL::error(Lang::_('No valid value for the type of this entry was supplied.'));
+		exit(1);
+	}
+	$cType = $_REQUEST['type'];
+	
+	// After the input validation is done, let's commit these changes to the
+	// database.
 }

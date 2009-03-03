@@ -933,3 +933,15 @@ msgstr ""
 
 msgid "Supplied value for the duration unit is not valid."
 msgstr ""
+
+msgid "The room for the edited entry was not supplied."
+msgstr ""
+
+msgid "The specified room does not exist."
+msgstr ""
+
+msgid "The type for edited entry was not supplied."
+msgstr ""
+
+msgid "No valid value for the type of this entry was supplied."
+msgstr ""		

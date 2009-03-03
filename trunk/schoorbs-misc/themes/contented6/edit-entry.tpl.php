@@ -54,7 +54,7 @@
         <?php foreach (Area::getAreas() as $oArea) { ?>
           <optgroup label="<?php echo $oArea->getName(); ?>">
             <?php foreach (Room::getRooms($oArea) as $oRoom) { ?>
-              <option value="<?php $oRoom->getId(); ?>"<?php if ($oRoom->getId() == $nActiveRoom) echo ' selected="selected"'; ?>>&nbsp;&nbsp;<?php echo $oRoom->getName(); ?></option>
+              <option value="<?php echo $oRoom->getId(); ?>"<?php if ($oRoom->getId() == $nActiveRoom) echo ' selected="selected"'; ?>>&nbsp;&nbsp;<?php echo $oRoom->getName(); ?></option>
             <?php } ?>
           </optgroup>
         <?php } ?>
