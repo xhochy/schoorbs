@@ -81,9 +81,9 @@ foreach($entries as $sDay=>$aEntries) {
                   .Lang::_(date('F', $oEntry->getEndTime())).' '
                   .date('Y H:i', $oEntry->getEndTime()); ?>) 
       <p>
-      	<?php $aOut = str_split($oEntry->getDescription(), 100); echo ht($aOut[0]); ?>
+      	<?php $aOut = str_split($oEntry->getDescription(), 100); echo htmlentities($aOut[0]); ?>
         <a href="view-entry.php?id=<?php echo $oEntry->getId(); ?>">...</a>
-        <br /><em><?php echo Lang::_('Booked by'); ?> <strong><?php echo ht($oEntry->getCreateBy()); ?></strong></em>
+        <br /><em><?php echo Lang::_('Booked by'); ?> <strong><?php echo htmlentities($oEntry->getCreateBy()); ?></strong></em>
       </p>
     </li>
   <?php } ?>

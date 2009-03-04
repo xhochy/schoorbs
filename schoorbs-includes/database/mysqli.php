@@ -198,30 +198,6 @@ function sql_mutex_cleanup()
     }
 }
 
-
-/**
- * Generate non-standard SQL for LIMIT clauses:
- *
- * @return string 
- * @param $count int
- * @param $offset int
- */
-function sql_syntax_limit($count, $offset)
-{
-    return " LIMIT $offset,$count ";
-}
-
-/**
- * Generate non-standard SQL to output a TIMESTAMP as a Unix-time:
- * 
- * @return string 
- * @param $fieldname string
- */
-function sql_syntax_timestamp_to_unix($fieldname)
-{
-    return " UNIX_TIMESTAMP($fieldname) ";
-}
-
 /**
  * Escapes a string for use as a SQL parameter
  * 

@@ -79,7 +79,7 @@ if ( $pview != 1 ) {
 
 	echo "</div>";
 	// Include a link to view this page in printing mode
-	echo '<div id="schoorbs-footer-pview"><a href="' . basename($_SERVER['PHP_SELF']) . '?' . ht($_SERVER['QUERY_STRING']) . '&amp;pview=1">' . get_vocab("ppreview");
+	echo '<div id="schoorbs-footer-pview"><a href="' . basename($_SERVER['PHP_SELF']) . '?' . htmlentities($_SERVER['QUERY_STRING']) . '&amp;pview=1">' . get_vocab("ppreview");
 }
 ?></a>
 	</div>
