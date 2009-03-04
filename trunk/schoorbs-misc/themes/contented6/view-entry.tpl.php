@@ -1,5 +1,5 @@
 <div class="vevent">
-  <h3 class="summary"><?php echo ht($entry->getName()); ?></h3>
+  <h3 class="summary"><?php echo htmlentities($entry->getName()); ?></h3>
    <table border="0" class="vevent">
      <tr>
        <td><strong><?php echo get_vocab('description'); ?></strong></td>

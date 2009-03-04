@@ -63,17 +63,6 @@ function unslashes($s)
 }
 
 /**
- * Get the local day name based on language. Note 2000-01-02 is a Sunday.
- * 
- * @param int $daynumber
- * @return string
- */
-function day_name($daynumber)
-{
-	return utf8_strftime('%A', mktime(0,0,0,1,2+$daynumber,2000));
-}
-
-/**
  * If crossing dst determine if you need to make a modification
  * of 3600 seconds (1 hour) in either direction.
  *
@@ -95,17 +84,4 @@ function cross_dst ( $start, $end )
 		$modification = 0;
 
 	return $modification;
-}
-
-/**
- * Alias for htmlentities
- *
- * @author Uwe L. Korn <uwelk@xhochy.org>
- * @param string the text which should be escaped
- * @param int $nQuoteStyle
- * @param string $sCharset
- */
-function ht($sCode, $nQuoteStyle = ENT_COMPAT, $sCharset = 'UTF-8')
-{
-	return htmlentities($sCode, $nQuoteStyle, $sCharset);
 }
