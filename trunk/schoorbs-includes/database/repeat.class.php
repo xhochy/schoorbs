@@ -245,6 +245,16 @@ class Repeat {
 	}
 	
 	/**
+	 * Return the unique identifier
+	 *
+	 * @author Uwe L. Korn <uwelk@xhochy.org>
+	 * @return int
+	 */
+	public function getId() {
+		return $this->nId;
+	}
+	
+	/**
 	 * Return the date where this repetition ends.
 	 *
 	 * @author Uwe L. Korn <uwelk@xhochy.org>
