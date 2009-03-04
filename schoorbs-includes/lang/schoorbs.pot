@@ -944,4 +944,13 @@ msgid "The type for edited entry was not supplied."
 msgstr ""
 
 msgid "No valid value for the type of this entry was supplied."
+msgstr ""
+
+msgid "Specified entry does not exist."
+msgstr ""
+
+msgid "The duration of the edited was not supplied."
+msgstr ""
+
+msgid "No valid value for the duration of this entry was supplied."
 msgstr ""		

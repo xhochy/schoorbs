@@ -358,6 +358,84 @@ class Entry {
 	}
 	
 	/**
+	 * Saves the object in the database.
+	 *
+	 * If this is a new obejct we will run an insert-query and get the created 
+	 * Id, otherwise we will run an update-query.
+	 *
+	 * @author Uwe L. Korn <uwelk@xhochy.org>
+	 */
+	public function commit() {
+		if ($this->nId == -1) {
+			// new object, so we will insert it as a new row
+			$oIdgen = $this->oDB->getConnection()->getIdGenerator();
+			// prepare the INSERT startement which will be the same in both cases
+			//
+			// Example query:
+			//   INSERT INTO schoorbs_entry (start_time, end_time, 
+			//   entry_type, repeat_id, room_id, create_by, name, 
+			//   type, description) VALUES (1223455500, 1223628300, 
+			//   0, 0, 1, 'admin', 'Test', 'E', 'Brunch time');
+			$oStatement = $this->oDB->getConnection()->prepareStatement(
+				'INSERT INTO '.$this->oDB->getTableName('entry')
+				.' (start_time, end_time, entry_type, repeat_id,'
+				.'room_id, create_by, name, type, description) '
+				.'VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?);'
+			);
+			$oStatement->setInt(1, $this->nStartTime);
+			$oStatement->setInt(2, $this->nEndTime);
+			$oStatement->setInt(3, $this->nEntryType);
+			$oStatement->setInt(4, $this->nRepeatId);
+			$oStatement->setInt(5, $this->oRoom->getId());
+			$oStatement->setString(6, $this->sCreateBy);
+			$oStatement->setString(7, $this->sName);
+			$oStatement->setString(8, $this->sType);
+			$oStatement->setString(9, $this->sDescription);
+			// do we get id before or after performing insert?
+			if($oIdgen->isBeforeInsert()) {
+				$this->nId = $oIdgen->getId($this->oDB->getTableName('entry')
+					.'_id_seq');
+				// now add that ID to SQL and perform INSERT
+			   	$oStatement->executeUpdate();
+			} else { // isAfterInsert()
+			   // first perform INSERT
+			   $oStatement->executeUpdate();
+			   $this->nId = $oIdgen->getId();
+			}
+		} else {
+			// Update the already existing object
+			// 
+			// Example query:
+			//   UPDATE schoorbs_entry SET start_time = 1223455500,
+			//   end_time = 1223628300, entry_type = 0, 
+			//   repeat_id = 0, room_id = 1, create_by = 'admin',
+			//   name = 'Test', type = 'I', 
+			//   description = 'Brunch time' WHERE id = 24
+			$oStatement = $this->oDB->getConnection()->prepareStatement(
+				'UPDATE '.$this->oDB->getTableName('entry')
+				.' SET start_time = ?, end_time = ?, '
+				.'entry_type = ?, repeat_id = ?, room_id = ?,'
+				.'create_by = ?, name = ?, type = ?,'
+				.'description = ? WHERE id = ?'
+			);
+			$oStatement->setInt(1, $this->nStartTime);
+			$oStatement->setInt(2, $this->nEndTime);
+			$oStatement->setInt(3, $this->nEntryType);
+			$oStatement->setInt(4, $this->nRepeatId);
+			$oStatement->setInt(5, $this->oRoom->getId());
+			$oStatement->setString(6, $this->sCreateBy);
+			$oStatement->setString(7, $this->sName);
+			$oStatement->setString(8, $this->sType);
+			$oStatement->setString(9, $this->sDescription);
+			$oStatement->setInt(10, $this->nId);
+			$oStatement->executeUpdate();
+		}
+		// We have commited all current changes, so there are no changes left in 
+		// this object.
+		$this->bChanged = false;
+	}
+	
+	/**
 	 * Return the starttime of this entry
 	 *
 	 * @author Uwe L. Korn <uwelk@xhochy.org>
@@ -516,6 +594,50 @@ class Entry {
 	}
 	
 	/**
+	 * Set the room where this entry is placed.
+	 *
+	 * @author Uwe L. Korn <uwelk@xhochy.org>
+	 * @param $oRoom Room
+	 */
+	public function setRoom(Room $oRoom) {
+		$this->changed = true;
+		$this->oRoom = $oRoom;
+	}
+	
+	/**
+	 * Set the name
+	 *
+	 * @author Uwe L. Korn <uwelk@xhochy.org>
+	 * @param $sName string
+	 */
+	public function setName($sName) {
+		$this->changed = true;
+		$this->sName = $sName;
+	}
+	
+	/**
+	 * Set the description
+	 *
+	 * @author Uwe L. Korn <uwelk@xhochy.org>
+	 * @param $sDescription string
+	 */
+	public function setDescription($sDescription) {
+		$this->changed = true;
+		$this->sDescription = $sDescription;
+	}
+	
+	/**
+	 * Set the type
+	 *
+	 * @author Uwe L. Korn <uwelk@xhochy.org>
+	 * @param $sType string
+	 */
+	public function setType($sType) {
+		$this->changed = true;
+		$this->sType = $sType;
+	}
+	
+	/**
 	 * Return the time of the last modification
 	 *
 	 * @author Uwe L. Korn <uwelk@xhochy.org>
@@ -625,9 +747,70 @@ class Entry {
 	 * @author Uwe L. Korn <uwelk@xhochy.org>
 	 */
 	public function getStartPeriod() {
+		global $periods;
+		
 		$aTime = getdate($this->nStartTime);
     		$nPnum = $aTime['minutes'];
 		if($nPnum >= count($periods) - 1) $nPnum = count($periods) - 1;
 		return $nPnum;
+	}
+	
+	/** 
+	 * Set the starttime using the period method.
+	 *
+	 * The period should not exceed the range of periods.
+	 * We assume $nPeriod < count($periods).
+	 * 
+	 * @author Uwe L. Korn <uwelk@xhochy.org>
+	 * @param $nYear int
+	 * @param $nMonth int
+	 * @param $nDay int
+	 * @param $nPeriod int
+	 */
+	public function setPeriodStartTime($nYear, $nMonth, $nDay, $nPeriod) {
+		$this->nStartTime = mktime(12, $nPeriod, 0, $nMonth, $nDay, $nYear);
+	}
+	
+	/**
+	 * Set the starttime using the common time methods
+	 *
+	 * @author Uwe L. Korn <uwelk@xhochy.org>
+	 * @param $nYear int
+	 * @param $nMonth int
+	 * @param $nDay int
+	 * @param $nHour int
+	 * @param $nMinute int
+	 */
+	public function setNonPeriodStarttime($nYear, $nMonth, $nDay, $nHour, $nMinute) {
+		$this->nStartTime = mktime($nHour, $nMinute, 0, $nMonth, $nDay, $nYear);
+	}
+	
+	/**
+	 * Set the endtime by specifying the duration.
+	 *
+	 * Attention! If you intend to change duration and starttime at the same
+	 * step, please change the starttime first as the duration is not saved
+	 * explicitly, only starttime and endtime are saved.
+	 *
+	 * @author Uwe L. Korn <uwelk@xhochy.org>
+	 * @param $nDuration int
+	 * @param $sDurationUnit string
+	 */
+	public function setImplicitDuration($nDuration, $sDurationUnit) {
+		global $periods;
+		
+		if ($sDurationUnit == 'days') {
+			$this->nEndTime = $this->nStartTime + 86400 * $nDuration;
+		} elseif ($sDurationUnit == 'minutes') {
+			$this->nEndTime = $this->nStartTime + 60 * $nDuration;
+		} elseif ($sDurationUnit == 'hours') {
+			$this->nEndTime = $this->nStartTime + 3600 * $nDuration;
+		} elseif ($sDurationUnit == 'weeks') {
+			$this->nEndTime = $this->nStartTime + 604800 * $nDuration;
+		} elseif ($sDurationUnit == 'periods') {
+			$this->nEndTime = $this->nStartTime 
+				+ 86400 * floor($nDuration / count($periods))
+				+ 60 * ($nDuration % count($periods));
+		}
 	}
 }
